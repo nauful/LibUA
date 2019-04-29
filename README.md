@@ -14,4 +14,4 @@ Open-source OPC UA client and server library for .NET based on IEC 62541. Availa
 - Server instances have low overhead: tested with hundreds of clients performing simultaneous historical reads, data change notification subscriptions and real-time writes.
 
 ### License
-Free for commercial use. Please give credit if you find this source useful.
+Free for commercial use under the Apache License 2.0. Please give credit if you find this source useful.
