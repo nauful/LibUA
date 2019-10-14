@@ -370,10 +370,10 @@ namespace LibUA
 
 						var length = (int)innerStream.Length;
 						EncodeLength(writer, length);
-						writer.Write(innerStream.GetBuffer(), 0, length);
+						writer.Write(innerStream.ToArray(), 0, length);
 					}
 
-					var base64 = Convert.ToBase64String(stream.GetBuffer(), 0, (int)stream.Length).ToCharArray();
+					var base64 = Convert.ToBase64String(stream.ToArray(), 0, (int)stream.Length).ToCharArray();
 
 					outputStream.WriteLine("-----BEGIN RSA PRIVATE KEY-----");
 					for (int i = 0; i < base64.Length; i += 64)
@@ -385,7 +385,7 @@ namespace LibUA
 				}
 			}
 
-			return System.Text.Encoding.ASCII.GetString(ms.GetBuffer());
+			return System.Text.Encoding.ASCII.GetString(ms.ToArray());
 		}
 
 		public static RSAParameters ImportRSAPrivateKey(string buf)
@@ -457,10 +457,10 @@ namespace LibUA
 
 						var length = (int)innerStream.Length;
 						EncodeLength(writer, length);
-						writer.Write(innerStream.GetBuffer(), 0, length);
+						writer.Write(innerStream.ToArray(), 0, length);
 					}
 
-					var base64 = Convert.ToBase64String(stream.GetBuffer(), 0, (int)stream.Length).ToCharArray();
+					var base64 = Convert.ToBase64String(stream.ToArray(), 0, (int)stream.Length).ToCharArray();
 
 					outputStream.WriteLine("-----BEGIN RSA PUBLIC KEY-----");
 					for (int i = 0; i < base64.Length; i += 64)
@@ -472,7 +472,7 @@ namespace LibUA
 				}
 			}
 
-			return System.Text.Encoding.ASCII.GetString(ms.GetBuffer());
+			return System.Text.Encoding.ASCII.GetString(ms.ToArray());
 		}
 
 		public static RSAParameters ImportRSAPublicKey(string buf)
