@@ -2721,7 +2721,7 @@ namespace LibUA
 				succeeded &= sendBuf.Encode(reqHeader);
 
 				succeeded &= sendBuf.Encode((UInt32)requests.Length);
-				for (int i = 0; i < results.Length; i++)
+				for (int i = 0; i < requests.Length; i++)
 				{
 					succeeded &= sendBuf.Encode(requests[i]);
 				}
