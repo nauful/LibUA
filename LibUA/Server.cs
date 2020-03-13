@@ -216,7 +216,7 @@ namespace LibUA
 			public const int MaxContinuationPoints = 256;
 			public const int MaxPublishRequests = 1024;
 			public const int MaxMonitoredPerSubscription = 65536;
-			public const int MaxTokenLifetime = 60 * 1000;
+			public const int MaxTokenLifetime = 600 * 1000;
 			public const uint MaxBrowseResults = 10000;
 			public const uint MaxHistoryReadNodes = 256;
 
