@@ -1745,13 +1745,14 @@ namespace LibUA
 				}
 
 				config.TL = new TLConnection();
+				const uint chunkSize = (1 << 16) - 1;
 				config.TL.LocalConfig = new TLConfiguration()
 				{
 					ProtocolVersion = 0,
-					SendBufferSize = 1 << 16,
-					RecvBufferSize = 1 << 16,
+					SendBufferSize = chunkSize,
+					RecvBufferSize = chunkSize,
 					MaxMessageSize = (uint)maximumMessageSize,
-					MaxChunkCount = (uint)(maximumMessageSize + ((1 << 16) - 1)) / (1 << 16),
+					MaxChunkCount = (uint)(maximumMessageSize + (chunkSize - 1)) / chunkSize,
 				};
 
 				config.TL.RemoteConfig = new TLConfiguration();
