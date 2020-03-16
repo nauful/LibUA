@@ -1,0 +1,55 @@
+# Common IntelliJ Platform excludes
+
+.idea/*
+
+# https://stackoverflow.com/questions/5533050/gitignore-exclude-folder-but-include-specific-subfolder
+!.idea/.idea.charybdis/
+
+.idea/.idea.charybdis/*
+!.idea/.idea.charybdis/.idea
+
+.idea/.idea.charybdis/.idea/*
+!.idea/.idea.charybdis/.idea/runConfigurations
+
+
+# User specific
+**/.idea/**/workspace.xml
+**/.idea/**/tasks.xml
+**/.idea/shelf/*
+**/.idea/dictionaries
+
+# Sensitive or high-churn files
+**/.idea/**/dataSources/
+**/.idea/**/dataSources.ids
+**/.idea/**/dataSources.xml
+**/.idea/**/dataSources.local.xml
+**/.idea/**/sqlDataSources.xml
+**/.idea/**/dynamic.xml
+
+# Rider
+# Rider auto-generates .iml files, and contentModel.xml
+**/.idea/**/*.iml
+**/.idea/**/contentModel.xml
+**/.idea/**/modules.xml
+
+# Sonarqube
+.sonarqube/
+
+#coverlet
+coverage.opencover.xml
+**/TestResults/*
+
+*.suo
+*.user
+.vs/
+[Bb]in/
+[Oo]bj/
+_UpgradeReport_Files/
+[Pp]ackages/
+output/
+publish/
+
+Thumbs.db
+Desktop.ini
+.DS_Store
+

@@ -8,8 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using LibUA;
 using LibUA.Core;
-using LibUA.Security.Cryptography;
-using LibUA.Security.Cryptography.X509Certificates;
 
 namespace TestClient
 {
@@ -44,36 +42,31 @@ namespace TestClient
 				catch
 				{
 					// Make a new certificate (public key) and associated private key
-					var dn = new X500DistinguishedName("CN=Client certificate;OU=Demo organization", X500DistinguishedNameFlags.UseSemicolons);
+					var dn = new X500DistinguishedName("CN=Client certificate;OU=Demo organization",
+						X500DistinguishedNameFlags.UseSemicolons);
+					SubjectAlternativeNameBuilder sanBuilder = new SubjectAlternativeNameBuilder();
+					sanBuilder.AddUri(new Uri("urn:DemoApplication"));
 
-					var keyCreationParameters = new CngKeyCreationParameters()
+					using (RSA rsa = RSA.Create(2048))
 					{
-						KeyUsage = CngKeyUsages.AllUsages,
-						KeyCreationOptions = CngKeyCreationOptions.OverwriteExistingKey,
-						ExportPolicy = CngExportPolicies.AllowPlaintextExport
-					};
+						var request = new CertificateRequest(dn, rsa, HashAlgorithmName.SHA256,
+							RSASignaturePadding.Pkcs1);
 
-					keyCreationParameters.Parameters.Add(new CngProperty("Length", BitConverter.GetBytes(1024), CngPropertyOptions.None));
-					var cngKey = CngKey.Create(CngAlgorithm2.Rsa, "KeyName", keyCreationParameters);
+						request.CertificateExtensions.Add(sanBuilder.Build());
 
-					var certParams = new X509CertificateCreationParameters(dn)
-					{
-						StartTime = DateTime.Now,
-						EndTime = DateTime.Now.AddYears(10),
-						SignatureAlgorithm = X509CertificateSignatureAlgorithm.RsaSha1,
-						TakeOwnershipOfKey = true
-					};
+						var certificate = request.CreateSelfSigned(new DateTimeOffset(DateTime.UtcNow.AddDays(-1)),
+							new DateTimeOffset(DateTime.UtcNow.AddDays(3650)));
 
-					appCertificate = cngKey.CreateSelfSignedCertificate(certParams);
+						appCertificate = new X509Certificate2(certificate.Export(X509ContentType.Pfx, ""),
+							"", X509KeyStorageFlags.MachineKeySet);
 
-					var certPrivateCNG = new RSACng(appCertificate.GetCngPrivateKey());
-					var certPrivateParams = certPrivateCNG.ExportParameters(true);
+						var certPrivateParams = rsa.ExportParameters(true);
+						File.WriteAllText("ClientCert.der", UASecurity.ExportPEM(appCertificate));
+						File.WriteAllText("ClientKey.pem", UASecurity.ExportRSAPrivateKey(certPrivateParams));
 
-					File.WriteAllText("ClientCert.der", UASecurity.ExportPEM(appCertificate));
-					File.WriteAllText("ClientKey.pem", UASecurity.ExportRSAPrivateKey(certPrivateParams));
-
-					cryptPrivateKey = new RSACryptoServiceProvider();
-					cryptPrivateKey.ImportParameters(certPrivateParams);
+						cryptPrivateKey = new RSACryptoServiceProvider();
+						cryptPrivateKey.ImportParameters(certPrivateParams);
+					}
 				}
 			}
 
