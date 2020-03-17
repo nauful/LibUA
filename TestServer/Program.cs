@@ -483,6 +483,7 @@ namespace TestServer
 
             sw.Stop();
             Console.WriteLine("Created and started server in {0} ms", sw.ElapsedMilliseconds.ToString("N3"));
+            Console.WriteLine("opc.tcp://localhost:7718");
 
             var timer = new Timer(1000);
             timer.Elapsed += (sender, e) => { app.PlayRow(); };

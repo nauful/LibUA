@@ -2,16 +2,6 @@
 
 .idea/*
 
-# https://stackoverflow.com/questions/5533050/gitignore-exclude-folder-but-include-specific-subfolder
-!.idea/.idea.charybdis/
-
-.idea/.idea.charybdis/*
-!.idea/.idea.charybdis/.idea
-
-.idea/.idea.charybdis/.idea/*
-!.idea/.idea.charybdis/.idea/runConfigurations
-
-
 # User specific
 **/.idea/**/workspace.xml
 **/.idea/**/tasks.xml
@@ -53,3 +43,5 @@ Thumbs.db
 Desktop.ini
 .DS_Store
 
+*.der
+*.pem
