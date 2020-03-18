@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <ProjectGuid>D7A993AC-7572-4FEE-868D-23427383F180</ProjectGuid>
+    </PropertyGroup>
+    
+    <PropertyGroup>
+        <Version>0.0.0.0</Version>
+    </PropertyGroup>
+    
+    <ItemGroup>
+      <ProjectReference Include="..\LibUA\LibUA.csproj" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <PackageReference Include="System.Security.Cryptography.Algorithms" Version="4.3.1" />
+      <PackageReference Include="System.Security.Cryptography.OpenSsl" Version="4.3.0" />
+      <PackageReference Include="System.Security.Cryptography.X509Certificates" Version="4.3.2" />
+    </ItemGroup>
+    
+</Project>
