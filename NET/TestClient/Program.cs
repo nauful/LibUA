@@ -128,6 +128,8 @@ namespace TestClient
 				.UserIdentityTokens.First(t => t.TokenType == UserTokenType.UserName)
 				.PolicyId;
 
+			// Create new client object to reset previous secure channel settings
+			client = new DemoClient("127.0.0.1", 7718, 1000);
 			var connectRes = client.Connect();
 			client.OpenSecureChannel(MessageSecurityMode.SignAndEncrypt, SecurityPolicy.Basic128Rsa15, serverCert);
 			//var openRes = client.OpenSecureChannel(MessageSecurityMode.None, SecurityPolicy.None, null);
