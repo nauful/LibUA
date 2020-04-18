@@ -418,7 +418,7 @@ namespace TestServer
 
                 var eventTime = DateTime.UtcNow;
                 var ev = GenerateSampleAlarmEvent(eventTime);
-                MonitorNotifyEvent(new NodeId(UAConst.Server), ev);
+                // MonitorNotifyEvent(new NodeId(UAConst.Server), ev);
 
                 nextEventId++;
             }
