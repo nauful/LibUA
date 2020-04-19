@@ -58,7 +58,7 @@ namespace TestClient
 							new DateTimeOffset(DateTime.UtcNow.AddDays(3650)));
 
 						appCertificate = new X509Certificate2(certificate.Export(X509ContentType.Pfx, ""),
-							"", X509KeyStorageFlags.MachineKeySet);
+							"", X509KeyStorageFlags.DefaultKeySet);
 
 						var certPrivateParams = rsa.ExportParameters(true);
 						File.WriteAllText("ClientCert.der", UASecurity.ExportPEM(appCertificate));
