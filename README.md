@@ -12,6 +12,7 @@ Open-source OPC UA client and server library for .NET and .NET Core based on IEC
 - Extendable server address space with hooks for client requests for access control, read handlers, write handlers, etc.
 - Support for reads, writes, updates, historical data and aggregation.
 - Server instances have low overhead: tested with hundreds of clients performing simultaneous historical reads, data change notification subscriptions and real-time writes.
+- Complete support for security profiles None, Basic128Rsa15 and Basic256. .NET 4.5 server supports Basic256Sha256, work in progress for .NET Standard server and client side libraries.
 
 ### Platforms
 .NET 4.5 or .NET Standard 2.0
