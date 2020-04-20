@@ -151,6 +151,15 @@ namespace TestServer
 						new UserTokenPolicy("1", UserTokenType.UserName, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256]),
 					}, Types.TransportProfileBinary, 0);
 
+				var epSignBasic256Sha256 = new EndpointDescription(
+					endpointUrlHint, uaAppDesc, certStr,
+					MessageSecurityMode.Sign, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256Sha256],
+					new UserTokenPolicy[]
+					{
+						new UserTokenPolicy("0", UserTokenType.Anonymous, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256Sha256]),
+						new UserTokenPolicy("1", UserTokenType.UserName, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256Sha256]),
+					}, Types.TransportProfileBinary, 0);
+
 				var epSignEncryptBasic128Rsa15 = new EndpointDescription(
 					endpointUrlHint, uaAppDesc, certStr,
 					MessageSecurityMode.SignAndEncrypt, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic128Rsa15],
@@ -169,11 +178,20 @@ namespace TestServer
 						new UserTokenPolicy("1", UserTokenType.UserName, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256]),
 					}, Types.TransportProfileBinary, 0);
 
+				var epSignEncryptBasic256Sha256 = new EndpointDescription(
+					endpointUrlHint, uaAppDesc, certStr,
+					MessageSecurityMode.SignAndEncrypt, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256Sha256],
+					new UserTokenPolicy[]
+					{
+						new UserTokenPolicy("0", UserTokenType.Anonymous, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256Sha256]),
+						new UserTokenPolicy("1", UserTokenType.UserName, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256Sha256]),
+					}, Types.TransportProfileBinary, 0);
+
 				return new EndpointDescription[]
 				{
 					epNoSecurity,
-					epSignBasic128Rsa15, epSignBasic256,
-					epSignEncryptBasic128Rsa15, epSignEncryptBasic256
+					epSignBasic128Rsa15, epSignBasic256, epSignBasic256Sha256,
+					epSignEncryptBasic128Rsa15, epSignEncryptBasic256, epSignEncryptBasic256Sha256
 				};
 			}
 
