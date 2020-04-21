@@ -122,7 +122,7 @@ namespace TestClient
 				.PolicyId;
 
 			var connectRes = client.Connect();
-			client.OpenSecureChannel(MessageSecurityMode.SignAndEncrypt, SecurityPolicy.Basic128Rsa15, serverCert);
+			var openRes = client.OpenSecureChannel(MessageSecurityMode.SignAndEncrypt, SecurityPolicy.Basic256Sha256, serverCert);
 			//var openRes = client.OpenSecureChannel(MessageSecurityMode.None, SecurityPolicy.None, null);
 			var createRes = client.CreateSession(appDesc, "urn:qs:DemoClient", 120);
 			var activateRes = client.ActivateSession(new UserIdentityAnonymousToken("0"), new[] { "en" });
@@ -132,7 +132,7 @@ namespace TestClient
 			//	new[] { "en" });
 
 			DataValue[] dvs = null;
-			client.Read(new ReadValueId[]
+			var readRes = client.Read(new ReadValueId[]
 				{
 					new ReadValueId(new NodeId(2, 1), NodeAttribute.Value, null, new QualifiedName(0, null)),
 					new ReadValueId(new NodeId(2, 2), NodeAttribute.Value, null, new QualifiedName(0, null)),

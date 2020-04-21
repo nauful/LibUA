@@ -193,8 +193,9 @@ namespace TestServer
 				return new EndpointDescription[]
 				{
 					epNoSecurity,
-					epSignBasic128Rsa15, epSignBasic256, epSignBasic256Sha256,
-					epSignEncryptBasic128Rsa15, epSignEncryptBasic256, epSignEncryptBasic256Sha256
+					epSignBasic256Sha256, epSignEncryptBasic256Sha256,
+					epSignBasic128Rsa15, epSignEncryptBasic128Rsa15,
+					epSignBasic256, epSignEncryptBasic256
 				};
 			}
 

@@ -159,7 +159,7 @@ namespace LibUA
 				else
 				{
 					var certStr = ApplicationCertificate.Export(X509ContentType.Cert);
-					var serverCertThumbprint = UASecurity.SHACalculate(config.RemoteCertificateString, config.SecurityPolicy);
+					var serverCertThumbprint = UASecurity.SHACalculate(config.RemoteCertificateString, SecurityPolicy.Basic128Rsa15);
 
 					succeeded &= sendBuf.EncodeUAByteString(certStr);
 					succeeded &= sendBuf.EncodeUAByteString(serverCertThumbprint);
@@ -242,7 +242,7 @@ namespace LibUA
 					respSize = asymCryptFrom + UASecurity.CalculateEncryptedSize(config.RemoteCertificate, respSize - asymCryptFrom, padMethod);
 					MarkPositionAsSize(sendBuf, (UInt32)respSize);
 
-					var msgSign = UASecurity.RsaPkcs15Sha_Sign(new ArraySegment<byte>(sendBuf.Buffer, 0, sendBuf.Position), 
+					var msgSign = UASecurity.RsaPkcs15Sha_Sign(new ArraySegment<byte>(sendBuf.Buffer, 0, sendBuf.Position),
 						ApplicationPrivateKey, config.SecurityPolicy);
 					sendBuf.Append(msgSign);
 
@@ -338,7 +338,7 @@ namespace LibUA
 					}
 
 					var appCertStr = ApplicationCertificate.Export(X509ContentType.Cert);
-					if (!UASecurity.SHAVerify(appCertStr, recvCertThumbprint, config.SecurityPolicy))
+					if (!UASecurity.SHAVerify(appCertStr, recvCertThumbprint, SecurityPolicy.Basic128Rsa15))
 					{
 						return StatusCode.BadSecurityChecksFailed;
 					}
@@ -430,16 +430,16 @@ namespace LibUA
 						(new ArraySegment<byte>(serverHash, sigKeySize, symKeySize)).ToArray(),
 						(new ArraySegment<byte>(serverHash, sigKeySize + symKeySize, symBlockSize)).ToArray());
 
-					Console.WriteLine("Local nonce: {0}", string.Join("", config.LocalNonce.Select(v => v.ToString("X2"))));
-					Console.WriteLine("Remote nonce: {0}", string.Join("", config.RemoteNonce.Select(v => v.ToString("X2"))));
+					//Console.WriteLine("Local nonce: {0}", string.Join("", config.LocalNonce.Select(v => v.ToString("X2"))));
+					//Console.WriteLine("Remote nonce: {0}", string.Join("", config.RemoteNonce.Select(v => v.ToString("X2"))));
 
-					Console.WriteLine("RSymSignKey: {0}", string.Join("", newRemoteKeyset.SymSignKey.Select(v => v.ToString("X2"))));
-					Console.WriteLine("RSymEncKey: {0}", string.Join("", newRemoteKeyset.SymEncKey.Select(v => v.ToString("X2"))));
-					Console.WriteLine("RSymIV: {0}", string.Join("", newRemoteKeyset.SymIV.Select(v => v.ToString("X2"))));
+					//Console.WriteLine("RSymSignKey: {0}", string.Join("", newRemoteKeyset.SymSignKey.Select(v => v.ToString("X2"))));
+					//Console.WriteLine("RSymEncKey: {0}", string.Join("", newRemoteKeyset.SymEncKey.Select(v => v.ToString("X2"))));
+					//Console.WriteLine("RSymIV: {0}", string.Join("", newRemoteKeyset.SymIV.Select(v => v.ToString("X2"))));
 
-					Console.WriteLine("LSymSignKey: {0}", string.Join("", newLocalKeyset.SymSignKey.Select(v => v.ToString("X2"))));
-					Console.WriteLine("LSymEncKey: {0}", string.Join("", newLocalKeyset.SymEncKey.Select(v => v.ToString("X2"))));
-					Console.WriteLine("LSymIV: {0}", string.Join("", newLocalKeyset.SymIV.Select(v => v.ToString("X2"))));
+					//Console.WriteLine("LSymSignKey: {0}", string.Join("", newLocalKeyset.SymSignKey.Select(v => v.ToString("X2"))));
+					//Console.WriteLine("LSymEncKey: {0}", string.Join("", newLocalKeyset.SymEncKey.Select(v => v.ToString("X2"))));
+					//Console.WriteLine("LSymIV: {0}", string.Join("", newLocalKeyset.SymIV.Select(v => v.ToString("X2"))));
 
 					if (config.LocalKeysets == null)
 					{
@@ -710,7 +710,7 @@ namespace LibUA
 
 			if (numChunks > 1)
 			{
-				Console.WriteLine("{0} -> {1} chunks", respBuf.Position, numChunks);
+				//Console.WriteLine("{0} -> {1} chunks", respBuf.Position, numChunks);
 				var chunk = new MemoryBuffer(chunkSize + ChunkHeaderOverhead + TLPaddingOverhead);
 				for (int i = 0; i < numChunks; i++)
 				{
@@ -1525,7 +1525,7 @@ namespace LibUA
 			return (int)messageSize;
 		}
 
-		public StatusCode ActivateSession(object identityToken, string[] localeIDs)
+		public StatusCode ActivateSession(object identityToken, string[] localeIDs, SecurityPolicy? userIdentitySecurityPolicy = null)
 		{
 			try
 			{
@@ -1570,7 +1570,15 @@ namespace LibUA
 
 					var thumbprint = UASecurity.RsaPkcs15Sha_Sign(new ArraySegment<byte>(signMsg),
 						ApplicationPrivateKey, config.SecurityPolicy);
-					succeeded &= sendBuf.EncodeUAString(Types.SignatureAlgorithmSha1);
+
+					if (config.SecurityPolicy == SecurityPolicy.Basic256Sha256)
+					{
+						succeeded &= sendBuf.EncodeUAString(Types.SignatureAlgorithmSha256);
+					}
+					else
+					{
+						succeeded &= sendBuf.EncodeUAString(Types.SignatureAlgorithmSha1);
+					}
 					succeeded &= sendBuf.EncodeUAByteString(thumbprint);
 				}
 
@@ -1605,7 +1613,8 @@ namespace LibUA
 					try
 					{
 						var passwordSrc = (identityToken as UserIdentityUsernameToken).PasswordHash;
-						int padSize = UASecurity.CalculatePaddingSize(config.RemoteCertificate, SecurityPolicy.Basic128Rsa15, 4 + passwordSrc.Length,
+						int padSize = UASecurity.CalculatePaddingSize(config.RemoteCertificate,
+							userIdentitySecurityPolicy ?? config.SecurityPolicy, 4 + passwordSrc.Length,
 							(config.RemoteNonce == null ? 0 : config.RemoteNonce.Length));
 						var rndBytes = UASecurity.GenerateRandomBytes(padSize);
 
@@ -1635,7 +1644,7 @@ namespace LibUA
 
 						crypted = UASecurity.RsaPkcs15Sha_Encrypt(
 							new ArraySegment<byte>(crypted),
-							config.RemoteCertificate, SecurityPolicy.Basic128Rsa15);
+							config.RemoteCertificate, userIdentitySecurityPolicy ?? config.SecurityPolicy);
 
 						succeeded &= sendBuf.EncodeUAByteString(crypted);
 						succeeded &= sendBuf.EncodeUAString(((identityToken as UserIdentityUsernameToken)).Algorithm);

@@ -131,7 +131,7 @@ namespace TestClient
 			// Create new client object to reset previous secure channel settings
 			client = new DemoClient("127.0.0.1", 7718, 1000);
 			var connectRes = client.Connect();
-			client.OpenSecureChannel(MessageSecurityMode.SignAndEncrypt, SecurityPolicy.Basic128Rsa15, serverCert);
+			client.OpenSecureChannel(MessageSecurityMode.SignAndEncrypt, SecurityPolicy.Basic256Sha256, serverCert);
 			//var openRes = client.OpenSecureChannel(MessageSecurityMode.None, SecurityPolicy.None, null);
 			var createRes = client.CreateSession(appDesc, "urn:qs:DemoClient", 120);
 			var activateRes = client.ActivateSession(new UserIdentityAnonymousToken("0"), new[] { "en" });
