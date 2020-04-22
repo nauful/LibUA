@@ -2,12 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Sockets;
-using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
 using LibUA.Core;
-using LibUA.Security.Cryptography;
 
 namespace LibUA
 {
@@ -469,8 +465,7 @@ namespace LibUA
 						return 0;
 					}
 
-					if (messageType == (uint)MessageType.Message ||
-					messageType == (uint)MessageType.Close)
+					if (messageType == (uint)MessageType.Message || messageType == (uint)MessageType.Close)
 					{
 						if (config.MessageSecurityMode > MessageSecurityMode.None &&
 							config.LocalKeysets != null && config.RemoteKeysets != null)
@@ -484,6 +479,7 @@ namespace LibUA
 
 							if (!Types.StatusCodeIsGood(unsecureRes))
 							{
+								UAStatusCode = unsecureRes;
 								return -1;
 							}
 						}
@@ -848,7 +844,7 @@ namespace LibUA
 					if (!recvBuf.DecodeUAByteString(out password)) { return ErrorParseFail; }
 					if (!recvBuf.DecodeUAString(out algorithm)) { return ErrorParseFail; }
 
-					var expectHash = UASecurity.RsaPkcs15Sha1_Decrypt(
+					var expectHash = UASecurity.RsaPkcs15Sha_Decrypt(
 						new ArraySegment<byte>(password),
 						app.ApplicationCertificate, app.ApplicationPrivateKey,
 						SecurityPolicy.Basic128Rsa15);
@@ -900,7 +896,8 @@ namespace LibUA
 						return ErrorInternal;
 					}
 
-					if (clientSignatureAlgorithm != Types.SignatureAlgorithmSha1)
+					if (clientSignatureAlgorithm != Types.SignatureAlgorithmSha1 &&
+						clientSignatureAlgorithm != Types.SignatureAlgorithmSha256)
 					{
 						if (logger != null)
 						{
@@ -916,8 +913,8 @@ namespace LibUA
 					Array.Copy(strLocalCert, 0, signMsg, 0, strLocalCert.Length);
 					Array.Copy(config.SessionIssuedNonce, 0, signMsg, strLocalCert.Length, config.SessionIssuedNonce.Length);
 
-					if (!UASecurity.RsaPkcs15Sha1_VerifySigned(new ArraySegment<byte>(signMsg),
-						clientSignature, config.RemoteCertificate))
+					if (!UASecurity.RsaPkcs15Sha_VerifySigned(new ArraySegment<byte>(signMsg),
+						clientSignature, config.RemoteCertificate, config.SecurityPolicy))
 					{
 						UAStatusCode = (uint)StatusCode.BadSecurityChecksFailed;
 						return ErrorInternal;
@@ -1018,7 +1015,8 @@ namespace LibUA
 					Array.Copy(clientCertificate, 0, signMsg, 0, clientCertificate.Length);
 					Array.Copy(clientNonce, 0, signMsg, clientCertificate.Length, clientNonce.Length);
 
-					var serverSignature = UASecurity.RsaPkcs15Sha1_Sign(new ArraySegment<byte>(signMsg), app.ApplicationPrivateKey);
+					var serverSignature = UASecurity.RsaPkcs15Sha_Sign(new ArraySegment<byte>(signMsg),
+						app.ApplicationPrivateKey, config.SecurityPolicy);
 
 					// Verify in ActivateSession
 					config.SessionIssuedNonce = UASecurity.GenerateRandomBytes(UASecurity.ActivationNonceSize);
@@ -1038,7 +1036,15 @@ namespace LibUA
 					succeeded &= respBuf.Encode((UInt32)0xFFFFFFFFu);
 
 					// Server signature algorithm
-					succeeded &= respBuf.EncodeUAString(Types.SignatureAlgorithmSha1);
+					if (config.SecurityPolicy == SecurityPolicy.Basic256Sha256)
+					{
+						succeeded &= respBuf.EncodeUAString(Types.SignatureAlgorithmSha256);
+					}
+					else
+					{
+						succeeded &= respBuf.EncodeUAString(Types.SignatureAlgorithmSha1);
+					}
+					
 					// Server signature
 					succeeded &= respBuf.EncodeUAByteString(serverSignature);
 				}
@@ -1426,6 +1432,10 @@ namespace LibUA
 					{
 						config.SecurityPolicy = SecurityPolicy.Basic128Rsa15;
 					}
+					else if (securityPolicyUri == Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256Sha256])
+					{
+						config.SecurityPolicy = SecurityPolicy.Basic256Sha256;
+					}
 					else
 					{
 						UAStatusCode = (uint)StatusCode.BadSecurityPolicyRejected;
@@ -1460,14 +1470,14 @@ namespace LibUA
 					}
 
 					var appCertStr = app.ApplicationCertificate.Export(X509ContentType.Cert);
-					if (!UASecurity.SHA1Verify(appCertStr, recvCertThumbprint))
+					if (!UASecurity.SHAVerify(appCertStr, recvCertThumbprint, SecurityPolicy.Basic128Rsa15))
 					{
 						UAStatusCode = (uint)StatusCode.BadSecurityChecksFailed;
 						return ErrorInternal;
 					}
 
 					var paddingMethod = UASecurity.PaddingMethodForSecurityPolicy(config.SecurityPolicy);
-					var asymDecBuf = UASecurity.RsaPkcs15Sha1_Decrypt(
+					var asymDecBuf = UASecurity.RsaPkcs15Sha_Decrypt(
 						new ArraySegment<byte>(recvBuf.Buffer, recvBuf.Position, recvBuf.Capacity - recvBuf.Position),
 						app.ApplicationCertificate, app.ApplicationPrivateKey, config.SecurityPolicy);
 
@@ -1579,7 +1589,7 @@ namespace LibUA
 				}
 				else
 				{
-					int symKeySize = UASecurity.SymmetricKeySizeForSecurityPolicy(config.SecurityPolicy);
+					int symKeySize = UASecurity.SymmetricKeySizeForSecurityPolicy(config.SecurityPolicy, clientNonce.Length);
 
 					config.LocalNonce = UASecurity.GenerateRandomBytes(symKeySize);
 					config.RemoteNonce = clientNonce;
@@ -1587,20 +1597,20 @@ namespace LibUA
 					int sigKeySize = UASecurity.SymmetricSignatureKeySizeForSecurityPolicy(config.SecurityPolicy);
 					int symBlockSize = UASecurity.SymmetricBlockSizeForSecurityPolicy(config.SecurityPolicy);
 
-					var clientHash = UASecurity.PSHA1(
+					var clientHash = UASecurity.PSHA(
 						config.LocalNonce,
 						config.RemoteNonce,
-						sigKeySize + symKeySize + symBlockSize);
+						sigKeySize + symKeySize + symBlockSize, config.SecurityPolicy);
 
 					var newRemoteKeyset = new SLChannel.Keyset(
 						(new ArraySegment<byte>(clientHash, 0, sigKeySize)).ToArray(),
 						(new ArraySegment<byte>(clientHash, sigKeySize, symKeySize)).ToArray(),
 						(new ArraySegment<byte>(clientHash, sigKeySize + symKeySize, symBlockSize)).ToArray());
 
-					var serverHash = UASecurity.PSHA1(
+					var serverHash = UASecurity.PSHA(
 						config.RemoteNonce,
 						config.LocalNonce,
-						sigKeySize + symKeySize + symBlockSize);
+						sigKeySize + symKeySize + symBlockSize, config.SecurityPolicy);
 
 					var newLocalKeyset = new SLChannel.Keyset(
 						(new ArraySegment<byte>(serverHash, 0, sigKeySize)).ToArray(),
@@ -1647,7 +1657,7 @@ namespace LibUA
 				else
 				{
 					var appCertStr = app.ApplicationCertificate.Export(X509ContentType.Cert);
-					var clientCertThumbprint = UASecurity.SHA1Calculate(config.RemoteCertificate.Export(X509ContentType.Cert));
+					var clientCertThumbprint = UASecurity.SHACalculate(config.RemoteCertificate.Export(X509ContentType.Cert), SecurityPolicy.Basic128Rsa15);
 
 					// SenderCertificate
 					succeeded &= respBuf.EncodeUAByteString(appCertStr);
@@ -1698,10 +1708,14 @@ namespace LibUA
 					respSize = encodeFromPosition + UASecurity.CalculateEncryptedSize(config.RemoteCertificate, respSize - encodeFromPosition, padMethod);
 					MarkPositionAsSize(respBuf, (UInt32)respSize);
 
-					var msgSign = UASecurity.RsaPkcs15Sha1_Sign(new ArraySegment<byte>(respBuf.Buffer, 0, respBuf.Position), app.ApplicationPrivateKey);
+					var msgSign = UASecurity.RsaPkcs15Sha_Sign(new ArraySegment<byte>(respBuf.Buffer, 0, respBuf.Position), 
+						app.ApplicationPrivateKey, config.SecurityPolicy);
+
+					//Console.WriteLine("AsymSig: {0}", string.Join("", msgSign.Select(v => v.ToString("X2"))));
+
 					respBuf.Append(msgSign);
 
-					var packed = UASecurity.RsaPkcs15Sha1_Encrypt(
+					var packed = UASecurity.RsaPkcs15Sha_Encrypt(
 						new ArraySegment<byte>(respBuf.Buffer, encodeFromPosition, respBuf.Position - encodeFromPosition),
 						config.RemoteCertificate, config.SecurityPolicy);
 

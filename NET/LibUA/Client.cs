@@ -5,9 +5,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using LibUA.Core;
 
 namespace LibUA
@@ -161,7 +159,7 @@ namespace LibUA
 				else
 				{
 					var certStr = ApplicationCertificate.Export(X509ContentType.Cert);
-					var serverCertThumbprint = UASecurity.SHA1Calculate(config.RemoteCertificateString);
+					var serverCertThumbprint = UASecurity.SHACalculate(config.RemoteCertificateString, SecurityPolicy.Basic128Rsa15);
 
 					succeeded &= sendBuf.EncodeUAByteString(certStr);
 					succeeded &= sendBuf.EncodeUAByteString(serverCertThumbprint);
@@ -244,10 +242,11 @@ namespace LibUA
 					respSize = asymCryptFrom + UASecurity.CalculateEncryptedSize(config.RemoteCertificate, respSize - asymCryptFrom, padMethod);
 					MarkPositionAsSize(sendBuf, (UInt32)respSize);
 
-					var msgSign = UASecurity.RsaPkcs15Sha1_Sign(new ArraySegment<byte>(sendBuf.Buffer, 0, sendBuf.Position), ApplicationPrivateKey);
+					var msgSign = UASecurity.RsaPkcs15Sha_Sign(new ArraySegment<byte>(sendBuf.Buffer, 0, sendBuf.Position),
+						ApplicationPrivateKey, config.SecurityPolicy);
 					sendBuf.Append(msgSign);
 
-					var packed = UASecurity.RsaPkcs15Sha1_Encrypt(
+					var packed = UASecurity.RsaPkcs15Sha_Encrypt(
 						new ArraySegment<byte>(sendBuf.Buffer, asymCryptFrom, sendBuf.Position - asymCryptFrom),
 						config.RemoteCertificate, config.SecurityPolicy);
 
@@ -339,13 +338,13 @@ namespace LibUA
 					}
 
 					var appCertStr = ApplicationCertificate.Export(X509ContentType.Cert);
-					if (!UASecurity.SHA1Verify(appCertStr, recvCertThumbprint))
+					if (!UASecurity.SHAVerify(appCertStr, recvCertThumbprint, SecurityPolicy.Basic128Rsa15))
 					{
 						return StatusCode.BadSecurityChecksFailed;
 					}
 
 					var paddingMethod = UASecurity.PaddingMethodForSecurityPolicy(config.SecurityPolicy);
-					var asymDecBuf = UASecurity.RsaPkcs15Sha1_Decrypt(
+					var asymDecBuf = UASecurity.RsaPkcs15Sha_Decrypt(
 						new ArraySegment<byte>(recvHandler.RecvBuf.Buffer, recvHandler.RecvBuf.Position, recvHandler.RecvBuf.Capacity - recvHandler.RecvBuf.Position),
 						ApplicationCertificate, ApplicationPrivateKey, config.SecurityPolicy);
 
@@ -411,20 +410,20 @@ namespace LibUA
 					int sigKeySize = UASecurity.SymmetricSignatureKeySizeForSecurityPolicy(config.SecurityPolicy);
 					int symBlockSize = UASecurity.SymmetricBlockSizeForSecurityPolicy(config.SecurityPolicy);
 
-					var clientHash = UASecurity.PSHA1(
+					var clientHash = UASecurity.PSHA(
 						config.RemoteNonce,
 						config.LocalNonce,
-						sigKeySize + symKeySize + symBlockSize);
+						sigKeySize + symKeySize + symBlockSize, config.SecurityPolicy);
 
 					var newLocalKeyset = new SLChannel.Keyset(
 						(new ArraySegment<byte>(clientHash, 0, sigKeySize)).ToArray(),
 						(new ArraySegment<byte>(clientHash, sigKeySize, symKeySize)).ToArray(),
 						(new ArraySegment<byte>(clientHash, sigKeySize + symKeySize, symBlockSize)).ToArray());
 
-					var serverHash = UASecurity.PSHA1(
+					var serverHash = UASecurity.PSHA(
 						config.LocalNonce,
 						config.RemoteNonce,
-						sigKeySize + symKeySize + symBlockSize);
+						sigKeySize + symKeySize + symBlockSize, config.SecurityPolicy);
 
 					var newRemoteKeyset = new SLChannel.Keyset(
 						(new ArraySegment<byte>(serverHash, 0, sigKeySize)).ToArray(),
@@ -711,7 +710,7 @@ namespace LibUA
 
 			if (numChunks > 1)
 			{
-				Console.WriteLine("{0} -> {1} chunks", respBuf.Position, numChunks);
+				//Console.WriteLine("{0} -> {1} chunks", respBuf.Position, numChunks);
 				var chunk = new MemoryBuffer(chunkSize + ChunkHeaderOverhead + TLPaddingOverhead);
 				for (int i = 0; i < numChunks; i++)
 				{
@@ -1526,7 +1525,7 @@ namespace LibUA
 			return (int)messageSize;
 		}
 
-		public StatusCode ActivateSession(object identityToken, string[] localeIDs)
+		public StatusCode ActivateSession(object identityToken, string[] localeIDs, SecurityPolicy? userIdentitySecurityPolicy = null)
 		{
 			try
 			{
@@ -1569,8 +1568,17 @@ namespace LibUA
 					Array.Copy(strRemoteCert, 0, signMsg, 0, strRemoteCert.Length);
 					Array.Copy(config.RemoteNonce, 0, signMsg, strRemoteCert.Length, config.RemoteNonce.Length);
 
-					var thumbprint = UASecurity.RsaPkcs15Sha1_Sign(new ArraySegment<byte>(signMsg), ApplicationPrivateKey);
-					succeeded &= sendBuf.EncodeUAString(Types.SignatureAlgorithmSha1);
+					var thumbprint = UASecurity.RsaPkcs15Sha_Sign(new ArraySegment<byte>(signMsg),
+						ApplicationPrivateKey, config.SecurityPolicy);
+
+					if (config.SecurityPolicy == SecurityPolicy.Basic256Sha256)
+					{
+						succeeded &= sendBuf.EncodeUAString(Types.SignatureAlgorithmSha256);
+					}
+					else
+					{
+						succeeded &= sendBuf.EncodeUAString(Types.SignatureAlgorithmSha1);
+					}
 					succeeded &= sendBuf.EncodeUAByteString(thumbprint);
 				}
 
@@ -1605,7 +1613,8 @@ namespace LibUA
 					try
 					{
 						var passwordSrc = (identityToken as UserIdentityUsernameToken).PasswordHash;
-						int padSize = UASecurity.CalculatePaddingSize(config.RemoteCertificate, SecurityPolicy.Basic128Rsa15, 4 + passwordSrc.Length,
+						int padSize = UASecurity.CalculatePaddingSize(config.RemoteCertificate,
+							userIdentitySecurityPolicy ?? config.SecurityPolicy, 4 + passwordSrc.Length,
 							(config.RemoteNonce == null ? 0 : config.RemoteNonce.Length));
 						var rndBytes = UASecurity.GenerateRandomBytes(padSize);
 
@@ -1633,9 +1642,9 @@ namespace LibUA
 						Array.Copy(rndBytes, 0, crypted, offset, rndBytes.Length);
 						offset += rndBytes.Length;
 
-						crypted = UASecurity.RsaPkcs15Sha1_Encrypt(
+						crypted = UASecurity.RsaPkcs15Sha_Encrypt(
 							new ArraySegment<byte>(crypted),
-							config.RemoteCertificate, SecurityPolicy.Basic128Rsa15);
+							config.RemoteCertificate, userIdentitySecurityPolicy ?? config.SecurityPolicy);
 
 						succeeded &= sendBuf.EncodeUAByteString(crypted);
 						succeeded &= sendBuf.EncodeUAString(((identityToken as UserIdentityUsernameToken)).Algorithm);

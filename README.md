@@ -4,6 +4,7 @@ Open-source OPC UA client and server library for .NET and .NET Core based on IEC
 ### Features
 - Fully supported OPC UA core client and OPC UA server specification.
 - OPC UA binary protocol with chunking.
+- Security profiles None, Basic128Rsa15, Basic256 and Basic256Sha256.
 - Optimized memory buffers for encoding/decoding large and complex structures to/from raw bytes.
 - Support for all message types, node types, and default address space from the UA specification.
 - Support for signing and encrypted security profiles.
@@ -12,6 +13,9 @@ Open-source OPC UA client and server library for .NET and .NET Core based on IEC
 - Extendable server address space with hooks for client requests for access control, read handlers, write handlers, etc.
 - Support for reads, writes, updates, historical data and aggregation.
 - Server instances have low overhead: tested with hundreds of clients performing simultaneous historical reads, data change notification subscriptions and real-time writes.
+
+### Platforms
+.NET 4.5 or .NET Standard 2.0
 
 ### License
 Free for commercial use under the Apache License 2.0. Please give credit if you find this source useful.

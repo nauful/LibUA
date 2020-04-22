@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
-using System.Threading.Tasks;
 using System.Timers;
 using LibUA;
 using LibUA.Core;
@@ -151,6 +148,15 @@ namespace TestServer
 						new UserTokenPolicy("1", UserTokenType.UserName, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256]),
 					}, Types.TransportProfileBinary, 0);
 
+				var epSignBasic256Sha256 = new EndpointDescription(
+					endpointUrlHint, uaAppDesc, certStr,
+					MessageSecurityMode.Sign, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256Sha256],
+					new UserTokenPolicy[]
+					{
+						new UserTokenPolicy("0", UserTokenType.Anonymous, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256Sha256]),
+						new UserTokenPolicy("1", UserTokenType.UserName, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256Sha256]),
+					}, Types.TransportProfileBinary, 0);
+
 				var epSignEncryptBasic128Rsa15 = new EndpointDescription(
 					endpointUrlHint, uaAppDesc, certStr,
 					MessageSecurityMode.SignAndEncrypt, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic128Rsa15],
@@ -169,11 +175,21 @@ namespace TestServer
 						new UserTokenPolicy("1", UserTokenType.UserName, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256]),
 					}, Types.TransportProfileBinary, 0);
 
+				var epSignEncryptBasic256Sha256 = new EndpointDescription(
+					endpointUrlHint, uaAppDesc, certStr,
+					MessageSecurityMode.SignAndEncrypt, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256Sha256],
+					new UserTokenPolicy[]
+					{
+						new UserTokenPolicy("0", UserTokenType.Anonymous, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256Sha256]),
+						new UserTokenPolicy("1", UserTokenType.UserName, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256Sha256]),
+					}, Types.TransportProfileBinary, 0);
+
 				return new EndpointDescription[]
 				{
 					epNoSecurity,
-					epSignBasic128Rsa15, epSignBasic256,
-					epSignEncryptBasic128Rsa15, epSignEncryptBasic256
+					epSignBasic256Sha256, epSignEncryptBasic256Sha256,
+					epSignBasic128Rsa15, epSignEncryptBasic128Rsa15,
+					epSignBasic256, epSignEncryptBasic256
 				};
 			}
 
@@ -397,7 +413,7 @@ namespace TestServer
 
 				var eventTime = DateTime.UtcNow;
 				var ev = GenerateSampleAlarmEvent(eventTime);
-				MonitorNotifyEvent(new NodeId(UAConst.Server), ev);
+				// MonitorNotifyEvent(new NodeId(UAConst.Server), ev);
 
 				nextEventId++;
 			}

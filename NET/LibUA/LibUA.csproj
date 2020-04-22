@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A02727B5-BA44-4B42-A75F-B35E295DBAF0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LibUA</RootNamespace>
+    <AssemblyName>LibUA</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AddressSpace.cs" />
+    <Compile Include="Application.cs" />
+    <Compile Include="Client.cs" />
+    <Compile Include="Encoding.cs" />
+    <Compile Include="ILogger.cs" />
+    <Compile Include="MemoryBufferExtensions.cs" />
+    <Compile Include="NetDispatcher.cs" />
+    <Compile Include="Security.Cryptography\AesCng.cs" />
+    <Compile Include="Security.Cryptography\AuthenticatedAes.cs" />
+    <Compile Include="Security.Cryptography\AuthenticatedAesCng.cs" />
+    <Compile Include="Security.Cryptography\AuthenticatedSymmetricAlgorithm.cs" />
+    <Compile Include="Security.Cryptography\BCryptAuthenticatedSymmetricAlgorithm.cs" />
+    <Compile Include="Security.Cryptography\BCryptAuthenticatedSymmetricCryptoTransform.cs" />
+    <Compile Include="Security.Cryptography\BCryptHMAC.cs" />
+    <Compile Include="Security.Cryptography\BCryptNative.cs" />
+    <Compile Include="Security.Cryptography\BCryptPBKDF2.cs" />
+    <Compile Include="Security.Cryptography\BCryptSymmetricAlgorithm.cs" />
+    <Compile Include="Security.Cryptography\BCryptSymmetricCryptoTransform.cs" />
+    <Compile Include="Security.Cryptography\BlockPaddingMethod.cs" />
+    <Compile Include="Security.Cryptography\CapiNative.cs" />
+    <Compile Include="Security.Cryptography\CngAlgorithm2.cs" />
+    <Compile Include="Security.Cryptography\CngChainingMode.cs" />
+    <Compile Include="Security.Cryptography\CngKeyExtensionMethods.cs" />
+    <Compile Include="Security.Cryptography\CngProvider2.cs" />
+    <Compile Include="Security.Cryptography\CngProviderCollection.cs" />
+    <Compile Include="Security.Cryptography\CngProviderExtensionMethods.cs" />
+    <Compile Include="Security.Cryptography\CryptoConfig2.cs" />
+    <Compile Include="Security.Cryptography\GlobalSuppressions.cs" />
+    <Compile Include="Security.Cryptography\HMACSHA256Cng.cs" />
+    <Compile Include="Security.Cryptography\HMACSHA384Cng.cs" />
+    <Compile Include="Security.Cryptography\HMACSHA512Cng.cs" />
+    <Compile Include="Security.Cryptography\IAuthenticatedCryptoTransform.cs" />
+    <Compile Include="Security.Cryptography\ICngAlgorithm.cs" />
+    <Compile Include="Security.Cryptography\ICngAsymmetricAlgorithm.cs" />
+    <Compile Include="Security.Cryptography\ICngSymmetricAlgorithm.cs" />
+    <Compile Include="Security.Cryptography\ICryptoTransform2.cs" />
+    <Compile Include="Security.Cryptography\NCryptNative.cs" />
+    <Compile Include="Security.Cryptography\Oid2.cs" />
+    <Compile Include="Security.Cryptography\RNGCng.cs" />
+    <Compile Include="Security.Cryptography\RSACng.cs" />
+    <Compile Include="Security.Cryptography\RSAPKCS1SHA256SignatureDescription.cs" />
+    <Compile Include="Security.Cryptography\TripleDESCng.cs" />
+    <Compile Include="Security.Cryptography\Win32Native.cs" />
+    <Compile Include="Security.Cryptography\X509Certificates\SafeCertContextHandle.cs" />
+    <Compile Include="Security.Cryptography\X509Certificates\X509AlternateName.cs" />
+    <Compile Include="Security.Cryptography\X509Certificates\X509AlternateNameBlob.cs" />
+    <Compile Include="Security.Cryptography\X509Certificates\X509AlternateNameIPAddress.cs" />
+    <Compile Include="Security.Cryptography\X509Certificates\X509AlternateNameOther.cs" />
+    <Compile Include="Security.Cryptography\X509Certificates\X509AlternateNameString.cs" />
+    <Compile Include="Security.Cryptography\X509Certificates\X509Certificate2ExtensionMethods.cs" />
+    <Compile Include="Security.Cryptography\X509Certificates\X509CertificateCreationParameters.cs" />
+    <Compile Include="Security.Cryptography\X509Certificates\X509CertificateExtensionMethods.cs" />
+    <Compile Include="Security.Cryptography\X509Certificates\X509Native.cs" />
+    <Compile Include="Security.Cryptography\Xml\EncryptedXmlExtensionMethods.cs" />
+    <Compile Include="Security.Cryptography\Xml\TransformFactory.cs" />
+    <Compile Include="Security.Cryptography\Xml\XmlDsigNodeList.cs" />
+    <Compile Include="Security.Cryptography\Xml\XmlDsigXPathWithNamespacesTransform.cs" />
+    <Compile Include="Security.cs" />
+    <Compile Include="Server.cs" />
+    <Compile Include="Types.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

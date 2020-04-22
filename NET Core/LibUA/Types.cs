@@ -22,11 +22,13 @@ namespace LibUA
 				"invalid",
 				"http://opcfoundation.org/UA/SecurityPolicy#None",
 				"http://opcfoundation.org/UA/SecurityPolicy#Basic256",
-				"http://opcfoundation.org/UA/SecurityPolicy#Basic128Rsa15"
+				"http://opcfoundation.org/UA/SecurityPolicy#Basic128Rsa15",
+				"http://opcfoundation.org/UA/SecurityPolicy#Basic256Sha256"
 			};
 
 			public const string TransportProfileBinary = "http://opcfoundation.org/UA-Profile/Transport/uatcp-uasc-uabinary";
 			public const string SignatureAlgorithmSha1 = "http://www.w3.org/2000/09/xmldsig#rsa-sha1";
+			public const string SignatureAlgorithmSha256 = "http://www.w3.org/2001/04/xmldsig-more#rsa-sha256";
 			public const string SignatureAlgorithmRsa15 = "http://www.w3.org/2001/04/xmlenc#rsa-1_5";
 
 			public const string IdentityTokenAnonymous = "anonymous";
@@ -36,7 +38,7 @@ namespace LibUA
 		{
 			Hello = 0x4C4548,
 			Acknowledge = 0x4B4341,
-			Error = 0x515145,
+			Error = 0x525245,
 			Open = 0x4E504F,
 			Message = 0x47534D,
 			Close = 0x4F4C43,
@@ -5454,6 +5456,7 @@ namespace LibUA
 			None,
 			Basic256,
 			Basic128Rsa15,
+			Basic256Sha256
 		}
 
 		[Flags]
