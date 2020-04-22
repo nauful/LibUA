@@ -745,6 +745,7 @@ namespace LibUA
 				if (type == VariantType.NodeId) { return typeof(NodeId); }
 				if (type == VariantType.QualifiedName) { return typeof(QualifiedName); }
 				if (type == VariantType.LocalizedText) { return typeof(LocalizedText); }
+				if (type == VariantType.String) { return typeof(String); }
 
 				// TODO: Other types
 
