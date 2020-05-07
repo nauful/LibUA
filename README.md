@@ -19,3 +19,6 @@ Open-source OPC UA client and server library for .NET and .NET Core based on IEC
 
 ### License
 Free for commercial use under the Apache License 2.0. Please give credit if you find this source useful.
+
+### Errata
+Here's a more complete certificate if the default certificate created by the demo client/server is insufficient: https://github.com/nauful/LibUA/files/4586442/lubua-clntsrvcert.zip
