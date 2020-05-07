@@ -71,13 +71,14 @@ namespace TestServer
 				AddressSpaceTable.TryAdd(ItemsRoot.Id, ItemsRoot);
 
 				TrendNodes = new NodeVariable[1000];
+				var nodeTypeFloat = new NodeId(0, 10);
 				for (int i = 0; i < TrendNodes.Length; i++)
 				{
 					var id = string.Format("Trend {0}", (1 + i).ToString("D6"));
 					TrendNodes[i] = new NodeVariable(new NodeId(2, (uint)(1 + i)), new QualifiedName(id),
 						new LocalizedText(id), new LocalizedText(id), 0, 0,
 						AccessLevel.CurrentRead | AccessLevel.HistoryRead,
-						AccessLevel.CurrentRead | AccessLevel.HistoryRead, 0, true, NodeId.Zero);
+						AccessLevel.CurrentRead | AccessLevel.HistoryRead, 0, true, nodeTypeFloat);
 
 					ItemsRoot.References.Add(new ReferenceNode(new NodeId(UAConst.Organizes), TrendNodes[i].Id, false));
 					TrendNodes[i].References.Add(new ReferenceNode(new NodeId(UAConst.Organizes), ItemsRoot.Id, true));
