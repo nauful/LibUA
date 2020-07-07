@@ -53,6 +53,16 @@ namespace LibUA
 				{
 					return NodeId.Equals(other.NodeId) && Attribute == other.Attribute;
 				}
+
+				public static bool operator ==(ServerMonitorKey left, ServerMonitorKey right)
+				{
+					return left.Equals(right);
+				}
+
+				public static bool operator !=(ServerMonitorKey left, ServerMonitorKey right)
+				{
+					return !(left == right);
+				}
 			}
 
 			public struct SessionCreationInfo
@@ -578,7 +588,7 @@ namespace LibUA
 					}
 					else if (readValueIds[i].AttributeId == NodeAttribute.ValueRank && node is NodeVariable)
 					{
-						res[i] = new DataValue((Int32)0, StatusCode.Good);
+						res[i] = new DataValue((Int32)(node as NodeVariable).ValueRank, StatusCode.Good);
 					}
 					else
 					{

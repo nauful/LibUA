@@ -578,7 +578,7 @@ namespace LibUA
 					}
 					else if (readValueIds[i].AttributeId == NodeAttribute.ValueRank && node is NodeVariable)
 					{
-						res[i] = new DataValue((Int32)0, StatusCode.Good);
+						res[i] = new DataValue((Int32)(node as NodeVariable).ValueRank, StatusCode.Good);
 					}
 					else
 					{

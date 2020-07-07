@@ -2846,8 +2846,8 @@ namespace LibUA
 				}
 
 				double revisedPublishInterval = RequestedPublishingInterval;
-				UInt32 revisedLifetimeCount = 12000;
-				UInt32 revisedMaxKeepAliveCount = 50;
+				UInt32 revisedLifetimeCount = RequestedLifetimeCount;
+				UInt32 revisedMaxKeepAliveCount = RequestedMaxKeepAliveCount;
 				succeeded &= respBuf.Encode(subId);
 				succeeded &= respBuf.Encode(revisedPublishInterval);
 				succeeded &= respBuf.Encode(revisedLifetimeCount);
@@ -3152,7 +3152,14 @@ namespace LibUA
 
 					sub.MonitoredItems.Add(mi.MonitoredItemId, mi);
 					sub.ChangeNotification = Subscription.ChangeNotificationType.Immediate;
-					createResponses[i] = new MonitoredItemCreateResult(StatusCode.Good, createRequests[i].RequestedParameters.ClientHandle, -1, (uint)mi.QueueSize, null);
+
+					double samplingInterval = createRequests[i].RequestedParameters.SamplingInterval;
+					if (samplingInterval < 1)
+					{
+						samplingInterval = 1000;
+					}
+
+					createResponses[i] = new MonitoredItemCreateResult(StatusCode.Good, createRequests[i].RequestedParameters.ClientHandle, samplingInterval, (uint)mi.QueueSize, null);
 				}
 
 				var respBuf = new MemoryBuffer(maximumMessageSize);

@@ -328,11 +328,17 @@ namespace LibUA
 				get; protected set;
 			}
 
+			public int ValueRank
+			{
+				get; protected set;
+			}
+
 			public NodeVariable(NodeId Id, QualifiedName BrowseName, LocalizedText DisplayName, LocalizedText Description, UInt32 WriteMask, UInt32 UserWriteMask, Core.AccessLevel AccessLevel, Core.AccessLevel UserAccessLevel, double MinimumResamplingInterval, bool IsHistorizing, NodeId DataType)
 				: base(Id, NodeClass.Object, BrowseName, DisplayName, Description, WriteMask, UserWriteMask)
 			{
 				this.Value = null;
 				this.DataType = DataType;
+				this.ValueRank = (int)Core.ValueRank.Scalar;
 
 				this.AccessLevel = AccessLevel;
 				this.UserAccessLevel = UserAccessLevel;
