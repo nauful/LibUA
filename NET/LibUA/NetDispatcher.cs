@@ -99,18 +99,27 @@ namespace LibUA
 					return StatusCode.BadNothingToDo;
 				}
 
-				var reqHeader = pendingNotificationRequests.Dequeue();
-				reqHeader.Timestamp = DateTime.Now;
+				var req = pendingNotificationRequests.Dequeue();
+				req.Timestamp = DateTime.Now;
 
 				var respBuf = new MemoryBuffer(maximumMessageSize);
 				bool succeeded = DispatchMessage_WriteHeader(config, respBuf,
-					(uint)RequestCode.PublishResponse, reqHeader, (uint)StatusCode.Good);
+					(uint)RequestCode.PublishResponse, req, (uint)StatusCode.Good);
 
 				bool moreNotifications = false;
 				var publishTable = new Dictionary<uint, List<object[]>>();
 				int numPublishTableEntries = 0;
 
+				Queue<uint> acknowledgeSeqNums;
+				if (!pendingSubscriptionAcknowledgements.TryGetValue(sub.SubscriptionId, out acknowledgeSeqNums))
+				{
+					acknowledgeSeqNums = new Queue<uint>();
+				}
+
+				int numSubAcks = (int)Math.Min(MaxSubscriptionAcknowledgementsPerPublish, acknowledgeSeqNums.Count);
+
 				int availableSpaceLeft = (int)(config.TL.RemoteConfig.MaxMessageSize * UsableMessageSizeFactor) - respBuf.Position;
+				availableSpaceLeft -= numSubAcks;
 
 				foreach (var mi in sub.MonitoredItems.Values)
 				{
@@ -152,12 +161,13 @@ namespace LibUA
 				succeeded &= respBuf.Encode((UInt32)sub.SubscriptionId);
 
 				// Available sequence numbers
-				succeeded &= respBuf.Encode((UInt32)0);
+				succeeded &= respBuf.Encode((UInt32)1);
+				succeeded &= respBuf.Encode((UInt32)sub.SequenceNumber);
 
 				succeeded &= respBuf.Encode(moreNotifications);
 
 				succeeded &= respBuf.Encode((UInt32)sub.SequenceNumber++);
-				succeeded &= respBuf.Encode(reqHeader.Timestamp.ToFileTimeUtc());
+				succeeded &= respBuf.Encode(req.Timestamp.ToFileTimeUtc());
 
 				// One NotificationData
 				succeeded &= respBuf.Encode(1);
@@ -191,7 +201,13 @@ namespace LibUA
 				succeeded &= respBuf.Encode((UInt32)(respBuf.Position - dcnSizePosition - 4), dcnSizePosition);
 
 				// Results
-				succeeded &= respBuf.Encode((UInt32)0);
+				succeeded &= respBuf.Encode((UInt32)numSubAcks);
+				while (succeeded && numSubAcks-- > 0)
+				{
+					succeeded &= respBuf.Encode((UInt32)StatusCode.Good);
+					acknowledgeSeqNums.Dequeue();
+				}
+
 				// DiagnosticInfos
 				succeeded &= respBuf.Encode((UInt32)0);
 
@@ -200,7 +216,7 @@ namespace LibUA
 					return StatusCode.BadEncodingError;
 				}
 
-				sub.PublishPreviousTime = reqHeader.Timestamp;
+				sub.PublishPreviousTime = req.Timestamp;
 				sub.ChangeNotification = moreNotifications ?
 					Subscription.ChangeNotificationType.Immediate :
 					Subscription.ChangeNotificationType.None;
@@ -286,18 +302,27 @@ namespace LibUA
 
 			protected StatusCode SLPulseDataChangeNotification(Subscription sub)
 			{
-				var reqHeader = pendingNotificationRequests.Dequeue();
-				reqHeader.Timestamp = DateTime.Now;
+				var req = pendingNotificationRequests.Dequeue();
+				req.Timestamp = DateTime.Now;
 
 				var respBuf = new MemoryBuffer(maximumMessageSize);
 				bool succeeded = DispatchMessage_WriteHeader(config, respBuf,
-					(uint)RequestCode.PublishResponse, reqHeader, (uint)StatusCode.Good);
+					(uint)RequestCode.PublishResponse, req, (uint)StatusCode.Good);
 
 				bool moreNotifications = false;
 				var publishTable = new Dictionary<uint, List<DataValue>>();
 				int numPublishTableEntries = 0;
 
+				Queue<uint> acknowledgeSeqNums;
+				if (!pendingSubscriptionAcknowledgements.TryGetValue(sub.SubscriptionId, out acknowledgeSeqNums))
+				{
+					acknowledgeSeqNums = new Queue<uint>();
+				}
+
+				int numSubAcks = (int)Math.Min(MaxSubscriptionAcknowledgementsPerPublish, acknowledgeSeqNums.Count);
+
 				int availableSpaceLeft = (int)(config.TL.RemoteConfig.MaxMessageSize * UsableMessageSizeFactor) - respBuf.Position;
+				availableSpaceLeft -= numSubAcks;
 
 				foreach (var mi in sub.MonitoredItems.Values)
 				{
@@ -321,7 +346,7 @@ namespace LibUA
 
 						availableSpaceLeft -= sizeRequired;
 
-						dv.ServerTimestamp = reqHeader.Timestamp;
+						dv.ServerTimestamp = req.Timestamp;
 						dvs.Add(dv);
 
 						mi.QueueData.TryDequeue(out dv);
@@ -334,12 +359,13 @@ namespace LibUA
 				succeeded &= respBuf.Encode((UInt32)sub.SubscriptionId);
 
 				// Available sequence numbers
-				succeeded &= respBuf.Encode((UInt32)0);
+				succeeded &= respBuf.Encode((UInt32)1);
+				succeeded &= respBuf.Encode((UInt32)sub.SequenceNumber);
 
 				succeeded &= respBuf.Encode(moreNotifications);
 
 				succeeded &= respBuf.Encode((UInt32)sub.SequenceNumber++);
-				succeeded &= respBuf.Encode(reqHeader.Timestamp.ToFileTimeUtc());
+				succeeded &= respBuf.Encode(req.Timestamp.ToFileTimeUtc());
 
 				// One NotificationData
 				succeeded &= respBuf.Encode(1);
@@ -368,7 +394,13 @@ namespace LibUA
 				succeeded &= respBuf.Encode((UInt32)(respBuf.Position - dcnSizePosition - 4), dcnSizePosition);
 
 				// Results
-				succeeded &= respBuf.Encode((UInt32)0);
+				succeeded &= respBuf.Encode((UInt32)numSubAcks);
+				while (succeeded && numSubAcks-- > 0)
+				{
+					succeeded &= respBuf.Encode((UInt32)StatusCode.Good);
+					acknowledgeSeqNums.Dequeue();
+				}
+
 				// DiagnosticInfos
 				succeeded &= respBuf.Encode((UInt32)0);
 
@@ -377,7 +409,7 @@ namespace LibUA
 					return StatusCode.BadEncodingError;
 				}
 
-				sub.PublishPreviousTime = reqHeader.Timestamp;
+				sub.PublishPreviousTime = req.Timestamp;
 				sub.ChangeNotification = moreNotifications ?
 					Subscription.ChangeNotificationType.Immediate :
 					Subscription.ChangeNotificationType.None;
@@ -1044,7 +1076,7 @@ namespace LibUA
 					{
 						succeeded &= respBuf.EncodeUAString(Types.SignatureAlgorithmSha1);
 					}
-					
+
 					// Server signature
 					succeeded &= respBuf.EncodeUAByteString(serverSignature);
 				}
@@ -1708,7 +1740,7 @@ namespace LibUA
 					respSize = encodeFromPosition + UASecurity.CalculateEncryptedSize(config.RemoteCertificate, respSize - encodeFromPosition, padMethod);
 					MarkPositionAsSize(respBuf, (UInt32)respSize);
 
-					var msgSign = UASecurity.RsaPkcs15Sha_Sign(new ArraySegment<byte>(respBuf.Buffer, 0, respBuf.Position), 
+					var msgSign = UASecurity.RsaPkcs15Sha_Sign(new ArraySegment<byte>(respBuf.Buffer, 0, respBuf.Position),
 						app.ApplicationPrivateKey, config.SecurityPolicy);
 
 					//Console.WriteLine("AsymSig: {0}", string.Join("", msgSign.Select(v => v.ToString("X2"))));
@@ -3374,6 +3406,31 @@ namespace LibUA
 			{
 				if (pendingNotificationRequests.Count < MaxPublishRequests)
 				{
+					UInt32 NoOfSubscriptionAcknowledgements;
+
+					if (!recvBuf.Decode(out NoOfSubscriptionAcknowledgements)) { return ErrorParseFail; }
+					if (NoOfSubscriptionAcknowledgements == 0xFFFFFFFFu)
+					{
+						NoOfSubscriptionAcknowledgements = 0;
+					}
+
+					for (uint i = 0; i < NoOfSubscriptionAcknowledgements; i++)
+					{
+						UInt32 subId, seqNum;
+						if (!recvBuf.Decode(out subId)) { return ErrorParseFail; }
+						if (!recvBuf.Decode(out seqNum)) { return ErrorParseFail; }
+
+						Queue<uint> seqQueue = null;
+						if (pendingSubscriptionAcknowledgements.TryGetValue(subId, out seqQueue))
+						{
+							seqQueue.Enqueue(seqNum);
+						}
+						else
+						{
+							pendingSubscriptionAcknowledgements.Add(subId, new Queue<uint>(new uint[] { seqNum }));
+						}
+					}
+
 					pendingNotificationRequests.Enqueue(reqHeader);
 				}
 				else

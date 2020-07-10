@@ -219,6 +219,7 @@ namespace LibUA
 			public const int MaxTokenLifetime = 600 * 1000;
 			public const uint MaxBrowseResults = 10000;
 			public const uint MaxHistoryReadNodes = 256;
+			public const uint MaxSubscriptionAcknowledgementsPerPublish = 16;
 
 			// Message type, message size, secure channel ID, security token ID
 			public const int MessageEncodedBlockStart = 16;
@@ -257,6 +258,7 @@ namespace LibUA
 
 			protected UInt32 nextSubscriptionID = 1;
 			protected Queue<RequestHeader> pendingNotificationRequests = null;
+			protected Dictionary<uint, Queue<uint>> pendingSubscriptionAcknowledgements = null;
 			//protected Dictionary<uint, Application.MonitorDispatcherConfiguration> monitorMap = null;
 			//protected List<Application.MonitorDispatcherConfiguration> monitorList = null;
 
@@ -285,6 +287,7 @@ namespace LibUA
 				continuationHistory = new Dictionary<int, ContinuationPointHistory>();
 
 				pendingNotificationRequests = new Queue<RequestHeader>();
+				pendingSubscriptionAcknowledgements = new Dictionary<uint, Queue<uint>>();
 				//monitorMap = new Dictionary<uint, Application.MonitorDispatcherConfiguration>();
 				//monitorList = new List<Application.MonitorDispatcherConfiguration>();
 

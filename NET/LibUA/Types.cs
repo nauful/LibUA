@@ -6662,6 +6662,12 @@ namespace LibUA
 			}
 		}
 
+		public class SubscriptionAcknowledgement
+		{
+			public uint SubscriptionId { get; set; }
+			public uint SequenceNumber { get; set; }
+		}
+
 		public class RequestHeader
 		{
 			public NodeId AuthToken { get; set; }

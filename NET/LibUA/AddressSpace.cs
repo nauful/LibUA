@@ -300,7 +300,7 @@ namespace LibUA
 		{
 			public object Value
 			{
-				get; protected set;
+				get; set;
 			}
 
 			public NodeId DataType
