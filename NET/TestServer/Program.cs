@@ -96,7 +96,8 @@ namespace TestServer
 
 			public override object SessionCreate(SessionCreationInfo sessionInfo)
 			{
-				// Create and return a session object with sessionInfo
+				// Optionally create and return a session object with sessionInfo if you want to track that same object
+				// when the client validates its session (anonymous, username + password or certificate).
 
 				return null;
 			}
