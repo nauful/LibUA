@@ -1297,7 +1297,7 @@ namespace LibUA
 				chunkLengths.Add(chunkLength);
 				offset += chunkLength;
 
-				// Final chunk Incomplete
+				// Final chunk is incomplete
 				if (memBuf.Capacity < offset)
 				{
 					return null;
