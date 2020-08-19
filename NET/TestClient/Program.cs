@@ -103,7 +103,7 @@ namespace TestClient
 		static void Main(string[] args)
 		{
 			var appDesc = new ApplicationDescription(
-				"urn:qs:DemoClient", "uri:qs:DemoClient", new LocalizedText("UA SDK client"),
+				"urn:DemoApplication", "uri:DemoApplication", new LocalizedText("UA SDK client"),
 				ApplicationType.Client, null, null, null);
 
 			ApplicationDescription[] appDescs = null;
@@ -133,7 +133,7 @@ namespace TestClient
 			var connectRes = client.Connect();
 			client.OpenSecureChannel(MessageSecurityMode.SignAndEncrypt, SecurityPolicy.Basic256Sha256, serverCert);
 			//var openRes = client.OpenSecureChannel(MessageSecurityMode.None, SecurityPolicy.None, null);
-			var createRes = client.CreateSession(appDesc, "urn:qs:DemoClient", 120);
+			var createRes = client.CreateSession(appDesc, "urn:DemoApplication", 120);
 			var activateRes = client.ActivateSession(new UserIdentityAnonymousToken("0"), new[] { "en" });
 			//var activateRes = client.ActivateSession(
 			//	new UserIdentityUsernameToken(usernamePolicyDesc, "Username",
