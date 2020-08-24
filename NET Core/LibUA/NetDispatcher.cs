@@ -828,13 +828,16 @@ namespace LibUA
 
 				UInt32 numSignedSoftwareCertificate;
 				if (!recvBuf.Decode(out numSignedSoftwareCertificate)) { return ErrorParseFail; }
-				for (uint i = 0; i < numSignedSoftwareCertificate; i++)
+				if (numSignedSoftwareCertificate != 0xFFFFFFFFu)
 				{
-					string CertificateData;
-					byte[] Signature;
+					for (uint i = 0; i < numSignedSoftwareCertificate; i++)
+					{
+						string CertificateData;
+						byte[] Signature;
 
-					if (!recvBuf.DecodeUAString(out CertificateData)) { return ErrorParseFail; }
-					if (!recvBuf.DecodeUAByteString(out Signature)) { return ErrorParseFail; }
+						if (!recvBuf.DecodeUAString(out CertificateData)) { return ErrorParseFail; }
+						if (!recvBuf.DecodeUAByteString(out Signature)) { return ErrorParseFail; }
+					}
 				}
 
 				if (!recvBuf.DecodeUAString(out localeIds)) { return ErrorParseFail; }
