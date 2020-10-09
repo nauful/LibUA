@@ -1018,6 +1018,7 @@ namespace LibUA
 				var endpointDescs = app.GetEndpointDescriptions(endpointUrl);
 				config.AuthToken = new NodeId(1, (ushort)(config.ChannelID ^ config.LocalSequence.SequenceNumber));
 				config.SessionIdToken = new NodeId(0, string.Format("S:{0}", config.AuthToken.NumericIdentifier));
+				//config.SessionIdToken = new NodeId(0, new byte[16] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 }, NodeIdNetType.Guid);
 
 				succeeded &= respBuf.Encode(config.SessionIdToken);
 				succeeded &= respBuf.Encode(config.AuthToken);

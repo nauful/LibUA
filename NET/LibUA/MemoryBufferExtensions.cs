@@ -1298,7 +1298,18 @@ namespace LibUA
 						if (!mem.Decode(out ns)) { return false; }
 						if (!mem.DecodeUAByteString(out addr)) { return false; }
 
-						id = new NodeId(ns, addr);
+						id = new NodeId(ns, addr, NodeIdNetType.ByteString);
+						return true;
+					}
+
+				case (byte)NodeIdType.Guid:
+					{
+						UInt16 ns;
+						byte[] addr;
+						if (!mem.Decode(out ns)) { return false; }
+						if (!mem.DecodeUAGuidByteString(out addr)) { return false; }
+
+						id = new NodeId(ns, addr, NodeIdNetType.Guid);
 						return true;
 					}
 
@@ -1354,6 +1365,15 @@ namespace LibUA
 						if (!mem.Encode((Byte)NodeIdType.ByteString)) { return false; }
 						if (!mem.Encode((UInt16)id.NamespaceIndex)) { return false; }
 						if (!mem.EncodeUAByteString(id.ByteStringIdentifier)) { return false; }
+
+						break;
+					}
+
+				case NodeIdNetType.Guid:
+					{
+						if (!mem.Encode((Byte)NodeIdType.Guid)) { return false; }
+						if (!mem.Encode((UInt16)id.NamespaceIndex)) { return false; }
+						if (!mem.EncodeUAGuidByteString(id.ByteStringIdentifier)) { return false; }
 
 						break;
 					}
@@ -1447,6 +1467,34 @@ namespace LibUA
 			return true;
 		}
 
+		public static bool EncodeUAGuidByteString(this MemoryBuffer mem, byte[] str)
+		{
+			if (str == null || str.Length != 16)
+			{
+				return false;
+			}
+
+			if (!mem.EnsureAvailable(str.Length, true)) { return false; }
+			return mem.Append(str, str.Length);
+		}
+
+		public static bool DecodeUAGuidByteString(this MemoryBuffer mem, out byte[] str)
+		{
+			UInt32 Length = 16;
+			str = null;
+
+			if (!mem.EnsureAvailable((int)Length, true))
+			{
+				return false;
+			}
+
+			str = new byte[Length];
+			Array.Copy(mem.Buffer, mem.Position, str, 0, Length);
+			mem.Position += (int)Length;
+
+			return true;
+		}
+
 		public static bool EncodeUAString(this MemoryBuffer mem, string[] table)
 		{
 			if (table == null)
@@ -1490,6 +1538,13 @@ namespace LibUA
 			if (str == null) { return mem.CodingSize((UInt32)0); }
 
 			return mem.CodingSize((UInt32)0) + str.Length;
+		}
+
+		public static int CodingSizeUAGuidByteString(this MemoryBuffer mem, byte[] str)
+		{
+			if (str == null) { return 0; }
+
+			return str.Length;
 		}
 
 		public static int CodingSizeUAString(this MemoryBuffer mem, string str)

@@ -109,11 +109,11 @@ namespace LibUA
 				this.IdType = NodeIdNetType.String;
 			}
 
-			public NodeId(UInt16 NamespaceIndex, byte[] ByteStringIdentifier)
+			public NodeId(UInt16 NamespaceIndex, byte[] ByteStringIdentifier, NodeIdNetType IdType)
 			{
 				this.NamespaceIndex = NamespaceIndex;
 				this.ByteStringIdentifier = ByteStringIdentifier;
-				this.IdType = NodeIdNetType.ByteString;
+				this.IdType = IdType;
 			}
 
 			public override string ToString()
@@ -125,6 +125,10 @@ namespace LibUA
 				else if (IdType == NodeIdNetType.ByteString)
 				{
 					return string.Format("ns={0};bs=0x{1}", NamespaceIndex, string.Join("", ByteStringIdentifier.Select(v => v.ToString("X2"))));
+				}
+				else if (IdType == NodeIdNetType.Guid)
+				{
+					return string.Format("ns={0};guid=0x{1}", NamespaceIndex, string.Join("", ByteStringIdentifier.Select(v => v.ToString("X2"))));
 				}
 
 				return string.Format("ns={0};i={1}", NamespaceIndex, NumericIdentifier);
@@ -140,7 +144,7 @@ namespace LibUA
 				{
 					res ^= (uint)NumericIdentifier;
 				}
-				else if (IdType == NodeIdNetType.ByteString)
+				else if (IdType == NodeIdNetType.ByteString || IdType == NodeIdNetType.Guid)
 				{
 					for (int i = 0; i < ByteStringIdentifier.Length; i++)
 					{

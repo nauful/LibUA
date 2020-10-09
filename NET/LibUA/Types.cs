@@ -5584,7 +5584,7 @@ namespace LibUA
 			//FourByte,
 			Numeric,
 			String,
-			//Guid,
+			Guid,
 			ByteString,
 		}
 
