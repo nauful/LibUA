@@ -5738,13 +5738,13 @@ namespace LibUA
 			public QualifiedName(string Name)
 			{
 				this.NamespaceIndex = 0;
-				this.Name = Name ?? string.Empty;
+				this.Name = Name;
 			}
 
 			public QualifiedName(ushort NamespaceIndex, string Name)
 			{
 				this.NamespaceIndex = NamespaceIndex;
-				this.Name = Name ?? string.Empty;
+				this.Name = Name;
 			}
 
 			public override bool Equals(object obj)
@@ -5764,7 +5764,7 @@ namespace LibUA
 
 			public override string ToString()
 			{
-				return string.Format("[{0}] {1}", NamespaceIndex, Name);
+				return string.Format("[{0}] {1}", NamespaceIndex, Name ?? "");
 			}
 		}
 
