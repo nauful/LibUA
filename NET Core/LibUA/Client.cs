@@ -475,7 +475,57 @@ namespace LibUA
 			}
 		}
 
-		StatusCode EncodeMessageHeader(MemoryBuffer sendBuf, bool needsEstablishedSL = true)
+		public StatusCode CloseSecureChannel()
+		{
+			try
+			{
+				cs.WaitOne();
+				var sendBuf = new MemoryBuffer(MaximumMessageSize);
+				var headerRes = EncodeMessageHeader(sendBuf, false, MessageType.Close);
+				if (headerRes != StatusCode.Good)
+				{
+					return headerRes;
+				}
+
+				var reqHeader = new RequestHeader()
+				{
+					RequestHandle = nextRequestHandle++,
+					Timestamp = DateTime.Now,
+					AuthToken = new NodeId((uint)0),
+				};
+
+				bool succeeded = true;
+				succeeded &= sendBuf.Encode(new NodeId(RequestCode.CloseSecureChannelRequest));
+				succeeded &= sendBuf.Encode(reqHeader);
+
+				if (!succeeded)
+				{
+					return StatusCode.BadEncodingLimitsExceeded;
+				}
+
+				var recvKey = new Tuple<uint, uint>((uint)MessageType.Message, reqHeader.RequestHandle);
+				var recvEv = new ManualResetEvent(false);
+				lock (recvNotify)
+				{
+					recvNotify[recvKey] = recvEv;
+				}
+
+				var sendRes = MessageSecureAndSend(config, sendBuf);
+				if (sendRes != StatusCode.Good)
+				{
+					return sendRes;
+				}
+
+				return StatusCode.Good;
+			}
+			finally
+			{
+				cs.Release();
+				CheckPostCall();
+			}
+		}
+
+		StatusCode EncodeMessageHeader(MemoryBuffer sendBuf, bool needsEstablishedSL = true, MessageType messageType = MessageType.Message)
 		{
 			if (config.SLState != ConnectionState.Established && needsEstablishedSL)
 			{
@@ -483,7 +533,7 @@ namespace LibUA
 			}
 
 			bool succeeded = true;
-			succeeded &= sendBuf.Encode((uint)(MessageType.Message) | ((uint)'F' << 24));
+			succeeded &= sendBuf.Encode((uint)(messageType) | ((uint)'F' << 24));
 			succeeded &= sendBuf.Encode((uint)0);
 			succeeded &= sendBuf.Encode(config.ChannelID);
 			succeeded &= sendBuf.Encode(config.TokenID);
@@ -873,7 +923,7 @@ namespace LibUA
 			succeeded &= sendBuf.Encode(config.TL.LocalConfig.MaxMessageSize);
 			succeeded &= sendBuf.Encode(config.TL.LocalConfig.MaxChunkCount);
 			succeeded &= sendBuf.EncodeUAString(GetEndpointString());
-
+			
 			if (!succeeded)
 			{
 				return StatusCode.BadEncodingLimitsExceeded;
@@ -1004,18 +1054,21 @@ namespace LibUA
 
 			if (thread != null)
 			{
+				if (config.SessionIdToken != null)
+				{
+					CloseSession();
+				}
+				if (config.ChannelID > 0)
+				{
+					CloseSecureChannel();
+				}
+
 				threadAbort = true;
 
 				thread.Join();
 				thread = null;
 			}
 
-			if (tcp == null)
-			{
-				return StatusCode.BadNotConnected;
-			}
-
-			CloseConnection();
 			return StatusCode.Good;
 		}
 
@@ -1884,6 +1937,91 @@ namespace LibUA
 				catch
 				{
 					return StatusCode.BadSecurityChecksFailed;
+				}
+
+				if (!succeeded)
+				{
+					return StatusCode.BadDecodingError;
+				}
+
+				return StatusCode.Good;
+			}
+			finally
+			{
+				cs.Release();
+				CheckPostCall();
+			}
+		}
+
+		public StatusCode CloseSession()
+		{
+			try
+			{
+				cs.WaitOne();
+				var sendBuf = new MemoryBuffer(MaximumMessageSize);
+				var headerRes = EncodeMessageHeader(sendBuf, false);
+				if (headerRes != StatusCode.Good)
+				{
+					return headerRes;
+				}
+
+				var reqHeader = new RequestHeader()
+				{
+					RequestHandle = nextRequestHandle++,
+					Timestamp = DateTime.Now,
+					AuthToken = config.AuthToken,
+				};
+
+				bool succeeded = true;
+				succeeded &= sendBuf.Encode(new NodeId(RequestCode.CloseSessionRequest));
+				succeeded &= sendBuf.Encode(reqHeader);
+				bool deleteSubscriptions = false;
+				succeeded &= sendBuf.Encode(deleteSubscriptions);
+
+				if (!succeeded)
+				{
+					return StatusCode.BadEncodingLimitsExceeded;
+				}
+
+				var recvKey = new Tuple<uint, uint>((uint)MessageType.Message, reqHeader.RequestHandle);
+				var recvEv = new ManualResetEvent(false);
+				lock (recvNotify)
+				{
+					recvNotify[recvKey] = recvEv;
+				}
+
+				var sendRes = MessageSecureAndSend(config, sendBuf);
+				if (sendRes != StatusCode.Good)
+				{
+					return sendRes;
+				}
+
+				bool signalled = recvEv.WaitOne(Timeout * 1000);
+
+				lock (recvNotify)
+				{
+					recvNotify.Remove(recvKey);
+				}
+
+				if (!signalled)
+				{
+					return StatusCode.BadRequestTimeout;
+				}
+
+				RecvHandler recvHandler = null;
+				lock (recvQueue)
+				{
+					if (!recvQueue.TryGetValue(recvKey, out recvHandler))
+					{
+						return recvHandlerStatus == StatusCode.Good ? StatusCode.BadUnexpectedError : recvHandlerStatus;
+					}
+
+					recvQueue.Remove(recvKey);
+				}
+
+				if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.CloseSessionResponse))
+				{
+					return StatusCode.BadUnknownResponse;
 				}
 
 				if (!succeeded)
