@@ -2215,6 +2215,7 @@ namespace LibUA
 					succeeded &= recvHandler.RecvBuf.DecodeUAByteString(out contPoint);
 					succeeded &= recvHandler.RecvBuf.Decode(out numRefDesc);
 
+					if (numRefDesc == uint.MaxValue) { numRefDesc = 0; }
 					refDescs = new ReferenceDescription[numRefDesc];
 					for (int j = 0; j < refDescs.Length; j++)
 					{
@@ -2938,6 +2939,10 @@ namespace LibUA
 					succeeded &= recvHandler.RecvBuf.Decode(out status);
 
 					succeeded &= recvHandler.RecvBuf.Decode(out numResults);
+					if (numResults == uint.MaxValue)
+					{
+						numResults = 0;
+					}
 					resultStatus = new UInt32[numResults];
 					for (int j = 0; j < numResults; j++)
 					{
@@ -2945,14 +2950,18 @@ namespace LibUA
 					}
 
 					succeeded &= recvHandler.RecvBuf.Decode(out numDiagnosticInfos);
-					if (numDiagnosticInfos > 0)
+					if (numDiagnosticInfos > 0 && numDiagnosticInfos != uint.MaxValue)
 					{
 						return StatusCode.BadTypeMismatch;
 					}
 
 					succeeded &= recvHandler.RecvBuf.Decode(out numOutputs);
+					if (numOutputs == uint.MaxValue)
+					{
+						numOutputs = 0;
+					}
 					outputs = new object[numOutputs];
-					for (int j = 0; j < numResults; j++)
+					for (int j = 0; j < numOutputs; j++)
 					{
 						succeeded &= recvHandler.RecvBuf.VariantDecode(out outputs[j]);
 					}

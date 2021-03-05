@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using LibUA.Core;
@@ -1561,7 +1562,7 @@ namespace LibUA
 				return mem.Encode((UInt32)0xFFFFFFFFu);
 			}
 
-			byte[] bytes = Encoding.ASCII.GetBytes(str);
+			byte[] bytes = Encoding.UTF8.GetBytes(str);
 			if (!mem.Encode((uint)bytes.Length))
 			{
 				return false;
@@ -1602,7 +1603,7 @@ namespace LibUA
 			Array.Copy(mem.Buffer, mem.Position, arr, 0, Length);
 			mem.Position += (int)Length;
 
-			str = Encoding.ASCII.GetString(arr);
+			str = Encoding.UTF8.GetString(arr);
 			return true;
 		}
 	}
