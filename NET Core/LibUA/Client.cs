@@ -26,6 +26,8 @@ namespace LibUA
 
 		public readonly string Target;
 		public readonly int Port;
+		public readonly string Path;
+
 		public readonly int Timeout;
 
 		protected SLChannel config = null;
@@ -86,9 +88,16 @@ namespace LibUA
 		}
 
 		public Client(string Target, int Port, int Timeout, int MaximumMessageSize = 1 << 18)
+			: this(Target, Port, null, Timeout, MaximumMessageSize)
+		{
+
+		}
+
+		public Client(string Target, int Port, string Path, int Timeout, int MaximumMessageSize = 1 << 18)
 		{
 			this.Target = Target;
 			this.Port = Port;
+			this.Path = Path;
 			this.Timeout = Timeout;
 			this.MaximumMessageSize = MaximumMessageSize;
 		}
@@ -517,7 +526,7 @@ namespace LibUA
 				succeeded &= sendBuf.Encode(new NodeId(RequestCode.GetEndpointsRequest));
 				succeeded &= sendBuf.Encode(reqHeader);
 
-				succeeded &= sendBuf.EncodeUAString(string.Format("opc.tcp://{0}:{1}", config.Endpoint.Address.ToString(), config.Endpoint.Port.ToString()));
+				succeeded &= sendBuf.EncodeUAString(GetEndpointString());
 				// LocaleIds
 				succeeded &= sendBuf.EncodeUAString(localeIDs);
 				// ProfileUris
@@ -617,7 +626,7 @@ namespace LibUA
 				succeeded &= sendBuf.Encode(new NodeId(RequestCode.FindServersRequest));
 				succeeded &= sendBuf.Encode(reqHeader);
 
-				succeeded &= sendBuf.EncodeUAString(string.Format("opc.tcp://{0}:{1}", config.Endpoint.Address.ToString(), config.Endpoint.Port.ToString()));
+				succeeded &= sendBuf.EncodeUAString(GetEndpointString());
 				// LocaleIds
 				succeeded &= sendBuf.EncodeUAString(localeIDs);
 				// ProfileIds
@@ -863,7 +872,7 @@ namespace LibUA
 			succeeded &= sendBuf.Encode(config.TL.LocalConfig.SendBufferSize);
 			succeeded &= sendBuf.Encode(config.TL.LocalConfig.MaxMessageSize);
 			succeeded &= sendBuf.Encode(config.TL.LocalConfig.MaxChunkCount);
-			succeeded &= sendBuf.EncodeUAString(string.Format("opc.tcp://{0}:{1}", config.Endpoint.Address.ToString(), config.Endpoint.Port.ToString()));
+			succeeded &= sendBuf.EncodeUAString(GetEndpointString());
 
 			if (!succeeded)
 			{
@@ -935,6 +944,21 @@ namespace LibUA
 			//}
 
 			return StatusCode.Good;
+		}
+
+		private string GetEndpointString()
+		{
+			string endpointString;
+			if (string.IsNullOrWhiteSpace(Path))
+			{
+				endpointString = string.Format("opc.tcp://{0}:{1}", Target, config.Endpoint.Port.ToString());
+			}
+			else
+			{
+				endpointString = string.Format("opc.tcp://{0}:{1}/{2}", Target, config.Endpoint.Port.ToString(), Path);
+			}
+
+			return endpointString;
 		}
 
 		protected void MarkPositionAsSize(MemoryBuffer mb, UInt32 position)
@@ -1779,7 +1803,7 @@ namespace LibUA
 				succeeded &= sendBuf.Encode(appDesc);
 				// ServerUri
 				succeeded &= sendBuf.EncodeUAString((string)null);
-				succeeded &= sendBuf.EncodeUAString(string.Format("opc.tcp://{0}:{1}", config.Endpoint.Address.ToString(), config.Endpoint.Port.ToString()));
+				succeeded &= sendBuf.EncodeUAString(GetEndpointString());
 				succeeded &= sendBuf.EncodeUAString(sessionName);
 				succeeded &= sendBuf.EncodeUAByteString(config.LocalNonce);
 				if (ApplicationCertificate == null)
