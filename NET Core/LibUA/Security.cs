@@ -606,7 +606,7 @@ namespace LibUA
 			}
 		}
 
-		public static int GetPlainBlockSize(X509Certificate2 cert,  RSAEncryptionPadding useOaep)
+		public static int GetPlainBlockSize(X509Certificate2 cert, RSAEncryptionPadding useOaep)
 		{
 			var rsa = cert.PublicKey.Key as RSA;
 			if (rsa == null)
@@ -867,6 +867,10 @@ namespace LibUA
 					return StatusCode.BadSecurityChecksFailed;
 				}
 			}
+			else
+			{
+				decrSize = (int)messageSize;
+			}
 
 			if (securityMode >= MessageSecurityMode.Sign)
 			{
@@ -891,7 +895,7 @@ namespace LibUA
 						}
 					}
 
-					byte padValue = (byte)(recvBuf.Buffer[messageSize - sigSize - 1] + 1);
+					byte padValue = securityMode == MessageSecurityMode.SignAndEncrypt ? (byte)(recvBuf.Buffer[messageSize - sigSize - 1] + 1) : (byte)0;
 					if (decrSize > 0)
 					{
 						decrSize -= sigSize;
