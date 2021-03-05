@@ -98,6 +98,397 @@ namespace LibUA
 
 			return true;
 		}
+		public static bool Encode(this MemoryBuffer mem, ObjectAttributes item)
+		{
+			if (!mem.Encode((uint)item.SpecifiedAttributes)) { return false; }
+			if (!mem.Encode(item.DisplayName)) { return false; }
+			if (!mem.Encode(item.Description)) { return false; }
+			if (!mem.Encode(item.WriteMask)) { return false; }
+			if (!mem.Encode(item.UserWriteMask)) { return false; }
+			if (!mem.Encode(item.EventNotifier)) { return false; }
+
+			return true;
+		}
+
+		public static bool Decode(this MemoryBuffer mem, out ObjectAttributes item)
+		{
+			item = null;
+
+			uint specifiedAttributes;
+			LocalizedText displayName;
+			LocalizedText description;
+			uint writeMask;
+			uint userWriteMask;
+			byte eventNotifier;
+
+			if (!mem.Decode(out specifiedAttributes)) { return false; }
+			if (!mem.Decode(out displayName)) { return false; }
+			if (!mem.Decode(out description)) { return false; }
+			if (!mem.Decode(out writeMask)) { return false; }
+			if (!mem.Decode(out userWriteMask)) { return false; }
+			if (!mem.Decode(out eventNotifier)) { return false; }
+			try
+			{
+				item = new ObjectAttributes()
+				{
+					SpecifiedAttributes = (NodeAttributesMask)specifiedAttributes,
+					DisplayName = displayName,
+					Description = description,
+					WriteMask = writeMask,
+					UserWriteMask = userWriteMask,
+					EventNotifier = eventNotifier,
+				};
+			}
+			catch
+			{
+				return false;
+			}
+
+			return true;
+		}
+
+		public static bool Encode(this MemoryBuffer mem, ObjectTypeAttributes item)
+		{
+			if (!mem.Encode((uint)item.SpecifiedAttributes)) { return false; }
+			if (!mem.Encode(item.DisplayName)) { return false; }
+			if (!mem.Encode(item.Description)) { return false; }
+			if (!mem.Encode(item.WriteMask)) { return false; }
+			if (!mem.Encode(item.UserWriteMask)) { return false; }
+			if (!mem.Encode(item.IsAbstract)) { return false; }
+
+			return true;
+		}
+
+		public static bool Decode(this MemoryBuffer mem, out ObjectTypeAttributes item)
+		{
+			item = null;
+
+			uint specifiedAttributes;
+			LocalizedText displayName;
+			LocalizedText description;
+			uint writeMask;
+			uint userWriteMask;
+			bool isAbstract;
+
+			if (!mem.Decode(out specifiedAttributes)) { return false; }
+			if (!mem.Decode(out displayName)) { return false; }
+			if (!mem.Decode(out description)) { return false; }
+			if (!mem.Decode(out writeMask)) { return false; }
+			if (!mem.Decode(out userWriteMask)) { return false; }
+			if (!mem.Decode(out isAbstract)) { return false; }
+			try
+			{
+				item = new ObjectTypeAttributes()
+				{
+					SpecifiedAttributes = (NodeAttributesMask)specifiedAttributes,
+					DisplayName = displayName,
+					Description = description,
+					WriteMask = writeMask,
+					UserWriteMask = userWriteMask,
+					IsAbstract = isAbstract,
+				};
+			}
+			catch
+			{
+				return false;
+			}
+
+			return true;
+		}
+
+		public static bool Encode(this MemoryBuffer mem, VariableAttributes item)
+		{
+			if (!mem.Encode((uint)item.SpecifiedAttributes)) { return false; }
+			if (!mem.Encode(item.DisplayName)) { return false; }
+			if (!mem.Encode(item.Description)) { return false; }
+			if (!mem.Encode(item.WriteMask)) { return false; }
+			if (!mem.Encode(item.UserWriteMask)) { return false; }
+			if (!mem.VariantEncode(item.Value)) { return false; }
+			if (!mem.Encode(item.DataType)) { return false; }
+			if (!mem.Encode(item.ValueRank)) { return false; }
+			if (!mem.Encode(item.ArrayDimensions.Length)) { return false; }
+			for (int i = 0; i < item.ArrayDimensions.Length; i++)
+			{
+				if (!mem.Encode(item.ArrayDimensions[i])) { return false; }
+			}
+			if (!mem.Encode(item.AccessLevel)) { return false; }
+			if (!mem.Encode(item.UserAccessLevel)) { return false; }
+			if (!mem.Encode(item.MinimumSamplingInterval)) { return false; }
+			if (!mem.Encode(item.Historizing)) { return false; }
+			return true;
+		}
+
+		public static bool Decode(this MemoryBuffer mem, out VariableAttributes item)
+		{
+			item = null;
+
+			uint attributesUint;
+			LocalizedText DisplayName = new LocalizedText("");
+			LocalizedText Description = new LocalizedText("");
+			uint WriteMask = 0;
+			uint UserWriteMask = 0;
+			object Value = null;
+			NodeId DataType = new NodeId(0U);
+			int ValueRank = 0;
+			uint[] ArrayDimensions = null;
+			byte AccessLevel = 0;
+			byte UserAccessLevel = 0;
+			double MinimumSamplingInterval = 0;
+			bool Historizing = false;
+
+			if (!mem.Decode(out attributesUint)) { return false; }
+			if (!mem.Decode(out DisplayName)) { return false; }
+			if (!mem.Decode(out Description)) { return false; }
+			if (!mem.Decode(out WriteMask)) { return false; }
+			if (!mem.Decode(out UserWriteMask)) { return false; }
+			if (!mem.VariantDecode(out Value)) { return false; }
+			if (!mem.Decode(out DataType)) { return false; }
+			if (!mem.Decode(out ValueRank)) { return false; }
+			uint arrayLength;
+
+			if (!mem.Decode(out arrayLength)) { return false; }
+			if (arrayLength == uint.MaxValue)
+			{
+				ArrayDimensions = null;
+			}
+			else
+			{
+				ArrayDimensions = new uint[arrayLength];
+
+				for (int i = 0; i < arrayLength; i++)
+				{
+					if (!mem.Decode(out ArrayDimensions[i])) { return false; }
+				}
+			}
+			if (!mem.Decode(out AccessLevel)) { return false; }
+			if (!mem.Decode(out UserAccessLevel)) { return false; }
+			if (!mem.Decode(out MinimumSamplingInterval)) { return false; }
+			if (!mem.Decode(out Historizing)) { return false; }
+
+			try
+			{
+				item = new VariableAttributes()
+				{
+					SpecifiedAttributes = (NodeAttributesMask)attributesUint,
+					DisplayName = DisplayName,
+					Description = Description,
+					WriteMask = WriteMask,
+					UserWriteMask = UserWriteMask,
+					Value = Value,
+					DataType = DataType,
+					ValueRank = ValueRank,
+					ArrayDimensions = ArrayDimensions,
+					AccessLevel = AccessLevel,
+					UserAccessLevel = UserAccessLevel,
+					MinimumSamplingInterval = MinimumSamplingInterval,
+					Historizing = Historizing,
+				};
+			}
+			catch
+			{
+				return false;
+			}
+
+			return true;
+		}
+
+		public static bool Encode(this MemoryBuffer mem, VariableTypeAttributes item)
+		{
+			if (!mem.Encode((uint)item.SpecifiedAttributes)) { return false; }
+			if (!mem.Encode(item.DisplayName)) { return false; }
+			if (!mem.Encode(item.Description)) { return false; }
+			if (!mem.Encode(item.WriteMask)) { return false; }
+			if (!mem.Encode(item.UserWriteMask)) { return false; }
+			if (!mem.VariantEncode(item.Value)) { return false; }
+			if (!mem.Encode(item.DataType)) { return false; }
+			if (!mem.Encode(item.ValueRank)) { return false; }
+			if (!mem.Encode(item.ArrayDimensions.Length)) { return false; }
+			for (int i = 0; i < item.ArrayDimensions.Length; i++)
+			{
+				if (!mem.Encode(item.ArrayDimensions[i])) { return false; }
+			}
+			if (!mem.Encode(item.IsAbstract)) { return false; }
+
+			return true;
+		}
+
+		public static bool Decode(this MemoryBuffer mem, out VariableTypeAttributes item)
+		{
+			item = null;
+
+			uint attributesUint;
+			LocalizedText DisplayName = new LocalizedText("");
+			LocalizedText Description = new LocalizedText("");
+			uint WriteMask = 0;
+			uint UserWriteMask = 0;
+			object Value = null;
+			NodeId DataType = new NodeId(0U);
+			int ValueRank = 0;
+			uint[] ArrayDimensions = null;
+			bool isAbstract = false;
+
+			if (!mem.Decode(out attributesUint)) { return false; }
+			if (!mem.Decode(out DisplayName)) { return false; }
+			if (!mem.Decode(out Description)) { return false; }
+			if (!mem.Decode(out WriteMask)) { return false; }
+			if (!mem.Decode(out UserWriteMask)) { return false; }
+			if (!mem.VariantDecode(out Value)) { return false; }
+			if (!mem.Decode(out DataType)) { return false; }
+			if (!mem.Decode(out ValueRank)) { return false; }
+			uint arrayLength;
+
+			if (!mem.Decode(out arrayLength)) { return false; }
+			if (arrayLength == uint.MaxValue)
+			{
+				ArrayDimensions = null;
+			}
+			else
+			{
+				ArrayDimensions = new uint[arrayLength];
+
+				for (int i = 0; i < arrayLength; i++)
+				{
+					if (!mem.Decode(out ArrayDimensions[i])) { return false; }
+				}
+			}
+			if (!mem.Decode(out isAbstract)) { return false; }
+
+			try
+			{
+				item = new VariableTypeAttributes()
+				{
+					SpecifiedAttributes = (NodeAttributesMask)attributesUint,
+					DisplayName = DisplayName,
+					Description = Description,
+					WriteMask = WriteMask,
+					UserWriteMask = UserWriteMask,
+					Value = Value,
+					DataType = DataType,
+					ValueRank = ValueRank,
+					ArrayDimensions = ArrayDimensions,
+					IsAbstract = isAbstract,
+				};
+			}
+			catch
+			{
+				return false;
+			}
+
+			return true;
+		}
+
+		public static bool Encode(this MemoryBuffer mem, AddNodesItem item)
+		{
+			if (!mem.Encode(item.ParentNodeId)) { return false; }
+			if (!mem.Encode(item.ReferenceTypeId)) { return false; }
+			if (!mem.Encode(item.RequestedNewNodeId)) { return false; }
+			if (!mem.Encode(item.BrowseName)) { return false; }
+			if (!mem.Encode((uint)item.NodeClass)) { return false; }
+			if (!mem.Encode(item.NodeAttributes)) { return false; }
+			if (!mem.Encode(item.TypeDefinition)) { return false; }
+
+			return true;
+		}
+
+		public static bool Decode(this MemoryBuffer mem, out AddNodesItem item)
+		{
+			item = null;
+
+			NodeId ParentNodeId;
+			NodeId ReferenceTypeId;
+			NodeId RequestedNewNodeId;
+			QualifiedName BrowseName;
+			uint nodeClass;
+			ExtensionObject NodeAttributes;
+			NodeId TypeDefinition;
+
+			if (!mem.Decode(out ParentNodeId)) { return false; }
+			if (!mem.Decode(out ReferenceTypeId)) { return false; }
+			if (!mem.Decode(out RequestedNewNodeId)) { return false; }
+			if (!mem.Decode(out BrowseName)) { return false; }
+			if (!mem.Decode(out nodeClass)) { return false; }
+			if (!mem.Decode(out NodeAttributes)) { return false; }
+			if (!mem.Decode(out TypeDefinition)) { return false; }
+			try
+			{
+				item = new AddNodesItem()
+				{
+					ParentNodeId = ParentNodeId,
+					ReferenceTypeId = ReferenceTypeId,
+					RequestedNewNodeId = RequestedNewNodeId,
+					BrowseName = BrowseName,
+					NodeClass = (NodeClass)nodeClass,
+					NodeAttributes = NodeAttributes,
+					TypeDefinition = TypeDefinition
+				};
+			}
+			catch
+			{
+				return false;
+			}
+
+			return true;
+		}
+
+		public static bool Encode(this MemoryBuffer mem, AddNodesResult res)
+		{
+			if (!mem.Encode((uint)res.StatusCode)) { return false; }
+			if (!mem.Encode(res.AddedNodeId)) { return false; }
+
+			return true;
+		}
+
+		public static bool Decode(this MemoryBuffer mem, out AddNodesResult res)
+		{
+			res = null;
+
+			uint statusCode;
+			NodeId addedNodeId;
+
+			if (!mem.Decode(out statusCode)) { return false; }
+			if (!mem.Decode(out addedNodeId)) { return false; }
+
+			try
+			{
+				res = new AddNodesResult((StatusCode)statusCode, addedNodeId);
+			}
+			catch
+			{
+				return false;
+			}
+
+			return true;
+		}
+
+		public static bool Encode(this MemoryBuffer mem, DeleteNodesItem item)
+		{
+			if (!mem.Encode(item.NodeId)) { return false; }
+			if (!mem.Encode(item.DeleteTargetReferences)) { return false; }
+
+			return true;
+		}
+
+		public static bool Decode(this MemoryBuffer mem, out DeleteNodesItem item)
+		{
+			item = null;
+
+			NodeId nodeId;
+			bool deleteTargetReferences;
+
+			if (!mem.Decode(out nodeId)) { return false; }
+			if (!mem.Decode(out deleteTargetReferences)) { return false; }
+
+			try
+			{
+				item = new DeleteNodesItem(nodeId, deleteTargetReferences);
+			}
+			catch
+			{
+				return false;
+			}
+
+			return true;
+		}
 
 		public static bool Encode(this MemoryBuffer mem, MonitoredItemModifyRequest rq)
 		{
@@ -1208,6 +1599,34 @@ namespace LibUA
 				if (!mem.DecodeUAByteString(out str)) { return false; }
 				obj.Body = str;
 
+				var tmp = new MemoryBuffer(str);
+
+				switch (obj.TypeId.NumericIdentifier)
+				{
+					case (uint)UAConst.ObjectAttributes_Encoding_DefaultBinary:
+						ObjectAttributes oa;
+						if (!tmp.Decode(out oa)) { return false; }
+						obj.Payload = oa;
+						break;
+					case (uint)UAConst.ObjectTypeAttributes_Encoding_DefaultBinary:
+						ObjectTypeAttributes ota;
+						if (!tmp.Decode(out ota)) { return false; }
+						obj.Payload = ota;
+						break;
+					case (uint)UAConst.VariableAttributes_Encoding_DefaultBinary:
+						VariableAttributes va;
+						if (!tmp.Decode(out va)) { return false; }
+						obj.Payload = va;
+						break;
+					case (uint)UAConst.VariableTypeAttributes_Encoding_DefaultBinary:
+						VariableTypeAttributes vta;
+						if (!tmp.Decode(out vta)) { return false; }
+						obj.Payload = vta;
+						break;
+					default:
+						break;
+				}
+
 				return true;
 			}
 
@@ -1220,6 +1639,39 @@ namespace LibUA
 			{
 				if (!mem.Encode(NodeId.Zero)) { return false; }
 				return mem.Encode((byte)ExtensionObjectBodyType.None);
+			}
+
+			if (obj.Payload != null)
+			{
+				var tmp = new MemoryBuffer(mem.Capacity);
+				UAConst payloadType = 0;
+				switch (obj.Payload)
+				{
+					case ObjectAttributes oa:
+						payloadType = UAConst.ObjectAttributes_Encoding_DefaultBinary;
+						if (!tmp.Encode(oa)) { return false; }
+						break;
+					case ObjectTypeAttributes ota:
+						payloadType = UAConst.ObjectTypeAttributes_Encoding_DefaultBinary;
+						if (!tmp.Encode(ota)) { return false; }
+						break;
+					case VariableAttributes va:
+						payloadType = UAConst.VariableAttributes_Encoding_DefaultBinary;
+						if (!tmp.Encode(va)) { return false; }
+						break;
+					case VariableTypeAttributes vta:
+						payloadType = UAConst.VariableTypeAttributes_Encoding_DefaultBinary;
+						if (!tmp.Encode(vta)) { return false; }
+						break;
+					default:
+						break;
+				}
+				if (payloadType != 0)
+				{
+					obj.TypeId = new NodeId(payloadType);
+					obj.Body = new byte[tmp.Position];
+					Array.Copy(tmp.Buffer, obj.Body, obj.Body.Length);
+				}
 			}
 
 			if (!mem.Encode(obj.TypeId)) { return false; }
