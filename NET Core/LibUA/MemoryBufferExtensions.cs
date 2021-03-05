@@ -490,6 +490,100 @@ namespace LibUA
 			return true;
 		}
 
+		public static bool Encode(this MemoryBuffer mem, AddReferencesItem item)
+		{
+			if (!mem.Encode(item.SourceNodeId)) { return false; }
+			if (!mem.Encode(item.ReferenceTypeId)) { return false; }
+			if (!mem.Encode(item.IsForward)) { return false; }
+			if (!mem.EncodeUAString(item.TargetServerUri)) { return false; }
+			if (!mem.Encode(item.TargetNodeId)) { return false; }
+			if (!mem.Encode((uint)item.TargetNodeClass)) { return false; }
+
+			return true;
+		}
+
+		public static bool Decode(this MemoryBuffer mem, out AddReferencesItem item)
+		{
+			item = null;
+
+			NodeId SourceNodeId;
+			NodeId ReferenceTypeId;
+			Boolean IsForward;
+			String TargetServerUri;
+			NodeId TargetNodeId;
+			uint TargetNodeClass;
+
+			if (!mem.Decode(out SourceNodeId)) { return false; }
+			if (!mem.Decode(out ReferenceTypeId)) { return false; }
+			if (!mem.Decode(out IsForward)) { return false; }
+			if (!mem.DecodeUAString(out TargetServerUri)) { return false; }
+			if (!mem.Decode(out TargetNodeId)) { return false; }
+			if (!mem.Decode(out TargetNodeClass)) { return false; }
+			try
+			{
+				item = new AddReferencesItem()
+				{
+					SourceNodeId = SourceNodeId,
+					ReferenceTypeId = ReferenceTypeId,
+					IsForward = IsForward,
+					TargetServerUri = TargetServerUri,
+					TargetNodeId = TargetNodeId,
+					TargetNodeClass = (NodeClass)TargetNodeClass,
+				};
+			}
+			catch
+			{
+				return false;
+			}
+
+			return true;
+		}
+
+		public static bool Encode(this MemoryBuffer mem, DeleteReferencesItem item)
+		{
+			if (!mem.Encode(item.SourceNodeId)) { return false; }
+			if (!mem.Encode(item.ReferenceTypeId)) { return false; }
+			if (!mem.Encode(item.IsForward)) { return false; }
+			if (!mem.Encode(item.TargetNodeId)) { return false; }
+			if (!mem.Encode(item.DeleteBidirectional)) { return false; }
+
+			return true;
+		}
+
+		public static bool Decode(this MemoryBuffer mem, out DeleteReferencesItem item)
+		{
+			item = null;
+
+			NodeId SourceNodeId;
+			NodeId ReferenceTypeId;
+			Boolean IsForward;
+			NodeId TargetNodeId;
+			bool DeleteBidirectional;
+
+			if (!mem.Decode(out SourceNodeId)) { return false; }
+			if (!mem.Decode(out ReferenceTypeId)) { return false; }
+			if (!mem.Decode(out IsForward)) { return false; }
+			if (!mem.Decode(out TargetNodeId)) { return false; }
+			if (!mem.Decode(out DeleteBidirectional)) { return false; }
+			try
+			{
+				item = new DeleteReferencesItem()
+				{
+					SourceNodeId = SourceNodeId,
+					ReferenceTypeId = ReferenceTypeId,
+					IsForward = IsForward,
+					TargetNodeId = TargetNodeId,
+					DeleteBidirectional = DeleteBidirectional,
+				};
+			}
+			catch
+			{
+				return false;
+			}
+
+			return true;
+		}
+
 		public static bool Encode(this MemoryBuffer mem, MonitoredItemModifyRequest rq)
 		{
 			if (!mem.Encode(rq.MonitoredItemId)) { return false; }

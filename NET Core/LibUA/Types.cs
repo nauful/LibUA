@@ -7034,5 +7034,33 @@ namespace LibUA
 				DeleteTargetReferences = deleteTargetReferences;
 			}
 		}
+
+		public class AddReferencesItem
+		{
+			public NodeId SourceNodeId { get; set; }
+
+			public NodeId ReferenceTypeId { get; set; }
+
+			public Boolean IsForward { get; set; }
+
+			public String TargetServerUri { get; set; }
+
+			public NodeId TargetNodeId { get; set; }
+
+			public NodeClass TargetNodeClass { get; set; }
+		}
+
+		public class DeleteReferencesItem
+		{
+			public NodeId SourceNodeId { get; set; }
+
+			public NodeId ReferenceTypeId { get; set; }
+
+			public Boolean IsForward { get; set; }
+
+			public NodeId TargetNodeId { get; set; }
+
+			public Boolean DeleteBidirectional { get; set; }
+		}
 	}
 }
