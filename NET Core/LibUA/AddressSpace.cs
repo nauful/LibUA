@@ -182,9 +182,33 @@ namespace LibUA
 					return false;
 				}
 
-				return IdType == NodeIdNetType.Numeric ?
-					NumericIdentifier == other.NumericIdentifier :
-					StringIdentifier == other.StringIdentifier;
+				return IdType == NodeIdNetType.Numeric ? NumericIdentifier == other.NumericIdentifier
+					: IdType == NodeIdNetType.String ? StringIdentifier == other.StringIdentifier
+					: EqualByteString(ByteStringIdentifier, other.ByteStringIdentifier);
+			}
+
+			private bool EqualByteString(byte[] a, byte[] b)
+			{
+				if (a == null && b == null)
+				{
+					return true;
+				}
+				if (a == null || b == null)
+				{
+					return false;
+				}
+				if (a.Length.Equals(b.Length))
+				{
+					for (int i = 0; i < a.Length; i++)
+					{
+						if (!byte.Equals(a[i], b[i]))
+						{
+							return false;
+						}
+					}
+					return true;
+				}
+				return false;
 			}
 
 			public override bool Equals(object other)

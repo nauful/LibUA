@@ -5795,6 +5795,8 @@ namespace LibUA
 		{
 			public NodeId TypeId { get; set; }
 			public byte[] Body { get; set; }
+
+			public object Payload { get; set; }
 		}
 
 		public class DataValue
@@ -6872,6 +6874,193 @@ namespace LibUA
 
 			public Keyset[] LocalKeysets { get; set; }
 			public Keyset[] RemoteKeysets { get; set; }
+		}
+
+		public class AddNodesItem
+		{
+			public NodeId ParentNodeId { get; set; }
+			public NodeId ReferenceTypeId { get; set; }
+			public NodeId RequestedNewNodeId { get; set; }
+			public QualifiedName BrowseName { get; set; }
+			public NodeClass NodeClass { get; set; }
+			public ExtensionObject NodeAttributes { get; set; }
+			public NodeId TypeDefinition { get; set; }
+		}
+
+		public class AddNodesResult
+		{
+			public StatusCode StatusCode { get; }
+
+			public NodeId AddedNodeId { get; }
+
+			public AddNodesResult(StatusCode statusCode, NodeId addedNodeId)
+			{
+				StatusCode = statusCode;
+				AddedNodeId = addedNodeId;
+			}
+		}
+
+		public class ObjectAttributes
+		{
+			public NodeAttributesMask SpecifiedAttributes { get; set; }
+			public LocalizedText DisplayName { get; set; }
+			public LocalizedText Description { get; set; }
+			public uint WriteMask { get; set; }
+			public uint UserWriteMask { get; set; }
+			public byte EventNotifier { get; set; }
+
+			public ObjectAttributes()
+			{
+				SpecifiedAttributes = NodeAttributesMask.DisplayName
+											| NodeAttributesMask.Description
+											| NodeAttributesMask.WriteMask
+											| NodeAttributesMask.UserWriteMask
+											| NodeAttributesMask.EventNotifier;
+			}
+		}
+
+		public class ObjectTypeAttributes
+		{
+			public NodeAttributesMask SpecifiedAttributes { get; set; }
+			public LocalizedText DisplayName { get; set; }
+			public LocalizedText Description { get; set; }
+			public uint WriteMask { get; set; }
+			public uint UserWriteMask { get; set; }
+			public bool IsAbstract { get; set; }
+
+			public ObjectTypeAttributes()
+			{
+				SpecifiedAttributes = NodeAttributesMask.DisplayName
+											| NodeAttributesMask.Description
+											| NodeAttributesMask.WriteMask
+											| NodeAttributesMask.UserWriteMask
+											| NodeAttributesMask.IsAbstract;
+			}
+		}
+
+		public class VariableAttributes
+		{
+			public NodeAttributesMask SpecifiedAttributes { get; set; }
+			public LocalizedText DisplayName { get; set; }
+			public LocalizedText Description { get; set; }
+			public uint WriteMask { get; set; }
+			public uint UserWriteMask { get; set; }
+			public object Value { get; set; }
+			public NodeId DataType { get; set; }
+			public int ValueRank { get; set; }
+			public uint[] ArrayDimensions { get; set; }
+			public byte AccessLevel { get; set; }
+			public byte UserAccessLevel { get; set; }
+			public double MinimumSamplingInterval { get; set; }
+			public bool Historizing { get; set; }
+
+			public VariableAttributes()
+			{
+				SpecifiedAttributes = NodeAttributesMask.DisplayName
+					| NodeAttributesMask.Description
+					| NodeAttributesMask.WriteMask
+					| NodeAttributesMask.UserWriteMask
+					| NodeAttributesMask.Value
+					| NodeAttributesMask.DataType
+					| NodeAttributesMask.ValueRank
+					| NodeAttributesMask.ArrayDimensions
+					| NodeAttributesMask.AccessLevel
+					| NodeAttributesMask.UserAccessLevel
+					| NodeAttributesMask.MinimumSamplingInterval
+					| NodeAttributesMask.Historizing;
+
+				Description = new LocalizedText("");
+				DisplayName = new LocalizedText("");
+				WriteMask = 0;
+				UserWriteMask = 0;
+				Value = 0;
+				DataType = new NodeId(0, 0);
+				ValueRank = 0;
+				ArrayDimensions = new uint[0];
+				AccessLevel = 0;
+				UserAccessLevel = 0;
+				MinimumSamplingInterval = 0;
+				Historizing = false;
+			}
+		}
+
+		public class VariableTypeAttributes
+		{
+			public NodeAttributesMask SpecifiedAttributes { get; set; }
+			public LocalizedText DisplayName { get; set; }
+			public LocalizedText Description { get; set; }
+			public uint WriteMask { get; set; }
+			public uint UserWriteMask { get; set; }
+			public object Value { get; set; }
+			public NodeId DataType { get; set; }
+			public int ValueRank { get; set; }
+			public uint[] ArrayDimensions { get; set; }
+			public bool IsAbstract { get; set; }
+
+			public VariableTypeAttributes()
+			{
+				// 2112
+				SpecifiedAttributes = NodeAttributesMask.DisplayName
+					| NodeAttributesMask.Description
+					| NodeAttributesMask.WriteMask
+					| NodeAttributesMask.UserWriteMask
+					| NodeAttributesMask.Value
+					| NodeAttributesMask.DataType
+					| NodeAttributesMask.ValueRank
+					| NodeAttributesMask.ArrayDimensions
+					| NodeAttributesMask.IsAbstract;
+
+				Description = new LocalizedText("");
+				DisplayName = new LocalizedText("");
+				WriteMask = 0;
+				UserWriteMask = 0;
+				Value = 0;
+				DataType = new NodeId(0, 0);
+				ValueRank = 0;
+				ArrayDimensions = new uint[0];
+				IsAbstract = false;
+			}
+
+		}
+
+		public class DeleteNodesItem
+		{
+			public NodeId NodeId { get; }
+			public Boolean DeleteTargetReferences { get; }
+
+			public DeleteNodesItem(NodeId nodeId, bool deleteTargetReferences)
+			{
+				NodeId = nodeId;
+				DeleteTargetReferences = deleteTargetReferences;
+			}
+		}
+
+		public class AddReferencesItem
+		{
+			public NodeId SourceNodeId { get; set; }
+
+			public NodeId ReferenceTypeId { get; set; }
+
+			public Boolean IsForward { get; set; }
+
+			public String TargetServerUri { get; set; }
+
+			public NodeId TargetNodeId { get; set; }
+
+			public NodeClass TargetNodeClass { get; set; }
+		}
+
+		public class DeleteReferencesItem
+		{
+			public NodeId SourceNodeId { get; set; }
+
+			public NodeId ReferenceTypeId { get; set; }
+
+			public Boolean IsForward { get; set; }
+
+			public NodeId TargetNodeId { get; set; }
+
+			public Boolean DeleteBidirectional { get; set; }
 		}
 	}
 }
