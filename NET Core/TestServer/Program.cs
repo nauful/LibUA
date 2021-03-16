@@ -132,7 +132,6 @@ namespace TestServer
 				}
 
 				throw new Exception("Unhandled user identity token type");
-				return base.SessionValidateClientUser(session, userIdentityToken);
 			}
 
 			public override IList<EndpointDescription> GetEndpointDescriptions(string endpointUrlHint)

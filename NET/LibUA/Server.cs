@@ -433,7 +433,7 @@ namespace LibUA
 							if (UAStatusCode == (uint)StatusCode.Good) { UAStatusCode = (uint)StatusCode.BadNotImplemented; }
 							consumedSize = ErrorInternal;
 						}
-						catch (Exception ex)
+						catch (Exception)
 						{
 							consumedSize = ErrorInternal;
 						}

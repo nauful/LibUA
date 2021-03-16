@@ -408,7 +408,7 @@ namespace LibUA
 					int symKeySize = UASecurity.SymmetricKeySizeForSecurityPolicy(config.SecurityPolicy);
 
 					int sigKeySize = UASecurity.SymmetricSignatureKeySizeForSecurityPolicy(config.SecurityPolicy);
-					int symBlockSize = UASecurity.SymmetricBlockSizeForSecurityPolicy(config.SecurityPolicy);
+					int symBlockSize = UASecurity.SymmetricBlockSizeForSecurityPolicy();
 
 					var clientHash = UASecurity.PSHA(
 						config.RemoteNonce,

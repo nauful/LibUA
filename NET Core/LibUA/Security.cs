@@ -43,7 +43,6 @@ namespace LibUA
 			}
 
 			throw new Exception();
-			return PaddingAlgorithm.None;
 		}
 
 		public static int SymmetricKeySizeForSecurityPolicy(SecurityPolicy policy, int clientNonceLength = -1)
@@ -56,7 +55,6 @@ namespace LibUA
 			}
 
 			throw new Exception();
-			return 0;
 		}
 
 
@@ -77,7 +75,6 @@ namespace LibUA
 			}
 
 			throw new Exception();
-			return 0;
 		}
 
 		public static RSAEncryptionPadding UseOaepForSecurityPolicy(SecurityPolicy policy)
@@ -94,7 +91,7 @@ namespace LibUA
 
 		public static int CalculatePublicKeyLength(X509Certificate2 cert)
 		{
-			var rsa = cert.PublicKey.Key as RSA;
+			RSA rsa = cert.PublicKey.Key as RSA;
 			if (rsa == null)
 			{
 				throw new Exception("Could not create RSA");
@@ -161,7 +158,7 @@ namespace LibUA
 
 		public static int CalculateEncryptedSize(X509Certificate2 cert, int messageSize, PaddingAlgorithm paddingAlgorithm)
 		{
-			var rsa = cert.PublicKey.Key as RSA;
+			RSA rsa = cert.PublicKey.Key as RSA;
 			if (rsa == null)
 			{
 				throw new Exception("Could not create RSA");
@@ -191,7 +188,6 @@ namespace LibUA
 			}
 
 			throw new Exception();
-			return -1;
 		}
 
 		public static string ExportPEM(X509Certificate cert)
@@ -959,7 +955,6 @@ namespace LibUA
 			if (msgSize != respBuf.Position)
 			{
 				throw new Exception();
-				return StatusCode.BadInternalError;
 			}
 
 			if (securityMode >= MessageSecurityMode.SignAndEncrypt)

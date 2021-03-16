@@ -1630,7 +1630,7 @@ namespace LibUA
 					config.RemoteNonce = clientNonce;
 
 					int sigKeySize = UASecurity.SymmetricSignatureKeySizeForSecurityPolicy(config.SecurityPolicy);
-					int symBlockSize = UASecurity.SymmetricBlockSizeForSecurityPolicy(config.SecurityPolicy);
+					int symBlockSize = UASecurity.SymmetricBlockSizeForSecurityPolicy();
 
 					var clientHash = UASecurity.PSHA(
 						config.LocalNonce,
