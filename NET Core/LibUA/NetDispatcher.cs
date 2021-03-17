@@ -746,6 +746,7 @@ namespace LibUA
 							case (uint)RequestCode.CreateMonitoredItemsRequest: return DispatchMessage_CreateMonitoredItemsRequest(config, reqHeader, recvBuf, messageSize);
 							case (uint)RequestCode.ModifyMonitoredItemsRequest: return DispatchMessage_ModifyMonitoredItemsRequest(config, reqHeader, recvBuf, messageSize);
 							case (uint)RequestCode.DeleteMonitoredItemsRequest: return DispatchMessage_DeleteMonitoredItemsRequest(config, reqHeader, recvBuf, messageSize);
+							case (uint)RequestCode.SetMonitoringModeRequest: return DispatchMessage_SetMonitoringModeRequest(config, reqHeader, recvBuf, messageSize);
 
 							case (uint)RequestCode.PublishRequest: return DispatchMessage_PublishRequest(config, reqHeader, recvBuf, messageSize);
 							case (uint)RequestCode.RepublishRequest: return DispatchMessage_RepublishRequest(config, reqHeader, recvBuf, messageSize);
@@ -3212,6 +3213,43 @@ namespace LibUA
 				for (int i = 0; i < createResponses.Length; i++)
 				{
 					succeeded &= respBuf.Encode(createResponses[i]);
+				}
+
+				// DiagnosticInfos
+				succeeded &= respBuf.Encode((UInt32)0);
+
+				if (!succeeded)
+				{
+					return ErrorRespWrite;
+				}
+
+				DispatchMessage_SecureAndSend(config, respBuf);
+				return (int)messageSize;
+			}
+
+			protected int DispatchMessage_SetMonitoringModeRequest(SLChannel config, RequestHeader reqHeader, MemoryBuffer recvBuf, uint messageSize)
+			{
+				UInt32 SubscriptionId, MonitoringMode, NoOfItemsToModify;
+
+				if (!recvBuf.Decode(out SubscriptionId)) { return ErrorParseFail; }
+				if (!recvBuf.Decode(out MonitoringMode)) { return ErrorParseFail; }
+
+				if (!recvBuf.Decode(out NoOfItemsToModify)) { return ErrorParseFail; }
+
+				var respBuf = new MemoryBuffer(maximumMessageSize);
+				bool succeeded = DispatchMessage_WriteHeader(config, respBuf,
+					(uint)RequestCode.SetMonitoringModeResponse, reqHeader, (uint)StatusCode.Good);
+
+				if (!succeeded)
+				{
+					return ErrorRespWrite;
+				}
+
+				// Results
+				succeeded &= respBuf.Encode((UInt32)NoOfItemsToModify);
+				for (int i = 0; i < NoOfItemsToModify; i++)
+				{
+					succeeded &= respBuf.Encode((UInt32)0);
 				}
 
 				// DiagnosticInfos
