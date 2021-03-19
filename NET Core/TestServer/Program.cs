@@ -70,15 +70,6 @@ namespace TestServer
 					new NodeId(UAConst.ObjectsFolder), true));
 				AddressSpaceTable.TryAdd(ItemsRoot.Id, ItemsRoot);
 
-				(AddressSpaceTable[new NodeId(UAConst.OperationLimitsType_MaxNodesPerRead)] as NodeVariable).Value = 100;
-				(AddressSpaceTable[new NodeId(UAConst.OperationLimitsType_MaxNodesPerWrite)] as NodeVariable).Value = 100;
-				(AddressSpaceTable[new NodeId(UAConst.OperationLimitsType_MaxNodesPerMethodCall)] as NodeVariable).Value = 100;
-				(AddressSpaceTable[new NodeId(UAConst.OperationLimitsType_MaxNodesPerBrowse)] as NodeVariable).Value = 100;
-				(AddressSpaceTable[new NodeId(UAConst.OperationLimitsType_MaxNodesPerRegisterNodes)] as NodeVariable).Value = 100;
-				(AddressSpaceTable[new NodeId(UAConst.OperationLimitsType_MaxNodesPerTranslateBrowsePathsToNodeIds)] as NodeVariable).Value = 100;
-				(AddressSpaceTable[new NodeId(UAConst.OperationLimitsType_MaxNodesPerNodeManagement)] as NodeVariable).Value = 100;
-				(AddressSpaceTable[new NodeId(UAConst.OperationLimitsType_MaxMonitoredItemsPerCall)] as NodeVariable).Value = 100;
-
 				TrendNodes = new NodeVariable[1000];
 				var nodeTypeFloat = new NodeId(0, 10);
 				for (int i = 0; i < TrendNodes.Length; i++)

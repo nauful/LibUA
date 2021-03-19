@@ -270,14 +270,38 @@ namespace LibUA
 				internalAddressSpaceValues = new Dictionary<NodeId, object>()
 				{
 					{ new NodeId(UAConst.Server_ServerArray), new string[0] },
-					{ new NodeId(UAConst.Server_NamespaceArray),new string[]
+					{ new NodeId(UAConst.Server_NamespaceArray), new string[]
 						{
 							"http://opcfoundation.org/UA/",
 							"http://quantensystems.com/uaSDK2",
 							"http://quantensystems.com/DemoServer"
 						}
 					},
-					{ new NodeId(UAConst.Server_ServerStatus_State), (Int32)ServerState.Running }
+					{ new NodeId(UAConst.Server_ServerStatus_State), (Int32)ServerState.Running },
+
+					{ new NodeId(UAConst.OperationLimitsType_MaxNodesPerRead), 100 },
+					{ new NodeId(UAConst.OperationLimitsType_MaxNodesPerWrite), 100 },
+					{ new NodeId(UAConst.OperationLimitsType_MaxNodesPerMethodCall), 100 },
+					{ new NodeId(UAConst.OperationLimitsType_MaxNodesPerBrowse), 100 },
+					{ new NodeId(UAConst.OperationLimitsType_MaxNodesPerRegisterNodes), 100 },
+					{ new NodeId(UAConst.OperationLimitsType_MaxNodesPerTranslateBrowsePathsToNodeIds), 100 },
+					{ new NodeId(UAConst.OperationLimitsType_MaxNodesPerNodeManagement), 100 },
+					{ new NodeId(UAConst.OperationLimitsType_MaxMonitoredItemsPerCall), 100 },
+					{ new NodeId(UAConst.OperationLimitsType_MaxNodesPerHistoryReadData), 100 },
+					{ new NodeId(UAConst.OperationLimitsType_MaxNodesPerHistoryUpdateData), 100 },
+					{ new NodeId(UAConst.OperationLimitsType_MaxNodesPerHistoryReadEvents), 100 },
+					{ new NodeId(UAConst.OperationLimitsType_MaxNodesPerHistoryUpdateEvents), 100 },
+					{ new NodeId(UAConst.OperationLimitsType_MaxNodesPerMethodCall), 100 },
+
+					{ new NodeId(UAConst.Server_ServerStatus_StartTime), 0 },
+					{ new NodeId(UAConst.Server_ServerStatus_CurrentTime), 0 },
+					{ new NodeId(UAConst.Server_ServerStatus_SecondsTillShutdown), 0 },
+					{ new NodeId(UAConst.Server_ServerStatus_BuildInfo_ProductUri), "product" },
+					{ new NodeId(UAConst.Server_ServerStatus_BuildInfo_ManufacturerName), "manufacturer" },
+					{ new NodeId(UAConst.Server_ServerStatus_BuildInfo_ProductName), "product" },
+					{ new NodeId(UAConst.Server_ServerStatus_BuildInfo_SoftwareVersion), 1.0 },
+					{ new NodeId(UAConst.Server_ServerStatus_BuildInfo_BuildNumber), 1.0 },
+					{ new NodeId(UAConst.Server_ServerStatus_BuildInfo_BuildDate), 0 }
 				};
 			}
 
@@ -483,6 +507,7 @@ namespace LibUA
 					if (!AddressSpaceTable.TryGetValue(readValueIds[i].NodeId, out node) ||
 						!SessionHasPermissionToRead(session, readValueIds[i].NodeId))
 					{
+						Console.WriteLine($"Read node {readValueIds[i].NodeId} unknown {readValueIds[i].AttributeId}");
 						res[i] = new DataValue(null, StatusCode.BadNodeIdUnknown);
 						continue;
 					}
@@ -593,6 +618,8 @@ namespace LibUA
 					{
 						res[i] = new DataValue(null, StatusCode.Good);
 					}
+
+					Console.WriteLine($"Read node {readValueIds[i].NodeId} {node.DisplayName.Text} {readValueIds[i].AttributeId} => {res[i].Value ?? "### NULL"}");
 				}
 
 				return res;
