@@ -243,7 +243,6 @@ namespace LibUA.Server
                     { new NodeId(UAConst.OperationLimitsType_MaxNodesPerHistoryUpdateData), 100 },
                     { new NodeId(UAConst.OperationLimitsType_MaxNodesPerHistoryReadEvents), 100 },
                     { new NodeId(UAConst.OperationLimitsType_MaxNodesPerHistoryUpdateEvents), 100 },
-                    { new NodeId(UAConst.OperationLimitsType_MaxNodesPerMethodCall), 100 },
 
                     { new NodeId(UAConst.Server_ServerStatus_StartTime), 0 },
                     { new NodeId(UAConst.Server_ServerStatus_CurrentTime), 0 },
