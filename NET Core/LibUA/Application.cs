@@ -545,10 +545,6 @@ namespace LibUA
 					{
 						res[i] = new DataValue(node.UserWriteMask, StatusCode.Good);
 					}
-					else if (readValueIds[i].AttributeId == NodeAttribute.UserWriteMask)
-					{
-						res[i] = new DataValue(node.UserWriteMask, StatusCode.Good);
-					}
 					else if (readValueIds[i].AttributeId == NodeAttribute.AccessRestrictions)
 					{
 						res[i] = new DataValue((UInt16)0, StatusCode.Good);
