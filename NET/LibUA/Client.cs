@@ -1644,9 +1644,11 @@ namespace LibUA
 							Array.Copy(config.RemoteNonce, 0, crypted, offset, config.RemoteNonce.Length);
 							offset += config.RemoteNonce.Length;
 						}
-
-						Array.Copy(rndBytes, 0, crypted, offset, rndBytes.Length);
-						offset += rndBytes.Length;
+						else
+						{
+							Array.Copy(rndBytes, 0, crypted, offset, rndBytes.Length);
+							offset += rndBytes.Length;
+						}
 
 						crypted = UASecurity.RsaPkcs15Sha_Encrypt(
 							new ArraySegment<byte>(crypted),
