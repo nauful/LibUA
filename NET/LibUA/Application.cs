@@ -620,7 +620,7 @@ namespace LibUA
 					}
 					else
 					{
-						res[i] = new DataValue(null, StatusCode.Good);
+						res[i] = new DataValue(null, StatusCode.BadAttributeIdInvalid);
 					}
 				}
 

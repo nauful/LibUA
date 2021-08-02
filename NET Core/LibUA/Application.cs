@@ -611,7 +611,7 @@ namespace LibUA
 					}
 					else
 					{
-						res[i] = new DataValue(null, StatusCode.Good);
+						res[i] = new DataValue(null, StatusCode.BadAttributeIdInvalid);
 					}
 
 					Console.WriteLine($"Read node {readValueIds[i].NodeId} {node.DisplayName.Text} {readValueIds[i].AttributeId} => {res[i].Value ?? "### NULL"}");
