@@ -1814,7 +1814,8 @@ namespace LibUA
 				if (!recvBuf.Decode(out config.TL.RemoteConfig.MaxChunkCount)) { return ErrorParseFail; }
 
 				config.TL.LocalConfig.SendBufferSize = Math.Min(config.TL.LocalConfig.SendBufferSize, config.TL.RemoteConfig.RecvBufferSize);
-				config.TL.LocalConfig.MaxMessageSize = Math.Min(config.TL.LocalConfig.MaxMessageSize, config.TL.RemoteConfig.MaxMessageSize);
+				if (config.TL.RemoteConfig.MaxMessageSize != 0)
+					config.TL.LocalConfig.MaxMessageSize = Math.Min(config.TL.LocalConfig.MaxMessageSize, config.TL.RemoteConfig.MaxMessageSize);
 				config.TL.RemoteConfig.MaxMessageSize = config.TL.LocalConfig.MaxMessageSize;
 
 				if (maximumMessageSize > config.TL.LocalConfig.MaxMessageSize)
