@@ -400,6 +400,8 @@ namespace LibUA
 					return StatusCode.BadNodeIdUnknown;
 				}
 
+				bool referenceTypeSpecified = !browseDesc.ReferenceType.EqualsNumeric(0, 0);
+
 				results.Clear();
 				for (int i = cont.IsValid ? cont.Offset : 0; i < node.References.Count; i++)
 				{
@@ -411,12 +413,12 @@ namespace LibUA
 						continue;
 					}
 
-					if (!browseDesc.IncludeSubtypes && !r.ReferenceType.Equals(browseDesc.ReferenceType))
+					if (referenceTypeSpecified && !browseDesc.IncludeSubtypes && !r.ReferenceType.Equals(browseDesc.ReferenceType))
 					{
 						continue;
 					}
 
-					if (browseDesc.IncludeSubtypes && !IsSubtypeOrEqual(r.ReferenceType, browseDesc.ReferenceType))
+					if (referenceTypeSpecified && browseDesc.IncludeSubtypes && !IsSubtypeOrEqual(r.ReferenceType, browseDesc.ReferenceType))
 					{
 						continue;
 					}
@@ -440,6 +442,11 @@ namespace LibUA
 					}
 					else
 					{
+						if (browseDesc.NodeClassMask > 0 && ((uint)targetNode.GetNodeClass() & browseDesc.NodeClassMask) == 0)
+						{
+							continue;
+						}
+
 						if (targetNode.References != null && (targetNode is NodeObject || targetNode is NodeVariable))
 						{
 							for (int j = 0; j < targetNode.References.Count; j++)
