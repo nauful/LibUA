@@ -11,6 +11,7 @@ using LibUA.Core;
 using LibUA.Security.Cryptography;
 using LibUA.Security.Cryptography.X509Certificates;
 using LibUA.Server;
+using RSACng = LibUA.Security.Cryptography.RSACng;
 
 namespace TestServer
 {

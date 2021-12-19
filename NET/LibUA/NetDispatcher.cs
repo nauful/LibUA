@@ -1309,7 +1309,7 @@ namespace LibUA
 				//int chunkSize = 2048 - ChunkHeaderOverhead - TLPaddingOverhead;
 				int numChunks = (respBuf.Position - ChunkHeaderOverhead + chunkSize - 1) / chunkSize;
 
-				if (numChunks > 1 &&
+				if (numChunks > 1 && config.TL.RemoteConfig.MaxChunkCount > 0 &&
 					numChunks > config.TL.RemoteConfig.MaxChunkCount)
 				{
 					UAStatusCode = (uint)StatusCode.BadEncodingLimitsExceeded;
