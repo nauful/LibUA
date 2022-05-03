@@ -1,0 +1,46 @@
+# Continuous Integration (CI) to build PW.LibUA
+# using the .NET CLI on Azure Pipelines.
+
+# Triggered when pushing to the "master"
+trigger:
+  batch: true
+  branches:
+    include:
+    - master
+  paths:
+    exclude:
+    - .gitignore
+    - LICENSE
+    - README.md
+
+# Pipeline name
+name: PW.LibUA.CI.$(Build.BuildId)
+
+# Global variables
+variables:
+  vmImage: ubuntu-latest
+  libProjects: |
+    NET Core/LibUA/LibUA.csproj
+  buildConfiguration: Release
+
+jobs:
+- job: Build
+  displayName: Build PW.LibUA
+  pool:
+    vmImage: $(vmImage)
+  steps:
+  # Build and pack PW.LibUA
+  - task: DotNetCoreCLI@2
+    displayName: Build PW.LibUA
+    inputs:
+      command: custom
+      custom: pack
+      projects: $(libProjects)
+      arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory) -p:CIBuildId=$(Build.BuildId)'
+  # Publish to pipeline artifacts
+  - task: PublishPipelineArtifact@1
+    displayName: Publish library to pipeline artifacts
+    condition: and(succeededOrFailed(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+    inputs:
+      targetPath: $(Build.ArtifactStagingDirectory)
+      artifactName: PW.LibUA
