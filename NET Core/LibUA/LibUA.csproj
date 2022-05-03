@@ -3,6 +3,20 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
+  
+  <PropertyGroup>
+    <PackageId>PW.LibUA</PackageId>
+    <Version>1.0.2</Version>
+    <Company>nauful</Company>
+    <Authors>nauful</Authors>
+    <Description>Open-source OPC UA client and server library.</Description>
+    <PackageProjectUrl>https://github.com/paul-wurth/PW.LibUA</PackageProjectUrl>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <Tags>opcua opc</Tags>
+    <!-- Build metadata -->
+    <SourceRevisionId Condition="'$(CIBuildId)' == ''">dev.$([System.Environment]::UserName).$([System.DateTime]::UtcNow.ToString("yyyy-MM-ddTHH:mm:ssK"))</SourceRevisionId>
+    <SourceRevisionId Condition="'$(CIBuildId)' != ''">ci.$(CIBuildId)</SourceRevisionId>
+  </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
