@@ -1,0 +1,57 @@
+# Continuous Integration (CI) and Continuous Delivery (CD) for PW.LibUA
+
+# Triggered when pushing to the "master"
+trigger:
+  batch: true
+  branches:
+    include:
+    - master
+    - develop
+  paths:
+    exclude:
+    - .gitignore
+    - LICENSE
+    - README.md
+
+# Triggered when opening a pull request (or pushing changes to it)
+pr:
+  branches:
+    include:
+    - '*'
+  paths:
+    exclude:
+    - .gitignore
+    - LICENSE
+    - README.md
+
+# Use templates from the Utilities/PipelinesTemplates repository
+resources:
+  repositories:
+  - repository: PipelinesTemplates
+    type: git
+    name: Utilities/PipelinesTemplates
+
+# Pipeline name
+name: PW.LibUA.$(Build.BuildId)
+
+stages:
+- stage: Build
+  jobs:
+  - template: /DotNet/Build+Test.yml@PipelinesTemplates
+    parameters:
+      projectTitle: PW.LibUA
+      libraryTitle: Libraries
+      libraryProjects: |
+        NET Core/LibUA/LibUA.csproj
+
+# Only publish package(s) from the main, master or a release branch
+- ${{ if or(in(variables['Build.SourceBranch'], 'refs/heads/main', 'refs/heads/master'), startsWith(variables['Build.SourceBranch'], 'refs/heads/release/')) }}:
+  - stage: Publish
+    jobs:
+    - template: /DotNet/PublishNuGet.yml@PipelinesTemplates
+      parameters:
+        projectTitle: PW.LibUA
+        packageTitle: Packages
+        environment: Publish-PW_LibUA-Env
+        packagesToPublish: |
+          **/PW.LibUA.*.nupkg
