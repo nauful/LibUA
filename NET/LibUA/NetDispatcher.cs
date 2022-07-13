@@ -2905,7 +2905,7 @@ namespace LibUA
 					PublishingEnabled = PublishingEnabled,
 					Priority = Priority,
 
-					PublishInterval = TimeSpan.FromMilliseconds(revisedPublishInterval / 2),
+					PublishInterval = TimeSpan.FromMilliseconds(revisedPublishInterval),
 					PublishKeepAliveInterval = TimeSpan.FromMilliseconds(Math.Max(1, (revisedPublishInterval / 2) * RequestedMaxKeepAliveCount)),
 
 					ChangeNotification = Subscription.ChangeNotificationType.None
@@ -2995,7 +2995,7 @@ namespace LibUA
 					sub.MaxNotificationsPerPublish = Math.Max(1, MaxNotificationsPerPublish);
 					sub.Priority = Priority;
 
-					sub.PublishInterval = TimeSpan.FromMilliseconds(sub.PublishingInterval / 2);
+					sub.PublishInterval = TimeSpan.FromMilliseconds(sub.PublishingInterval);
 					sub.PublishKeepAliveInterval = TimeSpan.FromMilliseconds(Math.Max(1, (sub.PublishingInterval / 2) * RequestedMaxKeepAliveCount));
 
 					succeeded &= respBuf.Encode((double)sub.PublishingInterval);
