@@ -1,5 +1,5 @@
 # LibUA
-Open-source OPC UA client and server library for .NET and .NET Core based on IEC 62541. Available as source files, a demo client and a demo server. Tested and commercially used in industrial applications with commercial vendors' UA servers and clients.
+Open-source OPC UA client and server library for .NET (deprecated) and .NET Core based on IEC 62541. Available as source files, a demo client and a demo server. Tested and commercially used in industrial applications with commercial vendors' UA servers and clients.
 
 ### Features
 - Fully supported OPC UA core client and OPC UA server specification.
@@ -15,7 +15,8 @@ Open-source OPC UA client and server library for .NET and .NET Core based on IEC
 - Server instances have low overhead: tested with hundreds of clients performing simultaneous historical reads, data change notification subscriptions and real-time writes.
 
 ### Platforms
-.NET 4.5 or .NET Standard 2.0
+- .NET Standard 2.0
+- .NET 4.8 is deprecated and not actively mantained.
 
 ### License
 Free for commercial use under the Apache License 2.0. Please give credit if you find this source useful.
