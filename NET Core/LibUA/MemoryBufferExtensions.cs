@@ -618,16 +618,20 @@ namespace LibUA
 		{
 			bp = null;
 
-			uint StatusCodeUint, NumTargets;
-			BrowsePathTarget[] Targets;
+			UInt32 StatusCodeUint;
+			Int32 NumTargets;
+			BrowsePathTarget[] Targets = null;
 
 			if (!mem.Decode(out StatusCodeUint)) { return false; }
 			if (!mem.Decode(out NumTargets)) { return false; }
-			Targets = new BrowsePathTarget[NumTargets];
-			for (uint i = 0; i < NumTargets; i++)
+			if (NumTargets >= 0)
 			{
-				if (!mem.Decode(out Targets[i].Target)) { return false; }
-				if (!mem.Decode(out Targets[i].RemainingPathIndex)) { return false; }
+				Targets = new BrowsePathTarget[NumTargets];
+				for (int i = 0; i < NumTargets; i++)
+				{
+					if (!mem.Decode(out Targets[i].Target)) { return false; }
+					if (!mem.Decode(out Targets[i].RemainingPathIndex)) { return false; }
+				}
 			}
 
 			try
@@ -647,10 +651,10 @@ namespace LibUA
 			if (!mem.Encode((UInt32)bp.StatusCode)) { return false; }
 			if (bp.Targets == null)
 			{
-				return mem.Encode((UInt32)0xFFFFFFFFu);
+				return mem.Encode((Int32)(-1));
 			}
 
-			if (!mem.Encode((UInt32)bp.Targets.Length)) { return false; }
+			if (!mem.Encode(bp.Targets.Length)) { return false; }
 			for (int i = 0; i < bp.Targets.Length; i++)
 			{
 				if (!mem.Encode(bp.Targets[i].Target)) { return false; }
@@ -701,15 +705,18 @@ namespace LibUA
 			bp = null;
 
 			NodeId StartingNode;
-			UInt32 NumRelativePath;
-			RelativePathElement[] RelativePath;
+			Int32 NumRelativePath;
+			RelativePathElement[] RelativePath = null;
 
 			if (!mem.Decode(out StartingNode)) { return false; }
 			if (!mem.Decode(out NumRelativePath)) { return false; }
-			RelativePath = new RelativePathElement[NumRelativePath];
-			for (uint i = 0; i < NumRelativePath; i++)
+			if (NumRelativePath >= 0)
 			{
-				if (!mem.Decode(out RelativePath[i])) { return false; }
+				RelativePath = new RelativePathElement[NumRelativePath];
+				for (int i = 0; i < NumRelativePath; i++)
+				{
+					if (!mem.Decode(out RelativePath[i])) { return false; }
+				}
 			}
 
 			try
@@ -727,8 +734,12 @@ namespace LibUA
 		public static bool Encode(this MemoryBuffer mem, BrowsePath bp)
 		{
 			if (!mem.Encode(bp.StartingNode)) { return false; }
+			if (bp.RelativePath == null)
+			{
+				return mem.Encode((Int32)(-1));
+			}
 
-			if (!mem.Encode((UInt32)bp.RelativePath.Length)) { return false; }
+			if (!mem.Encode(bp.RelativePath.Length)) { return false; }
 			for (int i = 0; i < bp.RelativePath.Length; i++)
 			{
 				if (!mem.Encode(bp.RelativePath[i])) { return false; }
@@ -816,25 +827,30 @@ namespace LibUA
 		{
 			cfe = null;
 
-			UInt32 filterOperatorUint, numFilterOperands;
+			UInt32 filterOperatorUint;
+			Int32 numFilterOperands;
 			if (!mem.Decode(out filterOperatorUint)) { return false; }
 			if (!mem.Decode(out numFilterOperands)) { return false; }
 
-			var operands = new FilterOperand[numFilterOperands];
-			for (uint i = 0; i < numFilterOperands; i++)
+			FilterOperand[] operands = null;
+			if (numFilterOperands >= 0)
 			{
-				NodeId typeId;
-				byte encodingMask;
-				UInt32 eoSize;
+				operands = new FilterOperand[numFilterOperands];
+				for (int i = 0; i < numFilterOperands; i++)
+				{
+					NodeId typeId;
+					byte encodingMask;
+					UInt32 eoSize;
 
-				if (!mem.Decode(out typeId)) { return false; }
-				if (!mem.Decode(out encodingMask)) { return false; }
-				if (!mem.Decode(out eoSize)) { return false; }
+					if (!mem.Decode(out typeId)) { return false; }
+					if (!mem.Decode(out encodingMask)) { return false; }
+					if (!mem.Decode(out eoSize)) { return false; }
 
-				// TODO: Always literal operand?
-				object value = null;
-				if (!mem.VariantDecode(out value)) { return false; }
-				operands[i] = new LiteralOperand(value);
+					// TODO: Always literal operand?
+					object value = null;
+					if (!mem.VariantDecode(out value)) { return false; }
+					operands[i] = new LiteralOperand(value);
+				}
 			}
 
 			try
@@ -853,6 +869,10 @@ namespace LibUA
 		{
 			if (!mem.Encode((UInt32)cfe.Operator)) { return false; }
 			if (!mem.Encode((UInt32)cfe.Operands.Length)) { return false; }
+			if (cfe.Operands == null)
+			{
+				return mem.Encode((Int32)(-1));
+			}
 
 			for (int i = 0; i < cfe.Operands.Length; i++)
 			{
@@ -896,27 +916,30 @@ namespace LibUA
 				if (!mem.Decode(out eoFilterSize)) { return false; }
 			}
 
-			UInt32 numSelectClauses;
+			Int32 numSelectClauses;
 			if (!mem.Decode(out numSelectClauses)) { return false; }
 
 			SimpleAttributeOperand[] selectClauses = null;
-			if (numSelectClauses != UInt32.MaxValue)
+			if (numSelectClauses >= 0)
 			{
 				selectClauses = new SimpleAttributeOperand[numSelectClauses];
-				for (uint i = 0; i < numSelectClauses; i++)
+				for (int i = 0; i < numSelectClauses; i++)
 				{
 					NodeId typeDefId;
-					UInt32 numBrowsePath;
-					QualifiedName[] browsePath;
+					Int32 numBrowsePath;
+					QualifiedName[] browsePath = null;
 					UInt32 attributeIdUint;
 					string indexRange;
 
 					if (!mem.Decode(out typeDefId)) { return false; }
 					if (!mem.Decode(out numBrowsePath)) { return false; }
-					browsePath = new QualifiedName[numBrowsePath];
-					for (uint j = 0; j < numBrowsePath; j++)
+					if (numBrowsePath >= 0)
 					{
-						if (!mem.Decode(out browsePath[j])) { return false; }
+						browsePath = new QualifiedName[numBrowsePath];
+						for (int j = 0; j < numBrowsePath; j++)
+						{
+							if (!mem.Decode(out browsePath[j])) { return false; }
+						}
 					}
 
 					if (!mem.Decode(out attributeIdUint)) { return false; }
@@ -933,14 +956,14 @@ namespace LibUA
 				}
 			}
 
-			UInt32 numContentFilters;
+			Int32 numContentFilters;
 			if (!mem.Decode(out numContentFilters)) { return false; }
 
 			ContentFilterElement[] contentFilters = null;
-			if (numContentFilters != UInt32.MaxValue)
+			if (numContentFilters >= 0)
 			{
 				contentFilters = new ContentFilterElement[numContentFilters];
-				for (uint i = 0; i < numContentFilters; i++)
+				for (int i = 0; i < numContentFilters; i++)
 				{
 					if (!mem.Decode(out contentFilters[i])) { return false; }
 				}
@@ -987,11 +1010,11 @@ namespace LibUA
 
 			if (filter.SelectClauses == null)
 			{
-				if (!mem.Encode((UInt32)0xFFFFFFFFu)) { return false; }
+				if (!mem.Encode((Int32)(-1))) { return false; }
 			}
 			else
 			{
-				if (!mem.Encode((UInt32)filter.SelectClauses.Length)) { return false; }
+				if (!mem.Encode(filter.SelectClauses.Length)) { return false; }
 				for (int i = 0; i < filter.SelectClauses.Length; i++)
 				{
 					if (!mem.Encode(filter.SelectClauses[i].TypeDefinitionId)) { return false; }
@@ -1009,11 +1032,11 @@ namespace LibUA
 
 			if (filter.ContentFilters == null)
 			{
-				if (!mem.Encode((UInt32)0xFFFFFFFFu)) { return false; }
+				if (!mem.Encode((Int32)(-1))) { return false; }
 			}
 			else
 			{
-				if (!mem.Encode((UInt32)filter.ContentFilters.Length)) { return false; }
+				if (!mem.Encode(filter.ContentFilters.Length)) { return false; }
 				for (int i = 0; i < filter.ContentFilters.Length; i++)
 				{
 					if (!mem.Encode(filter.ContentFilters[i])) { return false; }
@@ -1345,7 +1368,7 @@ namespace LibUA
 			byte[] ServerCertificate;
 			uint SecurityMode;
 			string SecurityPolicyUri;
-			uint numUserIdentityTokens;
+			Int32 numUserIdentityTokens;
 			var UserIdentityTokens = new List<UserTokenPolicy>();
 			string TransportProfileUri;
 			byte SecurityLevel;
@@ -1357,9 +1380,9 @@ namespace LibUA
 			if (!mem.DecodeUAString(out SecurityPolicyUri)) { return false; }
 			if (!mem.Decode(out numUserIdentityTokens)) { return false; }
 
-			if (numUserIdentityTokens != 0xFFFFFFFFu)
+			if (numUserIdentityTokens >= 0)
 			{
-				for (uint i = 0; i < numUserIdentityTokens; i++)
+				for (int i = 0; i < numUserIdentityTokens; i++)
 				{
 					string policyId;
 					uint tokenType;
@@ -1407,11 +1430,11 @@ namespace LibUA
 
 			if (ep.UserIdentityTokens == null)
 			{
-				if (!mem.Encode((UInt32)0)) { return false; }
+				if (!mem.Encode((Int32)(-1))) { return false; }
 			}
 			else
 			{
-				if (!mem.Encode((UInt32)ep.UserIdentityTokens.Length)) { return false; }
+				if (!mem.Encode(ep.UserIdentityTokens.Length)) { return false; }
 
 				for (uint i = 0; i < ep.UserIdentityTokens.Length; i++)
 				{
@@ -1862,7 +1885,7 @@ namespace LibUA
 
 				default:
 					// TODO: Handle
-					throw new Exception();
+					throw new Exception("Decode NodeId TODO");
 			}
 		}
 
@@ -1927,7 +1950,7 @@ namespace LibUA
 
 				default:
 					// TODO: Handle
-					throw new Exception();
+					throw new Exception("Encode NodeId TODO");
 			}
 
 			return true;
@@ -1968,10 +1991,10 @@ namespace LibUA
 		{
 			if (str == null)
 			{
-				return mem.Encode((UInt32)0xFFFFFFFFu);
+				return mem.Encode((Int32)(-1));
 			}
 
-			if (!mem.Encode((uint)str.Length))
+			if (!mem.Encode(str.Length))
 			{
 				return false;
 			}
@@ -1987,11 +2010,11 @@ namespace LibUA
 
 		public static bool DecodeUAByteString(this MemoryBuffer mem, out byte[] str)
 		{
-			UInt32 Length = 0;
+			Int32 Length = 0;
 			str = null;
 			if (!mem.Decode(out Length)) { return false; }
 
-			if (Length == 0xFFFFFFFFu)
+			if (Length == -1)
 			{
 				return true;
 			}
@@ -2027,7 +2050,7 @@ namespace LibUA
 
 		public static bool DecodeUAGuidByteString(this MemoryBuffer mem, out byte[] str)
 		{
-			UInt32 Length = 16;
+			Int32 Length = 16;
 			str = null;
 
 			if (!mem.EnsureAvailable((int)Length, true))
@@ -2062,11 +2085,11 @@ namespace LibUA
 
 		public static bool DecodeUAString(this MemoryBuffer mem, out string[] table)
 		{
-			UInt32 Length = 0;
+			Int32 Length = 0;
 			table = null;
 			if (!mem.Decode(out Length)) { return false; }
 
-			if (Length == 0xFFFFFFFFu)
+			if (Length == -1)
 			{
 				return true;
 			}
@@ -2098,18 +2121,18 @@ namespace LibUA
 		{
 			if (str == null) { return mem.CodingSize((UInt32)0); }
 
-			return mem.CodingSize((UInt32)0) + str.Length;
+			return mem.CodingSize((Int32)0) + Encoding.UTF8.GetByteCount(str);
 		}
 
 		public static bool EncodeUAString(this MemoryBuffer mem, string str)
 		{
 			if (str == null)
 			{
-				return mem.Encode((UInt32)0xFFFFFFFFu);
+				return mem.Encode((Int32)(-1));
 			}
 
 			byte[] bytes = Encoding.UTF8.GetBytes(str);
-			if (!mem.Encode((uint)bytes.Length))
+			if (!mem.Encode(bytes.Length))
 			{
 				return false;
 			}
@@ -2125,11 +2148,11 @@ namespace LibUA
 
 		public static bool DecodeUAString(this MemoryBuffer mem, out string str)
 		{
-			UInt32 Length = 0;
+			Int32 Length = 0;
 			str = null;
 			if (!mem.Decode(out Length)) { return false; }
 
-			if (Length == 0xFFFFFFFFu)
+			if (Length == -1)
 			{
 				return true;
 			}

@@ -628,13 +628,16 @@ namespace LibUA
 					return StatusCode.BadUnknownResponse;
 				}
 
-				UInt32 numEndpointDescs;
+				Int32 numEndpointDescs;
 				succeeded &= recvHandler.RecvBuf.Decode(out numEndpointDescs);
 
-				endpointDescs = new EndpointDescription[numEndpointDescs];
-				for (int i = 0; i < numEndpointDescs && succeeded; i++)
+				if (numEndpointDescs >= 0)
 				{
-					succeeded &= recvHandler.RecvBuf.Decode(out endpointDescs[i]);
+					endpointDescs = new EndpointDescription[numEndpointDescs];
+					for (int i = 0; i < numEndpointDescs && succeeded; i++)
+					{
+						succeeded &= recvHandler.RecvBuf.Decode(out endpointDescs[i]);
+					}
 				}
 
 				if (!succeeded)
@@ -728,13 +731,16 @@ namespace LibUA
 					return StatusCode.BadUnknownResponse;
 				}
 
-				UInt32 numDescs;
+				Int32 numDescs;
 				succeeded &= recvHandler.RecvBuf.Decode(out numDescs);
 
-				results = new ApplicationDescription[numDescs];
-				for (int i = 0; i < numDescs && succeeded; i++)
+				if (numDescs >= 0)
 				{
-					succeeded &= recvHandler.RecvBuf.Decode(out results[i]);
+					results = new ApplicationDescription[numDescs];
+					for (int i = 0; i < numDescs && succeeded; i++)
+					{
+						succeeded &= recvHandler.RecvBuf.Decode(out results[i]);
+					}
 				}
 
 				if (!succeeded)
@@ -923,7 +929,7 @@ namespace LibUA
 			succeeded &= sendBuf.Encode(config.TL.LocalConfig.MaxMessageSize);
 			succeeded &= sendBuf.Encode(config.TL.LocalConfig.MaxChunkCount);
 			succeeded &= sendBuf.EncodeUAString(GetEndpointString());
-	
+
 			if (!succeeded)
 			{
 				return StatusCode.BadEncodingLimitsExceeded;
@@ -2121,13 +2127,16 @@ namespace LibUA
 					return StatusCode.BadUnknownResponse;
 				}
 
-				UInt32 numRecv;
+				Int32 numRecv;
 				succeeded &= recvHandler.RecvBuf.Decode(out numRecv);
 
-				results = new DataValue[numRecv];
-				for (int i = 0; i < numRecv && succeeded; i++)
+				if (numRecv >= 0)
 				{
-					succeeded &= recvHandler.RecvBuf.Decode(out results[i]);
+					results = new DataValue[numRecv];
+					for (int i = 0; i < numRecv && succeeded; i++)
+					{
+						succeeded &= recvHandler.RecvBuf.Decode(out results[i]);
+					}
 				}
 
 				if (!succeeded)
@@ -2226,13 +2235,16 @@ namespace LibUA
 					return StatusCode.BadUnknownResponse;
 				}
 
-				UInt32 numRecv;
+				Int32 numRecv;
 				succeeded &= recvHandler.RecvBuf.Decode(out numRecv);
 
-				results = new uint[numRecv];
-				for (int i = 0; i < numRecv && succeeded; i++)
+				if (numRecv >= 0)
 				{
-					succeeded &= recvHandler.RecvBuf.Decode(out results[i]);
+					results = new uint[numRecv];
+					for (int i = 0; i < numRecv && succeeded; i++)
+					{
+						succeeded &= recvHandler.RecvBuf.Decode(out results[i]);
+					}
 				}
 
 				if (!succeeded)
@@ -2760,29 +2772,34 @@ namespace LibUA
 					return StatusCode.BadUnknownResponse;
 				}
 
-				UInt32 numRecv;
+				Int32 numRecv;
 				succeeded &= recvHandler.RecvBuf.Decode(out numRecv);
 
-				results = new BrowseResult[numRecv];
-				for (int i = 0; i < numRecv && succeeded; i++)
+				if (numRecv >= 0)
 				{
-					UInt32 status;
-					byte[] contPoint;
-					UInt32 numRefDesc;
-					ReferenceDescription[] refDescs;
-
-					succeeded &= recvHandler.RecvBuf.Decode(out status);
-					succeeded &= recvHandler.RecvBuf.DecodeUAByteString(out contPoint);
-					succeeded &= recvHandler.RecvBuf.Decode(out numRefDesc);
-
-					if (numRefDesc == uint.MaxValue) { numRefDesc = 0; }
-					refDescs = new ReferenceDescription[numRefDesc];
-					for (int j = 0; j < refDescs.Length; j++)
+					results = new BrowseResult[numRecv];
+					for (int i = 0; i < numRecv && succeeded; i++)
 					{
-						succeeded &= recvHandler.RecvBuf.Decode(out refDescs[j]);
-					}
+						UInt32 status;
+						byte[] contPoint;
+						Int32 numRefDesc;
+						ReferenceDescription[] refDescs = null;
 
-					results[i] = new BrowseResult(status, contPoint, refDescs);
+						succeeded &= recvHandler.RecvBuf.Decode(out status);
+						succeeded &= recvHandler.RecvBuf.DecodeUAByteString(out contPoint);
+						succeeded &= recvHandler.RecvBuf.Decode(out numRefDesc);
+
+						if (numRefDesc >= 0)
+						{
+							refDescs = new ReferenceDescription[numRefDesc];
+							for (int j = 0; j < refDescs.Length; j++)
+							{
+								succeeded &= recvHandler.RecvBuf.Decode(out refDescs[j]);
+							}
+						}
+
+						results[i] = new BrowseResult(status, contPoint, refDescs);
+					}
 				}
 
 				if (!succeeded)
@@ -2884,28 +2901,34 @@ namespace LibUA
 
 				if (!releaseContinuationPoints)
 				{
-					UInt32 numRecv;
+					Int32 numRecv;
 					succeeded &= recvHandler.RecvBuf.Decode(out numRecv);
 
-					results = new BrowseResult[numRecv];
-					for (int i = 0; i < numRecv && succeeded; i++)
+					if (numRecv >= 0)
 					{
-						UInt32 status;
-						byte[] contPoint;
-						UInt32 numRefDesc;
-						ReferenceDescription[] refDescs;
-
-						succeeded &= recvHandler.RecvBuf.Decode(out status);
-						succeeded &= recvHandler.RecvBuf.DecodeUAByteString(out contPoint);
-						succeeded &= recvHandler.RecvBuf.Decode(out numRefDesc);
-
-						refDescs = new ReferenceDescription[numRefDesc];
-						for (int j = 0; j < refDescs.Length; j++)
+						results = new BrowseResult[numRecv];
+						for (int i = 0; i < numRecv && succeeded; i++)
 						{
-							succeeded &= recvHandler.RecvBuf.Decode(out refDescs[j]);
-						}
+							UInt32 status;
+							byte[] contPoint;
+							Int32 numRefDesc;
+							ReferenceDescription[] refDescs = null;
 
-						results[i] = new BrowseResult(status, contPoint, refDescs);
+							succeeded &= recvHandler.RecvBuf.Decode(out status);
+							succeeded &= recvHandler.RecvBuf.DecodeUAByteString(out contPoint);
+							succeeded &= recvHandler.RecvBuf.Decode(out numRefDesc);
+
+							if (numRefDesc >= 0)
+							{
+								refDescs = new ReferenceDescription[numRefDesc];
+								for (int j = 0; j < refDescs.Length; j++)
+								{
+									succeeded &= recvHandler.RecvBuf.Decode(out refDescs[j]);
+								}
+							}
+
+							results[i] = new BrowseResult(status, contPoint, refDescs);
+						}
 					}
 
 					if (!succeeded)
@@ -3089,65 +3112,80 @@ namespace LibUA
 
 				if (!releaseContinuationPoints)
 				{
-					UInt32 numRecv;
+					Int32 numRecv;
 					succeeded &= recvHandler.RecvBuf.Decode(out numRecv);
 
-					results = new HistoryReadResult[numRecv];
-					for (int i = 0; i < numRecv && succeeded; i++)
+					if (numRecv >= 0)
 					{
-						UInt32 status;
-						byte[] contPoint;
-
-						NodeId type;
-						byte eoBodyMask;
-						UInt32 eoSize;
-
-						succeeded &= recvHandler.RecvBuf.Decode(out status);
-						succeeded &= recvHandler.RecvBuf.DecodeUAByteString(out contPoint);
-						succeeded &= recvHandler.RecvBuf.Decode(out type);
-						succeeded &= recvHandler.RecvBuf.Decode(out eoBodyMask);
-						if (eoBodyMask != 1)
+						results = new HistoryReadResult[numRecv];
+						for (int i = 0; i < numRecv && succeeded; i++)
 						{
-							return StatusCode.BadDataEncodingInvalid;
-						}
-						succeeded &= recvHandler.RecvBuf.Decode(out eoSize);
+							UInt32 status;
+							byte[] contPoint;
 
-						if (type.EqualsNumeric(0, (uint)UAConst.HistoryData_Encoding_DefaultBinary))
-						{
-							UInt32 numDvs;
-							succeeded &= recvHandler.RecvBuf.Decode(out numDvs);
-							DataValue[] dvs = new DataValue[numDvs];
-							for (int j = 0; j < numDvs; j++)
+							NodeId type;
+							byte eoBodyMask;
+							UInt32 eoSize;
+
+							succeeded &= recvHandler.RecvBuf.Decode(out status);
+							succeeded &= recvHandler.RecvBuf.DecodeUAByteString(out contPoint);
+							succeeded &= recvHandler.RecvBuf.Decode(out type);
+							succeeded &= recvHandler.RecvBuf.Decode(out eoBodyMask);
+							if (eoBodyMask != 1)
 							{
-								succeeded &= recvHandler.RecvBuf.Decode(out dvs[j]);
+								return StatusCode.BadDataEncodingInvalid;
 							}
+							succeeded &= recvHandler.RecvBuf.Decode(out eoSize);
 
-							results[i] = new HistoryReadResult(status, contPoint, dvs);
-						}
-						else if (type.EqualsNumeric(0, (uint)UAConst.HistoryEvent_Encoding_DefaultBinary))
-						{
-							UInt32 numDvs;
-							succeeded &= recvHandler.RecvBuf.Decode(out numDvs);
-
-							DataValue[] dvs = new DataValue[numDvs];
-							for (int j = 0; succeeded && j < numDvs; j++)
+							if (type.EqualsNumeric(0, (uint)UAConst.HistoryData_Encoding_DefaultBinary))
 							{
-								UInt32 numFields;
-								succeeded &= recvHandler.RecvBuf.Decode(out numFields);
-								object[] fields = new object[numFields];
-								for (int k = 0; succeeded && k < numFields; k++)
+								Int32 numDvs;
+								succeeded &= recvHandler.RecvBuf.Decode(out numDvs);
+								if (numDvs >= 0)
 								{
-									succeeded &= recvHandler.RecvBuf.VariantDecode(out fields[k]);
+									DataValue[] dvs = new DataValue[numDvs];
+									for (int j = 0; j < numDvs; j++)
+									{
+										succeeded &= recvHandler.RecvBuf.Decode(out dvs[j]);
+									}
+
+									results[i] = new HistoryReadResult(status, contPoint, dvs);
+								}
+							}
+							else if (type.EqualsNumeric(0, (uint)UAConst.HistoryEvent_Encoding_DefaultBinary))
+							{
+								Int32 numDvs;
+								succeeded &= recvHandler.RecvBuf.Decode(out numDvs);
+								DataValue[] dvs = null;
+
+								if (numDvs >= 0)
+								{
+									dvs = new DataValue[numDvs];
+									for (int j = 0; succeeded && j < numDvs; j++)
+									{
+										Int32 numFields;
+										object[] fields = null;
+
+										succeeded &= recvHandler.RecvBuf.Decode(out numFields);
+										if (numFields >= 0)
+										{
+											fields = new object[numFields];
+											for (int k = 0; succeeded && k < numFields; k++)
+											{
+												succeeded &= recvHandler.RecvBuf.VariantDecode(out fields[k]);
+											}
+										}
+
+										dvs[j] = new DataValue(fields);
+									}
 								}
 
-								dvs[j] = new DataValue(fields);
+								results[i] = new HistoryReadResult(status, contPoint, dvs);
 							}
-
-							results[i] = new HistoryReadResult(status, contPoint, dvs);
-						}
-						else
-						{
-							return StatusCode.BadDataEncodingInvalid;
+							else
+							{
+								return StatusCode.BadDataEncodingInvalid;
+							}
 						}
 					}
 
@@ -3267,13 +3305,16 @@ namespace LibUA
 					return StatusCode.BadUnknownResponse;
 				}
 
-				UInt32 numRecv;
+				Int32 numRecv;
 				succeeded &= recvHandler.RecvBuf.Decode(out numRecv);
 
-				results = new uint[numRecv];
-				for (int i = 0; i < numRecv && succeeded; i++)
+				if (numRecv >= 0)
 				{
-					succeeded &= recvHandler.RecvBuf.Decode(out results[i]);
+					results = new uint[numRecv];
+					for (int i = 0; i < numRecv && succeeded; i++)
+					{
+						succeeded &= recvHandler.RecvBuf.Decode(out results[i]);
+					}
 				}
 
 				if (numRecv != requests.Length)
@@ -3372,13 +3413,16 @@ namespace LibUA
 					return StatusCode.BadUnknownResponse;
 				}
 
-				UInt32 numRecv;
+				Int32 numRecv;
 				succeeded &= recvHandler.RecvBuf.Decode(out numRecv);
 
-				results = new BrowsePathResult[numRecv];
-				for (int i = 0; i < numRecv && succeeded; i++)
+				if (numRecv >= 0)
 				{
-					succeeded &= recvHandler.RecvBuf.Decode(out results[i]);
+					results = new BrowsePathResult[numRecv];
+					for (int i = 0; i < numRecv && succeeded; i++)
+					{
+						succeeded &= recvHandler.RecvBuf.Decode(out results[i]);
+					}
 				}
 
 				if (numRecv != requests.Length)
@@ -3483,50 +3527,51 @@ namespace LibUA
 					return StatusCode.BadUnknownResponse;
 				}
 
-				UInt32 numRecv;
+				Int32 numRecv;
 				succeeded &= recvHandler.RecvBuf.Decode(out numRecv);
 
-				results = new CallMethodResult[numRecv];
-				for (int i = 0; i < numRecv && succeeded; i++)
+				if (numRecv >= 0)
 				{
-					UInt32 status;
-					UInt32 numResults;
-					UInt32[] resultStatus;
-					UInt32 numDiagnosticInfos;
-					UInt32 numOutputs;
-					object[] outputs;
-
-					succeeded &= recvHandler.RecvBuf.Decode(out status);
-
-					succeeded &= recvHandler.RecvBuf.Decode(out numResults);
-					if (numResults == uint.MaxValue)
+					results = new CallMethodResult[numRecv];
+					for (int i = 0; i < numRecv && succeeded; i++)
 					{
-						numResults = 0;
-					}
-					resultStatus = new UInt32[numResults];
-					for (int j = 0; j < numResults; j++)
-					{
-						succeeded &= recvHandler.RecvBuf.Decode(out resultStatus[j]);
-					}
+						UInt32 status;
+						Int32 numResults;
+						UInt32[] resultStatus = null;
+						Int32 numDiagnosticInfos;
+						Int32 numOutputs;
+						object[] outputs = null;
 
-					succeeded &= recvHandler.RecvBuf.Decode(out numDiagnosticInfos);
-					if (numDiagnosticInfos > 0 && numDiagnosticInfos != uint.MaxValue)
-					{
-						return StatusCode.BadTypeMismatch;
-					}
+						succeeded &= recvHandler.RecvBuf.Decode(out status);
 
-					succeeded &= recvHandler.RecvBuf.Decode(out numOutputs);
-					if (numOutputs == uint.MaxValue)
-					{
-						numOutputs = 0;
-					}
-					outputs = new object[numOutputs];
-					for (int j = 0; j < numOutputs; j++)
-					{
-						succeeded &= recvHandler.RecvBuf.VariantDecode(out outputs[j]);
-					}
+						succeeded &= recvHandler.RecvBuf.Decode(out numResults);
+						if (numResults >= 0)
+						{
+							resultStatus = new UInt32[numResults];
+							for (int j = 0; j < numResults; j++)
+							{
+								succeeded &= recvHandler.RecvBuf.Decode(out resultStatus[j]);
+							}
+						}
 
-					results[i] = new CallMethodResult(status, resultStatus, outputs);
+						succeeded &= recvHandler.RecvBuf.Decode(out numDiagnosticInfos);
+						if (numDiagnosticInfos > 0)
+						{
+							return StatusCode.BadTypeMismatch;
+						}
+
+						succeeded &= recvHandler.RecvBuf.Decode(out numOutputs);
+						if (numOutputs >= 0)
+						{
+							outputs = new object[numOutputs];
+							for (int j = 0; j < numOutputs; j++)
+							{
+								succeeded &= recvHandler.RecvBuf.VariantDecode(out outputs[j]);
+							}
+						}
+
+						results[i] = new CallMethodResult(status, resultStatus, outputs);
+					}
 				}
 
 				if (numRecv != requests.Length)
@@ -3836,12 +3881,15 @@ namespace LibUA
 					return StatusCode.BadUnknownResponse;
 				}
 
-				UInt32 numResults;
+				Int32 numResults;
 				succeeded &= recvHandler.RecvBuf.Decode(out numResults);
-				results = new uint[numResults];
-				for (int i = 0; i < numResults; i++)
+				if (numResults >= 0)
 				{
-					succeeded &= recvHandler.RecvBuf.Decode(out results[i]);
+					results = new uint[numResults];
+					for (int i = 0; i < numResults; i++)
+					{
+						succeeded &= recvHandler.RecvBuf.Decode(out results[i]);
+					}
 				}
 
 				if (!succeeded)
@@ -3936,12 +3984,15 @@ namespace LibUA
 					return StatusCode.BadUnknownResponse;
 				}
 
-				UInt32 numResults;
+				Int32 numResults;
 				succeeded &= recvHandler.RecvBuf.Decode(out numResults);
-				results = new uint[numResults];
-				for (int i = 0; i < numResults; i++)
+				if (numResults >= 0)
 				{
-					succeeded &= recvHandler.RecvBuf.Decode(out results[i]);
+					results = new uint[numResults];
+					for (int i = 0; i < numResults; i++)
+					{
+						succeeded &= recvHandler.RecvBuf.Decode(out results[i]);
+					}
 				}
 
 				if (!succeeded)
@@ -4038,12 +4089,15 @@ namespace LibUA
 					return StatusCode.BadUnknownResponse;
 				}
 
-				UInt32 numResults;
+				Int32 numResults;
 				succeeded &= recvHandler.RecvBuf.Decode(out numResults);
-				results = new MonitoredItemCreateResult[numResults];
-				for (int i = 0; i < numResults; i++)
+				if (numResults >= 0)
 				{
-					succeeded &= recvHandler.RecvBuf.Decode(out results[i]);
+					results = new MonitoredItemCreateResult[numResults];
+					for (int i = 0; i < numResults; i++)
+					{
+						succeeded &= recvHandler.RecvBuf.Decode(out results[i]);
+					}
 				}
 
 				if (!succeeded)
@@ -4140,12 +4194,15 @@ namespace LibUA
 					return StatusCode.BadUnknownResponse;
 				}
 
-				UInt32 numResults;
+				Int32 numResults;
 				succeeded &= recvHandler.RecvBuf.Decode(out numResults);
-				results = new MonitoredItemModifyResult[numResults];
-				for (int i = 0; i < numResults; i++)
+				if (numResults >= 0)
 				{
-					succeeded &= recvHandler.RecvBuf.Decode(out results[i]);
+					results = new MonitoredItemModifyResult[numResults];
+					for (int i = 0; i < numResults; i++)
+					{
+						succeeded &= recvHandler.RecvBuf.Decode(out results[i]);
+					}
 				}
 
 				if (!succeeded)
@@ -4240,12 +4297,15 @@ namespace LibUA
 					return StatusCode.BadUnknownResponse;
 				}
 
-				UInt32 numResults;
+				Int32 numResults;
 				succeeded &= recvHandler.RecvBuf.Decode(out numResults);
-				results = new uint[numResults];
-				for (int i = 0; i < numResults; i++)
+				if (numResults >= 0)
 				{
-					succeeded &= recvHandler.RecvBuf.Decode(out results[i]);
+					results = new uint[numResults];
+					for (int i = 0; i < numResults; i++)
+					{
+						succeeded &= recvHandler.RecvBuf.Decode(out results[i]);
+					}
 				}
 
 				if (!succeeded)
@@ -4266,13 +4326,17 @@ namespace LibUA
 		{
 			bool succeeded = true;
 
-			UInt32 subscrId, numSeqNums, seqNum;
+			UInt32 subscrId, seqNum;
+			Int32 numSeqNums;
 			bool MoreNotifications;
 
 			succeeded &= recvHandler.RecvBuf.Decode(out subscrId);
 			// AvailableSequenceNumbers
 			succeeded &= recvHandler.RecvBuf.Decode(out numSeqNums);
-			for (int i = 0; i < numSeqNums; i++) { succeeded &= recvHandler.RecvBuf.Decode(out seqNum); }
+			if (numSeqNums >= 0)
+			{
+				for (int i = 0; i < numSeqNums; i++) { succeeded &= recvHandler.RecvBuf.Decode(out seqNum); }
+			}
 
 			succeeded &= recvHandler.RecvBuf.Decode(out MoreNotifications);
 			succeeded &= recvHandler.RecvBuf.Decode(out seqNum);
@@ -4289,7 +4353,7 @@ namespace LibUA
 				publishTime = DateTimeOffset.MinValue;
 			}
 
-			UInt32 numNotificationData;
+			Int32 numNotificationData;
 			succeeded &= recvHandler.RecvBuf.Decode(out numNotificationData);
 			for (int i = 0; succeeded && i < numNotificationData; i++)
 			{
@@ -4308,10 +4372,10 @@ namespace LibUA
 
 				if (typeId.EqualsNumeric(0, (uint)UAConst.DataChangeNotification_Encoding_DefaultBinary))
 				{
-					UInt32 numDv;
+					Int32 numDv;
 					succeeded &= recvHandler.RecvBuf.Decode(out numDv);
 
-					if (numDv > 0)
+					if (numDv > 0) // null array?
 					{
 						DataValue[] notifications = new DataValue[numDv];
 						uint[] clientHandles = new uint[numDv];
@@ -4331,10 +4395,10 @@ namespace LibUA
 				}
 				else if (typeId.EqualsNumeric(0, (uint)UAConst.EventNotificationList_Encoding_DefaultBinary))
 				{
-					UInt32 numDv;
+					Int32 numDv;
 					succeeded &= recvHandler.RecvBuf.Decode(out numDv);
 
-					if (numDv > 0)
+					if (numDv > 0) // null array?
 					{
 						object[][] notifications = new object[numDv][];
 						uint[] clientHandles = new uint[numDv];
@@ -4342,12 +4406,19 @@ namespace LibUA
 						{
 							succeeded &= recvHandler.RecvBuf.Decode(out clientHandles[j]);
 
-							UInt32 numFields;
+							Int32 numFields;
 							succeeded &= recvHandler.RecvBuf.Decode(out numFields);
-							notifications[j] = new object[numFields];
-							for (int k = 0; succeeded && k < numFields; k++)
+							if (numFields >= 0)
 							{
-								succeeded &= recvHandler.RecvBuf.VariantDecode(out notifications[j][k]);
+								notifications[j] = new object[numFields];
+								for (int k = 0; succeeded && k < numFields; k++)
+								{
+									succeeded &= recvHandler.RecvBuf.VariantDecode(out notifications[j][k]);
+								}
+							}
+							else
+							{
+								notifications[j] = null;
 							}
 						}
 
