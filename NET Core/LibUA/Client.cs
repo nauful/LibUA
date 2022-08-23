@@ -629,7 +629,7 @@ namespace LibUA
 				}
 
 				UInt32 numEndpointDescs;
-				succeeded &= recvHandler.RecvBuf.Decode(out numEndpointDescs);
+				succeeded &= recvHandler.RecvBuf.DecodeArraySize(out numEndpointDescs);
 
 				endpointDescs = new EndpointDescription[numEndpointDescs];
 				for (int i = 0; i < numEndpointDescs && succeeded; i++)
@@ -729,7 +729,7 @@ namespace LibUA
 				}
 
 				UInt32 numDescs;
-				succeeded &= recvHandler.RecvBuf.Decode(out numDescs);
+				succeeded &= recvHandler.RecvBuf.DecodeArraySize(out numDescs);
 
 				results = new ApplicationDescription[numDescs];
 				for (int i = 0; i < numDescs && succeeded; i++)
@@ -2122,7 +2122,7 @@ namespace LibUA
 				}
 
 				UInt32 numRecv;
-				succeeded &= recvHandler.RecvBuf.Decode(out numRecv);
+				succeeded &= recvHandler.RecvBuf.DecodeArraySize(out numRecv);
 
 				results = new DataValue[numRecv];
 				for (int i = 0; i < numRecv && succeeded; i++)
@@ -2227,7 +2227,7 @@ namespace LibUA
 				}
 
 				UInt32 numRecv;
-				succeeded &= recvHandler.RecvBuf.Decode(out numRecv);
+				succeeded &= recvHandler.RecvBuf.DecodeArraySize(out numRecv);
 
 				results = new uint[numRecv];
 				for (int i = 0; i < numRecv && succeeded; i++)
@@ -2332,7 +2332,7 @@ namespace LibUA
 				}
 
 				UInt32 numRecv;
-				succeeded &= recvHandler.RecvBuf.Decode(out numRecv);
+				succeeded &= recvHandler.RecvBuf.DecodeArraySize(out numRecv);
 
 				results = new AddNodesResult[numRecv];
 				for (int i = 0; i < numRecv && succeeded; i++)
@@ -2437,7 +2437,7 @@ namespace LibUA
 				}
 
 				UInt32 numRecv;
-				succeeded &= recvHandler.RecvBuf.Decode(out numRecv);
+				succeeded &= recvHandler.RecvBuf.DecodeArraySize(out numRecv);
 
 				results = new uint[numRecv];
 				for (int i = 0; i < numRecv && succeeded; i++)
@@ -2542,7 +2542,7 @@ namespace LibUA
 				}
 
 				UInt32 numRecv;
-				succeeded &= recvHandler.RecvBuf.Decode(out numRecv);
+				succeeded &= recvHandler.RecvBuf.DecodeArraySize(out numRecv);
 
 				results = new uint[numRecv];
 				for (int i = 0; i < numRecv && succeeded; i++)
@@ -2647,7 +2647,7 @@ namespace LibUA
 				}
 
 				UInt32 numRecv;
-				succeeded &= recvHandler.RecvBuf.Decode(out numRecv);
+				succeeded &= recvHandler.RecvBuf.DecodeArraySize(out numRecv);
 
 				results = new uint[numRecv];
 				for (int i = 0; i < numRecv && succeeded; i++)
@@ -2761,7 +2761,7 @@ namespace LibUA
 				}
 
 				UInt32 numRecv;
-				succeeded &= recvHandler.RecvBuf.Decode(out numRecv);
+				succeeded &= recvHandler.RecvBuf.DecodeArraySize(out numRecv);
 
 				results = new BrowseResult[numRecv];
 				for (int i = 0; i < numRecv && succeeded; i++)
@@ -2773,7 +2773,7 @@ namespace LibUA
 
 					succeeded &= recvHandler.RecvBuf.Decode(out status);
 					succeeded &= recvHandler.RecvBuf.DecodeUAByteString(out contPoint);
-					succeeded &= recvHandler.RecvBuf.Decode(out numRefDesc);
+					succeeded &= recvHandler.RecvBuf.DecodeArraySize(out numRefDesc);
 
 					if (numRefDesc == uint.MaxValue) { numRefDesc = 0; }
 					refDescs = new ReferenceDescription[numRefDesc];
@@ -2885,7 +2885,7 @@ namespace LibUA
 				if (!releaseContinuationPoints)
 				{
 					UInt32 numRecv;
-					succeeded &= recvHandler.RecvBuf.Decode(out numRecv);
+					succeeded &= recvHandler.RecvBuf.DecodeArraySize(out numRecv);
 
 					results = new BrowseResult[numRecv];
 					for (int i = 0; i < numRecv && succeeded; i++)
@@ -2897,7 +2897,7 @@ namespace LibUA
 
 						succeeded &= recvHandler.RecvBuf.Decode(out status);
 						succeeded &= recvHandler.RecvBuf.DecodeUAByteString(out contPoint);
-						succeeded &= recvHandler.RecvBuf.Decode(out numRefDesc);
+						succeeded &= recvHandler.RecvBuf.DecodeArraySize(out numRefDesc);
 
 						refDescs = new ReferenceDescription[numRefDesc];
 						for (int j = 0; j < refDescs.Length; j++)
@@ -3090,7 +3090,7 @@ namespace LibUA
 				if (!releaseContinuationPoints)
 				{
 					UInt32 numRecv;
-					succeeded &= recvHandler.RecvBuf.Decode(out numRecv);
+					succeeded &= recvHandler.RecvBuf.DecodeArraySize(out numRecv);
 
 					results = new HistoryReadResult[numRecv];
 					for (int i = 0; i < numRecv && succeeded; i++)
@@ -3115,7 +3115,7 @@ namespace LibUA
 						if (type.EqualsNumeric(0, (uint)UAConst.HistoryData_Encoding_DefaultBinary))
 						{
 							UInt32 numDvs;
-							succeeded &= recvHandler.RecvBuf.Decode(out numDvs);
+							succeeded &= recvHandler.RecvBuf.DecodeArraySize(out numDvs);
 							DataValue[] dvs = new DataValue[numDvs];
 							for (int j = 0; j < numDvs; j++)
 							{
@@ -3127,13 +3127,13 @@ namespace LibUA
 						else if (type.EqualsNumeric(0, (uint)UAConst.HistoryEvent_Encoding_DefaultBinary))
 						{
 							UInt32 numDvs;
-							succeeded &= recvHandler.RecvBuf.Decode(out numDvs);
+							succeeded &= recvHandler.RecvBuf.DecodeArraySize(out numDvs);
 
 							DataValue[] dvs = new DataValue[numDvs];
 							for (int j = 0; succeeded && j < numDvs; j++)
 							{
 								UInt32 numFields;
-								succeeded &= recvHandler.RecvBuf.Decode(out numFields);
+								succeeded &= recvHandler.RecvBuf.DecodeArraySize(out numFields);
 								object[] fields = new object[numFields];
 								for (int k = 0; succeeded && k < numFields; k++)
 								{
@@ -3268,7 +3268,7 @@ namespace LibUA
 				}
 
 				UInt32 numRecv;
-				succeeded &= recvHandler.RecvBuf.Decode(out numRecv);
+				succeeded &= recvHandler.RecvBuf.DecodeArraySize(out numRecv);
 
 				results = new uint[numRecv];
 				for (int i = 0; i < numRecv && succeeded; i++)
@@ -3373,7 +3373,7 @@ namespace LibUA
 				}
 
 				UInt32 numRecv;
-				succeeded &= recvHandler.RecvBuf.Decode(out numRecv);
+				succeeded &= recvHandler.RecvBuf.DecodeArraySize(out numRecv);
 
 				results = new BrowsePathResult[numRecv];
 				for (int i = 0; i < numRecv && succeeded; i++)
@@ -3484,7 +3484,7 @@ namespace LibUA
 				}
 
 				UInt32 numRecv;
-				succeeded &= recvHandler.RecvBuf.Decode(out numRecv);
+				succeeded &= recvHandler.RecvBuf.DecodeArraySize(out numRecv);
 
 				results = new CallMethodResult[numRecv];
 				for (int i = 0; i < numRecv && succeeded; i++)
@@ -3498,7 +3498,7 @@ namespace LibUA
 
 					succeeded &= recvHandler.RecvBuf.Decode(out status);
 
-					succeeded &= recvHandler.RecvBuf.Decode(out numResults);
+					succeeded &= recvHandler.RecvBuf.DecodeArraySize(out numResults);
 					if (numResults == uint.MaxValue)
 					{
 						numResults = 0;
@@ -3509,13 +3509,13 @@ namespace LibUA
 						succeeded &= recvHandler.RecvBuf.Decode(out resultStatus[j]);
 					}
 
-					succeeded &= recvHandler.RecvBuf.Decode(out numDiagnosticInfos);
+					succeeded &= recvHandler.RecvBuf.DecodeArraySize(out numDiagnosticInfos);
 					if (numDiagnosticInfos > 0 && numDiagnosticInfos != uint.MaxValue)
 					{
 						return StatusCode.BadTypeMismatch;
 					}
 
-					succeeded &= recvHandler.RecvBuf.Decode(out numOutputs);
+					succeeded &= recvHandler.RecvBuf.DecodeArraySize(out numOutputs);
 					if (numOutputs == uint.MaxValue)
 					{
 						numOutputs = 0;
@@ -3837,7 +3837,7 @@ namespace LibUA
 				}
 
 				UInt32 numResults;
-				succeeded &= recvHandler.RecvBuf.Decode(out numResults);
+				succeeded &= recvHandler.RecvBuf.DecodeArraySize(out numResults);
 				results = new uint[numResults];
 				for (int i = 0; i < numResults; i++)
 				{
@@ -3937,7 +3937,7 @@ namespace LibUA
 				}
 
 				UInt32 numResults;
-				succeeded &= recvHandler.RecvBuf.Decode(out numResults);
+				succeeded &= recvHandler.RecvBuf.DecodeArraySize(out numResults);
 				results = new uint[numResults];
 				for (int i = 0; i < numResults; i++)
 				{
@@ -4039,7 +4039,7 @@ namespace LibUA
 				}
 
 				UInt32 numResults;
-				succeeded &= recvHandler.RecvBuf.Decode(out numResults);
+				succeeded &= recvHandler.RecvBuf.DecodeArraySize(out numResults);
 				results = new MonitoredItemCreateResult[numResults];
 				for (int i = 0; i < numResults; i++)
 				{
@@ -4141,7 +4141,7 @@ namespace LibUA
 				}
 
 				UInt32 numResults;
-				succeeded &= recvHandler.RecvBuf.Decode(out numResults);
+				succeeded &= recvHandler.RecvBuf.DecodeArraySize(out numResults);
 				results = new MonitoredItemModifyResult[numResults];
 				for (int i = 0; i < numResults; i++)
 				{
@@ -4241,7 +4241,7 @@ namespace LibUA
 				}
 
 				UInt32 numResults;
-				succeeded &= recvHandler.RecvBuf.Decode(out numResults);
+				succeeded &= recvHandler.RecvBuf.DecodeArraySize(out numResults);
 				results = new uint[numResults];
 				for (int i = 0; i < numResults; i++)
 				{
@@ -4271,7 +4271,7 @@ namespace LibUA
 
 			succeeded &= recvHandler.RecvBuf.Decode(out subscrId);
 			// AvailableSequenceNumbers
-			succeeded &= recvHandler.RecvBuf.Decode(out numSeqNums);
+			succeeded &= recvHandler.RecvBuf.DecodeArraySize(out numSeqNums);
 			for (int i = 0; i < numSeqNums; i++) { succeeded &= recvHandler.RecvBuf.Decode(out seqNum); }
 
 			succeeded &= recvHandler.RecvBuf.Decode(out MoreNotifications);
@@ -4290,7 +4290,7 @@ namespace LibUA
 			}
 
 			UInt32 numNotificationData;
-			succeeded &= recvHandler.RecvBuf.Decode(out numNotificationData);
+			succeeded &= recvHandler.RecvBuf.DecodeArraySize(out numNotificationData);
 			for (int i = 0; succeeded && i < numNotificationData; i++)
 			{
 				NodeId typeId;
@@ -4309,7 +4309,7 @@ namespace LibUA
 				if (typeId.EqualsNumeric(0, (uint)UAConst.DataChangeNotification_Encoding_DefaultBinary))
 				{
 					UInt32 numDv;
-					succeeded &= recvHandler.RecvBuf.Decode(out numDv);
+					succeeded &= recvHandler.RecvBuf.DecodeArraySize(out numDv);
 
 					if (numDv > 0)
 					{
@@ -4332,7 +4332,7 @@ namespace LibUA
 				else if (typeId.EqualsNumeric(0, (uint)UAConst.EventNotificationList_Encoding_DefaultBinary))
 				{
 					UInt32 numDv;
-					succeeded &= recvHandler.RecvBuf.Decode(out numDv);
+					succeeded &= recvHandler.RecvBuf.DecodeArraySize(out numDv);
 
 					if (numDv > 0)
 					{
@@ -4343,7 +4343,7 @@ namespace LibUA
 							succeeded &= recvHandler.RecvBuf.Decode(out clientHandles[j]);
 
 							UInt32 numFields;
-							succeeded &= recvHandler.RecvBuf.Decode(out numFields);
+							succeeded &= recvHandler.RecvBuf.DecodeArraySize(out numFields);
 							notifications[j] = new object[numFields];
 							for (int k = 0; succeeded && k < numFields; k++)
 							{
