@@ -136,7 +136,7 @@ namespace LibUA
 			BrowsePathTarget[] Targets;
 
 			if (!mem.Decode(out StatusCodeUint)) { return false; }
-			if (!mem.Decode(out NumTargets)) { return false; }
+			if (!mem.DecodeArraySize(out NumTargets)) { return false; }
 			Targets = new BrowsePathTarget[NumTargets];
 			for (uint i = 0; i < NumTargets; i++)
 			{
@@ -219,7 +219,7 @@ namespace LibUA
 			RelativePathElement[] RelativePath;
 
 			if (!mem.Decode(out StartingNode)) { return false; }
-			if (!mem.Decode(out NumRelativePath)) { return false; }
+			if (!mem.DecodeArraySize(out NumRelativePath)) { return false; }
 			RelativePath = new RelativePathElement[NumRelativePath];
 			for (uint i = 0; i < NumRelativePath; i++)
 			{
@@ -332,7 +332,7 @@ namespace LibUA
 
 			UInt32 filterOperatorUint, numFilterOperands;
 			if (!mem.Decode(out filterOperatorUint)) { return false; }
-			if (!mem.Decode(out numFilterOperands)) { return false; }
+			if (!mem.DecodeArraySize(out numFilterOperands)) { return false; }
 
 			var operands = new FilterOperand[numFilterOperands];
 			for (uint i = 0; i < numFilterOperands; i++)
@@ -411,7 +411,7 @@ namespace LibUA
 			}
 
 			UInt32 numSelectClauses;
-			if (!mem.Decode(out numSelectClauses)) { return false; }
+			if (!mem.DecodeArraySize(out numSelectClauses)) { return false; }
 
 			SimpleAttributeOperand[] selectClauses = null;
 			if (numSelectClauses != UInt32.MaxValue)
@@ -426,7 +426,7 @@ namespace LibUA
 					string indexRange;
 
 					if (!mem.Decode(out typeDefId)) { return false; }
-					if (!mem.Decode(out numBrowsePath)) { return false; }
+					if (!mem.DecodeArraySize(out numBrowsePath)) { return false; }
 					browsePath = new QualifiedName[numBrowsePath];
 					for (uint j = 0; j < numBrowsePath; j++)
 					{
@@ -448,7 +448,7 @@ namespace LibUA
 			}
 
 			UInt32 numContentFilters;
-			if (!mem.Decode(out numContentFilters)) { return false; }
+			if (!mem.DecodeArraySize(out numContentFilters)) { return false; }
 
 			ContentFilterElement[] contentFilters = null;
 			if (numContentFilters != UInt32.MaxValue)
@@ -869,7 +869,7 @@ namespace LibUA
 			if (!mem.DecodeUAByteString(out ServerCertificate)) { return false; }
 			if (!mem.Decode(out SecurityMode)) { return false; }
 			if (!mem.DecodeUAString(out SecurityPolicyUri)) { return false; }
-			if (!mem.Decode(out numUserIdentityTokens)) { return false; }
+			if (!mem.DecodeArraySize(out numUserIdentityTokens)) { return false; }
 
 			if (numUserIdentityTokens != 0xFFFFFFFFu)
 			{

@@ -425,6 +425,22 @@ namespace LibUA
 				return true;
 			}
 
+			public bool DecodeArraySize(out UInt32 v)
+			{
+				if (!Decode(out v))
+				{
+					return false;
+				}
+
+				// Array length of -1 == no array encoded
+				if (v == 0xFFFFFFFFu)
+				{
+					v = 0;
+				}
+
+				return true;
+			}
+
 			public bool Decode(out UInt32 v, int pos)
 			{
 				v = 0;
