@@ -2828,7 +2828,16 @@ namespace LibUA
 
 			protected int DispatchMessage_RegisterNodesRequest(SLChannel config, RequestHeader reqHeader, MemoryBuffer recvBuf, uint messageSize)
 			{
-				var respBuf = new MemoryBuffer(maximumMessageSize);
+                UInt32 noOfNodesToRegister;
+                if (!recvBuf.Decode(out noOfNodesToRegister)) { return ErrorParseFail; }
+
+                var nodesToRegister = new NodeId[noOfNodesToRegister];
+                for (uint i = 0; i < noOfNodesToRegister; i++)
+                {
+                    if (!recvBuf.Decode(out nodesToRegister[i])) { return ErrorParseFail; }
+                }
+
+                var respBuf = new MemoryBuffer(maximumMessageSize);
 				bool succeeded = DispatchMessage_WriteHeader(config, respBuf,
 					(uint)RequestCode.RegisterNodesResponse, reqHeader, (uint)StatusCode.BadNotSupported);
 
@@ -2837,10 +2846,14 @@ namespace LibUA
 					return ErrorRespWrite;
 				}
 
-				// NoOfRegisteredNodeIds
-				succeeded &= respBuf.Encode((UInt32)0);
+                // NoOfRegisteredNodeIds
+                succeeded &= respBuf.Encode((UInt32)nodesToRegister.Length);
+                for (int i = 0; i < nodesToRegister.Length && succeeded; i++)
+                {
+                    succeeded &= respBuf.Encode(nodesToRegister[i]);
+                }
 
-				if (!succeeded)
+                if (!succeeded)
 				{
 					return ErrorRespWrite;
 				}
