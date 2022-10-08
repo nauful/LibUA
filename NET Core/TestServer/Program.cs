@@ -56,7 +56,7 @@ namespace TestServer
 				LoadCertificateAndPrivateKey();
 
 				uaAppDesc = new ApplicationDescription(
-					"url:qs:DemoApplication", "http://quantensystems.com/",
+					"urn:DemoApplication", "http://quantensystems.com/",
 					new LocalizedText("en-US", "QuantenSystems demo server"), ApplicationType.Server,
 					null, null, null);
 
