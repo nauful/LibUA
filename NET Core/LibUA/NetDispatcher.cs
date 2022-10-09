@@ -883,7 +883,7 @@ namespace LibUA
 					var expectHash = UASecurity.RsaPkcs15Sha_Decrypt(
 						new ArraySegment<byte>(password),
 						app.ApplicationCertificate, app.ApplicationPrivateKey,
-						SecurityPolicy.Basic128Rsa15);
+						config.SecurityPolicy);
 
 					int passByteLen = expectHash[0] | (expectHash[1] << 8) | (expectHash[2] << 16) | (expectHash[3] << 24);
 
