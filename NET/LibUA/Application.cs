@@ -596,10 +596,13 @@ namespace LibUA
 					{
 						res[i] = new DataValue((node as NodeVariableType).DataType ?? new NodeId(UAConst.BaseDataType), StatusCode.Good);
 					}
-					else if ((readValueIds[i].AttributeId == NodeAttribute.AccessLevel ||
-						readValueIds[i].AttributeId == NodeAttribute.AccessLevelEx) && node is NodeVariable)
+					else if (readValueIds[i].AttributeId == NodeAttribute.AccessLevel && node is NodeVariable)
 					{
 						res[i] = new DataValue((byte)(node as NodeVariable).AccessLevel, StatusCode.Good);
+					}
+					else if (readValueIds[i].AttributeId == NodeAttribute.AccessLevelEx && node is NodeVariable)
+					{
+						res[i] = new DataValue((UInt32)(node as NodeVariable).AccessLevel, StatusCode.Good);
 					}
 					else if (readValueIds[i].AttributeId == NodeAttribute.UserAccessLevel && node is NodeVariable)
 					{
