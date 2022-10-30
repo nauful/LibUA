@@ -2,6 +2,15 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageId>nauful-$(AssemblyName)-core</PackageId>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackageProjectUrl>https://github.com/nauful/libua</PackageProjectUrl>
+    <Copyright>Free for commercial use under the Apache License 2.0. Please give credit if you find this source useful.</Copyright>
+    <Description>Open-source OPC UA client and server library for .NET Core.</Description>
+    <Title>LibUA Core</Title>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/nauful/libua</RepositoryUrl>
+    <Version>1.0.2</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

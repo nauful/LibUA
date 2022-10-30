@@ -1,6 +1,10 @@
 # LibUA
 Open-source OPC UA client and server library for .NET (deprecated) and .NET Core based on IEC 62541. Available as source files, a demo client and a demo server. Tested and commercially used in industrial applications with commercial vendors' UA servers and clients.
 
+Available as a nuget package for .NET Core:
+https://www.nuget.org/packages/nauful-LibUA
+The latest version is 1.0.2.
+
 ### Features
 - Fully supported OPC UA core client and OPC UA server specification.
 - OPC UA binary protocol with chunking.
