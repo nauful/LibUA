@@ -839,16 +839,16 @@ namespace LibUA
 
 		public StatusCode Connect()
 		{
+			if (IsConnected)
+			{
+				throw new Exception("Disconnect before connecting again.");
+			}
+
 			cs = new Semaphore(1, 1);
 
 			try
 			{
 				cs.WaitOne();
-
-				if (IsConnected)
-				{
-					Disconnect();
-				}
 
 				totalBytesSent = 0;
 				totalBytesRecv = 0;
