@@ -40,6 +40,7 @@ namespace TestServer
 
 			NodeObject ItemsRoot;
 			NodeVariable[] TrendNodes;
+			NodeVariable Node1D, Node2D;
 
 			X509Certificate2 appCertificate = null;
 			RSACryptoServiceProvider cryptPrivateKey = null;
@@ -84,6 +85,21 @@ namespace TestServer
 					TrendNodes[i].References.Add(new ReferenceNode(new NodeId(UAConst.Organizes), ItemsRoot.Id, true));
 					AddressSpaceTable.TryAdd(TrendNodes[i].Id, TrendNodes[i]);
 				}
+
+				Node1D = new NodeVariable(new NodeId(2, (uint)(1000 + 1)), new QualifiedName("Array - 1D"),
+						new LocalizedText("Array - 1D"), new LocalizedText("Array - 1D"), 0, 0,
+						AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, nodeTypeFloat, ValueRank.OneDimension);
+				Node2D = new NodeVariable(new NodeId(2, (uint)(1000 + 2)), new QualifiedName("Array - 2D"),
+						new LocalizedText("Array - 2D"), new LocalizedText("Array - 2D"), 0, 0,
+						AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, nodeTypeFloat, ValueRank.OneOrMoreDimensions);
+
+				ItemsRoot.References.Add(new ReferenceNode(new NodeId(UAConst.Organizes), Node1D.Id, false));
+				Node1D.References.Add(new ReferenceNode(new NodeId(UAConst.Organizes), ItemsRoot.Id, true));
+				AddressSpaceTable.TryAdd(Node1D.Id, Node1D);
+
+				ItemsRoot.References.Add(new ReferenceNode(new NodeId(UAConst.Organizes), Node2D.Id, false));
+				Node2D.References.Add(new ReferenceNode(new NodeId(UAConst.Organizes), ItemsRoot.Id, true));
+				AddressSpaceTable.TryAdd(Node2D.Id, Node2D);
 			}
 
 			public override object SessionCreate(SessionCreationInfo sessionInfo)
@@ -209,7 +225,23 @@ namespace TestServer
 				if (id.NamespaceIndex == 2 &&
 					AddressSpaceTable.TryGetValue(id, out node))
 				{
-					return new DataValue(3.14159265, StatusCode.Good, DateTime.Now);
+					if (node == Node1D)
+					{
+						return new DataValue(new float[] { 1.0f, 2.0f, 3.0f }, StatusCode.Good, DateTime.Now);
+
+					}
+					else if (node == Node2D)
+					{
+						return new DataValue(new float[2, 2]
+						{
+							{ 1.0f, 2.0f },
+							{ 3.0f, 4.0f }
+						}, StatusCode.Good, DateTime.Now);
+					}
+					else
+					{
+						return new DataValue(3.14159265, StatusCode.Good, DateTime.Now);
+					}
 				}
 
 				return base.HandleReadRequestInternal(id);
