@@ -163,6 +163,27 @@ namespace TestClient
 						true, 0xFFFFFFFFu, BrowseResultMask.All)
 			}, 10000, out browseResults);
 
+			//Queue<NodeId> nodeQueue = new Queue<NodeId>();
+			//nodeQueue.Enqueue(new NodeId(0, (uint)UAConst.ObjectsFolder));
+			//while (nodeQueue.TryDequeue(out NodeId currentNode))
+			//{
+			//	client.Browse(new BrowseDescription[]
+			//	{
+			//		new BrowseDescription(
+			//			currentNode,
+			//			BrowseDirection.Forward,
+			//			NodeId.Zero,
+			//			true, 0xFFFFFFFFu, BrowseResultMask.All)
+			//	}, 10000, out BrowseResult[] childrenBrowseResults);
+			//	foreach (var reference in childrenBrowseResults[0].Refs)
+			//	{
+			//		if (reference.ReferenceTypeId.EqualsNumeric(0, (uint)RefType.Organizes))
+			//		{
+			//			nodeQueue.Enqueue(reference.TargetId);
+			//		}
+			//	}
+			//}
+
 			uint[] respStatuses;
 			client.Write(new WriteValue[]
 				{
