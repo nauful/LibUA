@@ -801,10 +801,9 @@ namespace LibUA
 					mask |= 0x80;
 					size += CodingSize((int)((Array)obj).Length);
 
-					var arr = (Array)obj;
-					for (int i = 0; i < arr.Length; i++)
+					foreach (var value in obj as Array)
 					{
-						size += VariantCodingSize(arr.GetValue(i), mask);
+						size += VariantCodingSize(value, mask);
 					}
 
 					if (rank > 1)

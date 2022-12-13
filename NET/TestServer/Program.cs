@@ -228,7 +228,6 @@ namespace TestServer
 					if (node == Node1D)
 					{
 						return new DataValue(new float[] { 1.0f, 2.0f, 3.0f }, StatusCode.Good, DateTime.Now);
-
 					}
 					else if (node == Node2D)
 					{
