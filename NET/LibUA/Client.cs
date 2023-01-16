@@ -1650,9 +1650,12 @@ namespace LibUA
 							offset += rndBytes.Length;
 						}
 
-						crypted = UASecurity.RsaPkcs15Sha_Encrypt(
-							new ArraySegment<byte>(crypted),
-							config.RemoteCertificate, userIdentitySecurityPolicy ?? config.SecurityPolicy);
+						if (userIdentitySecurityPolicy != null)
+						{
+							crypted = UASecurity.RsaPkcs15Sha_Encrypt(
+								new ArraySegment<byte>(crypted),
+								config.RemoteCertificate, (SecurityPolicy)userIdentitySecurityPolicy);
+						}
 
 						succeeded &= sendBuf.EncodeUAByteString(crypted);
 						succeeded &= sendBuf.EncodeUAString(((identityToken as UserIdentityUsernameToken)).Algorithm);

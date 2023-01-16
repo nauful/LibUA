@@ -139,69 +139,83 @@ namespace TestServer
 				throw new Exception("Unhandled user identity token type");
 			}
 
+			private ApplicationDescription CreateApplicationDescriptionFromEndpointHint(string endpointUrlHint)
+			{
+				string[] discoveryUrls = uaAppDesc.DiscoveryUrls;
+				if (discoveryUrls == null && !string.IsNullOrEmpty(endpointUrlHint))
+				{
+					discoveryUrls = new string[] { endpointUrlHint };
+				}
+
+				return new ApplicationDescription(uaAppDesc.ApplicationUri, uaAppDesc.ProductUri, uaAppDesc.ApplicationName,
+					uaAppDesc.Type, uaAppDesc.GatewayServerUri, uaAppDesc.DiscoveryProfileUri, discoveryUrls);
+			}
+
 			public override IList<EndpointDescription> GetEndpointDescriptions(string endpointUrlHint)
 			{
 				var certStr = ApplicationCertificate.Export(X509ContentType.Cert);
+				ApplicationDescription localAppDesc = CreateApplicationDescriptionFromEndpointHint(endpointUrlHint);
 
 				var epNoSecurity = new EndpointDescription(
-					endpointUrlHint, uaAppDesc, null,
+					endpointUrlHint, localAppDesc, certStr,
 					MessageSecurityMode.None, Types.SLSecurityPolicyUris[(int)SecurityPolicy.None],
 					new UserTokenPolicy[]
 					{
 						new UserTokenPolicy("0", UserTokenType.Anonymous, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.None]),
+						new UserTokenPolicy("1", UserTokenType.UserName, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256Sha256]),
 					}, Types.TransportProfileBinary, 0);
 
 				var epSignBasic128Rsa15 = new EndpointDescription(
-					endpointUrlHint, uaAppDesc, certStr,
+					endpointUrlHint, localAppDesc, certStr,
 					MessageSecurityMode.Sign, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic128Rsa15],
 					new UserTokenPolicy[]
 					{
-						new UserTokenPolicy("0", UserTokenType.Anonymous, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic128Rsa15]),
-						new UserTokenPolicy("1", UserTokenType.UserName, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic128Rsa15]),
+						new UserTokenPolicy("0", UserTokenType.Anonymous, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.None]),
+						new UserTokenPolicy("1", UserTokenType.UserName, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256Sha256]),
 					}, Types.TransportProfileBinary, 0);
 
 				var epSignBasic256 = new EndpointDescription(
-					endpointUrlHint, uaAppDesc, certStr,
+					endpointUrlHint, localAppDesc, certStr,
 					MessageSecurityMode.Sign, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256],
 					new UserTokenPolicy[]
 					{
-						new UserTokenPolicy("0", UserTokenType.Anonymous, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256]),
-						new UserTokenPolicy("1", UserTokenType.UserName, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256]),
+						new UserTokenPolicy("0", UserTokenType.Anonymous, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.None]),
+						new UserTokenPolicy("1", UserTokenType.UserName, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256Sha256]),
 					}, Types.TransportProfileBinary, 0);
 
 				var epSignBasic256Sha256 = new EndpointDescription(
-					endpointUrlHint, uaAppDesc, certStr,
+					endpointUrlHint, localAppDesc, certStr,
 					MessageSecurityMode.Sign, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256Sha256],
 					new UserTokenPolicy[]
 					{
-						new UserTokenPolicy("0", UserTokenType.Anonymous, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256Sha256]),
+						new UserTokenPolicy("0", UserTokenType.Anonymous, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.None]),
 						new UserTokenPolicy("1", UserTokenType.UserName, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256Sha256]),
 					}, Types.TransportProfileBinary, 0);
 
 				var epSignEncryptBasic128Rsa15 = new EndpointDescription(
-					endpointUrlHint, uaAppDesc, certStr,
+					endpointUrlHint, localAppDesc, certStr,
 					MessageSecurityMode.SignAndEncrypt, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic128Rsa15],
 					new UserTokenPolicy[]
 					{
-						new UserTokenPolicy("0", UserTokenType.Anonymous, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic128Rsa15]),
-						new UserTokenPolicy("1", UserTokenType.UserName, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic128Rsa15]),
+						new UserTokenPolicy("0", UserTokenType.Anonymous, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.None]),
+						new UserTokenPolicy("1", UserTokenType.UserName, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256Sha256]),
 					}, Types.TransportProfileBinary, 0);
 
 				var epSignEncryptBasic256 = new EndpointDescription(
-					endpointUrlHint, uaAppDesc, certStr,
+					endpointUrlHint, localAppDesc, certStr,
 					MessageSecurityMode.SignAndEncrypt, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256],
 					new UserTokenPolicy[]
 					{
-						new UserTokenPolicy("0", UserTokenType.Anonymous, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256]),
-						new UserTokenPolicy("1", UserTokenType.UserName, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256]),
+						new UserTokenPolicy("0", UserTokenType.Anonymous, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.None]),
+						new UserTokenPolicy("1", UserTokenType.UserName, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256Sha256]),
 					}, Types.TransportProfileBinary, 0);
 
 				var epSignEncryptBasic256Sha256 = new EndpointDescription(
-					endpointUrlHint, uaAppDesc, certStr,
+					endpointUrlHint, localAppDesc, certStr,
 					MessageSecurityMode.SignAndEncrypt, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256Sha256],
 					new UserTokenPolicy[]
 					{
-						new UserTokenPolicy("0", UserTokenType.Anonymous, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256Sha256]),
+						new UserTokenPolicy("0", UserTokenType.Anonymous, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.None]),
 						new UserTokenPolicy("1", UserTokenType.UserName, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256Sha256]),
 					}, Types.TransportProfileBinary, 0);
 
@@ -216,7 +230,7 @@ namespace TestServer
 
 			public override ApplicationDescription GetApplicationDescription(string endpointUrlHint)
 			{
-				return uaAppDesc;
+				return CreateApplicationDescriptionFromEndpointHint(endpointUrlHint);
 			}
 
 			protected override DataValue HandleReadRequestInternal(NodeId id)

@@ -880,23 +880,34 @@ namespace LibUA
 					if (!recvBuf.DecodeUAByteString(out password)) { return ErrorParseFail; }
 					if (!recvBuf.DecodeUAString(out algorithm)) { return ErrorParseFail; }
 
-					var expectHash = UASecurity.RsaPkcs15Sha_Decrypt(
-						new ArraySegment<byte>(password),
-						app.ApplicationCertificate, app.ApplicationPrivateKey,
-						config.SecurityPolicy);
-
-					int passByteLen = expectHash[0] | (expectHash[1] << 8) | (expectHash[2] << 16) | (expectHash[3] << 24);
-
-					if (config.SessionIssuedNonce != null)
+					if (string.IsNullOrEmpty(algorithm))
 					{
-						passByteLen -= config.SessionIssuedNonce.Length;
+						if (!app.SessionValidateClientUser(config.Session, new UserIdentityUsernameToken(policyId, username, password, algorithm)))
+						{
+							UAStatusCode = (uint)StatusCode.BadSecurityChecksFailed;
+							return ErrorParseFail;
+						}
 					}
-
-					var passSegment = new ArraySegment<byte>(expectHash, 4, passByteLen);
-					if (!app.SessionValidateClientUser(config.Session, new UserIdentityUsernameToken(policyId, username, passSegment.ToArray(), algorithm)))
+					else
 					{
-						UAStatusCode = (uint)StatusCode.BadSecurityChecksFailed;
-						return ErrorParseFail;
+						var expectHash = UASecurity.RsaPkcs15Sha_Decrypt(
+							new ArraySegment<byte>(password),
+							app.ApplicationCertificate, app.ApplicationPrivateKey,
+							SecurityPolicy.Basic256Sha256);
+
+						int passByteLen = expectHash[0] | (expectHash[1] << 8) | (expectHash[2] << 16) | (expectHash[3] << 24);
+
+						if (config.SessionIssuedNonce != null)
+						{
+							passByteLen -= config.SessionIssuedNonce.Length;
+						}
+
+						var passSegment = new ArraySegment<byte>(expectHash, 4, passByteLen);
+						if (!app.SessionValidateClientUser(config.Session, new UserIdentityUsernameToken(policyId, username, passSegment.ToArray(), algorithm)))
+						{
+							UAStatusCode = (uint)StatusCode.BadSecurityChecksFailed;
+							return ErrorParseFail;
+						}
 					}
 				}
 				else
@@ -919,12 +930,7 @@ namespace LibUA
 					return ErrorRespWrite;
 				}
 
-				if (config.MessageSecurityMode == MessageSecurityMode.None)
-				{
-					// Server nonce
-					succeeded &= respBuf.EncodeUAByteString(null);
-				}
-				else
+				if (config.MessageSecurityMode != MessageSecurityMode.None)
 				{
 					if (config.SessionIssuedNonce == null)
 					{
@@ -955,11 +961,11 @@ namespace LibUA
 						UAStatusCode = (uint)StatusCode.BadSecurityChecksFailed;
 						return ErrorInternal;
 					}
-
-					config.SessionIssuedNonce = UASecurity.GenerateRandomBytes(UASecurity.ActivationNonceSize);
-					// Server nonce
-					succeeded &= respBuf.EncodeUAByteString(config.SessionIssuedNonce);
 				}
+
+				config.SessionIssuedNonce = UASecurity.GenerateRandomBytes(UASecurity.ActivationNonceSize);
+				// Server nonce
+				succeeded &= respBuf.EncodeUAByteString(config.SessionIssuedNonce);
 
 				// Results
 				succeeded &= respBuf.Encode((UInt32)0);
@@ -1025,12 +1031,15 @@ namespace LibUA
 				succeeded &= respBuf.Encode(config.AuthToken);
 				succeeded &= respBuf.Encode((double)requestedSessionTimeOut);
 
+				// Verify in ActivateSession
+				config.SessionIssuedNonce = UASecurity.GenerateRandomBytes(UASecurity.ActivationNonceSize);
+
 				if (config.MessageSecurityMode == MessageSecurityMode.None)
 				{
 					// Server nonce
-					succeeded &= respBuf.EncodeUAByteString(null);
+					succeeded &= respBuf.EncodeUAByteString(config.SessionIssuedNonce);
 					// Server certificate
-					succeeded &= respBuf.EncodeUAByteString(null);
+					succeeded &= respBuf.EncodeUAByteString(app.ApplicationCertificate.Export(X509ContentType.Cert));
 
 					succeeded &= respBuf.Encode((UInt32)endpointDescs.Count);
 					for (int i = 0; i < endpointDescs.Count && succeeded; i++)
@@ -1054,9 +1063,6 @@ namespace LibUA
 
 					var serverSignature = UASecurity.RsaPkcs15Sha_Sign(new ArraySegment<byte>(signMsg),
 						app.ApplicationPrivateKey, config.SecurityPolicy);
-
-					// Verify in ActivateSession
-					config.SessionIssuedNonce = UASecurity.GenerateRandomBytes(UASecurity.ActivationNonceSize);
 
 					// Server nonce
 					succeeded &= respBuf.EncodeUAByteString(config.SessionIssuedNonce);
