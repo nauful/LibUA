@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Sockets;
 using System.Security.Cryptography.X509Certificates;
 using LibUA.Core;
+using static LibUA.Security.Cryptography.CapiNative;
 
 namespace LibUA
 {
@@ -890,10 +891,10 @@ namespace LibUA
 					}
 					else
 					{
-						var expectHash = UASecurity.RsaPkcs15Sha_Decrypt(
+						var expectHash = UASecurity.Decrypt(
 							new ArraySegment<byte>(password),
 							app.ApplicationCertificate, app.ApplicationPrivateKey,
-							SecurityPolicy.Basic256Sha256);
+							UASecurity.UseOaepForSecurityPolicyUri(algorithm));
 
 						int passByteLen = expectHash[0] | (expectHash[1] << 8) | (expectHash[2] << 16) | (expectHash[3] << 24);
 
@@ -955,7 +956,7 @@ namespace LibUA
 					Array.Copy(strLocalCert, 0, signMsg, 0, strLocalCert.Length);
 					Array.Copy(config.SessionIssuedNonce, 0, signMsg, strLocalCert.Length, config.SessionIssuedNonce.Length);
 
-					if (!UASecurity.RsaPkcs15Sha_VerifySigned(new ArraySegment<byte>(signMsg),
+					if (!UASecurity.VerifySigned(new ArraySegment<byte>(signMsg),
 						clientSignature, config.RemoteCertificate, config.SecurityPolicy))
 					{
 						UAStatusCode = (uint)StatusCode.BadSecurityChecksFailed;
@@ -1060,7 +1061,7 @@ namespace LibUA
 					Array.Copy(clientCertificate, 0, signMsg, 0, clientCertificate.Length);
 					Array.Copy(clientNonce, 0, signMsg, clientCertificate.Length, clientNonce.Length);
 
-					var serverSignature = UASecurity.RsaPkcs15Sha_Sign(new ArraySegment<byte>(signMsg),
+					var serverSignature = UASecurity.Sign(new ArraySegment<byte>(signMsg),
 						app.ApplicationPrivateKey, config.SecurityPolicy);
 
 					// Verify in ActivateSession
@@ -1522,9 +1523,9 @@ namespace LibUA
 					}
 
 					var paddingMethod = UASecurity.PaddingMethodForSecurityPolicy(config.SecurityPolicy);
-					var asymDecBuf = UASecurity.RsaPkcs15Sha_Decrypt(
+					var asymDecBuf = UASecurity.Decrypt(
 						new ArraySegment<byte>(recvBuf.Buffer, recvBuf.Position, recvBuf.Capacity - recvBuf.Position),
-						app.ApplicationCertificate, app.ApplicationPrivateKey, config.SecurityPolicy);
+						app.ApplicationCertificate, app.ApplicationPrivateKey, UASecurity.UseOaepForSecurityPolicy(config.SecurityPolicy));
 
 					int minPlainSize = Math.Min(asymDecBuf.Length, recvBuf.Capacity - recvBuf.Position);
 					Array.Copy(asymDecBuf, 0, recvBuf.Buffer, recvBuf.Position, minPlainSize);
@@ -1753,16 +1754,16 @@ namespace LibUA
 					respSize = encodeFromPosition + UASecurity.CalculateEncryptedSize(config.RemoteCertificate, respSize - encodeFromPosition, padMethod);
 					MarkPositionAsSize(respBuf, (UInt32)respSize);
 
-					var msgSign = UASecurity.RsaPkcs15Sha_Sign(new ArraySegment<byte>(respBuf.Buffer, 0, respBuf.Position),
+					var msgSign = UASecurity.Sign(new ArraySegment<byte>(respBuf.Buffer, 0, respBuf.Position),
 						app.ApplicationPrivateKey, config.SecurityPolicy);
 
 					//Console.WriteLine("AsymSig: {0}", string.Join("", msgSign.Select(v => v.ToString("X2"))));
 
 					respBuf.Append(msgSign);
 
-					var packed = UASecurity.RsaPkcs15Sha_Encrypt(
+					var packed = UASecurity.Encrypt(
 						new ArraySegment<byte>(respBuf.Buffer, encodeFromPosition, respBuf.Position - encodeFromPosition),
-						config.RemoteCertificate, config.SecurityPolicy);
+						config.RemoteCertificate, UASecurity.UseOaepForSecurityPolicy(config.SecurityPolicy));
 
 					respBuf.Position = encodeFromPosition;
 					respBuf.Append(packed);
