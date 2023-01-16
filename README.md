@@ -7,7 +7,7 @@ https://www.nuget.org/packages/nauful-LibUA-core
 ### Features
 - Fully supported OPC UA core client and OPC UA server specification.
 - OPC UA binary protocol with chunking.
-- Security profiles None, Basic128Rsa15, Basic256 and Basic256Sha256.
+- Security profiles None, Basic128Rsa15, Basic256, Basic256Sha256 and Aes128Sha256RsaOaep (.NET Core only).
 - Optimized memory buffers for encoding/decoding large and complex structures to/from raw bytes.
 - Support for all message types, node types, and default address space from the UA specification.
 - Support for signing and encrypted security profiles.
