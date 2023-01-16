@@ -1608,7 +1608,7 @@ namespace LibUA
 			return (int)messageSize;
 		}
 
-		public StatusCode ActivateSession(object identityToken, string[] localeIDs, SecurityPolicy? userIdentitySecurityPolicy = null)
+		public StatusCode ActivateSession(object identityToken, string[] localeIDs)
 		{
 			try
 			{
@@ -1654,7 +1654,8 @@ namespace LibUA
 					var thumbprint = UASecurity.Sign(new ArraySegment<byte>(signMsg),
 						ApplicationPrivateKey, config.SecurityPolicy);
 
-					if (config.SecurityPolicy == SecurityPolicy.Basic256Sha256)
+					if (config.SecurityPolicy == SecurityPolicy.Basic256Sha256 ||
+						config.SecurityPolicy == SecurityPolicy.Aes128_Sha256_RsaOaep)
 					{
 						succeeded &= sendBuf.EncodeUAString(Types.SignatureAlgorithmSha256);
 					}
@@ -1697,7 +1698,7 @@ namespace LibUA
 					{
 						var passwordSrc = (identityToken as UserIdentityUsernameToken).PasswordHash;
 						int padSize = UASecurity.CalculatePaddingSize(config.RemoteCertificate,
-							userIdentitySecurityPolicy ?? config.SecurityPolicy, 4 + passwordSrc.Length,
+							config.SecurityPolicy, 4 + passwordSrc.Length,
 							(config.RemoteNonce == null ? 0 : config.RemoteNonce.Length));
 						var rndBytes = UASecurity.GenerateRandomBytes(padSize);
 
@@ -1727,15 +1728,15 @@ namespace LibUA
 							offset += rndBytes.Length;
 						}
 
-						if (userIdentitySecurityPolicy != null)
+						if ((identityToken as UserIdentityUsernameToken).Algorithm != null)
 						{
 							crypted = UASecurity.Encrypt(
 								new ArraySegment<byte>(crypted),
-								config.RemoteCertificate, UASecurity.UseOaepForSecurityPolicy((SecurityPolicy)userIdentitySecurityPolicy));
+								config.RemoteCertificate, UASecurity.UseOaepForSecuritySigPolicyUri((identityToken as UserIdentityUsernameToken).Algorithm));
 						}
 
 						succeeded &= sendBuf.EncodeUAByteString(crypted);
-						succeeded &= sendBuf.EncodeUAString(((identityToken as UserIdentityUsernameToken)).Algorithm);
+						succeeded &= sendBuf.EncodeUAString((identityToken as UserIdentityUsernameToken).Algorithm);
 					}
 					catch
 					{

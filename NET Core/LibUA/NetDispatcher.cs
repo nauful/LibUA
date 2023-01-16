@@ -893,7 +893,7 @@ namespace LibUA
 						var expectHash = UASecurity.Decrypt(
 							new ArraySegment<byte>(password),
 							app.ApplicationCertificate, app.ApplicationPrivateKey,
-							UASecurity.UseOaepForSecurityPolicyUri(algorithm));
+							UASecurity.UseOaepForSecuritySigPolicyUri(algorithm));
 
 						int passByteLen = expectHash[0] | (expectHash[1] << 8) | (expectHash[2] << 16) | (expectHash[3] << 24);
 
@@ -1079,7 +1079,8 @@ namespace LibUA
 					succeeded &= respBuf.Encode((UInt32)0xFFFFFFFFu);
 
 					// Server signature algorithm
-					if (config.SecurityPolicy == SecurityPolicy.Basic256Sha256)
+					if (config.SecurityPolicy == SecurityPolicy.Basic256Sha256 ||
+						config.SecurityPolicy == SecurityPolicy.Aes128_Sha256_RsaOaep)
 					{
 						succeeded &= respBuf.EncodeUAString(Types.SignatureAlgorithmSha256);
 					}
@@ -1479,6 +1480,10 @@ namespace LibUA
 					{
 						config.SecurityPolicy = SecurityPolicy.Basic256Sha256;
 					}
+					else if (securityPolicyUri == Types.SLSecurityPolicyUris[(int)SecurityPolicy.Aes128_Sha256_RsaOaep])
+					{
+						config.SecurityPolicy = SecurityPolicy.Aes128_Sha256_RsaOaep;
+					}
 					else
 					{
 						UAStatusCode = (uint)StatusCode.BadSecurityPolicyRejected;
@@ -1632,11 +1637,11 @@ namespace LibUA
 				}
 				else
 				{
-					int symKeySize = UASecurity.SymmetricKeySizeForSecurityPolicy(config.SecurityPolicy, clientNonce.Length);
-
-					config.LocalNonce = UASecurity.GenerateRandomBytes(symKeySize);
+					int nonceLength = UASecurity.NonceLengthForSecurityPolicy(config.SecurityPolicy);
+					config.LocalNonce = UASecurity.GenerateRandomBytes(nonceLength);
 					config.RemoteNonce = clientNonce;
 
+					int symKeySize = UASecurity.SymmetricKeySizeForSecurityPolicy(config.SecurityPolicy);
 					int sigKeySize = UASecurity.SymmetricSignatureKeySizeForSecurityPolicy(config.SecurityPolicy);
 					int symBlockSize = UASecurity.SymmetricBlockSizeForSecurityPolicy(config.SecurityPolicy);
 

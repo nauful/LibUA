@@ -1635,11 +1635,11 @@ namespace LibUA
 				}
 				else
 				{
-					int symKeySize = UASecurity.SymmetricKeySizeForSecurityPolicy(config.SecurityPolicy, clientNonce.Length);
-
-					config.LocalNonce = UASecurity.GenerateRandomBytes(symKeySize);
+					int nonceLength = UASecurity.NonceLengthForSecurityPolicy(config.SecurityPolicy);
+					config.LocalNonce = UASecurity.GenerateRandomBytes(nonceLength);
 					config.RemoteNonce = clientNonce;
 
+					int symKeySize = UASecurity.SymmetricKeySizeForSecurityPolicy(config.SecurityPolicy);
 					int sigKeySize = UASecurity.SymmetricSignatureKeySizeForSecurityPolicy(config.SecurityPolicy);
 					int symBlockSize = UASecurity.SymmetricBlockSizeForSecurityPolicy();
 

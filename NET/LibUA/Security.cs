@@ -47,6 +47,11 @@ namespace LibUA
 			throw new Exception();
 		}
 
+		public static int NonceLengthForSecurityPolicy(SecurityPolicy policy)
+		{
+			return policy == SecurityPolicy.Basic128Rsa15 ? 16 : 32;
+		}
+
 		public static int SymmetricKeySizeForSecurityPolicy(SecurityPolicy policy, int clientNonceLength = -1)
 		{
 			switch (policy)

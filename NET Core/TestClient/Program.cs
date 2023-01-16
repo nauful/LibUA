@@ -122,14 +122,14 @@ namespace TestClient
 				.PolicyId;
 
 			var connectRes = client.Connect();
-			var openRes = client.OpenSecureChannel(MessageSecurityMode.SignAndEncrypt, SecurityPolicy.Basic256Sha256, serverCert);
+			var openRes = client.OpenSecureChannel(MessageSecurityMode.Sign, SecurityPolicy.Aes128_Sha256_RsaOaep, serverCert);
 			//var openRes = client.OpenSecureChannel(MessageSecurityMode.None, SecurityPolicy.None, null);
 			var createRes = client.CreateSession(appDesc, "urn:DemoApplication", 120);
-			var activateRes = client.ActivateSession(new UserIdentityAnonymousToken("0"), new[] { "en" });
-			//var activateRes = client.ActivateSession(
-			//	new UserIdentityUsernameToken(usernamePolicyDesc, "Username",
-			//		(new UTF8Encoding()).GetBytes("Password"), Types.SignatureAlgorithmRsa15),
-			//	new[] { "en" });
+			//var activateRes = client.ActivateSession(new UserIdentityAnonymousToken("0"), new[] { "en" });
+			var activateRes = client.ActivateSession(
+				new UserIdentityUsernameToken(usernamePolicyDesc, "Username",
+					(new UTF8Encoding()).GetBytes("Password"), Types.SignatureAlgorithmRsaOaep),
+				new[] { "en" });
 
 			DataValue[] dvs = null;
 			var readRes = client.Read(new ReadValueId[]
