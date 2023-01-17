@@ -205,8 +205,8 @@ namespace LibUA
 
 				if (config.SecurityPolicy != SecurityPolicy.None)
 				{
-					int symKeySize = UASecurity.SymmetricKeySizeForSecurityPolicy(config.SecurityPolicy);
-					clientNonce = UASecurity.GenerateRandomBytes(symKeySize);
+					int nonceSize = UASecurity.NonceLengthForSecurityPolicy(config.SecurityPolicy);
+					clientNonce = UASecurity.GenerateRandomBytes(nonceSize);
 				}
 
 				succeeded &= sendBuf.Encode(reqHeader);
@@ -221,10 +221,6 @@ namespace LibUA
 				if (!succeeded)
 				{
 					return StatusCode.BadEncodingLimitsExceeded;
-				}
-
-				if (config.SecurityPolicy == SecurityPolicy.None)
-				{
 				}
 
 				if (config.SecurityPolicy == SecurityPolicy.None)
