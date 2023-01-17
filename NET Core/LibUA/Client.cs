@@ -67,7 +67,7 @@ namespace LibUA
 			get { return null; }
 		}
 
-		public virtual RSACryptoServiceProvider ApplicationPrivateKey
+		public virtual RSACng ApplicationPrivateKey
 		{
 			get { return null; }
 		}
@@ -348,7 +348,6 @@ namespace LibUA
 						return StatusCode.BadSecurityChecksFailed;
 					}
 
-					var paddingMethod = UASecurity.PaddingMethodForSecurityPolicy(config.SecurityPolicy);
 					var asymDecBuf = UASecurity.Decrypt(
 						new ArraySegment<byte>(recvHandler.RecvBuf.Buffer, recvHandler.RecvBuf.Position, recvHandler.RecvBuf.Capacity - recvHandler.RecvBuf.Position),
 						ApplicationCertificate, ApplicationPrivateKey, UASecurity.UseOaepForSecurityPolicy(config.SecurityPolicy));

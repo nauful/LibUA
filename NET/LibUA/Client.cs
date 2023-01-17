@@ -339,7 +339,6 @@ namespace LibUA
 						return StatusCode.BadSecurityChecksFailed;
 					}
 
-					var paddingMethod = UASecurity.PaddingMethodForSecurityPolicy(config.SecurityPolicy);
 					var asymDecBuf = UASecurity.Decrypt(
 						new ArraySegment<byte>(recvHandler.RecvBuf.Buffer, recvHandler.RecvBuf.Position, recvHandler.RecvBuf.Capacity - recvHandler.RecvBuf.Position),
 						ApplicationCertificate, ApplicationPrivateKey, UASecurity.UseOaepForSecurityPolicy(config.SecurityPolicy));

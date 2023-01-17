@@ -939,7 +939,8 @@ namespace LibUA
 					}
 
 					if (clientSignatureAlgorithm != Types.SignatureAlgorithmSha1 &&
-						clientSignatureAlgorithm != Types.SignatureAlgorithmSha256)
+						clientSignatureAlgorithm != Types.SignatureAlgorithmSha256 &&
+						clientSignatureAlgorithm != Types.SignatureAlgorithmRsaOaep256)
 					{
 						if (logger != null)
 						{
@@ -1083,6 +1084,10 @@ namespace LibUA
 						config.SecurityPolicy == SecurityPolicy.Aes128_Sha256_RsaOaep)
 					{
 						succeeded &= respBuf.EncodeUAString(Types.SignatureAlgorithmSha256);
+					}
+					else if (config.SecurityPolicy == SecurityPolicy.Aes256_Sha256_RsaPss)
+					{
+						succeeded &= respBuf.EncodeUAString(Types.SignatureAlgorithmRsaOaep256);
 					}
 					else
 					{
@@ -1484,6 +1489,10 @@ namespace LibUA
 					{
 						config.SecurityPolicy = SecurityPolicy.Aes128_Sha256_RsaOaep;
 					}
+					else if (securityPolicyUri == Types.SLSecurityPolicyUris[(int)SecurityPolicy.Aes256_Sha256_RsaPss])
+					{
+						config.SecurityPolicy = SecurityPolicy.Aes256_Sha256_RsaPss;
+					}
 					else
 					{
 						UAStatusCode = (uint)StatusCode.BadSecurityPolicyRejected;
@@ -1524,7 +1533,6 @@ namespace LibUA
 						return ErrorInternal;
 					}
 
-					var paddingMethod = UASecurity.PaddingMethodForSecurityPolicy(config.SecurityPolicy);
 					var asymDecBuf = UASecurity.Decrypt(
 						new ArraySegment<byte>(recvBuf.Buffer, recvBuf.Position, recvBuf.Capacity - recvBuf.Position),
 						app.ApplicationCertificate, app.ApplicationPrivateKey, UASecurity.UseOaepForSecurityPolicy(config.SecurityPolicy));

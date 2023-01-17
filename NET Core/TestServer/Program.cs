@@ -40,14 +40,14 @@ namespace TestServer
 			NodeVariable Node1D, Node2D;
 
 			X509Certificate2 appCertificate = null;
-			RSACryptoServiceProvider cryptPrivateKey = null;
+			RSA cryptPrivateKey = null;
 
 			public override X509Certificate2 ApplicationCertificate
 			{
 				get { return appCertificate; }
 			}
 
-			public override RSACryptoServiceProvider ApplicationPrivateKey
+			public override RSA ApplicationPrivateKey
 			{
 				get { return cryptPrivateKey; }
 			}
@@ -203,14 +203,14 @@ namespace TestServer
 						new UserTokenPolicy("1", UserTokenType.UserName, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Aes128_Sha256_RsaOaep]),
 					}, Types.TransportProfileBinary, 0);
 
-				//var epSignRsa256Sha256 = new EndpointDescription(
-				//	endpointUrlHint, localAppDesc, certStr,
-				//	MessageSecurityMode.Sign, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Aes256_Sha256_RsaPss],
-				//	new UserTokenPolicy[]
-				//	{
-				//		new UserTokenPolicy("0", UserTokenType.Anonymous, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.None]),
-				//		new UserTokenPolicy("1", UserTokenType.UserName, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Aes256_Sha256_RsaPss]),
-				//	}, Types.TransportProfileBinary, 0);
+				var epSignRsa256Sha256 = new EndpointDescription(
+					endpointUrlHint, localAppDesc, certStr,
+					MessageSecurityMode.Sign, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Aes256_Sha256_RsaPss],
+					new UserTokenPolicy[]
+					{
+						new UserTokenPolicy("0", UserTokenType.Anonymous, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.None]),
+						new UserTokenPolicy("1", UserTokenType.UserName, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Aes256_Sha256_RsaPss]),
+					}, Types.TransportProfileBinary, 0);
 
 				var epSignEncryptBasic128Rsa15 = new EndpointDescription(
 					endpointUrlHint, localAppDesc, certStr,
@@ -248,23 +248,23 @@ namespace TestServer
 						new UserTokenPolicy("1", UserTokenType.UserName, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Aes128_Sha256_RsaOaep]),
 					}, Types.TransportProfileBinary, 0);
 
-				//var epSignEncryptRsa256Sha256 = new EndpointDescription(
-				//	endpointUrlHint, localAppDesc, certStr,
-				//	MessageSecurityMode.SignAndEncrypt, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Aes256_Sha256_RsaPss],
-				//	new UserTokenPolicy[]
-				//	{
-				//		new UserTokenPolicy("0", UserTokenType.Anonymous, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.None]),
-				//		new UserTokenPolicy("1", UserTokenType.UserName, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Aes256_Sha256_RsaPss]),
-				//	}, Types.TransportProfileBinary, 0);
+				var epSignEncryptRsa256Sha256 = new EndpointDescription(
+					endpointUrlHint, localAppDesc, certStr,
+					MessageSecurityMode.SignAndEncrypt, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Aes256_Sha256_RsaPss],
+					new UserTokenPolicy[]
+					{
+						new UserTokenPolicy("0", UserTokenType.Anonymous, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.None]),
+						new UserTokenPolicy("1", UserTokenType.UserName, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Aes256_Sha256_RsaPss]),
+					}, Types.TransportProfileBinary, 0);
 
 				return new EndpointDescription[]
 				{
 					epNoSecurity,
+					epSignRsa256Sha256, epSignEncryptRsa256Sha256,
 					epSignRsa128Sha256, epSignEncryptRsa128Sha256,
 					epSignBasic256Sha256, epSignEncryptBasic256Sha256,
 					epSignBasic256, epSignEncryptBasic256,
 					epSignBasic128Rsa15, epSignEncryptBasic128Rsa15
-					//epSignRsa256Sha256, epSignEncryptRsa256Sha256
 				};
 			}
 
@@ -520,7 +520,7 @@ namespace TestServer
 				{
 					// Try to load existing (public key) and associated private key
 					appCertificate = new X509Certificate2("ServerCert.der");
-					cryptPrivateKey = new RSACryptoServiceProvider();
+					cryptPrivateKey = new RSACng();
 
 					var rsaPrivParams = UASecurity.ImportRSAPrivateKey(File.ReadAllText("ServerKey.pem"));
 					cryptPrivateKey.ImportParameters(rsaPrivParams);
@@ -536,7 +536,7 @@ namespace TestServer
 					using (RSA rsa = RSA.Create(2048))
 					{
 						var request = new CertificateRequest(dn, rsa, HashAlgorithmName.SHA256,
-							RSASignaturePadding.Pkcs1);
+							RSASignaturePadding.Pss);
 
 						request.CertificateExtensions.Add(sanBuilder.Build());
 
@@ -550,7 +550,7 @@ namespace TestServer
 						File.WriteAllText("ServerCert.der", UASecurity.ExportPEM(appCertificate));
 						File.WriteAllText("ServerKey.pem", UASecurity.ExportRSAPrivateKey(certPrivateParams));
 
-						cryptPrivateKey = new RSACryptoServiceProvider();
+						cryptPrivateKey = new RSACng();
 						cryptPrivateKey.ImportParameters(certPrivateParams);
 					}
 				}

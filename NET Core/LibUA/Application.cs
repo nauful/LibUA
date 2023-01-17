@@ -73,7 +73,7 @@ namespace LibUA
 				get { return null; }
 			}
 
-			public virtual RSACryptoServiceProvider ApplicationPrivateKey
+			public virtual RSA ApplicationPrivateKey
 			{
 				get { return null; }
 			}

@@ -1522,7 +1522,6 @@ namespace LibUA
 						return ErrorInternal;
 					}
 
-					var paddingMethod = UASecurity.PaddingMethodForSecurityPolicy(config.SecurityPolicy);
 					var asymDecBuf = UASecurity.Decrypt(
 						new ArraySegment<byte>(recvBuf.Buffer, recvBuf.Position, recvBuf.Capacity - recvBuf.Position),
 						app.ApplicationCertificate, app.ApplicationPrivateKey, UASecurity.UseOaepForSecurityPolicy(config.SecurityPolicy));
