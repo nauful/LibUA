@@ -1,13 +1,13 @@
 # LibUA
 Open-source OPC UA client and server library for .NET (deprecated) and .NET Core based on IEC 62541. Available as source files, a demo client and a demo server. Tested and commercially used in industrial applications with commercial vendors' UA servers and clients.
 
-Available as a nuget package for .NET Core (1.0.3):
+Available as a nuget package for .NET Core (1.0.4):
 https://www.nuget.org/packages/nauful-LibUA-core
 
 ### Features
 - Fully supported OPC UA core client and OPC UA server specification.
 - OPC UA binary protocol with chunking.
-- Security profiles None, Basic128Rsa15, Basic256, Basic256Sha256 and Aes128Sha256RsaOaep (.NET Core only).
+- Security profiles None, Basic128Rsa15, Basic256, Basic256Sha256 and Aes128Sha256RsaOaep (.NET Standard only).
 - Optimized memory buffers for encoding/decoding large and complex structures to/from raw bytes.
 - Support for all message types, node types, and default address space from the UA specification.
 - Support for signing and encrypted security profiles.
