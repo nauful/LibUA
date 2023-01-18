@@ -124,6 +124,7 @@ namespace LibUA
 				case Types.SignatureAlgorithmRsaOaep:
 					return RSAEncryptionPadding.OaepSHA1;
 
+				case Types.SignatureAlgorithmSha256:
 				case Types.SignatureAlgorithmRsaOaep256:
 					return RSAEncryptionPadding.OaepSHA256;
 
@@ -147,6 +148,21 @@ namespace LibUA
 		public static int CalculatePaddingSize(X509Certificate2 cert, SecurityPolicy policy, int position, int sigSize)
 		{
 			int plainBlockSize = GetPlainBlockSize(cert, UseOaepForSecurityPolicy(policy));
+
+			int pad = plainBlockSize;
+			pad -= (position + sigSize) % plainBlockSize;
+
+			if (pad < 0)
+			{
+				throw new Exception();
+			}
+
+			return pad;
+		}
+
+		public static int CalculatePaddingSizePolicyUri(X509Certificate2 cert, string policy, int position, int sigSize)
+		{
+			int plainBlockSize = GetPlainBlockSize(cert, UseOaepForSecuritySigPolicyUri(policy));
 
 			int pad = plainBlockSize;
 			pad -= (position + sigSize) % plainBlockSize;

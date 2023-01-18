@@ -1654,6 +1654,10 @@ namespace LibUA
 					{
 						succeeded &= sendBuf.EncodeUAString(Types.SignatureAlgorithmSha256);
 					}
+					else if (config.SecurityPolicy == SecurityPolicy.Aes256_Sha256_RsaPss)
+					{
+						succeeded &= sendBuf.EncodeUAString(Types.SignatureAlgorithmRsaPss256);
+					}
 					else
 					{
 						succeeded &= sendBuf.EncodeUAString(Types.SignatureAlgorithmSha1);
@@ -1692,8 +1696,8 @@ namespace LibUA
 					try
 					{
 						var passwordSrc = (identityToken as UserIdentityUsernameToken).PasswordHash;
-						int padSize = UASecurity.CalculatePaddingSize(config.RemoteCertificate,
-							config.SecurityPolicy, 4 + passwordSrc.Length,
+						int padSize = UASecurity.CalculatePaddingSizePolicyUri(config.RemoteCertificate,
+							(identityToken as UserIdentityUsernameToken).Algorithm, 4 + passwordSrc.Length,
 							(config.RemoteNonce == null ? 0 : config.RemoteNonce.Length));
 						var rndBytes = UASecurity.GenerateRandomBytes(padSize);
 
@@ -1723,19 +1727,16 @@ namespace LibUA
 							offset += rndBytes.Length;
 						}
 
-						if ((identityToken as UserIdentityUsernameToken).Algorithm != null)
-						{
-							crypted = UASecurity.Encrypt(
-								new ArraySegment<byte>(crypted),
-								config.RemoteCertificate, UASecurity.UseOaepForSecuritySigPolicyUri((identityToken as UserIdentityUsernameToken).Algorithm));
-						}
+						crypted = UASecurity.Encrypt(
+							new ArraySegment<byte>(crypted),
+							config.RemoteCertificate, UASecurity.UseOaepForSecuritySigPolicyUri((identityToken as UserIdentityUsernameToken).Algorithm));
 
 						succeeded &= sendBuf.EncodeUAByteString(crypted);
 						succeeded &= sendBuf.EncodeUAString((identityToken as UserIdentityUsernameToken).Algorithm);
 					}
 					catch
 					{
-						return StatusCode.BadIdentityTokenInvalid;
+						return StatusCode.BadSecurityChecksFailed;
 					}
 
 					succeeded &= sendBuf.Encode((UInt32)(sendBuf.Position - eoStartPos - 4), eoStartPos);

@@ -99,37 +99,46 @@ namespace TestClient
 				"urn:DemoApplication", "uri:DemoApplication", new LocalizedText("UA SDK client"),
 				ApplicationType.Client, null, null, null);
 
+			var client = new DemoClient("127.0.0.1", 7718, 1000);
+			var messageSecurityMode = MessageSecurityMode.SignAndEncrypt;
+			var securityPolicy = SecurityPolicy.Aes256_Sha256_RsaPss;
+			bool useAnonymousUser = true;
+
 			ApplicationDescription[] appDescs = null;
 			EndpointDescription[] endpointDescs = null;
 
-			//var client = new DemoClient("192.168.1.7", 7718, 10);
-			var client = new DemoClient("127.0.0.1", 7718, 1000);
 			client.Connect();
 			client.OpenSecureChannel(MessageSecurityMode.None, SecurityPolicy.None, null);
 			client.FindServers(out appDescs, new[] { "en" });
 			client.GetEndpoints(out endpointDescs, new[] { "en" });
 			client.Disconnect();
 
-			// Check matching message security mode and security policy too
-			// Lazy way to find server certificate is just grab any endpoint with one
-			byte[] serverCert = endpointDescs
-				.First(e => e.ServerCertificate != null && e.ServerCertificate.Length > 0)
-				.ServerCertificate;
-
-			var usernamePolicyDesc = endpointDescs
-				.First(e => e.UserIdentityTokens.Any(t => t.TokenType == UserTokenType.UserName))
-				.UserIdentityTokens.First(t => t.TokenType == UserTokenType.UserName)
-				.PolicyId;
+			// Will fail if no matching message security mode and security policy is found
+			var endpointDesc = endpointDescs.First(e => 
+				e.SecurityMode == messageSecurityMode && 
+				e.SecurityPolicyUri == Types.SLSecurityPolicyUris[(int)securityPolicy]);
+			byte[] serverCert = endpointDesc.ServerCertificate;
 
 			var connectRes = client.Connect();
-			var openRes = client.OpenSecureChannel(MessageSecurityMode.SignAndEncrypt, SecurityPolicy.Aes256_Sha256_RsaPss, serverCert);
-			//var openRes = client.OpenSecureChannel(MessageSecurityMode.None, SecurityPolicy.None, null);
+			var openRes = client.OpenSecureChannel(messageSecurityMode, securityPolicy, serverCert);
 			var createRes = client.CreateSession(appDesc, "urn:DemoApplication", 120);
-			var activateRes = client.ActivateSession(new UserIdentityAnonymousToken("0"), new[] { "en" });
-			//var activateRes = client.ActivateSession(
-			//	new UserIdentityUsernameToken(usernamePolicyDesc, "Username",
-			//		(new UTF8Encoding()).GetBytes("Password"), Types.SignatureAlgorithmRsaOaep),
-			//	new[] { "en" });
+
+			StatusCode activateRes;
+			if (useAnonymousUser)
+			{
+				// Will fail if this endpoint does not allow Anonymous user tokens
+				string policyId = endpointDesc.UserIdentityTokens.First(e => e.TokenType == UserTokenType.Anonymous).PolicyId;
+				activateRes = client.ActivateSession(new UserIdentityAnonymousToken(policyId), new[] { "en" });
+			}
+			else
+			{
+				// Will fail if this endpoint does not allow UserName user tokens
+				string policyId = endpointDesc.UserIdentityTokens.First(e => e.TokenType == UserTokenType.UserName).PolicyId;
+				activateRes = client.ActivateSession(
+					new UserIdentityUsernameToken(policyId, "Username",
+						(new UTF8Encoding()).GetBytes("Password"), Types.SignatureAlgorithmRsaOaep),
+					new[] { "en" });
+			}
 
 			DataValue[] dvs = null;
 			var readRes = client.Read(new ReadValueId[]

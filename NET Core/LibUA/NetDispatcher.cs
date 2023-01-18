@@ -940,7 +940,8 @@ namespace LibUA
 
 					if (clientSignatureAlgorithm != Types.SignatureAlgorithmSha1 &&
 						clientSignatureAlgorithm != Types.SignatureAlgorithmSha256 &&
-						clientSignatureAlgorithm != Types.SignatureAlgorithmRsaOaep256)
+						clientSignatureAlgorithm != Types.SignatureAlgorithmRsaOaep256 &&
+						clientSignatureAlgorithm != Types.SignatureAlgorithmRsaPss256)
 					{
 						if (logger != null)
 						{
@@ -1087,7 +1088,7 @@ namespace LibUA
 					}
 					else if (config.SecurityPolicy == SecurityPolicy.Aes256_Sha256_RsaPss)
 					{
-						succeeded &= respBuf.EncodeUAString(Types.SignatureAlgorithmRsaOaep256);
+						succeeded &= respBuf.EncodeUAString(Types.SignatureAlgorithmRsaPss256);
 					}
 					else
 					{
