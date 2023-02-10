@@ -1,0 +1,14 @@
+﻿<Project>
+  <Target Name="IncludeSymbolFromReferences"
+          AfterTargets="ResolveAssemblyReferences"
+          Condition="@(ReferenceCopyLocalPaths) != '' AND '$(DebugType)' != 'none'">
+    <ItemGroup>
+      <ReferenceCopyLocalPaths
+        Include="%(ReferenceCopyLocalPaths.RelativeDir)%(ReferenceCopyLocalPaths.Filename).pdb"
+        DestinationSubDirectory="%(ReferenceCopyLocalPaths.DestinationSubDirectory)" />
+      <ReferenceCopyLocalPaths
+        Remove="@(ReferenceCopyLocalPaths)"
+        Condition="!Exists('%(FullPath)')" />
+    </ItemGroup>
+  </Target>
+</Project>

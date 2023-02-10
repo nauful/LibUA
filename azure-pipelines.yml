@@ -1,23 +1,10 @@
 # Continuous Integration (CI) and Continuous Delivery (CD) for PW.LibUA
 
-# Triggered when pushing to the "master"
 trigger:
   batch: true
   branches:
     include:
-    - master
-    - develop
-  paths:
-    exclude:
-    - .gitignore
-    - LICENSE
-    - README.md
-
-# Triggered when opening a pull request (or pushing changes to it)
-pr:
-  branches:
-    include:
-    - '*'
+    - release/pw-libua
   paths:
     exclude:
     - .gitignore
@@ -43,9 +30,13 @@ stages:
       libraryTitle: Libraries
       libraryProjects: |
         NET Core/LibUA/LibUA.csproj
+      nugetFeedConnections:
+      - name: paulwurth
+        authenticate: true
+        url: https://pkgs.dev.azure.com/paulwurth/_packaging/paulwurth/nuget/v3/index.json
 
-# Only publish package(s) from the main, master or a release branch
-- ${{ if or(in(variables['Build.SourceBranch'], 'refs/heads/main', 'refs/heads/master'), startsWith(variables['Build.SourceBranch'], 'refs/heads/release/')) }}:
+# Only publish package(s) from release/pw-libua branch
+- ${{ if in(variables['Build.SourceBranch'], 'refs/heads/release/pw-libua') }}:
   - stage: Publish
     jobs:
     - template: /DotNet/PublishNuGet.yml@PipelinesTemplates
