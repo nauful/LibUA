@@ -425,6 +425,22 @@ namespace LibUA
 				return true;
 			}
 
+			public bool DecodeArraySize(out UInt32 v)
+			{
+				if (!Decode(out v))
+				{
+					return false;
+				}
+
+				// Array length of -1 == no array encoded
+				if (v == 0xFFFFFFFFu)
+				{
+					v = 0;
+				}
+
+				return true;
+			}
+
 			public bool Decode(out UInt32 v, int pos)
 			{
 				v = 0;
@@ -755,20 +771,13 @@ namespace LibUA
 			public int VariantCodingSize(object obj)
 			{
 				int rank = 0;
-				bool isArray = false;
 				VariantType varType = VariantType.Null;
 
 				if (obj is Array && !(obj is byte[]))
 				{
 					var type = obj.GetType();
-					isArray = true;
 					rank = type.GetArrayRank();
 					type = type.GetElementType();
-
-					if (rank > 1)
-					{
-						throw new Exception("TODO");
-					}
 
 					varType = GetVariantTypeFromType(type);
 				}
@@ -782,16 +791,24 @@ namespace LibUA
 				byte mask = (byte)varType;
 				++size;
 
-				if (rank > 1) { mask |= 0x40; }
-				if (isArray)
+				if (rank > 1)
+				{
+					mask |= 0x40;
+				}
+
+				if (rank >= 1)
 				{
 					mask |= 0x80;
 					size += CodingSize((int)((Array)obj).Length);
 
-					var arr = (Array)obj;
-					for (int i = 0; i < arr.Length; i++)
+					foreach (var value in obj as Array)
 					{
-						size += VariantCodingSize(arr.GetValue(i), mask);
+						size += VariantCodingSize(value, mask);
+					}
+
+					if (rank > 1)
+					{
+						size += CodingSize((int)rank) * (1 + rank);
 					}
 				}
 				else
@@ -805,20 +822,13 @@ namespace LibUA
 			public bool VariantEncode(object obj)
 			{
 				int rank = 0;
-				bool isArray = false;
 				VariantType varType = VariantType.Null;
 
 				if (obj is Array && !(obj is byte[]))
 				{
 					var type = obj.GetType();
-					isArray = true;
 					rank = type.GetArrayRank();
 					type = type.GetElementType();
-
-					if (rank > 1)
-					{
-						throw new Exception("TODO");
-					}
 
 					varType = GetVariantTypeFromType(type);
 				}
@@ -829,19 +839,34 @@ namespace LibUA
 
 				byte mask = (byte)varType;
 
-				if (rank > 1) { mask |= 0x40; }
-				if (isArray)
+				if (rank > 1)
+				{
+					mask |= 0x40;
+				}
+
+				if (rank >= 1)
 				{
 					mask |= 0x80;
 					if (!Encode(mask)) { return false; }
-					if (!Encode((int)((Array)obj).Length)) { return false; }
 
-					var arr = (Array)obj;
-					for (int i = 0; i < arr.Length; i++)
+					var arr = obj as Array;
+
+					if (!Encode((int)(arr.Length))) { return false; }
+					foreach (var value in arr)
 					{
-						if (!VariantEncode(arr.GetValue(i), mask))
+						if (!VariantEncode(value, mask))
 						{
 							return false;
+						}
+					}
+
+					if (rank > 1)
+					{
+						if (!Encode((int)rank)) { return false; }
+						for (int i = 0; i < rank; i++)
+						{
+							int dimension = arr.GetLength(i);
+							if (!Encode(dimension)) { return false; }
 						}
 					}
 				}
@@ -849,6 +874,64 @@ namespace LibUA
 				{
 					if (!Encode(mask)) { return false; }
 					if (!VariantEncode(obj, mask))
+					{
+						return false;
+					}
+				}
+
+				return true;
+			}
+
+			public bool VariantDecode(out object res)
+			{
+				res = null;
+
+				byte mask;
+				if (!Decode(out mask))
+				{
+					return false;
+				}
+
+				if ((mask & 0x80) != 0)
+				{
+					int arrLen;
+					if (!Decode(out arrLen)) { return false; }
+					if (arrLen < 0) { return false; }
+
+					int rank = 1;
+					if ((mask & 0x40) != 0)
+					{
+						if (!Decode(out rank)) { return false; }
+					}
+
+					Type type = GetNetType((VariantType)(mask & 0x3F));
+
+					var arr = Array.CreateInstance(type, arrLen);
+					for (int i = 0; i < arrLen; i++)
+					{
+						object v;
+						if (!VariantDecode(out v, mask))
+						{
+							return false;
+						}
+
+						arr.SetValue(v, i);
+					}
+
+					res = arr;
+
+					// Decoding multidimensional arrays is not supported, decode as a flat array.
+					if ((mask & 0x40) != 0)
+					{
+						for (int i = 0; i < rank; i++)
+						{
+							if (!Decode(out int _)) { return false; }
+						}
+					}
+				}
+				else
+				{
+					if (!VariantDecode(out res, mask))
 					{
 						return false;
 					}
@@ -894,49 +977,6 @@ namespace LibUA
 				}
 
 				return size;
-			}
-
-			public bool VariantDecode(out object res)
-			{
-				res = null;
-
-				byte mask;
-				if (!Decode(out mask))
-				{
-					return false;
-				}
-
-				if ((mask & 0x80) != 0)
-				{
-					int arrLen;
-					if (!Decode(out arrLen)) { return false; }
-					if (arrLen < 0) { return false; }
-
-					Type type = GetNetType((VariantType)(mask & 0x3F));
-
-					var arr = Array.CreateInstance(type, arrLen);
-					for (int i = 0; i < arrLen; i++)
-					{
-						object v;
-						if (!VariantDecode(out v, mask))
-						{
-							return false;
-						}
-
-						arr.SetValue(v, i);
-					}
-
-					res = arr;
-				}
-				else
-				{
-					if (!VariantDecode(out res, mask))
-					{
-						return false;
-					}
-				}
-
-				return true;
 			}
 
 			public bool VariantEncode(object obj, byte mask)

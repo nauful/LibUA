@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Sockets;
 using System.Security.Cryptography.X509Certificates;
 using LibUA.Core;
+using static LibUA.Security.Cryptography.CapiNative;
 
 namespace LibUA
 {
@@ -880,23 +881,34 @@ namespace LibUA
 					if (!recvBuf.DecodeUAByteString(out password)) { return ErrorParseFail; }
 					if (!recvBuf.DecodeUAString(out algorithm)) { return ErrorParseFail; }
 
-					var expectHash = UASecurity.RsaPkcs15Sha_Decrypt(
-						new ArraySegment<byte>(password),
-						app.ApplicationCertificate, app.ApplicationPrivateKey,
-						SecurityPolicy.Basic128Rsa15);
-
-					int passByteLen = expectHash[0] | (expectHash[1] << 8) | (expectHash[2] << 16) | (expectHash[3] << 24);
-
-					if (config.SessionIssuedNonce != null)
+					if (string.IsNullOrEmpty(algorithm))
 					{
-						passByteLen -= config.SessionIssuedNonce.Length;
+						if (!app.SessionValidateClientUser(config.Session, new UserIdentityUsernameToken(policyId, username, password, algorithm)))
+						{
+							UAStatusCode = (uint)StatusCode.BadSecurityChecksFailed;
+							return ErrorParseFail;
+						}
 					}
-
-					var passSegment = new ArraySegment<byte>(expectHash, 4, passByteLen);
-					if (!app.SessionValidateClientUser(config.Session, new UserIdentityUsernameToken(policyId, username, passSegment.ToArray(), algorithm)))
+					else
 					{
-						UAStatusCode = (uint)StatusCode.BadSecurityChecksFailed;
-						return ErrorParseFail;
+						var expectHash = UASecurity.Decrypt(
+							new ArraySegment<byte>(password),
+							app.ApplicationCertificate, app.ApplicationPrivateKey,
+							UASecurity.UseOaepForSecurityPolicyUri(algorithm));
+
+						int passByteLen = expectHash[0] | (expectHash[1] << 8) | (expectHash[2] << 16) | (expectHash[3] << 24);
+
+						if (config.SessionIssuedNonce != null)
+						{
+							passByteLen -= config.SessionIssuedNonce.Length;
+						}
+
+						var passSegment = new ArraySegment<byte>(expectHash, 4, passByteLen);
+						if (!app.SessionValidateClientUser(config.Session, new UserIdentityUsernameToken(policyId, username, passSegment.ToArray(), algorithm)))
+						{
+							UAStatusCode = (uint)StatusCode.BadSecurityChecksFailed;
+							return ErrorParseFail;
+						}
 					}
 				}
 				else
@@ -919,12 +931,7 @@ namespace LibUA
 					return ErrorRespWrite;
 				}
 
-				if (config.MessageSecurityMode == MessageSecurityMode.None)
-				{
-					// Server nonce
-					succeeded &= respBuf.EncodeUAByteString(null);
-				}
-				else
+				if (config.MessageSecurityMode != MessageSecurityMode.None)
 				{
 					if (config.SessionIssuedNonce == null)
 					{
@@ -949,17 +956,17 @@ namespace LibUA
 					Array.Copy(strLocalCert, 0, signMsg, 0, strLocalCert.Length);
 					Array.Copy(config.SessionIssuedNonce, 0, signMsg, strLocalCert.Length, config.SessionIssuedNonce.Length);
 
-					if (!UASecurity.RsaPkcs15Sha_VerifySigned(new ArraySegment<byte>(signMsg),
+					if (!UASecurity.VerifySigned(new ArraySegment<byte>(signMsg),
 						clientSignature, config.RemoteCertificate, config.SecurityPolicy))
 					{
 						UAStatusCode = (uint)StatusCode.BadSecurityChecksFailed;
 						return ErrorInternal;
 					}
-
-					config.SessionIssuedNonce = UASecurity.GenerateRandomBytes(UASecurity.ActivationNonceSize);
-					// Server nonce
-					succeeded &= respBuf.EncodeUAByteString(config.SessionIssuedNonce);
 				}
+
+				config.SessionIssuedNonce = UASecurity.GenerateRandomBytes(UASecurity.ActivationNonceSize);
+				// Server nonce
+				succeeded &= respBuf.EncodeUAByteString(config.SessionIssuedNonce);
 
 				// Results
 				succeeded &= respBuf.Encode((UInt32)0);
@@ -1024,12 +1031,15 @@ namespace LibUA
 				succeeded &= respBuf.Encode(config.AuthToken);
 				succeeded &= respBuf.Encode((double)requestedSessionTimeOut);
 
+				// Verify in ActivateSession
+				config.SessionIssuedNonce = UASecurity.GenerateRandomBytes(UASecurity.ActivationNonceSize);
+
 				if (config.MessageSecurityMode == MessageSecurityMode.None)
 				{
 					// Server nonce
-					succeeded &= respBuf.EncodeUAByteString(null);
+					succeeded &= respBuf.EncodeUAByteString(config.SessionIssuedNonce);
 					// Server certificate
-					succeeded &= respBuf.EncodeUAByteString(null);
+					succeeded &= respBuf.EncodeUAByteString(app.ApplicationCertificate.Export(X509ContentType.Cert));
 
 					succeeded &= respBuf.Encode((UInt32)endpointDescs.Count);
 					for (int i = 0; i < endpointDescs.Count && succeeded; i++)
@@ -1051,7 +1061,7 @@ namespace LibUA
 					Array.Copy(clientCertificate, 0, signMsg, 0, clientCertificate.Length);
 					Array.Copy(clientNonce, 0, signMsg, clientCertificate.Length, clientNonce.Length);
 
-					var serverSignature = UASecurity.RsaPkcs15Sha_Sign(new ArraySegment<byte>(signMsg),
+					var serverSignature = UASecurity.Sign(new ArraySegment<byte>(signMsg),
 						app.ApplicationPrivateKey, config.SecurityPolicy);
 
 					// Verify in ActivateSession
@@ -1512,10 +1522,9 @@ namespace LibUA
 						return ErrorInternal;
 					}
 
-					var paddingMethod = UASecurity.PaddingMethodForSecurityPolicy(config.SecurityPolicy);
-					var asymDecBuf = UASecurity.RsaPkcs15Sha_Decrypt(
+					var asymDecBuf = UASecurity.Decrypt(
 						new ArraySegment<byte>(recvBuf.Buffer, recvBuf.Position, recvBuf.Capacity - recvBuf.Position),
-						app.ApplicationCertificate, app.ApplicationPrivateKey, config.SecurityPolicy);
+						app.ApplicationCertificate, app.ApplicationPrivateKey, UASecurity.UseOaepForSecurityPolicy(config.SecurityPolicy));
 
 					int minPlainSize = Math.Min(asymDecBuf.Length, recvBuf.Capacity - recvBuf.Position);
 					Array.Copy(asymDecBuf, 0, recvBuf.Buffer, recvBuf.Position, minPlainSize);
@@ -1625,11 +1634,11 @@ namespace LibUA
 				}
 				else
 				{
-					int symKeySize = UASecurity.SymmetricKeySizeForSecurityPolicy(config.SecurityPolicy, clientNonce.Length);
-
-					config.LocalNonce = UASecurity.GenerateRandomBytes(symKeySize);
+					int nonceLength = UASecurity.NonceLengthForSecurityPolicy(config.SecurityPolicy);
+					config.LocalNonce = UASecurity.GenerateRandomBytes(nonceLength);
 					config.RemoteNonce = clientNonce;
 
+					int symKeySize = UASecurity.SymmetricKeySizeForSecurityPolicy(config.SecurityPolicy);
 					int sigKeySize = UASecurity.SymmetricSignatureKeySizeForSecurityPolicy(config.SecurityPolicy);
 					int symBlockSize = UASecurity.SymmetricBlockSizeForSecurityPolicy();
 
@@ -1744,16 +1753,16 @@ namespace LibUA
 					respSize = encodeFromPosition + UASecurity.CalculateEncryptedSize(config.RemoteCertificate, respSize - encodeFromPosition, padMethod);
 					MarkPositionAsSize(respBuf, (UInt32)respSize);
 
-					var msgSign = UASecurity.RsaPkcs15Sha_Sign(new ArraySegment<byte>(respBuf.Buffer, 0, respBuf.Position),
+					var msgSign = UASecurity.Sign(new ArraySegment<byte>(respBuf.Buffer, 0, respBuf.Position),
 						app.ApplicationPrivateKey, config.SecurityPolicy);
 
 					//Console.WriteLine("AsymSig: {0}", string.Join("", msgSign.Select(v => v.ToString("X2"))));
 
 					respBuf.Append(msgSign);
 
-					var packed = UASecurity.RsaPkcs15Sha_Encrypt(
+					var packed = UASecurity.Encrypt(
 						new ArraySegment<byte>(respBuf.Buffer, encodeFromPosition, respBuf.Position - encodeFromPosition),
-						config.RemoteCertificate, config.SecurityPolicy);
+						config.RemoteCertificate, UASecurity.UseOaepForSecurityPolicy(config.SecurityPolicy));
 
 					respBuf.Position = encodeFromPosition;
 					respBuf.Append(packed);
@@ -2828,6 +2837,15 @@ namespace LibUA
 
 			protected int DispatchMessage_RegisterNodesRequest(SLChannel config, RequestHeader reqHeader, MemoryBuffer recvBuf, uint messageSize)
 			{
+				UInt32 noOfNodesToRegister;
+				if (!recvBuf.Decode(out noOfNodesToRegister)) { return ErrorParseFail; }
+
+				var nodesToRegister = new NodeId[noOfNodesToRegister];
+				for (uint i = 0; i < noOfNodesToRegister; i++)
+				{
+					if (!recvBuf.Decode(out nodesToRegister[i])) { return ErrorParseFail; }
+				}
+
 				var respBuf = new MemoryBuffer(maximumMessageSize);
 				bool succeeded = DispatchMessage_WriteHeader(config, respBuf,
 					(uint)RequestCode.RegisterNodesResponse, reqHeader, (uint)StatusCode.BadNotSupported);
@@ -2838,7 +2856,11 @@ namespace LibUA
 				}
 
 				// NoOfRegisteredNodeIds
-				succeeded &= respBuf.Encode((UInt32)0);
+				succeeded &= respBuf.Encode((UInt32)nodesToRegister.Length);
+				for (int i = 0; i < nodesToRegister.Length && succeeded; i++)
+				{
+					succeeded &= respBuf.Encode(nodesToRegister[i]);
+				}
 
 				if (!succeeded)
 				{
@@ -2905,7 +2927,7 @@ namespace LibUA
 					PublishingEnabled = PublishingEnabled,
 					Priority = Priority,
 
-					PublishInterval = TimeSpan.FromMilliseconds(revisedPublishInterval / 2),
+					PublishInterval = TimeSpan.FromMilliseconds(revisedPublishInterval),
 					PublishKeepAliveInterval = TimeSpan.FromMilliseconds(Math.Max(1, (revisedPublishInterval / 2) * RequestedMaxKeepAliveCount)),
 
 					ChangeNotification = Subscription.ChangeNotificationType.None
@@ -2995,7 +3017,7 @@ namespace LibUA
 					sub.MaxNotificationsPerPublish = Math.Max(1, MaxNotificationsPerPublish);
 					sub.Priority = Priority;
 
-					sub.PublishInterval = TimeSpan.FromMilliseconds(sub.PublishingInterval / 2);
+					sub.PublishInterval = TimeSpan.FromMilliseconds(sub.PublishingInterval);
 					sub.PublishKeepAliveInterval = TimeSpan.FromMilliseconds(Math.Max(1, (sub.PublishingInterval / 2) * RequestedMaxKeepAliveCount));
 
 					succeeded &= respBuf.Encode((double)sub.PublishingInterval);

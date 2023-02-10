@@ -40,6 +40,7 @@ namespace TestServer
 
 			NodeObject ItemsRoot;
 			NodeVariable[] TrendNodes;
+			NodeVariable Node1D, Node2D;
 
 			X509Certificate2 appCertificate = null;
 			RSACryptoServiceProvider cryptPrivateKey = null;
@@ -59,7 +60,7 @@ namespace TestServer
 				LoadCertificateAndPrivateKey();
 
 				uaAppDesc = new ApplicationDescription(
-					"url:qs:DemoApplication", "http://quantensystems.com/",
+					"urn:DemoApplication", "http://quantensystems.com/",
 					new LocalizedText("en-US", "QuantenSystems demo server"), ApplicationType.Server,
 					null, null, null);
 
@@ -84,6 +85,21 @@ namespace TestServer
 					TrendNodes[i].References.Add(new ReferenceNode(new NodeId(UAConst.Organizes), ItemsRoot.Id, true));
 					AddressSpaceTable.TryAdd(TrendNodes[i].Id, TrendNodes[i]);
 				}
+
+				Node1D = new NodeVariable(new NodeId(2, (uint)(1000 + 1)), new QualifiedName("Array - 1D"),
+						new LocalizedText("Array - 1D"), new LocalizedText("Array - 1D"), 0, 0,
+						AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, nodeTypeFloat, ValueRank.OneDimension);
+				Node2D = new NodeVariable(new NodeId(2, (uint)(1000 + 2)), new QualifiedName("Array - 2D"),
+						new LocalizedText("Array - 2D"), new LocalizedText("Array - 2D"), 0, 0,
+						AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, nodeTypeFloat, ValueRank.OneOrMoreDimensions);
+
+				ItemsRoot.References.Add(new ReferenceNode(new NodeId(UAConst.Organizes), Node1D.Id, false));
+				Node1D.References.Add(new ReferenceNode(new NodeId(UAConst.Organizes), ItemsRoot.Id, true));
+				AddressSpaceTable.TryAdd(Node1D.Id, Node1D);
+
+				ItemsRoot.References.Add(new ReferenceNode(new NodeId(UAConst.Organizes), Node2D.Id, false));
+				Node2D.References.Add(new ReferenceNode(new NodeId(UAConst.Organizes), ItemsRoot.Id, true));
+				AddressSpaceTable.TryAdd(Node2D.Id, Node2D);
 			}
 
 			public override object SessionCreate(SessionCreationInfo sessionInfo)
@@ -123,69 +139,83 @@ namespace TestServer
 				throw new Exception("Unhandled user identity token type");
 			}
 
+			private ApplicationDescription CreateApplicationDescriptionFromEndpointHint(string endpointUrlHint)
+			{
+				string[] discoveryUrls = uaAppDesc.DiscoveryUrls;
+				if (discoveryUrls == null && !string.IsNullOrEmpty(endpointUrlHint))
+				{
+					discoveryUrls = new string[] { endpointUrlHint };
+				}
+
+				return new ApplicationDescription(uaAppDesc.ApplicationUri, uaAppDesc.ProductUri, uaAppDesc.ApplicationName,
+					uaAppDesc.Type, uaAppDesc.GatewayServerUri, uaAppDesc.DiscoveryProfileUri, discoveryUrls);
+			}
+
 			public override IList<EndpointDescription> GetEndpointDescriptions(string endpointUrlHint)
 			{
 				var certStr = ApplicationCertificate.Export(X509ContentType.Cert);
+				ApplicationDescription localAppDesc = CreateApplicationDescriptionFromEndpointHint(endpointUrlHint);
 
 				var epNoSecurity = new EndpointDescription(
-					endpointUrlHint, uaAppDesc, null,
+					endpointUrlHint, localAppDesc, certStr,
 					MessageSecurityMode.None, Types.SLSecurityPolicyUris[(int)SecurityPolicy.None],
 					new UserTokenPolicy[]
 					{
 						new UserTokenPolicy("0", UserTokenType.Anonymous, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.None]),
+						new UserTokenPolicy("1", UserTokenType.UserName, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256Sha256]),
 					}, Types.TransportProfileBinary, 0);
 
 				var epSignBasic128Rsa15 = new EndpointDescription(
-					endpointUrlHint, uaAppDesc, certStr,
+					endpointUrlHint, localAppDesc, certStr,
 					MessageSecurityMode.Sign, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic128Rsa15],
 					new UserTokenPolicy[]
 					{
-						new UserTokenPolicy("0", UserTokenType.Anonymous, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic128Rsa15]),
-						new UserTokenPolicy("1", UserTokenType.UserName, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic128Rsa15]),
+						new UserTokenPolicy("0", UserTokenType.Anonymous, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.None]),
+						new UserTokenPolicy("1", UserTokenType.UserName, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256Sha256]),
 					}, Types.TransportProfileBinary, 0);
 
 				var epSignBasic256 = new EndpointDescription(
-					endpointUrlHint, uaAppDesc, certStr,
+					endpointUrlHint, localAppDesc, certStr,
 					MessageSecurityMode.Sign, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256],
 					new UserTokenPolicy[]
 					{
-						new UserTokenPolicy("0", UserTokenType.Anonymous, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256]),
-						new UserTokenPolicy("1", UserTokenType.UserName, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256]),
+						new UserTokenPolicy("0", UserTokenType.Anonymous, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.None]),
+						new UserTokenPolicy("1", UserTokenType.UserName, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256Sha256]),
 					}, Types.TransportProfileBinary, 0);
 
 				var epSignBasic256Sha256 = new EndpointDescription(
-					endpointUrlHint, uaAppDesc, certStr,
+					endpointUrlHint, localAppDesc, certStr,
 					MessageSecurityMode.Sign, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256Sha256],
 					new UserTokenPolicy[]
 					{
-						new UserTokenPolicy("0", UserTokenType.Anonymous, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256Sha256]),
+						new UserTokenPolicy("0", UserTokenType.Anonymous, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.None]),
 						new UserTokenPolicy("1", UserTokenType.UserName, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256Sha256]),
 					}, Types.TransportProfileBinary, 0);
 
 				var epSignEncryptBasic128Rsa15 = new EndpointDescription(
-					endpointUrlHint, uaAppDesc, certStr,
+					endpointUrlHint, localAppDesc, certStr,
 					MessageSecurityMode.SignAndEncrypt, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic128Rsa15],
 					new UserTokenPolicy[]
 					{
-						new UserTokenPolicy("0", UserTokenType.Anonymous, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic128Rsa15]),
-						new UserTokenPolicy("1", UserTokenType.UserName, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic128Rsa15]),
+						new UserTokenPolicy("0", UserTokenType.Anonymous, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.None]),
+						new UserTokenPolicy("1", UserTokenType.UserName, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256Sha256]),
 					}, Types.TransportProfileBinary, 0);
 
 				var epSignEncryptBasic256 = new EndpointDescription(
-					endpointUrlHint, uaAppDesc, certStr,
+					endpointUrlHint, localAppDesc, certStr,
 					MessageSecurityMode.SignAndEncrypt, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256],
 					new UserTokenPolicy[]
 					{
-						new UserTokenPolicy("0", UserTokenType.Anonymous, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256]),
-						new UserTokenPolicy("1", UserTokenType.UserName, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256]),
+						new UserTokenPolicy("0", UserTokenType.Anonymous, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.None]),
+						new UserTokenPolicy("1", UserTokenType.UserName, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256Sha256]),
 					}, Types.TransportProfileBinary, 0);
 
 				var epSignEncryptBasic256Sha256 = new EndpointDescription(
-					endpointUrlHint, uaAppDesc, certStr,
+					endpointUrlHint, localAppDesc, certStr,
 					MessageSecurityMode.SignAndEncrypt, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256Sha256],
 					new UserTokenPolicy[]
 					{
-						new UserTokenPolicy("0", UserTokenType.Anonymous, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256Sha256]),
+						new UserTokenPolicy("0", UserTokenType.Anonymous, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.None]),
 						new UserTokenPolicy("1", UserTokenType.UserName, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256Sha256]),
 					}, Types.TransportProfileBinary, 0);
 
@@ -200,7 +230,7 @@ namespace TestServer
 
 			public override ApplicationDescription GetApplicationDescription(string endpointUrlHint)
 			{
-				return uaAppDesc;
+				return CreateApplicationDescriptionFromEndpointHint(endpointUrlHint);
 			}
 
 			protected override DataValue HandleReadRequestInternal(NodeId id)
@@ -209,7 +239,22 @@ namespace TestServer
 				if (id.NamespaceIndex == 2 &&
 					AddressSpaceTable.TryGetValue(id, out node))
 				{
-					return new DataValue(3.14159265, StatusCode.Good, DateTime.Now);
+					if (node == Node1D)
+					{
+						return new DataValue(new float[] { 1.0f, 2.0f, 3.0f }, StatusCode.Good, DateTime.Now);
+					}
+					else if (node == Node2D)
+					{
+						return new DataValue(new float[2, 2]
+						{
+							{ 1.0f, 2.0f },
+							{ 3.0f, 4.0f }
+						}, StatusCode.Good, DateTime.Now);
+					}
+					else
+					{
+						return new DataValue(3.14159265, StatusCode.Good, DateTime.Now);
+					}
 				}
 
 				return base.HandleReadRequestInternal(id);

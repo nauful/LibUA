@@ -47,6 +47,11 @@ namespace LibUA
 			throw new Exception();
 		}
 
+		public static int NonceLengthForSecurityPolicy(SecurityPolicy policy)
+		{
+			return policy == SecurityPolicy.Basic128Rsa15 ? 16 : 32;
+		}
+
 		public static int SymmetricKeySizeForSecurityPolicy(SecurityPolicy policy, int clientNonceLength = -1)
 		{
 			switch (policy)
@@ -89,6 +94,19 @@ namespace LibUA
 			}
 
 			return false;
+		}
+
+		public static bool UseOaepForSecurityPolicyUri(string policy)
+		{
+			switch (policy)
+			{
+				case Types.SignatureAlgorithmRsaOaep:
+					return true;
+
+				case Types.SignatureAlgorithmRsa15:
+				default:
+					return false;
+			}
 		}
 
 		public static int CalculatePublicKeyLength(X509Certificate2 cert)
@@ -642,7 +660,7 @@ namespace LibUA
 			return GetSignatureLength(cert, UseOaepForSecurityPolicy(policy));
 		}
 
-		public static byte[] RsaPkcs15Sha_Sign(ArraySegment<byte> data, RSACryptoServiceProvider privProvider,
+		public static byte[] Sign(ArraySegment<byte> data, RSACryptoServiceProvider privProvider,
 			SecurityPolicy policy)
 		{
 			var hash = HashAlgorithmForSecurityPolicy(policy);
@@ -664,7 +682,7 @@ namespace LibUA
 				(System.Security.Cryptography.HashAlgorithm)new SHA1Managed();
 		}
 
-		public static bool RsaPkcs15Sha_VerifySigned(ArraySegment<byte> data, byte[] signature, X509Certificate2 cert,
+		public static bool VerifySigned(ArraySegment<byte> data, byte[] signature, X509Certificate2 cert,
 			SecurityPolicy policy)
 		{
 			var rsa = cert.PublicKey.Key as RSACryptoServiceProvider;
@@ -676,10 +694,10 @@ namespace LibUA
 			return match;
 		}
 
-		public static byte[] RsaPkcs15Sha_Encrypt(ArraySegment<byte> data, X509Certificate2 cert, SecurityPolicy policy)
+		public static byte[] Encrypt(ArraySegment<byte> data, X509Certificate2 cert, bool padding)
 		{
 			var rsa = cert.PublicKey.Key as RSACryptoServiceProvider;
-			int inputBlockSize = GetPlainBlockSize(cert, UseOaepForSecurityPolicy(policy));
+			int inputBlockSize = GetPlainBlockSize(cert, padding);
 
 			if (data.Count % inputBlockSize != 0)
 			{
@@ -691,7 +709,7 @@ namespace LibUA
 			for (int i = 0; i < data.Count; i += inputBlockSize)
 			{
 				Array.Copy(data.Array, data.Offset + i, input, 0, input.Length);
-				var encoded = rsa.Encrypt(input, UseOaepForSecurityPolicy(policy));
+				var encoded = rsa.Encrypt(input, padding);
 				ms.Write(encoded, 0, encoded.Length);
 			}
 
@@ -699,18 +717,17 @@ namespace LibUA
 			return ms.ToArray();
 		}
 
-		public static byte[] RsaPkcs15Sha_Decrypt(ArraySegment<byte> data, X509Certificate2 cert,
-			RSACryptoServiceProvider rsaPrivate, SecurityPolicy policy)
+		public static byte[] Decrypt(ArraySegment<byte> data, X509Certificate2 cert, RSACryptoServiceProvider rsaPrivate, bool padding)
 		{
-			int cipherBlockSize = GetCipherTextBlockSize(cert, UseOaepForSecurityPolicy(policy));
+			int cipherBlockSize = GetCipherTextBlockSize(cert, padding);
 			int plainSize = data.Count / cipherBlockSize;
-			int blockSize = GetPlainBlockSize(cert, UseOaepForSecurityPolicy(policy));
+			int blockSize = GetPlainBlockSize(cert, padding);
 
 			plainSize *= blockSize;
 
 			var buffer = new byte[plainSize];
 			int inputBlockSize = rsaPrivate.KeySize / 8;
-			int outputBlockSize = GetPlainBlockSize(cert, UseOaepForSecurityPolicy(policy));
+			int outputBlockSize = GetPlainBlockSize(cert, padding);
 
 			if (data.Count % inputBlockSize != 0)
 			{
@@ -722,7 +739,7 @@ namespace LibUA
 			for (int i = data.Offset; i < data.Offset + data.Count; i += inputBlockSize)
 			{
 				Array.Copy(data.Array, i, block, 0, block.Length);
-				var plain = rsaPrivate.Decrypt(block, UseOaepForSecurityPolicy(policy));
+				var plain = rsaPrivate.Decrypt(block, padding);
 				ms.Write(plain, 0, plain.Length);
 			}
 			ms.Close();

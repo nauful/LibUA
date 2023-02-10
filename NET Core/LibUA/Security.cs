@@ -13,7 +13,8 @@ namespace LibUA
 		public const int Sha1Size = 20;
 		public const int Sha256Size = 32;
 		public const int RsaPkcs1PaddingSize = 11;
-		public const int RsaPkcs1OaepPaddingSize = 42;
+		public const int RsaSHA1OaepPaddingSize = 42;
+		public const int RsaSHA256OaepPaddingSize = 66;
 		public const int ActivationNonceSize = 32;
 
 		public enum HashAlgorithm : int
@@ -30,28 +31,46 @@ namespace LibUA
 		{
 			None = 0,
 			PKCS1,
-			PKCS1_OAEP
+			SHA1_OAEP,
+			SHA256_OAEP,
 		}
 
 		public static PaddingAlgorithm PaddingMethodForSecurityPolicy(SecurityPolicy policy)
 		{
 			switch (policy)
 			{
-				case SecurityPolicy.Basic256: return PaddingAlgorithm.PKCS1_OAEP;
-				case SecurityPolicy.Basic256Sha256: return PaddingAlgorithm.PKCS1_OAEP;
-				case SecurityPolicy.Basic128Rsa15: return PaddingAlgorithm.PKCS1;
+				case SecurityPolicy.Basic256:
+				case SecurityPolicy.Basic256Sha256:
+				case SecurityPolicy.Aes128_Sha256_RsaOaep:
+					return PaddingAlgorithm.SHA1_OAEP;
+
+				case SecurityPolicy.Aes256_Sha256_RsaPss:
+					return PaddingAlgorithm.SHA256_OAEP;
+
+				case SecurityPolicy.Basic128Rsa15:
+					return PaddingAlgorithm.PKCS1;
 			}
 
 			throw new Exception();
 		}
 
-		public static int SymmetricKeySizeForSecurityPolicy(SecurityPolicy policy, int clientNonceLength = -1)
+		public static int NonceLengthForSecurityPolicy(SecurityPolicy policy)
+		{
+			return policy == SecurityPolicy.Basic128Rsa15 ? 16 : 32;
+		}
+
+		public static int SymmetricKeySizeForSecurityPolicy(SecurityPolicy policy)
 		{
 			switch (policy)
 			{
-				case SecurityPolicy.Basic256: return 32;
-				case SecurityPolicy.Basic256Sha256: return clientNonceLength < 1 ? 32 : clientNonceLength;
-				case SecurityPolicy.Basic128Rsa15: return 16;
+				case SecurityPolicy.Aes256_Sha256_RsaPss:
+				case SecurityPolicy.Basic256Sha256:
+				case SecurityPolicy.Basic256:
+					return 32;
+
+				case SecurityPolicy.Aes128_Sha256_RsaOaep:
+				case SecurityPolicy.Basic128Rsa15:
+					return 16;
 			}
 
 			throw new Exception();
@@ -67,11 +86,16 @@ namespace LibUA
 		{
 			switch (policy)
 			{
-				case SecurityPolicy.Basic256: return 24;
-				case SecurityPolicy.Basic256Sha256: return 32;
-				case SecurityPolicy.Basic128Rsa15: return SymmetricKeySizeForSecurityPolicy(policy);
-				default:
-					break;
+				case SecurityPolicy.Basic256:
+					return 24;
+
+				case SecurityPolicy.Aes256_Sha256_RsaPss:
+				case SecurityPolicy.Aes128_Sha256_RsaOaep:
+				case SecurityPolicy.Basic256Sha256:
+					return 32;
+
+				case SecurityPolicy.Basic128Rsa15:
+					return 16;
 			}
 
 			throw new Exception();
@@ -83,10 +107,31 @@ namespace LibUA
 			{
 				case SecurityPolicy.Basic256:
 				case SecurityPolicy.Basic256Sha256:
+				case SecurityPolicy.Aes128_Sha256_RsaOaep:
 					return RSAEncryptionPadding.OaepSHA1;
+
+				case SecurityPolicy.Aes256_Sha256_RsaPss:
+					return RSAEncryptionPadding.OaepSHA256;
 			}
 
 			return RSAEncryptionPadding.Pkcs1;
+		}
+
+		public static RSAEncryptionPadding UseOaepForSecuritySigPolicyUri(string policy)
+		{
+			switch (policy)
+			{
+				case Types.SignatureAlgorithmRsaOaep:
+					return RSAEncryptionPadding.OaepSHA1;
+
+				case Types.SignatureAlgorithmSha256:
+				case Types.SignatureAlgorithmRsaOaep256:
+					return RSAEncryptionPadding.OaepSHA256;
+
+				case Types.SignatureAlgorithmRsa15:
+				default:
+					return RSAEncryptionPadding.Pkcs1;
+			}
 		}
 
 		public static int CalculatePublicKeyLength(X509Certificate2 cert)
@@ -103,6 +148,21 @@ namespace LibUA
 		public static int CalculatePaddingSize(X509Certificate2 cert, SecurityPolicy policy, int position, int sigSize)
 		{
 			int plainBlockSize = GetPlainBlockSize(cert, UseOaepForSecurityPolicy(policy));
+
+			int pad = plainBlockSize;
+			pad -= (position + sigSize) % plainBlockSize;
+
+			if (pad < 0)
+			{
+				throw new Exception();
+			}
+
+			return pad;
+		}
+
+		public static int CalculatePaddingSizePolicyUri(X509Certificate2 cert, string policy, int position, int sigSize)
+		{
+			int plainBlockSize = GetPlainBlockSize(cert, UseOaepForSecuritySigPolicyUri(policy));
 
 			int pad = plainBlockSize;
 			pad -= (position + sigSize) % plainBlockSize;
@@ -184,7 +244,8 @@ namespace LibUA
 			{
 				case PaddingAlgorithm.None: return 0;
 				case PaddingAlgorithm.PKCS1: return RsaPkcs1PaddingSize;
-				case PaddingAlgorithm.PKCS1_OAEP: return RsaPkcs1OaepPaddingSize;
+				case PaddingAlgorithm.SHA1_OAEP: return RsaSHA1OaepPaddingSize;
+				case PaddingAlgorithm.SHA256_OAEP: return RsaSHA256OaepPaddingSize;
 			}
 
 			throw new Exception();
@@ -610,7 +671,21 @@ namespace LibUA
 				throw new Exception("Could not create RSA");
 			}
 
-			return (rsa.KeySize / 8) - (useOaep == RSAEncryptionPadding.OaepSHA1 ? RsaPkcs1OaepPaddingSize : RsaPkcs1PaddingSize);
+			int r = rsa.KeySize / 8;
+			if (useOaep == RSAEncryptionPadding.OaepSHA256)
+			{
+				r -= RsaSHA256OaepPaddingSize;
+			}
+			else if (useOaep == RSAEncryptionPadding.OaepSHA1)
+			{
+				r -= RsaSHA1OaepPaddingSize;
+			}
+			else
+			{
+				r -= RsaPkcs1PaddingSize;
+			}
+
+			return r;
 		}
 
 		public static int GetCipherTextBlockSize(X509Certificate2 cert)
@@ -640,44 +715,66 @@ namespace LibUA
 			return GetSignatureLength(cert);
 		}
 
-		public static byte[] RsaPkcs15Sha_Sign(ArraySegment<byte> data, RSA privProvider,
+		public static byte[] Sign(ArraySegment<byte> data, RSA privProvider,
 			SecurityPolicy policy)
 		{
 			var hash = HashAlgorithmForSecurityPolicy(policy);
 			var digest = hash.ComputeHash(data.Array, data.Offset, data.Count);
+			var padding = SigPaddingForSecurityPolicy(policy);
 
-			byte[] signature = privProvider.SignHash(digest, HashStrForSecurityPolicy(policy), RSASignaturePadding.Pkcs1);
+			byte[] signature = privProvider.SignHash(digest, HashStrForSecurityPolicy(policy), padding);
 			return signature;
+		}
+
+		private static RSASignaturePadding SigPaddingForSecurityPolicy(SecurityPolicy policy)
+		{
+			return policy == SecurityPolicy.Aes256_Sha256_RsaPss ? RSASignaturePadding.Pss : RSASignaturePadding.Pkcs1;
 		}
 
 		private static HashAlgorithmName HashStrForSecurityPolicy(SecurityPolicy policy)
 		{
-			return policy == SecurityPolicy.Basic256Sha256 ? HashAlgorithmName.SHA256 : HashAlgorithmName.SHA1;
+			switch (policy)
+			{
+				case SecurityPolicy.Basic256Sha256:
+				case SecurityPolicy.Aes128_Sha256_RsaOaep:
+				case SecurityPolicy.Aes256_Sha256_RsaPss:
+					return HashAlgorithmName.SHA256;
+
+				default:
+					return HashAlgorithmName.SHA1;
+			}
 		}
 
 		private static System.Security.Cryptography.HashAlgorithm HashAlgorithmForSecurityPolicy(SecurityPolicy policy)
 		{
-			return policy == SecurityPolicy.Basic256Sha256 ?
-				new SHA256Managed() :
-				(System.Security.Cryptography.HashAlgorithm)new SHA1Managed();
+			switch (policy)
+			{
+				case SecurityPolicy.Basic256Sha256:
+				case SecurityPolicy.Aes128_Sha256_RsaOaep:
+				case SecurityPolicy.Aes256_Sha256_RsaPss:
+					return new SHA256Managed();
+
+				default:
+					return new SHA1Managed();
+			}
 		}
 
-		public static bool RsaPkcs15Sha_VerifySigned(ArraySegment<byte> data, byte[] signature, X509Certificate2 cert,
-			SecurityPolicy policy)
+		public static bool VerifySigned(ArraySegment<byte> data, byte[] signature, X509Certificate2 cert, SecurityPolicy policy)
 		{
 			var rsa = cert.PublicKey.Key as RSA;
 
 			var hash = HashAlgorithmForSecurityPolicy(policy);
 			var digest = hash.ComputeHash(data.Array, data.Offset, data.Count);
+			var padding = SigPaddingForSecurityPolicy(policy);
 
-			bool match = rsa.VerifyHash(digest, signature, HashStrForSecurityPolicy(policy), RSASignaturePadding.Pkcs1);
+			bool match = rsa.VerifyHash(digest, signature, HashStrForSecurityPolicy(policy), padding);
 			return match;
 		}
 
-		public static byte[] RsaPkcs15Sha_Encrypt(ArraySegment<byte> data, X509Certificate2 cert, SecurityPolicy policy)
+		public static byte[] Encrypt(ArraySegment<byte> data, X509Certificate2 cert, RSAEncryptionPadding padding)
 		{
 			var rsa = cert.PublicKey.Key as RSA;
-			int inputBlockSize = GetPlainBlockSize(cert, UseOaepForSecurityPolicy(policy));
+			int inputBlockSize = GetPlainBlockSize(cert, padding);
 
 			if (data.Count % inputBlockSize != 0)
 			{
@@ -689,7 +786,7 @@ namespace LibUA
 			for (int i = 0; i < data.Count; i += inputBlockSize)
 			{
 				Array.Copy(data.Array, data.Offset + i, input, 0, input.Length);
-				var encoded = rsa.Encrypt(input, UseOaepForSecurityPolicy(policy));
+				var encoded = rsa.Encrypt(input, padding);
 				ms.Write(encoded, 0, encoded.Length);
 			}
 
@@ -697,18 +794,16 @@ namespace LibUA
 			return ms.ToArray();
 		}
 
-		public static byte[] RsaPkcs15Sha_Decrypt(ArraySegment<byte> data, X509Certificate2 cert,
-			RSA rsaPrivate, SecurityPolicy policy)
+		public static byte[] Decrypt(ArraySegment<byte> data, X509Certificate2 cert, RSA rsaPrivate, RSAEncryptionPadding padding)
 		{
 			int cipherBlockSize = GetCipherTextBlockSize(cert);
 			int plainSize = data.Count / cipherBlockSize;
-			int blockSize = GetPlainBlockSize(cert, UseOaepForSecurityPolicy(policy));
+			int blockSize = GetPlainBlockSize(cert, padding);
 
 			plainSize *= blockSize;
 
 			var buffer = new byte[plainSize];
 			int inputBlockSize = rsaPrivate.KeySize / 8;
-			int outputBlockSize = GetPlainBlockSize(cert, UseOaepForSecurityPolicy(policy));
 
 			if (data.Count % inputBlockSize != 0)
 			{
@@ -720,7 +815,7 @@ namespace LibUA
 			for (int i = data.Offset; i < data.Offset + data.Count; i += inputBlockSize)
 			{
 				Array.Copy(data.Array, i, block, 0, block.Length);
-				var plain = rsaPrivate.Decrypt(block, UseOaepForSecurityPolicy(policy));
+				var plain = rsaPrivate.Decrypt(block, padding);
 				ms.Write(plain, 0, plain.Length);
 			}
 			ms.Close();
@@ -754,8 +849,16 @@ namespace LibUA
 
 		private static HMAC HMACForSecurityPolicy(byte[] key, SecurityPolicy policy)
 		{
-			return policy == SecurityPolicy.Basic256Sha256 ?
-							(HMAC)new HMACSHA256(key) : new HMACSHA1(key);
+			switch (policy)
+			{
+				case SecurityPolicy.Basic256Sha256:
+				case SecurityPolicy.Aes128_Sha256_RsaOaep:
+				case SecurityPolicy.Aes256_Sha256_RsaPss:
+					return new HMACSHA256(key);
+
+				default:
+					return new HMACSHA1(key);
+			}
 		}
 
 		public static byte[] SHACalculate(ArraySegment<byte> data, SecurityPolicy policy)
@@ -816,7 +919,16 @@ namespace LibUA
 
 		private static int SignatureSizeForSecurityPolicy(SecurityPolicy policy)
 		{
-			return policy == SecurityPolicy.Basic256Sha256 ? Sha256Size : Sha1Size;
+			switch (policy)
+			{
+				case SecurityPolicy.Basic256Sha256:
+				case SecurityPolicy.Aes128_Sha256_RsaOaep:
+				case SecurityPolicy.Aes256_Sha256_RsaPss:
+					return Sha256Size;
+
+				default:
+					return Sha1Size;
+			}
 		}
 
 		public static StatusCode UnsecureSymmetric(MemoryBuffer recvBuf, uint tokenID, uint? prevTokenID, int messageEncodedBlockStart, SLChannel.Keyset localKeyset, SLChannel.Keyset[] remoteKeysets, SecurityPolicy policy, MessageSecurityMode securityMode, out int decrSize)

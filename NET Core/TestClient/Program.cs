@@ -16,14 +16,14 @@ namespace TestClient
 		class DemoClient : Client
 		{
 			X509Certificate2 appCertificate = null;
-			RSACryptoServiceProvider cryptPrivateKey = null;
+			RSACng cryptPrivateKey = null;
 
 			public override X509Certificate2 ApplicationCertificate
 			{
 				get { return appCertificate; }
 			}
 
-			public override RSACryptoServiceProvider ApplicationPrivateKey
+			public override RSACng ApplicationPrivateKey
 			{
 				get { return cryptPrivateKey; }
 			}
@@ -34,7 +34,7 @@ namespace TestClient
 				{
 					// Try to load existing (public key) and associated private key
 					appCertificate = new X509Certificate2("ClientCert.der");
-					cryptPrivateKey = new RSACryptoServiceProvider();
+					cryptPrivateKey = new RSACng();
 
 					var rsaPrivParams = UASecurity.ImportRSAPrivateKey(File.ReadAllText("ClientKey.pem"));
 					cryptPrivateKey.ImportParameters(rsaPrivParams);
@@ -64,7 +64,7 @@ namespace TestClient
 						File.WriteAllText("ClientCert.der", UASecurity.ExportPEM(appCertificate));
 						File.WriteAllText("ClientKey.pem", UASecurity.ExportRSAPrivateKey(certPrivateParams));
 
-						cryptPrivateKey = new RSACryptoServiceProvider();
+						cryptPrivateKey = new RSACng();
 						cryptPrivateKey.ImportParameters(certPrivateParams);
 					}
 				}
@@ -99,37 +99,46 @@ namespace TestClient
 				"urn:DemoApplication", "uri:DemoApplication", new LocalizedText("UA SDK client"),
 				ApplicationType.Client, null, null, null);
 
+			var client = new DemoClient("127.0.0.1", 7718, 1000);
+			var messageSecurityMode = MessageSecurityMode.SignAndEncrypt;
+			var securityPolicy = SecurityPolicy.Aes256_Sha256_RsaPss;
+			bool useAnonymousUser = true;
+
 			ApplicationDescription[] appDescs = null;
 			EndpointDescription[] endpointDescs = null;
 
-			//var client = new DemoClient("192.168.1.7", 7718, 10);
-			var client = new DemoClient("127.0.0.1", 7718, 1000);
 			client.Connect();
 			client.OpenSecureChannel(MessageSecurityMode.None, SecurityPolicy.None, null);
 			client.FindServers(out appDescs, new[] { "en" });
 			client.GetEndpoints(out endpointDescs, new[] { "en" });
 			client.Disconnect();
 
-			// Check matching message security mode and security policy too
-			// Lazy way to find server certificate is just grab any endpoint with one
-			byte[] serverCert = endpointDescs
-				.First(e => e.ServerCertificate != null && e.ServerCertificate.Length > 0)
-				.ServerCertificate;
-
-			var usernamePolicyDesc = endpointDescs
-				.First(e => e.UserIdentityTokens.Any(t => t.TokenType == UserTokenType.UserName))
-				.UserIdentityTokens.First(t => t.TokenType == UserTokenType.UserName)
-				.PolicyId;
+			// Will fail if no matching message security mode and security policy is found
+			var endpointDesc = endpointDescs.First(e => 
+				e.SecurityMode == messageSecurityMode && 
+				e.SecurityPolicyUri == Types.SLSecurityPolicyUris[(int)securityPolicy]);
+			byte[] serverCert = endpointDesc.ServerCertificate;
 
 			var connectRes = client.Connect();
-			var openRes = client.OpenSecureChannel(MessageSecurityMode.SignAndEncrypt, SecurityPolicy.Basic256Sha256, serverCert);
-			//var openRes = client.OpenSecureChannel(MessageSecurityMode.None, SecurityPolicy.None, null);
+			var openRes = client.OpenSecureChannel(messageSecurityMode, securityPolicy, serverCert);
 			var createRes = client.CreateSession(appDesc, "urn:DemoApplication", 120);
-			var activateRes = client.ActivateSession(new UserIdentityAnonymousToken("0"), new[] { "en" });
-			//var activateRes = client.ActivateSession(
-			//	new UserIdentityUsernameToken(usernamePolicyDesc, "Username",
-			//		(new UTF8Encoding()).GetBytes("Password"), Types.SignatureAlgorithmRsa15),
-			//	new[] { "en" });
+
+			StatusCode activateRes;
+			if (useAnonymousUser)
+			{
+				// Will fail if this endpoint does not allow Anonymous user tokens
+				string policyId = endpointDesc.UserIdentityTokens.First(e => e.TokenType == UserTokenType.Anonymous).PolicyId;
+				activateRes = client.ActivateSession(new UserIdentityAnonymousToken(policyId), new[] { "en" });
+			}
+			else
+			{
+				// Will fail if this endpoint does not allow UserName user tokens
+				string policyId = endpointDesc.UserIdentityTokens.First(e => e.TokenType == UserTokenType.UserName).PolicyId;
+				activateRes = client.ActivateSession(
+					new UserIdentityUsernameToken(policyId, "Username",
+						(new UTF8Encoding()).GetBytes("Password"), Types.SignatureAlgorithmRsaOaep),
+					new[] { "en" });
+			}
 
 			DataValue[] dvs = null;
 			var readRes = client.Read(new ReadValueId[]
@@ -162,6 +171,27 @@ namespace TestClient
 						NodeId.Zero,
 						true, 0xFFFFFFFFu, BrowseResultMask.All)
 			}, 10000, out browseResults);
+
+			//Queue<NodeId> nodeQueue = new Queue<NodeId>();
+			//nodeQueue.Enqueue(new NodeId(0, (uint)UAConst.ObjectsFolder));
+			//while (nodeQueue.TryDequeue(out NodeId currentNode))
+			//{
+			//	client.Browse(new BrowseDescription[]
+			//	{
+			//		new BrowseDescription(
+			//			currentNode,
+			//			BrowseDirection.Forward,
+			//			NodeId.Zero,
+			//			true, 0xFFFFFFFFu, BrowseResultMask.All)
+			//	}, 10000, out BrowseResult[] childrenBrowseResults);
+			//	foreach (var reference in childrenBrowseResults[0].Refs)
+			//	{
+			//		if (reference.ReferenceTypeId.EqualsNumeric(0, (uint)RefType.Organizes))
+			//		{
+			//			nodeQueue.Enqueue(reference.TargetId);
+			//		}
+			//	}
+			//}
 
 			uint[] respStatuses;
 			client.Write(new WriteValue[]

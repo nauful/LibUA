@@ -30,6 +30,7 @@ namespace LibUA
 			public const string SignatureAlgorithmSha1 = "http://www.w3.org/2000/09/xmldsig#rsa-sha1";
 			public const string SignatureAlgorithmSha256 = "http://www.w3.org/2001/04/xmldsig-more#rsa-sha256";
 			public const string SignatureAlgorithmRsa15 = "http://www.w3.org/2001/04/xmlenc#rsa-1_5";
+			public const string SignatureAlgorithmRsaOaep = "http://www.w3.org/2001/04/xmlenc#rsa-oaep";
 
 			public const string IdentityTokenAnonymous = "anonymous";
 		}
