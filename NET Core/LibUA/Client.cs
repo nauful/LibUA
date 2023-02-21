@@ -620,7 +620,7 @@ namespace LibUA
 
 				if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.GetEndpointsResponse))
 				{
-					return StatusCode.BadUnknownResponse;
+					CheckServiceFaultResponse(recvHandler);
 				}
 
 				UInt32 numEndpointDescs;
@@ -720,7 +720,7 @@ namespace LibUA
 
 				if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.FindServersResponse))
 				{
-					return StatusCode.BadUnknownResponse;
+					CheckServiceFaultResponse(recvHandler);
 				}
 
 				UInt32 numDescs;
@@ -1802,7 +1802,7 @@ namespace LibUA
 
 				if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.ActivateSessionResponse))
 				{
-					return StatusCode.BadUnknownResponse;
+					return CheckServiceFaultResponse(recvHandler);
 				}
 
 				byte[] serverNonce;
@@ -1838,6 +1838,17 @@ namespace LibUA
 				cs.Release();
 				CheckPostCall();
 			}
+		}
+
+		private static StatusCode CheckServiceFaultResponse(RecvHandler recvHandler)
+		{
+			if (recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.ServiceFault) &&
+				recvHandler.Header != null && Enum.IsDefined(typeof(StatusCode), recvHandler.Header.ServiceResult))
+			{
+				return (StatusCode)recvHandler.Header.ServiceResult;
+			}
+
+			return StatusCode.BadUnknownResponse;
 		}
 
 		public StatusCode CreateSession(ApplicationDescription appDesc, string sessionName, int requestedSessionTimeout)
@@ -1923,7 +1934,7 @@ namespace LibUA
 
 				if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.CreateSessionResponse))
 				{
-					return StatusCode.BadUnknownResponse;
+					CheckServiceFaultResponse(recvHandler);
 				}
 
 				NodeId sessionIdToken, authToken;
@@ -2031,7 +2042,7 @@ namespace LibUA
 
 				if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.CloseSessionResponse))
 				{
-					return StatusCode.BadUnknownResponse;
+					CheckServiceFaultResponse(recvHandler);
 				}
 
 				if (!succeeded)
@@ -2126,7 +2137,7 @@ namespace LibUA
 
 				if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.ReadResponse))
 				{
-					return StatusCode.BadUnknownResponse;
+					CheckServiceFaultResponse(recvHandler);
 				}
 
 				UInt32 numRecv;
@@ -2231,7 +2242,7 @@ namespace LibUA
 
 				if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.WriteResponse))
 				{
-					return StatusCode.BadUnknownResponse;
+					CheckServiceFaultResponse(recvHandler);
 				}
 
 				UInt32 numRecv;
@@ -2336,7 +2347,7 @@ namespace LibUA
 
 				if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.AddNodesResponse))
 				{
-					return StatusCode.BadUnknownResponse;
+					CheckServiceFaultResponse(recvHandler);
 				}
 
 				UInt32 numRecv;
@@ -2441,7 +2452,7 @@ namespace LibUA
 
 				if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.DeleteNodesResponse))
 				{
-					return StatusCode.BadUnknownResponse;
+					CheckServiceFaultResponse(recvHandler);
 				}
 
 				UInt32 numRecv;
@@ -2546,7 +2557,7 @@ namespace LibUA
 
 				if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.AddReferencesResponse))
 				{
-					return StatusCode.BadUnknownResponse;
+					CheckServiceFaultResponse(recvHandler);
 				}
 
 				UInt32 numRecv;
@@ -2651,7 +2662,7 @@ namespace LibUA
 
 				if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.DeleteReferencesResponse))
 				{
-					return StatusCode.BadUnknownResponse;
+					CheckServiceFaultResponse(recvHandler);
 				}
 
 				UInt32 numRecv;
@@ -2765,7 +2776,7 @@ namespace LibUA
 
 				if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.BrowseResponse))
 				{
-					return StatusCode.BadUnknownResponse;
+					CheckServiceFaultResponse(recvHandler);
 				}
 
 				UInt32 numRecv;
@@ -2887,7 +2898,7 @@ namespace LibUA
 
 				if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.BrowseNextResponse))
 				{
-					return StatusCode.BadUnknownResponse;
+					CheckServiceFaultResponse(recvHandler);
 				}
 
 				if (!releaseContinuationPoints)
@@ -3092,7 +3103,7 @@ namespace LibUA
 
 				if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.HistoryReadResponse))
 				{
-					return StatusCode.BadUnknownResponse;
+					CheckServiceFaultResponse(recvHandler);
 				}
 
 				if (!releaseContinuationPoints)
@@ -3272,7 +3283,7 @@ namespace LibUA
 
 				if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.HistoryUpdateResponse))
 				{
-					return StatusCode.BadUnknownResponse;
+					CheckServiceFaultResponse(recvHandler);
 				}
 
 				UInt32 numRecv;
@@ -3377,7 +3388,7 @@ namespace LibUA
 
 				if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.TranslateBrowsePathsToNodeIdsResponse))
 				{
-					return StatusCode.BadUnknownResponse;
+					CheckServiceFaultResponse(recvHandler);
 				}
 
 				UInt32 numRecv;
@@ -3488,7 +3499,7 @@ namespace LibUA
 
 				if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.CallResponse))
 				{
-					return StatusCode.BadUnknownResponse;
+					CheckServiceFaultResponse(recvHandler);
 				}
 
 				UInt32 numRecv;
@@ -3631,7 +3642,7 @@ namespace LibUA
 
 				if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.CreateSubscriptionResponse))
 				{
-					return StatusCode.BadUnknownResponse;
+					CheckServiceFaultResponse(recvHandler);
 				}
 
 				succeeded &= recvHandler.RecvBuf.Decode(out result);
@@ -3742,7 +3753,7 @@ namespace LibUA
 
 				if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.ModifySubscriptionResponse))
 				{
-					return StatusCode.BadUnknownResponse;
+					CheckServiceFaultResponse(recvHandler);
 				}
 
 				double revisedPublishInterval;
@@ -3841,7 +3852,7 @@ namespace LibUA
 
 				if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.DeleteSubscriptionsResponse))
 				{
-					return StatusCode.BadUnknownResponse;
+					CheckServiceFaultResponse(recvHandler);
 				}
 
 				UInt32 numResults;
@@ -3941,7 +3952,7 @@ namespace LibUA
 
 				if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.SetPublishingModeResponse))
 				{
-					return StatusCode.BadUnknownResponse;
+					CheckServiceFaultResponse(recvHandler);
 				}
 
 				UInt32 numResults;
@@ -4043,7 +4054,7 @@ namespace LibUA
 
 				if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.CreateMonitoredItemsResponse))
 				{
-					return StatusCode.BadUnknownResponse;
+					CheckServiceFaultResponse(recvHandler);
 				}
 
 				UInt32 numResults;
@@ -4145,7 +4156,7 @@ namespace LibUA
 
 				if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.ModifyMonitoredItemsResponse))
 				{
-					return StatusCode.BadUnknownResponse;
+					CheckServiceFaultResponse(recvHandler);
 				}
 
 				UInt32 numResults;
@@ -4245,7 +4256,7 @@ namespace LibUA
 
 				if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.DeleteMonitoredItemsResponse))
 				{
-					return StatusCode.BadUnknownResponse;
+					CheckServiceFaultResponse(recvHandler);
 				}
 
 				UInt32 numResults;
