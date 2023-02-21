@@ -126,6 +126,7 @@ namespace LibUA
 
 				case Types.SignatureAlgorithmSha256:
 				case Types.SignatureAlgorithmRsaOaep256:
+				case Types.SignatureAlgorithmRsaPss256:
 					return RSAEncryptionPadding.OaepSHA256;
 
 				case Types.SignatureAlgorithmRsa15:

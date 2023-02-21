@@ -1726,10 +1726,18 @@ namespace LibUA
 							Array.Copy(rndBytes, 0, crypted, offset, rndBytes.Length);
 							offset += rndBytes.Length;
 						}
+						switch ((identityToken as UserIdentityUsernameToken).Algorithm)
+						{
+							case Types.SignatureAlgorithmRsaOaep:
+							case Types.SignatureAlgorithmRsaOaep256:
+								crypted = UASecurity.Encrypt(
+									new ArraySegment<byte>(crypted),
+									config.RemoteCertificate, UASecurity.UseOaepForSecuritySigPolicyUri((identityToken as UserIdentityUsernameToken).Algorithm));
+								break;
 
-						crypted = UASecurity.Encrypt(
-							new ArraySegment<byte>(crypted),
-							config.RemoteCertificate, UASecurity.UseOaepForSecuritySigPolicyUri((identityToken as UserIdentityUsernameToken).Algorithm));
+							default:
+								throw new Exception(string.Format("Identity token algorithm {0} is not supported", (identityToken as UserIdentityUsernameToken).Algorithm));
+						}
 
 						succeeded &= sendBuf.EncodeUAByteString(crypted);
 						succeeded &= sendBuf.EncodeUAString((identityToken as UserIdentityUsernameToken).Algorithm);
