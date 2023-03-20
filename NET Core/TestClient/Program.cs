@@ -152,8 +152,8 @@ namespace TestClient
 				// Will fail if this endpoint does not allow UserName user tokens
 				string policyId = endpointDesc.UserIdentityTokens.First(e => e.TokenType == UserTokenType.UserName).PolicyId;
 				activateRes = client.ActivateSession(
-					new UserIdentityUsernameToken(policyId, "Username",
-						(new UTF8Encoding()).GetBytes("Password"), Types.SignatureAlgorithmRsaOaep),
+					new UserIdentityUsernameToken(policyId, "username",
+						(new UTF8Encoding()).GetBytes("password"), Types.SignatureAlgorithmRsaOaep256),
 					new[] { "en" });
 			}
 
