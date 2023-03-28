@@ -231,15 +231,31 @@ namespace LibUA
 				{
 					var padMethod = UASecurity.PaddingMethodForSecurityPolicy(config.SecurityPolicy);
 					int sigSize = UASecurity.CalculateSignatureSize(ApplicationCertificate);
-					int padSize = UASecurity.CalculatePaddingSize(config.RemoteCertificate, config.SecurityPolicy, sendBuf.Position - asymCryptFrom, sigSize);
 
-					if (padSize > 0)
+					if (config.RemoteCertificate.GetRSAPublicKey().KeySize <= 2048)
 					{
-						byte paddingValue = (byte)((padSize - 1) & 0xFF);
+						int padSize = UASecurity.CalculatePaddingSize(config.RemoteCertificate, config.SecurityPolicy, sendBuf.Position - asymCryptFrom + 1, sigSize);
+						if (padSize > 0)
+						{
+							byte paddingValue = (byte)(padSize & 0xFF);
 
-						var appendPadding = new byte[padSize];
-						for (int i = 0; i < padSize; i++) { appendPadding[i] = paddingValue; }
-						sendBuf.Append(appendPadding);
+							var appendPadding = new byte[padSize + 1];
+							for (int i = 0; i <= padSize; i++) { appendPadding[i] = paddingValue; }
+							sendBuf.Append(appendPadding);
+						}
+					}
+					else
+					{
+						int padSize = UASecurity.CalculatePaddingSize(config.RemoteCertificate, config.SecurityPolicy, sendBuf.Position - asymCryptFrom + 2, sigSize);
+						if (padSize > 0)
+						{
+							byte paddingValue = (byte)(padSize & 0xFF);
+
+							var appendPadding = new byte[padSize + 2];
+							for (int i = 0; i <= padSize; i++) { appendPadding[i] = paddingValue; }
+							appendPadding[padSize + 1] = (byte)(padSize >> 8);
+							sendBuf.Append(appendPadding);
+						}
 					}
 
 					int respSize = sendBuf.Position + sigSize;
