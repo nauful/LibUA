@@ -118,7 +118,7 @@ namespace TestClient
 
 			var client = new DemoClient("127.0.0.1", 7718, 1000);
 			var messageSecurityMode = MessageSecurityMode.SignAndEncrypt;
-			var securityPolicy = SecurityPolicy.Aes256_Sha256_RsaPss;
+			var securityPolicy = SecurityPolicy.Basic256Sha256;
 			bool useAnonymousUser = true;
 
 			ApplicationDescription[] appDescs = null;
@@ -152,8 +152,8 @@ namespace TestClient
 				// Will fail if this endpoint does not allow UserName user tokens
 				string policyId = endpointDesc.UserIdentityTokens.First(e => e.TokenType == UserTokenType.UserName).PolicyId;
 				activateRes = client.ActivateSession(
-					new UserIdentityUsernameToken(policyId, "username",
-						(new UTF8Encoding()).GetBytes("password"), Types.SignatureAlgorithmRsaOaep256),
+					new UserIdentityUsernameToken(policyId, "plc-user",
+						(new UTF8Encoding()).GetBytes("123"), Types.SignatureAlgorithmRsaOaep),
 					new[] { "en" });
 			}
 
