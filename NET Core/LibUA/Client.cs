@@ -1744,6 +1744,7 @@ namespace LibUA
 						}
 						switch ((identityToken as UserIdentityUsernameToken).Algorithm)
 						{
+							case Types.SignatureAlgorithmRsa15:
 							case Types.SignatureAlgorithmRsaOaep:
 							case Types.SignatureAlgorithmRsaOaep256:
 								crypted = UASecurity.Encrypt(
