@@ -231,15 +231,31 @@ namespace LibUA
 				{
 					var padMethod = UASecurity.PaddingMethodForSecurityPolicy(config.SecurityPolicy);
 					int sigSize = UASecurity.CalculateSignatureSize(ApplicationCertificate);
-					int padSize = UASecurity.CalculatePaddingSize(config.RemoteCertificate, config.SecurityPolicy, sendBuf.Position - asymCryptFrom, sigSize);
 
-					if (padSize > 0)
+					if (config.RemoteCertificate.GetRSAPublicKey().KeySize <= 2048)
 					{
-						byte paddingValue = (byte)((padSize - 1) & 0xFF);
+						int padSize = UASecurity.CalculatePaddingSize(config.RemoteCertificate, config.SecurityPolicy, sendBuf.Position - asymCryptFrom + 1, sigSize);
+						if (padSize > 0)
+						{
+							byte paddingValue = (byte)(padSize & 0xFF);
 
-						var appendPadding = new byte[padSize];
-						for (int i = 0; i < padSize; i++) { appendPadding[i] = paddingValue; }
-						sendBuf.Append(appendPadding);
+							var appendPadding = new byte[padSize + 1];
+							for (int i = 0; i <= padSize; i++) { appendPadding[i] = paddingValue; }
+							sendBuf.Append(appendPadding);
+						}
+					}
+					else
+					{
+						int padSize = UASecurity.CalculatePaddingSize(config.RemoteCertificate, config.SecurityPolicy, sendBuf.Position - asymCryptFrom + 2, sigSize);
+						if (padSize > 0)
+						{
+							byte paddingValue = (byte)(padSize & 0xFF);
+
+							var appendPadding = new byte[padSize + 2];
+							for (int i = 0; i <= padSize; i++) { appendPadding[i] = paddingValue; }
+							appendPadding[padSize + 1] = (byte)(padSize >> 8);
+							sendBuf.Append(appendPadding);
+						}
 					}
 
 					int respSize = sendBuf.Position + sigSize;
@@ -620,7 +636,7 @@ namespace LibUA
 
 				if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.GetEndpointsResponse))
 				{
-					return StatusCode.BadUnknownResponse;
+					CheckServiceFaultResponse(recvHandler);
 				}
 
 				UInt32 numEndpointDescs;
@@ -720,7 +736,7 @@ namespace LibUA
 
 				if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.FindServersResponse))
 				{
-					return StatusCode.BadUnknownResponse;
+					CheckServiceFaultResponse(recvHandler);
 				}
 
 				UInt32 numDescs;
@@ -1726,10 +1742,19 @@ namespace LibUA
 							Array.Copy(rndBytes, 0, crypted, offset, rndBytes.Length);
 							offset += rndBytes.Length;
 						}
+						switch ((identityToken as UserIdentityUsernameToken).Algorithm)
+						{
+							case Types.SignatureAlgorithmRsa15:
+							case Types.SignatureAlgorithmRsaOaep:
+							case Types.SignatureAlgorithmRsaOaep256:
+								crypted = UASecurity.Encrypt(
+									new ArraySegment<byte>(crypted),
+									config.RemoteCertificate, UASecurity.UseOaepForSecuritySigPolicyUri((identityToken as UserIdentityUsernameToken).Algorithm));
+								break;
 
-						crypted = UASecurity.Encrypt(
-							new ArraySegment<byte>(crypted),
-							config.RemoteCertificate, UASecurity.UseOaepForSecuritySigPolicyUri((identityToken as UserIdentityUsernameToken).Algorithm));
+							default:
+								throw new Exception(string.Format("Identity token algorithm {0} is not supported", (identityToken as UserIdentityUsernameToken).Algorithm));
+						}
 
 						succeeded &= sendBuf.EncodeUAByteString(crypted);
 						succeeded &= sendBuf.EncodeUAString((identityToken as UserIdentityUsernameToken).Algorithm);
@@ -1794,7 +1819,7 @@ namespace LibUA
 
 				if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.ActivateSessionResponse))
 				{
-					return StatusCode.BadUnknownResponse;
+					return CheckServiceFaultResponse(recvHandler);
 				}
 
 				byte[] serverNonce;
@@ -1830,6 +1855,17 @@ namespace LibUA
 				cs.Release();
 				CheckPostCall();
 			}
+		}
+
+		private static StatusCode CheckServiceFaultResponse(RecvHandler recvHandler)
+		{
+			if (recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.ServiceFault) &&
+				recvHandler.Header != null && Enum.IsDefined(typeof(StatusCode), recvHandler.Header.ServiceResult))
+			{
+				return (StatusCode)recvHandler.Header.ServiceResult;
+			}
+
+			return StatusCode.BadUnknownResponse;
 		}
 
 		public StatusCode CreateSession(ApplicationDescription appDesc, string sessionName, int requestedSessionTimeout)
@@ -1915,7 +1951,7 @@ namespace LibUA
 
 				if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.CreateSessionResponse))
 				{
-					return StatusCode.BadUnknownResponse;
+					CheckServiceFaultResponse(recvHandler);
 				}
 
 				NodeId sessionIdToken, authToken;
@@ -2023,7 +2059,7 @@ namespace LibUA
 
 				if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.CloseSessionResponse))
 				{
-					return StatusCode.BadUnknownResponse;
+					CheckServiceFaultResponse(recvHandler);
 				}
 
 				if (!succeeded)
@@ -2118,7 +2154,7 @@ namespace LibUA
 
 				if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.ReadResponse))
 				{
-					return StatusCode.BadUnknownResponse;
+					CheckServiceFaultResponse(recvHandler);
 				}
 
 				UInt32 numRecv;
@@ -2223,7 +2259,7 @@ namespace LibUA
 
 				if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.WriteResponse))
 				{
-					return StatusCode.BadUnknownResponse;
+					CheckServiceFaultResponse(recvHandler);
 				}
 
 				UInt32 numRecv;
@@ -2328,7 +2364,7 @@ namespace LibUA
 
 				if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.AddNodesResponse))
 				{
-					return StatusCode.BadUnknownResponse;
+					CheckServiceFaultResponse(recvHandler);
 				}
 
 				UInt32 numRecv;
@@ -2433,7 +2469,7 @@ namespace LibUA
 
 				if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.DeleteNodesResponse))
 				{
-					return StatusCode.BadUnknownResponse;
+					CheckServiceFaultResponse(recvHandler);
 				}
 
 				UInt32 numRecv;
@@ -2538,7 +2574,7 @@ namespace LibUA
 
 				if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.AddReferencesResponse))
 				{
-					return StatusCode.BadUnknownResponse;
+					CheckServiceFaultResponse(recvHandler);
 				}
 
 				UInt32 numRecv;
@@ -2643,7 +2679,7 @@ namespace LibUA
 
 				if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.DeleteReferencesResponse))
 				{
-					return StatusCode.BadUnknownResponse;
+					CheckServiceFaultResponse(recvHandler);
 				}
 
 				UInt32 numRecv;
@@ -2757,7 +2793,7 @@ namespace LibUA
 
 				if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.BrowseResponse))
 				{
-					return StatusCode.BadUnknownResponse;
+					CheckServiceFaultResponse(recvHandler);
 				}
 
 				UInt32 numRecv;
@@ -2879,7 +2915,7 @@ namespace LibUA
 
 				if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.BrowseNextResponse))
 				{
-					return StatusCode.BadUnknownResponse;
+					CheckServiceFaultResponse(recvHandler);
 				}
 
 				if (!releaseContinuationPoints)
@@ -3084,7 +3120,7 @@ namespace LibUA
 
 				if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.HistoryReadResponse))
 				{
-					return StatusCode.BadUnknownResponse;
+					CheckServiceFaultResponse(recvHandler);
 				}
 
 				if (!releaseContinuationPoints)
@@ -3264,7 +3300,7 @@ namespace LibUA
 
 				if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.HistoryUpdateResponse))
 				{
-					return StatusCode.BadUnknownResponse;
+					CheckServiceFaultResponse(recvHandler);
 				}
 
 				UInt32 numRecv;
@@ -3369,7 +3405,7 @@ namespace LibUA
 
 				if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.TranslateBrowsePathsToNodeIdsResponse))
 				{
-					return StatusCode.BadUnknownResponse;
+					CheckServiceFaultResponse(recvHandler);
 				}
 
 				UInt32 numRecv;
@@ -3480,7 +3516,7 @@ namespace LibUA
 
 				if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.CallResponse))
 				{
-					return StatusCode.BadUnknownResponse;
+					CheckServiceFaultResponse(recvHandler);
 				}
 
 				UInt32 numRecv;
@@ -3623,7 +3659,7 @@ namespace LibUA
 
 				if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.CreateSubscriptionResponse))
 				{
-					return StatusCode.BadUnknownResponse;
+					CheckServiceFaultResponse(recvHandler);
 				}
 
 				succeeded &= recvHandler.RecvBuf.Decode(out result);
@@ -3734,7 +3770,7 @@ namespace LibUA
 
 				if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.ModifySubscriptionResponse))
 				{
-					return StatusCode.BadUnknownResponse;
+					CheckServiceFaultResponse(recvHandler);
 				}
 
 				double revisedPublishInterval;
@@ -3833,7 +3869,7 @@ namespace LibUA
 
 				if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.DeleteSubscriptionsResponse))
 				{
-					return StatusCode.BadUnknownResponse;
+					CheckServiceFaultResponse(recvHandler);
 				}
 
 				UInt32 numResults;
@@ -3933,7 +3969,7 @@ namespace LibUA
 
 				if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.SetPublishingModeResponse))
 				{
-					return StatusCode.BadUnknownResponse;
+					CheckServiceFaultResponse(recvHandler);
 				}
 
 				UInt32 numResults;
@@ -4035,7 +4071,7 @@ namespace LibUA
 
 				if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.CreateMonitoredItemsResponse))
 				{
-					return StatusCode.BadUnknownResponse;
+					CheckServiceFaultResponse(recvHandler);
 				}
 
 				UInt32 numResults;
@@ -4137,7 +4173,7 @@ namespace LibUA
 
 				if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.ModifyMonitoredItemsResponse))
 				{
-					return StatusCode.BadUnknownResponse;
+					CheckServiceFaultResponse(recvHandler);
 				}
 
 				UInt32 numResults;
@@ -4237,7 +4273,7 @@ namespace LibUA
 
 				if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.DeleteMonitoredItemsResponse))
 				{
-					return StatusCode.BadUnknownResponse;
+					CheckServiceFaultResponse(recvHandler);
 				}
 
 				UInt32 numResults;

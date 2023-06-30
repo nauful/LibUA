@@ -528,17 +528,34 @@ namespace TestServer
 				catch
 				{
 					// Make a new certificate (public key) and associated private key
-					var dn = new X500DistinguishedName("CN=Client certificate;OU=Demo organization",
+					var dn = new X500DistinguishedName("CN=Server certificate;OU=Demo organization",
 						X500DistinguishedNameFlags.UseSemicolons);
 					SubjectAlternativeNameBuilder sanBuilder = new SubjectAlternativeNameBuilder();
 					sanBuilder.AddUri(new Uri("urn:DemoApplication"));
 
-					using (RSA rsa = RSA.Create(2048))
+					using (RSA rsa = RSA.Create(4096))
 					{
-						var request = new CertificateRequest(dn, rsa, HashAlgorithmName.SHA256,
-							RSASignaturePadding.Pss);
+						var request = new CertificateRequest(dn, rsa, HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1);
 
 						request.CertificateExtensions.Add(sanBuilder.Build());
+						request.CertificateExtensions.Add(new X509BasicConstraintsExtension(false, false, 0, false));
+						request.CertificateExtensions.Add(new X509SubjectKeyIdentifierExtension(request.PublicKey, false));
+
+						request.CertificateExtensions.Add(new X509KeyUsageExtension(
+							X509KeyUsageFlags.DigitalSignature |
+							X509KeyUsageFlags.NonRepudiation |
+							X509KeyUsageFlags.DataEncipherment |
+							X509KeyUsageFlags.KeyEncipherment, false));
+
+						request.CertificateExtensions.Add(new X509EnhancedKeyUsageExtension(new OidCollection {
+							new Oid("1.3.6.1.5.5.7.3.8"),
+							new Oid("1.3.6.1.5.5.7.3.1"),
+							new Oid("1.3.6.1.5.5.7.3.2"),
+							new Oid("1.3.6.1.5.5.7.3.3"),
+							new Oid("1.3.6.1.5.5.7.3.4"),
+							new Oid("1.3.6.1.5.5.7.3.8"),
+							new Oid("1.3.6.1.5.5.7.3.9"),
+						}, true));
 
 						var certificate = request.CreateSelfSigned(new DateTimeOffset(DateTime.UtcNow.AddDays(-1)),
 							new DateTimeOffset(DateTime.UtcNow.AddDays(3650)));

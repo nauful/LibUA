@@ -47,12 +47,29 @@ namespace TestClient
 					SubjectAlternativeNameBuilder sanBuilder = new SubjectAlternativeNameBuilder();
 					sanBuilder.AddUri(new Uri("urn:DemoApplication"));
 
-					using (RSA rsa = RSA.Create(2048))
+					using (RSA rsa = RSA.Create(4096))
 					{
-						var request = new CertificateRequest(dn, rsa, HashAlgorithmName.SHA256,
-							RSASignaturePadding.Pkcs1);
+						var request = new CertificateRequest(dn, rsa, HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1);
 
 						request.CertificateExtensions.Add(sanBuilder.Build());
+						request.CertificateExtensions.Add(new X509BasicConstraintsExtension(false, false, 0, false));
+						request.CertificateExtensions.Add(new X509SubjectKeyIdentifierExtension(request.PublicKey, false));
+
+						request.CertificateExtensions.Add(new X509KeyUsageExtension(
+							X509KeyUsageFlags.DigitalSignature |
+							X509KeyUsageFlags.NonRepudiation |
+							X509KeyUsageFlags.DataEncipherment |
+							X509KeyUsageFlags.KeyEncipherment, false));
+
+						request.CertificateExtensions.Add(new X509EnhancedKeyUsageExtension(new OidCollection {
+							new Oid("1.3.6.1.5.5.7.3.8"),
+							new Oid("1.3.6.1.5.5.7.3.1"),
+							new Oid("1.3.6.1.5.5.7.3.2"),
+							new Oid("1.3.6.1.5.5.7.3.3"),
+							new Oid("1.3.6.1.5.5.7.3.4"),
+							new Oid("1.3.6.1.5.5.7.3.8"),
+							new Oid("1.3.6.1.5.5.7.3.9"),
+						}, true));
 
 						var certificate = request.CreateSelfSigned(new DateTimeOffset(DateTime.UtcNow.AddDays(-1)),
 							new DateTimeOffset(DateTime.UtcNow.AddDays(3650)));
@@ -101,7 +118,7 @@ namespace TestClient
 
 			var client = new DemoClient("127.0.0.1", 7718, 1000);
 			var messageSecurityMode = MessageSecurityMode.SignAndEncrypt;
-			var securityPolicy = SecurityPolicy.Aes256_Sha256_RsaPss;
+			var securityPolicy = SecurityPolicy.Basic256Sha256;
 			bool useAnonymousUser = true;
 
 			ApplicationDescription[] appDescs = null;
@@ -114,8 +131,8 @@ namespace TestClient
 			client.Disconnect();
 
 			// Will fail if no matching message security mode and security policy is found
-			var endpointDesc = endpointDescs.First(e => 
-				e.SecurityMode == messageSecurityMode && 
+			var endpointDesc = endpointDescs.First(e =>
+				e.SecurityMode == messageSecurityMode &&
 				e.SecurityPolicyUri == Types.SLSecurityPolicyUris[(int)securityPolicy]);
 			byte[] serverCert = endpointDesc.ServerCertificate;
 
@@ -135,8 +152,8 @@ namespace TestClient
 				// Will fail if this endpoint does not allow UserName user tokens
 				string policyId = endpointDesc.UserIdentityTokens.First(e => e.TokenType == UserTokenType.UserName).PolicyId;
 				activateRes = client.ActivateSession(
-					new UserIdentityUsernameToken(policyId, "Username",
-						(new UTF8Encoding()).GetBytes("Password"), Types.SignatureAlgorithmRsaOaep),
+					new UserIdentityUsernameToken(policyId, "plc-user",
+						(new UTF8Encoding()).GetBytes("123"), Types.SignatureAlgorithmRsaOaep),
 					new[] { "en" });
 			}
 
