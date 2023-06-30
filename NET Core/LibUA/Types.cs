@@ -6771,15 +6771,25 @@ namespace LibUA
 			public Subscription ParentSubscription;
 
 			public ConcurrentQueue<EventNotification> QueueEvent;
-			public SimpleAttributeOperand[] FilterSelectClauses;
+			public SimpleAttributeOperand[] FilterSelectClauses
+			{
+				get
+				{
+					if (Parameters.Filter is EventFilter eventFiler)
+					{
+						return eventFiler.SelectClauses;
+					}
 
-			public MonitoredItem(Subscription ParentSubscription, SimpleAttributeOperand[] FilterSelectClauses = null)
+					return null;
+				}
+			}
+
+			public MonitoredItem(Subscription ParentSubscription)
 			{
 				this.ParentSubscription = ParentSubscription;
 
 				this.QueueData = new ConcurrentQueue<DataValue>();
 				this.QueueEvent = new ConcurrentQueue<EventNotification>();
-				this.FilterSelectClauses = FilterSelectClauses;
 
 				QueueOverflowed = false;
 			}
