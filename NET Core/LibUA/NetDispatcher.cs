@@ -3210,19 +3210,7 @@ namespace LibUA
 						continue;
 					}
 
-					SimpleAttributeOperand[] filterSelectClauses = null;
-					if (createRequests[i].RequestedParameters.Filter != null)
-					{
-						filterSelectClauses = createRequests[i].RequestedParameters.Filter.SelectClauses;
-
-						//Console.WriteLine("Filter select clause {0}", filterSelectClauses.Length);
-						//foreach (var sc in filterSelectClauses)
-						//{
-						//	Console.WriteLine("Filter select clause \"{0}\"", string.Join(", ", sc.BrowsePath.Select(p => p.Name)));
-						//}
-					}
-
-					mi = new MonitoredItem(sub, filterSelectClauses)
+					mi = new MonitoredItem(sub)
 					{
 						MonitoredItemId = miHandle,
 
@@ -3365,7 +3353,6 @@ namespace LibUA
 
 					mi.QueueSize = Math.Max(1, Math.Min(MonitoredItem.MaxQueueSize, (int)modifyRequests[i].Parameters.QueueSize));
 					mi.Parameters = modifyRequests[i].Parameters;
-					mi.FilterSelectClauses = modifyRequests[i].Parameters.Filter.SelectClauses;
 					modifyResults[i] = new MonitoredItemModifyResult(StatusCode.Good, -1, (uint)mi.QueueSize, null);
 				}
 
