@@ -870,33 +870,84 @@ namespace LibUA
 			return true;
 		}
 
-		public static bool Decode(this MemoryBuffer mem, out EventFilter filter, bool includeType)
+		public static bool Decode(this MemoryBuffer mem, out MonitoringFilter filter)
 		{
 			filter = null;
 
-			if (includeType)
+			NodeId filterTypeId;
+			byte filterMask;
+
+			if (!mem.Decode(out filterTypeId)) { return false; }
+			if (!mem.Decode(out filterMask)) { return false; }
+
+			if (filterTypeId.EqualsNumeric(0, 0) && filterMask == 0)
 			{
-				NodeId filterTypeId;
-				byte filterMask;
+				// No filter
+				return true;
+			}
+			// Has binary body
+			if (filterMask != 1) { return false; }
 
-				if (!mem.Decode(out filterTypeId)) { return false; }
-				if (!mem.Decode(out filterMask)) { return false; }
+			UInt32 eoFilterSize;
+			if (!mem.Decode(out eoFilterSize)) { return false; }
 
-				if (filterTypeId.EqualsNumeric(0, 0) && filterMask == 0)
-				{
-					// No filter
-					return true;
-				}
-
-				if (!filterTypeId.EqualsNumeric(0, (uint)UAConst.EventFilter_Encoding_DefaultBinary)) { return false; }
-				// Has binary body
-				if (filterMask != 1) { return false; }
-
-				UInt32 eoFilterSize;
-				if (!mem.Decode(out eoFilterSize)) { return false; }
+			if (filterTypeId.EqualsNumeric(0, (uint)UAConst.EventFilter_Encoding_DefaultBinary) &&
+				mem.Decode(out EventFilter eventFilter, false))
+			{
+				filter = eventFilter;
+				return true;
+			}
+			else if (filterTypeId.EqualsNumeric(0, (uint)UAConst.DataChangeFilter_Encoding_DefaultBinary) &&
+				mem.Decode(out DataChangeFilter dataChangeFilter, false))
+			{
+				filter = dataChangeFilter;
+				return true;
 			}
 
-			UInt32 numSelectClauses;
+			return false;
+		}
+
+        public static bool Encode(this MemoryBuffer mem, MonitoringFilter filter, bool includeType)
+		{
+			if (filter is EventFilter eventFiler)
+			{
+				return mem.Encode(eventFiler, includeType);
+			}
+			else if (filter is DataChangeFilter dataChangeFilter)
+            {
+                return mem.Encode(dataChangeFilter, includeType);
+            }
+
+			return false;
+        }
+
+        public static bool Decode(this MemoryBuffer mem, out EventFilter filter, bool includeType)
+        {
+            filter = null;
+
+            if (includeType)
+            {
+                NodeId filterTypeId;
+                byte filterMask;
+
+                if (!mem.Decode(out filterTypeId)) { return false; }
+                if (!mem.Decode(out filterMask)) { return false; }
+
+                if (filterTypeId.EqualsNumeric(0, 0) && filterMask == 0)
+                {
+                    // No filter
+                    return true;
+                }
+
+                if (!filterTypeId.EqualsNumeric(0, (uint)UAConst.EventFilter_Encoding_DefaultBinary)) { return false; }
+                // Has binary body
+                if (filterMask != 1) { return false; }
+
+                UInt32 eoFilterSize;
+                if (!mem.Decode(out eoFilterSize)) { return false; }
+            }
+
+            UInt32 numSelectClauses;
 			if (!mem.DecodeArraySize(out numSelectClauses)) { return false; }
 
 			SimpleAttributeOperand[] selectClauses = null;
@@ -1035,9 +1086,9 @@ namespace LibUA
 			return true;
 		}
 
-		public static bool Decode(this MemoryBuffer mem, out DataChangeFilter filter, bool includeType)
+        public static bool Decode(this MemoryBuffer mem, out DataChangeFilter filter, bool includeType)
 		{
-            filter = null;
+			filter = null;
 
             if (includeType)
             {
@@ -1113,14 +1164,14 @@ namespace LibUA
 
 			UInt32 ClientHandle;
 			double SamplingInterval;
-			EventFilter Filter;
 			UInt32 QueueSize;
+            MonitoringFilter Filter;
 			bool DiscardOldest;
 
 			if (!mem.Decode(out ClientHandle)) { return false; }
 			if (!mem.Decode(out SamplingInterval)) { return false; }
 
-			if (!mem.Decode(out Filter, true)) { return false; }
+            if (!mem.Decode(out Filter)) { return false; }
 
 			if (!mem.Decode(out QueueSize)) { return false; }
 			if (!mem.Decode(out DiscardOldest)) { return false; }

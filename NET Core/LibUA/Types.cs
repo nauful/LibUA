@@ -6577,8 +6577,10 @@ namespace LibUA
 			}
 		}
 
-		public class EventFilter
-		{
+		public abstract class MonitoringFilter { }
+
+		public class EventFilter : MonitoringFilter
+        {
 			public SimpleAttributeOperand[] SelectClauses { get; protected set; }
 			public ContentFilterElement[] ContentFilters { get; protected set; }
 
@@ -6589,8 +6591,8 @@ namespace LibUA
 			}
 		}
 
-		public class DataChangeFilter
-		{
+		public class DataChangeFilter : MonitoringFilter
+        {
 			public DataChangeTrigger Trigger { get; protected set; }
 			public DeadbandType DeadbandType { get; protected set; }
             public double DeadbandValue { get; protected set; }
@@ -6607,11 +6609,11 @@ namespace LibUA
 		{
 			public UInt32 ClientHandle { get; protected set; }
 			public double SamplingInterval { get; protected set; }
-			public EventFilter Filter { get; protected set; }
+			public MonitoringFilter Filter { get; protected set; }
 			public UInt32 QueueSize { get; protected set; }
 			public bool DiscardOldest { get; protected set; }
 
-			public MonitoringParameters(UInt32 ClientHandle, double SamplingInterval, EventFilter Filter, UInt32 QueueSize, bool DiscardOldest)
+			public MonitoringParameters(UInt32 ClientHandle, double SamplingInterval, MonitoringFilter Filter, UInt32 QueueSize, bool DiscardOldest)
 			{
 				this.ClientHandle = ClientHandle;
 				this.SamplingInterval = SamplingInterval;
