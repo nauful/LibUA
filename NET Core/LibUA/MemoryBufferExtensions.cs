@@ -1035,6 +1035,78 @@ namespace LibUA
 			return true;
 		}
 
+		public static bool Decode(this MemoryBuffer mem, out DataChangeFilter filter, bool includeType)
+		{
+            filter = null;
+
+            if (includeType)
+            {
+                NodeId filterTypeId;
+                byte filterMask;
+
+                if (!mem.Decode(out filterTypeId)) { return false; }
+                if (!mem.Decode(out filterMask)) { return false; }
+
+                if (filterTypeId.EqualsNumeric(0, 0) && filterMask == 0)
+                {
+                    // No filter
+                    return true;
+                }
+
+                if (!filterTypeId.EqualsNumeric(0, (uint)UAConst.DataChangeFilter_Encoding_DefaultBinary)) { return false; }
+                // Has binary body
+                if (filterMask != 1) { return false; }
+
+                UInt32 eoFilterSize;
+                if (!mem.Decode(out eoFilterSize)) { return false; }
+            }
+
+            UInt32 trigger, deadbandType;
+            if (!mem.Decode(out trigger)) { return false; }
+            if (!mem.Decode(out deadbandType)) { return false; }
+
+			double deadbandValue;
+            if (!mem.Decode(out deadbandValue)) { return false; }
+
+            try
+			{
+				filter = new DataChangeFilter((DataChangeTrigger)trigger, (DeadbandType)deadbandType, deadbandValue);
+			}
+			catch
+			{
+				return false;
+			}
+
+			return true;
+        }
+
+		public static bool Encode(this MemoryBuffer mem, DataChangeFilter filter, bool includeType)
+		{
+            if (filter == null)
+            {
+                if (includeType)
+                {
+                    if (!mem.Encode(NodeId.Zero)) { return false; }
+                    if (!mem.Encode((byte)0)) { return false; }
+                }
+                return true;
+            }
+
+            if (includeType)
+            {
+                // Default binary
+                if (!mem.Encode(new NodeId(724))) { return false; }
+                // Has binary body
+                if (!mem.Encode((byte)1)) { return false; }
+            }
+
+            if (!mem.Encode((UInt32)filter.Trigger)) { return false; }
+            if (!mem.Encode((UInt32)filter.DeadbandType)) { return false; }
+            if (!mem.Encode(filter.DeadbandValue)) { return false; }
+
+            return true;
+        }
+
 		public static bool Decode(this MemoryBuffer mem, out MonitoringParameters para)
 		{
 			para = null;
