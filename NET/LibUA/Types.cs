@@ -6569,10 +6569,10 @@ namespace LibUA
 			}
 		}
 
-        public abstract class MonitoringFilter { }
+		public abstract class MonitoringFilter { }
 
-        public class EventFilter : MonitoringFilter
-        {
+		public class EventFilter : MonitoringFilter
+		{
 			public SimpleAttributeOperand[] SelectClauses { get; protected set; }
 			public ContentFilterElement[] ContentFilters { get; protected set; }
 
@@ -6769,21 +6769,21 @@ namespace LibUA
 			public Subscription ParentSubscription;
 
 			public ConcurrentQueue<EventNotification> QueueEvent;
-            public SimpleAttributeOperand[] FilterSelectClauses
-            {
-                get
-                {
-                    if (Parameters.Filter is EventFilter eventFiler)
-                    {
-                        return eventFiler.SelectClauses;
-                    }
+			public SimpleAttributeOperand[] FilterSelectClauses
+			{
+				get
+				{
+					if (Parameters.Filter is EventFilter eventFiler)
+					{
+						return eventFiler.SelectClauses;
+					}
 
-                    return null;
-                }
-            }
+					return null;
+				}
+			}
 
-            public MonitoredItem(Subscription ParentSubscription)
-            {
+			public MonitoredItem(Subscription ParentSubscription)
+			{
 				this.ParentSubscription = ParentSubscription;
 
 				this.QueueData = new ConcurrentQueue<DataValue>();

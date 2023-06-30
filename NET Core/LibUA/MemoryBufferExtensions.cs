@@ -907,47 +907,47 @@ namespace LibUA
 			return false;
 		}
 
-        public static bool Encode(this MemoryBuffer mem, MonitoringFilter filter, bool includeType)
+		public static bool Encode(this MemoryBuffer mem, MonitoringFilter filter, bool includeType)
 		{
 			if (filter is EventFilter eventFiler)
 			{
 				return mem.Encode(eventFiler, includeType);
 			}
 			else if (filter is DataChangeFilter dataChangeFilter)
-            {
-                return mem.Encode(dataChangeFilter, includeType);
-            }
+			{
+				return mem.Encode(dataChangeFilter, includeType);
+			}
 
 			return false;
-        }
+		}
 
-        public static bool Decode(this MemoryBuffer mem, out EventFilter filter, bool includeType)
-        {
-            filter = null;
+		public static bool Decode(this MemoryBuffer mem, out EventFilter filter, bool includeType)
+		{
+			filter = null;
 
-            if (includeType)
-            {
-                NodeId filterTypeId;
-                byte filterMask;
+			if (includeType)
+			{
+				NodeId filterTypeId;
+				byte filterMask;
 
-                if (!mem.Decode(out filterTypeId)) { return false; }
-                if (!mem.Decode(out filterMask)) { return false; }
+				if (!mem.Decode(out filterTypeId)) { return false; }
+				if (!mem.Decode(out filterMask)) { return false; }
 
-                if (filterTypeId.EqualsNumeric(0, 0) && filterMask == 0)
-                {
-                    // No filter
-                    return true;
-                }
+				if (filterTypeId.EqualsNumeric(0, 0) && filterMask == 0)
+				{
+					// No filter
+					return true;
+				}
 
-                if (!filterTypeId.EqualsNumeric(0, (uint)UAConst.EventFilter_Encoding_DefaultBinary)) { return false; }
-                // Has binary body
-                if (filterMask != 1) { return false; }
+				if (!filterTypeId.EqualsNumeric(0, (uint)UAConst.EventFilter_Encoding_DefaultBinary)) { return false; }
+				// Has binary body
+				if (filterMask != 1) { return false; }
 
-                UInt32 eoFilterSize;
-                if (!mem.Decode(out eoFilterSize)) { return false; }
-            }
+				UInt32 eoFilterSize;
+				if (!mem.Decode(out eoFilterSize)) { return false; }
+			}
 
-            UInt32 numSelectClauses;
+			UInt32 numSelectClauses;
 			if (!mem.DecodeArraySize(out numSelectClauses)) { return false; }
 
 			SimpleAttributeOperand[] selectClauses = null;
@@ -1086,40 +1086,40 @@ namespace LibUA
 			return true;
 		}
 
-        public static bool Decode(this MemoryBuffer mem, out DataChangeFilter filter, bool includeType)
+		public static bool Decode(this MemoryBuffer mem, out DataChangeFilter filter, bool includeType)
 		{
 			filter = null;
 
-            if (includeType)
-            {
-                NodeId filterTypeId;
-                byte filterMask;
+			if (includeType)
+			{
+				NodeId filterTypeId;
+				byte filterMask;
 
-                if (!mem.Decode(out filterTypeId)) { return false; }
-                if (!mem.Decode(out filterMask)) { return false; }
+				if (!mem.Decode(out filterTypeId)) { return false; }
+				if (!mem.Decode(out filterMask)) { return false; }
 
-                if (filterTypeId.EqualsNumeric(0, 0) && filterMask == 0)
-                {
-                    // No filter
-                    return true;
-                }
+				if (filterTypeId.EqualsNumeric(0, 0) && filterMask == 0)
+				{
+					// No filter
+					return true;
+				}
 
-                if (!filterTypeId.EqualsNumeric(0, (uint)UAConst.DataChangeFilter_Encoding_DefaultBinary)) { return false; }
-                // Has binary body
-                if (filterMask != 1) { return false; }
+				if (!filterTypeId.EqualsNumeric(0, (uint)UAConst.DataChangeFilter_Encoding_DefaultBinary)) { return false; }
+				// Has binary body
+				if (filterMask != 1) { return false; }
 
-                UInt32 eoFilterSize;
-                if (!mem.Decode(out eoFilterSize)) { return false; }
-            }
+				UInt32 eoFilterSize;
+				if (!mem.Decode(out eoFilterSize)) { return false; }
+			}
 
-            UInt32 trigger, deadbandType;
-            if (!mem.Decode(out trigger)) { return false; }
-            if (!mem.Decode(out deadbandType)) { return false; }
+			UInt32 trigger, deadbandType;
+			if (!mem.Decode(out trigger)) { return false; }
+			if (!mem.Decode(out deadbandType)) { return false; }
 
 			double deadbandValue;
-            if (!mem.Decode(out deadbandValue)) { return false; }
+			if (!mem.Decode(out deadbandValue)) { return false; }
 
-            try
+			try
 			{
 				filter = new DataChangeFilter((DataChangeTrigger)trigger, (DeadbandType)deadbandType, deadbandValue);
 			}
@@ -1129,7 +1129,7 @@ namespace LibUA
 			}
 
 			return true;
-        }
+		}
 
 		public static bool Encode(this MemoryBuffer mem, DataChangeFilter filter, bool includeType)
 		{
