@@ -2221,7 +2221,7 @@ namespace LibUA
 		{
 			if (str == null) { return mem.CodingSize((UInt32)0); }
 
-			return mem.CodingSize((UInt32)0) + str.Length;
+			return mem.CodingSize((UInt32)0) + Encoding.UTF8.GetBytes(str).Length;
 		}
 
 		public static bool EncodeUAString(this MemoryBuffer mem, string str)

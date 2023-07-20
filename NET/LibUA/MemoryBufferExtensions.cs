@@ -1674,7 +1674,7 @@ namespace LibUA
 		{
 			if (str == null) { return mem.CodingSize((UInt32)0); }
 
-			return mem.CodingSize((UInt32)0) + str.Length;
+			return mem.CodingSize((UInt32)0) + Encoding.UTF8.GetBytes(str).Length;
 		}
 
 		public static bool EncodeUAString(this MemoryBuffer mem, string str)
@@ -1684,7 +1684,7 @@ namespace LibUA
 				return mem.Encode((UInt32)0xFFFFFFFFu);
 			}
 
-			byte[] bytes = Encoding.ASCII.GetBytes(str);
+			byte[] bytes = Encoding.UTF8.GetBytes(str);
 			if (!mem.Encode((uint)bytes.Length))
 			{
 				return false;
@@ -1725,7 +1725,7 @@ namespace LibUA
 			Array.Copy(mem.Buffer, mem.Position, arr, 0, Length);
 			mem.Position += (int)Length;
 
-			str = Encoding.ASCII.GetString(arr);
+			str = Encoding.UTF8.GetString(arr);
 			return true;
 		}
 	}
