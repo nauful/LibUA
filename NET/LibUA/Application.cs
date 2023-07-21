@@ -637,7 +637,7 @@ namespace LibUA
 				return res;
 			}
 
-			protected bool SessionHasPermissionToRead(object session, NodeId nodeId)
+			protected virtual bool SessionHasPermissionToRead(object session, NodeId nodeId)
 			{
 				return true;
 			}

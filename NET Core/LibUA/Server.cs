@@ -48,6 +48,11 @@ namespace LibUA
 
 			public void Start()
 			{
+				Start(IPAddress.Any);
+			}
+
+			public void Start(IPAddress LocalEndpoint)
+			{
 				if (listener != null)
 				{
 					Stop();
@@ -57,7 +62,7 @@ namespace LibUA
 				listenerAbort = new ManualResetEvent(false);
 				listenerAvailable = new Semaphore(MaxClients, MaxClients);
 
-				IPEndPoint localEndPoint = new IPEndPoint(IPAddress.Any, Port);
+				IPEndPoint localEndPoint = new IPEndPoint(LocalEndpoint, Port);
 
 				listener = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 				listener.Bind(localEndPoint);
