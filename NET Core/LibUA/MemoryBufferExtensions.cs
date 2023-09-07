@@ -909,6 +909,10 @@ namespace LibUA
 
 		public static bool Encode(this MemoryBuffer mem, MonitoringFilter filter, bool includeType)
 		{
+			if (filter == null)
+			{
+				return mem.Encode((EventFilter)null, true);
+			}
 			if (filter is EventFilter eventFiler)
 			{
 				return mem.Encode(eventFiler, includeType);
@@ -1133,30 +1137,30 @@ namespace LibUA
 
 		public static bool Encode(this MemoryBuffer mem, DataChangeFilter filter, bool includeType)
 		{
-            if (filter == null)
-            {
-                if (includeType)
-                {
-                    if (!mem.Encode(NodeId.Zero)) { return false; }
-                    if (!mem.Encode((byte)0)) { return false; }
-                }
-                return true;
-            }
+			if (filter == null)
+			{
+				if (includeType)
+				{
+					if (!mem.Encode(NodeId.Zero)) { return false; }
+					if (!mem.Encode((byte)0)) { return false; }
+				}
+				return true;
+			}
 
-            if (includeType)
-            {
-                // Default binary
-                if (!mem.Encode(new NodeId(724))) { return false; }
-                // Has binary body
-                if (!mem.Encode((byte)1)) { return false; }
-            }
+			if (includeType)
+			{
+				// Default binary
+				if (!mem.Encode(new NodeId(724))) { return false; }
+				// Has binary body
+				if (!mem.Encode((byte)1)) { return false; }
+			}
 
-            if (!mem.Encode((UInt32)filter.Trigger)) { return false; }
-            if (!mem.Encode((UInt32)filter.DeadbandType)) { return false; }
-            if (!mem.Encode(filter.DeadbandValue)) { return false; }
+			if (!mem.Encode((UInt32)filter.Trigger)) { return false; }
+			if (!mem.Encode((UInt32)filter.DeadbandType)) { return false; }
+			if (!mem.Encode(filter.DeadbandValue)) { return false; }
 
-            return true;
-        }
+			return true;
+		}
 
 		public static bool Decode(this MemoryBuffer mem, out MonitoringParameters para)
 		{
@@ -1165,13 +1169,13 @@ namespace LibUA
 			UInt32 ClientHandle;
 			double SamplingInterval;
 			UInt32 QueueSize;
-            MonitoringFilter Filter;
+			MonitoringFilter Filter;
 			bool DiscardOldest;
 
 			if (!mem.Decode(out ClientHandle)) { return false; }
 			if (!mem.Decode(out SamplingInterval)) { return false; }
 
-            if (!mem.Decode(out Filter)) { return false; }
+			if (!mem.Decode(out Filter)) { return false; }
 
 			if (!mem.Decode(out QueueSize)) { return false; }
 			if (!mem.Decode(out DiscardOldest)) { return false; }
