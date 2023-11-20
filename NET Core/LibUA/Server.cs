@@ -83,10 +83,7 @@ namespace LibUA
 					listener = null;
 				}
 
-				if (listenerThread != null)
-				{
-					listenerThread.Join();
-				}
+				listenerThread?.Join();
 
 				while (dispatchers.Count > 0)
 				{
@@ -335,10 +332,18 @@ namespace LibUA
 				if (succeeded)
 				{
 					MarkPositionAsSize(respBuf);
-					socket.Send(respBuf.Buffer, respBuf.Position, SocketFlags.None);
+
+					try
+					{
+						socket.Send(respBuf.Buffer, respBuf.Position, SocketFlags.None);
+					}
+					catch (SocketException ex)
+					{
+						logger?.Log(LogLevel.Error, string.Format("Socket error {1} for TL error 0x{0}", statusCode.ToString("X"), ex.Message));
+					}
 				}
 
-				if (logger != null) { logger.Log(LogLevel.Error, string.Format("Sent TL error 0x{0}", statusCode.ToString("X"))); }
+				logger?.Log(LogLevel.Error, string.Format("Sent TL error 0x{0}", statusCode.ToString("X")));
 			}
 
 			private void ThreadTarget()
@@ -348,7 +353,7 @@ namespace LibUA
 					Endpoint = socket.RemoteEndPoint
 				};
 
-				if (logger != null) { logger.Log(LogLevel.Info, string.Format("Accepted connection from {0}", sessionInfo.Endpoint)); }
+				logger?.Log(LogLevel.Info, string.Format("Accepted connection from {0}", sessionInfo.Endpoint));
 
 				config = new SLChannel();
 				config.Endpoint = socket.RemoteEndPoint as IPEndPoint;
@@ -360,7 +365,7 @@ namespace LibUA
 
 				DateTime lastServerAliveNotification = DateTime.MinValue;
 
-				while (socket.Connected)
+				while (socket != null && socket.Connected)
 				{
 					if (threadAbort)
 					{
@@ -377,7 +382,7 @@ namespace LibUA
 							//sw.Start();
 							if (!Pulse())
 							{
-								if (logger != null) { logger.Log(LogLevel.Error, "Pulse failed"); }
+								logger?.Log(LogLevel.Error, "Pulse failed");
 								recvAccumSize = -1;
 								break;
 							}
@@ -390,9 +395,17 @@ namespace LibUA
 						}
 					}
 
-					if (!socket.Poll(PulseInterval * 1000, SelectMode.SelectRead))
+					try
 					{
-						continue;
+						if (!socket.Poll(PulseInterval * 1000, SelectMode.SelectRead))
+						{
+							continue;
+						}
+					}
+					catch (SocketException)
+					{
+						// Disconnected
+						break;
 					}
 
 					int bytesRead = 0;
@@ -420,7 +433,7 @@ namespace LibUA
 					recvAccumSize += bytesRead;
 					if (recvAccumSize > maximumMessageSize)
 					{
-						if (logger != null) { logger.Log(LogLevel.Error, string.Format("Received {0} but maximum message size is {1}", recvAccumSize, maximumMessageSize)); }
+						logger?.Log(LogLevel.Error, string.Format("Received {0} but maximum message size is {1}", recvAccumSize, maximumMessageSize));
 						break;
 					}
 
@@ -469,7 +482,7 @@ namespace LibUA
 						{
 							if (consumedSize > recvAccumSize)
 							{
-								if (logger != null) { logger.Log(LogLevel.Error, string.Format("Consumed {0} but accumulated message size is {1}", consumedSize, recvAccumSize)); }
+								logger?.Log(LogLevel.Error, string.Format("Consumed {0} but accumulated message size is {1}", consumedSize, recvAccumSize));
 							}
 
 							recvAccumSize = 0;
@@ -494,7 +507,7 @@ namespace LibUA
 					// Cannot receive more or process existing
 					if (recvAccumSize >= maximumMessageSize)
 					{
-						if (logger != null) { logger.Log(LogLevel.Error, string.Format("Received {0} but maximum message size is {1}", recvAccumSize, maximumMessageSize)); }
+						logger?.Log(LogLevel.Error, string.Format("Received {0} but maximum message size is {1}", recvAccumSize, maximumMessageSize));
 						break;
 					}
 
@@ -514,8 +527,16 @@ namespace LibUA
 					app.SessionRelease(config.Session);
 				}
 
-				socket.Shutdown(SocketShutdown.Send);
-				socket.Close();
+				try
+				{
+					socket.Shutdown(SocketShutdown.Send);
+					socket.Close();
+				}
+				catch (SocketException)
+				{
+					// Disconnected
+				}
+
 				server.RemoveDispatcher(this);
 
 				//foreach (var cfg in monitorMap.Values)
@@ -523,7 +544,7 @@ namespace LibUA
 				//	app.MonitorDispatcherRemove(cfg);
 				//}
 
-				if (logger != null) { logger.Log(LogLevel.Info, string.Format("Ended connection from {0}", sessionInfo.Endpoint)); }
+				logger?.Log(LogLevel.Info, string.Format("Ended connection from {0}", sessionInfo.Endpoint));
 			}
 
 			virtual protected bool NeedsPulse()
