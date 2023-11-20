@@ -338,187 +338,197 @@ namespace LibUA
 
 			private void ThreadTarget()
 			{
-				var sessionInfo = new Application.SessionCreationInfo()
+				try
 				{
-					Endpoint = socket.RemoteEndPoint
-				};
-
-				if (logger != null) { logger.Log(LogLevel.Info, string.Format("Accepted connection from {0}", sessionInfo.Endpoint)); }
-
-				config = new SLChannel();
-				config.Endpoint = socket.RemoteEndPoint as IPEndPoint;
-				config.Session = app.SessionCreate(sessionInfo);
-				config.SLState = ConnectionState.Opening;
-
-				int recvAccumSize = 0;
-				var recvBuffer = new byte[maximumMessageSize];
-
-				DateTime lastServerAliveNotification = DateTime.MinValue;
-
-				while (socket.Connected)
-				{
-					if (threadAbort)
+					var sessionInfo = new Application.SessionCreationInfo()
 					{
-						break;
-					}
+						Endpoint = socket.RemoteEndPoint
+					};
 
-					while (NeedsPulse())
+					logger?.Log(LogLevel.Info, string.Format("Accepted connection from {0}", sessionInfo.Endpoint));
+
+					config = new SLChannel();
+					config.Endpoint = socket.RemoteEndPoint as IPEndPoint;
+					config.Session = app.SessionCreate(sessionInfo);
+					config.SLState = ConnectionState.Opening;
+
+					int recvAccumSize = 0;
+					var recvBuffer = new byte[maximumMessageSize];
+
+					DateTime lastServerAliveNotification = DateTime.MinValue;
+
+					while (socket.Connected)
 					{
-						Monitor.Enter(csDispatching);
-
-						try
+						if (threadAbort)
 						{
-							//var sw = new System.Diagnostics.Stopwatch();
-							//sw.Start();
-							if (!Pulse())
+							break;
+						}
+
+						while (NeedsPulse())
+						{
+							Monitor.Enter(csDispatching);
+
+							try
 							{
-								if (logger != null) { logger.Log(LogLevel.Error, "Pulse failed"); }
-								recvAccumSize = -1;
-								break;
+								//var sw = new System.Diagnostics.Stopwatch();
+								//sw.Start();
+								if (!Pulse())
+								{
+									if (logger != null) { logger.Log(LogLevel.Error, "Pulse failed"); }
+									recvAccumSize = -1;
+									break;
+								}
+								//sw.Stop();
+								//Console.WriteLine("Pulse in {0}", sw.Elapsed.ToString());
 							}
-							//sw.Stop();
-							//Console.WriteLine("Pulse in {0}", sw.Elapsed.ToString());
+							finally
+							{
+								Monitor.Exit(csDispatching);
+							}
 						}
-						finally
+
+						if (!socket.Poll(PulseInterval * 1000, SelectMode.SelectRead))
 						{
-							Monitor.Exit(csDispatching);
+							continue;
 						}
-					}
 
-					if (!socket.Poll(PulseInterval * 1000, SelectMode.SelectRead))
-					{
-						continue;
-					}
-
-					int bytesRead = 0;
-					int bytesAvailable = maximumMessageSize - recvAccumSize;
-					if (bytesAvailable < 0)
-					{
-						break;
-					}
-
-					try
-					{
-						bytesRead = socket.Receive(recvBuffer, recvAccumSize, bytesAvailable, SocketFlags.None);
-					}
-					catch
-					{
-						break;
-					}
-
-					if (bytesRead == 0)
-					{
-						// Disconnected
-						break;
-					}
-
-					recvAccumSize += bytesRead;
-					if (recvAccumSize > maximumMessageSize)
-					{
-						if (logger != null) { logger.Log(LogLevel.Error, string.Format("Received {0} but maximum message size is {1}", recvAccumSize, maximumMessageSize)); }
-						break;
-					}
-
-					while (recvAccumSize > 0 && UAStatusCode == (uint)StatusCode.Good)
-					{
-						Monitor.Enter(csDispatching);
-						int consumedSize = -1;
+						int bytesRead = 0;
+						int bytesAvailable = maximumMessageSize - recvAccumSize;
+						if (bytesAvailable < 0)
+						{
+							break;
+						}
 
 						try
 						{
-							consumedSize = Consume(new MemoryBuffer(recvBuffer, recvAccumSize));
-						}
-						catch (NotImplementedException)
-						{
-							if (UAStatusCode == (uint)StatusCode.Good) { UAStatusCode = (uint)StatusCode.BadNotImplemented; }
-							consumedSize = ErrorInternal;
+							bytesRead = socket.Receive(recvBuffer, recvAccumSize, bytesAvailable, SocketFlags.None);
 						}
 						catch
 						{
-							consumedSize = ErrorInternal;
-						}
-						finally
-						{
-							Monitor.Exit(csDispatching);
-						}
-
-						if (consumedSize < 0)
-						{
-							if (UAStatusCode == (uint)StatusCode.Good)
-							{
-								if (consumedSize == ErrorInternal) { UAStatusCode = (uint)StatusCode.BadInternalError; }
-								if (consumedSize == ErrorParseFail) { UAStatusCode = (uint)StatusCode.BadDecodingError; }
-								if (consumedSize == ErrorRespWrite) { UAStatusCode = (uint)StatusCode.BadEncodingLimitsExceeded; }
-							}
-
-							// Handler failed
-							recvAccumSize = -1;
 							break;
 						}
-						else if (consumedSize == 0)
+
+						if (bytesRead == 0)
 						{
-							// Not enough to read a message
+							// Disconnected
 							break;
 						}
-						else if (consumedSize >= recvAccumSize)
+
+						recvAccumSize += bytesRead;
+						if (recvAccumSize > maximumMessageSize)
 						{
-							if (consumedSize > recvAccumSize)
+							logger?.Log(LogLevel.Error, string.Format("Received {0} but maximum message size is {1}", recvAccumSize, maximumMessageSize));
+							break;
+						}
+
+						while (recvAccumSize > 0 && UAStatusCode == (uint)StatusCode.Good)
+						{
+							Monitor.Enter(csDispatching);
+							int consumedSize = -1;
+
+							try
 							{
-								if (logger != null) { logger.Log(LogLevel.Error, string.Format("Consumed {0} but accumulated message size is {1}", consumedSize, recvAccumSize)); }
+								consumedSize = Consume(new MemoryBuffer(recvBuffer, recvAccumSize));
+							}
+							catch (NotImplementedException)
+							{
+								if (UAStatusCode == (uint)StatusCode.Good) { UAStatusCode = (uint)StatusCode.BadNotImplemented; }
+								consumedSize = ErrorInternal;
+							}
+							catch
+							{
+								consumedSize = ErrorInternal;
+							}
+							finally
+							{
+								Monitor.Exit(csDispatching);
 							}
 
-							recvAccumSize = 0;
+							if (consumedSize < 0)
+							{
+								if (UAStatusCode == (uint)StatusCode.Good)
+								{
+									if (consumedSize == ErrorInternal) { UAStatusCode = (uint)StatusCode.BadInternalError; }
+									if (consumedSize == ErrorParseFail) { UAStatusCode = (uint)StatusCode.BadDecodingError; }
+									if (consumedSize == ErrorRespWrite) { UAStatusCode = (uint)StatusCode.BadEncodingLimitsExceeded; }
+								}
+
+								// Handler failed
+								recvAccumSize = -1;
+								break;
+							}
+							else if (consumedSize == 0)
+							{
+								// Not enough to read a message
+								break;
+							}
+							else if (consumedSize >= recvAccumSize)
+							{
+								if (consumedSize > recvAccumSize)
+								{
+									logger?.Log(LogLevel.Error, string.Format("Consumed {0} but accumulated message size is {1}", consumedSize, recvAccumSize));
+								}
+
+								recvAccumSize = 0;
+							}
+							else
+							{
+								int newSize = recvAccumSize - consumedSize;
+
+								var newRecvBuffer = new byte[maximumMessageSize];
+								Array.Copy(recvBuffer, consumedSize, newRecvBuffer, 0, newSize);
+								recvBuffer = newRecvBuffer;
+
+								recvAccumSize = newSize;
+							}
+
+							if (UAStatusCode != (uint)StatusCode.Good)
+							{
+								threadAbort = true;
+							}
 						}
-						else
+
+						// Cannot receive more or process existing
+						if (recvAccumSize >= maximumMessageSize)
 						{
-							int newSize = recvAccumSize - consumedSize;
-
-							var newRecvBuffer = new byte[maximumMessageSize];
-							Array.Copy(recvBuffer, consumedSize, newRecvBuffer, 0, newSize);
-							recvBuffer = newRecvBuffer;
-
-							recvAccumSize = newSize;
+							logger?.Log(LogLevel.Error, string.Format("Received {0} but maximum message size is {1}", recvAccumSize, maximumMessageSize));
+							break;
 						}
 
-						if (UAStatusCode != (uint)StatusCode.Good)
+						if (recvAccumSize < 0)
 						{
-							threadAbort = true;
+							break;
 						}
 					}
 
-					// Cannot receive more or process existing
-					if (recvAccumSize >= maximumMessageSize)
+					if (config.Session != null)
 					{
-						if (logger != null) { logger.Log(LogLevel.Error, string.Format("Received {0} but maximum message size is {1}", recvAccumSize, maximumMessageSize)); }
-						break;
+						app.SessionRelease(config.Session);
 					}
 
-					if (recvAccumSize < 0)
+					if (UAStatusCode != (uint)StatusCode.Good)
 					{
-						break;
+						TLError(UAStatusCode);
 					}
-				}
 
-				if (UAStatusCode != (uint)StatusCode.Good)
+					socket.Shutdown(SocketShutdown.Send);
+					socket.Close();
+
+					//foreach (var cfg in monitorMap.Values)
+					//{
+					//	app.MonitorDispatcherRemove(cfg);
+					//}
+
+					logger?.Log(LogLevel.Info, string.Format("Ended connection from {0}", sessionInfo.Endpoint));
+				}
+				catch (Exception ex)
 				{
-					TLError(UAStatusCode);
+					logger?.Log(LogLevel.Error, string.Format("Unexpected dispatcher error: {0}", ex.Message));
 				}
-
-				if (config.Session != null)
+				finally
 				{
-					app.SessionRelease(config.Session);
+					server.RemoveDispatcher(this);
 				}
-
-				socket.Shutdown(SocketShutdown.Send);
-				socket.Close();
-				server.RemoveDispatcher(this);
-
-				//foreach (var cfg in monitorMap.Values)
-				//{
-				//	app.MonitorDispatcherRemove(cfg);
-				//}
-
-				if (logger != null) { logger.Log(LogLevel.Info, string.Format("Ended connection from {0}", sessionInfo.Endpoint)); }
 			}
 
 			virtual protected bool NeedsPulse()
