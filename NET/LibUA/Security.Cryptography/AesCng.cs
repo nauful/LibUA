@@ -22,7 +22,7 @@ namespace LibUA.Security.Cryptography
     /// </summary>
     public sealed class AesCng : Aes, ICngSymmetricAlgorithm
     {
-        private BCryptSymmetricAlgorithm m_symmetricAlgorithm;
+        private readonly BCryptSymmetricAlgorithm m_symmetricAlgorithm;
 
         /// <summary>
         ///     Constructs an AesCng object. The default settings for this object are:
@@ -61,13 +61,14 @@ namespace LibUA.Security.Cryptography
             m_symmetricAlgorithm = new BCryptSymmetricAlgorithm(new CngAlgorithm(BCryptNative.AlgorithmName.Aes),
                                                                 algorithmProvider,
                                                                 LegalBlockSizesValue,
-                                                                LegalKeySizesValue);
-            
-            // Propigate the default properties from the Aes class to the implementation algorithm.
-            m_symmetricAlgorithm.BlockSize = BlockSizeValue;
-            m_symmetricAlgorithm.KeySize = KeySizeValue;
-            m_symmetricAlgorithm.Mode = ModeValue;
-            m_symmetricAlgorithm.Padding = PaddingValue;
+                                                                LegalKeySizesValue)
+            {
+                // Propigate the default properties from the Aes class to the implementation algorithm.
+                BlockSize = BlockSizeValue,
+                KeySize = KeySizeValue,
+                Mode = ModeValue,
+                Padding = PaddingValue
+            };
         }
 
         protected override void Dispose(bool disposing)

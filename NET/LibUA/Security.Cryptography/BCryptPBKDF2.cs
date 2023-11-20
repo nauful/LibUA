@@ -21,7 +21,7 @@ namespace LibUA.Security.Cryptography
 
         public static bool ValidateHashName(string name)
         {
-            if(name != SHA1 && 
+            if (name != SHA1 &&
                name != SHA256 &&
                name != SHA384 &&
                name != SHA512)
@@ -60,17 +60,16 @@ namespace LibUA.Security.Cryptography
             if (password == null)
                 throw new ArgumentException("Password must be non-null", "password");
 
-            if(!PBKDF2HashAlgorithm.ValidateHashName(hashName))
+            if (!PBKDF2HashAlgorithm.ValidateHashName(hashName))
                 throw new ArgumentException("Invalid hash name for PBKDF2");
-
-            byte[] digest = null;
-
             double vers = Environment.OSVersion.Version.Major + Environment.OSVersion.Version.Minor * 0.1;
 
-            if(vers > 6.1)
-            { 
+
+            byte[] digest;
+            if (vers > 6.1)
+            {
                 // The BCryptKeyDerivation API is only supported on Win8/Server 2012 and above
-                digest = BCryptNative.PBKDF2BCryptKeyDerivation(hashName, password, salt, (UInt64) cIterations);
+                digest = BCryptNative.PBKDF2BCryptKeyDerivation(hashName, password, salt, (UInt64)cIterations);
             }
             else
             {
@@ -80,6 +79,6 @@ namespace LibUA.Security.Cryptography
 
             return digest;
         }
-        
+
     }
 }

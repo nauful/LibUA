@@ -21,14 +21,14 @@ namespace LibUA.Security.Cryptography
                                                                         IAuthenticatedCryptoTransform,
                                                                         IDisposable
     {
-        private SafeBCryptAlgorithmHandle m_algorithm;
+        private readonly SafeBCryptAlgorithmHandle m_algorithm;
         private BCryptNative.BCRYPT_AUTHENTICATED_CIPHER_MODE_INFO m_authInfo;
-        private byte[] m_chainData;
-        private bool m_chainingSupported;
-        private SafeBCryptKeyHandle m_key;
+        private readonly byte[] m_chainData;
+        private readonly bool m_chainingSupported;
+        private readonly SafeBCryptKeyHandle m_key;
 
-        private MemoryStream m_inputBuffer;
-        private bool m_encrypting;
+        private readonly MemoryStream m_inputBuffer;
+        private readonly bool m_encrypting;
         private bool m_transformedFinalBlock;
 
         /// <summary>
@@ -155,20 +155,11 @@ namespace LibUA.Security.Cryptography
         {
             if (disposing)
             {
-                if (m_key != null)
-                {
-                    m_key.Dispose();
-                }
+                m_key?.Dispose();
 
-                if (m_algorithm != null)
-                {
-                    m_algorithm.Dispose();
-                }
+                m_algorithm?.Dispose();
 
-                if (m_inputBuffer != null)
-                {
-                    m_inputBuffer.Dispose();
-                }
+                m_inputBuffer?.Dispose();
             }
 
             if (m_authInfo.pbAuthData != IntPtr.Zero)
@@ -262,7 +253,7 @@ namespace LibUA.Security.Cryptography
             Marshal.Copy(m_authInfo.pbTag, tag, 0, m_authInfo.cbTag);
             return tag;
         }
-        
+
 
         /// <summary>
         ///     Transforms some blocks of input data, but don't finalize the transform

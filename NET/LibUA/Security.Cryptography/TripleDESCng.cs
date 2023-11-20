@@ -21,10 +21,9 @@ namespace LibUA.Security.Cryptography
     ///         class, please see the MSDN documentation for TripleDES for a complete description.
     ///     </para>
     /// </summary>
-    [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "DES", Justification = "Conforms with existing TripleDES BCL pattern")]
     public sealed class TripleDESCng : TripleDES, ICngSymmetricAlgorithm
     {
-        private BCryptSymmetricAlgorithm m_symmetricAlgorithm;
+        private readonly BCryptSymmetricAlgorithm m_symmetricAlgorithm;
 
         /// <summary>
         ///     Constructs a TripleDESCng object. The default settings for this object are:
@@ -62,13 +61,14 @@ namespace LibUA.Security.Cryptography
             m_symmetricAlgorithm = new BCryptSymmetricAlgorithm(new CngAlgorithm(BCryptNative.AlgorithmName.TripleDes),
                                                                 algorithmProvider,
                                                                 LegalBlockSizesValue,
-                                                                LegalKeySizesValue);
-
-            // Propigate the default properties from the TripleDES class to the implementation algorithm.
-            m_symmetricAlgorithm.BlockSize = BlockSizeValue;
-            m_symmetricAlgorithm.KeySize = KeySizeValue;
-            m_symmetricAlgorithm.Mode = ModeValue;
-            m_symmetricAlgorithm.Padding = PaddingValue;
+                                                                LegalKeySizesValue)
+            {
+                // Propigate the default properties from the TripleDES class to the implementation algorithm.
+                BlockSize = BlockSizeValue,
+                KeySize = KeySizeValue,
+                Mode = ModeValue,
+                Padding = PaddingValue
+            };
         }
 
         protected override void Dispose(bool disposing)

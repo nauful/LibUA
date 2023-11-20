@@ -25,68 +25,68 @@ namespace LibUA.Security.Cryptography
         ///     When used for searching for or enumerating over OIDs, specifies that the search or enumeration
         ///     should include OIDs found in all of the groups. 
         /// </summary>
-        AllGroups                           = 0,
+        AllGroups = 0,
 
         /// <summary>
         ///     A group for OIDs that represent hashing algortihms.  This maps to the native
         ///     CRYPT_HASH_ALG_OID_GROUP_ID group.
         /// </summary>
-        HashAlgorithm                       = 1,
+        HashAlgorithm = 1,
 
         /// <summary>
         ///     A group for OIDs that represent symmetric encryption algorithms.  This maps to the native
         ///     CRYPT_ENCRYPT_ALG_OID_GROUP_ID group.
         /// </summary>
-        EncryptionAlgorithm                 = 2,
+        EncryptionAlgorithm = 2,
 
         /// <summary>
         ///     A group for OIDs that represent asymmetric encryption algorithms.  This maps to the native
         ///     CRYPT_PUBKEY_ALG_OID_GROUP_ID group.
         /// </summary>
-        PublicKeyAlgorithm                  = 3,
+        PublicKeyAlgorithm = 3,
 
         /// <summary>
         ///     A group for OIDs that represent digital signature algorithms.  This maps to the native
         ///     CRYPT_SIGN_ALG_OID_GROUP_ID group.
         /// </summary>
-        SignatureAlgorithm                  = 4,
+        SignatureAlgorithm = 4,
 
         /// <summary>
         ///     A group for OIDs that represent RDN attributes.  This maps to the native
         ///     CRYPT_RDN_ATTR_OID_GROUP_ID group.
         /// </summary>
-        Attribute                           = 5,
+        Attribute = 5,
 
         /// <summary>
         ///     A group for OIDs that represent X.509 certificate extensions or attributes.  This maps to
         ///     the native CRYPT_EXT_OR_ATTR_OID_GROUP_ID group.
         /// </summary>
-        ExtensionOrAttribute                = 6,
+        ExtensionOrAttribute = 6,
 
         /// <summary>
         ///     A group for OIDs that represent X.509 certificate enhanced key usages.  This maps to the
         ///     native CRYPT_ENHKEY_USAGE_OID_GROUP_ID group.
         /// </summary>
-        EnhancedKeyUsage                    = 7,
+        EnhancedKeyUsage = 7,
 
         /// <summary>
         ///     A group for OIDs that represent policies.  This maps to the native CRYPT_POLICY_OID_GROUP_ID
         ///     group.
         /// </summary>
-        Policy                              = 8,
+        Policy = 8,
 
         /// <summary>
         ///     A group for OIDs that represent templates.  This maps to the native
         ///     CRYPT_TEMPLATE_OID_GROUP_ID group.
         /// </summary>
-        Template                            = 9,
+        Template = 9,
 
 
         /// <summary>
         ///     A group for OIDS that represent key derivation algorithms.  This maps to the native
         ///     CRYPT_KDF_OID_GROUP_ID group.
         /// </summary>
-        KeyDerivationFunction               = 10,
+        KeyDerivationFunction = 10,
     }
 
     /// <summary>
@@ -99,13 +99,13 @@ namespace LibUA.Security.Cryptography
         /// <summary>
         ///     The OID is installed after the built in OIDs
         /// </summary>
-        None                                = 0x00000000,
+        None = 0x00000000,
 
         /// <summary>
         ///     The OID is installed before the built in OIDs.  This maps to the native
         ///     CRYPT_INSTALL_OID_INFO_BEFORE_FLAG option.
         /// </summary>
-        InstallBeforeDefaultEntries         = 0x00000001,
+        InstallBeforeDefaultEntries = 0x00000001,
     }
 
     /// <summary>
@@ -129,8 +129,8 @@ namespace LibUA.Security.Cryptography
         /// </summary>
         internal enum AlgorithmClass
         {
-            Any         = (0 << 13),                    // ALG_CLASS_ANY
-            Hash        = (4 << 13),                    // ALG_CLASS_HASH
+            Any = (0 << 13),                    // ALG_CLASS_ANY
+            Hash = (4 << 13),                    // ALG_CLASS_HASH
         }
 
         /// <summary>
@@ -138,7 +138,7 @@ namespace LibUA.Security.Cryptography
         /// </summary>
         internal enum AlgorithmType
         {
-            Any         = (0 << 9),                     // ALG_TYPE_ANY
+            Any = (0 << 9),                     // ALG_TYPE_ANY
         }
 
         /// <summary>
@@ -146,10 +146,10 @@ namespace LibUA.Security.Cryptography
         /// </summary>
         internal enum AlgorithmSubId
         {
-            Any         = 0,                            // ALG_SID_ANY
-            Sha256      = 12,                           // ALG_SID_SHA_256
-            Sha384      = 13,                           // ALG_SID_SHA_384
-            Sha512      = 14,                           // ALG_SID_SHA_512
+            Any = 0,                            // ALG_SID_ANY
+            Sha256 = 12,                           // ALG_SID_SHA_256
+            Sha384 = 13,                           // ALG_SID_SHA_384
+            Sha512 = 14,                           // ALG_SID_SHA_512
 
         }
 
@@ -160,41 +160,41 @@ namespace LibUA.Security.Cryptography
         {
             None = 0,
 
-            Sha256 =                    (AlgorithmClass.Hash                | AlgorithmType.Any             | AlgorithmSubId.Sha256),                   // CALG_SHA_256
-            Sha384 =                    (AlgorithmClass.Hash                | AlgorithmType.Any             | AlgorithmSubId.Sha384),                   // CALG_SHA_384
-            Sha512 =                    (AlgorithmClass.Hash                | AlgorithmType.Any             | AlgorithmSubId.Sha512),                   // CALG_SHA_512
+            Sha256 = (AlgorithmClass.Hash | AlgorithmType.Any | AlgorithmSubId.Sha256),                   // CALG_SHA_256
+            Sha384 = (AlgorithmClass.Hash | AlgorithmType.Any | AlgorithmSubId.Sha384),                   // CALG_SHA_384
+            Sha512 = (AlgorithmClass.Hash | AlgorithmType.Any | AlgorithmSubId.Sha512),                   // CALG_SHA_512
         }
 
         internal enum OidKeyType
         {
-            Oid                                 = 1,            // CRYPT_OID_INFO_OID_KEY
-            Name                                = 2,            // CRYPT_OID_INFO_NAME_KEY
-            AlgoritmID                          = 3,            // CRYPT_OID_INFO_ALGID_KEY
-            SignatureAlgorithm                  = 4,            // CRYPT_OID_INFO_SIGN_KEY
-            CngAlgorithmId                      = 5,            // CRYPT_OID_INFO_CNG_ALGID_KEY
-            CngSignatureAlgorithm               = 6,            // CRYPT_OID_INFO_CNG_SIGN_KEY
+            Oid = 1,            // CRYPT_OID_INFO_OID_KEY
+            Name = 2,            // CRYPT_OID_INFO_NAME_KEY
+            AlgoritmID = 3,            // CRYPT_OID_INFO_ALGID_KEY
+            SignatureAlgorithm = 4,            // CRYPT_OID_INFO_SIGN_KEY
+            CngAlgorithmId = 5,            // CRYPT_OID_INFO_CNG_ALGID_KEY
+            CngSignatureAlgorithm = 6,            // CRYPT_OID_INFO_CNG_SIGN_KEY
         }
 
         internal static class WellKnownOids
         {
             // Algorithm OIDS
-            internal static string ECDsaSha1    = "1.2.840.10045.4.1";          // szOID_ECDSA_SHA1
-            internal static string ECDsaSha256  = "1.2.840.10045.4.3.2";        // szOID_ECDSA_SHA256
-            internal static string ECDsaSha384  = "1.2.840.10045.4.3.3";        // szOID_ECDSA_SHA384
-            internal static string ECDsaSha512  = "1.2.840.10045.4.3.4";        // szOID_ECDSA_SHA512
-            internal static string RsaSha1      = "1.2.840.113549.1.1.5";       // szOID_RSA_SHA1RSA
-            internal static string RsaSha256    = "1.2.840.113549.1.1.11";      // szOID_RSA_SHA256RSA
-            internal static string RsaSha384    = "1.2.840.113549.1.1.12";      // szOID_RSA_SHA384RSA
-            internal static string RsaSha512    = "1.2.840.113549.1.1.13";      // szOID_RSA_SHA512RSA
-            internal static string Sha256       = "2.16.840.1.101.3.4.2.1";     // szOID_NIST_sha256
-            internal static string Sha384       = "2.16.840.1.101.3.4.2.2";     // szOID_NIST_sha384
-            internal static string Sha512       = "2.16.840.1.101.3.4.2.3";     // szOID_NIST_sha512
+            internal static string ECDsaSha1 = "1.2.840.10045.4.1";          // szOID_ECDSA_SHA1
+            internal static string ECDsaSha256 = "1.2.840.10045.4.3.2";        // szOID_ECDSA_SHA256
+            internal static string ECDsaSha384 = "1.2.840.10045.4.3.3";        // szOID_ECDSA_SHA384
+            internal static string ECDsaSha512 = "1.2.840.10045.4.3.4";        // szOID_ECDSA_SHA512
+            internal static string RsaSha1 = "1.2.840.113549.1.1.5";       // szOID_RSA_SHA1RSA
+            internal static string RsaSha256 = "1.2.840.113549.1.1.11";      // szOID_RSA_SHA256RSA
+            internal static string RsaSha384 = "1.2.840.113549.1.1.12";      // szOID_RSA_SHA384RSA
+            internal static string RsaSha512 = "1.2.840.113549.1.1.13";      // szOID_RSA_SHA512RSA
+            internal static string Sha256 = "2.16.840.1.101.3.4.2.1";     // szOID_NIST_sha256
+            internal static string Sha384 = "2.16.840.1.101.3.4.2.2";     // szOID_NIST_sha384
+            internal static string Sha512 = "2.16.840.1.101.3.4.2.3";     // szOID_NIST_sha512
 
             // X509 certificate extension OIDS
-            internal static string SubjectAlternateName     = "2.5.29.7";       // szOID_SUBJECT_ALT_NAME
-            internal static string IssuerAlternateName      = "2.5.29.8";       // szOID_ISSUER_ALT_NAME
-            internal static string SubjectAlternateName2    = "2.5.29.17";      // szOID_SUBJECT_ALT_NAME2
-            internal static string IssuerAlternateName2     = "2.5.29.18";      // szOID_ISSUER_ALT_NAME2
+            internal static string SubjectAlternateName = "2.5.29.7";       // szOID_SUBJECT_ALT_NAME
+            internal static string IssuerAlternateName = "2.5.29.8";       // szOID_ISSUER_ALT_NAME
+            internal static string SubjectAlternateName2 = "2.5.29.17";      // szOID_SUBJECT_ALT_NAME2
+            internal static string IssuerAlternateName2 = "2.5.29.18";      // szOID_ISSUER_ALT_NAME2
         }
 
         //
@@ -265,12 +265,9 @@ namespace LibUA.Security.Cryptography
         }
 
         [StructLayout(LayoutKind.Sequential)]
-        [SuppressMessage("Microsoft.Design", "CA1049:TypesThatOwnNativeResourcesShouldBeDisposable", Justification = "CRYPTOAPI_BLOB does not own any resources")]
         internal struct CRYPTOAPI_BLOB
         {
             internal int cbData;
-
-            [SuppressMessage("Microsoft.Reliability", "CA2006:UseSafeHandleToEncapsulateNativeResources", Justification = "This field is for a byte *, not for a handle, and is cleaned up differently depending upon how the byte * was allocated")]
             internal IntPtr pbData; // BYTE*
         }
 
@@ -296,7 +293,7 @@ namespace LibUA.Security.Cryptography
                                                                int dwFlags,
                                                                IntPtr pvArg,
                                                                CryptEnumOidInfoCallbackWin2k3 pfnEnumOIDInfo);
-                                                         
+
             [DllImport("crypt32.dll")]
             internal static extern IntPtr CryptFindOIDInfo(OidKeyType dwKeyType,
                                                            IntPtr pvKey,
@@ -347,7 +344,6 @@ namespace LibUA.Security.Cryptography
 
         [SecurityCritical]
         [SecuritySafeCritical]
-        [SuppressMessage("Microsoft.Reliability", "CA2004:RemoveCallsToGCKeepAlive", Justification = "This is keeping a managed delegate alive, not a native resource")]
         internal static CRYPT_OID_INFO[] EnumerateOidInformation(OidGroup group)
         {
             // This list is passed through to the callbacks as a GCHandle, so if the type of this object is
@@ -460,7 +456,6 @@ namespace LibUA.Security.Cryptography
         ///     Find an OID based upon a string key
         /// </summary>
         [SecurityCritical]
-        [SuppressMessage("Microsoft.Security", "CA2122:DoNotIndirectlyExposeMethodsWithLinkDemands", Justification = "Safe exposure of LinkDemands via security critical method")]
         internal static bool TryFindOidInfo(string key,
                                             OidGroup group,
                                             OidKeyType keyType,
@@ -496,7 +491,7 @@ namespace LibUA.Security.Cryptography
                 {
                     Debug.Assert(false, "Unsupported key type");
                 }
-                IntPtr oid =  UnsafeNativeMethods.CryptFindOIDInfo(keyType, keyPointer, group);
+                IntPtr oid = UnsafeNativeMethods.CryptFindOIDInfo(keyType, keyPointer, group);
 
                 // Do the search, and if we succeeded, marshal the data back to the caller.  The
                 // CRYPT_OID_INFO being pointed to by the result of the search should not be freed by us
@@ -547,7 +542,6 @@ namespace LibUA.Security.Cryptography
         /// </summary>
         [SecurityCritical]
         [SecuritySafeCritical]
-        [SuppressMessage("Microsoft.Security", "CA2122:DoNotIndirectlyExposeMethodsWithLinkDemands", Justification = "Safe use of Marshal.SizeOf")]
         private static CRYPT_OID_INFO UpgradeOidInfo(CRYPT_OID_INFO_WIN2K3 oldOid)
         {
             return new CRYPT_OID_INFO

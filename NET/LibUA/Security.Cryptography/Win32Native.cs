@@ -23,10 +23,10 @@ namespace LibUA.Security.Cryptography
         [Flags]
         internal enum FormatMessageFlags
         {
-            None                = 0x00000000,
-            AllocateBuffer      = 0x00000100,           // FORMAT_MESSAGE_ALLOCATE_BUFFER
-            FromModule          = 0x00000800,           // FORMAT_MESSAGE_FROM_HMODULE
-            FromSystem          = 0x00001000,           // FORMAT_MESSAGE_FROM_SYSTEM
+            None = 0x00000000,
+            AllocateBuffer = 0x00000100,           // FORMAT_MESSAGE_ALLOCATE_BUFFER
+            FromModule = 0x00000800,           // FORMAT_MESSAGE_FROM_HMODULE
+            FromSystem = 0x00001000,           // FORMAT_MESSAGE_FROM_SYSTEM
         }
 
         //
@@ -88,7 +88,6 @@ namespace LibUA.Security.Cryptography
         /// </summary>
         [SecurityCritical]
         [SecuritySafeCritical]
-        [SuppressMessage("Microsoft.Security", "CA2122:DoNotIndirectlyExposeMethodsWithLinkDemands", Justification = "Safe to expose")]
         internal static string FormatMessageFromLibrary(int message, string library)
         {
             Debug.Assert(!String.IsNullOrEmpty(library), "!String.IsNullOrEmpty(library)");
@@ -229,7 +228,6 @@ namespace LibUA.Security.Cryptography
         [DllImport("kernel32.dll")]
         [ReliabilityContract(Consistency.WillNotCorruptState, Cer.Success)]
         [SuppressUnmanagedCodeSecurity]
-        [SuppressMessage("Microsoft.Design", "CA1060:MovePInvokesToNativeMethodsClass", Justification = "SafeHandle release method")]
         [return: MarshalAs(UnmanagedType.Bool)]
         private static extern bool FreeLibrary(IntPtr hModule);
 
@@ -251,10 +249,8 @@ namespace LibUA.Security.Cryptography
         [DllImport("kernel32.dll")]
         [ReliabilityContract(Consistency.WillNotCorruptState, Cer.Success)]
         [SuppressUnmanagedCodeSecurity]
-        [SuppressMessage("Microsoft.Design", "CA1060:MovePInvokesToNativeMethodsClass", Justification = "SafeHandle release method")]
         private static extern IntPtr LocalFree(IntPtr hMem);
 
-        [SuppressMessage("Microsoft.Security", "CA2122:DoNotIndirectlyExposeMethodsWithLinkDemands", Justification = "Protected as a SecurityCritical method")]
         internal T Read<T>(int offset) where T : struct
         {
             bool addedRef = false;

@@ -83,7 +83,6 @@ namespace LibUA.Security.Cryptography.X509Certificates
         /// </permission>
         [SecurityCritical]
         [SecurityPermission(SecurityAction.LinkDemand, UnmanagedCode = true)]
-        [SuppressMessage("Microsoft.Reliability", "CA2004:RemoveCallsToGCKeepAlive", Justification = "This method is used to create the safe handle, and KeepAlive is needed to prevent racing the GC while doing so")]
         public static SafeCertContextHandle GetCertificateContext(this X509Certificate certificate)
         {
             SafeCertContextHandle certContext = X509Native.DuplicateCertContext(certificate.Handle);
@@ -101,7 +100,6 @@ namespace LibUA.Security.Cryptography.X509Certificates
         /// </summary>
         [SecurityCritical]
         [SecuritySafeCritical]
-        [SuppressMessage("Microsoft.Security", "CA2122:DoNotIndirectlyExposeMethodsWithLinkDemands", Justification = "Safe use of GetAlternateNames")]
         public static IEnumerable<X509AlternateName> GetIssuerAlternateNames(this X509Certificate certificate)
         {
             List<X509AlternateName> alternateNames = new List<X509AlternateName>();
@@ -122,7 +120,6 @@ namespace LibUA.Security.Cryptography.X509Certificates
         /// </summary>
         [SecurityCritical]
         [SecuritySafeCritical]
-        [SuppressMessage("Microsoft.Security", "CA2122:DoNotIndirectlyExposeMethodsWithLinkDemands", Justification = "Safe use of GetAlternateNames")]
         public static IEnumerable<X509AlternateName> GetSubjectAlternateNames(this X509Certificate certificate)
         {
             List<X509AlternateName> alternateNames = new List<X509AlternateName>();
@@ -146,7 +143,6 @@ namespace LibUA.Security.Cryptography.X509Certificates
         /// </summary>
         [SecurityCritical]
         [SecuritySafeCritical]
-        [SuppressMessage("Microsoft.Security", "CA2122:DoNotIndirectlyExposeMethodsWithLinkDemands", Justification = "Safe use of LinkDemand members")]
         public static bool HasCngKey(this X509Certificate certificate)
         {
             using (SafeCertContextHandle certContext = certificate.GetCertificateContext())

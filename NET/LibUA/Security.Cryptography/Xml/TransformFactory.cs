@@ -25,7 +25,6 @@ namespace LibUA.Security.Cryptography.Xml
         /// </summary>
         /// <param name="xpath">XPath query to embed into the transform</param>
         /// <exception cref="ArgumentNullException">if <paramref name="xpath"/> is null</exception>
-        [SuppressMessage("Microsoft.Naming", "CA1702:CompoundWordsShouldBeCasedCorrectly", MessageId = "XPath", Justification = "This matches the XPath spelling in the rest of the framework.")]
         public static XmlDsigXPathTransform CreateXPathTransform(string xpath)
         {
             return CreateXPathTransform(xpath, null);
@@ -46,7 +45,6 @@ namespace LibUA.Security.Cryptography.Xml
         /// <param name="xpath">XPath query to embed into the transform</param>
         /// <param name="namespaces">optional XML namespace mappings to bring into scope for the query</param>
         /// <exception cref="ArgumentNullException">if <paramref name="xpath"/> is null</exception>
-        [SuppressMessage("Microsoft.Naming", "CA1702:CompoundWordsShouldBeCasedCorrectly", MessageId = "XPath", Justification = "This matches the XPath spelling in the rest of the framework.")]
         public static XmlDsigXPathTransform CreateXPathTransform(string xpath, IDictionary<string, string> namespaces)
         {
             if (xpath == null)

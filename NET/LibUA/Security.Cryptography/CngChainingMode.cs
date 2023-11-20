@@ -19,7 +19,7 @@ namespace LibUA.Security.Cryptography
         private static CngChainingMode s_ecb;
         private static CngChainingMode s_gcm;
 
-        private string m_chainingMode;
+        private readonly string m_chainingMode;
 
         /// <summary>
         ///     Creates a new CngChainingMode for the chaining mode string. This constructor should generally

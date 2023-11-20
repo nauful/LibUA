@@ -24,7 +24,6 @@ namespace LibUA.Security.Cryptography.Xml
         ///     items (such as the XML declaration) will not be overwritten, whereas ReplaceData always
         ///     overwrites the entire XML document with the decrypted data.
         /// </summary>
-        [SuppressMessage("Microsoft.Design", "CA1059:MembersShouldNotExposeCertainConcreteTypes", MessageId = "System.Xml.XmlNode", Justification = "This is to match the signature with the existing ReplaceData API")]
         public static void ReplaceData2(this EncryptedXml encryptedXml,
                                         XmlElement inputElement,
                                         byte[] decryptedData)
@@ -41,7 +40,7 @@ namespace LibUA.Security.Cryptography.Xml
                 //  1. Import the decrypted data into an XmlNode
                 //  2. Get that node into the target document
                 //  3. Replace the root element with the decrypted node
-                
+
                 XmlDocument importDocument = new XmlDocument();
                 importDocument.LoadXml(encryptedXml.Encoding.GetString(decryptedData));
 

@@ -12,7 +12,7 @@ namespace LibUA.Security.Cryptography.X509Certificates
     /// </summary>
     public sealed class X509AlternateNameOther : X509AlternateNameBlob
     {
-        private Oid2 m_oid;
+        private readonly Oid2 m_oid;
 
         /// <summary>
         ///     Create an alternate name for the given blob

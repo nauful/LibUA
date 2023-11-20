@@ -303,14 +303,13 @@ namespace LibUA.Security.Cryptography
             Debug.Assert(decryptor != null, "decryptor != null");
 
             // Figure out how big of a buffer is needed to store the decrypted data
-            int decryptedSize = 0;
             ErrorCode error = decryptor(key,
                                         data,
                                         data.Length,
                                         ref paddingInfo,
                                         null,
                                         0,
-                                        out decryptedSize,
+                                        out int decryptedSize,
                                         paddingMode);
             if (error != ErrorCode.Success && error != ErrorCode.BufferTooSmall)
             {
@@ -325,7 +324,7 @@ namespace LibUA.Security.Cryptography
                               ref paddingInfo,
                               decrypted,
                               decrypted.Length,
-                              out decryptedSize,
+                              out _,
                               paddingMode);
             if (error != ErrorCode.Success)
             {
@@ -346,8 +345,10 @@ namespace LibUA.Security.Cryptography
         {
             Debug.Assert(!String.IsNullOrEmpty(hashAlgorithm), "!String.IsNullOrEmpty(hashAlgorithm)");
 
-            BCryptNative.BCRYPT_OAEP_PADDING_INFO oaepInfo = new BCryptNative.BCRYPT_OAEP_PADDING_INFO();
-            oaepInfo.pszAlgId = hashAlgorithm;
+            BCryptNative.BCRYPT_OAEP_PADDING_INFO oaepInfo = new BCryptNative.BCRYPT_OAEP_PADDING_INFO
+            {
+                pszAlgId = hashAlgorithm
+            };
 
             return DecryptData(key,
                                data,
@@ -389,14 +390,13 @@ namespace LibUA.Security.Cryptography
             Debug.Assert(encryptor != null, "encryptor != null");
 
             // Figure out how big of a buffer is to encrypt the data
-            int encryptedSize = 0;
             ErrorCode error = encryptor(key,
                                         data,
                                         data.Length,
                                         ref paddingInfo,
                                         null,
                                         0,
-                                        out encryptedSize,
+                                        out int encryptedSize,
                                         paddingMode);
             if (error != ErrorCode.Success && error != ErrorCode.BufferTooSmall)
             {
@@ -411,7 +411,7 @@ namespace LibUA.Security.Cryptography
                               ref paddingInfo,
                               encrypted,
                               encrypted.Length,
-                              out encryptedSize,
+                              out _,
                               paddingMode);
             if (error != ErrorCode.Success)
             {
@@ -432,8 +432,10 @@ namespace LibUA.Security.Cryptography
         {
             Debug.Assert(!String.IsNullOrEmpty(hashAlgorithm), "!String.IsNullOrEmpty(hashAlgorithm)");
 
-            BCryptNative.BCRYPT_OAEP_PADDING_INFO oaepInfo = new BCryptNative.BCRYPT_OAEP_PADDING_INFO();
-            oaepInfo.pszAlgId = hashAlgorithm;
+            BCryptNative.BCRYPT_OAEP_PADDING_INFO oaepInfo = new BCryptNative.BCRYPT_OAEP_PADDING_INFO
+            {
+                pszAlgId = hashAlgorithm
+            };
 
             return EncryptData(key,
                                data,
@@ -463,21 +465,19 @@ namespace LibUA.Security.Cryptography
         /// </summary>
         [SecurityCritical]
         [SecuritySafeCritical]
-        [SuppressMessage("Microsoft.Security", "CA2122:DoNotIndirectlyExposeMethodsWithLinkDemands", Justification = "Safe use of Dispose")]
         internal static NCryptAlgorithmName[] EnumerateAlgorithms(SafeNCryptProviderHandle provider,
                                                                   NCryptAlgorithmOperations operations)
         {
             Debug.Assert(provider != null && !provider.IsClosed && !provider.IsInvalid, "Invalid provider");
-
-            uint algorithmCount = 0;
             SafeNCryptBuffer algorithmBuffer = null;
 
             try
             {
+
                 // Ask CNG for the list of algorithms
                 ErrorCode enumStatus = UnsafeNativeMethods.NCryptEnumAlgorithms(provider,
                                                                                 operations,
-                                                                                out algorithmCount,
+                                                                                out uint algorithmCount,
                                                                                 out algorithmBuffer,
                                                                                 0);
                 if (enumStatus != ErrorCode.Success)
@@ -496,10 +496,7 @@ namespace LibUA.Security.Cryptography
             }
             finally
             {
-                if (algorithmBuffer != null)
-                {
-                    algorithmBuffer.Dispose();
-                }
+                algorithmBuffer?.Dispose();
             }
         }
 
@@ -508,7 +505,6 @@ namespace LibUA.Security.Cryptography
         /// </summary>
         [SecurityCritical]
         [SecuritySafeCritical]
-        [SuppressMessage("Microsoft.Security", "CA2122:DoNotIndirectlyExposeMethodsWithLinkDemands", Justification = "Safe use of LinkDemands")]
         internal static NCryptKeyName[] EnumerateKeys(SafeNCryptProviderHandle provider,
                                                       CngKeyOpenOptions openOptions)
         {
@@ -553,10 +549,7 @@ namespace LibUA.Security.Cryptography
                     UnsafeNativeMethods.NCryptFreeBuffer(enumState);
                 }
 
-                if (algorithmBuffer != null)
-                {
-                    algorithmBuffer.Dispose();
-                }
+                algorithmBuffer?.Dispose();
             }
         }
 
@@ -567,13 +560,12 @@ namespace LibUA.Security.Cryptography
         [SecuritySafeCritical]
         internal static NCryptProviderName[] EnumerateStorageProviders()
         {
-            uint providerCount = 0;
             SafeNCryptBuffer providerBuffer = null;
 
             try
             {
                 // Ask CNG for the raw list of providers
-                ErrorCode enumStatus = UnsafeNativeMethods.NCryptEnumStorageProviders(out providerCount,
+                ErrorCode enumStatus = UnsafeNativeMethods.NCryptEnumStorageProviders(out uint providerCount,
                                                                                       out providerBuffer,
                                                                                       0);
 
@@ -593,13 +585,10 @@ namespace LibUA.Security.Cryptography
             }
             finally
             {
-                if (providerBuffer != null)
-                {
-                    providerBuffer.Dispose();
-                }
+                providerBuffer?.Dispose();
             }
         }
-        
+
         /// <summary>
         ///     Open a raw handle to a KSP
         /// </summary>
@@ -608,8 +597,7 @@ namespace LibUA.Security.Cryptography
         {
             Debug.Assert(!String.IsNullOrEmpty(providerName), "!String.IsNullOrEmpty(providerName)");
 
-            SafeNCryptProviderHandle providerHandle = null;
-            ErrorCode openStatus = UnsafeNativeMethods.NCryptOpenStorageProvider(out providerHandle,
+            ErrorCode openStatus = UnsafeNativeMethods.NCryptOpenStorageProvider(out SafeNCryptProviderHandle providerHandle,
                                                                                  providerName,
                                                                                  0);
             if (openStatus != ErrorCode.Success)
@@ -636,14 +624,13 @@ namespace LibUA.Security.Cryptography
             Debug.Assert(signer != null, "signer != null");
 
             // Figure out how big the signature is
-            int signatureSize = 0;
             ErrorCode error = signer(key,
                                      ref paddingInfo,
                                      hash,
                                      hash.Length,
                                      null,
                                      0,
-                                     out signatureSize,
+                                     out int signatureSize,
                                      paddingMode);
             if (error != ErrorCode.Success && error != ErrorCode.BufferTooSmall)
             {
@@ -658,7 +645,7 @@ namespace LibUA.Security.Cryptography
                            hash.Length,
                            signature,
                            signature.Length,
-                           out signatureSize,
+                           out _,
                            paddingMode);
             if (error != ErrorCode.Success)
             {
@@ -681,8 +668,10 @@ namespace LibUA.Security.Cryptography
             Debug.Assert(hash != null, "hash != null");
             Debug.Assert(!String.IsNullOrEmpty(hashAlgorithm), "!String.IsNullOrEmpty(hashAlgorithm)");
 
-            BCryptNative.BCRYPT_PKCS1_PADDING_INFO pkcs1Info = new BCryptNative.BCRYPT_PKCS1_PADDING_INFO();
-            pkcs1Info.pszAlgId = hashAlgorithm;
+            BCryptNative.BCRYPT_PKCS1_PADDING_INFO pkcs1Info = new BCryptNative.BCRYPT_PKCS1_PADDING_INFO
+            {
+                pszAlgId = hashAlgorithm
+            };
 
             return SignHash(key,
                             hash,
@@ -706,9 +695,11 @@ namespace LibUA.Security.Cryptography
             Debug.Assert(!String.IsNullOrEmpty(hashAlgorithm), "!String.IsNullOrEmpty(hashAlgorithm)");
             Debug.Assert(saltBytes >= 0, "saltBytes >= 0");
 
-            BCryptNative.BCRYPT_PSS_PADDING_INFO pssInfo = new BCryptNative.BCRYPT_PSS_PADDING_INFO();
-            pssInfo.pszAlgId = hashAlgorithm;
-            pssInfo.cbSalt = saltBytes;
+            BCryptNative.BCRYPT_PSS_PADDING_INFO pssInfo = new BCryptNative.BCRYPT_PSS_PADDING_INFO
+            {
+                pszAlgId = hashAlgorithm,
+                cbSalt = saltBytes
+            };
 
             return SignHash(key,
                             hash,
@@ -766,8 +757,10 @@ namespace LibUA.Security.Cryptography
             Debug.Assert(!String.IsNullOrEmpty(hashAlgorithm), "!String.IsNullOrEmpty(hashAlgorithm)");
             Debug.Assert(signature != null, "signature != null");
 
-            BCryptNative.BCRYPT_PKCS1_PADDING_INFO pkcs1Info = new BCryptNative.BCRYPT_PKCS1_PADDING_INFO();
-            pkcs1Info.pszAlgId = hashAlgorithm;
+            BCryptNative.BCRYPT_PKCS1_PADDING_INFO pkcs1Info = new BCryptNative.BCRYPT_PKCS1_PADDING_INFO
+            {
+                pszAlgId = hashAlgorithm
+            };
 
             return VerifySignature(key,
                                    hash,
@@ -794,9 +787,11 @@ namespace LibUA.Security.Cryptography
             Debug.Assert(!String.IsNullOrEmpty(hashAlgorithm), "!String.IsNullOrEmpty(hashAlgorithm)");
             Debug.Assert(signature != null, "signature != null");
 
-            BCryptNative.BCRYPT_PSS_PADDING_INFO pssInfo = new BCryptNative.BCRYPT_PSS_PADDING_INFO();
-            pssInfo.pszAlgId = hashAlgorithm;
-            pssInfo.cbSalt = saltBytes;
+            BCryptNative.BCRYPT_PSS_PADDING_INFO pssInfo = new BCryptNative.BCRYPT_PSS_PADDING_INFO
+            {
+                pszAlgId = hashAlgorithm,
+                cbSalt = saltBytes
+            };
 
             return VerifySignature(key,
                                    hash,
@@ -830,7 +825,6 @@ namespace LibUA.Security.Cryptography
         /// <param name="index">0 based index into the array to read the structure from</param>
         /// <returns>the value of the structure at the index into the array</returns>
         [SecurityCritical]
-        [SuppressMessage("Microsoft.Security", "CA2122:DoNotIndirectlyExposeMethodsWithLinkDemands", Justification = "Safe use by a critical method")]
         internal T ReadArray<T>(uint index) where T : struct
         {
             checked

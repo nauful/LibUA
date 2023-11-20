@@ -12,7 +12,7 @@ namespace LibUA.Security.Cryptography.X509Certificates
     /// </summary>
     public class X509AlternateNameBlob : X509AlternateName
     {
-        private byte[] m_blob;
+        private readonly byte[] m_blob;
 
         /// <summary>
         ///     Create an alternate name for the given blob
@@ -84,10 +84,10 @@ namespace LibUA.Security.Cryptography.X509Certificates
                 }
             }
 
-            if (m_blob.Length > 0 &&  m_blob.Length % 4 != 0)
+            if (m_blob.Length > 0 && m_blob.Length % 4 != 0)
             {
                 int remainder = 0;
-                for (int i = 0; i < m_blob.Length %4; ++i)
+                for (int i = 0; i < m_blob.Length % 4; ++i)
                 {
                     remainder |= (m_blob[m_blob.Length - i - 1]) << (8 * i);
                 }

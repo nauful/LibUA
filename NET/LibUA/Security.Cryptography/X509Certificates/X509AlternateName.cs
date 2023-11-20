@@ -15,7 +15,7 @@ namespace LibUA.Security.Cryptography.X509Certificates
     /// </summary>
     public class X509AlternateName
     {
-        private AlternateNameType m_type;
+        private readonly AlternateNameType m_type;
 
         /// <summary>
         ///     Construct an empty X509AlternateName of the specified type
@@ -92,7 +92,7 @@ namespace LibUA.Security.Cryptography.X509Certificates
                 case AlternateNameType.OtherName:
                     X509Native.CERT_OTHER_NAME otherName =
                         (X509Native.CERT_OTHER_NAME)Marshal.PtrToStructure(altNameEntry.altName.pOtherName, typeof(X509Native.CERT_OTHER_NAME));
-                    
+
                     Oid2 otherNameOid = Oid2.FindByValue(otherName.pszObjId);
                     return new X509AlternateNameOther(CapiNative.ReadBlob(otherName.Value), otherNameOid);
 

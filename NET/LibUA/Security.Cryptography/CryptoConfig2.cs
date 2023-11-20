@@ -29,8 +29,8 @@ namespace LibUA.Security.Cryptography
     /// </summary>
     public static class CryptoConfig2
     {
-        private static Dictionary<string, Type> s_algorithmMap = DefaultAlgorithmMap;
-        private static ReaderWriterLockSlim s_algorithmMapLock = new ReaderWriterLockSlim(LockRecursionPolicy.NoRecursion);
+        private static readonly Dictionary<string, Type> s_algorithmMap = DefaultAlgorithmMap;
+        private static readonly ReaderWriterLockSlim s_algorithmMapLock = new ReaderWriterLockSlim(LockRecursionPolicy.NoRecursion);
 
         /// <summary>
         ///     Default mapping of algorithm names to algorithm types
@@ -211,10 +211,7 @@ namespace LibUA.Security.Cryptography
             // Since we only need the algorithm type, rather than the full algorithm itself, we can clean up
             // the algorithm instance if it is disposable
             IDisposable disposableAlgorithm = algorithm as IDisposable;
-            if (disposableAlgorithm != null)
-            {
-                disposableAlgorithm.Dispose();
-            }
+            disposableAlgorithm?.Dispose();
 
             // Create a factory delegate which returns new instances of the algorithm type
             NewExpression algorithmCreationExpression = Expression.New(algorithmType);
@@ -268,8 +265,7 @@ namespace LibUA.Security.Cryptography
             s_algorithmMapLock.EnterReadLock();
             try
             {
-                Type cryptoConfig2Type = null;
-                if (s_algorithmMap.TryGetValue(name, out cryptoConfig2Type))
+                if (s_algorithmMap.TryGetValue(name, out Type cryptoConfig2Type))
                 {
                     return Activator.CreateInstance(cryptoConfig2Type);
                 }
