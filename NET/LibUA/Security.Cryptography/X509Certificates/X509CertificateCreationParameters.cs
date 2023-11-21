@@ -22,7 +22,7 @@ namespace LibUA.Security.Cryptography.X509Certificates
         private X509CertificateSignatureAlgorithm m_signatureAlgorithm = X509CertificateSignatureAlgorithm.RsaSha1;
         private DateTime m_endTime = DateTime.UtcNow.AddYears(1);
         private DateTime m_startTime = DateTime.UtcNow;
-        private X509ExtensionCollection m_extensions = new X509ExtensionCollection();
+        private readonly X509ExtensionCollection m_extensions = new X509ExtensionCollection();
         private bool m_takeOwnershipOfKey = true;
 
         /// <summary>

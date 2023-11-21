@@ -12,7 +12,7 @@ namespace LibUA.Security.Cryptography.Xml
     /// </summary>
     internal sealed class XmlDSigNodeList : XmlNodeList
     {
-        private List<XmlNode> m_list = new List<XmlNode>();
+        private readonly List<XmlNode> m_list = new List<XmlNode>();
 
         public override int Count
         {

@@ -47,8 +47,10 @@ namespace LibUA.Security.Cryptography
         public static X509Certificate2 CreateSelfSignedCertificate(this CngKey key,
                                                                    X500DistinguishedName subjectName)
         {
-            X509CertificateCreationParameters creationParameters = new X509CertificateCreationParameters(subjectName);
-            creationParameters.TakeOwnershipOfKey = true;
+            X509CertificateCreationParameters creationParameters = new X509CertificateCreationParameters(subjectName)
+            {
+                TakeOwnershipOfKey = true
+            };
             return CreateSelfSignedCertificate(key, creationParameters);
         }
 
@@ -82,10 +84,8 @@ namespace LibUA.Security.Cryptography
         /// </permission>
         [SecurityCritical]
         [SecuritySafeCritical]
-        [SuppressMessage("Microsoft.Security", "CA2122:DoNotIndirectlyExposeMethodsWithLinkDemands", Justification = "Safe use of LinkDemand protected methods")]
-        [SuppressMessage("Microsoft.Reliability", "CA2001:AvoidCallingProblematicMethods", MessageId = "System.Runtime.InteropServices.SafeHandle.DangerousGetHandle", Justification = "Used in a CER block with AddRef and Release")]
         public static X509Certificate2 CreateSelfSignedCertificate(this CngKey key,
-																   X509Certificates.X509CertificateCreationParameters creationParameters)
+                                                                   X509Certificates.X509CertificateCreationParameters creationParameters)
         {
             if (creationParameters == null)
                 throw new ArgumentNullException("creationParameters");

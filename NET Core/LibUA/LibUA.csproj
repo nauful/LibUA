@@ -10,7 +10,7 @@
   <PropertyGroup>
     <!-- Package properties -->
     <PackageId>PW.LibUA</PackageId>
-    <Version>1.0.9-rc1</Version>
+    <Version>1.0.11</Version>
     <Description>Open-source OPC UA client and server library.</Description>
     <Authors>nauful,MET</Authors>
     <RepositoryUrl>https://github.com/paul-wurth/PW.LibUA</RepositoryUrl>

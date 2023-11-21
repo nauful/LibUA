@@ -40,14 +40,13 @@ namespace LibUA.Security.Cryptography.X509Certificates
         /// <permission cref="SecurityPermission">The caller of this method must have SecurityPermission/UnmanagedCode.</permission>
         [SecurityCritical]
         [SecurityPermission(SecurityAction.LinkDemand, UnmanagedCode = true)]
-        [SuppressMessage("Microsoft.Security", "CA2122:DoNotIndirectlyExposeMethodsWithLinkDemands", Justification = "Safe use of LinkDemand methods")]
         public static CngKey GetCngPrivateKey(this X509Certificate2 certificate)
         {
             if (!certificate.HasPrivateKey || !certificate.HasCngKey())
             {
                 return null;
             }
-            
+
             using (SafeCertContextHandle certContext = certificate.GetCertificateContext())
             using (SafeNCryptKeyHandle privateKeyHandle = X509Native.AcquireCngPrivateKey(certContext))
             {

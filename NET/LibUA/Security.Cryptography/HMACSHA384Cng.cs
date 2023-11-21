@@ -21,12 +21,11 @@ namespace LibUA.Security.Cryptography
     ///         please see the MSDN documentation for HMAC for a complete description.
     ///     </para>
     /// </summary>
-    [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "HMACSHA", Justification = "This matches the HMAC naming in the BCL")]
     public sealed class HMACSHA384Cng : HMAC, ICngAlgorithm
     {
         private const int BlockSize = 128;
 
-        private BCryptHMAC m_hmac;
+        private readonly BCryptHMAC m_hmac;
 
         /// <summary>
         ///     Constructs a HMACSHA384Cng object with a randomly generated key, which will use the Microsoft

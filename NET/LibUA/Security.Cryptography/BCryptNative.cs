@@ -19,8 +19,6 @@ namespace LibUA.Security.Cryptography
     /// <summary>
     ///     Padding modes 
     /// </summary>
-    [SuppressMessage("Microsoft.Design", "CA1027:MarkEnumsWithFlags", Justification = "Public use of the enum is not as flags")]
-    [SuppressMessage("Microsoft.Design", "CA1008:EnumsShouldHaveZeroValue", Justification = "The native BCRYPT_PAD_NONE value is 1, not 0, and this is for interop.")]
     public enum AsymmetricPaddingMode
     {
         /// <summary>
@@ -80,8 +78,8 @@ namespace LibUA.Security.Cryptography
         [Flags]
         internal enum AlgorithmProviderOptions
         {
-            None                = 0x00000000,
-            HmacAlgorithm       = 0x00000008,                           // BCRYPT_ALG_HANDLE_HMAC_FLAG
+            None = 0x00000000,
+            HmacAlgorithm = 0x00000008,                           // BCRYPT_ALG_HANDLE_HMAC_FLAG
         }
 
         /// <summary>
@@ -90,9 +88,9 @@ namespace LibUA.Security.Cryptography
         [Flags]
         internal enum AuthenticatedCipherModeInfoFlags
         {
-            None                = 0x00000000,
-            ChainCalls          = 0x00000001,                           // BCRYPT_AUTH_MODE_CHAIN_CALLS_FLAG
-            InProgress          = 0x00000002,                           // BCRYPT_AUTH_MODE_IN_PROGRESS_FLAG
+            None = 0x00000000,
+            ChainCalls = 0x00000001,                           // BCRYPT_AUTH_MODE_CHAIN_CALLS_FLAG
+            InProgress = 0x00000002,                           // BCRYPT_AUTH_MODE_IN_PROGRESS_FLAG
         }
 
         /// <summary>
@@ -179,25 +177,16 @@ namespace LibUA.Security.Cryptography
         //
 
         [StructLayout(LayoutKind.Sequential)]
-        [SuppressMessage("Microsoft.Design", "CA1049:TypesThatOwnNativeResourcesShouldBeDisposable", Justification = "The resouces lifetime is owned by the containing type - as a value type, the pointers will be copied and are not owned by the value type itself.")]
         internal struct BCRYPT_AUTHENTICATED_CIPHER_MODE_INFO
         {
             internal int cbSize;
             internal int dwInfoVersion;
-
-            [SuppressMessage("Microsoft.Reliability", "CA2006:UseSafeHandleToEncapsulateNativeResources", Justification = "The handle is not owned by the value type")]
             internal IntPtr pbNonce;            // byte *
             internal int cbNonce;
-
-            [SuppressMessage("Microsoft.Reliability", "CA2006:UseSafeHandleToEncapsulateNativeResources", Justification = "The handle is not owned by the value type")]
             internal IntPtr pbAuthData;         // byte *
             internal int cbAuthData;
-
-            [SuppressMessage("Microsoft.Reliability", "CA2006:UseSafeHandleToEncapsulateNativeResources", Justification = "The handle is not owned by the value type")]
             internal IntPtr pbTag;              // byte *
             internal int cbTag;
-
-            [SuppressMessage("Microsoft.Reliability", "CA2006:UseSafeHandleToEncapsulateNativeResources", Justification = "The handle is not owned by the value type")]
             internal IntPtr pbMacContext;       // byte *
             internal int cbMacContext;
 
@@ -288,7 +277,7 @@ namespace LibUA.Security.Cryptography
                                                               [Out] out SafeBCryptHashHandle hHash,
                                                               IntPtr pbHashObject,              // byte *
                                                               int cbHashObject,
-                                                              [In, MarshalAs(UnmanagedType.LPArray)]byte[] pbSecret,
+                                                              [In, MarshalAs(UnmanagedType.LPArray)] byte[] pbSecret,
                                                               int cbSecret,
                                                               int dwFlags);
 
@@ -388,7 +377,7 @@ namespace LibUA.Security.Cryptography
                                                              [In, MarshalAs(UnmanagedType.LPArray)] byte[] pbInput,
                                                              int cbInput,
                                                              int dwFlags);
-                                                 
+
             [DllImport("bcrypt.dll")]
             internal static extern ErrorCode BCryptOpenAlgorithmProvider([Out] out SafeBCryptAlgorithmHandle phAlgorithm,
                                                                          [MarshalAs(UnmanagedType.LPWStr)] string pszAlgId,
@@ -436,7 +425,7 @@ namespace LibUA.Security.Cryptography
                                                                    [Out, MarshalAs(UnmanagedType.LPArray)] byte[] pbDerivedKey,
                                                                    int cbDerivedKey,
                                                                    int dwFlags);
- 
+
         }
 
         /// <summary>
@@ -597,7 +586,7 @@ namespace LibUA.Security.Cryptography
             {
                 unsafe
                 {
-                    fixed (byte *pPropertyBytes = rawProperty)
+                    fixed (byte* pPropertyBytes = rawProperty)
                     {
                         return Marshal.PtrToStringUni(new IntPtr(pPropertyBytes));
                     }
@@ -609,7 +598,6 @@ namespace LibUA.Security.Cryptography
         ///     Get a property from a BCrypt which is returned as a structure
         /// </summary>
         [SecurityCritical]
-        [SuppressMessage("Microsoft.Security", "CA2122:DoNotIndirectlyExposeMethodsWithLinkDemands", Justification = "Internal critical API")]
         internal static TProperty GetValueTypeProperty<THandle, TProperty>(THandle bcryptObject, string property)
             where THandle : SafeHandle
             where TProperty : struct
@@ -773,7 +761,7 @@ namespace LibUA.Security.Cryptography
                 // we need to free it now otherwise it will leak.
                 if (keyDataBuffer != IntPtr.Zero)
                 {
-                    if (keyHandle == null ||keyHandle.DataBuffer == IntPtr.Zero)
+                    if (keyHandle == null || keyHandle.DataBuffer == IntPtr.Zero)
                     {
                         Marshal.FreeCoTaskMem(keyDataBuffer);
                     }
@@ -853,8 +841,7 @@ namespace LibUA.Security.Cryptography
             Debug.Assert(!String.IsNullOrEmpty(algorithm), "!String.IsNullOrEmpty(algorithm)");
             // Note that implementation may be NULL (in which case the default provider will be used)
 
-            SafeBCryptAlgorithmHandle algorithmHandle = null;
-            ErrorCode error = UnsafeNativeMethods.BCryptOpenAlgorithmProvider(out algorithmHandle,
+            ErrorCode error = UnsafeNativeMethods.BCryptOpenAlgorithmProvider(out SafeBCryptAlgorithmHandle algorithmHandle,
                                                                               algorithm,
                                                                               implementation,
                                                                               options);
@@ -943,7 +930,6 @@ namespace LibUA.Security.Cryptography
 
             // Do the decryption
             byte[] output = new byte[input.Length];
-            int outputSize = 0;
             ErrorCode error = UnsafeNativeMethods.BCryptDecrypt(key,
                                                                 input,
                                                                 input.Length,
@@ -952,7 +938,7 @@ namespace LibUA.Security.Cryptography
                                                                 iv != null ? iv.Length : 0,
                                                                 output,
                                                                 output.Length,
-                                                                out outputSize,
+                                                                out int outputSize,
                                                                 0);
             if (error != ErrorCode.Success)
             {
@@ -984,7 +970,6 @@ namespace LibUA.Security.Cryptography
 
             // Do the decryption
             byte[] output = new byte[input != null ? input.Length : 0];
-            int outputSize = 0;
             ErrorCode error = UnsafeNativeMethods.BCryptDecrypt(key,
                                                                 input,
                                                                 input != null ? input.Length : 0,
@@ -993,7 +978,7 @@ namespace LibUA.Security.Cryptography
                                                                 chainData != null ? chainData.Length : 0,
                                                                 output,
                                                                 output.Length,
-                                                                out outputSize,
+                                                                out int outputSize,
                                                                 0);
             if (error != ErrorCode.Success)
             {
@@ -1024,7 +1009,6 @@ namespace LibUA.Security.Cryptography
 
             // Do the encryption
             byte[] output = new byte[input.Length];
-            int outputSize = 0;
             ErrorCode error = UnsafeNativeMethods.BCryptEncrypt(key,
                                                                 input,
                                                                 input != null ? input.Length : 0,
@@ -1033,7 +1017,7 @@ namespace LibUA.Security.Cryptography
                                                                 iv != null ? iv.Length : 0,
                                                                 output,
                                                                 output.Length,
-                                                                out outputSize,
+                                                                out int outputSize,
                                                                 0);
             if (error != ErrorCode.Success)
             {
@@ -1066,7 +1050,6 @@ namespace LibUA.Security.Cryptography
 
             // Do the encryption
             byte[] output = new byte[input != null ? input.Length : 0];
-            int outputSize = 0;
             ErrorCode error = UnsafeNativeMethods.BCryptEncrypt(key,
                                                                 input,
                                                                 input != null ? input.Length : 0,
@@ -1075,7 +1058,7 @@ namespace LibUA.Security.Cryptography
                                                                 chainData != null ? chainData.Length : 0,
                                                                 output,
                                                                 output.Length,
-                                                                out outputSize,
+                                                                out int outputSize,
                                                                 0);
             if (error != ErrorCode.Success)
             {
@@ -1112,8 +1095,8 @@ namespace LibUA.Security.Cryptography
 
             // Create a "key" object from the password
             SafeBCryptAlgorithmHandle hPbkdf2 = OpenAlgorithm(AlgorithmName.Pbkdf2, null);
-            
-            SafeBCryptKeyHandle hKey = new SafeBCryptKeyHandle();
+            _ = new SafeBCryptKeyHandle();
+            SafeBCryptKeyHandle hKey;
             ErrorCode error = UnsafeNativeMethods.BCryptGenerateSymmetricKey(hPbkdf2, out hKey, null, 0, password, password.Length, 0);
             if (error != ErrorCode.Success)
             {
@@ -1123,35 +1106,37 @@ namespace LibUA.Security.Cryptography
 
             // Prepare the param buffer
             BCryptBuffer[] buffer = new BCryptBuffer[3];
-            buffer[0].BufferType = (int) ParameterTypes.KdfHashAlgorithm;
-            buffer[0].cbBuffer = hashName.Length*2;                 // *2 since a WCHAR is 2-bytes
+            buffer[0].BufferType = (int)ParameterTypes.KdfHashAlgorithm;
+            buffer[0].cbBuffer = hashName.Length * 2;                 // *2 since a WCHAR is 2-bytes
             buffer[0].pvBuffer = Marshal.StringToCoTaskMemUni(hashName);
 
-            buffer[1].BufferType = (int) ParameterTypes.KdfSalt;
+            buffer[1].BufferType = (int)ParameterTypes.KdfSalt;
             buffer[1].cbBuffer = salt.Length;
-            buffer[1].pvBuffer = Marshal.AllocCoTaskMem(salt.Length);                                   
+            buffer[1].pvBuffer = Marshal.AllocCoTaskMem(salt.Length);
             Marshal.Copy(salt, 0, buffer[1].pvBuffer, salt.Length);
 
-            buffer[2].BufferType = (int) ParameterTypes.KdfIterationCount;
+            buffer[2].BufferType = (int)ParameterTypes.KdfIterationCount;
             buffer[2].cbBuffer = sizeof(ulong);
-            buffer[2].pvBuffer = Marshal.AllocCoTaskMem(buffer[2].cbBuffer);                            
+            buffer[2].pvBuffer = Marshal.AllocCoTaskMem(buffer[2].cbBuffer);
             Marshal.Copy(BitConverter.GetBytes(iterations), 0, buffer[2].pvBuffer, buffer[2].cbBuffer);
 
-            BCryptBufferDesc pParamList = new BCryptBufferDesc();
-            pParamList.ulVersion = 0;       //BCRYPTBUFFER_VERSION
-            pParamList.cBuffers = 3;
+            BCryptBufferDesc pParamList = new BCryptBufferDesc
+            {
+                ulVersion = 0,       //BCRYPTBUFFER_VERSION
+                cBuffers = 3
+            };
             GCHandle gch = GCHandle.Alloc(buffer, GCHandleType.Pinned);
             pParamList.pBuffers = gch.AddrOfPinnedObject();
 
             // Derive the key
             byte[] derivedKey = new byte[hashLength];
-            int pcbResult = 0;  
+            int pcbResult = 0;
             error = UnsafeNativeMethods.BCryptKeyDerivation(hKey, ref pParamList, derivedKey, derivedKey.Length, ref pcbResult, 0);
             if (error != ErrorCode.Success)
             {
                 throw new CryptographicException(Win32Native.GetNTStatusMessage((int)error));
             }
-            if(pcbResult != hashLength)
+            if (pcbResult != hashLength)
             {
                 throw new CryptographicException("Invalid result from BCryptKeyDerivation (PBKDF2).  Derived key is too short.");
             }
@@ -1213,7 +1198,6 @@ namespace LibUA.Security.Cryptography
         [DllImport("bcrypt.dll")]
         [ReliabilityContract(Consistency.WillNotCorruptState, Cer.Success)]
         [SuppressUnmanagedCodeSecurity]
-        [SuppressMessage("Microsoft.Design", "CA1060:MovePInvokesToNativeMethodsClass", Justification = "SafeHandle release P/Invoke")]
         private static extern BCryptNative.ErrorCode BCryptCloseAlgorithmProvider(IntPtr hAlgorithm, int flags);
 
         protected override bool ReleaseHandle()
@@ -1230,7 +1214,6 @@ namespace LibUA.Security.Cryptography
         [DllImport("bcrypt.dll")]
         [ReliabilityContract(Consistency.WillNotCorruptState, Cer.Success)]
         [SuppressUnmanagedCodeSecurity]
-        [SuppressMessage("Microsoft.Design", "CA1060:MovePInvokesToNativeMethodsClass", Justification = "SafeHandle release P/Invoke")]
         private static extern BCryptNative.ErrorCode BCryptDestroyHash(IntPtr hHash);
 
         [ReliabilityContract(Consistency.WillNotCorruptState, Cer.Success)]
@@ -1248,7 +1231,6 @@ namespace LibUA.Security.Cryptography
         [DllImport("bcrypt.dll")]
         [ReliabilityContract(Consistency.WillNotCorruptState, Cer.Success)]
         [SuppressUnmanagedCodeSecurity]
-        [SuppressMessage("Microsoft.Design", "CA1060:MovePInvokesToNativeMethodsClass", Justification = "SafeHandle release P/Invoke")]
         private static extern BCryptNative.ErrorCode BCryptDestroyKey(IntPtr hKey);
 
         [ReliabilityContract(Consistency.WillNotCorruptState, Cer.Success)]

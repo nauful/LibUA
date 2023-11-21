@@ -67,8 +67,6 @@ namespace LibUA.Security.Cryptography
     ///         method can be called to create the necessary OID registrations.
     ///     </para>
     /// </summary>
-    [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "RSAPKCS", Justification = "This casing is to match the existing RSAPKCS1SHA1SignatureDescription type")]
-    [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "SHA", Justification = "This casing is to match the use of SHA throughout the framework")]
     public sealed class RSAPKCS1SHA256SignatureDescription : SignatureDescription
     {
         /// <summary>
@@ -85,7 +83,7 @@ namespace LibUA.Security.Cryptography
         {
             KeyAlgorithm = typeof(RSACryptoServiceProvider).FullName;
             DigestAlgorithm = typeof(SHA256Managed).FullName;   // Note - SHA256CryptoServiceProvider is not registered with CryptoConfig
-            FormatterAlgorithm = typeof (RSAPKCS1SignatureFormatter).FullName;
+            FormatterAlgorithm = typeof(RSAPKCS1SignatureFormatter).FullName;
             DeformatterAlgorithm = typeof(RSAPKCS1SignatureDeformatter).FullName;
         }
 

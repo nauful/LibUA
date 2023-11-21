@@ -14,9 +14,9 @@ namespace LibUA.Security.Cryptography
     /// </summary>
     internal sealed class BCryptHMAC : HMAC, ICngAlgorithm
     {
-        private SafeBCryptAlgorithmHandle m_algorithm;
+        private readonly SafeBCryptAlgorithmHandle m_algorithm;
         private SafeBCryptHashHandle m_hash;
-        private CngProvider m_implementation;
+        private readonly CngProvider m_implementation;
 
         [SecurityCritical]
         [SecuritySafeCritical]
@@ -46,7 +46,7 @@ namespace LibUA.Security.Cryptography
             m_algorithm = BCryptNative.OpenAlgorithm(algorithm.Algorithm,
                                                      algorithmProvider.Provider,
                                                      BCryptNative.AlgorithmProviderOptions.HmacAlgorithm);
-            
+
             // Resetting the key will call Initialize for us, and get us setup with a hash handle,
             // so we don't need to create the hash handle ourselves
             Key = key;
@@ -89,15 +89,9 @@ namespace LibUA.Security.Cryptography
             {
                 if (disposing)
                 {
-                    if (m_hash != null)
-                    {
-                        m_hash.Dispose();
-                    }
+                    m_hash?.Dispose();
 
-                    if (m_algorithm != null)
-                    {
-                        m_algorithm.Dispose();
-                    }
+                    m_algorithm?.Dispose();
                 }
             }
             finally
@@ -151,10 +145,7 @@ namespace LibUA.Security.Cryptography
             base.Initialize();
 
             // If we have a previously used hash handle, we can clean it up now
-            if (m_hash != null)
-            {
-                m_hash.Dispose();
-            }
+            m_hash?.Dispose();
 
             m_hash = BCryptNative.CreateHash(m_algorithm, KeyValue);
 

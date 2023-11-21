@@ -45,15 +45,14 @@ namespace LibUA.Security.Cryptography
     ///         </example>
     ///     </para>
     /// </summary>
-    [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "RSA", Justification = "This is for consistency with the existing RSACryptoServiceProvider type")]
     public sealed class RSACng : RSA, ICngAsymmetricAlgorithm
     {
-        private static KeySizes[] s_legalKeySizes = new KeySizes[] { new KeySizes(384, 16384, 8) };
-        
+        private static readonly KeySizes[] s_legalKeySizes = new KeySizes[] { new KeySizes(384, 16384, 8) };
+
         // CngKeyBlob formats for RSA key blobs
-        private static CngKeyBlobFormat s_rsaFullPrivateBlob = new CngKeyBlobFormat(BCryptNative.KeyBlobType.RsaFullPrivateBlob);
-        private static CngKeyBlobFormat s_rsaPrivateBlob = new CngKeyBlobFormat(BCryptNative.KeyBlobType.RsaPrivateBlob);
-        private static CngKeyBlobFormat s_rsaPublicBlob = new CngKeyBlobFormat(BCryptNative.KeyBlobType.RsaPublicBlob);
+        private static readonly CngKeyBlobFormat s_rsaFullPrivateBlob = new CngKeyBlobFormat(BCryptNative.KeyBlobType.RsaFullPrivateBlob);
+        private static readonly CngKeyBlobFormat s_rsaPrivateBlob = new CngKeyBlobFormat(BCryptNative.KeyBlobType.RsaPrivateBlob);
+        private static readonly CngKeyBlobFormat s_rsaPublicBlob = new CngKeyBlobFormat(BCryptNative.KeyBlobType.RsaPublicBlob);
 
         // Key handle
         private CngKey m_key;
@@ -197,10 +196,7 @@ namespace LibUA.Security.Cryptography
                     throw new ArgumentException("KeyMustBeRsa", "value");
 
                 // If we already have a key, clear it out
-                if (m_key != null)
-                {
-                    m_key.Dispose();
-                }
+                m_key?.Dispose();
 
                 m_key = value;
                 KeySize = m_key.KeySize;
@@ -210,7 +206,6 @@ namespace LibUA.Security.Cryptography
         /// <summary>
         ///     Helper property to get the NCrypt key handle
         /// </summary>
-        [SuppressMessage("Microsoft.Security", "CA2122:DoNotIndirectlyExposeMethodsWithLinkDemands", Justification = "Internal security critical code")]
         private SafeNCryptKeyHandle KeyHandle
         {
             [SecurityCritical]
@@ -223,13 +218,12 @@ namespace LibUA.Security.Cryptography
         /// </summary>
         public override string KeyExchangeAlgorithm
         {
-            get { return "RSA-PKCS1-KeyEx";  }
+            get { return "RSA-PKCS1-KeyEx"; }
         }
 
         /// <summary>
         ///     Key storage provider being used for the algorithm
         /// </summary>
-        [SuppressMessage("Microsoft.Security", "CA2122:DoNotIndirectlyExposeMethodsWithLinkDemands", Justification = "Only exposing provider data.")]
         public CngProvider Provider
         {
             [SecurityCritical]
@@ -327,8 +321,10 @@ namespace LibUA.Security.Cryptography
                 return null;
             }
 
-            KeyContainerPermissionAccessEntry entry = new KeyContainerPermissionAccessEntry(key.KeyName, flags);
-            entry.ProviderName = key.Provider.Provider;
+            KeyContainerPermissionAccessEntry entry = new KeyContainerPermissionAccessEntry(key.KeyName, flags)
+            {
+                ProviderName = key.Provider.Provider
+            };
 
             KeyContainerPermission permission = new KeyContainerPermission(PermissionState.None);
             permission.AccessEntries.Add(entry);
@@ -379,7 +375,6 @@ namespace LibUA.Security.Cryptography
         /// </permission>
         [SecurityCritical]
         [SecuritySafeCritical]
-        [SuppressMessage("Microsoft.Security", "CA2122:DoNotIndirectlyExposeMethodsWithLinkDemands", Justification = "Safe use of SizeOf")]
         public override RSAParameters ExportParameters(bool includePrivateParameters)
         {
             byte[] rsaBlob = Key.Export(includePrivateParameters ? s_rsaFullPrivateBlob : s_rsaPublicBlob);
@@ -404,7 +399,7 @@ namespace LibUA.Security.Cryptography
                 fixed (byte* pRsaBlob = rsaBlob)
                 {
                     BCryptNative.BCRYPT_RSAKEY_BLOB* pBcryptBlob = (BCryptNative.BCRYPT_RSAKEY_BLOB*)pRsaBlob;
-                    
+
                     int offset = Marshal.SizeOf(typeof(BCryptNative.BCRYPT_RSAKEY_BLOB));
 
                     // Read out the exponent
@@ -479,7 +474,6 @@ namespace LibUA.Security.Cryptography
         /// </exception>
         [SecurityCritical]
         [SecuritySafeCritical]
-        [SuppressMessage("Microsoft.Security", "CA2122:DoNotIndirectlyExposeMethodsWithLinkDemands", Justification = "Safe use of SizeOf")]
         public override void ImportParameters(RSAParameters parameters)
         {
             if (parameters.Exponent == null || parameters.Modulus == null)
@@ -585,10 +579,7 @@ namespace LibUA.Security.Cryptography
 
             // Make sure we have permission to use the private key to decrypt data
             KeyContainerPermission kcp = BuildKeyContainerPermission(key, KeyContainerPermissionFlags.Decrypt);
-            if (kcp != null)
-            {
-                kcp.Demand();
-            }
+            kcp?.Demand();
 
             new SecurityPermission(SecurityPermissionFlag.UnmanagedCode).Assert();
             SafeNCryptKeyHandle keyHandle = key.Handle;
@@ -761,10 +752,7 @@ namespace LibUA.Security.Cryptography
             CngKey key = Key;
 
             KeyContainerPermission kcp = BuildKeyContainerPermission(key, KeyContainerPermissionFlags.Sign);
-            if (kcp != null)
-            {
-                kcp.Demand();
-            }
+            kcp?.Demand();
 
             new SecurityPermission(SecurityPermissionFlag.UnmanagedCode).Assert();
             SafeNCryptKeyHandle keyHandle = key.Handle;

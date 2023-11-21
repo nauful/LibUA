@@ -11,7 +11,7 @@ namespace LibUA.Security.Cryptography.X509Certificates
     /// </summary>
     public sealed class X509AlternateNameIPAddress : X509AlternateName
     {
-        private IPAddress m_address;
+        private readonly IPAddress m_address;
 
         /// <summary>
         ///     Create an alternate name for the given IP address

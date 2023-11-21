@@ -33,14 +33,12 @@ namespace LibUA.Security.Cryptography
         ///     The LegalTagSizes field is set by authenticated symmetric algorithm implementations to be the
         ///     set of valid authentication tag sizes expressed in bits.
         /// </summary>
-        [SuppressMessage("Microsoft.Design", "CA1051:DoNotDeclareVisibleInstanceFields", Justification = "Consistency with other SymmetricAlgorithm APIs (LegalKeySizesValue, LegalBlockSizesValue")]
         protected KeySizes[] LegalTagSizesValue;
 
         /// <summary>
         ///     The TagSizeValue field contains the current authentication tag size used by the authenticated
         ///     symmetric algorithm, expressed in bits.
         /// </summary>
-        [SuppressMessage("Microsoft.Design", "CA1051:DoNotDeclareVisibleInstanceFields", Justification = "Consistency with other SymmetricAlgorithm APIs (KeyValue, BlockValue, etc)")]
         protected int TagSizeValue;
 
         /// <summary>
@@ -52,7 +50,6 @@ namespace LibUA.Security.Cryptography
         ///         the ciphertext.  A value of null means that there is no additional authenticated data.
         ///     </para>
         /// </summary>
-        [SuppressMessage("Microsoft.Performance", "CA1819:PropertiesShouldNotReturnArrays", Justification = "Consistency with the other SymmetricAlgorithm API (Key, IV, etc)")]
         public virtual byte[] AuthenticatedData
         {
             get
@@ -105,7 +102,6 @@ namespace LibUA.Security.Cryptography
         ///     Gets the ranges of legal sizes for authentication tags produced by this algorithm, expressed
         ///     in bits.
         /// </summary>
-        [SuppressMessage("Microsoft.Performance", "CA1819:PropertiesShouldNotReturnArrays", Justification = "Consistency with other SymmetricAlgorithm APIs (LegalKeySizes, LegalBlockSizes)")]
         public virtual KeySizes[] LegalTagSizes
         {
             get { return LegalTagSizesValue.Clone() as KeySizes[]; }
@@ -119,7 +115,6 @@ namespace LibUA.Security.Cryptography
         /// </summary>
         /// <exception cref="ArgumentNullException">if the tag is set to null</exception>
         /// <exception cref="ArgumentException">if the tag is not a legal size</exception>
-        [SuppressMessage("Microsoft.Performance", "CA1819:PropertiesShouldNotReturnArrays", Justification = "Consistency with other SymmetricAlgorithm APIs (Key, IV)")]
         public virtual byte[] Tag
         {
             get

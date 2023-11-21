@@ -82,7 +82,6 @@ namespace LibUA.Security.Cryptography.Xml
     ///         XmlDsigXPathWithNamespacesTransform.
     ///     </para>
     /// </summary>
-    [SuppressMessage("Microsoft.Naming", "CA1702:CompoundWordsShouldBeCasedCorrectly", MessageId = "XPath", Justification = "This matches the XPath spelling in the rest of the framework.")]
     public sealed class XmlDsigXPathWithNamespacesTransform : XmlDsigXPathTransform
     {
         private XmlDocument m_inputNodes;

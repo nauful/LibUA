@@ -98,7 +98,7 @@ namespace LibUA.Security.Cryptography
     /// </summary>
     public sealed class AuthenticatedAesCng : AuthenticatedAes, ICngSymmetricAlgorithm
     {
-        private BCryptAuthenticatedSymmetricAlgorithm m_authenticatedSymmetricAlgorithm;
+        private readonly BCryptAuthenticatedSymmetricAlgorithm m_authenticatedSymmetricAlgorithm;
 
         /// <summary>
         ///     Constructs an AuthenticatedAesCng object. The default settings for this object are:
@@ -130,12 +130,13 @@ namespace LibUA.Security.Cryptography
                 new BCryptAuthenticatedSymmetricAlgorithm(CngAlgorithm2.Aes,
                                                           provider,
                                                           LegalBlockSizesValue,
-                                                          LegalKeySizesValue);
-
-            // Propigate the default properties from the Aes class to the implementation algorithm.
-            m_authenticatedSymmetricAlgorithm.BlockSize = BlockSizeValue;
-            m_authenticatedSymmetricAlgorithm.KeySize = KeySizeValue;
-            m_authenticatedSymmetricAlgorithm.Padding = PaddingValue;
+                                                          LegalKeySizesValue)
+                {
+                    // Propigate the default properties from the Aes class to the implementation algorithm.
+                    BlockSize = BlockSizeValue,
+                    KeySize = KeySizeValue,
+                    Padding = PaddingValue
+                };
         }
 
         protected override void Dispose(bool disposing)
@@ -260,7 +261,7 @@ namespace LibUA.Security.Cryptography
         public override int TagSize
         {
             get { return m_authenticatedSymmetricAlgorithm.TagSize; }
-            set { m_authenticatedSymmetricAlgorithm.TagSize = value;  }
+            set { m_authenticatedSymmetricAlgorithm.TagSize = value; }
         }
 
         public override IAuthenticatedCryptoTransform CreateAuthenticatedEncryptor()

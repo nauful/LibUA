@@ -1,7 +1,7 @@
 # PW.LibUA
 Open-source OPC UA client and server library for .NET (deprecated) and .NET Core based on IEC 62541. Available as source files, a demo client and a demo server. Tested and commercially used in industrial applications with commercial vendors' UA servers and clients.
 
-Available as a nuget package for .NET Core (1.0.8):
+Available as a nuget package for .NET Core (1.0.11):
 https://www.nuget.org/packages/nauful-LibUA-core
 
 Forked from https://github.com/nauful/LibUA.

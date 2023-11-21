@@ -25,7 +25,7 @@ namespace LibUA.Security.Cryptography.X509Certificates
     public enum AlternateNameType
     {
         None = 0,
-        
+
         /// <summary>
         ///     Alternate name that isn't one of the standard alternate name types.  This corresponds to the
         ///     CERT_ALT_NAME_OTHER_NAME type.
@@ -87,12 +87,12 @@ namespace LibUA.Security.Cryptography.X509Certificates
         /// <summary>
         ///     Do not set any flags when creating the certificate
         /// </summary>
-        None                    = 0x00000000,
+        None = 0x00000000,
 
         /// <summary>
         ///     Create an unsigned certificate.  This maps to the CERT_CREATE_SELFSIGN_NO_SIGN flag.
         /// </summary>
-        DoNotSignCertificate    = 0x00000001,
+        DoNotSignCertificate = 0x00000001,
 
         /// <summary>
         ///     By default, certificates will reference their private keys by setting the
@@ -171,8 +171,8 @@ namespace LibUA.Security.Cryptography.X509Certificates
         /// </summary>
         internal enum AcquireCertificateKeyOptions
         {
-            None                        = 0x00000000,
-            AcquireOnlyNCryptKeys       = 0x00040000,   // CRYPT_ACQUIRE_ONLY_NCRYPT_KEY_FLAG
+            None = 0x00000000,
+            AcquireOnlyNCryptKeys = 0x00040000,   // CRYPT_ACQUIRE_ONLY_NCRYPT_KEY_FLAG
         }
 
         /// <summary>
@@ -181,8 +181,8 @@ namespace LibUA.Security.Cryptography.X509Certificates
         [Flags]
         internal enum CertificateEncodingType
         {
-            X509AsnEncoding         = 0x00000001,       // X509_ASN_ENCODING
-            Pkcs7AsnEncoding        = 0x00010000,       // PKCS7_ASN_ENCODING
+            X509AsnEncoding = 0x00000001,       // X509_ASN_ENCODING
+            Pkcs7AsnEncoding = 0x00010000,       // PKCS7_ASN_ENCODING
         }
 
         /// <summary>
@@ -190,8 +190,8 @@ namespace LibUA.Security.Cryptography.X509Certificates
         /// </summary>
         internal enum CertificateProperty
         {
-            KeyProviderInfo                     = 2,    // CERT_KEY_PROV_INFO_PROP_ID 
-            KeyContext                          = 5,    // CERT_KEY_CONTEXT_PROP_ID
+            KeyProviderInfo = 2,    // CERT_KEY_PROV_INFO_PROP_ID 
+            KeyContext = 5,    // CERT_KEY_CONTEXT_PROP_ID
         }
 
         /// <summary>
@@ -200,8 +200,8 @@ namespace LibUA.Security.Cryptography.X509Certificates
         [Flags]
         internal enum CertificatePropertySetFlags
         {
-            None                                = 0x00000000,
-            NoCryptRelease                      = 0x00000001,   // CERT_STORE_NO_CRYPT_RELEASE_FLAG
+            None = 0x00000000,
+            NoCryptRelease = 0x00000001,   // CERT_STORE_NO_CRYPT_RELEASE_FLAG
         }
 
         /// <summary>
@@ -209,9 +209,9 @@ namespace LibUA.Security.Cryptography.X509Certificates
         /// </summary>
         internal enum CertificateVersion
         {
-            Version1                            = 0,    // CERT_V1
-            Version2                            = 1,    // CERT_V2
-            Version3                            = 2,    // CERT_V3
+            Version1 = 0,    // CERT_V1
+            Version2 = 1,    // CERT_V2
+            Version3 = 2,    // CERT_V3
         }
 
         /// <summary>
@@ -220,10 +220,10 @@ namespace LibUA.Security.Cryptography.X509Certificates
         [Flags]
         internal enum DecodeObjectFlags
         {
-            None                    = 0x00000000,
-            NoCopy                  = 0x00000001,       // CRYPT_DECODE_NOCOPY_FLAG
-            ShareOidStrings         = 0x00000004,       // CRYPT_DECODE_SHARE_OID_STRING_FLAG
-            AllocateMemory          = 0x00008000,       // CRYPT_DECODE_ALLOC_FLAG
+            None = 0x00000000,
+            NoCopy = 0x00000001,       // CRYPT_DECODE_NOCOPY_FLAG
+            ShareOidStrings = 0x00000004,       // CRYPT_DECODE_SHARE_OID_STRING_FLAG
+            AllocateMemory = 0x00008000,       // CRYPT_DECODE_ALLOC_FLAG
         }
 
         /// <summary>
@@ -231,8 +231,8 @@ namespace LibUA.Security.Cryptography.X509Certificates
         /// </summary>
         internal enum ErrorCode
         {
-            Success                 = 0x00000000,       // ERROR_SUCCESS
-            MoreData                = 0x000000ea,       // ERROR_MORE_DATA
+            Success = 0x00000000,       // ERROR_SUCCESS
+            MoreData = 0x000000ea,       // ERROR_MORE_DATA
         }
 
         /// <summary>
@@ -240,7 +240,7 @@ namespace LibUA.Security.Cryptography.X509Certificates
         /// </summary>
         internal enum KeySpec
         {
-            NCryptKey               = unchecked((int)0xffffffff)    // CERT_NCRYPT_KEY_SPEC
+            NCryptKey = unchecked((int)0xffffffff)    // CERT_NCRYPT_KEY_SPEC
         }
 
         //
@@ -315,12 +315,9 @@ namespace LibUA.Security.Cryptography.X509Certificates
         }
 
         [StructLayout(LayoutKind.Sequential)]
-        [SuppressMessage("Microsoft.Design", "CA1049:TypesThatOwnNativeResourcesShouldBeDisposable", Justification = "Extensions have no single way to be cleaned up, and need to be maintained by their allocators")]
         internal struct CERT_EXTENSIONS
         {
             internal int cExtension;
-
-            [SuppressMessage("Microsoft.Reliability", "CA2006:UseSafeHandleToEncapsulateNativeResources", Justification = "This buffer may be allocated in many different ways, so cleanup is done in a CER manually")]
             internal IntPtr rgExtension;                // CERT_EXTENSION[cExtension]
         }
 
@@ -381,8 +378,8 @@ namespace LibUA.Security.Cryptography.X509Certificates
         [StructLayout(LayoutKind.Sequential)]
         internal struct CERT_PUBLIC_KEY_INFO
         {
-            CapiNative.CRYPT_ALGORITHM_IDENTIFIER Algorithm;
-            CapiNative.CRYPT_BIT_BLOB PublicKey;
+            private CapiNative.CRYPT_ALGORITHM_IDENTIFIER Algorithm;
+            private CapiNative.CRYPT_BIT_BLOB PublicKey;
         }
 
         //
@@ -406,7 +403,6 @@ namespace LibUA.Security.Cryptography.X509Certificates
             internal static extern SafeCertContextHandle CertDuplicateCertificateContext(IntPtr certContext);       // CERT_CONTEXT *
 
             [DllImport("crypt32.dll")]
-            [SuppressMessage("Microsoft.Globalization", "CA2101:SpecifyMarshalingForPInvokeStringArguments", MessageId = "0", Justification = "This is an ANSI parameter, and BestFitMapping does not apply to parameters")]
             internal static extern IntPtr CertFindExtension([MarshalAs(UnmanagedType.LPStr)] string pszObjId,
                                                             int cExtensions,
                                                             IntPtr rgExtensions);       // CERT_EXTENSION[cExtensions]
@@ -437,7 +433,6 @@ namespace LibUA.Security.Cryptography.X509Certificates
 
             // This overload of CryptDecodeObjectEx must only be used with the CRYPT_DECODE_ALLOC flag
             [DllImport("crypt32.dll", SetLastError = true)]
-            [SuppressMessage("Microsoft.Globalization", "CA2101:SpecifyMarshalingForPInvokeStringArguments", MessageId = "1", Justification = "This is an ANSI parameter, and BestFitMapping does not apply to parameters")]
             [return: MarshalAs(UnmanagedType.Bool)]
             internal static extern bool CryptDecodeObjectEx(CertificateEncodingType encodingType,
                                                             [MarshalAs(UnmanagedType.LPStr)] string lpszStructType,
@@ -457,7 +452,6 @@ namespace LibUA.Security.Cryptography.X509Certificates
         ///     Get the private key of a certificate
         /// </summary>
         [SecurityCritical]
-        [SuppressMessage("Microsoft.Security", "CA2122:DoNotIndirectlyExposeMethodsWithLinkDemands", Justification = "Safe use of LinkDemands")]
         internal static SafeNCryptKeyHandle AcquireCngPrivateKey(SafeCertContextHandle certificateContext)
         {
             Debug.Assert(certificateContext != null, "certificateContext != null");
@@ -469,12 +463,11 @@ namespace LibUA.Security.Cryptography.X509Certificates
             RuntimeHelpers.PrepareConstrainedRegions();
             try
             {
-                int keySpec = 0;
                 if (!UnsafeNativeMethods.CryptAcquireCertificatePrivateKey(certificateContext,
                                                                            AcquireCertificateKeyOptions.AcquireOnlyNCryptKeys,
                                                                            IntPtr.Zero,
                                                                            out privateKey,
-                                                                           out keySpec,
+                                                                           out int keySpec,
                                                                            out freeKey))
                 {
                     throw new CryptographicException(Marshal.GetLastWin32Error());
@@ -504,8 +497,6 @@ namespace LibUA.Security.Cryptography.X509Certificates
         ///     Create a self signed certificate around a CNG key
         /// </summary>
         [SecurityCritical]
-        [SuppressMessage("Microsoft.Reliability", "CA2001:AvoidCallingProblematicMethods", MessageId = "System.Runtime.InteropServices.SafeHandle.DangerousGetHandle", Justification = "Manual AddRef and handle retrieval to account for the release that will occur when the certificate is closed (see comment inline)")]
-        [SuppressMessage("Microsoft.Security", "CA2122:DoNotIndirectlyExposeMethodsWithLinkDemands", Justification = "SecurityCritical API which requires review from any other API that calls it")]
         internal static SafeCertContextHandle CreateSelfSignedCertificate(CngKey key,
                                                                           bool takeOwnershipOfKey,
                                                                           byte[] subjectName,
@@ -521,11 +512,15 @@ namespace LibUA.Security.Cryptography.X509Certificates
             Debug.Assert(extensions != null, "extensions != null");
 
             // Create an algorithm identifier structure for the signature algorithm
-            CapiNative.CRYPT_ALGORITHM_IDENTIFIER nativeSignatureAlgorithm = new CapiNative.CRYPT_ALGORITHM_IDENTIFIER();
-            nativeSignatureAlgorithm.pszObjId = signatureAlgorithmOid;
-            nativeSignatureAlgorithm.Parameters = new CapiNative.CRYPTOAPI_BLOB();
-            nativeSignatureAlgorithm.Parameters.cbData = 0;
-            nativeSignatureAlgorithm.Parameters.pbData = IntPtr.Zero;
+            CapiNative.CRYPT_ALGORITHM_IDENTIFIER nativeSignatureAlgorithm = new CapiNative.CRYPT_ALGORITHM_IDENTIFIER
+            {
+                pszObjId = signatureAlgorithmOid,
+                Parameters = new CapiNative.CRYPTOAPI_BLOB
+                {
+                    cbData = 0,
+                    pbData = IntPtr.Zero
+                }
+            };
 
             // Convert the begin and expire dates to system time structures
             Win32Native.SYSTEMTIME nativeStartTime = new Win32Native.SYSTEMTIME(startTime);
@@ -541,8 +536,10 @@ namespace LibUA.Security.Cryptography.X509Certificates
             //      This is the block referenced by the CERT_EXTENSIONS structure.
             //   4. For each of the extension structures created in step 2, marshal the extension into the
             //      native buffer allocated in step 3.
-            CERT_EXTENSIONS nativeExtensions = new CERT_EXTENSIONS();
-            nativeExtensions.cExtension = extensions.Count;
+            CERT_EXTENSIONS nativeExtensions = new CERT_EXTENSIONS
+            {
+                cExtension = extensions.Count
+            };
             CERT_EXTENSION[] nativeExtensionArray = new CERT_EXTENSION[extensions.Count];
 
             // Run this in a CER to ensure that we release any native memory allocated for the certificate
@@ -554,12 +551,16 @@ namespace LibUA.Security.Cryptography.X509Certificates
                 // memory for its blob if necessary.
                 for (int i = 0; i < extensions.Count; ++i)
                 {
-                    nativeExtensionArray[i] = new CERT_EXTENSION();
-                    nativeExtensionArray[i].pszObjId = extensions[i].Oid.Value;
-                    nativeExtensionArray[i].fCritical = extensions[i].Critical;
+                    nativeExtensionArray[i] = new CERT_EXTENSION
+                    {
+                        pszObjId = extensions[i].Oid.Value,
+                        fCritical = extensions[i].Critical,
 
-                    nativeExtensionArray[i].Value = new CapiNative.CRYPTOAPI_BLOB();
-                    nativeExtensionArray[i].Value.cbData = extensions[i].RawData.Length;
+                        Value = new CapiNative.CRYPTOAPI_BLOB
+                        {
+                            cbData = extensions[i].RawData.Length
+                        }
+                    };
                     if (nativeExtensionArray[i].Value.cbData > 0)
                     {
                         nativeExtensionArray[i].Value.pbData =
@@ -594,14 +595,16 @@ namespace LibUA.Security.Cryptography.X509Certificates
                 }
 
                 // Setup a CRYPT_KEY_PROV_INFO for the key
-                CRYPT_KEY_PROV_INFO keyProvInfo = new CRYPT_KEY_PROV_INFO();
-                keyProvInfo.pwszContainerName = key.UniqueName;
-                keyProvInfo.pwszProvName = key.Provider.Provider;
-                keyProvInfo.dwProvType = 0;     // NCRYPT
-                keyProvInfo.dwFlags = 0;
-                keyProvInfo.cProvParam = 0;
-                keyProvInfo.rgProvParam = IntPtr.Zero;
-                keyProvInfo.dwKeySpec = 0;
+                CRYPT_KEY_PROV_INFO keyProvInfo = new CRYPT_KEY_PROV_INFO
+                {
+                    pwszContainerName = key.UniqueName,
+                    pwszProvName = key.Provider.Provider,
+                    dwProvType = 0,     // NCRYPT
+                    dwFlags = 0,
+                    cProvParam = 0,
+                    rgProvParam = IntPtr.Zero,
+                    dwKeySpec = 0
+                };
 
                 //
                 // Now that all of the needed data structures are setup, we can create the certificate
@@ -613,9 +616,11 @@ namespace LibUA.Security.Cryptography.X509Certificates
                     fixed (byte* pSubjectName = &subjectName[0])
                     {
                         // Create a CRYPTOAPI_BLOB for the subject of the cert
-                        CapiNative.CRYPTOAPI_BLOB nativeSubjectName = new CapiNative.CRYPTOAPI_BLOB();
-                        nativeSubjectName.cbData = subjectName.Length;
-                        nativeSubjectName.pbData = new IntPtr(pSubjectName);
+                        CapiNative.CRYPTOAPI_BLOB nativeSubjectName = new CapiNative.CRYPTOAPI_BLOB
+                        {
+                            cbData = subjectName.Length,
+                            pbData = new IntPtr(pSubjectName)
+                        };
 
                         // Now that we've converted all the inputs to native data structures, we can generate
                         // the self signed certificate for the input key.
@@ -645,14 +650,16 @@ namespace LibUA.Security.Cryptography.X509Certificates
                 // is done.
                 using (SafeNCryptKeyHandle keyHandle = key.Handle)
                 {
-                    CERT_KEY_CONTEXT keyContext = new CERT_KEY_CONTEXT();
-                    keyContext.cbSize = Marshal.SizeOf(typeof(CERT_KEY_CONTEXT));
-                    keyContext.hNCryptKey = keyHandle.DangerousGetHandle();
-                    keyContext.dwKeySpec = KeySpec.NCryptKey;
+                    CERT_KEY_CONTEXT keyContext = new CERT_KEY_CONTEXT
+                    {
+                        cbSize = Marshal.SizeOf(typeof(CERT_KEY_CONTEXT)),
+                        hNCryptKey = keyHandle.DangerousGetHandle(),
+                        dwKeySpec = KeySpec.NCryptKey
+                    };
 
                     bool attachedProperty = false;
                     int setContextError = 0;
-                        
+
                     // Run in a CER to ensure accurate tracking of the transfer of handle ownership
                     RuntimeHelpers.PrepareConstrainedRegions();
                     try { }
@@ -731,7 +738,6 @@ namespace LibUA.Security.Cryptography.X509Certificates
         [SecurityCritical]
         internal static SafeLocalAllocHandle DecodeExtension(CERT_EXTENSION extension)
         {
-            SafeLocalAllocHandle decodedExtension = null;
             int decodedSize = 0;
 
             bool decoded = UnsafeNativeMethods.CryptDecodeObjectEx(CertificateEncodingType.Pkcs7AsnEncoding | CertificateEncodingType.X509AsnEncoding,
@@ -740,7 +746,7 @@ namespace LibUA.Security.Cryptography.X509Certificates
                                                                    extension.Value.cbData,
                                                                    DecodeObjectFlags.AllocateMemory | DecodeObjectFlags.NoCopy | DecodeObjectFlags.ShareOidStrings,
                                                                    IntPtr.Zero,
-                                                                   out decodedExtension,
+                                                                   out SafeLocalAllocHandle decodedExtension,
                                                                    ref decodedSize);
 
             if (!decoded)
@@ -785,7 +791,6 @@ namespace LibUA.Security.Cryptography.X509Certificates
         ///     Get an arbitrary property of a certificate
         /// </summary>
         [SecurityCritical]
-        [SuppressMessage("Microsoft.Security", "CA2122:DoNotIndirectlyExposeMethodsWithLinkDemands", Justification = "SecurityCritical API which requires review to call")]
         internal static byte[] GetCertificateProperty(SafeCertContextHandle certificateContext,
                                                       CertificateProperty property)
         {
@@ -822,7 +827,6 @@ namespace LibUA.Security.Cryptography.X509Certificates
         ///     Get the certificate context which corresponds to the given certificate info
         /// </summary>
         [SecurityCritical]
-        [SuppressMessage("Microsoft.Reliability", "CA2001:AvoidCallingProblematicMethods", MessageId = "System.Runtime.InteropServices.SafeHandle.DangerousGetHandle", Justification = "This is done within a CER and an AddRef/Release")]
         internal static CERT_INFO GetCertInfo(SafeCertContextHandle certificateContext)
         {
             Debug.Assert(certificateContext != null, "certificateContext != null");
@@ -851,7 +855,6 @@ namespace LibUA.Security.Cryptography.X509Certificates
         ///     Get a property of a certificate formatted as a structure
         /// </summary>
         [SecurityCritical]
-        [SuppressMessage("Microsoft.Security", "CA2122:DoNotIndirectlyExposeMethodsWithLinkDemands", Justification = "SecurityCritical API which requires review to call")]
         internal static T GetCertificateProperty<T>(SafeCertContextHandle certificateContext,
                                                     CertificateProperty property) where T : struct
         {
@@ -894,7 +897,6 @@ namespace LibUA.Security.Cryptography.X509Certificates
         ///     Determine if a certificate has a specific property
         /// </summary>
         [SecurityCritical]
-        [SuppressMessage("Microsoft.Security", "CA2122:DoNotIndirectlyExposeMethodsWithLinkDemands", Justification = "SecurityCritical API which requires review to call")]
         internal static bool HasCertificateProperty(SafeCertContextHandle certificateContext,
                                                     CertificateProperty property)
         {

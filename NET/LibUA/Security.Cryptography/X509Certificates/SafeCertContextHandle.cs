@@ -39,7 +39,6 @@ namespace LibUA.Security.Cryptography.X509Certificates
 
         [DllImport("crypt32.dll")]
         [ReliabilityContract(Consistency.WillNotCorruptState, Cer.Success)]
-        [SuppressMessage("Microsoft.Design", "CA1060:MovePInvokesToNativeMethodsClass", Justification = "SafeHandle release method")]
         [SuppressUnmanagedCodeSecurity]
         [return: MarshalAs(UnmanagedType.Bool)]
         private static extern bool CertFreeCertificateContext(IntPtr pCertContext);

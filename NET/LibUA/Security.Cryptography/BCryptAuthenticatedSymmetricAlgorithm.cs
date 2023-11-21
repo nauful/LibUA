@@ -17,9 +17,9 @@ namespace LibUA.Security.Cryptography
     /// </summary>
     internal sealed class BCryptAuthenticatedSymmetricAlgorithm : AuthenticatedSymmetricAlgorithm, ICngSymmetricAlgorithm
     {
-        private CngAlgorithm m_algorithm;
+        private readonly CngAlgorithm m_algorithm;
         private CngChainingMode m_chainingMode;
-        private CngProvider m_implementation;
+        private readonly CngProvider m_implementation;
 
         [SecurityCritical]
         [SecuritySafeCritical]

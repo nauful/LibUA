@@ -14,12 +14,12 @@ namespace LibUA.Security.Cryptography
     /// </summary>
     internal sealed class BCryptSymmetricCryptoTransform : ICryptoTransform
     {
-        private SafeBCryptAlgorithmHandle m_algorithm;
+        private readonly SafeBCryptAlgorithmHandle m_algorithm;
         private byte[] m_depadBuffer;
-        private byte[] m_iv;
-        private bool m_encrypting;
-        private SafeBCryptKeyHandle m_key;
-        private BlockPaddingMethod m_paddingMode;
+        private readonly byte[] m_iv;
+        private readonly bool m_encrypting;
+        private readonly SafeBCryptKeyHandle m_key;
+        private readonly BlockPaddingMethod m_paddingMode;
 
         /// <summary>
         ///     Create an instance of an ICryptoTransform that can be used for BCrypt symmetric algorithms. 
@@ -150,15 +150,9 @@ namespace LibUA.Security.Cryptography
         [SecuritySafeCritical]
         public void Dispose()
         {
-            if (m_key != null)
-            {
-                m_key.Dispose();
-            }
+            m_key?.Dispose();
 
-            if (m_algorithm != null)
-            {
-                m_algorithm.Dispose();
-            }
+            m_algorithm?.Dispose();
         }
 
         /// <summary>
@@ -176,7 +170,6 @@ namespace LibUA.Security.Cryptography
             Debug.Assert(inputCount <= outputBuffer.Length - outputOffset, "inputCount <= outputBuffer.Length - outputOffset");
 
             int decryptedBytes = 0;
-            byte[] ciphertext = null;
 
             //
             // When decrypting, it's possible for us to be called with the final blocks of data in
@@ -203,6 +196,7 @@ namespace LibUA.Security.Cryptography
                 outputOffset += decryptedDepad.Length;
             }
 
+            byte[] ciphertext;
             // If we need to save the last block of data, do that now
             if (bufferLastBlock)
             {

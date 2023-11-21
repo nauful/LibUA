@@ -12,7 +12,7 @@ namespace LibUA.Security.Cryptography.X509Certificates
     /// </summary>
     public sealed class X509AlternateNameString : X509AlternateName
     {
-        private string m_name;
+        private readonly string m_name;
 
         /// <summary>
         ///     Create an alternate name for the given string

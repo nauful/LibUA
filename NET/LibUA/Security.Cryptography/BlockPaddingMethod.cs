@@ -41,7 +41,7 @@ namespace LibUA.Security.Cryptography
             }
         }
 
-        private int m_blockSize;
+        private readonly int m_blockSize;
 
         protected BlockPaddingMethod(int blockSize)
         {
@@ -133,7 +133,7 @@ namespace LibUA.Security.Cryptography
             {
                 throw new CryptographicException("InvalidPadding");
             }
-            
+
             // Verify that all the padding bytes are zeros
             for (int i = offset + count - padBytes; i < offset + count - 1; ++i)
             {
@@ -221,14 +221,14 @@ namespace LibUA.Security.Cryptography
         {
             byte[] result = new byte[count];
             Buffer.BlockCopy(block, offset, result, 0, result.Length);
-            return result; 
+            return result;
         }
 
         internal override byte[] DepadBlock(byte[] block, int offset, int count)
         {
             byte[] result = new byte[count];
             Buffer.BlockCopy(block, offset, result, 0, result.Length);
-            return result; 
+            return result;
         }
     }
 

@@ -26,14 +26,14 @@ namespace LibUA.Security.Cryptography
     /// </summary>
     public sealed class Oid2
     {
-        private string m_oid;
-        private string m_name;
-        private OidGroup m_group;
+        private readonly string m_oid;
+        private readonly string m_name;
+        private readonly OidGroup m_group;
 
         // Algorithm identifiers for both CAPI and CNG for CRYPT_*_ALG_OID_GROUP_ID OIDs
-        private int? m_algorithmId;
-        private CngAlgorithm m_cngAlgorithm;    
-        private CngAlgorithm m_cngExtraAlgorithm;
+        private readonly int? m_algorithmId;
+        private readonly CngAlgorithm m_cngAlgorithm;
+        private readonly CngAlgorithm m_cngExtraAlgorithm;
 
         /// <summary>
         ///     Constructs an Oid2 object with the given value and friendly name. No lookup is done for
@@ -61,7 +61,7 @@ namespace LibUA.Security.Cryptography
         ///     if <paramref name="oid" /> or <paramref name="friendlyName"/> are null
         /// </exception>
         public Oid2(string oid, string friendlyName, OidGroup group)
-            : this (oid, friendlyName, group, null, null)
+            : this(oid, friendlyName, group, null, null)
         {
             return;
         }
@@ -296,7 +296,8 @@ namespace LibUA.Security.Cryptography
         [SecuritySafeCritical]
         public static Oid2 FindByFriendlyName(string friendlyName, OidGroup group, bool useNetworkLookup)
         {
-            CapiNative.CRYPT_OID_INFO oidInfo = new CapiNative.CRYPT_OID_INFO();
+            _ = new CapiNative.CRYPT_OID_INFO();
+            CapiNative.CRYPT_OID_INFO oidInfo;
             if (CapiNative.TryFindOidInfo(friendlyName, group, CapiNative.OidKeyType.Name, useNetworkLookup, out oidInfo))
             {
                 return new Oid2(oidInfo);
@@ -346,7 +347,8 @@ namespace LibUA.Security.Cryptography
         [SecuritySafeCritical]
         public static Oid2 FindByValue(string oid, OidGroup group, bool useNetworkLookup)
         {
-            CapiNative.CRYPT_OID_INFO oidInfo = new CapiNative.CRYPT_OID_INFO();
+            _ = new CapiNative.CRYPT_OID_INFO();
+            CapiNative.CRYPT_OID_INFO oidInfo;
             if (CapiNative.TryFindOidInfo(oid, group, CapiNative.OidKeyType.Oid, useNetworkLookup, out oidInfo))
             {
                 return new Oid2(oidInfo);
@@ -465,11 +467,13 @@ namespace LibUA.Security.Cryptography
         [SecuritySafeCritical]
         private CapiNative.CRYPT_OID_INFO ToOidInfo()
         {
-            CapiNative.CRYPT_OID_INFO oidInfo = new CapiNative.CRYPT_OID_INFO();
-            oidInfo.cbSize = Marshal.SizeOf(typeof(CapiNative.CRYPT_OID_INFO));
-            oidInfo.pszOID = m_oid;
-            oidInfo.pwszName = m_name;
-            oidInfo.dwGroupId = m_group;
+            CapiNative.CRYPT_OID_INFO oidInfo = new CapiNative.CRYPT_OID_INFO
+            {
+                cbSize = Marshal.SizeOf(typeof(CapiNative.CRYPT_OID_INFO)),
+                pszOID = m_oid,
+                pwszName = m_name,
+                dwGroupId = m_group
+            };
 
             if (m_algorithmId.HasValue)
             {

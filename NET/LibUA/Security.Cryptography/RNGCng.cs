@@ -19,13 +19,12 @@ namespace LibUA.Security.Cryptography
     ///         Framework 3.5.
     ///     </para>
     /// </summary>
-    [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "RNG", Justification = "This is for consistency with the existing RNGCryptoServiceProvider type")]
     public sealed class RNGCng : RandomNumberGenerator, ICngAlgorithm, IDisposable
     {
-        private SafeBCryptAlgorithmHandle m_algorithm;
-        private CngProvider m_implementation;
+        private readonly SafeBCryptAlgorithmHandle m_algorithm;
+        private readonly CngProvider m_implementation;
 
-        private static RNGCng s_rngCng = new RNGCng();
+        private static readonly RNGCng s_rngCng = new RNGCng();
 
         /// <summary>
         ///     Creates a new instance of a random number generator object using the Microsoft Primitive
@@ -69,13 +68,9 @@ namespace LibUA.Security.Cryptography
 
         [SecurityCritical]
         [SecuritySafeCritical]
-        [SuppressMessage("Microsoft.Security", "CA2122:DoNotIndirectlyExposeMethodsWithLinkDemands", Justification = "Safe use of Dispose")]
         public new void Dispose()
         {
-            if (m_algorithm != null)
-            {
-                m_algorithm.Dispose();
-            }
+            m_algorithm?.Dispose();
         }
 
         /// <summary>

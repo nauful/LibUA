@@ -12,8 +12,8 @@ namespace LibUA.Security.Cryptography
     /// </summary>
     public abstract class AuthenticatedAes : AuthenticatedSymmetricAlgorithm
     {
-        private static KeySizes[] s_legalBlockSizes = { new KeySizes(128, 128, 0) };
-        private static KeySizes[] s_legalKeySizes = { new KeySizes(128, 256, 64) };
+        private static readonly KeySizes[] s_legalBlockSizes = { new KeySizes(128, 128, 0) };
+        private static readonly KeySizes[] s_legalKeySizes = { new KeySizes(128, 256, 64) };
 
         protected AuthenticatedAes()
         {
