@@ -1,5 +1,5 @@
 # LibUA
-Open-source OPC UA client and server library for .NET (deprecated) and .NET Core based on IEC 62541. Available as source files, a demo client and a demo server. Tested and commercially used in industrial applications with commercial vendors' UA servers and clients.
+Open-source OPC UA client and server library for .NET Framework and .NET Core based on IEC 62541. Available a library, a demo client and a demo server. Tested and commercially used in industrial applications with commercial vendors' UA servers and clients.
 
 Available as a nuget package for .NET Core (1.0.11):
 https://www.nuget.org/packages/nauful-LibUA-core
@@ -16,10 +16,6 @@ https://www.nuget.org/packages/nauful-LibUA-core
 - Extendable server address space with hooks for client requests for access control, read handlers, write handlers, etc.
 - Support for reads, writes, updates, historical data and aggregation.
 - Server instances have low overhead: tested with hundreds of clients performing simultaneous historical reads, data change notification subscriptions and real-time writes.
-
-### Platforms
-- .NET Standard 2.0
-- .NET 4.8 is deprecated and not actively maintained.
 
 ### License
 Standard Apache License 2.0.
