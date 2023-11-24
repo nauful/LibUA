@@ -23,10 +23,9 @@ https://www.nuget.org/packages/nauful-LibUA-core
 
 ### License
 Standard Apache License 2.0.
-Summary:
-Permissions: Free for commercial use, modification, distribution, patent use and private use.
-Conditions: Credit must be given (to this github repository/owner), license and copyright notice, state changes.
-Limitations: No trademark use, no liability, no warranty.
+- Permissions: Free for commercial use, modification, distribution, patent use and private use.
+- Conditions: Credit must be given to this github repository/owner, license and copyright notice, state changes.
+- Limitations: No trademark use, no liability, no warranty.
 
 ### Errata
 The demo client and server applications can create self-signed certificates with sufficient fields for most usage. Remember to move these to the trusted directory on a server when connecting to a server for the first time.
