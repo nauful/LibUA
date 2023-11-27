@@ -5,12 +5,14 @@
     <PackageId>nauful-$(AssemblyName)-core</PackageId>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageProjectUrl>https://github.com/nauful/libua</PackageProjectUrl>
-    <Copyright>Free for commercial use under the Apache License 2.0. Please give credit if you find this source useful.</Copyright>
+    <Copyright>(c) Nauful Shaikh, QuantenSystems LLC 2015-(now)</Copyright>
     <Description>Open-source OPC UA client and server library for .NET Core.</Description>
     <Title>LibUA Core</Title>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/nauful/libua</RepositoryUrl>
-    <Version>1.0.11</Version>
+    <Version>1.0.13</Version>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -20,6 +22,17 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="System.Security.Cryptography.Cng" Version="5.0.0" />
