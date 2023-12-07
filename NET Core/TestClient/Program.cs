@@ -121,7 +121,6 @@ namespace TestClient
             var securityPolicy = SecurityPolicy.Basic256Sha256;
             bool useAnonymousUser = true;
 
-
             client.Connect();
             client.OpenSecureChannel(MessageSecurityMode.None, SecurityPolicy.None, null);
             client.FindServers(out ApplicationDescription[] appDescs, new[] { "en" });

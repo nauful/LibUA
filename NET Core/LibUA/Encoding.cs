@@ -889,13 +889,6 @@ namespace LibUA
                 {
                     if (!Decode(out int arrLen)) { return false; }
                     if (arrLen < 0) { return false; }
-
-                    int rank = 1;
-                    if ((mask & 0x40) != 0)
-                    {
-                        if (!Decode(out rank)) { return false; }
-                    }
-
                     Type type = GetNetType((VariantType)(mask & 0x3F));
 
                     var arr = Array.CreateInstance(type, arrLen);
@@ -914,6 +907,8 @@ namespace LibUA
                     // Decoding multidimensional arrays is not supported, decode as a flat array.
                     if ((mask & 0x40) != 0)
                     {
+                        if (!Decode(out int rank)) { return false; }
+
                         for (int i = 0; i < rank; i++)
                         {
                             if (!Decode(out int _)) { return false; }

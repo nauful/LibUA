@@ -776,7 +776,6 @@ namespace LibUA
             Int64 serverTimestamp = 0;
             bool hasStatusCode = false, hasSourceTimestamp = false, hasServerTimestamp = false;
 
-
             if (!mem.Decode(out byte mask)) { return false; }
 
             if ((mask & 1) != 0)
