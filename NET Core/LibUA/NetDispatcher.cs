@@ -2295,7 +2295,6 @@ namespace LibUA
             {
                 // TODO: Verify
 
-
                 if (!recvBuf.Decode(out int NoOfHistoryUpdateDetails)) { return ErrorParseFail; }
 
                 var respBuf = new MemoryBuffer(maximumMessageSize);
@@ -2656,7 +2655,6 @@ namespace LibUA
             protected int DispatchMessage_CallRequest(SLChannel config, RequestHeader reqHeader, MemoryBuffer recvBuf, uint messageSize)
             {
                 // TODO: Verify
-
 
                 if (!recvBuf.Decode(out uint NoofMethodsToCall)) { return ErrorParseFail; }
                 var reqs = new CallMethodRequest[NoofMethodsToCall];

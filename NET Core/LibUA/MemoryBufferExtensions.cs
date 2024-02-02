@@ -1586,6 +1586,47 @@ namespace LibUA
             return true;
         }
 
+        public static bool Encode(this MemoryBuffer mem, Argument arg)
+        {
+            if (!mem.EncodeUAString(arg.Name)) { return false; }
+            if (!mem.Encode(arg.DataType)) { return false; }
+            if (!mem.Encode(arg.ValueRank)) { return false; }
+
+            uint arrayLength = arg.ArrayDimensions == null ? UInt32.MaxValue : (uint)arg.ArrayDimensions.Length;
+            if (!mem.Encode(arrayLength)) { return false; }
+            if (arg.ArrayDimensions != null)
+            {
+                for (int i = 0; i < arg.ArrayDimensions.Length; i++)
+                {
+                    if (!mem.Encode(arg.ArrayDimensions[i])) { return false; }
+                }
+            }
+            if (!mem.Encode(arg.Description)) { return false; }
+            return true;
+        }
+
+        public static bool Decode(this MemoryBuffer mem, out Argument arg)
+        {
+            arg = null;
+            if (!mem.DecodeUAString(out string name)) { return false; }
+            if (!mem.Decode(out NodeId dataType)) { return false; }
+            if (!mem.Decode(out int valueRank)) { return false; }
+
+            if (!mem.Decode(out uint arrayLength)) { return false; }
+            uint[] arrayDimensions = arrayLength == uint.MaxValue ? null : new uint[arrayLength];
+            if (arrayDimensions != null)
+            {
+                for (int i = 0; i < arrayLength; i++)
+                {
+                    if (!mem.Decode(out arrayDimensions[i])) { return false; }
+                }
+            }
+            if (!mem.Decode(out LocalizedText description)) { return false; }
+
+            arg = new Argument(name, dataType, valueRank, arrayDimensions, description);
+            return true;
+        }
+
         public static int CodingSize(this MemoryBuffer mem, ExtensionObject obj)
         {
             int size = 0;
@@ -1648,6 +1689,11 @@ namespace LibUA
                         if (!tmp.Decode(out vta)) { return false; }
                         obj.Payload = vta;
                         break;
+                    case (uint)UAConst.Argument_Encoding_DefaultBinary:
+                        Argument arg;
+                        if (!tmp.Decode(out arg)) { return false; }
+                        obj.Payload = arg;
+                        break;
                     default:
                         break;
                 }
@@ -1687,6 +1733,10 @@ namespace LibUA
                     case VariableTypeAttributes vta:
                         payloadType = UAConst.VariableTypeAttributes_Encoding_DefaultBinary;
                         if (!tmp.Encode(vta)) { return false; }
+                        break;
+                    case Argument arg:
+                        payloadType = UAConst.Argument_Encoding_DefaultBinary;
+                        if (!tmp.Encode(arg)) { return false; }
                         break;
                     default:
                         break;
