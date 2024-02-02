@@ -10,7 +10,7 @@
     <Title>LibUA Core</Title>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/nauful/libua</RepositoryUrl>
-    <Version>1.0.14</Version>
+    <Version>1.0.15</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
