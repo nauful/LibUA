@@ -1779,6 +1779,8 @@ namespace LibUA
                     {
                         if (!mem.Decode(out byte addr)) { return false; }
 
+                        if (((encodingMask & 0x40) != 0) && !mem.Decode(out UInt32 _)) { return false; }
+
                         id = new NodeId(0, addr);
                         return true;
                     }
@@ -1787,6 +1789,8 @@ namespace LibUA
                     {
                         if (!mem.Decode(out byte ns)) { return false; }
                         if (!mem.Decode(out ushort addr)) { return false; }
+
+                        if (((encodingMask & 0x40) != 0) && !mem.Decode(out UInt32 _)) { return false; }
 
                         id = new NodeId(ns, addr);
                         return true;
@@ -1797,6 +1801,8 @@ namespace LibUA
                         if (!mem.Decode(out ushort ns)) { return false; }
                         if (!mem.Decode(out uint addr)) { return false; }
 
+                        if (((encodingMask & 0x40) != 0) && !mem.Decode(out UInt32 _)) { return false; }
+
                         id = new NodeId(ns, addr);
                         return true;
                     }
@@ -1805,6 +1811,8 @@ namespace LibUA
                     {
                         if (!mem.Decode(out ushort ns)) { return false; }
                         if (!mem.DecodeUAString(out string addr)) { return false; }
+
+                        if (((encodingMask & 0x40) != 0) && !mem.Decode(out UInt32 _)) { return false; }
 
                         id = new NodeId(ns, addr);
                         return true;
@@ -1815,6 +1823,8 @@ namespace LibUA
                         if (!mem.Decode(out ushort ns)) { return false; }
                         if (!mem.DecodeUAByteString(out byte[] addr)) { return false; }
 
+                        if (((encodingMask & 0x40) != 0) && !mem.Decode(out UInt32 _)) { return false; }
+
                         id = new NodeId(ns, addr, NodeIdNetType.ByteString);
                         return true;
                     }
@@ -1823,6 +1833,8 @@ namespace LibUA
                     {
                         if (!mem.Decode(out ushort ns)) { return false; }
                         if (!mem.DecodeUAGuidByteString(out byte[] addr)) { return false; }
+
+                        if (((encodingMask & 0x40) != 0) && !mem.Decode(out UInt32 _)) { return false; }
 
                         id = new NodeId(ns, addr, NodeIdNetType.Guid);
                         return true;
