@@ -1773,7 +1773,7 @@ namespace LibUA
                 return false;
             }
 
-            switch (encodingMask)
+            switch (encodingMask & 0x3F)
             {
                 case (byte)NodeIdType.TwoByte:
                     {
