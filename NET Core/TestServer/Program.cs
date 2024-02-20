@@ -517,7 +517,8 @@ namespace TestServer
                 {
                     // Try to load existing (public key) and associated private key
                     appCertificate = new X509Certificate2("ServerCert.der");
-                    cryptPrivateKey = new RSACng();
+                    cryptPrivateKey = RSA.Create();
+                    cryptPrivateKey.KeySize = 2048;
 
                     var rsaPrivParams = UASecurity.ImportRSAPrivateKey(File.ReadAllText("ServerKey.pem"));
                     cryptPrivateKey.ImportParameters(rsaPrivParams);
@@ -564,7 +565,8 @@ namespace TestServer
                         File.WriteAllText("ServerCert.der", UASecurity.ExportPEM(appCertificate));
                         File.WriteAllText("ServerKey.pem", UASecurity.ExportRSAPrivateKey(certPrivateParams));
 
-                        cryptPrivateKey = new RSACng();
+                        cryptPrivateKey = RSA.Create();
+                        cryptPrivateKey.KeySize = 2048;
                         cryptPrivateKey.ImportParameters(certPrivateParams);
                     }
                 }
