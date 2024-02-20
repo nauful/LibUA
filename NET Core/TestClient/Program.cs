@@ -16,14 +16,14 @@ namespace TestClient
         private class DemoClient : Client
         {
             private X509Certificate2 appCertificate = null;
-            private RSACng cryptPrivateKey = null;
+            private RSA cryptPrivateKey = null;
 
             public override X509Certificate2 ApplicationCertificate
             {
                 get { return appCertificate; }
             }
 
-            public override RSACng ApplicationPrivateKey
+            public override RSA ApplicationPrivateKey
             {
                 get { return cryptPrivateKey; }
             }
@@ -34,7 +34,8 @@ namespace TestClient
                 {
                     // Try to load existing (public key) and associated private key
                     appCertificate = new X509Certificate2("ClientCert.der");
-                    cryptPrivateKey = new RSACng();
+                    cryptPrivateKey = RSA.Create();
+                    cryptPrivateKey.KeySize = 2048;
 
                     var rsaPrivParams = UASecurity.ImportRSAPrivateKey(File.ReadAllText("ClientKey.pem"));
                     cryptPrivateKey.ImportParameters(rsaPrivParams);
@@ -81,7 +82,8 @@ namespace TestClient
                         File.WriteAllText("ClientCert.der", UASecurity.ExportPEM(appCertificate));
                         File.WriteAllText("ClientKey.pem", UASecurity.ExportRSAPrivateKey(certPrivateParams));
 
-                        cryptPrivateKey = new RSACng();
+                        cryptPrivateKey = RSA.Create();
+                        cryptPrivateKey.KeySize = 2048;
                         cryptPrivateKey.ImportParameters(certPrivateParams);
                     }
                 }

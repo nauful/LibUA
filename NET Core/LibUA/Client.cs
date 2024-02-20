@@ -60,7 +60,7 @@ namespace LibUA
             get { return null; }
         }
 
-        public virtual RSACng ApplicationPrivateKey
+        public virtual RSA ApplicationPrivateKey
         {
             get { return null; }
         }
