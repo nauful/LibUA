@@ -782,7 +782,6 @@ namespace LibUA
 
                 nextRequestHandle = 0;
 
-                tcp.LingerState = new LingerOption(true, Timeout);
                 tcp.NoDelay = true;
                 tcp.Client.NoDelay = true;
 

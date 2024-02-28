@@ -129,7 +129,6 @@ namespace LibUA
 
                     if (handler != null)
                     {
-                        handler.LingerState = new LingerOption(true, Timeout);
                         handler.NoDelay = true;
 
                         Monitor.Enter(dispatchersLock);
