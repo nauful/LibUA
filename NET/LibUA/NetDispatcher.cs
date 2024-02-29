@@ -2626,8 +2626,6 @@ namespace LibUA
 
             protected int DispatchMessage_CallRequest(SLChannel config, RequestHeader reqHeader, MemoryBuffer recvBuf, uint messageSize)
             {
-                // TODO: Verify
-
                 if (!recvBuf.Decode(out uint NoofMethodsToCall)) { return ErrorParseFail; }
                 var reqs = new CallMethodRequest[NoofMethodsToCall];
                 for (uint i = 0; i < NoofMethodsToCall; i++)
