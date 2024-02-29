@@ -2654,8 +2654,6 @@ namespace LibUA
 
             protected int DispatchMessage_CallRequest(SLChannel config, RequestHeader reqHeader, MemoryBuffer recvBuf, uint messageSize)
             {
-                // TODO: Verify
-
                 if (!recvBuf.Decode(out uint NoofMethodsToCall)) { return ErrorParseFail; }
                 var reqs = new CallMethodRequest[NoofMethodsToCall];
                 for (uint i = 0; i < NoofMethodsToCall; i++)
@@ -2672,6 +2670,12 @@ namespace LibUA
                     reqs[i] = new CallMethodRequest(objectId, nodeId, inputArgs);
                 }
 
+                var results = new CallMethodResult[NoofMethodsToCall];
+                for (int i = 0; i < reqs.Length; i++)
+                {
+                    results[i] = app.HandleCallRequest(config.Session, reqs[i]);
+                }
+
                 var respBuf = new MemoryBuffer(maximumMessageSize);
                 bool succeeded = DispatchMessage_WriteHeader(config, respBuf,
                     (uint)RequestCode.CallResponse, reqHeader, (uint)StatusCode.Good);
@@ -2681,20 +2685,32 @@ namespace LibUA
                     return ErrorRespWrite;
                 }
 
-                succeeded &= respBuf.Encode((UInt32)NoofMethodsToCall);
+                succeeded &= respBuf.Encode((uint)NoofMethodsToCall);
                 for (uint i = 0; i < NoofMethodsToCall; i++)
                 {
-                    succeeded &= respBuf.Encode((UInt32)StatusCode.Good);
+                    var methodResult = results[i];
+                    succeeded &= respBuf.Encode((uint)methodResult.StatusCode);
+
                     // InputArgumentResults: Array of StatusCode
-                    succeeded &= respBuf.Encode((UInt32)0);
+                    succeeded &= respBuf.Encode((uint)methodResult.Results.Length);
+                    for (uint j = 0; j < methodResult.Results.Length; j++)
+                    {
+                        succeeded &= respBuf.Encode((uint)methodResult.Results[j]);
+                    }
+
                     // InputArgumentDiagnosticInfos
-                    succeeded &= respBuf.Encode((UInt32)0);
+                    succeeded &= respBuf.Encode((uint)0);
+
                     // OutputArguments: Array of Variant
-                    succeeded &= respBuf.Encode((UInt32)0);
+                    succeeded &= respBuf.Encode((uint)methodResult.Outputs.Length);
+                    for (uint j = 0; j < methodResult.Outputs.Length; j++)
+                    {
+                        succeeded &= respBuf.VariantEncode(methodResult.Outputs[j]);
+                    }
                 }
 
                 // DiagnosticInfos
-                succeeded &= respBuf.Encode((UInt32)0);
+                succeeded &= respBuf.Encode((uint)0);
 
                 if (!succeeded)
                 {
