@@ -1665,40 +1665,9 @@ namespace LibUA
                 if (!mem.DecodeUAByteString(out byte[] str)) { return false; }
                 obj.Body = str;
 
-                var tmp = new MemoryBuffer(str);
+                return obj.TryDecodeByteString();
 
-                switch (obj.TypeId.NumericIdentifier)
-                {
-                    case (uint)UAConst.ObjectAttributes_Encoding_DefaultBinary:
-                        ObjectAttributes oa;
-                        if (!tmp.Decode(out oa)) { return false; }
-                        obj.Payload = oa;
-                        break;
-                    case (uint)UAConst.ObjectTypeAttributes_Encoding_DefaultBinary:
-                        ObjectTypeAttributes ota;
-                        if (!tmp.Decode(out ota)) { return false; }
-                        obj.Payload = ota;
-                        break;
-                    case (uint)UAConst.VariableAttributes_Encoding_DefaultBinary:
-                        VariableAttributes va;
-                        if (!tmp.Decode(out va)) { return false; }
-                        obj.Payload = va;
-                        break;
-                    case (uint)UAConst.VariableTypeAttributes_Encoding_DefaultBinary:
-                        VariableTypeAttributes vta;
-                        if (!tmp.Decode(out vta)) { return false; }
-                        obj.Payload = vta;
-                        break;
-                    case (uint)UAConst.Argument_Encoding_DefaultBinary:
-                        Argument arg;
-                        if (!tmp.Decode(out arg)) { return false; }
-                        obj.Payload = arg;
-                        break;
-                    default:
-                        break;
-                }
-
-                return true;
+               
             }
 
             return true;
@@ -1706,47 +1675,10 @@ namespace LibUA
 
         public static bool Encode(this MemoryBuffer mem, ExtensionObject obj)
         {
-            if (obj == null)
+            if (obj == null || !obj.TryEncodeByteString(mem.Capacity))
             {
                 if (!mem.Encode(NodeId.Zero)) { return false; }
                 return mem.Encode((byte)ExtensionObjectBodyType.None);
-            }
-
-            if (obj.Payload != null)
-            {
-                var tmp = new MemoryBuffer(mem.Capacity);
-                UAConst payloadType = 0;
-                switch (obj.Payload)
-                {
-                    case ObjectAttributes oa:
-                        payloadType = UAConst.ObjectAttributes_Encoding_DefaultBinary;
-                        if (!tmp.Encode(oa)) { return false; }
-                        break;
-                    case ObjectTypeAttributes ota:
-                        payloadType = UAConst.ObjectTypeAttributes_Encoding_DefaultBinary;
-                        if (!tmp.Encode(ota)) { return false; }
-                        break;
-                    case VariableAttributes va:
-                        payloadType = UAConst.VariableAttributes_Encoding_DefaultBinary;
-                        if (!tmp.Encode(va)) { return false; }
-                        break;
-                    case VariableTypeAttributes vta:
-                        payloadType = UAConst.VariableTypeAttributes_Encoding_DefaultBinary;
-                        if (!tmp.Encode(vta)) { return false; }
-                        break;
-                    case Argument arg:
-                        payloadType = UAConst.Argument_Encoding_DefaultBinary;
-                        if (!tmp.Encode(arg)) { return false; }
-                        break;
-                    default:
-                        break;
-                }
-                if (payloadType != 0)
-                {
-                    obj.TypeId = new NodeId(payloadType);
-                    obj.Body = new byte[tmp.Position];
-                    Array.Copy(tmp.Buffer, obj.Body, obj.Body.Length);
-                }
             }
 
             if (!mem.Encode(obj.TypeId)) { return false; }
