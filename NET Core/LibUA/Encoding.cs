@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Buffers;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -39,7 +40,7 @@ namespace LibUA
             }
         }
 
-        public class MemoryBuffer
+        public class MemoryBuffer : IDisposable
         {
             public bool IsReadOnly { get; protected set; }
 
@@ -132,14 +133,46 @@ namespace LibUA
                 }
             }
 
+            private bool isRented;
             public MemoryBuffer(int Size)
             {
                 Position = 0;
                 IsReadOnly = false;
                 IsFixedCapacity = true;
 
-                Buffer = new byte[Size];
+                Buffer = ArrayPool<byte>.Shared.Rent(Size);
                 Capacity = Allocated = Size;
+                isRented = true;
+            }
+
+            private bool disposed;
+
+            public void Dispose()
+            {
+                if (!isRented)
+                    return;
+
+                Dispose(true);
+                GC.SuppressFinalize(this);
+            }
+
+            protected virtual void Dispose(bool disposing)
+            {
+                if (!disposed)
+                {
+                    if (disposing)
+                    {
+                        // Return the array back to the pool
+                        ArrayPool<byte>.Shared.Return(Buffer);
+                    }
+
+                    disposed = true;
+                }
+            }
+
+            ~MemoryBuffer()
+            {
+                Dispose(false);
             }
 
             public bool EnsureAvailable(int Length, bool readOnly)

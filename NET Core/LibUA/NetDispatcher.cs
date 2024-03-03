@@ -99,7 +99,7 @@ namespace LibUA
                 var req = pendingNotificationRequests.Dequeue();
                 req.Timestamp = DateTime.Now;
 
-                var respBuf = new MemoryBuffer(maximumMessageSize);
+                using var respBuf = new MemoryBuffer(maximumMessageSize);
                 bool succeeded = DispatchMessage_WriteHeader(config, respBuf,
                     (uint)RequestCode.PublishResponse, req, (uint)StatusCode.Good);
 
@@ -300,7 +300,7 @@ namespace LibUA
                 var req = pendingNotificationRequests.Dequeue();
                 req.Timestamp = DateTime.Now;
 
-                var respBuf = new MemoryBuffer(maximumMessageSize);
+                using var respBuf = new MemoryBuffer(maximumMessageSize);
                 bool succeeded = DispatchMessage_WriteHeader(config, respBuf,
                     (uint)RequestCode.PublishResponse, req, (uint)StatusCode.Good);
 
@@ -859,7 +859,7 @@ namespace LibUA
 
                 if (!recvBuf.DecodeUAByteString(out _)) { return ErrorParseFail; }
 
-                var respBuf = new MemoryBuffer(maximumMessageSize);
+                using var respBuf = new MemoryBuffer(maximumMessageSize);
                 bool succeeded = DispatchMessage_WriteHeader(config, respBuf,
                     (uint)RequestCode.ActivateSessionResponse, reqHeader, (uint)StatusCode.Good);
 
@@ -945,7 +945,7 @@ namespace LibUA
                     return ErrorInternal;
                 }
 
-                var respBuf = new MemoryBuffer(maximumMessageSize);
+                using var respBuf = new MemoryBuffer(maximumMessageSize);
                 bool succeeded = DispatchMessage_WriteHeader(config, respBuf,
                     (uint)RequestCode.CreateSessionResponse, reqHeader, (uint)StatusCode.Good);
 
@@ -1050,7 +1050,7 @@ namespace LibUA
 
                 if (!recvBuf.DecodeUAString(out string[] _)) { return ErrorParseFail; }
 
-                var respBuf = new MemoryBuffer(maximumMessageSize);
+                using var respBuf = new MemoryBuffer(maximumMessageSize);
                 bool succeeded = DispatchMessage_WriteHeader(config, respBuf,
                     (uint)RequestCode.FindServersResponse, reqHeader, (uint)StatusCode.Good);
 
@@ -1089,7 +1089,7 @@ namespace LibUA
 
                 if (!recvBuf.DecodeUAString(out string[] _)) { return ErrorParseFail; }
 
-                var respBuf = new MemoryBuffer(maximumMessageSize);
+                using var respBuf = new MemoryBuffer(maximumMessageSize);
                 bool succeeded = DispatchMessage_WriteHeader(config, respBuf,
                     (uint)RequestCode.GetEndpointsResponse, reqHeader, (uint)StatusCode.Good);
 
@@ -1167,7 +1167,7 @@ namespace LibUA
                     return null;
                 }
 
-                MemoryBuffer tmpBuf = new MemoryBuffer(buf.Capacity);
+                using MemoryBuffer tmpBuf = new MemoryBuffer(buf.Capacity);
                 MemoryBuffer recvBuf = new MemoryBuffer(buf.Capacity);
 
                 uint readOffset = 0;
@@ -1263,7 +1263,7 @@ namespace LibUA
                     //Console.WriteLine("{0} -> {1} chunks", respBuf.Position, numChunks);
                     //var bigChunkBuffer = new MemoryBuffer((int)config.TL.RemoteConfig.MaxMessageSize);
 
-                    var chunk = new MemoryBuffer(chunkSize + ChunkHeaderOverhead + TLPaddingOverhead);
+                    using var chunk = new MemoryBuffer(chunkSize + ChunkHeaderOverhead + TLPaddingOverhead);
                     for (int i = 0; i < numChunks; i++)
                     {
                         bool isFinal = i == numChunks - 1;
@@ -1597,7 +1597,7 @@ namespace LibUA
                     }
                 }
 
-                var respBuf = new MemoryBuffer(maximumMessageSize);
+                using var respBuf = new MemoryBuffer(maximumMessageSize);
                 bool succeeded = true;
                 succeeded &= respBuf.Encode((uint)(MessageType.Open) | ((uint)'F' << 24));
                 succeeded &= respBuf.Encode((UInt32)0);
@@ -1768,7 +1768,7 @@ namespace LibUA
                 //	}
                 //}
 
-                var respBuf = new MemoryBuffer(maximumMessageSize);
+                using var respBuf = new MemoryBuffer(maximumMessageSize);
                 bool succeeded = true;
                 succeeded &= respBuf.Encode((uint)(MessageType.Acknowledge) | ((uint)'F' << 24));
                 succeeded &= respBuf.Encode((UInt32)0);
@@ -1940,7 +1940,7 @@ namespace LibUA
 
                 if (!recvBuf.Decode(out uint numNodesToRead)) { return ErrorParseFail; }
 
-                var respBuf = new MemoryBuffer(maximumMessageSize);
+                using var respBuf = new MemoryBuffer(maximumMessageSize);
                 int availableSpacePerRequest = (int)((config.TL.RemoteConfig.MaxMessageSize / Math.Max(1, numNodesToRead)) * UsableMessageSizeFactor) - respBuf.Position - TLPaddingOverhead;
 
                 bool succeeded;
@@ -2258,7 +2258,7 @@ namespace LibUA
                     if (!recvBuf.Decode(out readValueIds[i])) { return ErrorParseFail; }
                 }
 
-                var respBuf = new MemoryBuffer(maximumMessageSize);
+                using var respBuf = new MemoryBuffer(maximumMessageSize);
                 bool succeeded = DispatchMessage_WriteHeader(config, respBuf,
                     (uint)RequestCode.ReadResponse, reqHeader, (uint)StatusCode.Good);
 
@@ -2297,7 +2297,7 @@ namespace LibUA
 
                 if (!recvBuf.Decode(out int NoOfHistoryUpdateDetails)) { return ErrorParseFail; }
 
-                var respBuf = new MemoryBuffer(maximumMessageSize);
+                using var respBuf = new MemoryBuffer(maximumMessageSize);
                 var historyUpdates = new HistoryUpdateData[NoOfHistoryUpdateDetails];
                 for (uint i = 0; i < NoOfHistoryUpdateDetails; i++)
                 {
@@ -2384,7 +2384,7 @@ namespace LibUA
                     if (!recvBuf.Decode(out writeValues[i])) { return ErrorParseFail; }
                 }
 
-                var respBuf = new MemoryBuffer(maximumMessageSize);
+                using var respBuf = new MemoryBuffer(maximumMessageSize);
                 bool succeeded = DispatchMessage_WriteHeader(config, respBuf,
                     (uint)RequestCode.WriteResponse, reqHeader, (uint)StatusCode.Good);
 
@@ -2437,7 +2437,7 @@ namespace LibUA
                     if (!recvBuf.Decode(out browseDescs[i])) { return ErrorParseFail; }
                 }
 
-                var respBuf = new MemoryBuffer(maximumMessageSize);
+                using var respBuf = new MemoryBuffer(maximumMessageSize);
                 bool succeeded = DispatchMessage_WriteHeader(config, respBuf,
                     (uint)RequestCode.BrowseResponse, reqHeader, (uint)StatusCode.Good);
 
@@ -2509,7 +2509,7 @@ namespace LibUA
                     if (!recvBuf.DecodeUAByteString(out browseContPoints[i])) { return ErrorParseFail; }
                 }
 
-                var respBuf = new MemoryBuffer(maximumMessageSize);
+                using var respBuf = new MemoryBuffer(maximumMessageSize);
                 bool succeeded = DispatchMessage_WriteHeader(config, respBuf,
                     (uint)RequestCode.BrowseNextResponse, reqHeader, (uint)StatusCode.Good);
 
@@ -2621,7 +2621,7 @@ namespace LibUA
                     if (!recvBuf.Decode(out BrowsePaths[i])) { return ErrorParseFail; }
                 }
 
-                var respBuf = new MemoryBuffer(maximumMessageSize);
+                using var respBuf = new MemoryBuffer(maximumMessageSize);
                 bool succeeded = DispatchMessage_WriteHeader(config, respBuf,
                     (uint)RequestCode.TranslateBrowsePathsToNodeIdsResponse, reqHeader, (uint)StatusCode.Good);
 
@@ -2676,7 +2676,7 @@ namespace LibUA
                     results[i] = app.HandleCallRequest(config.Session, reqs[i]);
                 }
 
-                var respBuf = new MemoryBuffer(maximumMessageSize);
+                using var respBuf = new MemoryBuffer(maximumMessageSize);
                 bool succeeded = DispatchMessage_WriteHeader(config, respBuf,
                     (uint)RequestCode.CallResponse, reqHeader, (uint)StatusCode.Good);
 
@@ -2731,7 +2731,7 @@ namespace LibUA
                     if (!recvBuf.Decode(out nodesToRegister[i])) { return ErrorParseFail; }
                 }
 
-                var respBuf = new MemoryBuffer(maximumMessageSize);
+                using var respBuf = new MemoryBuffer(maximumMessageSize);
                 bool succeeded = DispatchMessage_WriteHeader(config, respBuf,
                     (uint)RequestCode.RegisterNodesResponse, reqHeader, (uint)StatusCode.BadNotSupported);
 
@@ -2766,7 +2766,7 @@ namespace LibUA
                 if (!recvBuf.Decode(out bool PublishingEnabled)) { return ErrorParseFail; }
                 if (!recvBuf.Decode(out byte Priority)) { return ErrorParseFail; }
 
-                var respBuf = new MemoryBuffer(maximumMessageSize);
+                using var respBuf = new MemoryBuffer(maximumMessageSize);
                 bool succeeded = DispatchMessage_WriteHeader(config, respBuf,
                     (uint)RequestCode.CreateSubscriptionResponse, reqHeader, (uint)StatusCode.Good);
 
@@ -2833,7 +2833,7 @@ namespace LibUA
                     if (!recvBuf.Decode(out SubscriptionIds[i])) { return ErrorParseFail; }
                 }
 
-                var respBuf = new MemoryBuffer(maximumMessageSize);
+                using var respBuf = new MemoryBuffer(maximumMessageSize);
                 bool succeeded = DispatchMessage_WriteHeader(config, respBuf,
                     (uint)RequestCode.SetPublishingModeResponse, reqHeader, (uint)StatusCode.Good);
 
@@ -2873,7 +2873,7 @@ namespace LibUA
                 if (!recvBuf.Decode(out uint MaxNotificationsPerPublish)) { return ErrorParseFail; }
                 if (!recvBuf.Decode(out byte Priority)) { return ErrorParseFail; }
 
-                var respBuf = new MemoryBuffer(maximumMessageSize);
+                using var respBuf = new MemoryBuffer(maximumMessageSize);
                 bool succeeded;
                 if (subscriptionMap.TryGetValue(SubscriptionId, out Subscription sub))
                 {
@@ -2923,7 +2923,7 @@ namespace LibUA
                     if (!recvBuf.Decode(out SubIds[i])) { return ErrorParseFail; }
                 }
 
-                var respBuf = new MemoryBuffer(maximumMessageSize);
+                using var respBuf = new MemoryBuffer(maximumMessageSize);
                 bool succeeded = DispatchMessage_WriteHeader(config, respBuf,
                     (uint)RequestCode.DeleteSubscriptionsResponse, reqHeader, (uint)StatusCode.Good);
 
@@ -2965,7 +2965,7 @@ namespace LibUA
 
             protected int DispatchMessage_TransferSubscriptionsRequest(SLChannel config, RequestHeader reqHeader, MemoryBuffer recvBuf, uint messageSize)
             {
-                var respBuf = new MemoryBuffer(maximumMessageSize);
+                using var respBuf = new MemoryBuffer(maximumMessageSize);
                 bool succeeded = DispatchMessage_WriteHeader(config, respBuf,
                     (uint)RequestCode.TransferSubscriptionsResponse, reqHeader, (uint)StatusCode.BadNotSupported);
 
@@ -3077,7 +3077,7 @@ namespace LibUA
                     createResponses[i] = new MonitoredItemCreateResult(StatusCode.Good, createRequests[i].RequestedParameters.ClientHandle, samplingInterval, (uint)mi.QueueSize, null);
                 }
 
-                var respBuf = new MemoryBuffer(maximumMessageSize);
+                using var respBuf = new MemoryBuffer(maximumMessageSize);
                 bool succeeded = DispatchMessage_WriteHeader(config, respBuf,
                     (uint)RequestCode.CreateMonitoredItemsResponse, reqHeader, (uint)StatusCode.Good);
 
@@ -3113,7 +3113,7 @@ namespace LibUA
 
                 if (!recvBuf.Decode(out uint NoOfItemsToModify)) { return ErrorParseFail; }
 
-                var respBuf = new MemoryBuffer(maximumMessageSize);
+                using var respBuf = new MemoryBuffer(maximumMessageSize);
                 bool succeeded = DispatchMessage_WriteHeader(config, respBuf,
                     (uint)RequestCode.SetMonitoringModeResponse, reqHeader, (uint)StatusCode.Good);
 
@@ -3190,7 +3190,7 @@ namespace LibUA
                     modifyResults[i] = new MonitoredItemModifyResult(StatusCode.Good, -1, (uint)mi.QueueSize, null);
                 }
 
-                var respBuf = new MemoryBuffer(maximumMessageSize);
+                using var respBuf = new MemoryBuffer(maximumMessageSize);
                 bool succeeded = DispatchMessage_WriteHeader(config, respBuf,
                     (uint)RequestCode.ModifyMonitoredItemsResponse, reqHeader, (uint)StatusCode.Good);
 
@@ -3236,7 +3236,7 @@ namespace LibUA
                     sub = null;
                 }
 
-                var respBuf = new MemoryBuffer(maximumMessageSize);
+                using var respBuf = new MemoryBuffer(maximumMessageSize);
                 bool succeeded = DispatchMessage_WriteHeader(config, respBuf,
                     (uint)RequestCode.DeleteMonitoredItemsResponse, reqHeader, (uint)StatusCode.Good);
 
@@ -3287,7 +3287,7 @@ namespace LibUA
                 //if (!recvBuf.Decode(out SubscriptionId)) { return ErrorParseFail; }
                 //if (!recvBuf.Decode(out TimestampsToReturnUint)) { return ErrorParseFail; }
 
-                var respBuf = new MemoryBuffer(maximumMessageSize);
+                using var respBuf = new MemoryBuffer(maximumMessageSize);
                 bool succeeded = DispatchMessage_WriteHeader(config, respBuf,
                     (uint)RequestCode.RepublishResponse, reqHeader, (uint)StatusCode.BadNotSupported);
 
@@ -3346,7 +3346,7 @@ namespace LibUA
                 {
                     logger?.Log(LogLevel.Error, string.Format("{0}: Too many publish requests (max is {1}), sent BadTooManyPublishRequests", LoggerID(), 1));
 
-                    var respBuf = new MemoryBuffer(maximumMessageSize);
+                    using var respBuf = new MemoryBuffer(maximumMessageSize);
                     bool succeeded = DispatchMessage_WriteHeader(config, respBuf,
                         (uint)RequestCode.PublishRequest, reqHeader, (uint)StatusCode.BadTooManyPublishRequests);
 

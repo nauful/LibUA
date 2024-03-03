@@ -5825,7 +5825,7 @@ namespace LibUA
                 TypeId = null;
                 if (Payload != null)
                 {
-                    var buffer = new MemoryBuffer(BufferCapacity);
+                    using var buffer = new MemoryBuffer(BufferCapacity);
                     UAConst payloadType = 0;
 
                     if(_objectEncoders.TryGetValue(Payload.GetType(), out var encoder))
