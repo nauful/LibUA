@@ -141,7 +141,7 @@ namespace LibUA
             {
                 cs.WaitOne();
 
-                var sendBuf = new MemoryBuffer(MaximumMessageSize);
+                using var sendBuf = new MemoryBuffer(MaximumMessageSize);
 
                 if (requestType == SecurityTokenRequestType.Issue)
                 {
@@ -472,7 +472,7 @@ namespace LibUA
             try
             {
                 cs.WaitOne();
-                var sendBuf = new MemoryBuffer(MaximumMessageSize);
+                using var sendBuf = new MemoryBuffer(MaximumMessageSize);
                 var headerRes = EncodeMessageHeader(sendBuf, false, MessageType.Close);
                 if (headerRes != StatusCode.Good)
                 {
@@ -550,7 +550,7 @@ namespace LibUA
             try
             {
                 cs.WaitOne();
-                var sendBuf = new MemoryBuffer(MaximumMessageSize);
+                using var sendBuf = new MemoryBuffer(MaximumMessageSize);
                 var headerRes = EncodeMessageHeader(sendBuf, false);
                 if (headerRes != StatusCode.Good)
                 {
@@ -649,7 +649,7 @@ namespace LibUA
             try
             {
                 cs.WaitOne();
-                var sendBuf = new MemoryBuffer(MaximumMessageSize);
+                using var sendBuf = new MemoryBuffer(MaximumMessageSize);
                 var headerRes = EncodeMessageHeader(sendBuf, false);
                 if (headerRes != StatusCode.Good)
                 {
@@ -760,7 +760,7 @@ namespace LibUA
             if (numChunks > 1)
             {
                 //Console.WriteLine("{0} -> {1} chunks", respBuf.Position, numChunks);
-                var chunk = new MemoryBuffer(chunkSize + ChunkHeaderOverhead + TLPaddingOverhead);
+                using var chunk = new MemoryBuffer(chunkSize + ChunkHeaderOverhead + TLPaddingOverhead);
                 for (int i = 0; i < numChunks; i++)
                 {
                     bool isFinal = i == numChunks - 1;
@@ -892,7 +892,7 @@ namespace LibUA
 
         private StatusCode SendHello()
         {
-            var sendBuf = new MemoryBuffer(MaximumMessageSize);
+            using var sendBuf = new MemoryBuffer(MaximumMessageSize);
 
             config.TL = new TLConnection
             {
@@ -1298,7 +1298,7 @@ namespace LibUA
                 return null;
             }
 
-            MemoryBuffer tmpBuf = new MemoryBuffer(buf.Capacity);
+            using MemoryBuffer tmpBuf = new MemoryBuffer(buf.Capacity);
             MemoryBuffer recvBuf = new MemoryBuffer(buf.Capacity);
 
             uint readOffset = 0;
@@ -1594,7 +1594,7 @@ namespace LibUA
             {
                 cs.WaitOne();
 
-                var sendBuf = new MemoryBuffer(MaximumMessageSize);
+                using var sendBuf = new MemoryBuffer(MaximumMessageSize);
                 var headerRes = EncodeMessageHeader(sendBuf, false);
                 if (headerRes != StatusCode.Good)
                 {
@@ -1838,7 +1838,7 @@ namespace LibUA
             try
             {
                 cs.WaitOne();
-                var sendBuf = new MemoryBuffer(MaximumMessageSize);
+                using var sendBuf = new MemoryBuffer(MaximumMessageSize);
                 var headerRes = EncodeMessageHeader(sendBuf, false);
                 if (headerRes != StatusCode.Good)
                 {
@@ -1958,7 +1958,7 @@ namespace LibUA
             try
             {
                 cs.WaitOne();
-                var sendBuf = new MemoryBuffer(MaximumMessageSize);
+                using var sendBuf = new MemoryBuffer(MaximumMessageSize);
                 var headerRes = EncodeMessageHeader(sendBuf, false);
                 if (headerRes != StatusCode.Good)
                 {
@@ -2045,7 +2045,7 @@ namespace LibUA
             try
             {
                 cs.WaitOne();
-                var sendBuf = new MemoryBuffer(MaximumMessageSize);
+                using var sendBuf = new MemoryBuffer(MaximumMessageSize);
                 var headerRes = EncodeMessageHeader(sendBuf, false);
                 if (headerRes != StatusCode.Good)
                 {
@@ -2153,7 +2153,7 @@ namespace LibUA
             try
             {
                 cs.WaitOne();
-                var sendBuf = new MemoryBuffer(MaximumMessageSize);
+                using var sendBuf = new MemoryBuffer(MaximumMessageSize);
                 var headerRes = EncodeMessageHeader(sendBuf, false);
                 if (headerRes != StatusCode.Good)
                 {
@@ -2257,7 +2257,7 @@ namespace LibUA
             try
             {
                 cs.WaitOne();
-                var sendBuf = new MemoryBuffer(MaximumMessageSize);
+                using var sendBuf = new MemoryBuffer(MaximumMessageSize);
                 var headerRes = EncodeMessageHeader(sendBuf, false);
                 if (headerRes != StatusCode.Good)
                 {
@@ -2361,7 +2361,7 @@ namespace LibUA
             try
             {
                 cs.WaitOne();
-                var sendBuf = new MemoryBuffer(MaximumMessageSize);
+                using var sendBuf = new MemoryBuffer(MaximumMessageSize);
                 var headerRes = EncodeMessageHeader(sendBuf, false);
                 if (headerRes != StatusCode.Good)
                 {
@@ -2465,7 +2465,7 @@ namespace LibUA
             try
             {
                 cs.WaitOne();
-                var sendBuf = new MemoryBuffer(MaximumMessageSize);
+                using var sendBuf = new MemoryBuffer(MaximumMessageSize);
                 var headerRes = EncodeMessageHeader(sendBuf, false);
                 if (headerRes != StatusCode.Good)
                 {
@@ -2569,7 +2569,7 @@ namespace LibUA
             try
             {
                 cs.WaitOne();
-                var sendBuf = new MemoryBuffer(MaximumMessageSize);
+                using var sendBuf = new MemoryBuffer(MaximumMessageSize);
                 var headerRes = EncodeMessageHeader(sendBuf, false);
                 if (headerRes != StatusCode.Good)
                 {
@@ -2673,7 +2673,7 @@ namespace LibUA
             try
             {
                 cs.WaitOne();
-                var sendBuf = new MemoryBuffer(MaximumMessageSize);
+                using var sendBuf = new MemoryBuffer(MaximumMessageSize);
                 var headerRes = EncodeMessageHeader(sendBuf, false);
                 if (headerRes != StatusCode.Good)
                 {
@@ -2799,7 +2799,7 @@ namespace LibUA
             try
             {
                 cs.WaitOne();
-                var sendBuf = new MemoryBuffer(MaximumMessageSize);
+                using var sendBuf = new MemoryBuffer(MaximumMessageSize);
                 var headerRes = EncodeMessageHeader(sendBuf, false);
                 if (headerRes != StatusCode.Good)
                 {
@@ -2924,7 +2924,7 @@ namespace LibUA
             try
             {
                 cs.WaitOne();
-                var sendBuf = new MemoryBuffer(MaximumMessageSize);
+                using var sendBuf = new MemoryBuffer(MaximumMessageSize);
                 var headerRes = EncodeMessageHeader(sendBuf, false);
                 if (headerRes != StatusCode.Good)
                 {
@@ -3158,7 +3158,7 @@ namespace LibUA
             try
             {
                 cs.WaitOne();
-                var sendBuf = new MemoryBuffer(MaximumMessageSize);
+                using var sendBuf = new MemoryBuffer(MaximumMessageSize);
                 var headerRes = EncodeMessageHeader(sendBuf, false);
                 if (headerRes != StatusCode.Good)
                 {
@@ -3276,7 +3276,7 @@ namespace LibUA
             try
             {
                 cs.WaitOne();
-                var sendBuf = new MemoryBuffer(MaximumMessageSize);
+                using var sendBuf = new MemoryBuffer(MaximumMessageSize);
                 var headerRes = EncodeMessageHeader(sendBuf, false);
                 if (headerRes != StatusCode.Good)
                 {
@@ -3380,7 +3380,7 @@ namespace LibUA
             try
             {
                 cs.WaitOne();
-                var sendBuf = new MemoryBuffer(MaximumMessageSize);
+                using var sendBuf = new MemoryBuffer(MaximumMessageSize);
                 var headerRes = EncodeMessageHeader(sendBuf, false);
                 if (headerRes != StatusCode.Good)
                 {
@@ -3523,7 +3523,7 @@ namespace LibUA
             try
             {
                 cs.WaitOne();
-                var sendBuf = new MemoryBuffer(MaximumMessageSize);
+                using var sendBuf = new MemoryBuffer(MaximumMessageSize);
                 var headerRes = EncodeMessageHeader(sendBuf, false);
                 if (headerRes != StatusCode.Good)
                 {
@@ -3629,7 +3629,7 @@ namespace LibUA
             try
             {
                 cs.WaitOne();
-                var sendBuf = new MemoryBuffer(MaximumMessageSize);
+                using var sendBuf = new MemoryBuffer(MaximumMessageSize);
                 var headerRes = EncodeMessageHeader(sendBuf, false);
                 if (headerRes != StatusCode.Good)
                 {
@@ -3728,7 +3728,7 @@ namespace LibUA
             try
             {
                 cs.WaitOne();
-                var sendBuf = new MemoryBuffer(MaximumMessageSize);
+                using var sendBuf = new MemoryBuffer(MaximumMessageSize);
                 var headerRes = EncodeMessageHeader(sendBuf, false);
                 if (headerRes != StatusCode.Good)
                 {
@@ -3826,7 +3826,7 @@ namespace LibUA
             try
             {
                 cs.WaitOne();
-                var sendBuf = new MemoryBuffer(MaximumMessageSize);
+                using var sendBuf = new MemoryBuffer(MaximumMessageSize);
                 var headerRes = EncodeMessageHeader(sendBuf, false);
                 if (headerRes != StatusCode.Good)
                 {
@@ -3925,7 +3925,7 @@ namespace LibUA
             try
             {
                 cs.WaitOne();
-                var sendBuf = new MemoryBuffer(MaximumMessageSize);
+                using var sendBuf = new MemoryBuffer(MaximumMessageSize);
                 var headerRes = EncodeMessageHeader(sendBuf, false);
                 if (headerRes != StatusCode.Good)
                 {
@@ -4026,7 +4026,7 @@ namespace LibUA
             try
             {
                 cs.WaitOne();
-                var sendBuf = new MemoryBuffer(MaximumMessageSize);
+                using var sendBuf = new MemoryBuffer(MaximumMessageSize);
                 var headerRes = EncodeMessageHeader(sendBuf, false);
                 if (headerRes != StatusCode.Good)
                 {
@@ -4127,7 +4127,7 @@ namespace LibUA
             try
             {
                 cs.WaitOne();
-                var sendBuf = new MemoryBuffer(MaximumMessageSize);
+                using var sendBuf = new MemoryBuffer(MaximumMessageSize);
                 var headerRes = EncodeMessageHeader(sendBuf, false);
                 if (headerRes != StatusCode.Good)
                 {
@@ -4333,7 +4333,7 @@ namespace LibUA
 
             try
             {
-                var sendBuf = new MemoryBuffer(MaximumMessageSize);
+                using var sendBuf = new MemoryBuffer(MaximumMessageSize);
                 var headerRes = EncodeMessageHeader(sendBuf, false);
                 if (headerRes != StatusCode.Good)
                 {
