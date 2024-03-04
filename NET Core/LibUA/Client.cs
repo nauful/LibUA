@@ -2038,13 +2038,16 @@ namespace LibUA
             }
         }
 
-        public StatusCode Read(ReadValueId[] Ids, DataValue[] results)
+        public StatusCode Read(ReadValueId[] Ids, DataValue[] results, int Count)
         {
             if (Ids.Length == 0)
                 return StatusCode.Good;
 
-            if (Ids.Length != results.Length)
-                throw new Exception("Ids and Results must be of same length");
+            if (Ids.Length < Count)
+                throw new Exception("Count cannot be larger than Ids");
+
+            if (results.Length < Count)
+                throw new Exception("Results cannot be less than Count");
 
             try
             {
@@ -2059,7 +2062,7 @@ namespace LibUA
                 var reqHeader = new RequestHeader()
                 {
                     RequestHandle = nextRequestHandle++,
-                    Timestamp = DateTime.Now,
+                    Timestamp = DateTime.UtcNow,
                     AuthToken = config.AuthToken,
                 };
 
@@ -2070,9 +2073,9 @@ namespace LibUA
                 // maxAge
                 succeeded &= sendBuf.Encode((double)0);
                 // LocaleIds
-                succeeded &= sendBuf.Encode((UInt32)TimestampsToReturn.Both);
-                succeeded &= sendBuf.Encode((UInt32)Ids.Length);
-                for (int i = 0; i < Ids.Length; i++)
+                succeeded &= sendBuf.Encode((uint)TimestampsToReturn.Both);
+                succeeded &= sendBuf.Encode((uint)Count);
+                for (int i = 0; i < Count; i++)
                 {
                     succeeded &= sendBuf.Encode(Ids[i]);
                 }
@@ -2138,7 +2141,7 @@ namespace LibUA
                     return StatusCode.BadDecodingError;
                 }
 
-                if (numRecv != Ids.Length)
+                if (numRecv != Count)
                 {
                     return StatusCode.GoodResultsMayBeIncomplete;
                 }
@@ -2155,16 +2158,19 @@ namespace LibUA
         public StatusCode Read(ReadValueId[] Ids, out DataValue[] results)
         {
             results = new DataValue[Ids.Length];
-            return Read(Ids, results);
+            return Read(Ids, results,Ids.Length);
         }
 
-        public StatusCode Write(WriteValue[] Ids, uint[] results)
+        public StatusCode Write(WriteValue[] Ids, uint[] results, int Count)
         {
             if (Ids.Length == 0)
                 return StatusCode.Good;
 
-            if (Ids.Length != results.Length)
-                throw new Exception("Ids and results must have same length");
+            if (Count > Ids.Length)
+                throw new Exception("Count cannot be larger than Ids");
+
+            if (results.Length < Count)
+                throw new Exception("Results cannot be less than count");
 
             try
             {
@@ -2187,8 +2193,8 @@ namespace LibUA
                 succeeded &= sendBuf.Encode(new NodeId(RequestCode.WriteRequest));
                 succeeded &= sendBuf.Encode(reqHeader);
 
-                succeeded &= sendBuf.Encode((UInt32)Ids.Length);
-                for (int i = 0; i < Ids.Length; i++)
+                succeeded &= sendBuf.Encode((UInt32)Count);
+                for (int i = 0; i < Count; i++)
                 {
                     succeeded &= sendBuf.Encode(Ids[i]);
                 }
@@ -2251,7 +2257,7 @@ namespace LibUA
                     return StatusCode.BadDecodingError;
                 }
 
-                if (numRecv != Ids.Length)
+                if (numRecv != Count)
                 {
                     return StatusCode.GoodResultsMayBeIncomplete;
                 }
@@ -2268,7 +2274,7 @@ namespace LibUA
         public StatusCode Write(WriteValue[] Ids, out uint[] results)
         {
             results = new uint[Ids.Length];
-            return Write(Ids, results);
+            return Write(Ids, results, Ids.Length);
         }
 
         public StatusCode AddNodes(AddNodesItem[] addNodesItems, out AddNodesResult[] results)
