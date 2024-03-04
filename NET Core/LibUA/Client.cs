@@ -2038,9 +2038,13 @@ namespace LibUA
             }
         }
 
-        public StatusCode Read(ReadValueId[] Ids, out DataValue[] results)
+        public StatusCode Read(ReadValueId[] Ids, DataValue[] results)
         {
-            results = null;
+            if (Ids.Length == 0)
+                return StatusCode.Good;
+
+            if (Ids.Length != results.Length)
+                throw new Exception("Ids and Results must be of same length");
 
             try
             {
@@ -2121,10 +2125,12 @@ namespace LibUA
 
                 succeeded &= recvHandler.RecvBuf.DecodeArraySize(out uint numRecv);
 
-                results = new DataValue[numRecv];
                 for (int i = 0; i < numRecv && succeeded; i++)
                 {
-                    succeeded &= recvHandler.RecvBuf.Decode(out results[i]);
+                    if (results[i] == null)
+                        succeeded &= recvHandler.RecvBuf.Decode(out results[i]);
+                    else
+                        succeeded &= recvHandler.RecvBuf.Decode(results[i]);
                 }
 
                 if (!succeeded)
@@ -2146,9 +2152,19 @@ namespace LibUA
             }
         }
 
-        public StatusCode Write(WriteValue[] Ids, out uint[] results)
+        public StatusCode Read(ReadValueId[] Ids, out DataValue[] results)
         {
-            results = null;
+            results = new DataValue[Ids.Length];
+            return Read(Ids, results);
+        }
+
+        public StatusCode Write(WriteValue[] Ids, uint[] results)
+        {
+            if (Ids.Length == 0)
+                return StatusCode.Good;
+
+            if (Ids.Length != results.Length)
+                throw new Exception("Ids and results must have same length");
 
             try
             {
@@ -2225,7 +2241,6 @@ namespace LibUA
 
                 succeeded &= recvHandler.RecvBuf.DecodeArraySize(out uint numRecv);
 
-                results = new uint[numRecv];
                 for (int i = 0; i < numRecv && succeeded; i++)
                 {
                     succeeded &= recvHandler.RecvBuf.Decode(out results[i]);
@@ -2248,6 +2263,12 @@ namespace LibUA
                 cs.Release();
                 CheckPostCall();
             }
+        }
+
+        public StatusCode Write(WriteValue[] Ids, out uint[] results)
+        {
+            results = new uint[Ids.Length];
+            return Write(Ids, results);
         }
 
         public StatusCode AddNodes(AddNodesItem[] addNodesItems, out AddNodesResult[] results)

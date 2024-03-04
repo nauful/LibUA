@@ -5739,6 +5739,7 @@ namespace LibUA
 
         public struct QualifiedName
         {
+
             public ushort NamespaceIndex;
 
             public string Name;
@@ -5961,9 +5962,9 @@ namespace LibUA
 
         public class DataValue
         {
-            public object Value { get; protected set; }
-            public uint? StatusCode { get; protected set; }
-            public DateTime? SourceTimestamp { get; protected set; }
+            public object Value { get; set; }
+            public uint? StatusCode { get; set; }
+            public DateTime? SourceTimestamp { get; set; }
             public DateTime? ServerTimestamp { get; set; }
 
             public DataValue(object Value = null, uint? StatusCode = null, DateTime? SourceTimestamp = null, DateTime? ServerTimestamp = null)
