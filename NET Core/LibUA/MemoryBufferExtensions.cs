@@ -1174,9 +1174,11 @@ namespace LibUA
             return true;
         }
 
-        public static bool Decode(this MemoryBuffer mem, out DataValue dv)
+        public static bool Decode(this MemoryBuffer mem, DataValue dv)
         {
-            dv = null;
+            if (dv == null)
+                throw new Exception("Cannot decode empty dv");
+
             object Value = null;
             uint statusCode = 0;
             Int64 sourceTimestamp = 0;
@@ -1210,10 +1212,10 @@ namespace LibUA
 
             try
             {
-                dv = new DataValue(Value,
-                    hasStatusCode ? (StatusCode?)statusCode : null,
-                    hasSourceTimestamp ? (DateTime?)DateTime.FromFileTimeUtc(sourceTimestamp) : null,
-                    hasServerTimestamp ? (DateTime?)DateTime.FromFileTimeUtc(serverTimestamp) : null);
+                dv.Value = Value;
+                dv.StatusCode = hasStatusCode ? statusCode : null;
+                dv.SourceTimestamp = hasSourceTimestamp ? DateTime.FromFileTimeUtc(sourceTimestamp) : null;
+                dv.ServerTimestamp = hasServerTimestamp ? DateTime.FromFileTimeUtc(serverTimestamp) : null;
             }
             catch
             {
@@ -1221,6 +1223,18 @@ namespace LibUA
             }
 
             return true;
+        }
+
+        public static bool Decode(this MemoryBuffer mem, out DataValue dv)
+        {
+            dv = new DataValue();
+            if (!mem.Decode(dv))
+            {
+                dv = null;
+                return false;
+            }
+            return true;
+            
         }
 
         public static int CodingSize(this MemoryBuffer mem, DataValue dv)
