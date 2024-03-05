@@ -1177,7 +1177,9 @@ namespace LibUA
         public static bool Decode(this MemoryBuffer mem, DataValue dv)
         {
             if (dv == null)
+            {
                 throw new Exception("Cannot decode empty dv");
+            }
 
             object Value = null;
             uint statusCode = 0;

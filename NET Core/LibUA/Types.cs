@@ -5739,7 +5739,6 @@ namespace LibUA
 
         public struct QualifiedName
         {
-
             public ushort NamespaceIndex;
 
             public string Name;

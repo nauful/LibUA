@@ -2038,16 +2038,17 @@ namespace LibUA
             }
         }
 
-        public StatusCode Read(ReadValueId[] Ids, DataValue[] results, int Count)
+        public StatusCode Read(ArraySegment<ReadValueId> Ids, ArraySegment<DataValue> results)
         {
-            if (Ids.Length == 0)
+            if (Ids.Count == 0)
+            {
                 return StatusCode.Good;
+            }
 
-            if (Ids.Length < Count)
-                throw new Exception("Count cannot be larger than Ids");
-
-            if (results.Length < Count)
-                throw new Exception("Results cannot be less than Count");
+            if (Ids.Count != results.Count)
+            {
+                throw new Exception("Number of results must match number of Ids.");
+            }
 
             try
             {
@@ -2074,8 +2075,8 @@ namespace LibUA
                 succeeded &= sendBuf.Encode((double)0);
                 // LocaleIds
                 succeeded &= sendBuf.Encode((uint)TimestampsToReturn.Both);
-                succeeded &= sendBuf.Encode((uint)Count);
-                for (int i = 0; i < Count; i++)
+                succeeded &= sendBuf.Encode((uint)Ids.Count);
+                for (int i = 0; i < Ids.Count; i++)
                 {
                     succeeded &= sendBuf.Encode(Ids[i]);
                 }
@@ -2131,9 +2132,11 @@ namespace LibUA
                 for (int i = 0; i < numRecv && succeeded; i++)
                 {
                     if (results[i] == null)
-                        succeeded &= recvHandler.RecvBuf.Decode(out results[i]);
-                    else
-                        succeeded &= recvHandler.RecvBuf.Decode(results[i]);
+                    {
+                        results[i] = new DataValue();
+                    }
+
+                    succeeded &= recvHandler.RecvBuf.Decode(results[i]);
                 }
 
                 if (!succeeded)
@@ -2141,7 +2144,7 @@ namespace LibUA
                     return StatusCode.BadDecodingError;
                 }
 
-                if (numRecv != Count)
+                if (numRecv != Ids.Count)
                 {
                     return StatusCode.GoodResultsMayBeIncomplete;
                 }
@@ -2158,19 +2161,20 @@ namespace LibUA
         public StatusCode Read(ReadValueId[] Ids, out DataValue[] results)
         {
             results = new DataValue[Ids.Length];
-            return Read(Ids, results,Ids.Length);
+            return Read(Ids, results);
         }
 
-        public StatusCode Write(WriteValue[] Ids, uint[] results, int Count)
+        public StatusCode Write(ArraySegment<WriteValue> Ids, ArraySegment<uint> results)
         {
-            if (Ids.Length == 0)
+            if (Ids.Count == 0)
+            {
                 return StatusCode.Good;
+            }
 
-            if (Count > Ids.Length)
-                throw new Exception("Count cannot be larger than Ids");
-
-            if (results.Length < Count)
-                throw new Exception("Results cannot be less than count");
+            if (Ids.Count != results.Count)
+            {
+                throw new Exception("Number of results must match number of Ids.");
+            }
 
             try
             {
@@ -2193,8 +2197,8 @@ namespace LibUA
                 succeeded &= sendBuf.Encode(new NodeId(RequestCode.WriteRequest));
                 succeeded &= sendBuf.Encode(reqHeader);
 
-                succeeded &= sendBuf.Encode((UInt32)Count);
-                for (int i = 0; i < Count; i++)
+                succeeded &= sendBuf.Encode((UInt32)Ids.Count);
+                for (int i = 0; i < Ids.Count; i++)
                 {
                     succeeded &= sendBuf.Encode(Ids[i]);
                 }
@@ -2247,9 +2251,11 @@ namespace LibUA
 
                 succeeded &= recvHandler.RecvBuf.DecodeArraySize(out uint numRecv);
 
+                uint v;
                 for (int i = 0; i < numRecv && succeeded; i++)
                 {
-                    succeeded &= recvHandler.RecvBuf.Decode(out results[i]);
+                    succeeded &= recvHandler.RecvBuf.Decode(out v);
+                    results[i] = v;
                 }
 
                 if (!succeeded)
@@ -2257,7 +2263,7 @@ namespace LibUA
                     return StatusCode.BadDecodingError;
                 }
 
-                if (numRecv != Count)
+                if (numRecv != Ids.Count)
                 {
                     return StatusCode.GoodResultsMayBeIncomplete;
                 }
@@ -2274,7 +2280,7 @@ namespace LibUA
         public StatusCode Write(WriteValue[] Ids, out uint[] results)
         {
             results = new uint[Ids.Length];
-            return Write(Ids, results, Ids.Length);
+            return Write(Ids, results);
         }
 
         public StatusCode AddNodes(AddNodesItem[] addNodesItems, out AddNodesResult[] results)
