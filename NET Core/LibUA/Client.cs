@@ -617,7 +617,7 @@ namespace LibUA
 
                 if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.GetEndpointsResponse))
                 {
-                    CheckServiceFaultResponse(recvHandler);
+                    return CheckServiceFaultResponse(recvHandler);
                 }
 
                 succeeded &= recvHandler.RecvBuf.DecodeArraySize(out uint numEndpointDescs);
@@ -716,7 +716,7 @@ namespace LibUA
 
                 if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.FindServersResponse))
                 {
-                    CheckServiceFaultResponse(recvHandler);
+                    return CheckServiceFaultResponse(recvHandler);
                 }
 
                 succeeded &= recvHandler.RecvBuf.DecodeArraySize(out uint numDescs);
@@ -1916,7 +1916,7 @@ namespace LibUA
 
                 if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.CreateSessionResponse))
                 {
-                    CheckServiceFaultResponse(recvHandler);
+                    return CheckServiceFaultResponse(recvHandler);
                 }
 
                 succeeded &= recvHandler.RecvBuf.Decode(out NodeId sessionIdToken);
@@ -2021,7 +2021,7 @@ namespace LibUA
 
                 if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.CloseSessionResponse))
                 {
-                    CheckServiceFaultResponse(recvHandler);
+                    return CheckServiceFaultResponse(recvHandler);
                 }
 
                 if (!succeeded)
@@ -2124,7 +2124,7 @@ namespace LibUA
 
                 if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.ReadResponse))
                 {
-                    CheckServiceFaultResponse(recvHandler);
+                    return CheckServiceFaultResponse(recvHandler);
                 }
 
                 succeeded &= recvHandler.RecvBuf.DecodeArraySize(out uint numRecv);
@@ -2246,7 +2246,7 @@ namespace LibUA
 
                 if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.WriteResponse))
                 {
-                    CheckServiceFaultResponse(recvHandler);
+                    return CheckServiceFaultResponse(recvHandler);
                 }
 
                 succeeded &= recvHandler.RecvBuf.DecodeArraySize(out uint numRecv);
@@ -2357,7 +2357,7 @@ namespace LibUA
 
                 if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.AddNodesResponse))
                 {
-                    CheckServiceFaultResponse(recvHandler);
+                    return CheckServiceFaultResponse(recvHandler);
                 }
 
                 succeeded &= recvHandler.RecvBuf.DecodeArraySize(out uint numRecv);
@@ -2461,7 +2461,7 @@ namespace LibUA
 
                 if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.DeleteNodesResponse))
                 {
-                    CheckServiceFaultResponse(recvHandler);
+                    return CheckServiceFaultResponse(recvHandler);
                 }
 
                 succeeded &= recvHandler.RecvBuf.DecodeArraySize(out uint numRecv);
@@ -2565,7 +2565,7 @@ namespace LibUA
 
                 if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.AddReferencesResponse))
                 {
-                    CheckServiceFaultResponse(recvHandler);
+                    return CheckServiceFaultResponse(recvHandler);
                 }
 
                 succeeded &= recvHandler.RecvBuf.DecodeArraySize(out uint numRecv);
@@ -2669,7 +2669,7 @@ namespace LibUA
 
                 if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.DeleteReferencesResponse))
                 {
-                    CheckServiceFaultResponse(recvHandler);
+                    return CheckServiceFaultResponse(recvHandler);
                 }
 
                 succeeded &= recvHandler.RecvBuf.DecodeArraySize(out uint numRecv);
@@ -2782,7 +2782,7 @@ namespace LibUA
 
                 if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.BrowseResponse))
                 {
-                    CheckServiceFaultResponse(recvHandler);
+                    return CheckServiceFaultResponse(recvHandler);
                 }
 
                 succeeded &= recvHandler.RecvBuf.DecodeArraySize(out uint numRecv);
@@ -2900,7 +2900,7 @@ namespace LibUA
 
                 if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.BrowseNextResponse))
                 {
-                    CheckServiceFaultResponse(recvHandler);
+                    return CheckServiceFaultResponse(recvHandler);
                 }
 
                 if (!releaseContinuationPoints)
@@ -3101,7 +3101,7 @@ namespace LibUA
 
                 if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.HistoryReadResponse))
                 {
-                    CheckServiceFaultResponse(recvHandler);
+                    return CheckServiceFaultResponse(recvHandler);
                 }
 
                 if (!releaseContinuationPoints)
@@ -3272,7 +3272,7 @@ namespace LibUA
 
                 if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.HistoryUpdateResponse))
                 {
-                    CheckServiceFaultResponse(recvHandler);
+                    return CheckServiceFaultResponse(recvHandler);
                 }
 
                 succeeded &= recvHandler.RecvBuf.DecodeArraySize(out uint numRecv);
@@ -3376,7 +3376,7 @@ namespace LibUA
 
                 if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.TranslateBrowsePathsToNodeIdsResponse))
                 {
-                    CheckServiceFaultResponse(recvHandler);
+                    return CheckServiceFaultResponse(recvHandler);
                 }
 
                 succeeded &= recvHandler.RecvBuf.DecodeArraySize(out uint numRecv);
@@ -3486,7 +3486,7 @@ namespace LibUA
 
                 if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.CallResponse))
                 {
-                    CheckServiceFaultResponse(recvHandler);
+                    return CheckServiceFaultResponse(recvHandler);
                 }
 
                 succeeded &= recvHandler.RecvBuf.DecodeArraySize(out uint numRecv);
@@ -3624,7 +3624,7 @@ namespace LibUA
 
                 if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.CreateSubscriptionResponse))
                 {
-                    CheckServiceFaultResponse(recvHandler);
+                    return CheckServiceFaultResponse(recvHandler);
                 }
 
                 succeeded &= recvHandler.RecvBuf.Decode(out result);
@@ -3732,7 +3732,7 @@ namespace LibUA
 
                 if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.ModifySubscriptionResponse))
                 {
-                    CheckServiceFaultResponse(recvHandler);
+                    return CheckServiceFaultResponse(recvHandler);
                 }
 
                 succeeded &= recvHandler.RecvBuf.Decode(out double revisedPublishInterval);
@@ -3828,7 +3828,7 @@ namespace LibUA
 
                 if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.DeleteSubscriptionsResponse))
                 {
-                    CheckServiceFaultResponse(recvHandler);
+                    return CheckServiceFaultResponse(recvHandler);
                 }
 
                 succeeded &= recvHandler.RecvBuf.DecodeArraySize(out uint numResults);
@@ -3927,7 +3927,7 @@ namespace LibUA
 
                 if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.SetPublishingModeResponse))
                 {
-                    CheckServiceFaultResponse(recvHandler);
+                    return CheckServiceFaultResponse(recvHandler);
                 }
 
                 succeeded &= recvHandler.RecvBuf.DecodeArraySize(out uint numResults);
@@ -4028,7 +4028,7 @@ namespace LibUA
 
                 if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.CreateMonitoredItemsResponse))
                 {
-                    CheckServiceFaultResponse(recvHandler);
+                    return CheckServiceFaultResponse(recvHandler);
                 }
 
                 succeeded &= recvHandler.RecvBuf.DecodeArraySize(out uint numResults);
@@ -4129,7 +4129,7 @@ namespace LibUA
 
                 if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.ModifyMonitoredItemsResponse))
                 {
-                    CheckServiceFaultResponse(recvHandler);
+                    return CheckServiceFaultResponse(recvHandler);
                 }
 
                 succeeded &= recvHandler.RecvBuf.DecodeArraySize(out uint numResults);
@@ -4228,7 +4228,7 @@ namespace LibUA
 
                 if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.DeleteMonitoredItemsResponse))
                 {
-                    CheckServiceFaultResponse(recvHandler);
+                    return CheckServiceFaultResponse(recvHandler);
                 }
 
                 succeeded &= recvHandler.RecvBuf.DecodeArraySize(out uint numResults);
