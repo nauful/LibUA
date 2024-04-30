@@ -129,7 +129,6 @@ namespace LibUA
 
                     if (handler != null)
                     {
-                        handler.LingerState = new LingerOption(true, Timeout);
                         handler.NoDelay = true;
 
                         Monitor.Enter(dispatchersLock);
@@ -318,7 +317,7 @@ namespace LibUA
 
             private void TLError(uint statusCode)
             {
-                var respBuf = new MemoryBuffer(1 << 10);
+                using var respBuf = new MemoryBuffer(1 << 10);
                 bool succeeded = true;
                 succeeded &= respBuf.Encode((uint)(MessageType.Error) | ((uint)'F' << 24));
                 succeeded &= respBuf.Encode((UInt32)0);

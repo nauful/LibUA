@@ -1,21 +1,18 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
+    <PackageId>nauful-$(AssemblyName)-core</PackageId>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <LangVersion>10.0</LangVersion>
-    <Nullable>disable</Nullable>
-  </PropertyGroup>
-  
-  <PropertyGroup>
-    <!-- Package properties -->
-    <PackageId>PW.LibUA</PackageId>
-    <Version>1.0.11</Version>
-    <Description>Open-source OPC UA client and server library.</Description>
-    <Authors>nauful,MET</Authors>
-    <RepositoryUrl>https://github.com/paul-wurth/PW.LibUA</RepositoryUrl>
-    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
-    <PackageProjectUrl>$(RepositoryUrl)/blob/pw-libua/README.md</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/nauful/libua</PackageProjectUrl>
+    <Copyright>(c) Nauful Shaikh, QuantenSystems LLC 2015-(now)</Copyright>
+    <Description>Open-source OPC UA client and server library for .NET Core.</Description>
+    <Title>LibUA Core</Title>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/nauful/libua</RepositoryUrl>
+    <Version>1.0.20</Version>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -27,10 +24,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="PW.StandardNuget" Version="1.0.1">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="System.Security.Cryptography.Cng" Version="5.0.0" />
   </ItemGroup>
 

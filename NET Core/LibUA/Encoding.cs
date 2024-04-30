@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Buffers;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -39,7 +40,7 @@ namespace LibUA
             }
         }
 
-        public class MemoryBuffer
+        public class MemoryBuffer : IDisposable
         {
             public bool IsReadOnly { get; protected set; }
 
@@ -132,14 +133,46 @@ namespace LibUA
                 }
             }
 
+            private bool isRented;
             public MemoryBuffer(int Size)
             {
                 Position = 0;
                 IsReadOnly = false;
                 IsFixedCapacity = true;
 
-                Buffer = new byte[Size];
+                Buffer = ArrayPool<byte>.Shared.Rent(Size);
                 Capacity = Allocated = Size;
+                isRented = true;
+            }
+
+            private bool disposed;
+
+            public void Dispose()
+            {
+                if (!isRented)
+                    return;
+
+                Dispose(true);
+                GC.SuppressFinalize(this);
+            }
+
+            protected virtual void Dispose(bool disposing)
+            {
+                if (!disposed)
+                {
+                    if (disposing)
+                    {
+                        // Return the array back to the pool
+                        ArrayPool<byte>.Shared.Return(Buffer);
+                    }
+
+                    disposed = true;
+                }
+            }
+
+            ~MemoryBuffer()
+            {
+                Dispose(false);
             }
 
             public bool EnsureAvailable(int Length, bool readOnly)
@@ -708,6 +741,7 @@ namespace LibUA
                 if (type == typeof(LocalizedText)) { return VariantType.LocalizedText; }
                 if (type == typeof(DateTime)) { return VariantType.DateTime; }
                 if (type == typeof(StatusCode)) { return VariantType.StatusCode; }
+                if (type == typeof(ExtensionObject)) { return VariantType.ExtensionObject; }
 
                 // TODO: Other types
 
@@ -735,6 +769,7 @@ namespace LibUA
                 if (obj is LocalizedText) { return VariantType.LocalizedText; }
                 if (obj is DateTime) { return VariantType.DateTime; }
                 if (obj is StatusCode) { return VariantType.StatusCode; }
+                if (obj is ExtensionObject) { return VariantType.ExtensionObject; }
 
                 // TODO: Other types
 
@@ -758,6 +793,7 @@ namespace LibUA
                 if (type == VariantType.QualifiedName) { return typeof(QualifiedName); }
                 if (type == VariantType.LocalizedText) { return typeof(LocalizedText); }
                 if (type == VariantType.String) { return typeof(String); }
+                if (type == VariantType.ExtensionObject) { return typeof(ExtensionObject); }
 
                 // TODO: Other types
 
@@ -889,13 +925,6 @@ namespace LibUA
                 {
                     if (!Decode(out int arrLen)) { return false; }
                     if (arrLen < 0) { return false; }
-
-                    int rank = 1;
-                    if ((mask & 0x40) != 0)
-                    {
-                        if (!Decode(out rank)) { return false; }
-                    }
-
                     Type type = GetNetType((VariantType)(mask & 0x3F));
 
                     var arr = Array.CreateInstance(type, arrLen);
@@ -914,6 +943,8 @@ namespace LibUA
                     // Decoding multidimensional arrays is not supported, decode as a flat array.
                     if ((mask & 0x40) != 0)
                     {
+                        if (!Decode(out int rank)) { return false; }
+
                         for (int i = 0; i < rank; i++)
                         {
                             if (!Decode(out int _)) { return false; }

@@ -269,7 +269,7 @@ namespace LibUA
                             "http://quantensystems.com/DemoServer"
                         }
                     },
-                    { new NodeId(UAConst.Server_ServerStatus_State), (Int32)ServerState.Running },
+                    { new NodeId(UAConst.Server_ServerStatus_State), (int)ServerState.Running },
 
                     { new NodeId(UAConst.OperationLimitsType_MaxNodesPerRead), 100 },
                     { new NodeId(UAConst.OperationLimitsType_MaxNodesPerWrite), 100 },
@@ -332,6 +332,10 @@ namespace LibUA
                 {
                     return StatusCode.BadNodeIdUnknown;
                 }
+                if (path.RelativePath.Length == 0)
+                {
+                    return StatusCode.BadNothingToDo;
+                }
 
                 for (int i = 0; i < path.RelativePath.Length; i++)
                 {
@@ -374,9 +378,13 @@ namespace LibUA
                         res.Add(new BrowsePathTarget() { Target = node.Id, RemainingPathIndex = (uint)i });
                         return StatusCode.BadNoMatch;
                     }
+
+                    // Spec. says remainingIndex is index of first unprocessed relative path or max when all processed.
+                    var remainingIndex = i + 1 == path.RelativePath.Length ? uint.MaxValue : (uint)i + 1;
+                    // Seen other implementation creating multiple instances, but we need it to work for atleast one.
+                    res.Add(new BrowsePathTarget() { Target = node.Id, RemainingPathIndex = remainingIndex });
                 }
 
-                res.Add(new BrowsePathTarget() { Target = node.Id, RemainingPathIndex = (uint)path.RelativePath.Length });
                 return StatusCode.Good;
             }
 
@@ -458,36 +466,36 @@ namespace LibUA
                 return StatusCode.Good;
             }
 
-            public virtual UInt32[] HandleWriteRequest(object session, WriteValue[] writeValues)
+            public virtual uint[] HandleWriteRequest(object session, WriteValue[] writeValues)
             {
-                var respStatus = new UInt32[writeValues.Length];
+                var respStatus = new uint[writeValues.Length];
                 for (int i = 0; i < writeValues.Length; i++)
                 {
-                    respStatus[i] = (UInt32)StatusCode.BadNotWritable;
+                    respStatus[i] = (uint)StatusCode.BadNotWritable;
                 }
 
                 return respStatus;
             }
 
-            public virtual UInt32 HandleHistoryReadRequest(object session, object readDetails, HistoryReadValueId id, ContinuationPointHistory continuationPoint, List<DataValue> results, ref int? offsetContinueFit)
+            public virtual uint HandleHistoryReadRequest(object session, object readDetails, HistoryReadValueId id, ContinuationPointHistory continuationPoint, List<DataValue> results, ref int? offsetContinueFit)
             {
-                return (UInt32)StatusCode.BadNotImplemented;
+                return (uint)StatusCode.BadNotImplemented;
             }
 
-            public virtual UInt32[] HandleHistoryUpdateRequest(object session, HistoryUpdateData[] updates)
+            public virtual uint[] HandleHistoryUpdateRequest(object session, HistoryUpdateData[] updates)
             {
-                UInt32[] resps = new UInt32[updates.Length];
+                uint[] resps = new uint[updates.Length];
                 for (int i = 0; i < updates.Length; i++)
                 {
-                    resps[i] = (UInt32)StatusCode.BadNotImplemented;
+                    resps[i] = (uint)StatusCode.BadNotImplemented;
                 }
 
                 return resps;
             }
 
-            public virtual UInt32 HandleHistoryEventReadRequest(object session, object readDetails, HistoryReadValueId id, ContinuationPointHistory continuationPoint, List<object[]> results)
+            public virtual uint HandleHistoryEventReadRequest(object session, object readDetails, HistoryReadValueId id, ContinuationPointHistory continuationPoint, List<object[]> results)
             {
-                return (UInt32)StatusCode.BadNotImplemented;
+                return (uint)StatusCode.BadNotImplemented;
             }
 
             public virtual DataValue[] HandleReadRequest(object session, ReadValueId[] readValueIds)
@@ -515,7 +523,7 @@ namespace LibUA
                     else if (readValueIds[i].AttributeId == NodeAttribute.NodeClass)
                     {
                         NodeClass nodeClass = node.GetNodeClass();
-                        res[i] = new DataValue((Int32)nodeClass, StatusCode.Good);
+                        res[i] = new DataValue((int)nodeClass, StatusCode.Good);
                     }
                     else if (readValueIds[i].AttributeId == NodeAttribute.BrowseName)
                     {
@@ -539,7 +547,7 @@ namespace LibUA
                     }
                     else if (readValueIds[i].AttributeId == NodeAttribute.AccessRestrictions)
                     {
-                        res[i] = new DataValue((UInt16)0, StatusCode.Good);
+                        res[i] = new DataValue((ushort)0, StatusCode.Good);
                     }
                     else if (readValueIds[i].AttributeId == NodeAttribute.IsAbstract && node is NodeReferenceType)
                     {
@@ -579,7 +587,7 @@ namespace LibUA
                     }
                     else if (readValueIds[i].AttributeId == NodeAttribute.AccessLevelEx && node is NodeVariable)
                     {
-                        res[i] = new DataValue((UInt32)(node as NodeVariable).AccessLevel, StatusCode.Good);
+                        res[i] = new DataValue((uint)(node as NodeVariable).AccessLevel, StatusCode.Good);
                     }
                     else if (readValueIds[i].AttributeId == NodeAttribute.UserAccessLevel && node is NodeVariable)
                     {
@@ -603,7 +611,7 @@ namespace LibUA
                     }
                     else if (readValueIds[i].AttributeId == NodeAttribute.ValueRank && node is NodeVariable)
                     {
-                        res[i] = new DataValue((Int32)(node as NodeVariable).ValueRank, StatusCode.Good);
+                        res[i] = new DataValue((int)(node as NodeVariable).ValueRank, StatusCode.Good);
                     }
                     else
                     {
@@ -614,6 +622,13 @@ namespace LibUA
                 }
 
                 return res;
+            }
+
+            public virtual CallMethodResult HandleCallRequest(object session, CallMethodRequest request)
+            {
+                var inputLength = request.InputArguments.Length;
+                var inputResults = Enumerable.Repeat((uint)StatusCode.BadNotImplemented, inputLength).ToArray();
+                return new CallMethodResult((uint)StatusCode.BadNotImplemented, inputResults, new object[0]);
             }
 
             protected virtual bool SessionHasPermissionToRead(object session, NodeId nodeId)

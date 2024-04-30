@@ -1174,15 +1174,18 @@ namespace LibUA
             return true;
         }
 
-        public static bool Decode(this MemoryBuffer mem, out DataValue dv)
+        public static bool Decode(this MemoryBuffer mem, DataValue dv)
         {
-            dv = null;
+            if (dv == null)
+            {
+                throw new Exception("Cannot decode empty dv");
+            }
+
             object Value = null;
             uint statusCode = 0;
             Int64 sourceTimestamp = 0;
             Int64 serverTimestamp = 0;
             bool hasStatusCode = false, hasSourceTimestamp = false, hasServerTimestamp = false;
-
 
             if (!mem.Decode(out byte mask)) { return false; }
 
@@ -1211,10 +1214,10 @@ namespace LibUA
 
             try
             {
-                dv = new DataValue(Value,
-                    hasStatusCode ? (StatusCode?)statusCode : null,
-                    hasSourceTimestamp ? (DateTime?)DateTime.FromFileTimeUtc(sourceTimestamp) : null,
-                    hasServerTimestamp ? (DateTime?)DateTime.FromFileTimeUtc(serverTimestamp) : null);
+                dv.Value = Value;
+                dv.StatusCode = hasStatusCode ? statusCode : null;
+                dv.SourceTimestamp = hasSourceTimestamp ? DateTime.FromFileTimeUtc(sourceTimestamp) : null;
+                dv.ServerTimestamp = hasServerTimestamp ? DateTime.FromFileTimeUtc(serverTimestamp) : null;
             }
             catch
             {
@@ -1222,6 +1225,18 @@ namespace LibUA
             }
 
             return true;
+        }
+
+        public static bool Decode(this MemoryBuffer mem, out DataValue dv)
+        {
+            dv = new DataValue();
+            if (!mem.Decode(dv))
+            {
+                dv = null;
+                return false;
+            }
+            return true;
+            
         }
 
         public static int CodingSize(this MemoryBuffer mem, DataValue dv)
@@ -1587,6 +1602,47 @@ namespace LibUA
             return true;
         }
 
+        public static bool Encode(this MemoryBuffer mem, Argument arg)
+        {
+            if (!mem.EncodeUAString(arg.Name)) { return false; }
+            if (!mem.Encode(arg.DataType)) { return false; }
+            if (!mem.Encode(arg.ValueRank)) { return false; }
+
+            uint arrayLength = arg.ArrayDimensions == null ? UInt32.MaxValue : (uint)arg.ArrayDimensions.Length;
+            if (!mem.Encode(arrayLength)) { return false; }
+            if (arg.ArrayDimensions != null)
+            {
+                for (int i = 0; i < arg.ArrayDimensions.Length; i++)
+                {
+                    if (!mem.Encode(arg.ArrayDimensions[i])) { return false; }
+                }
+            }
+            if (!mem.Encode(arg.Description)) { return false; }
+            return true;
+        }
+
+        public static bool Decode(this MemoryBuffer mem, out Argument arg)
+        {
+            arg = null;
+            if (!mem.DecodeUAString(out string name)) { return false; }
+            if (!mem.Decode(out NodeId dataType)) { return false; }
+            if (!mem.Decode(out int valueRank)) { return false; }
+
+            if (!mem.Decode(out uint arrayLength)) { return false; }
+            uint[] arrayDimensions = arrayLength == uint.MaxValue ? null : new uint[arrayLength];
+            if (arrayDimensions != null)
+            {
+                for (int i = 0; i < arrayLength; i++)
+                {
+                    if (!mem.Decode(out arrayDimensions[i])) { return false; }
+                }
+            }
+            if (!mem.Decode(out LocalizedText description)) { return false; }
+
+            arg = new Argument(name, dataType, valueRank, arrayDimensions, description);
+            return true;
+        }
+
         public static int CodingSize(this MemoryBuffer mem, ExtensionObject obj)
         {
             int size = 0;
@@ -1625,35 +1681,9 @@ namespace LibUA
                 if (!mem.DecodeUAByteString(out byte[] str)) { return false; }
                 obj.Body = str;
 
-                var tmp = new MemoryBuffer(str);
+                return obj.TryDecodeByteString();
 
-                switch (obj.TypeId.NumericIdentifier)
-                {
-                    case (uint)UAConst.ObjectAttributes_Encoding_DefaultBinary:
-                        ObjectAttributes oa;
-                        if (!tmp.Decode(out oa)) { return false; }
-                        obj.Payload = oa;
-                        break;
-                    case (uint)UAConst.ObjectTypeAttributes_Encoding_DefaultBinary:
-                        ObjectTypeAttributes ota;
-                        if (!tmp.Decode(out ota)) { return false; }
-                        obj.Payload = ota;
-                        break;
-                    case (uint)UAConst.VariableAttributes_Encoding_DefaultBinary:
-                        VariableAttributes va;
-                        if (!tmp.Decode(out va)) { return false; }
-                        obj.Payload = va;
-                        break;
-                    case (uint)UAConst.VariableTypeAttributes_Encoding_DefaultBinary:
-                        VariableTypeAttributes vta;
-                        if (!tmp.Decode(out vta)) { return false; }
-                        obj.Payload = vta;
-                        break;
-                    default:
-                        break;
-                }
-
-                return true;
+               
             }
 
             return true;
@@ -1661,43 +1691,10 @@ namespace LibUA
 
         public static bool Encode(this MemoryBuffer mem, ExtensionObject obj)
         {
-            if (obj == null)
+            if (obj == null || !obj.TryEncodeByteString(mem.Capacity))
             {
                 if (!mem.Encode(NodeId.Zero)) { return false; }
                 return mem.Encode((byte)ExtensionObjectBodyType.None);
-            }
-
-            if (obj.Payload != null)
-            {
-                var tmp = new MemoryBuffer(mem.Capacity);
-                UAConst payloadType = 0;
-                switch (obj.Payload)
-                {
-                    case ObjectAttributes oa:
-                        payloadType = UAConst.ObjectAttributes_Encoding_DefaultBinary;
-                        if (!tmp.Encode(oa)) { return false; }
-                        break;
-                    case ObjectTypeAttributes ota:
-                        payloadType = UAConst.ObjectTypeAttributes_Encoding_DefaultBinary;
-                        if (!tmp.Encode(ota)) { return false; }
-                        break;
-                    case VariableAttributes va:
-                        payloadType = UAConst.VariableAttributes_Encoding_DefaultBinary;
-                        if (!tmp.Encode(va)) { return false; }
-                        break;
-                    case VariableTypeAttributes vta:
-                        payloadType = UAConst.VariableTypeAttributes_Encoding_DefaultBinary;
-                        if (!tmp.Encode(vta)) { return false; }
-                        break;
-                    default:
-                        break;
-                }
-                if (payloadType != 0)
-                {
-                    obj.TypeId = new NodeId(payloadType);
-                    obj.Body = new byte[tmp.Position];
-                    Array.Copy(tmp.Buffer, obj.Body, obj.Body.Length);
-                }
             }
 
             if (!mem.Encode(obj.TypeId)) { return false; }
@@ -1724,11 +1721,13 @@ namespace LibUA
                 return false;
             }
 
-            switch (encodingMask)
+            switch (encodingMask & 0x3F)
             {
                 case (byte)NodeIdType.TwoByte:
                     {
                         if (!mem.Decode(out byte addr)) { return false; }
+
+                        if (((encodingMask & 0x40) != 0) && !mem.Decode(out UInt32 _)) { return false; }
 
                         id = new NodeId(0, addr);
                         return true;
@@ -1739,6 +1738,8 @@ namespace LibUA
                         if (!mem.Decode(out byte ns)) { return false; }
                         if (!mem.Decode(out ushort addr)) { return false; }
 
+                        if (((encodingMask & 0x40) != 0) && !mem.Decode(out UInt32 _)) { return false; }
+
                         id = new NodeId(ns, addr);
                         return true;
                     }
@@ -1747,6 +1748,8 @@ namespace LibUA
                     {
                         if (!mem.Decode(out ushort ns)) { return false; }
                         if (!mem.Decode(out uint addr)) { return false; }
+
+                        if (((encodingMask & 0x40) != 0) && !mem.Decode(out UInt32 _)) { return false; }
 
                         id = new NodeId(ns, addr);
                         return true;
@@ -1757,6 +1760,8 @@ namespace LibUA
                         if (!mem.Decode(out ushort ns)) { return false; }
                         if (!mem.DecodeUAString(out string addr)) { return false; }
 
+                        if (((encodingMask & 0x40) != 0) && !mem.Decode(out UInt32 _)) { return false; }
+
                         id = new NodeId(ns, addr);
                         return true;
                     }
@@ -1766,6 +1771,8 @@ namespace LibUA
                         if (!mem.Decode(out ushort ns)) { return false; }
                         if (!mem.DecodeUAByteString(out byte[] addr)) { return false; }
 
+                        if (((encodingMask & 0x40) != 0) && !mem.Decode(out UInt32 _)) { return false; }
+
                         id = new NodeId(ns, addr, NodeIdNetType.ByteString);
                         return true;
                     }
@@ -1774,6 +1781,8 @@ namespace LibUA
                     {
                         if (!mem.Decode(out ushort ns)) { return false; }
                         if (!mem.DecodeUAGuidByteString(out byte[] addr)) { return false; }
+
+                        if (((encodingMask & 0x40) != 0) && !mem.Decode(out UInt32 _)) { return false; }
 
                         id = new NodeId(ns, addr, NodeIdNetType.Guid);
                         return true;

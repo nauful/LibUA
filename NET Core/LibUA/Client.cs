@@ -60,7 +60,7 @@ namespace LibUA
             get { return null; }
         }
 
-        public virtual RSACng ApplicationPrivateKey
+        public virtual RSA ApplicationPrivateKey
         {
             get { return null; }
         }
@@ -141,7 +141,7 @@ namespace LibUA
             {
                 cs.WaitOne();
 
-                var sendBuf = new MemoryBuffer(MaximumMessageSize);
+                using var sendBuf = new MemoryBuffer(MaximumMessageSize);
 
                 if (requestType == SecurityTokenRequestType.Issue)
                 {
@@ -472,7 +472,7 @@ namespace LibUA
             try
             {
                 cs.WaitOne();
-                var sendBuf = new MemoryBuffer(MaximumMessageSize);
+                using var sendBuf = new MemoryBuffer(MaximumMessageSize);
                 var headerRes = EncodeMessageHeader(sendBuf, false, MessageType.Close);
                 if (headerRes != StatusCode.Good)
                 {
@@ -550,7 +550,7 @@ namespace LibUA
             try
             {
                 cs.WaitOne();
-                var sendBuf = new MemoryBuffer(MaximumMessageSize);
+                using var sendBuf = new MemoryBuffer(MaximumMessageSize);
                 var headerRes = EncodeMessageHeader(sendBuf, false);
                 if (headerRes != StatusCode.Good)
                 {
@@ -617,7 +617,7 @@ namespace LibUA
 
                 if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.GetEndpointsResponse))
                 {
-                    CheckServiceFaultResponse(recvHandler);
+                    return CheckServiceFaultResponse(recvHandler);
                 }
 
                 succeeded &= recvHandler.RecvBuf.DecodeArraySize(out uint numEndpointDescs);
@@ -649,7 +649,7 @@ namespace LibUA
             try
             {
                 cs.WaitOne();
-                var sendBuf = new MemoryBuffer(MaximumMessageSize);
+                using var sendBuf = new MemoryBuffer(MaximumMessageSize);
                 var headerRes = EncodeMessageHeader(sendBuf, false);
                 if (headerRes != StatusCode.Good)
                 {
@@ -716,7 +716,7 @@ namespace LibUA
 
                 if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.FindServersResponse))
                 {
-                    CheckServiceFaultResponse(recvHandler);
+                    return CheckServiceFaultResponse(recvHandler);
                 }
 
                 succeeded &= recvHandler.RecvBuf.DecodeArraySize(out uint numDescs);
@@ -760,7 +760,7 @@ namespace LibUA
             if (numChunks > 1)
             {
                 //Console.WriteLine("{0} -> {1} chunks", respBuf.Position, numChunks);
-                var chunk = new MemoryBuffer(chunkSize + ChunkHeaderOverhead + TLPaddingOverhead);
+                using var chunk = new MemoryBuffer(chunkSize + ChunkHeaderOverhead + TLPaddingOverhead);
                 for (int i = 0; i < numChunks; i++)
                 {
                     bool isFinal = i == numChunks - 1;
@@ -857,7 +857,6 @@ namespace LibUA
 
                 nextRequestHandle = 0;
 
-                tcp.LingerState = new LingerOption(true, Timeout);
                 tcp.NoDelay = true;
                 tcp.Client.NoDelay = true;
 
@@ -893,7 +892,7 @@ namespace LibUA
 
         private StatusCode SendHello()
         {
-            var sendBuf = new MemoryBuffer(MaximumMessageSize);
+            using var sendBuf = new MemoryBuffer(MaximumMessageSize);
 
             config.TL = new TLConnection
             {
@@ -1299,7 +1298,7 @@ namespace LibUA
                 return null;
             }
 
-            MemoryBuffer tmpBuf = new MemoryBuffer(buf.Capacity);
+            using MemoryBuffer tmpBuf = new MemoryBuffer(buf.Capacity);
             MemoryBuffer recvBuf = new MemoryBuffer(buf.Capacity);
 
             uint readOffset = 0;
@@ -1595,7 +1594,7 @@ namespace LibUA
             {
                 cs.WaitOne();
 
-                var sendBuf = new MemoryBuffer(MaximumMessageSize);
+                using var sendBuf = new MemoryBuffer(MaximumMessageSize);
                 var headerRes = EncodeMessageHeader(sendBuf, false);
                 if (headerRes != StatusCode.Good)
                 {
@@ -1839,7 +1838,7 @@ namespace LibUA
             try
             {
                 cs.WaitOne();
-                var sendBuf = new MemoryBuffer(MaximumMessageSize);
+                using var sendBuf = new MemoryBuffer(MaximumMessageSize);
                 var headerRes = EncodeMessageHeader(sendBuf, false);
                 if (headerRes != StatusCode.Good)
                 {
@@ -1917,7 +1916,7 @@ namespace LibUA
 
                 if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.CreateSessionResponse))
                 {
-                    CheckServiceFaultResponse(recvHandler);
+                    return CheckServiceFaultResponse(recvHandler);
                 }
 
                 succeeded &= recvHandler.RecvBuf.Decode(out NodeId sessionIdToken);
@@ -1959,7 +1958,7 @@ namespace LibUA
             try
             {
                 cs.WaitOne();
-                var sendBuf = new MemoryBuffer(MaximumMessageSize);
+                using var sendBuf = new MemoryBuffer(MaximumMessageSize);
                 var headerRes = EncodeMessageHeader(sendBuf, false);
                 if (headerRes != StatusCode.Good)
                 {
@@ -2022,7 +2021,7 @@ namespace LibUA
 
                 if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.CloseSessionResponse))
                 {
-                    CheckServiceFaultResponse(recvHandler);
+                    return CheckServiceFaultResponse(recvHandler);
                 }
 
                 if (!succeeded)
@@ -2039,14 +2038,22 @@ namespace LibUA
             }
         }
 
-        public StatusCode Read(ReadValueId[] Ids, out DataValue[] results)
+        public StatusCode Read(ArraySegment<ReadValueId> Ids, ArraySegment<DataValue> results)
         {
-            results = null;
+            if (Ids.Count == 0)
+            {
+                return StatusCode.Good;
+            }
+
+            if (Ids.Count != results.Count)
+            {
+                throw new Exception("Number of results must match number of Ids.");
+            }
 
             try
             {
                 cs.WaitOne();
-                var sendBuf = new MemoryBuffer(MaximumMessageSize);
+                using var sendBuf = new MemoryBuffer(MaximumMessageSize);
                 var headerRes = EncodeMessageHeader(sendBuf, false);
                 if (headerRes != StatusCode.Good)
                 {
@@ -2056,7 +2063,7 @@ namespace LibUA
                 var reqHeader = new RequestHeader()
                 {
                     RequestHandle = nextRequestHandle++,
-                    Timestamp = DateTime.Now,
+                    Timestamp = DateTime.UtcNow,
                     AuthToken = config.AuthToken,
                 };
 
@@ -2067,9 +2074,9 @@ namespace LibUA
                 // maxAge
                 succeeded &= sendBuf.Encode((double)0);
                 // LocaleIds
-                succeeded &= sendBuf.Encode((UInt32)TimestampsToReturn.Both);
-                succeeded &= sendBuf.Encode((UInt32)Ids.Length);
-                for (int i = 0; i < Ids.Length; i++)
+                succeeded &= sendBuf.Encode((uint)TimestampsToReturn.Both);
+                succeeded &= sendBuf.Encode((uint)Ids.Count);
+                for (int i = 0; i < Ids.Count; i++)
                 {
                     succeeded &= sendBuf.Encode(Ids[i]);
                 }
@@ -2117,15 +2124,19 @@ namespace LibUA
 
                 if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.ReadResponse))
                 {
-                    CheckServiceFaultResponse(recvHandler);
+                    return CheckServiceFaultResponse(recvHandler);
                 }
 
                 succeeded &= recvHandler.RecvBuf.DecodeArraySize(out uint numRecv);
 
-                results = new DataValue[numRecv];
                 for (int i = 0; i < numRecv && succeeded; i++)
                 {
-                    succeeded &= recvHandler.RecvBuf.Decode(out results[i]);
+                    if (results[i] == null)
+                    {
+                        results[i] = new DataValue();
+                    }
+
+                    succeeded &= recvHandler.RecvBuf.Decode(results[i]);
                 }
 
                 if (!succeeded)
@@ -2133,7 +2144,7 @@ namespace LibUA
                     return StatusCode.BadDecodingError;
                 }
 
-                if (numRecv != Ids.Length)
+                if (numRecv != Ids.Count)
                 {
                     return StatusCode.GoodResultsMayBeIncomplete;
                 }
@@ -2147,14 +2158,28 @@ namespace LibUA
             }
         }
 
-        public StatusCode Write(WriteValue[] Ids, out uint[] results)
+        public StatusCode Read(ReadValueId[] Ids, out DataValue[] results)
         {
-            results = null;
+            results = new DataValue[Ids.Length];
+            return Read(Ids, results);
+        }
+
+        public StatusCode Write(ArraySegment<WriteValue> Ids, ArraySegment<uint> results)
+        {
+            if (Ids.Count == 0)
+            {
+                return StatusCode.Good;
+            }
+
+            if (Ids.Count != results.Count)
+            {
+                throw new Exception("Number of results must match number of Ids.");
+            }
 
             try
             {
                 cs.WaitOne();
-                var sendBuf = new MemoryBuffer(MaximumMessageSize);
+                using var sendBuf = new MemoryBuffer(MaximumMessageSize);
                 var headerRes = EncodeMessageHeader(sendBuf, false);
                 if (headerRes != StatusCode.Good)
                 {
@@ -2172,8 +2197,8 @@ namespace LibUA
                 succeeded &= sendBuf.Encode(new NodeId(RequestCode.WriteRequest));
                 succeeded &= sendBuf.Encode(reqHeader);
 
-                succeeded &= sendBuf.Encode((UInt32)Ids.Length);
-                for (int i = 0; i < Ids.Length; i++)
+                succeeded &= sendBuf.Encode((UInt32)Ids.Count);
+                for (int i = 0; i < Ids.Count; i++)
                 {
                     succeeded &= sendBuf.Encode(Ids[i]);
                 }
@@ -2221,15 +2246,16 @@ namespace LibUA
 
                 if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.WriteResponse))
                 {
-                    CheckServiceFaultResponse(recvHandler);
+                    return CheckServiceFaultResponse(recvHandler);
                 }
 
                 succeeded &= recvHandler.RecvBuf.DecodeArraySize(out uint numRecv);
 
-                results = new uint[numRecv];
+                uint v;
                 for (int i = 0; i < numRecv && succeeded; i++)
                 {
-                    succeeded &= recvHandler.RecvBuf.Decode(out results[i]);
+                    succeeded &= recvHandler.RecvBuf.Decode(out v);
+                    results[i] = v;
                 }
 
                 if (!succeeded)
@@ -2237,7 +2263,7 @@ namespace LibUA
                     return StatusCode.BadDecodingError;
                 }
 
-                if (numRecv != Ids.Length)
+                if (numRecv != Ids.Count)
                 {
                     return StatusCode.GoodResultsMayBeIncomplete;
                 }
@@ -2251,6 +2277,12 @@ namespace LibUA
             }
         }
 
+        public StatusCode Write(WriteValue[] Ids, out uint[] results)
+        {
+            results = new uint[Ids.Length];
+            return Write(Ids, results);
+        }
+
         public StatusCode AddNodes(AddNodesItem[] addNodesItems, out AddNodesResult[] results)
         {
             results = null;
@@ -2258,7 +2290,7 @@ namespace LibUA
             try
             {
                 cs.WaitOne();
-                var sendBuf = new MemoryBuffer(MaximumMessageSize);
+                using var sendBuf = new MemoryBuffer(MaximumMessageSize);
                 var headerRes = EncodeMessageHeader(sendBuf, false);
                 if (headerRes != StatusCode.Good)
                 {
@@ -2325,7 +2357,7 @@ namespace LibUA
 
                 if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.AddNodesResponse))
                 {
-                    CheckServiceFaultResponse(recvHandler);
+                    return CheckServiceFaultResponse(recvHandler);
                 }
 
                 succeeded &= recvHandler.RecvBuf.DecodeArraySize(out uint numRecv);
@@ -2362,7 +2394,7 @@ namespace LibUA
             try
             {
                 cs.WaitOne();
-                var sendBuf = new MemoryBuffer(MaximumMessageSize);
+                using var sendBuf = new MemoryBuffer(MaximumMessageSize);
                 var headerRes = EncodeMessageHeader(sendBuf, false);
                 if (headerRes != StatusCode.Good)
                 {
@@ -2429,7 +2461,7 @@ namespace LibUA
 
                 if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.DeleteNodesResponse))
                 {
-                    CheckServiceFaultResponse(recvHandler);
+                    return CheckServiceFaultResponse(recvHandler);
                 }
 
                 succeeded &= recvHandler.RecvBuf.DecodeArraySize(out uint numRecv);
@@ -2466,7 +2498,7 @@ namespace LibUA
             try
             {
                 cs.WaitOne();
-                var sendBuf = new MemoryBuffer(MaximumMessageSize);
+                using var sendBuf = new MemoryBuffer(MaximumMessageSize);
                 var headerRes = EncodeMessageHeader(sendBuf, false);
                 if (headerRes != StatusCode.Good)
                 {
@@ -2533,7 +2565,7 @@ namespace LibUA
 
                 if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.AddReferencesResponse))
                 {
-                    CheckServiceFaultResponse(recvHandler);
+                    return CheckServiceFaultResponse(recvHandler);
                 }
 
                 succeeded &= recvHandler.RecvBuf.DecodeArraySize(out uint numRecv);
@@ -2570,7 +2602,7 @@ namespace LibUA
             try
             {
                 cs.WaitOne();
-                var sendBuf = new MemoryBuffer(MaximumMessageSize);
+                using var sendBuf = new MemoryBuffer(MaximumMessageSize);
                 var headerRes = EncodeMessageHeader(sendBuf, false);
                 if (headerRes != StatusCode.Good)
                 {
@@ -2637,7 +2669,7 @@ namespace LibUA
 
                 if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.DeleteReferencesResponse))
                 {
-                    CheckServiceFaultResponse(recvHandler);
+                    return CheckServiceFaultResponse(recvHandler);
                 }
 
                 succeeded &= recvHandler.RecvBuf.DecodeArraySize(out uint numRecv);
@@ -2674,7 +2706,7 @@ namespace LibUA
             try
             {
                 cs.WaitOne();
-                var sendBuf = new MemoryBuffer(MaximumMessageSize);
+                using var sendBuf = new MemoryBuffer(MaximumMessageSize);
                 var headerRes = EncodeMessageHeader(sendBuf, false);
                 if (headerRes != StatusCode.Good)
                 {
@@ -2750,7 +2782,7 @@ namespace LibUA
 
                 if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.BrowseResponse))
                 {
-                    CheckServiceFaultResponse(recvHandler);
+                    return CheckServiceFaultResponse(recvHandler);
                 }
 
                 succeeded &= recvHandler.RecvBuf.DecodeArraySize(out uint numRecv);
@@ -2800,7 +2832,7 @@ namespace LibUA
             try
             {
                 cs.WaitOne();
-                var sendBuf = new MemoryBuffer(MaximumMessageSize);
+                using var sendBuf = new MemoryBuffer(MaximumMessageSize);
                 var headerRes = EncodeMessageHeader(sendBuf, false);
                 if (headerRes != StatusCode.Good)
                 {
@@ -2868,7 +2900,7 @@ namespace LibUA
 
                 if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.BrowseNextResponse))
                 {
-                    CheckServiceFaultResponse(recvHandler);
+                    return CheckServiceFaultResponse(recvHandler);
                 }
 
                 if (!releaseContinuationPoints)
@@ -2925,7 +2957,7 @@ namespace LibUA
             try
             {
                 cs.WaitOne();
-                var sendBuf = new MemoryBuffer(MaximumMessageSize);
+                using var sendBuf = new MemoryBuffer(MaximumMessageSize);
                 var headerRes = EncodeMessageHeader(sendBuf, false);
                 if (headerRes != StatusCode.Good)
                 {
@@ -3069,7 +3101,7 @@ namespace LibUA
 
                 if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.HistoryReadResponse))
                 {
-                    CheckServiceFaultResponse(recvHandler);
+                    return CheckServiceFaultResponse(recvHandler);
                 }
 
                 if (!releaseContinuationPoints)
@@ -3159,7 +3191,7 @@ namespace LibUA
             try
             {
                 cs.WaitOne();
-                var sendBuf = new MemoryBuffer(MaximumMessageSize);
+                using var sendBuf = new MemoryBuffer(MaximumMessageSize);
                 var headerRes = EncodeMessageHeader(sendBuf, false);
                 if (headerRes != StatusCode.Good)
                 {
@@ -3240,7 +3272,7 @@ namespace LibUA
 
                 if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.HistoryUpdateResponse))
                 {
-                    CheckServiceFaultResponse(recvHandler);
+                    return CheckServiceFaultResponse(recvHandler);
                 }
 
                 succeeded &= recvHandler.RecvBuf.DecodeArraySize(out uint numRecv);
@@ -3277,7 +3309,7 @@ namespace LibUA
             try
             {
                 cs.WaitOne();
-                var sendBuf = new MemoryBuffer(MaximumMessageSize);
+                using var sendBuf = new MemoryBuffer(MaximumMessageSize);
                 var headerRes = EncodeMessageHeader(sendBuf, false);
                 if (headerRes != StatusCode.Good)
                 {
@@ -3344,7 +3376,7 @@ namespace LibUA
 
                 if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.TranslateBrowsePathsToNodeIdsResponse))
                 {
-                    CheckServiceFaultResponse(recvHandler);
+                    return CheckServiceFaultResponse(recvHandler);
                 }
 
                 succeeded &= recvHandler.RecvBuf.DecodeArraySize(out uint numRecv);
@@ -3381,7 +3413,7 @@ namespace LibUA
             try
             {
                 cs.WaitOne();
-                var sendBuf = new MemoryBuffer(MaximumMessageSize);
+                using var sendBuf = new MemoryBuffer(MaximumMessageSize);
                 var headerRes = EncodeMessageHeader(sendBuf, false);
                 if (headerRes != StatusCode.Good)
                 {
@@ -3454,7 +3486,7 @@ namespace LibUA
 
                 if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.CallResponse))
                 {
-                    CheckServiceFaultResponse(recvHandler);
+                    return CheckServiceFaultResponse(recvHandler);
                 }
 
                 succeeded &= recvHandler.RecvBuf.DecodeArraySize(out uint numRecv);
@@ -3524,7 +3556,7 @@ namespace LibUA
             try
             {
                 cs.WaitOne();
-                var sendBuf = new MemoryBuffer(MaximumMessageSize);
+                using var sendBuf = new MemoryBuffer(MaximumMessageSize);
                 var headerRes = EncodeMessageHeader(sendBuf, false);
                 if (headerRes != StatusCode.Good)
                 {
@@ -3592,7 +3624,7 @@ namespace LibUA
 
                 if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.CreateSubscriptionResponse))
                 {
-                    CheckServiceFaultResponse(recvHandler);
+                    return CheckServiceFaultResponse(recvHandler);
                 }
 
                 succeeded &= recvHandler.RecvBuf.Decode(out result);
@@ -3630,7 +3662,7 @@ namespace LibUA
             try
             {
                 cs.WaitOne();
-                var sendBuf = new MemoryBuffer(MaximumMessageSize);
+                using var sendBuf = new MemoryBuffer(MaximumMessageSize);
                 var headerRes = EncodeMessageHeader(sendBuf, false);
                 if (headerRes != StatusCode.Good)
                 {
@@ -3700,7 +3732,7 @@ namespace LibUA
 
                 if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.ModifySubscriptionResponse))
                 {
-                    CheckServiceFaultResponse(recvHandler);
+                    return CheckServiceFaultResponse(recvHandler);
                 }
 
                 succeeded &= recvHandler.RecvBuf.Decode(out double revisedPublishInterval);
@@ -3729,7 +3761,7 @@ namespace LibUA
             try
             {
                 cs.WaitOne();
-                var sendBuf = new MemoryBuffer(MaximumMessageSize);
+                using var sendBuf = new MemoryBuffer(MaximumMessageSize);
                 var headerRes = EncodeMessageHeader(sendBuf, false);
                 if (headerRes != StatusCode.Good)
                 {
@@ -3796,7 +3828,7 @@ namespace LibUA
 
                 if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.DeleteSubscriptionsResponse))
                 {
-                    CheckServiceFaultResponse(recvHandler);
+                    return CheckServiceFaultResponse(recvHandler);
                 }
 
                 succeeded &= recvHandler.RecvBuf.DecodeArraySize(out uint numResults);
@@ -3827,7 +3859,7 @@ namespace LibUA
             try
             {
                 cs.WaitOne();
-                var sendBuf = new MemoryBuffer(MaximumMessageSize);
+                using var sendBuf = new MemoryBuffer(MaximumMessageSize);
                 var headerRes = EncodeMessageHeader(sendBuf, false);
                 if (headerRes != StatusCode.Good)
                 {
@@ -3895,7 +3927,7 @@ namespace LibUA
 
                 if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.SetPublishingModeResponse))
                 {
-                    CheckServiceFaultResponse(recvHandler);
+                    return CheckServiceFaultResponse(recvHandler);
                 }
 
                 succeeded &= recvHandler.RecvBuf.DecodeArraySize(out uint numResults);
@@ -3926,7 +3958,7 @@ namespace LibUA
             try
             {
                 cs.WaitOne();
-                var sendBuf = new MemoryBuffer(MaximumMessageSize);
+                using var sendBuf = new MemoryBuffer(MaximumMessageSize);
                 var headerRes = EncodeMessageHeader(sendBuf, false);
                 if (headerRes != StatusCode.Good)
                 {
@@ -3996,7 +4028,7 @@ namespace LibUA
 
                 if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.CreateMonitoredItemsResponse))
                 {
-                    CheckServiceFaultResponse(recvHandler);
+                    return CheckServiceFaultResponse(recvHandler);
                 }
 
                 succeeded &= recvHandler.RecvBuf.DecodeArraySize(out uint numResults);
@@ -4027,7 +4059,7 @@ namespace LibUA
             try
             {
                 cs.WaitOne();
-                var sendBuf = new MemoryBuffer(MaximumMessageSize);
+                using var sendBuf = new MemoryBuffer(MaximumMessageSize);
                 var headerRes = EncodeMessageHeader(sendBuf, false);
                 if (headerRes != StatusCode.Good)
                 {
@@ -4097,7 +4129,7 @@ namespace LibUA
 
                 if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.ModifyMonitoredItemsResponse))
                 {
-                    CheckServiceFaultResponse(recvHandler);
+                    return CheckServiceFaultResponse(recvHandler);
                 }
 
                 succeeded &= recvHandler.RecvBuf.DecodeArraySize(out uint numResults);
@@ -4128,7 +4160,7 @@ namespace LibUA
             try
             {
                 cs.WaitOne();
-                var sendBuf = new MemoryBuffer(MaximumMessageSize);
+                using var sendBuf = new MemoryBuffer(MaximumMessageSize);
                 var headerRes = EncodeMessageHeader(sendBuf, false);
                 if (headerRes != StatusCode.Good)
                 {
@@ -4196,7 +4228,7 @@ namespace LibUA
 
                 if (!recvHandler.Type.EqualsNumeric(0, (uint)RequestCode.DeleteMonitoredItemsResponse))
                 {
-                    CheckServiceFaultResponse(recvHandler);
+                    return CheckServiceFaultResponse(recvHandler);
                 }
 
                 succeeded &= recvHandler.RecvBuf.DecodeArraySize(out uint numResults);
@@ -4334,7 +4366,7 @@ namespace LibUA
 
             try
             {
-                var sendBuf = new MemoryBuffer(MaximumMessageSize);
+                using var sendBuf = new MemoryBuffer(MaximumMessageSize);
                 var headerRes = EncodeMessageHeader(sendBuf, false);
                 if (headerRes != StatusCode.Good)
                 {

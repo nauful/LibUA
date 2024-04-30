@@ -154,15 +154,15 @@ namespace LibUA
                     publishTable.Add(mi.Parameters.ClientHandle, evs);
                 }
 
-                succeeded &= respBuf.Encode((UInt32)sub.SubscriptionId);
+                succeeded &= respBuf.Encode((uint)sub.SubscriptionId);
 
                 // Available sequence numbers
-                succeeded &= respBuf.Encode((UInt32)1);
-                succeeded &= respBuf.Encode((UInt32)sub.SequenceNumber);
+                succeeded &= respBuf.Encode((uint)1);
+                succeeded &= respBuf.Encode((uint)sub.SequenceNumber);
 
                 succeeded &= respBuf.Encode(moreNotifications);
 
-                succeeded &= respBuf.Encode((UInt32)sub.SequenceNumber++);
+                succeeded &= respBuf.Encode((uint)sub.SequenceNumber++);
                 succeeded &= respBuf.Encode(req.Timestamp.ToFileTimeUtc());
 
                 // One NotificationData
@@ -173,18 +173,18 @@ namespace LibUA
                 succeeded &= respBuf.Encode((byte)1);
 
                 int dcnSizePosition = respBuf.Position;
-                succeeded &= respBuf.Encode((UInt32)0);
+                succeeded &= respBuf.Encode((uint)0);
 
                 // MonitoredItems
-                succeeded &= respBuf.Encode((UInt32)numPublishTableEntries);
+                succeeded &= respBuf.Encode((uint)numPublishTableEntries);
                 foreach (var kvp in publishTable)
                 {
                     foreach (var curFields in kvp.Value)
                     {
                         // ClientHandle
-                        succeeded &= respBuf.Encode((UInt32)kvp.Key);
+                        succeeded &= respBuf.Encode((uint)kvp.Key);
                         // NumEventFields
-                        succeeded &= respBuf.Encode((UInt32)curFields.Length);
+                        succeeded &= respBuf.Encode((uint)curFields.Length);
                         for (int i = 0; i < curFields.Length; i++)
                         {
                             succeeded &= respBuf.VariantEncode(curFields[i]);
@@ -193,19 +193,19 @@ namespace LibUA
                 }
 
                 // DiagnosticInfos
-                succeeded &= respBuf.Encode((UInt32)0);
-                succeeded &= respBuf.Encode((UInt32)(respBuf.Position - dcnSizePosition - 4), dcnSizePosition);
+                succeeded &= respBuf.Encode((uint)0);
+                succeeded &= respBuf.Encode((uint)(respBuf.Position - dcnSizePosition - 4), dcnSizePosition);
 
                 // Results
-                succeeded &= respBuf.Encode((UInt32)numSubAcks);
+                succeeded &= respBuf.Encode((uint)numSubAcks);
                 while (succeeded && numSubAcks-- > 0)
                 {
-                    succeeded &= respBuf.Encode((UInt32)StatusCode.Good);
+                    succeeded &= respBuf.Encode((uint)StatusCode.Good);
                     acknowledgeSeqNums.Dequeue();
                 }
 
                 // DiagnosticInfos
-                succeeded &= respBuf.Encode((UInt32)0);
+                succeeded &= respBuf.Encode((uint)0);
 
                 if (!succeeded)
                 {
@@ -350,15 +350,15 @@ namespace LibUA
                     publishTable.Add(mi.Parameters.ClientHandle, dvs);
                 }
 
-                succeeded &= respBuf.Encode((UInt32)sub.SubscriptionId);
+                succeeded &= respBuf.Encode((uint)sub.SubscriptionId);
 
                 // Available sequence numbers
-                succeeded &= respBuf.Encode((UInt32)1);
-                succeeded &= respBuf.Encode((UInt32)sub.SequenceNumber);
+                succeeded &= respBuf.Encode((uint)1);
+                succeeded &= respBuf.Encode((uint)sub.SequenceNumber);
 
                 succeeded &= respBuf.Encode(moreNotifications);
 
-                succeeded &= respBuf.Encode((UInt32)sub.SequenceNumber++);
+                succeeded &= respBuf.Encode((uint)sub.SequenceNumber++);
                 succeeded &= respBuf.Encode(req.Timestamp.ToFileTimeUtc());
 
                 // One NotificationData
@@ -369,34 +369,34 @@ namespace LibUA
                 succeeded &= respBuf.Encode((byte)1);
 
                 int dcnSizePosition = respBuf.Position;
-                succeeded &= respBuf.Encode((UInt32)0);
+                succeeded &= respBuf.Encode((uint)0);
 
                 // MonitoredItems
-                succeeded &= respBuf.Encode((UInt32)numPublishTableEntries);
+                succeeded &= respBuf.Encode((uint)numPublishTableEntries);
                 foreach (var kvp in publishTable)
                 {
                     foreach (var dv in kvp.Value)
                     {
                         // ClientHandle
-                        succeeded &= respBuf.Encode((UInt32)kvp.Key);
+                        succeeded &= respBuf.Encode((uint)kvp.Key);
                         succeeded &= respBuf.Encode(dv);
                     }
                 }
 
                 // DiagnosticInfos
-                succeeded &= respBuf.Encode((UInt32)0);
-                succeeded &= respBuf.Encode((UInt32)(respBuf.Position - dcnSizePosition - 4), dcnSizePosition);
+                succeeded &= respBuf.Encode((uint)0);
+                succeeded &= respBuf.Encode((uint)(respBuf.Position - dcnSizePosition - 4), dcnSizePosition);
 
                 // Results
-                succeeded &= respBuf.Encode((UInt32)numSubAcks);
+                succeeded &= respBuf.Encode((uint)numSubAcks);
                 while (succeeded && numSubAcks-- > 0)
                 {
-                    succeeded &= respBuf.Encode((UInt32)StatusCode.Good);
+                    succeeded &= respBuf.Encode((uint)StatusCode.Good);
                     acknowledgeSeqNums.Dequeue();
                 }
 
                 // DiagnosticInfos
-                succeeded &= respBuf.Encode((UInt32)0);
+                succeeded &= respBuf.Encode((uint)0);
 
                 if (!succeeded)
                 {
@@ -754,7 +754,7 @@ namespace LibUA
             {
                 bool succeeded = true;
                 succeeded &= respBuf.Encode((uint)(MessageType.Message) | ((uint)'F' << 24));
-                succeeded &= respBuf.Encode((UInt32)0);
+                succeeded &= respBuf.Encode((uint)0);
                 succeeded &= respBuf.Encode(config.ChannelID);
 
                 succeeded &= respBuf.Encode(config.TokenID);
@@ -904,10 +904,10 @@ namespace LibUA
                 succeeded &= respBuf.EncodeUAByteString(config.SessionIssuedNonce);
 
                 // Results
-                succeeded &= respBuf.Encode((UInt32)0);
+                succeeded &= respBuf.Encode((uint)0);
 
                 // DiagnosticInfos
-                succeeded &= respBuf.Encode((UInt32)0);
+                succeeded &= respBuf.Encode((uint)0);
 
                 if (!succeeded)
                 {
@@ -971,14 +971,14 @@ namespace LibUA
                     // Server certificate
                     succeeded &= respBuf.EncodeUAByteString(app.ApplicationCertificate.Export(X509ContentType.Cert));
 
-                    succeeded &= respBuf.Encode((UInt32)endpointDescs.Count);
+                    succeeded &= respBuf.Encode((uint)endpointDescs.Count);
                     for (int i = 0; i < endpointDescs.Count && succeeded; i++)
                     {
                         succeeded &= respBuf.Encode(endpointDescs[i]);
                     }
 
                     // ServerSoftwareCertificates
-                    succeeded &= respBuf.Encode((UInt32)0xFFFFFFFFu);
+                    succeeded &= respBuf.Encode((uint)0xFFFFFFFFu);
 
                     // Server signature algorithm
                     succeeded &= respBuf.EncodeUAString((string)null);
@@ -1002,14 +1002,14 @@ namespace LibUA
                     // Server certificate
                     succeeded &= respBuf.EncodeUAByteString(app.ApplicationCertificate.Export(X509ContentType.Cert));
 
-                    succeeded &= respBuf.Encode((UInt32)endpointDescs.Count);
+                    succeeded &= respBuf.Encode((uint)endpointDescs.Count);
                     for (int i = 0; i < endpointDescs.Count && succeeded; i++)
                     {
                         succeeded &= respBuf.Encode(endpointDescs[i]);
                     }
 
                     // ServerSoftwareCertificates
-                    succeeded &= respBuf.Encode((UInt32)0xFFFFFFFFu);
+                    succeeded &= respBuf.Encode((uint)0xFFFFFFFFu);
 
                     // Server signature algorithm
                     if (config.SecurityPolicy == SecurityPolicy.Basic256Sha256)
@@ -1059,11 +1059,11 @@ namespace LibUA
 
                 if (applicationDesc == null)
                 {
-                    succeeded &= respBuf.Encode((UInt32)0);
+                    succeeded &= respBuf.Encode((uint)0);
                 }
                 else
                 {
-                    succeeded &= respBuf.Encode((UInt32)1);
+                    succeeded &= respBuf.Encode((uint)1);
                     succeeded &= respBuf.Encode(applicationDesc, new string[] { endpointUrl });
                 }
 
@@ -1096,7 +1096,7 @@ namespace LibUA
 
                 var endpointDescs = app.GetEndpointDescriptions(endpointUrl);
 
-                succeeded &= respBuf.Encode((UInt32)endpointDescs.Count);
+                succeeded &= respBuf.Encode((uint)endpointDescs.Count);
                 for (int i = 0; i < endpointDescs.Count && succeeded; i++)
                 {
                     succeeded &= respBuf.Encode(endpointDescs[i]);
@@ -1588,7 +1588,7 @@ namespace LibUA
                 var respBuf = new MemoryBuffer(maximumMessageSize);
                 bool succeeded = true;
                 succeeded &= respBuf.Encode((uint)(MessageType.Open) | ((uint)'F' << 24));
-                succeeded &= respBuf.Encode((UInt32)0);
+                succeeded &= respBuf.Encode((uint)0);
                 succeeded &= respBuf.Encode(config.ChannelID);
                 succeeded &= respBuf.EncodeUAString(Types.SLSecurityPolicyUris[(int)config.SecurityPolicy]);
 
@@ -1620,11 +1620,11 @@ namespace LibUA
                 var respHeader = new ResponseHeader(reqHeader);
                 succeeded &= respBuf.Encode(respHeader);
                 // ServerProtocolVersion
-                succeeded &= respBuf.Encode((UInt32)0);
+                succeeded &= respBuf.Encode((uint)0);
 
                 succeeded &= respBuf.Encode(config.ChannelID);
                 succeeded &= respBuf.Encode(config.TokenID);
-                succeeded &= respBuf.Encode((UInt64)config.TokenCreatedAt.ToFileTime());
+                succeeded &= respBuf.Encode((ulong)config.TokenCreatedAt.ToFileTime());
                 succeeded &= respBuf.Encode(config.TokenLifetime);
 
                 succeeded &= respBuf.EncodeUAByteString(config.LocalNonce);
@@ -1651,7 +1651,7 @@ namespace LibUA
                     int respSize = respBuf.Position + sigSize;
 
                     respSize = encodeFromPosition + UASecurity.CalculateEncryptedSize(config.RemoteCertificate, respSize - encodeFromPosition, padMethod);
-                    MarkPositionAsSize(respBuf, (UInt32)respSize);
+                    MarkPositionAsSize(respBuf, (uint)respSize);
 
                     var msgSign = UASecurity.Sign(new ArraySegment<byte>(respBuf.Buffer, 0, respBuf.Position),
                         app.ApplicationPrivateKey, config.SecurityPolicy);
@@ -1743,7 +1743,7 @@ namespace LibUA
                 var respBuf = new MemoryBuffer(maximumMessageSize);
                 bool succeeded = true;
                 succeeded &= respBuf.Encode((uint)(MessageType.Acknowledge) | ((uint)'F' << 24));
-                succeeded &= respBuf.Encode((UInt32)0);
+                succeeded &= respBuf.Encode((uint)0);
                 succeeded &= respBuf.Encode(config.TL.LocalConfig.ProtocolVersion);
                 succeeded &= respBuf.Encode(config.TL.LocalConfig.RecvBufferSize);
                 succeeded &= respBuf.Encode(config.TL.LocalConfig.SendBufferSize);
@@ -1934,7 +1934,7 @@ namespace LibUA
                         // TODO: Free contPoint
                     }
 
-                    succeeded &= respBuf.Encode((UInt32)0);
+                    succeeded &= respBuf.Encode((uint)0);
                 }
                 else if (readDetails == null || numNodesToRead > MaxHistoryReadNodes || availableSpacePerRequest < TLPaddingOverhead)
                 {
@@ -1950,7 +1950,7 @@ namespace LibUA
                     }
 
                     // NumResults
-                    succeeded &= respBuf.Encode((UInt32)0);
+                    succeeded &= respBuf.Encode((uint)0);
                 }
                 else
                 {
@@ -1959,7 +1959,7 @@ namespace LibUA
 
                     // NumResults
                     int numResultsPos = respBuf.Position;
-                    succeeded &= respBuf.Encode((UInt32)0);
+                    succeeded &= respBuf.Encode((uint)0);
 
                     int numNodesWritten = 0;
                     var results = new List<DataValue>();
@@ -1998,17 +1998,17 @@ namespace LibUA
                         {
                             if (availableContinuationPoints.Count == 0)
                             {
-                                succeeded &= respBuf.Encode((UInt32)StatusCode.BadNoContinuationPoints);
+                                succeeded &= respBuf.Encode((uint)StatusCode.BadNoContinuationPoints);
                                 succeeded &= respBuf.EncodeUAByteString(null);
 
                                 succeeded &= respBuf.Encode(new NodeId(UAConst.HistoryData_Encoding_DefaultBinary));
                                 succeeded &= respBuf.Encode((byte)1);
 
                                 // EO size
-                                succeeded &= respBuf.Encode((UInt32)4);
+                                succeeded &= respBuf.Encode((uint)4);
 
                                 // Num DV
-                                succeeded &= respBuf.Encode((UInt32)0);
+                                succeeded &= respBuf.Encode((uint)0);
 
                                 numNodesWritten++;
                                 continue;
@@ -2086,16 +2086,16 @@ namespace LibUA
                             succeeded &= respBuf.Encode((byte)1);
 
                             int eoSizePos = respBuf.Position;
-                            succeeded &= respBuf.Encode((UInt32)0);
+                            succeeded &= respBuf.Encode((uint)0);
 
                             int posNumDataValue = respBuf.Position;
-                            succeeded &= respBuf.Encode((UInt32)0);
+                            succeeded &= respBuf.Encode((uint)0);
 
                             int numDvs = 0;
                             for (int j = 0; j < resultsEvents.Count; j++)
                             {
                                 //succeeded &= respBuf.Encode(results[j]);
-                                succeeded &= respBuf.Encode((UInt32)resultsEvents[j].Length);
+                                succeeded &= respBuf.Encode((uint)resultsEvents[j].Length);
                                 for (int k = 0; k < resultsEvents[j].Length; k++)
                                 {
                                     succeeded &= respBuf.VariantEncode(resultsEvents[j][k]);
@@ -2104,8 +2104,8 @@ namespace LibUA
                                 ++numDvs;
                             }
 
-                            succeeded &= respBuf.Encode((UInt32)numDvs, posNumDataValue);
-                            succeeded &= respBuf.Encode((UInt32)(respBuf.Position - eoSizePos - 4), eoSizePos);
+                            succeeded &= respBuf.Encode((uint)numDvs, posNumDataValue);
+                            succeeded &= respBuf.Encode((uint)(respBuf.Position - eoSizePos - 4), eoSizePos);
 
                             numNodesWritten++;
                         }
@@ -2173,10 +2173,10 @@ namespace LibUA
                             succeeded &= respBuf.Encode((byte)1);
 
                             int eoSizePos = respBuf.Position;
-                            succeeded &= respBuf.Encode((UInt32)0);
+                            succeeded &= respBuf.Encode((uint)0);
 
                             int posNumDataValue = respBuf.Position;
-                            succeeded &= respBuf.Encode((UInt32)0);
+                            succeeded &= respBuf.Encode((uint)0);
 
                             int numDvs = 0;
                             for (int j = 0; j < results.Count; j++)
@@ -2185,18 +2185,18 @@ namespace LibUA
                                 ++numDvs;
                             }
 
-                            succeeded &= respBuf.Encode((UInt32)numDvs, posNumDataValue);
-                            succeeded &= respBuf.Encode((UInt32)(respBuf.Position - eoSizePos - 4), eoSizePos);
+                            succeeded &= respBuf.Encode((uint)numDvs, posNumDataValue);
+                            succeeded &= respBuf.Encode((uint)(respBuf.Position - eoSizePos - 4), eoSizePos);
 
                             numNodesWritten++;
                         }
                     }
 
-                    succeeded &= respBuf.Encode((UInt32)numNodesWritten, numResultsPos);
+                    succeeded &= respBuf.Encode((uint)numNodesWritten, numResultsPos);
                 }
 
                 // DiagnosticInfos
-                succeeded &= respBuf.Encode((UInt32)0);
+                succeeded &= respBuf.Encode((uint)0);
 
                 if (!succeeded)
                 {
@@ -2245,14 +2245,14 @@ namespace LibUA
                     throw new Exception(string.Format("Read requested {0} ids, returned {1} response values", readValueIds.Length, respVals.Length));
                 }
 
-                succeeded &= respBuf.Encode((UInt32)respVals.Length);
+                succeeded &= respBuf.Encode((uint)respVals.Length);
                 for (int i = 0; i < respVals.Length && succeeded; i++)
                 {
                     succeeded &= respBuf.Encode(respVals[i]);
                 }
 
                 // DiagnosticInfos
-                succeeded &= respBuf.Encode((UInt32)0);
+                succeeded &= respBuf.Encode((uint)0);
 
                 if (!succeeded)
                 {
@@ -2266,7 +2266,6 @@ namespace LibUA
             protected int DispatchMessage_HistoryUpdateRequest(SLChannel config, RequestHeader reqHeader, MemoryBuffer recvBuf, uint messageSize)
             {
                 // TODO: Verify
-
 
                 if (!recvBuf.Decode(out int NoOfHistoryUpdateDetails)) { return ErrorParseFail; }
 
@@ -2328,14 +2327,14 @@ namespace LibUA
                     throw new Exception(string.Format("HistoryUpdate requested {0} ids, returned {1} response status codes", historyUpdates.Length, respVals.Length));
                 }
 
-                succeeded &= respBuf.Encode((UInt32)respVals.Length);
+                succeeded &= respBuf.Encode((uint)respVals.Length);
                 for (int i = 0; i < respVals.Length && succeeded; i++)
                 {
                     succeeded &= respBuf.Encode(respVals[i]);
                 }
 
                 // DiagnosticInfos
-                succeeded &= respBuf.Encode((UInt32)0);
+                succeeded &= respBuf.Encode((uint)0);
 
                 if (!succeeded)
                 {
@@ -2372,14 +2371,14 @@ namespace LibUA
                     throw new Exception(string.Format("Write requested {0} ids, returned {1} response status codes", writeValues.Length, respVals.Length));
                 }
 
-                succeeded &= respBuf.Encode((UInt32)respVals.Length);
+                succeeded &= respBuf.Encode((uint)respVals.Length);
                 for (int i = 0; i < respVals.Length && succeeded; i++)
                 {
                     succeeded &= respBuf.Encode(respVals[i]);
                 }
 
                 // DiagnosticInfos
-                succeeded &= respBuf.Encode((UInt32)0);
+                succeeded &= respBuf.Encode((uint)0);
 
                 if (!succeeded)
                 {
@@ -2419,7 +2418,7 @@ namespace LibUA
                     return ErrorRespWrite;
                 }
 
-                succeeded &= respBuf.Encode((UInt32)noOfNodesToBrowse);
+                succeeded &= respBuf.Encode((uint)noOfNodesToBrowse);
                 var references = new List<ReferenceDescription>();
                 for (uint i = 0; i < noOfNodesToBrowse && succeeded; i++)
                 {
@@ -2449,9 +2448,9 @@ namespace LibUA
                         status = StatusCode.BadNoContinuationPoints;
                     }
 
-                    succeeded &= respBuf.Encode((UInt32)status);
+                    succeeded &= respBuf.Encode((uint)status);
                     succeeded &= respBuf.EncodeUAByteString(contPoint);
-                    succeeded &= respBuf.Encode((UInt32)references.Count);
+                    succeeded &= respBuf.Encode((uint)references.Count);
                     for (int j = 0; j < references.Count; j++)
                     {
                         succeeded &= respBuf.Encode(references[j]);
@@ -2459,7 +2458,7 @@ namespace LibUA
                 }
 
                 // DiagnosticInfos
-                succeeded &= respBuf.Encode((UInt32)0);
+                succeeded &= respBuf.Encode((uint)0);
 
                 if (!succeeded)
                 {
@@ -2493,7 +2492,7 @@ namespace LibUA
 
                 if (ReleaseContinuationPoints)
                 {
-                    succeeded &= respBuf.Encode((UInt32)0);
+                    succeeded &= respBuf.Encode((uint)0);
 
                     for (uint i = 0; i < NoOfContinuationPoints; i++)
                     {
@@ -2519,7 +2518,7 @@ namespace LibUA
                 }
                 else
                 {
-                    succeeded &= respBuf.Encode((UInt32)NoOfContinuationPoints);
+                    succeeded &= respBuf.Encode((uint)NoOfContinuationPoints);
                     var references = new List<ReferenceDescription>();
                     for (uint i = 0; i < NoOfContinuationPoints && succeeded; i++)
                     {
@@ -2559,9 +2558,9 @@ namespace LibUA
                             status = StatusCode.BadContinuationPointInvalid;
                         }
 
-                        succeeded &= respBuf.Encode((UInt32)status);
+                        succeeded &= respBuf.Encode((uint)status);
                         succeeded &= respBuf.EncodeUAByteString(contPoint);
-                        succeeded &= respBuf.Encode((UInt32)references.Count);
+                        succeeded &= respBuf.Encode((uint)references.Count);
                         for (int j = 0; j < references.Count; j++)
                         {
                             succeeded &= respBuf.Encode(references[j]);
@@ -2570,7 +2569,7 @@ namespace LibUA
                 }
 
                 // DiagnosticInfos
-                succeeded &= respBuf.Encode((UInt32)0);
+                succeeded &= respBuf.Encode((uint)0);
 
                 if (!succeeded)
                 {
@@ -2604,7 +2603,7 @@ namespace LibUA
                 }
 
                 var targets = new List<BrowsePathTarget>();
-                succeeded &= respBuf.Encode((UInt32)NoOfBrowsePaths);
+                succeeded &= respBuf.Encode((uint)NoOfBrowsePaths);
                 for (uint i = 0; i < NoOfBrowsePaths; i++)
                 {
                     targets.Clear();
@@ -2614,7 +2613,7 @@ namespace LibUA
                 }
 
                 // DiagnosticInfos
-                succeeded &= respBuf.Encode((UInt32)0);
+                succeeded &= respBuf.Encode((uint)0);
 
                 if (!succeeded)
                 {
@@ -2627,9 +2626,6 @@ namespace LibUA
 
             protected int DispatchMessage_CallRequest(SLChannel config, RequestHeader reqHeader, MemoryBuffer recvBuf, uint messageSize)
             {
-                // TODO: Verify
-
-
                 if (!recvBuf.Decode(out uint NoofMethodsToCall)) { return ErrorParseFail; }
                 var reqs = new CallMethodRequest[NoofMethodsToCall];
                 for (uint i = 0; i < NoofMethodsToCall; i++)
@@ -2646,6 +2642,12 @@ namespace LibUA
                     reqs[i] = new CallMethodRequest(objectId, nodeId, inputArgs);
                 }
 
+                var results = new CallMethodResult[NoofMethodsToCall];
+                for (int i = 0; i < reqs.Length; i++)
+                {
+                    results[i] = app.HandleCallRequest(config.Session, reqs[i]);
+                }
+
                 var respBuf = new MemoryBuffer(maximumMessageSize);
                 bool succeeded = DispatchMessage_WriteHeader(config, respBuf,
                     (uint)RequestCode.CallResponse, reqHeader, (uint)StatusCode.Good);
@@ -2655,20 +2657,32 @@ namespace LibUA
                     return ErrorRespWrite;
                 }
 
-                succeeded &= respBuf.Encode((UInt32)NoofMethodsToCall);
+                succeeded &= respBuf.Encode((uint)NoofMethodsToCall);
                 for (uint i = 0; i < NoofMethodsToCall; i++)
                 {
-                    succeeded &= respBuf.Encode((UInt32)StatusCode.Good);
+                    var methodResult = results[i];
+                    succeeded &= respBuf.Encode((uint)methodResult.StatusCode);
+
                     // InputArgumentResults: Array of StatusCode
-                    succeeded &= respBuf.Encode((UInt32)0);
+                    succeeded &= respBuf.Encode((uint)methodResult.Results.Length);
+                    for (uint j = 0; j < methodResult.Results.Length; j++)
+                    {
+                        succeeded &= respBuf.Encode((uint)methodResult.Results[j]);
+                    }
+
                     // InputArgumentDiagnosticInfos
-                    succeeded &= respBuf.Encode((UInt32)0);
+                    succeeded &= respBuf.Encode((uint)0);
+
                     // OutputArguments: Array of Variant
-                    succeeded &= respBuf.Encode((UInt32)0);
+                    succeeded &= respBuf.Encode((uint)methodResult.Outputs.Length);
+                    for (uint j = 0; j < methodResult.Outputs.Length; j++)
+                    {
+                        succeeded &= respBuf.VariantEncode(methodResult.Outputs[j]);
+                    }
                 }
 
                 // DiagnosticInfos
-                succeeded &= respBuf.Encode((UInt32)0);
+                succeeded &= respBuf.Encode((uint)0);
 
                 if (!succeeded)
                 {
@@ -2699,7 +2713,7 @@ namespace LibUA
                 }
 
                 // NoOfRegisteredNodeIds
-                succeeded &= respBuf.Encode((UInt32)nodesToRegister.Length);
+                succeeded &= respBuf.Encode((uint)nodesToRegister.Length);
                 for (int i = 0; i < nodesToRegister.Length && succeeded; i++)
                 {
                     succeeded &= respBuf.Encode(nodesToRegister[i]);
@@ -2733,7 +2747,7 @@ namespace LibUA
                     return ErrorRespWrite;
                 }
 
-                UInt32 subId = nextSubscriptionID++;
+                uint subId = nextSubscriptionID++;
                 if (subscriptionMap.ContainsKey(subId))
                 {
                     logger?.Log(LogLevel.Error, string.Format("{0}: Could not allocate subscription ID {1}", LoggerID(), subId));
@@ -2743,8 +2757,8 @@ namespace LibUA
                 }
 
                 double revisedPublishInterval = RequestedPublishingInterval;
-                UInt32 revisedLifetimeCount = RequestedLifetimeCount;
-                UInt32 revisedMaxKeepAliveCount = RequestedMaxKeepAliveCount;
+                uint revisedLifetimeCount = RequestedLifetimeCount;
+                uint revisedMaxKeepAliveCount = RequestedMaxKeepAliveCount;
                 succeeded &= respBuf.Encode(subId);
                 succeeded &= respBuf.Encode(revisedPublishInterval);
                 succeeded &= respBuf.Encode(revisedLifetimeCount);
@@ -2780,12 +2794,12 @@ namespace LibUA
 
             protected int DispatchMessage_SetPublishingModeRequest(SLChannel config, RequestHeader reqHeader, MemoryBuffer recvBuf, uint messageSize)
             {
-                UInt32[] SubscriptionIds;
+                uint[] SubscriptionIds;
 
                 if (!recvBuf.Decode(out bool PublishingEnabled)) { return ErrorParseFail; }
                 if (!recvBuf.Decode(out uint NoOfSubscriptionIds)) { return ErrorParseFail; }
 
-                SubscriptionIds = new UInt32[NoOfSubscriptionIds];
+                SubscriptionIds = new uint[NoOfSubscriptionIds];
                 for (int i = 0; i < NoOfSubscriptionIds; i++)
                 {
                     if (!recvBuf.Decode(out SubscriptionIds[i])) { return ErrorParseFail; }
@@ -2795,22 +2809,22 @@ namespace LibUA
                 bool succeeded = DispatchMessage_WriteHeader(config, respBuf,
                     (uint)RequestCode.SetPublishingModeResponse, reqHeader, (uint)StatusCode.Good);
 
-                succeeded &= respBuf.Encode((UInt32)NoOfSubscriptionIds);
+                succeeded &= respBuf.Encode((uint)NoOfSubscriptionIds);
                 for (int i = 0; i < NoOfSubscriptionIds; i++)
                 {
                     if (subscriptionMap.TryGetValue(SubscriptionIds[i], out Subscription sub))
                     {
                         sub.PublishingEnabled = PublishingEnabled;
-                        succeeded &= respBuf.Encode((UInt32)StatusCode.Good);
+                        succeeded &= respBuf.Encode((uint)StatusCode.Good);
                     }
                     else
                     {
-                        succeeded &= respBuf.Encode((UInt32)StatusCode.BadSubscriptionIdInvalid);
+                        succeeded &= respBuf.Encode((uint)StatusCode.BadSubscriptionIdInvalid);
                     }
                 }
 
                 // DiagnosticInfos
-                succeeded &= respBuf.Encode((UInt32)0);
+                succeeded &= respBuf.Encode((uint)0);
 
                 if (!succeeded)
                 {
@@ -2848,8 +2862,8 @@ namespace LibUA
                     sub.PublishKeepAliveInterval = TimeSpan.FromMilliseconds(Math.Max(1, (sub.PublishingInterval / 2) * RequestedMaxKeepAliveCount));
 
                     succeeded &= respBuf.Encode((double)sub.PublishingInterval);
-                    succeeded &= respBuf.Encode((UInt32)sub.LifetimeCount);
-                    succeeded &= respBuf.Encode((UInt32)sub.MaxKeepAliveCount);
+                    succeeded &= respBuf.Encode((uint)sub.LifetimeCount);
+                    succeeded &= respBuf.Encode((uint)sub.MaxKeepAliveCount);
                 }
                 else
                 {
@@ -2857,8 +2871,8 @@ namespace LibUA
                         (uint)RequestCode.ModifySubscriptionResponse, reqHeader, (uint)StatusCode.BadSubscriptionIdInvalid);
 
                     succeeded &= respBuf.Encode((double)0);
-                    succeeded &= respBuf.Encode((UInt32)0);
-                    succeeded &= respBuf.Encode((UInt32)0);
+                    succeeded &= respBuf.Encode((uint)0);
+                    succeeded &= respBuf.Encode((uint)0);
                 }
 
                 if (!succeeded)
@@ -2872,10 +2886,10 @@ namespace LibUA
 
             protected int DispatchMessage_DeleteSubscriptionsRequest(SLChannel config, RequestHeader reqHeader, MemoryBuffer recvBuf, uint messageSize)
             {
-                UInt32[] SubIds;
+                uint[] SubIds;
 
                 if (!recvBuf.Decode(out uint NoOfSubIds)) { return ErrorParseFail; }
-                SubIds = new UInt32[NoOfSubIds];
+                SubIds = new uint[NoOfSubIds];
                 for (uint i = 0; i < NoOfSubIds; i++)
                 {
                     if (!recvBuf.Decode(out SubIds[i])) { return ErrorParseFail; }
@@ -2895,7 +2909,7 @@ namespace LibUA
                 {
                     if (!subscriptionMap.TryGetValue(SubIds[i], out Subscription sub))
                     {
-                        succeeded &= respBuf.Encode((UInt32)StatusCode.BadSubscriptionIdInvalid);
+                        succeeded &= respBuf.Encode((uint)StatusCode.BadSubscriptionIdInvalid);
                     }
                     else
                     {
@@ -2904,13 +2918,13 @@ namespace LibUA
                             app.MonitorRemove(config.Session, mi);
                         }
 
-                        succeeded &= respBuf.Encode((UInt32)StatusCode.Good);
+                        succeeded &= respBuf.Encode((uint)StatusCode.Good);
                         subscriptionMap.Remove(SubIds[i]);
                     }
                 }
 
                 // DiagnosticInfos
-                succeeded &= respBuf.Encode((UInt32)0);
+                succeeded &= respBuf.Encode((uint)0);
 
                 if (!succeeded)
                 {
@@ -2933,9 +2947,9 @@ namespace LibUA
                 }
 
                 // Results
-                succeeded &= respBuf.Encode((UInt32)0);
+                succeeded &= respBuf.Encode((uint)0);
                 // DiagnosticInfos
-                succeeded &= respBuf.Encode((UInt32)0);
+                succeeded &= respBuf.Encode((uint)0);
 
                 if (!succeeded)
                 {
@@ -3045,14 +3059,14 @@ namespace LibUA
                 }
 
                 // Results
-                succeeded &= respBuf.Encode((UInt32)createResponses.Length);
+                succeeded &= respBuf.Encode((uint)createResponses.Length);
                 for (int i = 0; i < createResponses.Length; i++)
                 {
                     succeeded &= respBuf.Encode(createResponses[i]);
                 }
 
                 // DiagnosticInfos
-                succeeded &= respBuf.Encode((UInt32)0);
+                succeeded &= respBuf.Encode((uint)0);
 
                 if (!succeeded)
                 {
@@ -3081,14 +3095,14 @@ namespace LibUA
                 }
 
                 // Results
-                succeeded &= respBuf.Encode((UInt32)NoOfItemsToModify);
+                succeeded &= respBuf.Encode((uint)NoOfItemsToModify);
                 for (int i = 0; i < NoOfItemsToModify; i++)
                 {
-                    succeeded &= respBuf.Encode((UInt32)0);
+                    succeeded &= respBuf.Encode((uint)0);
                 }
 
                 // DiagnosticInfos
-                succeeded &= respBuf.Encode((UInt32)0);
+                succeeded &= respBuf.Encode((uint)0);
 
                 if (!succeeded)
                 {
@@ -3158,14 +3172,14 @@ namespace LibUA
                 }
 
                 // Results
-                succeeded &= respBuf.Encode((UInt32)modifyResults.Length);
+                succeeded &= respBuf.Encode((uint)modifyResults.Length);
                 for (int i = 0; i < modifyResults.Length; i++)
                 {
                     succeeded &= respBuf.Encode(modifyResults[i]);
                 }
 
                 // DiagnosticInfos
-                succeeded &= respBuf.Encode((UInt32)0);
+                succeeded &= respBuf.Encode((uint)0);
 
                 if (!succeeded)
                 {
@@ -3178,12 +3192,12 @@ namespace LibUA
 
             protected int DispatchMessage_DeleteMonitoredItemsRequest(SLChannel config, RequestHeader reqHeader, MemoryBuffer recvBuf, uint messageSize)
             {
-                UInt32[] MonitoredItemIds;
+                uint[] MonitoredItemIds;
 
                 if (!recvBuf.Decode(out uint SubscriptionId)) { return ErrorParseFail; }
                 if (!recvBuf.Decode(out uint NoOfMonitoredItemIds)) { return ErrorParseFail; }
 
-                MonitoredItemIds = new UInt32[NoOfMonitoredItemIds];
+                MonitoredItemIds = new uint[NoOfMonitoredItemIds];
                 for (uint i = 0; i < NoOfMonitoredItemIds; i++)
                 {
                     if (!recvBuf.Decode(out MonitoredItemIds[i])) { return ErrorParseFail; }
@@ -3209,24 +3223,24 @@ namespace LibUA
                 {
                     if (sub == null)
                     {
-                        succeeded &= respBuf.Encode((UInt32)StatusCode.BadSubscriptionIdInvalid);
+                        succeeded &= respBuf.Encode((uint)StatusCode.BadSubscriptionIdInvalid);
                         continue;
                     }
 
                     if (!sub.MonitoredItems.TryGetValue(MonitoredItemIds[i], out MonitoredItem mi))
                     {
-                        succeeded &= respBuf.Encode((UInt32)StatusCode.BadMonitoredItemIdInvalid);
+                        succeeded &= respBuf.Encode((uint)StatusCode.BadMonitoredItemIdInvalid);
                         continue;
                     }
 
                     app.MonitorRemove(config.Session, mi);
                     sub.MonitoredItems.Remove(MonitoredItemIds[i]);
 
-                    succeeded &= respBuf.Encode((UInt32)StatusCode.Good);
+                    succeeded &= respBuf.Encode((uint)StatusCode.Good);
                 }
 
                 // DiagnosticInfos
-                succeeded &= respBuf.Encode((UInt32)0);
+                succeeded &= respBuf.Encode((uint)0);
 
                 if (!succeeded)
                 {
@@ -3255,13 +3269,13 @@ namespace LibUA
                 }
 
                 // Sequence
-                succeeded &= respBuf.Encode((UInt32)0);
+                succeeded &= respBuf.Encode((uint)0);
 
                 // PublishTime
-                succeeded &= respBuf.Encode((Int64)0);
+                succeeded &= respBuf.Encode((long)0);
 
                 // NoOfNotificationData
-                succeeded &= respBuf.Encode((Int32)0);
+                succeeded &= respBuf.Encode((int)0);
 
                 if (!succeeded)
                 {
