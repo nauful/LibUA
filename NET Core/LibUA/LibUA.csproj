@@ -1,17 +1,21 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <PackageId>nauful-$(AssemblyName)-core</PackageId>
+    <TargetFramework>net6.0</TargetFramework>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <PackageProjectUrl>https://github.com/nauful/libua</PackageProjectUrl>
-    <Copyright>(c) Nauful Shaikh, QuantenSystems LLC 2015-(now)</Copyright>
-    <Description>Open-source OPC UA client and server library for .NET Core.</Description>
-    <Title>LibUA Core</Title>
-    <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://github.com/nauful/libua</RepositoryUrl>
+    <LangVersion>12.0</LangVersion>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <!-- Package properties -->
+    <PackageId>PW.LibUA</PackageId>
     <Version>1.0.20</Version>
-    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <Description>Open-source OPC UA client and server library.</Description>
+    <Authors>nauful,MET</Authors>
+    <RepositoryUrl>https://github.com/paul-wurth/PW.LibUA</RepositoryUrl>
+    <PackageProjectUrl>$(RepositoryUrl)/blob/pw-libua/README.md</PackageProjectUrl>
+    <Copyright>(c) Nauful Shaikh, QuantenSystems LLC 2015-(now)</Copyright>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
 
