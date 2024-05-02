@@ -874,6 +874,7 @@ namespace LibUA
 
                 threadAbort = false;
                 thread = new Thread(new ParameterizedThreadStart(ThreadTarget));
+                thread.IsBackground = true;
                 thread.Start(this);
 
                 var ret = SendHello();
