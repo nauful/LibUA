@@ -3,6 +3,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Reflection.Metadata;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -59,6 +60,8 @@ namespace LibUA
             {
                 public EndPoint Endpoint;
             }
+
+            public delegate bool MonitoringFilterHandler(MonitoringFilter filter);
 
             protected ConcurrentDictionary<NodeId, Node> AddressSpaceTable;
             private HashSet<NodeId> internalAddressSpaceNodes;
@@ -142,7 +145,7 @@ namespace LibUA
                 }
             }
 
-            public virtual void MonitorNotifyDataChange(NodeId id, DataValue dv)
+            public virtual void MonitorNotifyDataChange(NodeId id, DataValue dv, MonitoringFilterHandler filterHandler = null)
             {
                 var key = new ServerMonitorKey(id, NodeAttribute.Value);
                 //Console.WriteLine("{0} {1}", id.ToString(), dv.Value.ToString());
@@ -158,7 +161,7 @@ namespace LibUA
                             {
                                 mis[i].QueueOverflowed = true;
                             }
-                            else
+                            else if (filterHandler?.Invoke(mis[i].Parameters?.Filter) ?? true)
                             {
                                 mis[i].QueueData.Enqueue(dv);
                             }
@@ -176,7 +179,7 @@ namespace LibUA
                 }
             }
 
-            public virtual void MonitorNotifyEvent(NodeId id, EventNotification ev)
+            public virtual void MonitorNotifyEvent(NodeId id, EventNotification ev, MonitoringFilterHandler filterHandler = null)
             {
                 var key = new ServerMonitorKey(id, NodeAttribute.EventNotifier);
                 //Console.WriteLine("{0} {1}", id.ToString(), dv.Value.ToString());
@@ -192,7 +195,7 @@ namespace LibUA
                             {
                                 mis[i].QueueOverflowed = true;
                             }
-                            else
+                            else if (filterHandler?.Invoke(mis[i].Parameters?.Filter) ?? true)
                             {
                                 mis[i].QueueEvent.Enqueue(ev);
                             }
