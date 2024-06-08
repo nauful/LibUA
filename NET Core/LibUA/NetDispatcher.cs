@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Sockets;
 using System.Security.Cryptography.X509Certificates;
 using LibUA.Core;
+using Microsoft.Extensions.Logging;
 
 namespace LibUA
 {
@@ -673,7 +674,7 @@ namespace LibUA
                     return ErrorInternal;
                 }
 
-                logger?.Log(LogLevel.Info, string.Format("{0}: Message type {1} with SL state {2}", LoggerID(), typeId.ToString(), config.SLState.ToString()));
+                logger?.Log(LogLevel.Information, string.Format("{0}: Message type {1} with SL state {2}", LoggerID(), typeId.ToString(), config.SLState.ToString()));
 
                 if (typeId.NamespaceIndex == 0)
                 {
@@ -687,7 +688,7 @@ namespace LibUA
                             case (uint)RequestCode.CreateSessionRequest: return DispatchMessage_CreateSessionRequest(config, reqHeader, recvBuf, messageSize);
                             case (uint)RequestCode.ActivateSessionRequest: return DispatchMessage_ActivateSessionRequest(config, reqHeader, recvBuf, messageSize);
                             case (uint)RequestCode.CloseSessionRequest:
-                                logger?.Log(LogLevel.Info, string.Format("{0}: Client sent CloseSessionRequest", LoggerID()));
+                                logger?.Log(LogLevel.Information, string.Format("{0}: Client sent CloseSessionRequest", LoggerID()));
                                 return ErrorClosed;
 
                             case (uint)RequestCode.ReadRequest: return DispatchMessage_ReadRequest(config, reqHeader, recvBuf, messageSize);
@@ -716,7 +717,7 @@ namespace LibUA
                             case (uint)RequestCode.RepublishRequest: return DispatchMessage_RepublishRequest(config, reqHeader, recvBuf, messageSize);
 
                             case (uint)RequestCode.CloseSecureChannelRequest:
-                                logger?.Log(LogLevel.Info, string.Format("{0}: Client sent CloseSecureChannelRequest", LoggerID()));
+                                logger?.Log(LogLevel.Information, string.Format("{0}: Client sent CloseSecureChannelRequest", LoggerID()));
                                 return ErrorClosed;
                         }
                     }
@@ -730,11 +731,11 @@ namespace LibUA
                             case (uint)RequestCode.CreateSessionRequest: return DispatchMessage_CreateSessionRequest(config, reqHeader, recvBuf, messageSize);
                             case (uint)RequestCode.ActivateSessionRequest: return DispatchMessage_ActivateSessionRequest(config, reqHeader, recvBuf, messageSize);
                             case (uint)RequestCode.CloseSessionRequest:
-                                logger?.Log(LogLevel.Info, string.Format("{0}: Client sent CloseSessionRequest", LoggerID()));
+                                logger?.Log(LogLevel.Information, string.Format("{0}: Client sent CloseSessionRequest", LoggerID()));
                                 return ErrorClosed;
 
                             case (uint)RequestCode.CloseSecureChannelRequest:
-                                logger?.Log(LogLevel.Info, string.Format("{0}: Client sent CloseSecureChannelRequest", LoggerID()));
+                                logger?.Log(LogLevel.Information, string.Format("{0}: Client sent CloseSecureChannelRequest", LoggerID()));
                                 return ErrorClosed;
 
                             default:
@@ -1501,7 +1502,7 @@ namespace LibUA
                         RequestId = requestId
                     };
 
-                    logger?.Log(LogLevel.Info, string.Format("{0}: SL security token {1} issued for channel {2} with security policy {3}", LoggerID(), config.TokenID, config.ChannelID, config.SecurityPolicy.ToString()));
+                    logger?.Log(LogLevel.Information, string.Format("{0}: SL security token {1} issued for channel {2} with security policy {3}", LoggerID(), config.TokenID, config.ChannelID, config.SecurityPolicy.ToString()));
                 }
                 else if (securityTokenRequestType == (uint)SecurityTokenRequestType.Renew)
                 {
@@ -1522,7 +1523,7 @@ namespace LibUA
 
                     reqHeader.SecurityTokenID = config.TokenID;
 
-                    logger?.Log(LogLevel.Info, string.Format("{0}: SL security token {1} renewed for channel {2} with security policy {3}, previous token was {4}", LoggerID(), config.TokenID, config.ChannelID, config.SecurityPolicy.ToString(), config.PrevTokenID.ToString()));
+                    logger?.Log(LogLevel.Information, string.Format("{0}: SL security token {1} renewed for channel {2} with security policy {3}, previous token was {4}", LoggerID(), config.TokenID, config.ChannelID, config.SecurityPolicy.ToString(), config.PrevTokenID.ToString()));
 
                     foreach (var sub in subscriptionMap.Values)
                     {
