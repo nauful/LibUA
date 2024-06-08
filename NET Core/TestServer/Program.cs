@@ -9,28 +9,12 @@ using System.Timers;
 using LibUA;
 using LibUA.Core;
 using LibUA.Server;
+using Microsoft.Extensions.Logging;
 
 namespace TestServer
 {
     internal class Program
     {
-        private class DemoLogger : ILogger
-        {
-            public bool HasLevel(LogLevel Level)
-            {
-                return true;
-            }
-
-            public void LevelSet(LogLevel Mask)
-            {
-            }
-
-            public void Log(LogLevel Level, string Str)
-            {
-                Console.WriteLine("[{0}] {1}", Level.ToString(), Str);
-            }
-        }
-
         private class DemoApplication : LibUA.Server.Application
         {
             private readonly ApplicationDescription uaAppDesc;
@@ -585,12 +569,14 @@ namespace TestServer
             sw.Start();
 
             var app = new DemoApplication();
-            var server = new LibUA.Server.Master(app, 7718, 10, 30, 100, new DemoLogger());
+            using ILoggerFactory factory = LoggerFactory.Create(builder => builder.AddConsole());
+            var logger = factory.CreateLogger(nameof(TestServer));
+            var server = new LibUA.Server.Master(app, 7718, 10, 30, 100, logger);
             server.Start();
 
             sw.Stop();
-            Console.WriteLine("Created and started server in {0} ms", sw.ElapsedMilliseconds.ToString("N3"));
-            Console.WriteLine("opc.tcp://localhost:7718");
+            logger.Log(LogLevel.Information, "Created and started server in {0} ms", sw.ElapsedMilliseconds.ToString("N3"));
+            logger.Log(LogLevel.Information, "opc.tcp://localhost:7718");
 
             var timer = new Timer(1000);
             timer.Elapsed += (sender, e) => { app.PlayRow(); };
