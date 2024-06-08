@@ -9,37 +9,6 @@ namespace LibUA
 {
     namespace Core
     {
-        public static class ArrayHelper
-        {
-            public static T[] SubArray<T>(this T[] Data, int Offset, int Length)
-            {
-                var res = new T[Length];
-                Array.Copy(Data, Offset, res, 0, Length);
-
-                return res;
-            }
-
-            public static void Memset<T>(this T[] Data, T Value)
-            {
-                int BlockSize = 32;
-                int Index = 0;
-
-                int Length = Math.Min(BlockSize, Data.Length);
-                while (Index < Length)
-                {
-                    Data[Index++] = Value;
-                }
-
-                Length = Data.Length;
-                while (Index < Length)
-                {
-                    Buffer.BlockCopy(Data, 0, Data, Index, Math.Min(BlockSize, Length - Index));
-                    Index += BlockSize;
-                    BlockSize *= 2;
-                }
-            }
-        }
-
         public class MemoryBuffer : IDisposable
         {
             public bool IsReadOnly { get; protected set; }
