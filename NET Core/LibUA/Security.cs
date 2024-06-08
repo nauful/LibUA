@@ -137,7 +137,7 @@ namespace LibUA
 
         public static int CalculatePublicKeyLength(X509Certificate2 cert)
         {
-            RSA rsa = cert.PublicKey.Key as RSA;
+            RSA rsa = cert.PublicKey.GetRSAPublicKey();
             if (rsa == null)
             {
                 throw new Exception("Could not create RSA");
@@ -214,12 +214,12 @@ namespace LibUA
 
         public static int CalculateSignatureSize(X509Certificate2 cert)
         {
-            return CalculateSignatureSize(cert.PublicKey.Key as RSA);
+            return CalculateSignatureSize(cert.PublicKey.GetRSAPublicKey());
         }
 
         public static int CalculateEncryptedSize(X509Certificate2 cert, int messageSize, PaddingAlgorithm paddingAlgorithm)
         {
-            RSA rsa = cert.PublicKey.Key as RSA;
+            RSA rsa = cert.PublicKey.GetRSAPublicKey();
             if (rsa == null)
             {
                 throw new Exception("Could not create RSA");
@@ -273,7 +273,7 @@ namespace LibUA
             //var arr = Enumerable.Range(1, numBytes).Select(i => (byte)(i & 0xFF)).ToArray();
             //return arr;
 
-            RandomNumberGenerator rng = new RNGCryptoServiceProvider();
+            RandomNumberGenerator rng = RandomNumberGenerator.Create();
 
             var res = new byte[numBytes];
             rng.GetBytes(res);
@@ -283,14 +283,12 @@ namespace LibUA
 
         public static byte[] AesEncrypt(ArraySegment<byte> data, byte[] key, byte[] iv)
         {
-            using (var aes = new AesManaged()
+            using (var aes = Aes.Create())
             {
-                Mode = CipherMode.CBC,
-                IV = iv, // new byte[16] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-                Key = key,
-                Padding = PaddingMode.PKCS7
-            })
-            {
+                aes.Mode = CipherMode.CBC;
+                aes.IV = iv; // new byte[16] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+                aes.Key = key;
+                aes.Padding = PaddingMode.PKCS7;
                 using (var crypt = aes.CreateEncryptor(aes.Key, aes.IV))
                 {
                     using (var ms = new MemoryStream())
@@ -322,14 +320,12 @@ namespace LibUA
                 return null;
             }
 
-            using (var aes = new AesManaged()
+            using (var aes = Aes.Create())
             {
-                Mode = CipherMode.CBC,
-                IV = iv, // new byte[16] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-                Key = key,
-                Padding = PaddingMode.PKCS7
-            })
-            {
+                aes.Mode = CipherMode.CBC;
+                aes.IV = iv; // new byte[16] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+                aes.Key = key;
+                aes.Padding = PaddingMode.PKCS7;
                 using (var crypt = aes.CreateDecryptor(aes.Key, aes.IV))
                 {
                     using (var ms = new MemoryStream(data.Array, data.Offset, data.Count))
@@ -364,14 +360,12 @@ namespace LibUA
 
         public static int RijndaelEncryptInplace(ArraySegment<byte> data, byte[] key, byte[] iv)
         {
-            using (var rijn = new RijndaelManaged()
+            using (var rijn = Aes.Create())
             {
-                Mode = CipherMode.CBC,
-                IV = iv,
-                Key = key,
-                Padding = PaddingMode.None
-            })
-            {
+                rijn.Mode = CipherMode.CBC;
+                rijn.IV = iv;
+                rijn.Key = key;
+                rijn.Padding = PaddingMode.None;
                 using (var crypt = rijn.CreateEncryptor(rijn.Key, rijn.IV))
                 {
                     if (data.Count % crypt.InputBlockSize != 0)
@@ -388,14 +382,12 @@ namespace LibUA
 
         public static int RijndaelDecryptInplace(ArraySegment<byte> data, byte[] key, byte[] iv)
         {
-            using (var rijn = new RijndaelManaged()
+            using (var rijn = Aes.Create())
             {
-                Mode = CipherMode.CBC,
-                IV = iv,
-                Key = key,
-                Padding = PaddingMode.None
-            })
-            {
+                rijn.Mode = CipherMode.CBC;
+                rijn.IV = iv;
+                rijn.Key = key;
+                rijn.Padding = PaddingMode.None;
                 using (var crypt = rijn.CreateDecryptor(rijn.Key, rijn.IV))
                 {
                     if (data.Count % crypt.InputBlockSize != 0)
@@ -666,7 +658,7 @@ namespace LibUA
 
         public static int GetPlainBlockSize(X509Certificate2 cert, RSAEncryptionPadding useOaep)
         {
-            var rsa = cert.PublicKey.Key as RSA;
+            var rsa = cert.PublicKey.GetRSAPublicKey();
             if (rsa == null)
             {
                 throw new Exception("Could not create RSA");
@@ -691,7 +683,7 @@ namespace LibUA
 
         public static int GetCipherTextBlockSize(X509Certificate2 cert)
         {
-            var rsa = cert.PublicKey.Key as RSA;
+            var rsa = cert.PublicKey.GetRSAPublicKey();
             if (rsa == null)
             {
                 throw new Exception("Could not create RSA");
@@ -702,7 +694,7 @@ namespace LibUA
 
         public static int GetSignatureLength(X509Certificate2 cert)
         {
-            var rsa = cert.PublicKey.Key as RSA;
+            var rsa = cert.PublicKey.GetRSAPublicKey();
             if (rsa == null)
             {
                 throw new Exception("Could not create RSA");
@@ -753,16 +745,16 @@ namespace LibUA
                 case SecurityPolicy.Basic256Sha256:
                 case SecurityPolicy.Aes128_Sha256_RsaOaep:
                 case SecurityPolicy.Aes256_Sha256_RsaPss:
-                    return new SHA256Managed();
+                    return SHA256.Create();
 
                 default:
-                    return new SHA1Managed();
+                    return SHA1.Create();
             }
         }
 
         public static bool VerifySigned(ArraySegment<byte> data, byte[] signature, X509Certificate2 cert, SecurityPolicy policy)
         {
-            var rsa = cert.PublicKey.Key as RSA;
+            var rsa = cert.PublicKey.GetRSAPublicKey();
 
             var hash = HashAlgorithmForSecurityPolicy(policy);
             var digest = hash.ComputeHash(data.Array, data.Offset, data.Count);
@@ -774,7 +766,7 @@ namespace LibUA
 
         public static byte[] Encrypt(ArraySegment<byte> data, X509Certificate2 cert, RSAEncryptionPadding padding)
         {
-            var rsa = cert.PublicKey.Key as RSA;
+            var rsa = cert.PublicKey.GetRSAPublicKey();
             int inputBlockSize = GetPlainBlockSize(cert, padding);
 
             if (data.Count % inputBlockSize != 0)
