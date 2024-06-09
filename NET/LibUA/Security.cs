@@ -5,7 +5,6 @@ using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using LibUA.Core;
-using LibUA.Security.Cryptography;
 using RSACng = LibUA.Security.Cryptography.RSACng;
 
 namespace LibUA

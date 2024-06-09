@@ -752,7 +752,7 @@ namespace LibUA
             {
                 NodeId typeId = new NodeId(597);
                 byte encodingMask = 1;
-                UInt32 eoSize = (UInt32)mem.VariantCodingSize((cfe.Operands[i] as LiteralOperand).Value);
+                UInt32 eoSize = (UInt32)Core.Coding.VariantCodingSize((cfe.Operands[i] as LiteralOperand).Value);
 
                 if (!mem.Encode(typeId)) { return false; }
                 if (!mem.Encode(encodingMask)) { return false; }
@@ -1243,25 +1243,25 @@ namespace LibUA
         {
             int sum = 0;
 
-            sum += mem.CodingSize(dv.GetEncodingMask());
+            sum += Core.Coding.CodingSize(dv.GetEncodingMask());
             if (dv.Value != null)
             {
-                sum += mem.VariantCodingSize(dv.Value);
+                sum += Core.Coding.VariantCodingSize(dv.Value);
             }
 
             if (dv.StatusCode.HasValue)
             {
-                sum += mem.CodingSize((UInt32)dv.StatusCode.Value);
+                sum += Core.Coding.CodingSize((UInt32)dv.StatusCode.Value);
             }
 
             if (dv.SourceTimestamp.HasValue)
             {
-                sum += mem.CodingSize(dv.SourceTimestamp.Value.ToFileTimeUtc());
+                sum += Core.Coding.CodingSize(dv.SourceTimestamp.Value.ToFileTimeUtc());
             }
 
             if (dv.ServerTimestamp.HasValue)
             {
-                sum += mem.CodingSize(dv.ServerTimestamp.Value.ToFileTimeUtc());
+                sum += Core.Coding.CodingSize(dv.ServerTimestamp.Value.ToFileTimeUtc());
             }
 
             return sum;
@@ -1467,11 +1467,6 @@ namespace LibUA
             return true;
         }
 
-        public static int CodingSize(this MemoryBuffer mem, QualifiedName qn)
-        {
-            return mem.CodingSize(qn.NamespaceIndex) + mem.CodingSizeUAString(qn.Name);
-        }
-
         public static bool Encode(this MemoryBuffer mem, QualifiedName qn)
         {
             if (!mem.Encode(qn.NamespaceIndex)) { return false; }
@@ -1500,15 +1495,6 @@ namespace LibUA
             ad = new LocalizedText(Locale, Text);
 
             return true;
-        }
-
-        public static int CodingSize(this MemoryBuffer mem, LocalizedText ad)
-        {
-            int size = mem.CodingSize((byte)0);
-            if (!string.IsNullOrEmpty(ad.Locale)) { size += mem.CodingSizeUAString(ad.Locale); }
-            if (!string.IsNullOrEmpty(ad.Text)) { size += mem.CodingSizeUAString(ad.Text); }
-
-            return size;
         }
 
         public static bool Encode(this MemoryBuffer mem, LocalizedText ad)
@@ -1641,30 +1627,6 @@ namespace LibUA
 
             arg = new Argument(name, dataType, valueRank, arrayDimensions, description);
             return true;
-        }
-
-        public static int CodingSize(this MemoryBuffer mem, ExtensionObject obj)
-        {
-            int size = 0;
-
-            if (obj == null)
-            {
-                size = mem.CodingSize(NodeId.Zero);
-                size += mem.CodingSize((byte)ExtensionObjectBodyType.None);
-                return size;
-            }
-
-            size += mem.CodingSize(obj.TypeId);
-            size += mem.CodingSize((byte)ExtensionObjectBodyType.None);
-
-            if (obj.Body == null)
-            {
-                return size;
-            }
-
-            size += mem.CodingSizeUAByteString(obj.Body);
-
-            return size;
         }
 
         public static bool Decode(this MemoryBuffer mem, out ExtensionObject obj)
@@ -1883,7 +1845,7 @@ namespace LibUA
 
                 case NodeIdNetType.String:
                     {
-                        return 3 + mem.CodingSizeUAString(id.StringIdentifier);
+                        return 3 + Core.Coding.CodingSizeUAString(id.StringIdentifier);
                     }
 
                 default:
@@ -2003,27 +1965,6 @@ namespace LibUA
             }
 
             return true;
-        }
-
-        public static int CodingSizeUAByteString(this MemoryBuffer mem, byte[] str)
-        {
-            if (str == null) { return mem.CodingSize((UInt32)0); }
-
-            return mem.CodingSize((UInt32)0) + str.Length;
-        }
-
-        public static int CodingSizeUAGuidByteString(this MemoryBuffer mem, byte[] str)
-        {
-            if (str == null) { return 0; }
-
-            return str.Length;
-        }
-
-        public static int CodingSizeUAString(this MemoryBuffer mem, string str)
-        {
-            if (str == null) { return mem.CodingSize((UInt32)0); }
-
-            return mem.CodingSize((UInt32)0) + Encoding.UTF8.GetBytes(str).Length;
         }
 
         public static bool EncodeUAString(this MemoryBuffer mem, string str)

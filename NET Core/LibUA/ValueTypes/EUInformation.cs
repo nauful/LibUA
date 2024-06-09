@@ -17,10 +17,10 @@ public static class EUInformationExtensions
     {
         int sum = 0;
 
-        sum += mem.CodingSizeUAString(dv.NameSpaceUri);
-        sum += mem.CodingSize(dv.UnitId);
-        sum += mem.CodingSize(dv.DisplayName);
-        sum += mem.CodingSize(dv.Description);
+        sum += Coding.CodingSizeUAString(dv.NameSpaceUri);
+        sum += Coding.CodingSize(dv.UnitId);
+        sum += Coding.CodingSize(dv.DisplayName);
+        sum += Coding.CodingSize(dv.Description);
 
         return sum;
     }

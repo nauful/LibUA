@@ -134,7 +134,7 @@ namespace LibUA
                         int sizeRequired = 4 + 4;
                         for (int i = 0; i < fields.Length; i++)
                         {
-                            sizeRequired += respBuf.VariantCodingSize(fields[i]);
+                            sizeRequired += Coding.VariantCodingSize(fields[i]);
                         }
 
                         // ClientHandle + numEventFields + ev
@@ -2038,7 +2038,7 @@ namespace LibUA
                                 int sizeRequired = 4;
                                 for (int k = 0; k < resultsEvents[j].Length; k++)
                                 {
-                                    sizeRequired += respBuf.VariantCodingSize(resultsEvents[j][k]);
+                                    sizeRequired += Coding.VariantCodingSize(resultsEvents[j][k]);
                                 }
 
                                 if (availableSpace < sizeRequired)

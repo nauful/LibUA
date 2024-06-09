@@ -50,8 +50,9 @@
     <Compile Include="AddressSpace.cs" />
     <Compile Include="Application.cs" />
     <Compile Include="Client.cs" />
-    <Compile Include="Encoding.cs" />
+    <Compile Include="Coding.cs" />
     <Compile Include="ILogger.cs" />
+    <Compile Include="MemoryBuffer.cs" />
     <Compile Include="MemoryBufferExtensions.cs" />
     <Compile Include="NetDispatcher.cs" />
     <Compile Include="Security.Cryptography\AesCng.cs" />
