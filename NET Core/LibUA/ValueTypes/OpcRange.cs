@@ -14,8 +14,8 @@ public static class RangeExtensions
     {
         int sum = 0;
 
-        sum += mem.CodingSize(dv.Low);
-        sum += mem.CodingSize(dv.High);
+        sum += Coding.CodingSize(dv.Low);
+        sum += Coding.CodingSize(dv.High);
 
         return sum;
     }
