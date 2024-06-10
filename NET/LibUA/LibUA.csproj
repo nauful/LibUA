@@ -55,6 +55,8 @@
     <Compile Include="MemoryBuffer.cs" />
     <Compile Include="MemoryBufferExtensions.cs" />
     <Compile Include="NetDispatcher.cs" />
+    <Compile Include="NetDispatcherBase.cs" />
+    <Compile Include="NetworkStreamWithSocket.cs" />
     <Compile Include="Security.Cryptography\AesCng.cs" />
     <Compile Include="Security.Cryptography\AuthenticatedAes.cs" />
     <Compile Include="Security.Cryptography\AuthenticatedAesCng.cs" />

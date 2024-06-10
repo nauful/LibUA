@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Sockets;
 using System.Security.Cryptography.X509Certificates;
@@ -22,8 +23,8 @@ namespace LibUA
                 return string.Format("{0}:{1}", config.Endpoint.ToString(), config.Session.ToString());
             }
 
-            public NetDispatcher(Master server, Application app, Socket socket, ILogger logger)
-                : base(server, app, socket, logger)
+            public NetDispatcher(Master server, Application app, Stream stream, ILogger logger)
+                : base(server, app, stream, logger)
             {
                 // Initialize then start consumer
                 thread.Start(this);
@@ -1303,7 +1304,7 @@ namespace LibUA
                             }
                         }
 
-                        _ = socket.Send(chunk.Buffer, chunk.Position, SocketFlags.None);
+                        stream.Write(chunk.Buffer, 0, chunk.Position);
                     }
 
                     //var chunkSizes = ChunkCalculateSizes(bigChunkBuffer);
@@ -1337,7 +1338,7 @@ namespace LibUA
                         }
                     }
 
-                    _ = socket.Send(respBuf.Buffer, respBuf.Position, SocketFlags.None);
+                    stream.Write(respBuf.Buffer, 0, respBuf.Position);
                 }
             }
 
@@ -1710,7 +1711,7 @@ namespace LibUA
 
                 config.LocalSequence.SequenceNumber++;
 
-                socket.Send(respBuf.Buffer, respBuf.Position, SocketFlags.None);
+                stream.Write(respBuf.Buffer, 0, respBuf.Position);
                 return (int)messageSize;
             }
 
@@ -1785,7 +1786,7 @@ namespace LibUA
 
                 MarkPositionAsSize(respBuf);
 
-                socket.Send(respBuf.Buffer, respBuf.Position, SocketFlags.None);
+                stream.Write(respBuf.Buffer, 0, respBuf.Position);
                 return (int)messageSize;
             }
 
