@@ -5586,7 +5586,7 @@ namespace LibUA
             ByteString = 5,
         }
 
-        public enum NodeIdNetType
+        public enum NodeIdNetType : byte
         {
             //TwoByte,
             //FourByte,
@@ -5601,7 +5601,7 @@ namespace LibUA
         {
             Read = 0x1,
             Write = 0x2,
-            EraseExisiting = 0x4,
+            EraseExisting = 0x4,
             Append = 0x8,
         }
 
