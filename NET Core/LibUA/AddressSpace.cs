@@ -20,14 +20,17 @@ namespace LibUA
                 get; protected set;
             }
 
+            private object _ObjectIdentifier;
             public byte[] ByteStringIdentifier
             {
-                get; protected set;
+                get => (byte[])_ObjectIdentifier;
+                protected set => _ObjectIdentifier = (object)value;
             }
 
             public string StringIdentifier
             {
-                get; protected set;
+                get => (string)_ObjectIdentifier;
+                protected set => _ObjectIdentifier = (object)value;
             }
 
             public NodeIdNetType IdType
@@ -39,7 +42,6 @@ namespace LibUA
             {
                 int splitIdx = str.IndexOf(';');
                 if (splitIdx == -1) { return null; }
-
                 var nsStr = str.Substring(0, splitIdx);
                 if (!nsStr.ToLowerInvariant().StartsWith("ns="))
                 {
@@ -156,6 +158,27 @@ namespace LibUA
                 return (int)(res & 0x7FFFFFFF);
             }
 
+            public bool IsNull()
+            {
+                // OPC 10000-3: Address Space Model
+                // 8.2.4 Identifier value
+                // A canonical null NodeId has an IdType equal to Numeric, a NamespaceIndex equal to 0 and an
+                // Identifier equal to 0.
+                //
+                // In addition to the canonical null NodeId the alternative values defined in Table 23 shall be
+                // considered a null NodeId.
+                // IdType        NamespaceIndex        Null Value
+                // String           0                  A null or Empty String(“”)
+                // Guid             0                  A Guid initialised with zeros(e.g. 00000000-0000-0000-0000-000000)
+                // Opaque           0                  A null or Empty ByteString
+                return NamespaceIndex == 0 && (
+                       (IdType == NodeIdNetType.Numeric && NumericIdentifier == 0)
+                    || (IdType == NodeIdNetType.String && string.IsNullOrEmpty(StringIdentifier))
+                    || (IdType == NodeIdNetType.Guid && (ByteStringIdentifier is null || Guid.Empty == new Guid(ByteStringIdentifier)))
+                    || (IdType == NodeIdNetType.ByteString && (ByteStringIdentifier is null || ByteStringIdentifier.Length == 0))
+                    );
+            }
+
             public bool EqualsNumeric(UInt16 ns, UInt32 addr)
             {
                 if (IdType != NodeIdNetType.Numeric) { return false; }
@@ -172,6 +195,9 @@ namespace LibUA
                 {
                     return false;
                 }
+
+                if (IsNull() && other.IsNull())
+                    return true;
 
                 if (IdType != other.IdType)
                 {
