@@ -1236,7 +1236,7 @@ namespace LibUA
                 return false;
             }
             return true;
-            
+
         }
 
         public static int CodingSize(this MemoryBuffer mem, DataValue dv)
@@ -1642,10 +1642,6 @@ namespace LibUA
             {
                 if (!mem.DecodeUAByteString(out byte[] str)) { return false; }
                 obj.Body = str;
-
-                return obj.TryDecodeByteString();
-
-               
             }
 
             return true;

@@ -5803,7 +5803,7 @@ namespace LibUA
         {
             private static ConcurrentDictionary<Type, Func<MemoryBuffer, NodeId>> _objectEncoders = new();
             private static ConcurrentDictionary<NodeId, Func<MemoryBuffer, object>> _objectDecoders = new();
-            public static void RegisterEncoder<TObject>(Func<MemoryBuffer,NodeId> encoder)
+            public static void RegisterEncoder<TObject>(Func<MemoryBuffer, NodeId> encoder)
             {
                 _objectEncoders[typeof(TObject)] = encoder;
             }
@@ -5812,8 +5812,6 @@ namespace LibUA
             {
                 _objectDecoders[TypeId] = decoder;
             }
-
-
 
             public NodeId TypeId { get; set; }
             public byte[] Body { get; set; }
@@ -5828,11 +5826,13 @@ namespace LibUA
                     using var buffer = new MemoryBuffer(BufferCapacity);
                     UAConst payloadType = 0;
 
-                    if(_objectEncoders.TryGetValue(Payload.GetType(), out var encoder))
+                    if (_objectEncoders.TryGetValue(Payload.GetType(), out var encoder))
                     {
                         TypeId = encoder(buffer);
                         if (TypeId == null)
+                        {
                             return false;
+                        }
                     }
                     else
                     {
@@ -5860,11 +5860,11 @@ namespace LibUA
                                 break;
                             case EUInformation eui:
                                 payloadType = UAConst.EUInformation;
-                                if(!buffer.Encode(eui)) { return false; }
+                                if (!buffer.Encode(eui)) { return false; }
                                 break;
                             case OpcRange range:
                                 payloadType = UAConst.Range;
-                                if(!buffer.Encode(range)) { return false; }
+                                if (!buffer.Encode(range)) { return false; }
                                 break;
                             default:
                                 break;
@@ -5876,7 +5876,7 @@ namespace LibUA
                         }
                     }
 
-                    if(TypeId != null)
+                    if (TypeId != null)
                     {
                         Body = new byte[buffer.Position];
                         Array.Copy(buffer.Buffer, Body, Body.Length);
@@ -5893,11 +5893,13 @@ namespace LibUA
             {
                 var tmp = new MemoryBuffer(Body);
 
-                if(_objectDecoders.TryGetValue(TypeId, out var decoder))
+                if (_objectDecoders.TryGetValue(TypeId, out var decoder))
                 {
                     Payload = decoder(tmp);
                     if (Payload != null)
+                    {
                         return true;
+                    }
                 }
 
                 switch (TypeId.NumericIdentifier)
@@ -5929,12 +5931,12 @@ namespace LibUA
                         break;
                     case (uint)UAConst.EUInformation:
                         EUInformation eui;
-                        if(!tmp.Decode(out eui)) { return false; }
+                        if (!tmp.Decode(out eui)) { return false; }
                         Payload = eui;
                         break;
                     case (uint)UAConst.Range:
                         OpcRange range;
-                        if(!tmp.Decode(out range)) { return false; }
+                        if (!tmp.Decode(out range)) { return false; }
                         Payload = range;
                         break;
                     default:

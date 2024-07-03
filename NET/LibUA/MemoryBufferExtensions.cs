@@ -1221,8 +1221,6 @@ namespace LibUA
             {
                 if (!mem.DecodeUAByteString(out byte[] str)) { return false; }
                 obj.Body = str;
-
-                return true;
             }
 
             return true;
