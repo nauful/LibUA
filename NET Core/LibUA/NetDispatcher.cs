@@ -1729,15 +1729,6 @@ namespace LibUA
                 }
 
                 config.TL = new TLConnection();
-                const uint chunkSize = (1 << 16) - 1;
-                config.TL.LocalConfig = new TLConfiguration()
-                {
-                    ProtocolVersion = 0,
-                    SendBufferSize = chunkSize,
-                    RecvBufferSize = chunkSize,
-                    MaxMessageSize = (uint)maximumMessageSize,
-                    MaxChunkCount = (uint)(maximumMessageSize + (chunkSize - 1)) / chunkSize,
-                };
 
                 config.TL.RemoteConfig = new TLConfiguration();
                 if (!recvBuf.Decode(out config.TL.RemoteConfig.ProtocolVersion)) { return ErrorParseFail; }
@@ -1746,17 +1737,24 @@ namespace LibUA
                 if (!recvBuf.Decode(out config.TL.RemoteConfig.MaxMessageSize)) { return ErrorParseFail; }
                 if (!recvBuf.Decode(out config.TL.RemoteConfig.MaxChunkCount)) { return ErrorParseFail; }
 
-                config.TL.LocalConfig.SendBufferSize = Math.Min(config.TL.LocalConfig.SendBufferSize, config.TL.RemoteConfig.RecvBufferSize);
+                const uint maxChunkSize = (1 << 16) - 1;
+                uint sendChunkSize = Math.Min(maxChunkSize, config.TL.RemoteConfig.RecvBufferSize);
+                uint recvChunkSize = Math.Min(maxChunkSize, config.TL.RemoteConfig.SendBufferSize);
+
                 if (config.TL.RemoteConfig.MaxMessageSize > 0)
                 {
-                    config.TL.LocalConfig.MaxMessageSize = Math.Min(config.TL.LocalConfig.MaxMessageSize, config.TL.RemoteConfig.MaxMessageSize);
+                    config.TL.RemoteConfig.MaxMessageSize = Math.Min(int.MaxValue, config.TL.RemoteConfig.MaxMessageSize);
+                    maximumMessageSize = Math.Min(maximumMessageSize, (int)config.TL.RemoteConfig.MaxMessageSize);
                 }
-                config.TL.RemoteConfig.MaxMessageSize = config.TL.LocalConfig.MaxMessageSize;
 
-                if (maximumMessageSize > config.TL.LocalConfig.MaxMessageSize)
+                config.TL.LocalConfig = new TLConfiguration()
                 {
-                    maximumMessageSize = (int)config.TL.LocalConfig.MaxMessageSize;
-                }
+                    ProtocolVersion = 0,
+                    SendBufferSize = sendChunkSize,
+                    RecvBufferSize = recvChunkSize,
+                    MaxMessageSize = (uint)maximumMessageSize,
+                    MaxChunkCount = (uint)(maximumMessageSize + (recvChunkSize - 1)) / recvChunkSize,
+                };
 
                 if (!recvBuf.DecodeUAString(out string endpoint)) { return ErrorParseFail; }
                 config.TL.RemoteEndpoint = endpoint;
