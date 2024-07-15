@@ -666,7 +666,9 @@ namespace LibUA
                 reqHeader.SecurityRequestID = securityReqId;
                 reqHeader.SecuritySequenceNum = securitySeqNum;
 
-                if (config.AuthToken != null && !reqHeader.AuthToken.Equals(config.AuthToken))
+                if (config.AuthToken != null
+                    && !reqHeader.AuthToken.Equals(config.AuthToken)
+                    && typeId.NumericIdentifier != (uint)RequestCode.CloseSecureChannelRequest)
                 {
                     logger?.Log(LogLevel.Error, string.Format("{0}: Bad auth token {1}, expected {2}", LoggerID(), reqHeader.AuthToken.ToString(), config.AuthToken.ToString()));
 
@@ -687,9 +689,7 @@ namespace LibUA
 
                             case (uint)RequestCode.CreateSessionRequest: return DispatchMessage_CreateSessionRequest(config, reqHeader, recvBuf, messageSize);
                             case (uint)RequestCode.ActivateSessionRequest: return DispatchMessage_ActivateSessionRequest(config, reqHeader, recvBuf, messageSize);
-                            case (uint)RequestCode.CloseSessionRequest:
-                                logger?.Log(LogLevel.Information, string.Format("{0}: Client sent CloseSessionRequest", LoggerID()));
-                                return ErrorClosed;
+                            case (uint)RequestCode.CloseSessionRequest: return DispatchMessage_CloseSessionRequest(config, reqHeader, recvBuf, messageSize);
 
                             case (uint)RequestCode.ReadRequest: return DispatchMessage_ReadRequest(config, reqHeader, recvBuf, messageSize);
                             case (uint)RequestCode.HistoryReadRequest: return DispatchMessage_HistoryReadRequest(config, reqHeader, recvBuf, messageSize);
@@ -716,9 +716,7 @@ namespace LibUA
                             case (uint)RequestCode.PublishRequest: return DispatchMessage_PublishRequest(config, reqHeader, recvBuf, messageSize);
                             case (uint)RequestCode.RepublishRequest: return DispatchMessage_RepublishRequest(config, reqHeader, recvBuf, messageSize);
 
-                            case (uint)RequestCode.CloseSecureChannelRequest:
-                                logger?.Log(LogLevel.Information, string.Format("{0}: Client sent CloseSecureChannelRequest", LoggerID()));
-                                return ErrorClosed;
+                            case (uint)RequestCode.CloseSecureChannelRequest: return DispatchMessage_CloseSecureChannelRequest(config, reqHeader, recvBuf, messageSize);
                         }
                     }
                     else
@@ -730,13 +728,9 @@ namespace LibUA
 
                             case (uint)RequestCode.CreateSessionRequest: return DispatchMessage_CreateSessionRequest(config, reqHeader, recvBuf, messageSize);
                             case (uint)RequestCode.ActivateSessionRequest: return DispatchMessage_ActivateSessionRequest(config, reqHeader, recvBuf, messageSize);
-                            case (uint)RequestCode.CloseSessionRequest:
-                                logger?.Log(LogLevel.Information, string.Format("{0}: Client sent CloseSessionRequest", LoggerID()));
-                                return ErrorClosed;
+                            case (uint)RequestCode.CloseSessionRequest: return DispatchMessage_CloseSessionRequest(config, reqHeader, recvBuf, messageSize);
 
-                            case (uint)RequestCode.CloseSecureChannelRequest:
-                                logger?.Log(LogLevel.Information, string.Format("{0}: Client sent CloseSecureChannelRequest", LoggerID()));
-                                return ErrorClosed;
+                            case (uint)RequestCode.CloseSecureChannelRequest: return DispatchMessage_CloseSecureChannelRequest(config, reqHeader, recvBuf, messageSize);
 
                             default:
                                 break;
@@ -1040,6 +1034,49 @@ namespace LibUA
 
                 DispatchMessage_SecureAndSend(config, respBuf);
                 return (int)messageSize;
+            }
+
+            /// <summary>
+            /// Handle CloseSessionRequest as per
+            /// https://reference.opcfoundation.org/Core/Part4/docs/5.6.4
+            /// </summary>
+            /// <param name="config"></param>
+            /// <param name="reqHeader"></param>
+            /// <param name="recvBuf"></param>
+            /// <param name="messageSize"></param>
+            /// <returns></returns>
+            protected int DispatchMessage_CloseSessionRequest(SLChannel config, RequestHeader reqHeader, MemoryBuffer recvBuf, uint messageSize)
+            {
+                if (!recvBuf.Decode(out bool deleteSubscriptions)) { return ErrorParseFail; }
+
+                using var respBuf = new MemoryBuffer(maximumMessageSize);
+                bool succeeded = DispatchMessage_WriteHeader(config, respBuf,
+                    (uint)RequestCode.CloseSessionResponse, reqHeader, (uint)StatusCode.Good);
+                if (!succeeded)
+                {
+                    return ErrorRespWrite;
+                }
+
+                DispatchMessage_SecureAndSend(config, respBuf);
+                logger?.Log(LogLevel.Information, "{LoggerID}: Client sent CloseSessionRequest, deleteSubscriptions = {deleteSubscriptions}", LoggerID(), deleteSubscriptions);
+                //return ErrorClosed;
+                return (int)messageSize;
+            }
+
+            /// <summary>
+            /// Handle CloseSecureChannelRequest
+            /// https://reference.opcfoundation.org/Core/Part6/docs/7.1.4
+            /// https://reference.opcfoundation.org/Core/Part4/docs/5.5.3
+            /// </summary>
+            /// <param name="config"></param>
+            /// <param name="reqHeader"></param>
+            /// <param name="recvBuf"></param>
+            /// <param name="messageSize"></param>
+            /// <returns></returns>
+            protected int DispatchMessage_CloseSecureChannelRequest(SLChannel config, RequestHeader reqHeader, MemoryBuffer recvBuf, uint messageSize)
+            {
+                logger?.Log(LogLevel.Information, "{LoggerID}: Client sent CloseSecureChannelRequest, secureChannelId={secureChannelId}", LoggerID(), config.ChannelID);
+                return ErrorClosed;
             }
 
             protected int DispatchMessage_FindServersRequest(SLChannel config, RequestHeader reqHeader, MemoryBuffer recvBuf, uint messageSize)
