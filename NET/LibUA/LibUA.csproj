@@ -36,6 +36,9 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=8.0.0.1, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Extensions.Logging.Abstractions.8.0.1\lib\net462\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Security" />
@@ -51,7 +54,6 @@
     <Compile Include="Application.cs" />
     <Compile Include="Client.cs" />
     <Compile Include="Coding.cs" />
-    <Compile Include="ILogger.cs" />
     <Compile Include="MemoryBuffer.cs" />
     <Compile Include="MemoryBufferExtensions.cs" />
     <Compile Include="NetDispatcher.cs" />
@@ -108,6 +110,9 @@
     <Compile Include="Security.cs" />
     <Compile Include="Server.cs" />
     <Compile Include="Types.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
