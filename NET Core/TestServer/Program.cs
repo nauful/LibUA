@@ -575,8 +575,8 @@ namespace TestServer
             server.Start();
 
             sw.Stop();
-            logger.Log(LogLevel.Information, "Created and started server in {0} ms", sw.ElapsedMilliseconds.ToString("N3"));
-            logger.Log(LogLevel.Information, "opc.tcp://localhost:7718");
+            logger.Log(LogLevel.Information, "Created and started server in {elapsedTime:N3} ms", sw.ElapsedMilliseconds);
+            logger.Log(LogLevel.Information, "{protocol}://{listenAddress}:{listenPort}", "opc.tcp", "localhost", 7718);
 
             var timer = new Timer(1000);
             timer.Elapsed += (sender, e) => { app.PlayRow(); };
