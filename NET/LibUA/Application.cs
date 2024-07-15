@@ -497,6 +497,30 @@ namespace LibUA
                 return respStatus;
             }
 
+            /// <summary>
+            /// HandleRegisterNodesRequest
+            ///
+            /// </summary>
+            /// <param name="session"></param>
+            /// <param name="nodesToRegister"></param>
+            /// <returns>(StatusCode, NodeId[])</returns>
+            public virtual (StatusCode, NodeId[]) HandleRegisterNodesRequest(object session, NodeId[] nodesToRegister)
+            {
+                return (StatusCode.Good, nodesToRegister);
+            }
+
+            /// <summary>
+            /// HandleUnregisterNodesRequest
+            ///
+            /// </summary>
+            /// <param name="session"></param>
+            /// <param name="nodesToUnregister"></param>
+            /// <returns>StatusCode</returns>
+            public virtual StatusCode HandleUnregisterNodesRequest(object session, NodeId[] nodesToUnregister)
+            {
+                return StatusCode.Good;
+            }
+
             public virtual uint HandleHistoryReadRequest(object session, object readDetails, HistoryReadValueId id, ContinuationPointHistory continuationPoint, List<DataValue> results, ref int? offsetContinueFit)
             {
                 return (uint)StatusCode.BadNotImplemented;
