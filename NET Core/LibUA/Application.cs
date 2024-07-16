@@ -508,6 +508,30 @@ namespace LibUA
                 return (uint)StatusCode.BadNotImplemented;
             }
 
+            /// <summary>
+            /// HandleRegisterNodesRequest
+            ///
+            /// </summary>
+            /// <param name="session"></param>
+            /// <param name="nodesToRegister"></param>
+            /// <returns>(StatusCode, NodeId[])</returns>
+            public virtual (StatusCode, NodeId[]) HandleRegisterNodesRequest(object session, NodeId[] nodesToRegister)
+            {
+                return (StatusCode.Good, nodesToRegister);
+            }
+
+            /// <summary>
+            /// HandleUnregisterNodesRequest
+            ///
+            /// </summary>
+            /// <param name="session"></param>
+            /// <param name="nodesToUnregister"></param>
+            /// <returns>StatusCode</returns>
+            public virtual StatusCode HandleUnregisterNodesRequest(object session, NodeId[] nodesToUnregister)
+            {
+                return StatusCode.Good;
+            }
+
             public virtual DataValue[] HandleReadRequest(object session, ReadValueId[] readValueIds)
             {
                 var res = new DataValue[readValueIds.Length];

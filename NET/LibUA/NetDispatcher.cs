@@ -702,6 +702,7 @@ namespace LibUA
 
                             case (uint)RequestCode.CallRequest: return DispatchMessage_CallRequest(config, reqHeader, recvBuf, messageSize);
                             case (uint)RequestCode.RegisterNodesRequest: return DispatchMessage_RegisterNodesRequest(config, reqHeader, recvBuf, messageSize);
+                            case (uint)RequestCode.UnregisterNodesRequest: return DispatchMessage_UnregisterNodesRequest(config, reqHeader, recvBuf, messageSize);
 
                             case (uint)RequestCode.CreateSubscriptionRequest: return DispatchMessage_CreateSubscriptionRequest(config, reqHeader, recvBuf, messageSize);
                             case (uint)RequestCode.SetPublishingModeRequest: return DispatchMessage_SetPublishingModeRequest(config, reqHeader, recvBuf, messageSize);
@@ -2729,6 +2730,15 @@ namespace LibUA
                 return (int)messageSize;
             }
 
+            /// <summary>
+            /// Handles the RegisterNodesRequest from an OPC-UA Client, should handle behavior as per:
+            /// https://reference.opcfoundation.org/Core/Part4/docs/5.8.5
+            /// </summary>
+            /// <param name="config"></param>
+            /// <param name="reqHeader"></param>
+            /// <param name="recvBuf"></param>
+            /// <param name="messageSize"></param>
+            /// <returns></returns>
             protected int DispatchMessage_RegisterNodesRequest(SLChannel config, RequestHeader reqHeader, MemoryBuffer recvBuf, uint messageSize)
             {
                 if (!recvBuf.Decode(out uint noOfNodesToRegister)) { return ErrorParseFail; }
@@ -2739,9 +2749,16 @@ namespace LibUA
                     if (!recvBuf.Decode(out nodesToRegister[i])) { return ErrorParseFail; }
                 }
 
+                StatusCode status = StatusCode.BadNothingToDo;
+                NodeId[] nodesToReturn = new NodeId[] { };
+                if (noOfNodesToRegister > 0)
+                {
+                    (status, nodesToReturn) = app.HandleRegisterNodesRequest(config.Session, nodesToRegister);
+                }
+
                 var respBuf = new MemoryBuffer(maximumMessageSize);
                 bool succeeded = DispatchMessage_WriteHeader(config, respBuf,
-                    (uint)RequestCode.RegisterNodesResponse, reqHeader, (uint)StatusCode.BadNotSupported);
+                    (uint)RequestCode.RegisterNodesResponse, reqHeader, (uint)status);
 
                 if (!succeeded)
                 {
@@ -2749,11 +2766,49 @@ namespace LibUA
                 }
 
                 // NoOfRegisteredNodeIds
-                succeeded &= respBuf.Encode((uint)nodesToRegister.Length);
-                for (int i = 0; i < nodesToRegister.Length && succeeded; i++)
+                succeeded &= respBuf.Encode((UInt32)nodesToReturn.Length);
+                for (int i = 0; i < nodesToReturn.Length && succeeded; i++)
                 {
-                    succeeded &= respBuf.Encode(nodesToRegister[i]);
+                    succeeded &= respBuf.Encode(nodesToReturn[i]);
                 }
+                
+                if (!succeeded)
+                {
+                    return ErrorRespWrite;
+                }
+
+                DispatchMessage_SecureAndSend(config, respBuf);
+                return (int)messageSize;
+            }
+
+            /// <summary>
+            /// Handles the UnregisterNodesRequest from an OPC-UA Client, should handle behavior as per:
+            /// https://reference.opcfoundation.org/Core/Part4/docs/5.8.6
+            /// </summary>
+            /// <param name="config"></param>
+            /// <param name="reqHeader"></param>
+            /// <param name="recvBuf"></param>
+            /// <param name="messageSize"></param>
+            /// <returns></returns>
+            protected int DispatchMessage_UnregisterNodesRequest(SLChannel config, RequestHeader reqHeader, MemoryBuffer recvBuf, uint messageSize)
+            {
+                if (!recvBuf.Decode(out uint noOfNodesToUnregister)) { return ErrorParseFail; }
+
+                var nodesToUnregister = new NodeId[noOfNodesToUnregister];
+                for (uint i = 0; i < noOfNodesToUnregister; i++)
+                {
+                    if (!recvBuf.Decode(out nodesToUnregister[i])) { return ErrorParseFail; }
+                }
+
+                StatusCode status = StatusCode.BadNothingToDo;
+                if (noOfNodesToUnregister > 0)
+                {
+                    status = app.HandleUnregisterNodesRequest(config.Session, nodesToUnregister);
+                }
+
+                var respBuf = new MemoryBuffer(maximumMessageSize);
+                bool succeeded = DispatchMessage_WriteHeader(config, respBuf,
+                    (uint)RequestCode.UnregisterNodesResponse, reqHeader, (uint)status);
 
                 if (!succeeded)
                 {
