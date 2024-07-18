@@ -19,3 +19,6 @@ _ReSharper*/
 
 # CodeRush is a .NET coding add-in
 .cr/
+
+# Package cache can be rebuilt
+packages
