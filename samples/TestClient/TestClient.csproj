@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LibUA\LibUA.csproj" />
+    <ProjectReference Include="..\..\src\LibUA\LibUA.csproj" />
   </ItemGroup>
 
 </Project>
