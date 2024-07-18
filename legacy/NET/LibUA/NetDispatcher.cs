@@ -93,7 +93,7 @@ namespace LibUA
             {
                 if (sub.ChangeNotification == Subscription.ChangeNotificationType.None)
                 {
-                    logger?.Log(LogLevel.Error, string.Format("{0}: No updates in SLPulseDataChangeNotification, sub {1}", LoggerID(), sub.SubscriptionId));
+                    logger?.Log(LogLevel.Error, "{LoggerID}: No updates in SLPulseDataChangeNotification, sub {subscriptionId}", LoggerID(), sub.SubscriptionId);
 
                     return StatusCode.BadNothingToDo;
                 }
@@ -560,7 +560,7 @@ namespace LibUA
                         return DispatchHello(config, recvBuf);
                     }
 
-                    logger?.Log(LogLevel.Error, string.Format("{0}: TL already set", LoggerID()));
+                    logger?.Log(LogLevel.Error, "{LoggerID}: TL already set", LoggerID());
 
                     return ErrorInternal;
                 }
@@ -568,11 +568,8 @@ namespace LibUA
                 {
                     if (config.TL == null)
                     {
-                        if (logger != null)
-                        {
-                            logger.Log(LogLevel.Error, string.Format("{0}: Message type 0x{1} is not supported before Hello", LoggerID(), messageType.ToString("X")));
-                            return ErrorInternal;
-                        }
+                        logger?.Log(LogLevel.Error, "{LoggerID}: Message type 0x{messageType:X} is not supported before Hello", LoggerID(), messageType);
+                        return ErrorInternal;
                     }
 
                     return DispatchOpen(config, recvBuf);
@@ -582,28 +579,22 @@ namespace LibUA
                 {
                     if (config.TL == null)
                     {
-                        if (logger != null)
-                        {
-                            logger.Log(LogLevel.Error, string.Format("{0}: Message type 0x{1} is not supported before Hello", LoggerID(), messageType.ToString("X")));
-                            UAStatusCode = (uint)StatusCode.BadTcpMessageTypeInvalid;
-                            return ErrorInternal;
-                        }
+                        logger?.Log(LogLevel.Error, "{LoggerID}: Message type 0x{messageType:X} is not supported before Hello", LoggerID(), messageType);
+                        UAStatusCode = (uint)StatusCode.BadTcpMessageTypeInvalid;
+                        return ErrorInternal;
                     }
 
                     if (config.SecurityPolicy == SecurityPolicy.Invalid)
                     {
-                        if (logger != null)
-                        {
-                            logger.Log(LogLevel.Error, string.Format("{0}: Message type 0x{1} is not supported before SecurityPolicy is set", LoggerID(), messageType.ToString("X")));
-                            UAStatusCode = (uint)StatusCode.BadSecureChannelTokenUnknown;
-                            return ErrorInternal;
-                        }
+                        logger?.Log(LogLevel.Error, "{LoggerID}: Message type 0x{messageType:X} is not supported before SecurityPolicy is set", LoggerID());
+                        UAStatusCode = (uint)StatusCode.BadSecureChannelTokenUnknown;
+                        return ErrorInternal;
                     }
 
                     return DispatchMessage(config, recvBuf);
                 }
 
-                logger?.Log(LogLevel.Error, string.Format("{0}: Message type 0x{1} is not supported", LoggerID(), messageType.ToString("X")));
+                logger?.Log(LogLevel.Error, "{LoggerID}: Message type 0x{messageType:X} is not supported", LoggerID(), messageType);
 
                 UAStatusCode = (uint)StatusCode.BadTcpMessageTypeInvalid;
                 return ErrorInternal;
@@ -633,7 +624,7 @@ namespace LibUA
                 if (secureChannelId != config.ChannelID &&
                     (!config.PrevChannelID.HasValue || secureChannelId != config.PrevChannelID.Value))
                 {
-                    logger?.Log(LogLevel.Error, string.Format("{0}: Requested secure channel ID {1} but current is {2} and previous was {3}", LoggerID(), secureChannelId, config.ChannelID, config.PrevChannelID.HasValue ? config.PrevChannelID.ToString() : "null"));
+                    logger?.Log(LogLevel.Error, "{LoggerID}: Requested secure channel ID {secureChannelId} but current is {channelId} and previous was {prevChannelId}", LoggerID(), secureChannelId, config.ChannelID, config.PrevChannelID);
 
                     UAStatusCode = (uint)StatusCode.BadSecureChannelIdInvalid;
                     return ErrorInternal;
@@ -644,7 +635,7 @@ namespace LibUA
                 if (securityTokenId != config.TokenID &&
                     (!config.PrevTokenID.HasValue || securityTokenId != config.PrevTokenID.Value))
                 {
-                    logger?.Log(LogLevel.Error, string.Format("{0}: Requested security token ID {1} but current is {2} and previous was {3}", LoggerID(), securityTokenId, config.TokenID, config.PrevTokenID.HasValue ? config.PrevTokenID.ToString() : "null"));
+                    logger?.Log(LogLevel.Error, "{LoggerID}: Requested security token ID {securityToken} but current is {tokenId} and previous was {prvTokenId}", LoggerID(), securityTokenId, config.TokenID, config.PrevTokenID);
 
                     UAStatusCode = (uint)StatusCode.BadIdentityTokenInvalid;
                     return ErrorInternal;
@@ -652,7 +643,7 @@ namespace LibUA
 
                 if (config.RemoteSequence.SequenceNumber >= securitySeqNum)
                 {
-                    logger?.Log(LogLevel.Error, string.Format("{0}: Sequence number is {1}, expected {2} or higher", LoggerID(), securitySeqNum, config.RemoteSequence.SequenceNumber));
+                    logger?.Log(LogLevel.Error, "{LoggerID}: Sequence number is {securitySeqNum}, expected {remoteSequenceNumber} or higher", LoggerID(), securitySeqNum, config.RemoteSequence.SequenceNumber);
 
                     UAStatusCode = (uint)StatusCode.BadSequenceNumberInvalid;
                     return ErrorInternal;
@@ -671,13 +662,13 @@ namespace LibUA
                     && !reqHeader.AuthToken.Equals(config.AuthToken)
                     && typeId.NumericIdentifier != (uint)RequestCode.CloseSecureChannelRequest)
                 {
-                    logger?.Log(LogLevel.Error, string.Format("{0}: Bad auth token {1}, expected {2}", LoggerID(), reqHeader.AuthToken.ToString(), config.AuthToken.ToString()));
+                    logger?.Log(LogLevel.Error, "{LoggerID}: Bad auth token {reqHeaderAuthToken}, expected {authToken}", LoggerID(), reqHeader.AuthToken, config.AuthToken);
 
                     UAStatusCode = (uint)StatusCode.BadSecureChannelTokenUnknown;
                     return ErrorInternal;
                 }
 
-                logger?.Log(LogLevel.Information, string.Format("{0}: Message type {1} with SL state {2}", LoggerID(), typeId.ToString(), config.SLState.ToString()));
+                logger?.Log(LogLevel.Information, "{LoggerID}: Message type {typeId} with SL state {SLState}", LoggerID(), typeId, config.SLState);
 
                 if (typeId.NamespaceIndex == 0)
                 {
@@ -740,7 +731,7 @@ namespace LibUA
                     }
                 }
 
-                logger?.Log(LogLevel.Error, string.Format("{0}: Message type {1} is not supported with SL state {2}", LoggerID(), typeId.ToString(), config.SLState.ToString()));
+                logger?.Log(LogLevel.Error, "{LoggerID}: Message type {typeId} is not supported with SL state {SLState}", LoggerID(), typeId, config.SLState);
 
                 UAStatusCode = (uint)StatusCode.BadServiceUnsupported;
                 return ErrorInternal;
@@ -876,7 +867,7 @@ namespace LibUA
                     if (clientSignatureAlgorithm != Types.SignatureAlgorithmSha1 &&
                         clientSignatureAlgorithm != Types.SignatureAlgorithmSha256)
                     {
-                        logger?.Log(LogLevel.Error, string.Format("{0}: Client signature algorithm {1} is not supported", LoggerID(), clientSignatureAlgorithm));
+                        logger?.Log(LogLevel.Error, "{LoggerID}: Client signature algorithm {clientSignatureAlgorithm} is not supported", LoggerID(), clientSignatureAlgorithm);
 
                         UAStatusCode = (uint)StatusCode.BadSecurityChecksFailed;
                         return ErrorInternal;
@@ -1381,14 +1372,14 @@ namespace LibUA
                 {
                     if (app.ApplicationCertificate == null)
                     {
-                        logger?.Log(LogLevel.Error, string.Format("{0}: Application did not return application certificate, requested security policy {1}", LoggerID(), recvBuf.Buffer[recvBuf.Position].ToString("X")));
+                        logger?.Log(LogLevel.Error, "{LoggerID}: Application did not return application certificate, requested security policy {securityPolicy:X}", LoggerID(), recvBuf.Buffer[recvBuf.Position]);
 
                         return ErrorInternal;
                     }
 
                     if (app.ApplicationPrivateKey == null)
                     {
-                        logger?.Log(LogLevel.Error, string.Format("{0}: Application did not return application private key, requested security policy {1}", LoggerID(), recvBuf.Buffer[recvBuf.Position].ToString("X")));
+                        logger?.Log(LogLevel.Error, "{LoggerID}: Application did not return application private key, requested security policy {securityPolicy:X}", LoggerID(), recvBuf.Buffer[recvBuf.Position]);
 
                         return ErrorInternal;
                     }
@@ -1396,7 +1387,7 @@ namespace LibUA
 
                 if (recvBuf.Buffer[recvBuf.Position] != 'F')
                 {
-                    logger?.Log(LogLevel.Error, string.Format("{0}: Open can only have Final chunk type, not 0x{1}", LoggerID(), recvBuf.Buffer[recvBuf.Position].ToString("X")));
+                    logger?.Log(LogLevel.Error, "{LoggerID}: Open can only have Final chunk type, not 0x{chunkType:X}", LoggerID(), recvBuf.Buffer[recvBuf.Position]);
                 }
 
                 recvBuf.Position++;
@@ -1528,7 +1519,7 @@ namespace LibUA
                         RequestId = requestId
                     };
 
-                    logger?.Log(LogLevel.Information, string.Format("{0}: SL security token {1} issued for channel {2} with security policy {3}", LoggerID(), config.TokenID, config.ChannelID, config.SecurityPolicy.ToString()));
+                    logger?.Log(LogLevel.Information, "{LoggerID}: SL security token {tokenId} issued for channel {channelId} with security policy {securityPolicy}", LoggerID(), config.TokenID, config.ChannelID, config.SecurityPolicy);
                 }
                 else if (securityTokenRequestType == (uint)SecurityTokenRequestType.Renew)
                 {
@@ -1549,7 +1540,7 @@ namespace LibUA
 
                     reqHeader.SecurityTokenID = config.TokenID;
 
-                    logger?.Log(LogLevel.Information, string.Format("{0}: SL security token {1} renewed for channel {2} with security policy {3}, previous token was {4}", LoggerID(), config.TokenID, config.ChannelID, config.SecurityPolicy.ToString(), config.PrevTokenID.ToString()));
+                    logger?.Log(LogLevel.Information, "{LoggerID}: SL security token {tokenId} renewed for channel {channelId} with security policy {securityPolicy}, previous token was {prevTokenId}", LoggerID(), config.TokenID, config.ChannelID, config.SecurityPolicy, config.PrevTokenID);
 
                     foreach (var sub in subscriptionMap.Values)
                     {
@@ -1728,7 +1719,7 @@ namespace LibUA
             {
                 if (recvBuf.Buffer[recvBuf.Position] != 'F')
                 {
-                    logger?.Log(LogLevel.Error, string.Format("{0}: Hello can only have Final chunk type, not 0x{1}", LoggerID(), recvBuf.Buffer[recvBuf.Position].ToString("X")));
+                    logger?.Log(LogLevel.Error, "{LoggerID}: Hello can only have Final chunk type, not 0x{chunkType:X}", LoggerID(), recvBuf.Buffer[recvBuf.Position]);
                 }
 
                 recvBuf.Position++;
@@ -1771,10 +1762,7 @@ namespace LibUA
 
                 //if (recvBuf.Position != messageSize)
                 //{
-                //	if (logger != null)
-                //	{
-                //		logger.Log(LogLevel.Error, string.Format("{0}: Hello expected {0} bytes, parsed {1}", messageSize, recvBuf.Position));
-                //	}
+                //	logger?.Log(LogLevel.Error, string.Format("{LoggerID}: Hello expected {messageSize} bytes, parsed {parsedBytes}", LoggerID(), messageSize, recvBuf.Position);
                 //}
 
                 var respBuf = new MemoryBuffer(maximumMessageSize);
@@ -2841,7 +2829,7 @@ namespace LibUA
                 uint subId = nextSubscriptionID++;
                 if (subscriptionMap.ContainsKey(subId))
                 {
-                    logger?.Log(LogLevel.Error, string.Format("{0}: Could not allocate subscription ID {1}", LoggerID(), subId));
+                    logger?.Log(LogLevel.Error, "{LoggerID}: Could not allocate subscription ID {subscriptionId}", LoggerID(), subId);
 
                     UAStatusCode = (uint)StatusCode.BadSubscriptionIdInvalid;
                     return ErrorInternal;
@@ -3407,7 +3395,7 @@ namespace LibUA
                 }
                 else
                 {
-                    logger?.Log(LogLevel.Error, string.Format("{0}: Too many publish requests (max is {1}), sent BadTooManyPublishRequests", LoggerID(), 1));
+                    logger?.Log(LogLevel.Error, "{LoggerID}: Too many publish requests (max is {maximumPublishRequests}), sent BadTooManyPublishRequests", LoggerID(), 1);
 
                     var respBuf = new MemoryBuffer(maximumMessageSize);
                     bool succeeded = DispatchMessage_WriteHeader(config, respBuf,

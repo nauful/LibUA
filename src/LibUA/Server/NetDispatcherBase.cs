@@ -135,11 +135,11 @@ namespace LibUA
                     }
                     catch (SocketException ex)
                     {
-                        logger?.Log(LogLevel.Error, string.Format("Socket error {1} for TL error 0x{0}", statusCode.ToString("X"), ex.Message));
+                        logger?.Log(LogLevel.Error, "Socket error {statusCode:X} for TL error 0x{errorCode}", statusCode, ex.Message);
                     }
                 }
 
-                logger?.Log(LogLevel.Error, string.Format("Sent TL error 0x{0}", statusCode.ToString("X")));
+                logger?.Log(LogLevel.Error, "Sent TL error 0x{statusCode:X}", statusCode);
             }
 
             private void ThreadTarget()
@@ -149,7 +149,7 @@ namespace LibUA
                     Endpoint = socket.RemoteEndPoint
                 };
 
-                logger?.Log(LogLevel.Information, string.Format("Accepted connection from {0}", sessionInfo.Endpoint));
+                logger?.Log(LogLevel.Information, "Accepted connection from {endPoint}", sessionInfo.Endpoint);
 
                 config = new SLChannel
                 {
@@ -229,7 +229,7 @@ namespace LibUA
                     recvAccumSize += bytesRead;
                     if (recvAccumSize > maximumMessageSize)
                     {
-                        logger?.Log(LogLevel.Error, string.Format("Received {0} but maximum message size is {1}", recvAccumSize, maximumMessageSize));
+                        logger?.Log(LogLevel.Error, "Received {recvAccumSize} but maximum message size is {maximumMessageSize}", recvAccumSize, maximumMessageSize);
                         break;
                     }
 
@@ -278,7 +278,7 @@ namespace LibUA
                         {
                             if (consumedSize > recvAccumSize)
                             {
-                                logger?.Log(LogLevel.Error, string.Format("Consumed {0} but accumulated message size is {1}", consumedSize, recvAccumSize));
+                                logger?.Log(LogLevel.Error, "Consumed {consumedSize} but accumulated message size is {recvAccumSize}", consumedSize, recvAccumSize);
                             }
 
                             recvAccumSize = 0;
@@ -303,7 +303,7 @@ namespace LibUA
                     // Cannot receive more or process existing
                     if (recvAccumSize >= maximumMessageSize)
                     {
-                        logger?.Log(LogLevel.Error, string.Format("Received {0} but maximum message size is {1}", recvAccumSize, maximumMessageSize));
+                        logger?.Log(LogLevel.Error, "Received {recvAccumSize} but maximum message size is {maximumMessageSize}", recvAccumSize, maximumMessageSize);
                         break;
                     }
 
@@ -340,7 +340,7 @@ namespace LibUA
                 //	app.MonitorDispatcherRemove(cfg);
                 //}
 
-                logger?.Log(LogLevel.Information, string.Format("Ended connection from {0}", sessionInfo.Endpoint));
+                logger?.Log(LogLevel.Information, "Ended connection from {endPoint}", sessionInfo.Endpoint);
             }
 
             virtual protected bool NeedsPulse()
