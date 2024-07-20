@@ -12,7 +12,10 @@ namespace LibUA
 {
     namespace Server
     {
-        public class Application
+        /// <summary>
+        /// Base class for OPC UA server applications.
+        /// </summary>
+        public abstract class Application
         {
             protected struct ServerMonitorKey : IEquatable<ServerMonitorKey>
             {
@@ -60,23 +63,28 @@ namespace LibUA
 
             public delegate bool MonitoringFilterHandler(MonitoringFilter filter);
 
-            protected ConcurrentDictionary<NodeId, Node> AddressSpaceTable;
             private HashSet<NodeId> internalAddressSpaceNodes;
             private Dictionary<NodeId, object> internalAddressSpaceValues;
+
             private readonly ReaderWriterLockSlim monitorMapRW;
             private readonly Dictionary<ServerMonitorKey, List<MonitoredItem>> monitorMap;
 
-            public virtual X509Certificate2 ApplicationCertificate
+            public abstract X509Certificate2 ApplicationCertificate
             {
-                get { return null; }
+                get;
             }
 
-            public virtual RSA ApplicationPrivateKey
+            public abstract RSA ApplicationPrivateKey
             {
-                get { return null; }
+                get;
             }
 
-            public Application()
+            protected ConcurrentDictionary<NodeId, Node> AddressSpaceTable { get; }
+
+            /// <summary>
+            /// Initializes the instance.
+            /// </summary>
+            protected Application()
             {
                 AddressSpaceTable = new ConcurrentDictionary<NodeId, Node>();
 
@@ -91,6 +99,20 @@ namespace LibUA
                 monitorMapRW = new ReaderWriterLockSlim();
                 monitorMap = new Dictionary<ServerMonitorKey, List<MonitoredItem>>();
             }
+
+            /// <summary>
+            /// Gets the OPC UA application description.
+            /// </summary>
+            /// <param name="endpointUrlHint">The network address that the Client used to access the DiscoveryEndpoint.</param>
+            /// <returns></returns>
+            public abstract Core.ApplicationDescription GetApplicationDescription(string endpointUrlHint);
+
+            /// <summary>
+            /// Gets the Endpoints supported by the application and all of the configuration information required to establish a SecureChannel and a Session.
+            /// </summary>
+            /// <param name="endpointUrlHint">The network address that the Client used to access the DiscoveryEndpoint.</param>
+            /// <returns></returns>
+            public abstract IList<Core.EndpointDescription> GetEndpointDescriptions(string endpointUrlHint);
 
             public virtual bool MonitorAdd(object session, MonitoredItem mi)
             {
@@ -145,7 +167,7 @@ namespace LibUA
             public virtual void MonitorNotifyDataChange(NodeId id, DataValue dv, MonitoringFilterHandler filterHandler = null)
             {
                 var key = new ServerMonitorKey(id, NodeAttribute.Value);
-                //Console.WriteLine("{0} {1}", id.ToString(), dv.Value.ToString());
+                // Console.WriteLine("{0} {1}", id.ToString(), dv.Value.ToString());
 
                 try
                 {
@@ -244,14 +266,9 @@ namespace LibUA
             {
             }
 
-            public virtual Core.ApplicationDescription GetApplicationDescription(string endpointUrlHint)
+            protected virtual bool SessionHasPermissionToRead(object session, NodeId nodeId)
             {
-                return null;
-            }
-
-            public virtual IList<Core.EndpointDescription> GetEndpointDescriptions(string endpointUrlHint)
-            {
-                return new List<Core.EndpointDescription>();
+                return true;
             }
 
             protected virtual DataValue HandleReadRequestInternal(NodeId id)
@@ -262,48 +279,6 @@ namespace LibUA
                 }
 
                 return new DataValue(null, StatusCode.Good);
-            }
-
-            private void SetupInternalAddressSpace()
-            {
-                internalAddressSpaceNodes = new HashSet<NodeId>();
-                foreach (var key in AddressSpaceTable.Keys) { internalAddressSpaceNodes.Add(key); }
-
-                internalAddressSpaceValues = new Dictionary<NodeId, object>()
-                {
-                    { new NodeId(UAConst.Server_ServerArray), new string[0] },
-                    { new NodeId(UAConst.Server_NamespaceArray), new string[]
-                        {
-                            "http://opcfoundation.org/UA/",
-                            "http://quantensystems.com/uaSDK2",
-                            "http://quantensystems.com/DemoServer"
-                        }
-                    },
-                    { new NodeId(UAConst.Server_ServerStatus_State), (int)ServerState.Running },
-
-                    { new NodeId(UAConst.OperationLimitsType_MaxNodesPerRead), 100 },
-                    { new NodeId(UAConst.OperationLimitsType_MaxNodesPerWrite), 100 },
-                    { new NodeId(UAConst.OperationLimitsType_MaxNodesPerMethodCall), 100 },
-                    { new NodeId(UAConst.OperationLimitsType_MaxNodesPerBrowse), 100 },
-                    { new NodeId(UAConst.OperationLimitsType_MaxNodesPerRegisterNodes), 100 },
-                    { new NodeId(UAConst.OperationLimitsType_MaxNodesPerTranslateBrowsePathsToNodeIds), 100 },
-                    { new NodeId(UAConst.OperationLimitsType_MaxNodesPerNodeManagement), 100 },
-                    { new NodeId(UAConst.OperationLimitsType_MaxMonitoredItemsPerCall), 100 },
-                    { new NodeId(UAConst.OperationLimitsType_MaxNodesPerHistoryReadData), 100 },
-                    { new NodeId(UAConst.OperationLimitsType_MaxNodesPerHistoryUpdateData), 100 },
-                    { new NodeId(UAConst.OperationLimitsType_MaxNodesPerHistoryReadEvents), 100 },
-                    { new NodeId(UAConst.OperationLimitsType_MaxNodesPerHistoryUpdateEvents), 100 },
-
-                    { new NodeId(UAConst.Server_ServerStatus_StartTime), 0 },
-                    { new NodeId(UAConst.Server_ServerStatus_CurrentTime), 0 },
-                    { new NodeId(UAConst.Server_ServerStatus_SecondsTillShutdown), 0 },
-                    { new NodeId(UAConst.Server_ServerStatus_BuildInfo_ProductUri), "product" },
-                    { new NodeId(UAConst.Server_ServerStatus_BuildInfo_ManufacturerName), "manufacturer" },
-                    { new NodeId(UAConst.Server_ServerStatus_BuildInfo_ProductName), "product" },
-                    { new NodeId(UAConst.Server_ServerStatus_BuildInfo_SoftwareVersion), 1.0 },
-                    { new NodeId(UAConst.Server_ServerStatus_BuildInfo_BuildNumber), 1.0 },
-                    { new NodeId(UAConst.Server_ServerStatus_BuildInfo_BuildDate), 0 }
-                };
             }
 
             public bool IsSubtypeOrEqual(NodeId target, NodeId parent)
@@ -665,9 +640,46 @@ namespace LibUA
                 return new CallMethodResult((uint)StatusCode.BadNotImplemented, inputResults, new object[0]);
             }
 
-            protected virtual bool SessionHasPermissionToRead(object session, NodeId nodeId)
+            private void SetupInternalAddressSpace()
             {
-                return true;
+                internalAddressSpaceNodes = new HashSet<NodeId>();
+                foreach (var key in AddressSpaceTable.Keys) { internalAddressSpaceNodes.Add(key); }
+
+                internalAddressSpaceValues = new Dictionary<NodeId, object>()
+                {
+                    { new NodeId(UAConst.Server_ServerArray), new string[0] },
+                    { new NodeId(UAConst.Server_NamespaceArray), new string[]
+                        {
+                            "http://opcfoundation.org/UA/",
+                            "http://quantensystems.com/uaSDK2",
+                            "http://quantensystems.com/DemoServer"
+                        }
+                    },
+                    { new NodeId(UAConst.Server_ServerStatus_State), (int)ServerState.Running },
+
+                    { new NodeId(UAConst.OperationLimitsType_MaxNodesPerRead), 100 },
+                    { new NodeId(UAConst.OperationLimitsType_MaxNodesPerWrite), 100 },
+                    { new NodeId(UAConst.OperationLimitsType_MaxNodesPerMethodCall), 100 },
+                    { new NodeId(UAConst.OperationLimitsType_MaxNodesPerBrowse), 100 },
+                    { new NodeId(UAConst.OperationLimitsType_MaxNodesPerRegisterNodes), 100 },
+                    { new NodeId(UAConst.OperationLimitsType_MaxNodesPerTranslateBrowsePathsToNodeIds), 100 },
+                    { new NodeId(UAConst.OperationLimitsType_MaxNodesPerNodeManagement), 100 },
+                    { new NodeId(UAConst.OperationLimitsType_MaxMonitoredItemsPerCall), 100 },
+                    { new NodeId(UAConst.OperationLimitsType_MaxNodesPerHistoryReadData), 100 },
+                    { new NodeId(UAConst.OperationLimitsType_MaxNodesPerHistoryUpdateData), 100 },
+                    { new NodeId(UAConst.OperationLimitsType_MaxNodesPerHistoryReadEvents), 100 },
+                    { new NodeId(UAConst.OperationLimitsType_MaxNodesPerHistoryUpdateEvents), 100 },
+
+                    { new NodeId(UAConst.Server_ServerStatus_StartTime), 0 },
+                    { new NodeId(UAConst.Server_ServerStatus_CurrentTime), 0 },
+                    { new NodeId(UAConst.Server_ServerStatus_SecondsTillShutdown), 0 },
+                    { new NodeId(UAConst.Server_ServerStatus_BuildInfo_ProductUri), "product" },
+                    { new NodeId(UAConst.Server_ServerStatus_BuildInfo_ManufacturerName), "manufacturer" },
+                    { new NodeId(UAConst.Server_ServerStatus_BuildInfo_ProductName), "product" },
+                    { new NodeId(UAConst.Server_ServerStatus_BuildInfo_SoftwareVersion), 1.0 },
+                    { new NodeId(UAConst.Server_ServerStatus_BuildInfo_BuildNumber), 1.0 },
+                    { new NodeId(UAConst.Server_ServerStatus_BuildInfo_BuildDate), 0 }
+                };
             }
 
             private void SetupDefaultAddressSpace()

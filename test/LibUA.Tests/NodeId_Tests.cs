@@ -42,6 +42,12 @@ namespace LibUA.Tests
         }
 
         [Fact]
+        public void NodeId_NumericConstEquivalence()
+        {
+            Assert.Equal(new NodeId(0, 2255), new NodeId(UAConst.Server_NamespaceArray));
+        }
+
+        [Fact]
         public void NodeId_NumericNamespaceNonEquivalence()
         {
             Assert.NotEqual(new NodeId(2, 100), new NodeId(3, 100));
