@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestClient", "samples\TestC
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestServer", "samples\TestServer\TestServer.csproj", "{583E5263-74E7-4F69-82D1-11E3EDA4DC45}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleServer", "SimpleServer\SimpleServer.csproj", "{F0AEAA2F-F564-491E-BA1F-D2BD630CDBB3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleServer", "samples\SimpleServer\SimpleServer.csproj", "{F0AEAA2F-F564-491E-BA1F-D2BD630CDBB3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

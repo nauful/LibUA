@@ -23,8 +23,8 @@ namespace SimpleServer
             new QualifiedName("SampleRoot"),
             new LocalizedText("Sample root"),
             new LocalizedText("The root element of the Simple Server sample."),
-            0,
-            0,
+            (int)AttributeWriteMask.None,
+            (int)AttributeWriteMask.None,
             0);
 
         private NodeVariable randomNumber = new NodeVariable(
@@ -32,13 +32,14 @@ namespace SimpleServer
             new QualifiedName("RandomSample"),
             new LocalizedText("Random number"),
             new LocalizedText("Random number"),
-            0,
-            0,
+            (int)AttributeWriteMask.None,
+            (int)AttributeWriteMask.None,
             AccessLevel.CurrentRead,
             AccessLevel.CurrentRead,
             100.0,
             false,
-            new NodeId(UAConst.Double));
+            new NodeId(UAConst.Double),
+            ValueRank.Scalar);
 
         private Random random = new Random();
 
@@ -57,14 +58,15 @@ namespace SimpleServer
 
         public override ApplicationDescription GetApplicationDescription(string endpointUrlHint)
         {
+            Console.WriteLine(endpointUrlHint);
             return new ApplicationDescription(
-                endpointUrlHint,
-                "urn:LibUA:Sample:SimpleServer",
-                new LocalizedText("Simple Server sample"),
+                $"urn:quantensystems:libua:SimpleServerSample:{Environment.MachineName}",
+                "urn:quantensystems:libua:SimpleServerSample",
+                new LocalizedText("en-US", "Simple Server sample"),
                 ApplicationType.Server,
                 null,
                 null,
-                null);
+                new string[] { endpointUrlHint });
         }
 
         public override IList<EndpointDescription> GetEndpointDescriptions(string endpointUrlHint)

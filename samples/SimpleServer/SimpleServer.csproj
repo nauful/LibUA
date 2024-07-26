@@ -9,10 +9,6 @@
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Extensions.Logging.Console" Version="8.0.0" />
+		<PackageReference Include="nauful-LibUA-core" Version="1.0.24" />
 	</ItemGroup>
-
-	<ItemGroup>
-    <ProjectReference Include="..\src\LibUA\LibUA.csproj" />
-  </ItemGroup>
-
 </Project>
