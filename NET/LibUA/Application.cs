@@ -5742,7 +5742,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Optional/80
                 //	HasProperty/46 <- DataTypeDescriptionType/69
-                var ID_i104_DataTypeVersion = new NodeVariable(new NodeId(104), new QualifiedName("DataTypeVersion"), new LocalizedText("DataTypeVersion"), new LocalizedText("The version number for the data type description."), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i104_DataTypeVersion = new NodeVariable(new NodeId(104), new QualifiedName("DataTypeVersion"), new LocalizedText("DataTypeVersion"), new LocalizedText("The version number for the data type description."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i104_DataTypeVersion.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i104_DataTypeVersion.References.Add(new ReferenceNode(new NodeId(37), new NodeId(80), false));
                 ID_i104_DataTypeVersion.References.Add(new ReferenceNode(new NodeId(46), new NodeId(69), true));
@@ -5751,7 +5751,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Optional/80
                 //	HasProperty/46 <- DataTypeDescriptionType/69
-                var ID_i105_DictionaryFragment = new NodeVariable(new NodeId(105), new QualifiedName("DictionaryFragment"), new LocalizedText("DictionaryFragment"), new LocalizedText("A fragment of a data type dictionary that defines the data type."), 0, 0, 0, 0, 0, false, new NodeId(15));
+                var ID_i105_DictionaryFragment = new NodeVariable(new NodeId(105), new QualifiedName("DictionaryFragment"), new LocalizedText("DictionaryFragment"), new LocalizedText("A fragment of a data type dictionary that defines the data type."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(15));
                 ID_i105_DictionaryFragment.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i105_DictionaryFragment.References.Add(new ReferenceNode(new NodeId(37), new NodeId(80), false));
                 ID_i105_DictionaryFragment.References.Add(new ReferenceNode(new NodeId(46), new NodeId(69), true));
@@ -5760,7 +5760,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Optional/80
                 //	HasProperty/46 <- DataTypeDictionaryType/72
-                var ID_i106_DataTypeVersion = new NodeVariable(new NodeId(106), new QualifiedName("DataTypeVersion"), new LocalizedText("DataTypeVersion"), new LocalizedText("The version number for the data type dictionary."), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i106_DataTypeVersion = new NodeVariable(new NodeId(106), new QualifiedName("DataTypeVersion"), new LocalizedText("DataTypeVersion"), new LocalizedText("The version number for the data type dictionary."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i106_DataTypeVersion.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i106_DataTypeVersion.References.Add(new ReferenceNode(new NodeId(37), new NodeId(80), false));
                 ID_i106_DataTypeVersion.References.Add(new ReferenceNode(new NodeId(46), new NodeId(72), true));
@@ -5769,7 +5769,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Optional/80
                 //	HasProperty/46 <- DataTypeDictionaryType/72
-                var ID_i107_NamespaceUri = new NodeVariable(new NodeId(107), new QualifiedName("NamespaceUri"), new LocalizedText("NamespaceUri"), new LocalizedText("A URI that uniquely identifies the dictionary."), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i107_NamespaceUri = new NodeVariable(new NodeId(107), new QualifiedName("NamespaceUri"), new LocalizedText("NamespaceUri"), new LocalizedText("A URI that uniquely identifies the dictionary."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i107_NamespaceUri.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i107_NamespaceUri.References.Add(new ReferenceNode(new NodeId(37), new NodeId(80), false));
                 ID_i107_NamespaceUri.References.Add(new ReferenceNode(new NodeId(46), new NodeId(72), true));
@@ -5778,7 +5778,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- NamingRuleType/120
-                var ID_i12169_EnumValues = new NodeVariable(new NodeId(12169), new QualifiedName("EnumValues"), new LocalizedText("EnumValues"), new LocalizedText("The BrowseName must appear in all instances of the type."), 0, 0, 0, 0, 0, false, new NodeId(7594));
+                var ID_i12169_EnumValues = new NodeVariable(new NodeId(12169), new QualifiedName("EnumValues"), new LocalizedText("EnumValues"), new LocalizedText("The BrowseName must appear in all instances of the type."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7594));
                 ID_i12169_EnumValues.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i12169_EnumValues.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i12169_EnumValues.References.Add(new ReferenceNode(new NodeId(46), new NodeId(120), true));
@@ -5787,7 +5787,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ModellingRuleType/77
-                var ID_i111_NamingRule = new NodeVariable(new NodeId(111), new QualifiedName("NamingRule"), new LocalizedText("NamingRule"), new LocalizedText("Specified the significances of the BrowseName when a type is instantiated."), 0, 0, 0, 0, 0, false, new NodeId(120));
+                var ID_i111_NamingRule = new NodeVariable(new NodeId(111), new QualifiedName("NamingRule"), new LocalizedText("NamingRule"), new LocalizedText("Specified the significances of the BrowseName when a type is instantiated."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(120));
                 ID_i111_NamingRule.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i111_NamingRule.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i111_NamingRule.References.Add(new ReferenceNode(new NodeId(46), new NodeId(77), true));
@@ -5795,115 +5795,115 @@ namespace LibUA
                 // NamingRule, i=112, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasProperty/46 <- Mandatory/78
-                var ID_i112_NamingRule = new NodeVariable(new NodeId(112), new QualifiedName("NamingRule"), new LocalizedText("NamingRule"), new LocalizedText("Specified the significances of the BrowseName when a type is instantiated."), 0, 0, 0, 0, 0, false, new NodeId(120));
+                var ID_i112_NamingRule = new NodeVariable(new NodeId(112), new QualifiedName("NamingRule"), new LocalizedText("NamingRule"), new LocalizedText("Specified the significances of the BrowseName when a type is instantiated."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(120));
                 ID_i112_NamingRule.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i112_NamingRule.References.Add(new ReferenceNode(new NodeId(46), new NodeId(78), true));
 
                 // NamingRule, i=113, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasProperty/46 <- Optional/80
-                var ID_i113_NamingRule = new NodeVariable(new NodeId(113), new QualifiedName("NamingRule"), new LocalizedText("NamingRule"), new LocalizedText("Specified the significances of the BrowseName when a type is instantiated."), 0, 0, 0, 0, 0, false, new NodeId(120));
+                var ID_i113_NamingRule = new NodeVariable(new NodeId(113), new QualifiedName("NamingRule"), new LocalizedText("NamingRule"), new LocalizedText("Specified the significances of the BrowseName when a type is instantiated."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(120));
                 ID_i113_NamingRule.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i113_NamingRule.References.Add(new ReferenceNode(new NodeId(46), new NodeId(80), true));
 
                 // NamingRule, i=114, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasProperty/46 <- ExposesItsArray/83
-                var ID_i114_NamingRule = new NodeVariable(new NodeId(114), new QualifiedName("NamingRule"), new LocalizedText("NamingRule"), new LocalizedText("Specified the significances of the BrowseName when a type is instantiated."), 0, 0, 0, 0, 0, false, new NodeId(120));
+                var ID_i114_NamingRule = new NodeVariable(new NodeId(114), new QualifiedName("NamingRule"), new LocalizedText("NamingRule"), new LocalizedText("Specified the significances of the BrowseName when a type is instantiated."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(120));
                 ID_i114_NamingRule.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i114_NamingRule.References.Add(new ReferenceNode(new NodeId(46), new NodeId(83), true));
 
                 // NamingRule, i=116, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasProperty/46 <- MandatoryShared/79
-                var ID_i116_NamingRule = new NodeVariable(new NodeId(116), new QualifiedName("NamingRule"), new LocalizedText("NamingRule"), new LocalizedText("Specified the significances of the BrowseName when a type is instantiated."), 0, 0, 0, 0, 0, false, new NodeId(120));
+                var ID_i116_NamingRule = new NodeVariable(new NodeId(116), new QualifiedName("NamingRule"), new LocalizedText("NamingRule"), new LocalizedText("Specified the significances of the BrowseName when a type is instantiated."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(120));
                 ID_i116_NamingRule.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i116_NamingRule.References.Add(new ReferenceNode(new NodeId(46), new NodeId(79), true));
 
                 // NamingRule, i=11509, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasProperty/46 <- OptionalPlaceholder/11508
-                var ID_i11509_NamingRule = new NodeVariable(new NodeId(11509), new QualifiedName("NamingRule"), new LocalizedText("NamingRule"), new LocalizedText("Specified the significances of the BrowseName when a type is instantiated."), 0, 0, 0, 0, 0, false, new NodeId(120));
+                var ID_i11509_NamingRule = new NodeVariable(new NodeId(11509), new QualifiedName("NamingRule"), new LocalizedText("NamingRule"), new LocalizedText("Specified the significances of the BrowseName when a type is instantiated."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(120));
                 ID_i11509_NamingRule.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11509_NamingRule.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11508), true));
 
                 // NamingRule, i=11511, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasProperty/46 <- MandatoryPlaceholder/11510
-                var ID_i11511_NamingRule = new NodeVariable(new NodeId(11511), new QualifiedName("NamingRule"), new LocalizedText("NamingRule"), new LocalizedText("Specified the significances of the BrowseName when a type is instantiated."), 0, 0, 0, 0, 0, false, new NodeId(120));
+                var ID_i11511_NamingRule = new NodeVariable(new NodeId(11511), new QualifiedName("NamingRule"), new LocalizedText("NamingRule"), new LocalizedText("Specified the significances of the BrowseName when a type is instantiated."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(120));
                 ID_i11511_NamingRule.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11511_NamingRule.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11510), true));
 
                 // NodeVersion, i=3068, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
-                var ID_i3068_NodeVersion = new NodeVariable(new NodeId(3068), new QualifiedName("NodeVersion"), new LocalizedText("NodeVersion"), new LocalizedText("The version number of the node (used to indicate changes to references of the owning node)."), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i3068_NodeVersion = new NodeVariable(new NodeId(3068), new QualifiedName("NodeVersion"), new LocalizedText("NodeVersion"), new LocalizedText("The version number of the node (used to indicate changes to references of the owning node)."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i3068_NodeVersion.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
 
                 // ViewVersion, i=12170, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
-                var ID_i12170_ViewVersion = new NodeVariable(new NodeId(12170), new QualifiedName("ViewVersion"), new LocalizedText("ViewVersion"), new LocalizedText("The version number of the view."), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i12170_ViewVersion = new NodeVariable(new NodeId(12170), new QualifiedName("ViewVersion"), new LocalizedText("ViewVersion"), new LocalizedText("The version number of the view."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i12170_ViewVersion.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
 
                 // Icon, i=3067, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
-                var ID_i3067_Icon = new NodeVariable(new NodeId(3067), new QualifiedName("Icon"), new LocalizedText("Icon"), new LocalizedText("A small image representing the object."), 0, 0, 0, 0, 0, false, new NodeId(30));
+                var ID_i3067_Icon = new NodeVariable(new NodeId(3067), new QualifiedName("Icon"), new LocalizedText("Icon"), new LocalizedText("A small image representing the object."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(30));
                 ID_i3067_Icon.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
 
                 // LocalTime, i=3069, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
-                var ID_i3069_LocalTime = new NodeVariable(new NodeId(3069), new QualifiedName("LocalTime"), new LocalizedText("LocalTime"), new LocalizedText("The local time where the owning variable value was collected."), 0, 0, 0, 0, 0, false, new NodeId(8912));
+                var ID_i3069_LocalTime = new NodeVariable(new NodeId(3069), new QualifiedName("LocalTime"), new LocalizedText("LocalTime"), new LocalizedText("The local time where the owning variable value was collected."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(8912));
                 ID_i3069_LocalTime.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
 
                 // AllowNulls, i=3070, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
-                var ID_i3070_AllowNulls = new NodeVariable(new NodeId(3070), new QualifiedName("AllowNulls"), new LocalizedText("AllowNulls"), new LocalizedText("Whether the value of the owning variable is allowed to be null."), 0, 0, 0, 0, 0, false, new NodeId(1));
+                var ID_i3070_AllowNulls = new NodeVariable(new NodeId(3070), new QualifiedName("AllowNulls"), new LocalizedText("AllowNulls"), new LocalizedText("Whether the value of the owning variable is allowed to be null."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(1));
                 ID_i3070_AllowNulls.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
 
                 // ValueAsText, i=11433, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
-                var ID_i11433_ValueAsText = new NodeVariable(new NodeId(11433), new QualifiedName("ValueAsText"), new LocalizedText("ValueAsText"), new LocalizedText("The string representation of the current value for a variable with an enumerated data type."), 0, 0, 0, 0, 0, false, new NodeId(21));
+                var ID_i11433_ValueAsText = new NodeVariable(new NodeId(11433), new QualifiedName("ValueAsText"), new LocalizedText("ValueAsText"), new LocalizedText("The string representation of the current value for a variable with an enumerated data type."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(21));
                 ID_i11433_ValueAsText.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
 
                 // MaxStringLength, i=11498, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
-                var ID_i11498_MaxStringLength = new NodeVariable(new NodeId(11498), new QualifiedName("MaxStringLength"), new LocalizedText("MaxStringLength"), new LocalizedText("The maximum length for a string that can be stored in the owning variable."), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i11498_MaxStringLength = new NodeVariable(new NodeId(11498), new QualifiedName("MaxStringLength"), new LocalizedText("MaxStringLength"), new LocalizedText("The maximum length for a string that can be stored in the owning variable."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i11498_MaxStringLength.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
 
                 // MaxArrayLength, i=11512, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
-                var ID_i11512_MaxArrayLength = new NodeVariable(new NodeId(11512), new QualifiedName("MaxArrayLength"), new LocalizedText("MaxArrayLength"), new LocalizedText("The maximum length for an array that can be stored in the owning variable."), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i11512_MaxArrayLength = new NodeVariable(new NodeId(11512), new QualifiedName("MaxArrayLength"), new LocalizedText("MaxArrayLength"), new LocalizedText("The maximum length for an array that can be stored in the owning variable."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i11512_MaxArrayLength.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
 
                 // EngineeringUnits, i=11513, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
-                var ID_i11513_EngineeringUnits = new NodeVariable(new NodeId(11513), new QualifiedName("EngineeringUnits"), new LocalizedText("EngineeringUnits"), new LocalizedText("The engineering units for the value of the owning variable."), 0, 0, 0, 0, 0, false, new NodeId(887));
+                var ID_i11513_EngineeringUnits = new NodeVariable(new NodeId(11513), new QualifiedName("EngineeringUnits"), new LocalizedText("EngineeringUnits"), new LocalizedText("The engineering units for the value of the owning variable."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(887));
                 ID_i11513_EngineeringUnits.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
 
                 // EnumStrings, i=11432, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
-                var ID_i11432_EnumStrings = new NodeVariable(new NodeId(11432), new QualifiedName("EnumStrings"), new LocalizedText("EnumStrings"), new LocalizedText("The human readable strings associated with the values of an enumerated value (when values are sequential)."), 0, 0, 0, 0, 0, false, new NodeId(21));
+                var ID_i11432_EnumStrings = new NodeVariable(new NodeId(11432), new QualifiedName("EnumStrings"), new LocalizedText("EnumStrings"), new LocalizedText("The human readable strings associated with the values of an enumerated value (when values are sequential)."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(21));
                 ID_i11432_EnumStrings.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
 
                 // EnumValues, i=3071, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
-                var ID_i3071_EnumValues = new NodeVariable(new NodeId(3071), new QualifiedName("EnumValues"), new LocalizedText("EnumValues"), new LocalizedText("The human readable strings associated with the values of an enumerated value (when values have no sequence)."), 0, 0, 0, 0, 0, false, new NodeId(7594));
+                var ID_i3071_EnumValues = new NodeVariable(new NodeId(3071), new QualifiedName("EnumValues"), new LocalizedText("EnumValues"), new LocalizedText("The human readable strings associated with the values of an enumerated value (when values have no sequence)."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7594));
                 ID_i3071_EnumValues.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
 
                 // InputArguments, i=3072, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
-                var ID_i3072_InputArguments = new NodeVariable(new NodeId(3072), new QualifiedName("InputArguments"), new LocalizedText("InputArguments"), new LocalizedText("The input arguments for a method."), 0, 0, 0, 0, 0, false, new NodeId(296));
+                var ID_i3072_InputArguments = new NodeVariable(new NodeId(3072), new QualifiedName("InputArguments"), new LocalizedText("InputArguments"), new LocalizedText("The input arguments for a method."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(296));
                 ID_i3072_InputArguments.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
 
                 // OutputArguments, i=3073, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
-                var ID_i3073_OutputArguments = new NodeVariable(new NodeId(3073), new QualifiedName("OutputArguments"), new LocalizedText("OutputArguments"), new LocalizedText("The output arguments for a method."), 0, 0, 0, 0, 0, false, new NodeId(296));
+                var ID_i3073_OutputArguments = new NodeVariable(new NodeId(3073), new QualifiedName("OutputArguments"), new LocalizedText("OutputArguments"), new LocalizedText("The output arguments for a method."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(296));
                 ID_i3073_OutputArguments.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
 
                 // ServerArray, i=2005, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ServerType/2004
-                var ID_i2005_ServerArray = new NodeVariable(new NodeId(2005), new QualifiedName("ServerArray"), new LocalizedText("ServerArray"), new LocalizedText("The list of server URIs used by the server."), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i2005_ServerArray = new NodeVariable(new NodeId(2005), new QualifiedName("ServerArray"), new LocalizedText("ServerArray"), new LocalizedText("The list of server URIs used by the server."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i2005_ServerArray.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2005_ServerArray.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2005_ServerArray.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2004), true));
@@ -5912,7 +5912,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ServerType/2004
-                var ID_i2006_NamespaceArray = new NodeVariable(new NodeId(2006), new QualifiedName("NamespaceArray"), new LocalizedText("NamespaceArray"), new LocalizedText("The list of namespace URIs used by the server."), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i2006_NamespaceArray = new NodeVariable(new NodeId(2006), new QualifiedName("NamespaceArray"), new LocalizedText("NamespaceArray"), new LocalizedText("The list of namespace URIs used by the server."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i2006_NamespaceArray.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2006_NamespaceArray.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2006_NamespaceArray.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2004), true));
@@ -5927,7 +5927,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> ServerStatusType/2138
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- ServerType/2004
-                var ID_i2007_ServerStatus = new NodeVariable(new NodeId(2007), new QualifiedName("ServerStatus"), new LocalizedText("ServerStatus"), new LocalizedText("The current status of the server."), 0, 0, 0, 0, 0, false, new NodeId(862));
+                var ID_i2007_ServerStatus = new NodeVariable(new NodeId(2007), new QualifiedName("ServerStatus"), new LocalizedText("ServerStatus"), new LocalizedText("The current status of the server."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(862));
                 ID_i2007_ServerStatus.References.Add(new ReferenceNode(new NodeId(47), new NodeId(3074), false));
                 ID_i2007_ServerStatus.References.Add(new ReferenceNode(new NodeId(47), new NodeId(3075), false));
                 ID_i2007_ServerStatus.References.Add(new ReferenceNode(new NodeId(47), new NodeId(3076), false));
@@ -5942,7 +5942,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- ServerStatus/2007
-                var ID_i3074_StartTime = new NodeVariable(new NodeId(3074), new QualifiedName("StartTime"), new LocalizedText("StartTime"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(294));
+                var ID_i3074_StartTime = new NodeVariable(new NodeId(3074), new QualifiedName("StartTime"), new LocalizedText("StartTime"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(294));
                 ID_i3074_StartTime.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3074_StartTime.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3074_StartTime.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2007), true));
@@ -5951,7 +5951,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- ServerStatus/2007
-                var ID_i3075_CurrentTime = new NodeVariable(new NodeId(3075), new QualifiedName("CurrentTime"), new LocalizedText("CurrentTime"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(294));
+                var ID_i3075_CurrentTime = new NodeVariable(new NodeId(3075), new QualifiedName("CurrentTime"), new LocalizedText("CurrentTime"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(294));
                 ID_i3075_CurrentTime.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3075_CurrentTime.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3075_CurrentTime.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2007), true));
@@ -5960,7 +5960,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- ServerStatus/2007
-                var ID_i3076_State = new NodeVariable(new NodeId(3076), new QualifiedName("State"), new LocalizedText("State"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(852));
+                var ID_i3076_State = new NodeVariable(new NodeId(3076), new QualifiedName("State"), new LocalizedText("State"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(852));
                 ID_i3076_State.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3076_State.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3076_State.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2007), true));
@@ -5975,7 +5975,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BuildInfoType/3051
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- ServerStatus/2007
-                var ID_i3077_BuildInfo = new NodeVariable(new NodeId(3077), new QualifiedName("BuildInfo"), new LocalizedText("BuildInfo"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(338));
+                var ID_i3077_BuildInfo = new NodeVariable(new NodeId(3077), new QualifiedName("BuildInfo"), new LocalizedText("BuildInfo"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(338));
                 ID_i3077_BuildInfo.References.Add(new ReferenceNode(new NodeId(47), new NodeId(3078), false));
                 ID_i3077_BuildInfo.References.Add(new ReferenceNode(new NodeId(47), new NodeId(3079), false));
                 ID_i3077_BuildInfo.References.Add(new ReferenceNode(new NodeId(47), new NodeId(3080), false));
@@ -5990,7 +5990,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- BuildInfo/3077
-                var ID_i3078_ProductUri = new NodeVariable(new NodeId(3078), new QualifiedName("ProductUri"), new LocalizedText("ProductUri"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i3078_ProductUri = new NodeVariable(new NodeId(3078), new QualifiedName("ProductUri"), new LocalizedText("ProductUri"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i3078_ProductUri.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3078_ProductUri.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3078_ProductUri.References.Add(new ReferenceNode(new NodeId(47), new NodeId(3077), true));
@@ -5999,7 +5999,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- BuildInfo/3077
-                var ID_i3079_ManufacturerName = new NodeVariable(new NodeId(3079), new QualifiedName("ManufacturerName"), new LocalizedText("ManufacturerName"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i3079_ManufacturerName = new NodeVariable(new NodeId(3079), new QualifiedName("ManufacturerName"), new LocalizedText("ManufacturerName"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i3079_ManufacturerName.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3079_ManufacturerName.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3079_ManufacturerName.References.Add(new ReferenceNode(new NodeId(47), new NodeId(3077), true));
@@ -6008,7 +6008,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- BuildInfo/3077
-                var ID_i3080_ProductName = new NodeVariable(new NodeId(3080), new QualifiedName("ProductName"), new LocalizedText("ProductName"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i3080_ProductName = new NodeVariable(new NodeId(3080), new QualifiedName("ProductName"), new LocalizedText("ProductName"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i3080_ProductName.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3080_ProductName.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3080_ProductName.References.Add(new ReferenceNode(new NodeId(47), new NodeId(3077), true));
@@ -6017,7 +6017,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- BuildInfo/3077
-                var ID_i3081_SoftwareVersion = new NodeVariable(new NodeId(3081), new QualifiedName("SoftwareVersion"), new LocalizedText("SoftwareVersion"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i3081_SoftwareVersion = new NodeVariable(new NodeId(3081), new QualifiedName("SoftwareVersion"), new LocalizedText("SoftwareVersion"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i3081_SoftwareVersion.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3081_SoftwareVersion.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3081_SoftwareVersion.References.Add(new ReferenceNode(new NodeId(47), new NodeId(3077), true));
@@ -6026,7 +6026,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- BuildInfo/3077
-                var ID_i3082_BuildNumber = new NodeVariable(new NodeId(3082), new QualifiedName("BuildNumber"), new LocalizedText("BuildNumber"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i3082_BuildNumber = new NodeVariable(new NodeId(3082), new QualifiedName("BuildNumber"), new LocalizedText("BuildNumber"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i3082_BuildNumber.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3082_BuildNumber.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3082_BuildNumber.References.Add(new ReferenceNode(new NodeId(47), new NodeId(3077), true));
@@ -6035,7 +6035,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- BuildInfo/3077
-                var ID_i3083_BuildDate = new NodeVariable(new NodeId(3083), new QualifiedName("BuildDate"), new LocalizedText("BuildDate"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(294));
+                var ID_i3083_BuildDate = new NodeVariable(new NodeId(3083), new QualifiedName("BuildDate"), new LocalizedText("BuildDate"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(294));
                 ID_i3083_BuildDate.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3083_BuildDate.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3083_BuildDate.References.Add(new ReferenceNode(new NodeId(47), new NodeId(3077), true));
@@ -6044,7 +6044,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- ServerStatus/2007
-                var ID_i3084_SecondsTillShutdown = new NodeVariable(new NodeId(3084), new QualifiedName("SecondsTillShutdown"), new LocalizedText("SecondsTillShutdown"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i3084_SecondsTillShutdown = new NodeVariable(new NodeId(3084), new QualifiedName("SecondsTillShutdown"), new LocalizedText("SecondsTillShutdown"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i3084_SecondsTillShutdown.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3084_SecondsTillShutdown.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3084_SecondsTillShutdown.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2007), true));
@@ -6053,7 +6053,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- ServerStatus/2007
-                var ID_i3085_ShutdownReason = new NodeVariable(new NodeId(3085), new QualifiedName("ShutdownReason"), new LocalizedText("ShutdownReason"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(21));
+                var ID_i3085_ShutdownReason = new NodeVariable(new NodeId(3085), new QualifiedName("ShutdownReason"), new LocalizedText("ShutdownReason"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(21));
                 ID_i3085_ShutdownReason.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3085_ShutdownReason.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3085_ShutdownReason.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2007), true));
@@ -6062,7 +6062,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ServerType/2004
-                var ID_i2008_ServiceLevel = new NodeVariable(new NodeId(2008), new QualifiedName("ServiceLevel"), new LocalizedText("ServiceLevel"), new LocalizedText("A value indicating the level of service the server can provide. 255 indicates the best."), 0, 0, 0, 0, 0, false, new NodeId(3));
+                var ID_i2008_ServiceLevel = new NodeVariable(new NodeId(2008), new QualifiedName("ServiceLevel"), new LocalizedText("ServiceLevel"), new LocalizedText("A value indicating the level of service the server can provide. 255 indicates the best."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(3));
                 ID_i2008_ServiceLevel.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2008_ServiceLevel.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2008_ServiceLevel.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2004), true));
@@ -6071,7 +6071,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ServerType/2004
-                var ID_i2742_Auditing = new NodeVariable(new NodeId(2742), new QualifiedName("Auditing"), new LocalizedText("Auditing"), new LocalizedText("A flag indicating whether the server is currently generating audit events."), 0, 0, 0, 0, 0, false, new NodeId(1));
+                var ID_i2742_Auditing = new NodeVariable(new NodeId(2742), new QualifiedName("Auditing"), new LocalizedText("Auditing"), new LocalizedText("A flag indicating whether the server is currently generating audit events."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(1));
                 ID_i2742_Auditing.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2742_Auditing.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2742_Auditing.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2004), true));
@@ -6080,7 +6080,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ServerCapabilities/2009
-                var ID_i3086_ServerProfileArray = new NodeVariable(new NodeId(3086), new QualifiedName("ServerProfileArray"), new LocalizedText("ServerProfileArray"), new LocalizedText("A list of profiles supported by the server."), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i3086_ServerProfileArray = new NodeVariable(new NodeId(3086), new QualifiedName("ServerProfileArray"), new LocalizedText("ServerProfileArray"), new LocalizedText("A list of profiles supported by the server."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i3086_ServerProfileArray.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i3086_ServerProfileArray.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3086_ServerProfileArray.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2009), true));
@@ -6089,7 +6089,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ServerCapabilities/2009
-                var ID_i3087_LocaleIdArray = new NodeVariable(new NodeId(3087), new QualifiedName("LocaleIdArray"), new LocalizedText("LocaleIdArray"), new LocalizedText("A list of locales supported by the server."), 0, 0, 0, 0, 0, false, new NodeId(295));
+                var ID_i3087_LocaleIdArray = new NodeVariable(new NodeId(3087), new QualifiedName("LocaleIdArray"), new LocalizedText("LocaleIdArray"), new LocalizedText("A list of locales supported by the server."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(295));
                 ID_i3087_LocaleIdArray.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i3087_LocaleIdArray.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3087_LocaleIdArray.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2009), true));
@@ -6098,7 +6098,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ServerCapabilities/2009
-                var ID_i3088_MinSupportedSampleRate = new NodeVariable(new NodeId(3088), new QualifiedName("MinSupportedSampleRate"), new LocalizedText("MinSupportedSampleRate"), new LocalizedText("The minimum sampling interval supported by the server."), 0, 0, 0, 0, 0, false, new NodeId(290));
+                var ID_i3088_MinSupportedSampleRate = new NodeVariable(new NodeId(3088), new QualifiedName("MinSupportedSampleRate"), new LocalizedText("MinSupportedSampleRate"), new LocalizedText("The minimum sampling interval supported by the server."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(290));
                 ID_i3088_MinSupportedSampleRate.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i3088_MinSupportedSampleRate.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3088_MinSupportedSampleRate.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2009), true));
@@ -6107,7 +6107,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ServerCapabilities/2009
-                var ID_i3089_MaxBrowseContinuationPoints = new NodeVariable(new NodeId(3089), new QualifiedName("MaxBrowseContinuationPoints"), new LocalizedText("MaxBrowseContinuationPoints"), new LocalizedText("The maximum number of continuation points for Browse operations per session."), 0, 0, 0, 0, 0, false, new NodeId(5));
+                var ID_i3089_MaxBrowseContinuationPoints = new NodeVariable(new NodeId(3089), new QualifiedName("MaxBrowseContinuationPoints"), new LocalizedText("MaxBrowseContinuationPoints"), new LocalizedText("The maximum number of continuation points for Browse operations per session."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(5));
                 ID_i3089_MaxBrowseContinuationPoints.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i3089_MaxBrowseContinuationPoints.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3089_MaxBrowseContinuationPoints.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2009), true));
@@ -6116,7 +6116,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ServerCapabilities/2009
-                var ID_i3090_MaxQueryContinuationPoints = new NodeVariable(new NodeId(3090), new QualifiedName("MaxQueryContinuationPoints"), new LocalizedText("MaxQueryContinuationPoints"), new LocalizedText("The maximum number of continuation points for Query operations per session."), 0, 0, 0, 0, 0, false, new NodeId(5));
+                var ID_i3090_MaxQueryContinuationPoints = new NodeVariable(new NodeId(3090), new QualifiedName("MaxQueryContinuationPoints"), new LocalizedText("MaxQueryContinuationPoints"), new LocalizedText("The maximum number of continuation points for Query operations per session."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(5));
                 ID_i3090_MaxQueryContinuationPoints.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i3090_MaxQueryContinuationPoints.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3090_MaxQueryContinuationPoints.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2009), true));
@@ -6125,7 +6125,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ServerCapabilities/2009
-                var ID_i3091_MaxHistoryContinuationPoints = new NodeVariable(new NodeId(3091), new QualifiedName("MaxHistoryContinuationPoints"), new LocalizedText("MaxHistoryContinuationPoints"), new LocalizedText("The maximum number of continuation points for ReadHistory operations per session."), 0, 0, 0, 0, 0, false, new NodeId(5));
+                var ID_i3091_MaxHistoryContinuationPoints = new NodeVariable(new NodeId(3091), new QualifiedName("MaxHistoryContinuationPoints"), new LocalizedText("MaxHistoryContinuationPoints"), new LocalizedText("The maximum number of continuation points for ReadHistory operations per session."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(5));
                 ID_i3091_MaxHistoryContinuationPoints.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i3091_MaxHistoryContinuationPoints.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3091_MaxHistoryContinuationPoints.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2009), true));
@@ -6134,7 +6134,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ServerCapabilities/2009
-                var ID_i3092_SoftwareCertificates = new NodeVariable(new NodeId(3092), new QualifiedName("SoftwareCertificates"), new LocalizedText("SoftwareCertificates"), new LocalizedText("The software certificates owned by the server."), 0, 0, 0, 0, 0, false, new NodeId(344));
+                var ID_i3092_SoftwareCertificates = new NodeVariable(new NodeId(3092), new QualifiedName("SoftwareCertificates"), new LocalizedText("SoftwareCertificates"), new LocalizedText("The software certificates owned by the server."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(344));
                 ID_i3092_SoftwareCertificates.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i3092_SoftwareCertificates.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3092_SoftwareCertificates.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2009), true));
@@ -6155,7 +6155,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> ServerDiagnosticsSummaryType/2150
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- ServerDiagnostics/2010
-                var ID_i3095_ServerDiagnosticsSummary = new NodeVariable(new NodeId(3095), new QualifiedName("ServerDiagnosticsSummary"), new LocalizedText("ServerDiagnosticsSummary"), new LocalizedText("A summary of server level diagnostics."), 0, 0, 0, 0, 0, false, new NodeId(859));
+                var ID_i3095_ServerDiagnosticsSummary = new NodeVariable(new NodeId(3095), new QualifiedName("ServerDiagnosticsSummary"), new LocalizedText("ServerDiagnosticsSummary"), new LocalizedText("A summary of server level diagnostics."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(859));
                 ID_i3095_ServerDiagnosticsSummary.References.Add(new ReferenceNode(new NodeId(47), new NodeId(3096), false));
                 ID_i3095_ServerDiagnosticsSummary.References.Add(new ReferenceNode(new NodeId(47), new NodeId(3097), false));
                 ID_i3095_ServerDiagnosticsSummary.References.Add(new ReferenceNode(new NodeId(47), new NodeId(3098), false));
@@ -6176,7 +6176,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- ServerDiagnosticsSummary/3095
-                var ID_i3096_ServerViewCount = new NodeVariable(new NodeId(3096), new QualifiedName("ServerViewCount"), new LocalizedText("ServerViewCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i3096_ServerViewCount = new NodeVariable(new NodeId(3096), new QualifiedName("ServerViewCount"), new LocalizedText("ServerViewCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i3096_ServerViewCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3096_ServerViewCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3096_ServerViewCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(3095), true));
@@ -6185,7 +6185,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- ServerDiagnosticsSummary/3095
-                var ID_i3097_CurrentSessionCount = new NodeVariable(new NodeId(3097), new QualifiedName("CurrentSessionCount"), new LocalizedText("CurrentSessionCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i3097_CurrentSessionCount = new NodeVariable(new NodeId(3097), new QualifiedName("CurrentSessionCount"), new LocalizedText("CurrentSessionCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i3097_CurrentSessionCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3097_CurrentSessionCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3097_CurrentSessionCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(3095), true));
@@ -6194,7 +6194,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- ServerDiagnosticsSummary/3095
-                var ID_i3098_CumulatedSessionCount = new NodeVariable(new NodeId(3098), new QualifiedName("CumulatedSessionCount"), new LocalizedText("CumulatedSessionCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i3098_CumulatedSessionCount = new NodeVariable(new NodeId(3098), new QualifiedName("CumulatedSessionCount"), new LocalizedText("CumulatedSessionCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i3098_CumulatedSessionCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3098_CumulatedSessionCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3098_CumulatedSessionCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(3095), true));
@@ -6203,7 +6203,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- ServerDiagnosticsSummary/3095
-                var ID_i3099_SecurityRejectedSessionCount = new NodeVariable(new NodeId(3099), new QualifiedName("SecurityRejectedSessionCount"), new LocalizedText("SecurityRejectedSessionCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i3099_SecurityRejectedSessionCount = new NodeVariable(new NodeId(3099), new QualifiedName("SecurityRejectedSessionCount"), new LocalizedText("SecurityRejectedSessionCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i3099_SecurityRejectedSessionCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3099_SecurityRejectedSessionCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3099_SecurityRejectedSessionCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(3095), true));
@@ -6212,7 +6212,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- ServerDiagnosticsSummary/3095
-                var ID_i3100_RejectedSessionCount = new NodeVariable(new NodeId(3100), new QualifiedName("RejectedSessionCount"), new LocalizedText("RejectedSessionCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i3100_RejectedSessionCount = new NodeVariable(new NodeId(3100), new QualifiedName("RejectedSessionCount"), new LocalizedText("RejectedSessionCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i3100_RejectedSessionCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3100_RejectedSessionCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3100_RejectedSessionCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(3095), true));
@@ -6221,7 +6221,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- ServerDiagnosticsSummary/3095
-                var ID_i3101_SessionTimeoutCount = new NodeVariable(new NodeId(3101), new QualifiedName("SessionTimeoutCount"), new LocalizedText("SessionTimeoutCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i3101_SessionTimeoutCount = new NodeVariable(new NodeId(3101), new QualifiedName("SessionTimeoutCount"), new LocalizedText("SessionTimeoutCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i3101_SessionTimeoutCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3101_SessionTimeoutCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3101_SessionTimeoutCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(3095), true));
@@ -6230,7 +6230,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- ServerDiagnosticsSummary/3095
-                var ID_i3102_SessionAbortCount = new NodeVariable(new NodeId(3102), new QualifiedName("SessionAbortCount"), new LocalizedText("SessionAbortCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i3102_SessionAbortCount = new NodeVariable(new NodeId(3102), new QualifiedName("SessionAbortCount"), new LocalizedText("SessionAbortCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i3102_SessionAbortCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3102_SessionAbortCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3102_SessionAbortCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(3095), true));
@@ -6239,7 +6239,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- ServerDiagnosticsSummary/3095
-                var ID_i3104_PublishingIntervalCount = new NodeVariable(new NodeId(3104), new QualifiedName("PublishingIntervalCount"), new LocalizedText("PublishingIntervalCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i3104_PublishingIntervalCount = new NodeVariable(new NodeId(3104), new QualifiedName("PublishingIntervalCount"), new LocalizedText("PublishingIntervalCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i3104_PublishingIntervalCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3104_PublishingIntervalCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3104_PublishingIntervalCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(3095), true));
@@ -6248,7 +6248,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- ServerDiagnosticsSummary/3095
-                var ID_i3105_CurrentSubscriptionCount = new NodeVariable(new NodeId(3105), new QualifiedName("CurrentSubscriptionCount"), new LocalizedText("CurrentSubscriptionCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i3105_CurrentSubscriptionCount = new NodeVariable(new NodeId(3105), new QualifiedName("CurrentSubscriptionCount"), new LocalizedText("CurrentSubscriptionCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i3105_CurrentSubscriptionCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3105_CurrentSubscriptionCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3105_CurrentSubscriptionCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(3095), true));
@@ -6257,7 +6257,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- ServerDiagnosticsSummary/3095
-                var ID_i3106_CumulatedSubscriptionCount = new NodeVariable(new NodeId(3106), new QualifiedName("CumulatedSubscriptionCount"), new LocalizedText("CumulatedSubscriptionCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i3106_CumulatedSubscriptionCount = new NodeVariable(new NodeId(3106), new QualifiedName("CumulatedSubscriptionCount"), new LocalizedText("CumulatedSubscriptionCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i3106_CumulatedSubscriptionCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3106_CumulatedSubscriptionCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3106_CumulatedSubscriptionCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(3095), true));
@@ -6266,7 +6266,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- ServerDiagnosticsSummary/3095
-                var ID_i3107_SecurityRejectedRequestsCount = new NodeVariable(new NodeId(3107), new QualifiedName("SecurityRejectedRequestsCount"), new LocalizedText("SecurityRejectedRequestsCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i3107_SecurityRejectedRequestsCount = new NodeVariable(new NodeId(3107), new QualifiedName("SecurityRejectedRequestsCount"), new LocalizedText("SecurityRejectedRequestsCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i3107_SecurityRejectedRequestsCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3107_SecurityRejectedRequestsCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3107_SecurityRejectedRequestsCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(3095), true));
@@ -6275,7 +6275,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- ServerDiagnosticsSummary/3095
-                var ID_i3108_RejectedRequestsCount = new NodeVariable(new NodeId(3108), new QualifiedName("RejectedRequestsCount"), new LocalizedText("RejectedRequestsCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i3108_RejectedRequestsCount = new NodeVariable(new NodeId(3108), new QualifiedName("RejectedRequestsCount"), new LocalizedText("RejectedRequestsCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i3108_RejectedRequestsCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3108_RejectedRequestsCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3108_RejectedRequestsCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(3095), true));
@@ -6284,7 +6284,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> SubscriptionDiagnosticsArrayType/2171
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- ServerDiagnostics/2010
-                var ID_i3110_SubscriptionDiagnosticsArray = new NodeVariable(new NodeId(3110), new QualifiedName("SubscriptionDiagnosticsArray"), new LocalizedText("SubscriptionDiagnosticsArray"), new LocalizedText("A list of diagnostics for each active subscription."), 0, 0, 0, 0, 0, false, new NodeId(874));
+                var ID_i3110_SubscriptionDiagnosticsArray = new NodeVariable(new NodeId(3110), new QualifiedName("SubscriptionDiagnosticsArray"), new LocalizedText("SubscriptionDiagnosticsArray"), new LocalizedText("A list of diagnostics for each active subscription."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(874));
                 ID_i3110_SubscriptionDiagnosticsArray.References.Add(new ReferenceNode(new NodeId(40), new NodeId(2171), false));
                 ID_i3110_SubscriptionDiagnosticsArray.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3110_SubscriptionDiagnosticsArray.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2010), true));
@@ -6293,7 +6293,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> SessionDiagnosticsArrayType/2196
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionsDiagnosticsSummary/3111
-                var ID_i3112_SessionDiagnosticsArray = new NodeVariable(new NodeId(3112), new QualifiedName("SessionDiagnosticsArray"), new LocalizedText("SessionDiagnosticsArray"), new LocalizedText("A list of diagnostics for each active session."), 0, 0, 0, 0, 0, false, new NodeId(865));
+                var ID_i3112_SessionDiagnosticsArray = new NodeVariable(new NodeId(3112), new QualifiedName("SessionDiagnosticsArray"), new LocalizedText("SessionDiagnosticsArray"), new LocalizedText("A list of diagnostics for each active session."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(865));
                 ID_i3112_SessionDiagnosticsArray.References.Add(new ReferenceNode(new NodeId(40), new NodeId(2196), false));
                 ID_i3112_SessionDiagnosticsArray.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3112_SessionDiagnosticsArray.References.Add(new ReferenceNode(new NodeId(47), new NodeId(3111), true));
@@ -6302,7 +6302,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> SessionSecurityDiagnosticsArrayType/2243
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionsDiagnosticsSummary/3111
-                var ID_i3113_SessionSecurityDiagnosticsArray = new NodeVariable(new NodeId(3113), new QualifiedName("SessionSecurityDiagnosticsArray"), new LocalizedText("SessionSecurityDiagnosticsArray"), new LocalizedText("A list of security related diagnostics for each active session."), 0, 0, 0, 0, 0, false, new NodeId(868));
+                var ID_i3113_SessionSecurityDiagnosticsArray = new NodeVariable(new NodeId(3113), new QualifiedName("SessionSecurityDiagnosticsArray"), new LocalizedText("SessionSecurityDiagnosticsArray"), new LocalizedText("A list of security related diagnostics for each active session."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(868));
                 ID_i3113_SessionSecurityDiagnosticsArray.References.Add(new ReferenceNode(new NodeId(40), new NodeId(2243), false));
                 ID_i3113_SessionSecurityDiagnosticsArray.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3113_SessionSecurityDiagnosticsArray.References.Add(new ReferenceNode(new NodeId(47), new NodeId(3111), true));
@@ -6311,7 +6311,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ServerDiagnostics/2010
-                var ID_i3114_EnabledFlag = new NodeVariable(new NodeId(3114), new QualifiedName("EnabledFlag"), new LocalizedText("EnabledFlag"), new LocalizedText("If TRUE the diagnostics collection is enabled."), 0, 0, 0, 0, 0, false, new NodeId(1));
+                var ID_i3114_EnabledFlag = new NodeVariable(new NodeId(3114), new QualifiedName("EnabledFlag"), new LocalizedText("EnabledFlag"), new LocalizedText("If TRUE the diagnostics collection is enabled."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(1));
                 ID_i3114_EnabledFlag.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i3114_EnabledFlag.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3114_EnabledFlag.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2010), true));
@@ -6320,7 +6320,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ServerRedundancy/2012
-                var ID_i3115_RedundancySupport = new NodeVariable(new NodeId(3115), new QualifiedName("RedundancySupport"), new LocalizedText("RedundancySupport"), new LocalizedText("Indicates what style of redundancy is supported by the server."), 0, 0, 0, 0, 0, false, new NodeId(851));
+                var ID_i3115_RedundancySupport = new NodeVariable(new NodeId(3115), new QualifiedName("RedundancySupport"), new LocalizedText("RedundancySupport"), new LocalizedText("Indicates what style of redundancy is supported by the server."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(851));
                 ID_i3115_RedundancySupport.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i3115_RedundancySupport.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3115_RedundancySupport.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2012), true));
@@ -6329,7 +6329,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- GetMonitoredItems/11489
-                var ID_i11490_InputArguments = new NodeVariable(new NodeId(11490), new QualifiedName("InputArguments"), new LocalizedText("InputArguments"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(296));
+                var ID_i11490_InputArguments = new NodeVariable(new NodeId(11490), new QualifiedName("InputArguments"), new LocalizedText("InputArguments"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(296));
                 ID_i11490_InputArguments.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11490_InputArguments.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11490_InputArguments.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11489), true));
@@ -6338,7 +6338,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- GetMonitoredItems/11489
-                var ID_i11491_OutputArguments = new NodeVariable(new NodeId(11491), new QualifiedName("OutputArguments"), new LocalizedText("OutputArguments"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(296));
+                var ID_i11491_OutputArguments = new NodeVariable(new NodeId(11491), new QualifiedName("OutputArguments"), new LocalizedText("OutputArguments"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(296));
                 ID_i11491_OutputArguments.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11491_OutputArguments.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11491_OutputArguments.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11489), true));
@@ -6347,7 +6347,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ServerCapabilitiesType/2013
-                var ID_i2014_ServerProfileArray = new NodeVariable(new NodeId(2014), new QualifiedName("ServerProfileArray"), new LocalizedText("ServerProfileArray"), new LocalizedText("A list of profiles supported by the server."), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i2014_ServerProfileArray = new NodeVariable(new NodeId(2014), new QualifiedName("ServerProfileArray"), new LocalizedText("ServerProfileArray"), new LocalizedText("A list of profiles supported by the server."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i2014_ServerProfileArray.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2014_ServerProfileArray.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2014_ServerProfileArray.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2013), true));
@@ -6356,7 +6356,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ServerCapabilitiesType/2013
-                var ID_i2016_LocaleIdArray = new NodeVariable(new NodeId(2016), new QualifiedName("LocaleIdArray"), new LocalizedText("LocaleIdArray"), new LocalizedText("A list of locales supported by the server."), 0, 0, 0, 0, 0, false, new NodeId(295));
+                var ID_i2016_LocaleIdArray = new NodeVariable(new NodeId(2016), new QualifiedName("LocaleIdArray"), new LocalizedText("LocaleIdArray"), new LocalizedText("A list of locales supported by the server."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(295));
                 ID_i2016_LocaleIdArray.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2016_LocaleIdArray.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2016_LocaleIdArray.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2013), true));
@@ -6365,7 +6365,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ServerCapabilitiesType/2013
-                var ID_i2017_MinSupportedSampleRate = new NodeVariable(new NodeId(2017), new QualifiedName("MinSupportedSampleRate"), new LocalizedText("MinSupportedSampleRate"), new LocalizedText("The minimum sampling interval supported by the server."), 0, 0, 0, 0, 0, false, new NodeId(290));
+                var ID_i2017_MinSupportedSampleRate = new NodeVariable(new NodeId(2017), new QualifiedName("MinSupportedSampleRate"), new LocalizedText("MinSupportedSampleRate"), new LocalizedText("The minimum sampling interval supported by the server."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(290));
                 ID_i2017_MinSupportedSampleRate.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2017_MinSupportedSampleRate.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2017_MinSupportedSampleRate.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2013), true));
@@ -6374,7 +6374,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ServerCapabilitiesType/2013
-                var ID_i2732_MaxBrowseContinuationPoints = new NodeVariable(new NodeId(2732), new QualifiedName("MaxBrowseContinuationPoints"), new LocalizedText("MaxBrowseContinuationPoints"), new LocalizedText("The maximum number of continuation points for Browse operations per session."), 0, 0, 0, 0, 0, false, new NodeId(5));
+                var ID_i2732_MaxBrowseContinuationPoints = new NodeVariable(new NodeId(2732), new QualifiedName("MaxBrowseContinuationPoints"), new LocalizedText("MaxBrowseContinuationPoints"), new LocalizedText("The maximum number of continuation points for Browse operations per session."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(5));
                 ID_i2732_MaxBrowseContinuationPoints.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2732_MaxBrowseContinuationPoints.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2732_MaxBrowseContinuationPoints.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2013), true));
@@ -6383,7 +6383,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ServerCapabilitiesType/2013
-                var ID_i2733_MaxQueryContinuationPoints = new NodeVariable(new NodeId(2733), new QualifiedName("MaxQueryContinuationPoints"), new LocalizedText("MaxQueryContinuationPoints"), new LocalizedText("The maximum number of continuation points for Query operations per session."), 0, 0, 0, 0, 0, false, new NodeId(5));
+                var ID_i2733_MaxQueryContinuationPoints = new NodeVariable(new NodeId(2733), new QualifiedName("MaxQueryContinuationPoints"), new LocalizedText("MaxQueryContinuationPoints"), new LocalizedText("The maximum number of continuation points for Query operations per session."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(5));
                 ID_i2733_MaxQueryContinuationPoints.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2733_MaxQueryContinuationPoints.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2733_MaxQueryContinuationPoints.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2013), true));
@@ -6392,7 +6392,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ServerCapabilitiesType/2013
-                var ID_i2734_MaxHistoryContinuationPoints = new NodeVariable(new NodeId(2734), new QualifiedName("MaxHistoryContinuationPoints"), new LocalizedText("MaxHistoryContinuationPoints"), new LocalizedText("The maximum number of continuation points for ReadHistory operations per session."), 0, 0, 0, 0, 0, false, new NodeId(5));
+                var ID_i2734_MaxHistoryContinuationPoints = new NodeVariable(new NodeId(2734), new QualifiedName("MaxHistoryContinuationPoints"), new LocalizedText("MaxHistoryContinuationPoints"), new LocalizedText("The maximum number of continuation points for ReadHistory operations per session."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(5));
                 ID_i2734_MaxHistoryContinuationPoints.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2734_MaxHistoryContinuationPoints.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2734_MaxHistoryContinuationPoints.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2013), true));
@@ -6401,7 +6401,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ServerCapabilitiesType/2013
-                var ID_i3049_SoftwareCertificates = new NodeVariable(new NodeId(3049), new QualifiedName("SoftwareCertificates"), new LocalizedText("SoftwareCertificates"), new LocalizedText("The software certificates owned by the server."), 0, 0, 0, 0, 0, false, new NodeId(344));
+                var ID_i3049_SoftwareCertificates = new NodeVariable(new NodeId(3049), new QualifiedName("SoftwareCertificates"), new LocalizedText("SoftwareCertificates"), new LocalizedText("The software certificates owned by the server."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(344));
                 ID_i3049_SoftwareCertificates.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i3049_SoftwareCertificates.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3049_SoftwareCertificates.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2013), true));
@@ -6410,7 +6410,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Optional/80
                 //	HasProperty/46 <- ServerCapabilitiesType/2013
-                var ID_i11549_MaxArrayLength = new NodeVariable(new NodeId(11549), new QualifiedName("MaxArrayLength"), new LocalizedText("MaxArrayLength"), new LocalizedText("The maximum length for an array value supported by the server."), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i11549_MaxArrayLength = new NodeVariable(new NodeId(11549), new QualifiedName("MaxArrayLength"), new LocalizedText("MaxArrayLength"), new LocalizedText("The maximum length for an array value supported by the server."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i11549_MaxArrayLength.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11549_MaxArrayLength.References.Add(new ReferenceNode(new NodeId(37), new NodeId(80), false));
                 ID_i11549_MaxArrayLength.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2013), true));
@@ -6419,7 +6419,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Optional/80
                 //	HasProperty/46 <- ServerCapabilitiesType/2013
-                var ID_i11550_MaxStringLength = new NodeVariable(new NodeId(11550), new QualifiedName("MaxStringLength"), new LocalizedText("MaxStringLength"), new LocalizedText("The maximum length for a string value supported by the server."), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i11550_MaxStringLength = new NodeVariable(new NodeId(11550), new QualifiedName("MaxStringLength"), new LocalizedText("MaxStringLength"), new LocalizedText("The maximum length for a string value supported by the server."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i11550_MaxStringLength.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11550_MaxStringLength.References.Add(new ReferenceNode(new NodeId(37), new NodeId(80), false));
                 ID_i11550_MaxStringLength.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2013), true));
@@ -6428,7 +6428,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> ServerVendorCapabilityType/2137
                 //	HasModellingRule/37 -> OptionalPlaceholder/11508
                 //	HasComponent/47 <- ServerCapabilitiesType/2013
-                var ID_i11562_VendorCapability = new NodeVariable(new NodeId(11562), new QualifiedName("<VendorCapability>"), new LocalizedText("<VendorCapability>"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(6));
+                var ID_i11562_VendorCapability = new NodeVariable(new NodeId(11562), new QualifiedName("<VendorCapability>"), new LocalizedText("<VendorCapability>"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(6));
                 ID_i11562_VendorCapability.References.Add(new ReferenceNode(new NodeId(40), new NodeId(2137), false));
                 ID_i11562_VendorCapability.References.Add(new ReferenceNode(new NodeId(37), new NodeId(11508), false));
                 ID_i11562_VendorCapability.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2013), true));
@@ -6449,7 +6449,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> ServerDiagnosticsSummaryType/2150
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- ServerDiagnosticsType/2020
-                var ID_i2021_ServerDiagnosticsSummary = new NodeVariable(new NodeId(2021), new QualifiedName("ServerDiagnosticsSummary"), new LocalizedText("ServerDiagnosticsSummary"), new LocalizedText("A summary of server level diagnostics."), 0, 0, 0, 0, 0, false, new NodeId(859));
+                var ID_i2021_ServerDiagnosticsSummary = new NodeVariable(new NodeId(2021), new QualifiedName("ServerDiagnosticsSummary"), new LocalizedText("ServerDiagnosticsSummary"), new LocalizedText("A summary of server level diagnostics."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(859));
                 ID_i2021_ServerDiagnosticsSummary.References.Add(new ReferenceNode(new NodeId(47), new NodeId(3116), false));
                 ID_i2021_ServerDiagnosticsSummary.References.Add(new ReferenceNode(new NodeId(47), new NodeId(3117), false));
                 ID_i2021_ServerDiagnosticsSummary.References.Add(new ReferenceNode(new NodeId(47), new NodeId(3118), false));
@@ -6470,7 +6470,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- ServerDiagnosticsSummary/2021
-                var ID_i3116_ServerViewCount = new NodeVariable(new NodeId(3116), new QualifiedName("ServerViewCount"), new LocalizedText("ServerViewCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i3116_ServerViewCount = new NodeVariable(new NodeId(3116), new QualifiedName("ServerViewCount"), new LocalizedText("ServerViewCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i3116_ServerViewCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3116_ServerViewCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3116_ServerViewCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2021), true));
@@ -6479,7 +6479,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- ServerDiagnosticsSummary/2021
-                var ID_i3117_CurrentSessionCount = new NodeVariable(new NodeId(3117), new QualifiedName("CurrentSessionCount"), new LocalizedText("CurrentSessionCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i3117_CurrentSessionCount = new NodeVariable(new NodeId(3117), new QualifiedName("CurrentSessionCount"), new LocalizedText("CurrentSessionCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i3117_CurrentSessionCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3117_CurrentSessionCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3117_CurrentSessionCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2021), true));
@@ -6488,7 +6488,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- ServerDiagnosticsSummary/2021
-                var ID_i3118_CumulatedSessionCount = new NodeVariable(new NodeId(3118), new QualifiedName("CumulatedSessionCount"), new LocalizedText("CumulatedSessionCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i3118_CumulatedSessionCount = new NodeVariable(new NodeId(3118), new QualifiedName("CumulatedSessionCount"), new LocalizedText("CumulatedSessionCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i3118_CumulatedSessionCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3118_CumulatedSessionCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3118_CumulatedSessionCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2021), true));
@@ -6497,7 +6497,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- ServerDiagnosticsSummary/2021
-                var ID_i3119_SecurityRejectedSessionCount = new NodeVariable(new NodeId(3119), new QualifiedName("SecurityRejectedSessionCount"), new LocalizedText("SecurityRejectedSessionCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i3119_SecurityRejectedSessionCount = new NodeVariable(new NodeId(3119), new QualifiedName("SecurityRejectedSessionCount"), new LocalizedText("SecurityRejectedSessionCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i3119_SecurityRejectedSessionCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3119_SecurityRejectedSessionCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3119_SecurityRejectedSessionCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2021), true));
@@ -6506,7 +6506,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- ServerDiagnosticsSummary/2021
-                var ID_i3120_RejectedSessionCount = new NodeVariable(new NodeId(3120), new QualifiedName("RejectedSessionCount"), new LocalizedText("RejectedSessionCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i3120_RejectedSessionCount = new NodeVariable(new NodeId(3120), new QualifiedName("RejectedSessionCount"), new LocalizedText("RejectedSessionCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i3120_RejectedSessionCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3120_RejectedSessionCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3120_RejectedSessionCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2021), true));
@@ -6515,7 +6515,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- ServerDiagnosticsSummary/2021
-                var ID_i3121_SessionTimeoutCount = new NodeVariable(new NodeId(3121), new QualifiedName("SessionTimeoutCount"), new LocalizedText("SessionTimeoutCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i3121_SessionTimeoutCount = new NodeVariable(new NodeId(3121), new QualifiedName("SessionTimeoutCount"), new LocalizedText("SessionTimeoutCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i3121_SessionTimeoutCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3121_SessionTimeoutCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3121_SessionTimeoutCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2021), true));
@@ -6524,7 +6524,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- ServerDiagnosticsSummary/2021
-                var ID_i3122_SessionAbortCount = new NodeVariable(new NodeId(3122), new QualifiedName("SessionAbortCount"), new LocalizedText("SessionAbortCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i3122_SessionAbortCount = new NodeVariable(new NodeId(3122), new QualifiedName("SessionAbortCount"), new LocalizedText("SessionAbortCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i3122_SessionAbortCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3122_SessionAbortCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3122_SessionAbortCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2021), true));
@@ -6533,7 +6533,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- ServerDiagnosticsSummary/2021
-                var ID_i3124_PublishingIntervalCount = new NodeVariable(new NodeId(3124), new QualifiedName("PublishingIntervalCount"), new LocalizedText("PublishingIntervalCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i3124_PublishingIntervalCount = new NodeVariable(new NodeId(3124), new QualifiedName("PublishingIntervalCount"), new LocalizedText("PublishingIntervalCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i3124_PublishingIntervalCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3124_PublishingIntervalCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3124_PublishingIntervalCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2021), true));
@@ -6542,7 +6542,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- ServerDiagnosticsSummary/2021
-                var ID_i3125_CurrentSubscriptionCount = new NodeVariable(new NodeId(3125), new QualifiedName("CurrentSubscriptionCount"), new LocalizedText("CurrentSubscriptionCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i3125_CurrentSubscriptionCount = new NodeVariable(new NodeId(3125), new QualifiedName("CurrentSubscriptionCount"), new LocalizedText("CurrentSubscriptionCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i3125_CurrentSubscriptionCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3125_CurrentSubscriptionCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3125_CurrentSubscriptionCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2021), true));
@@ -6551,7 +6551,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- ServerDiagnosticsSummary/2021
-                var ID_i3126_CumulatedSubscriptionCount = new NodeVariable(new NodeId(3126), new QualifiedName("CumulatedSubscriptionCount"), new LocalizedText("CumulatedSubscriptionCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i3126_CumulatedSubscriptionCount = new NodeVariable(new NodeId(3126), new QualifiedName("CumulatedSubscriptionCount"), new LocalizedText("CumulatedSubscriptionCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i3126_CumulatedSubscriptionCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3126_CumulatedSubscriptionCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3126_CumulatedSubscriptionCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2021), true));
@@ -6560,7 +6560,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- ServerDiagnosticsSummary/2021
-                var ID_i3127_SecurityRejectedRequestsCount = new NodeVariable(new NodeId(3127), new QualifiedName("SecurityRejectedRequestsCount"), new LocalizedText("SecurityRejectedRequestsCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i3127_SecurityRejectedRequestsCount = new NodeVariable(new NodeId(3127), new QualifiedName("SecurityRejectedRequestsCount"), new LocalizedText("SecurityRejectedRequestsCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i3127_SecurityRejectedRequestsCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3127_SecurityRejectedRequestsCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3127_SecurityRejectedRequestsCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2021), true));
@@ -6569,7 +6569,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- ServerDiagnosticsSummary/2021
-                var ID_i3128_RejectedRequestsCount = new NodeVariable(new NodeId(3128), new QualifiedName("RejectedRequestsCount"), new LocalizedText("RejectedRequestsCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i3128_RejectedRequestsCount = new NodeVariable(new NodeId(3128), new QualifiedName("RejectedRequestsCount"), new LocalizedText("RejectedRequestsCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i3128_RejectedRequestsCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3128_RejectedRequestsCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3128_RejectedRequestsCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2021), true));
@@ -6578,7 +6578,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> SamplingIntervalDiagnosticsArrayType/2164
                 //	HasModellingRule/37 -> Optional/80
                 //	HasComponent/47 <- ServerDiagnosticsType/2020
-                var ID_i2022_SamplingIntervalDiagnosticsArray = new NodeVariable(new NodeId(2022), new QualifiedName("SamplingIntervalDiagnosticsArray"), new LocalizedText("SamplingIntervalDiagnosticsArray"), new LocalizedText("A list of diagnostics for each sampling interval supported by the server."), 0, 0, 0, 0, 0, false, new NodeId(856));
+                var ID_i2022_SamplingIntervalDiagnosticsArray = new NodeVariable(new NodeId(2022), new QualifiedName("SamplingIntervalDiagnosticsArray"), new LocalizedText("SamplingIntervalDiagnosticsArray"), new LocalizedText("A list of diagnostics for each sampling interval supported by the server."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(856));
                 ID_i2022_SamplingIntervalDiagnosticsArray.References.Add(new ReferenceNode(new NodeId(40), new NodeId(2164), false));
                 ID_i2022_SamplingIntervalDiagnosticsArray.References.Add(new ReferenceNode(new NodeId(37), new NodeId(80), false));
                 ID_i2022_SamplingIntervalDiagnosticsArray.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2020), true));
@@ -6587,7 +6587,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> SubscriptionDiagnosticsArrayType/2171
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- ServerDiagnosticsType/2020
-                var ID_i2023_SubscriptionDiagnosticsArray = new NodeVariable(new NodeId(2023), new QualifiedName("SubscriptionDiagnosticsArray"), new LocalizedText("SubscriptionDiagnosticsArray"), new LocalizedText("A list of diagnostics for each active subscription."), 0, 0, 0, 0, 0, false, new NodeId(874));
+                var ID_i2023_SubscriptionDiagnosticsArray = new NodeVariable(new NodeId(2023), new QualifiedName("SubscriptionDiagnosticsArray"), new LocalizedText("SubscriptionDiagnosticsArray"), new LocalizedText("A list of diagnostics for each active subscription."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(874));
                 ID_i2023_SubscriptionDiagnosticsArray.References.Add(new ReferenceNode(new NodeId(40), new NodeId(2171), false));
                 ID_i2023_SubscriptionDiagnosticsArray.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2023_SubscriptionDiagnosticsArray.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2020), true));
@@ -6596,7 +6596,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> SessionDiagnosticsArrayType/2196
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionsDiagnosticsSummary/2744
-                var ID_i3129_SessionDiagnosticsArray = new NodeVariable(new NodeId(3129), new QualifiedName("SessionDiagnosticsArray"), new LocalizedText("SessionDiagnosticsArray"), new LocalizedText("A list of diagnostics for each active session."), 0, 0, 0, 0, 0, false, new NodeId(865));
+                var ID_i3129_SessionDiagnosticsArray = new NodeVariable(new NodeId(3129), new QualifiedName("SessionDiagnosticsArray"), new LocalizedText("SessionDiagnosticsArray"), new LocalizedText("A list of diagnostics for each active session."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(865));
                 ID_i3129_SessionDiagnosticsArray.References.Add(new ReferenceNode(new NodeId(40), new NodeId(2196), false));
                 ID_i3129_SessionDiagnosticsArray.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3129_SessionDiagnosticsArray.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2744), true));
@@ -6605,7 +6605,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> SessionSecurityDiagnosticsArrayType/2243
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionsDiagnosticsSummary/2744
-                var ID_i3130_SessionSecurityDiagnosticsArray = new NodeVariable(new NodeId(3130), new QualifiedName("SessionSecurityDiagnosticsArray"), new LocalizedText("SessionSecurityDiagnosticsArray"), new LocalizedText("A list of security related diagnostics for each active session."), 0, 0, 0, 0, 0, false, new NodeId(868));
+                var ID_i3130_SessionSecurityDiagnosticsArray = new NodeVariable(new NodeId(3130), new QualifiedName("SessionSecurityDiagnosticsArray"), new LocalizedText("SessionSecurityDiagnosticsArray"), new LocalizedText("A list of security related diagnostics for each active session."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(868));
                 ID_i3130_SessionSecurityDiagnosticsArray.References.Add(new ReferenceNode(new NodeId(40), new NodeId(2243), false));
                 ID_i3130_SessionSecurityDiagnosticsArray.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3130_SessionSecurityDiagnosticsArray.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2744), true));
@@ -6614,7 +6614,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ServerDiagnosticsType/2020
-                var ID_i2025_EnabledFlag = new NodeVariable(new NodeId(2025), new QualifiedName("EnabledFlag"), new LocalizedText("EnabledFlag"), new LocalizedText("If TRUE the diagnostics collection is enabled."), 0, 0, 0, 0, 0, false, new NodeId(1));
+                var ID_i2025_EnabledFlag = new NodeVariable(new NodeId(2025), new QualifiedName("EnabledFlag"), new LocalizedText("EnabledFlag"), new LocalizedText("If TRUE the diagnostics collection is enabled."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(1));
                 ID_i2025_EnabledFlag.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2025_EnabledFlag.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2025_EnabledFlag.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2020), true));
@@ -6623,7 +6623,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> SessionDiagnosticsArrayType/2196
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionsDiagnosticsSummaryType/2026
-                var ID_i2027_SessionDiagnosticsArray = new NodeVariable(new NodeId(2027), new QualifiedName("SessionDiagnosticsArray"), new LocalizedText("SessionDiagnosticsArray"), new LocalizedText("A list of diagnostics for each active session."), 0, 0, 0, 0, 0, false, new NodeId(865));
+                var ID_i2027_SessionDiagnosticsArray = new NodeVariable(new NodeId(2027), new QualifiedName("SessionDiagnosticsArray"), new LocalizedText("SessionDiagnosticsArray"), new LocalizedText("A list of diagnostics for each active session."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(865));
                 ID_i2027_SessionDiagnosticsArray.References.Add(new ReferenceNode(new NodeId(40), new NodeId(2196), false));
                 ID_i2027_SessionDiagnosticsArray.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2027_SessionDiagnosticsArray.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2026), true));
@@ -6632,7 +6632,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> SessionSecurityDiagnosticsArrayType/2243
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionsDiagnosticsSummaryType/2026
-                var ID_i2028_SessionSecurityDiagnosticsArray = new NodeVariable(new NodeId(2028), new QualifiedName("SessionSecurityDiagnosticsArray"), new LocalizedText("SessionSecurityDiagnosticsArray"), new LocalizedText("A list of security related diagnostics for each active session."), 0, 0, 0, 0, 0, false, new NodeId(868));
+                var ID_i2028_SessionSecurityDiagnosticsArray = new NodeVariable(new NodeId(2028), new QualifiedName("SessionSecurityDiagnosticsArray"), new LocalizedText("SessionSecurityDiagnosticsArray"), new LocalizedText("A list of security related diagnostics for each active session."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(868));
                 ID_i2028_SessionSecurityDiagnosticsArray.References.Add(new ReferenceNode(new NodeId(40), new NodeId(2243), false));
                 ID_i2028_SessionSecurityDiagnosticsArray.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2028_SessionSecurityDiagnosticsArray.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2026), true));
@@ -6684,7 +6684,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> SessionDiagnosticsVariableType/2197
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- <SessionPlaceholder>/12097
-                var ID_i12098_SessionDiagnostics = new NodeVariable(new NodeId(12098), new QualifiedName("SessionDiagnostics"), new LocalizedText("SessionDiagnostics"), new LocalizedText("Diagnostics information for an active session."), 0, 0, 0, 0, 0, false, new NodeId(865));
+                var ID_i12098_SessionDiagnostics = new NodeVariable(new NodeId(12098), new QualifiedName("SessionDiagnostics"), new LocalizedText("SessionDiagnostics"), new LocalizedText("Diagnostics information for an active session."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(865));
                 ID_i12098_SessionDiagnostics.References.Add(new ReferenceNode(new NodeId(47), new NodeId(12099), false));
                 ID_i12098_SessionDiagnostics.References.Add(new ReferenceNode(new NodeId(47), new NodeId(12100), false));
                 ID_i12098_SessionDiagnostics.References.Add(new ReferenceNode(new NodeId(47), new NodeId(12101), false));
@@ -6736,7 +6736,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/12098
-                var ID_i12099_SessionId = new NodeVariable(new NodeId(12099), new QualifiedName("SessionId"), new LocalizedText("SessionId"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(17));
+                var ID_i12099_SessionId = new NodeVariable(new NodeId(12099), new QualifiedName("SessionId"), new LocalizedText("SessionId"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(17));
                 ID_i12099_SessionId.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i12099_SessionId.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i12099_SessionId.References.Add(new ReferenceNode(new NodeId(47), new NodeId(12098), true));
@@ -6745,7 +6745,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/12098
-                var ID_i12100_SessionName = new NodeVariable(new NodeId(12100), new QualifiedName("SessionName"), new LocalizedText("SessionName"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i12100_SessionName = new NodeVariable(new NodeId(12100), new QualifiedName("SessionName"), new LocalizedText("SessionName"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i12100_SessionName.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i12100_SessionName.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i12100_SessionName.References.Add(new ReferenceNode(new NodeId(47), new NodeId(12098), true));
@@ -6754,7 +6754,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/12098
-                var ID_i12101_ClientDescription = new NodeVariable(new NodeId(12101), new QualifiedName("ClientDescription"), new LocalizedText("ClientDescription"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(308));
+                var ID_i12101_ClientDescription = new NodeVariable(new NodeId(12101), new QualifiedName("ClientDescription"), new LocalizedText("ClientDescription"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(308));
                 ID_i12101_ClientDescription.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i12101_ClientDescription.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i12101_ClientDescription.References.Add(new ReferenceNode(new NodeId(47), new NodeId(12098), true));
@@ -6763,7 +6763,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/12098
-                var ID_i12102_ServerUri = new NodeVariable(new NodeId(12102), new QualifiedName("ServerUri"), new LocalizedText("ServerUri"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i12102_ServerUri = new NodeVariable(new NodeId(12102), new QualifiedName("ServerUri"), new LocalizedText("ServerUri"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i12102_ServerUri.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i12102_ServerUri.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i12102_ServerUri.References.Add(new ReferenceNode(new NodeId(47), new NodeId(12098), true));
@@ -6772,7 +6772,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/12098
-                var ID_i12103_EndpointUrl = new NodeVariable(new NodeId(12103), new QualifiedName("EndpointUrl"), new LocalizedText("EndpointUrl"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i12103_EndpointUrl = new NodeVariable(new NodeId(12103), new QualifiedName("EndpointUrl"), new LocalizedText("EndpointUrl"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i12103_EndpointUrl.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i12103_EndpointUrl.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i12103_EndpointUrl.References.Add(new ReferenceNode(new NodeId(47), new NodeId(12098), true));
@@ -6781,7 +6781,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/12098
-                var ID_i12104_LocaleIds = new NodeVariable(new NodeId(12104), new QualifiedName("LocaleIds"), new LocalizedText("LocaleIds"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(295));
+                var ID_i12104_LocaleIds = new NodeVariable(new NodeId(12104), new QualifiedName("LocaleIds"), new LocalizedText("LocaleIds"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(295));
                 ID_i12104_LocaleIds.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i12104_LocaleIds.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i12104_LocaleIds.References.Add(new ReferenceNode(new NodeId(47), new NodeId(12098), true));
@@ -6790,7 +6790,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/12098
-                var ID_i12105_ActualSessionTimeout = new NodeVariable(new NodeId(12105), new QualifiedName("ActualSessionTimeout"), new LocalizedText("ActualSessionTimeout"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(290));
+                var ID_i12105_ActualSessionTimeout = new NodeVariable(new NodeId(12105), new QualifiedName("ActualSessionTimeout"), new LocalizedText("ActualSessionTimeout"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(290));
                 ID_i12105_ActualSessionTimeout.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i12105_ActualSessionTimeout.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i12105_ActualSessionTimeout.References.Add(new ReferenceNode(new NodeId(47), new NodeId(12098), true));
@@ -6799,7 +6799,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/12098
-                var ID_i12106_MaxResponseMessageSize = new NodeVariable(new NodeId(12106), new QualifiedName("MaxResponseMessageSize"), new LocalizedText("MaxResponseMessageSize"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i12106_MaxResponseMessageSize = new NodeVariable(new NodeId(12106), new QualifiedName("MaxResponseMessageSize"), new LocalizedText("MaxResponseMessageSize"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i12106_MaxResponseMessageSize.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i12106_MaxResponseMessageSize.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i12106_MaxResponseMessageSize.References.Add(new ReferenceNode(new NodeId(47), new NodeId(12098), true));
@@ -6808,7 +6808,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/12098
-                var ID_i12107_ClientConnectionTime = new NodeVariable(new NodeId(12107), new QualifiedName("ClientConnectionTime"), new LocalizedText("ClientConnectionTime"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(294));
+                var ID_i12107_ClientConnectionTime = new NodeVariable(new NodeId(12107), new QualifiedName("ClientConnectionTime"), new LocalizedText("ClientConnectionTime"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(294));
                 ID_i12107_ClientConnectionTime.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i12107_ClientConnectionTime.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i12107_ClientConnectionTime.References.Add(new ReferenceNode(new NodeId(47), new NodeId(12098), true));
@@ -6817,7 +6817,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/12098
-                var ID_i12108_ClientLastContactTime = new NodeVariable(new NodeId(12108), new QualifiedName("ClientLastContactTime"), new LocalizedText("ClientLastContactTime"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(294));
+                var ID_i12108_ClientLastContactTime = new NodeVariable(new NodeId(12108), new QualifiedName("ClientLastContactTime"), new LocalizedText("ClientLastContactTime"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(294));
                 ID_i12108_ClientLastContactTime.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i12108_ClientLastContactTime.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i12108_ClientLastContactTime.References.Add(new ReferenceNode(new NodeId(47), new NodeId(12098), true));
@@ -6826,7 +6826,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/12098
-                var ID_i12109_CurrentSubscriptionsCount = new NodeVariable(new NodeId(12109), new QualifiedName("CurrentSubscriptionsCount"), new LocalizedText("CurrentSubscriptionsCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i12109_CurrentSubscriptionsCount = new NodeVariable(new NodeId(12109), new QualifiedName("CurrentSubscriptionsCount"), new LocalizedText("CurrentSubscriptionsCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i12109_CurrentSubscriptionsCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i12109_CurrentSubscriptionsCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i12109_CurrentSubscriptionsCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(12098), true));
@@ -6835,7 +6835,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/12098
-                var ID_i12110_CurrentMonitoredItemsCount = new NodeVariable(new NodeId(12110), new QualifiedName("CurrentMonitoredItemsCount"), new LocalizedText("CurrentMonitoredItemsCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i12110_CurrentMonitoredItemsCount = new NodeVariable(new NodeId(12110), new QualifiedName("CurrentMonitoredItemsCount"), new LocalizedText("CurrentMonitoredItemsCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i12110_CurrentMonitoredItemsCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i12110_CurrentMonitoredItemsCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i12110_CurrentMonitoredItemsCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(12098), true));
@@ -6844,7 +6844,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/12098
-                var ID_i12111_CurrentPublishRequestsInQueue = new NodeVariable(new NodeId(12111), new QualifiedName("CurrentPublishRequestsInQueue"), new LocalizedText("CurrentPublishRequestsInQueue"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i12111_CurrentPublishRequestsInQueue = new NodeVariable(new NodeId(12111), new QualifiedName("CurrentPublishRequestsInQueue"), new LocalizedText("CurrentPublishRequestsInQueue"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i12111_CurrentPublishRequestsInQueue.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i12111_CurrentPublishRequestsInQueue.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i12111_CurrentPublishRequestsInQueue.References.Add(new ReferenceNode(new NodeId(47), new NodeId(12098), true));
@@ -6853,7 +6853,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/12098
-                var ID_i12112_TotalRequestCount = new NodeVariable(new NodeId(12112), new QualifiedName("TotalRequestCount"), new LocalizedText("TotalRequestCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i12112_TotalRequestCount = new NodeVariable(new NodeId(12112), new QualifiedName("TotalRequestCount"), new LocalizedText("TotalRequestCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i12112_TotalRequestCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i12112_TotalRequestCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i12112_TotalRequestCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(12098), true));
@@ -6862,7 +6862,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/12098
-                var ID_i12113_UnauthorizedRequestCount = new NodeVariable(new NodeId(12113), new QualifiedName("UnauthorizedRequestCount"), new LocalizedText("UnauthorizedRequestCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i12113_UnauthorizedRequestCount = new NodeVariable(new NodeId(12113), new QualifiedName("UnauthorizedRequestCount"), new LocalizedText("UnauthorizedRequestCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i12113_UnauthorizedRequestCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i12113_UnauthorizedRequestCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i12113_UnauthorizedRequestCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(12098), true));
@@ -6871,7 +6871,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/12098
-                var ID_i12114_ReadCount = new NodeVariable(new NodeId(12114), new QualifiedName("ReadCount"), new LocalizedText("ReadCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i12114_ReadCount = new NodeVariable(new NodeId(12114), new QualifiedName("ReadCount"), new LocalizedText("ReadCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i12114_ReadCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i12114_ReadCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i12114_ReadCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(12098), true));
@@ -6880,7 +6880,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/12098
-                var ID_i12115_HistoryReadCount = new NodeVariable(new NodeId(12115), new QualifiedName("HistoryReadCount"), new LocalizedText("HistoryReadCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i12115_HistoryReadCount = new NodeVariable(new NodeId(12115), new QualifiedName("HistoryReadCount"), new LocalizedText("HistoryReadCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i12115_HistoryReadCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i12115_HistoryReadCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i12115_HistoryReadCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(12098), true));
@@ -6889,7 +6889,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/12098
-                var ID_i12116_WriteCount = new NodeVariable(new NodeId(12116), new QualifiedName("WriteCount"), new LocalizedText("WriteCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i12116_WriteCount = new NodeVariable(new NodeId(12116), new QualifiedName("WriteCount"), new LocalizedText("WriteCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i12116_WriteCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i12116_WriteCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i12116_WriteCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(12098), true));
@@ -6898,7 +6898,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/12098
-                var ID_i12117_HistoryUpdateCount = new NodeVariable(new NodeId(12117), new QualifiedName("HistoryUpdateCount"), new LocalizedText("HistoryUpdateCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i12117_HistoryUpdateCount = new NodeVariable(new NodeId(12117), new QualifiedName("HistoryUpdateCount"), new LocalizedText("HistoryUpdateCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i12117_HistoryUpdateCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i12117_HistoryUpdateCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i12117_HistoryUpdateCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(12098), true));
@@ -6907,7 +6907,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/12098
-                var ID_i12118_CallCount = new NodeVariable(new NodeId(12118), new QualifiedName("CallCount"), new LocalizedText("CallCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i12118_CallCount = new NodeVariable(new NodeId(12118), new QualifiedName("CallCount"), new LocalizedText("CallCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i12118_CallCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i12118_CallCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i12118_CallCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(12098), true));
@@ -6916,7 +6916,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/12098
-                var ID_i12119_CreateMonitoredItemsCount = new NodeVariable(new NodeId(12119), new QualifiedName("CreateMonitoredItemsCount"), new LocalizedText("CreateMonitoredItemsCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i12119_CreateMonitoredItemsCount = new NodeVariable(new NodeId(12119), new QualifiedName("CreateMonitoredItemsCount"), new LocalizedText("CreateMonitoredItemsCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i12119_CreateMonitoredItemsCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i12119_CreateMonitoredItemsCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i12119_CreateMonitoredItemsCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(12098), true));
@@ -6925,7 +6925,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/12098
-                var ID_i12120_ModifyMonitoredItemsCount = new NodeVariable(new NodeId(12120), new QualifiedName("ModifyMonitoredItemsCount"), new LocalizedText("ModifyMonitoredItemsCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i12120_ModifyMonitoredItemsCount = new NodeVariable(new NodeId(12120), new QualifiedName("ModifyMonitoredItemsCount"), new LocalizedText("ModifyMonitoredItemsCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i12120_ModifyMonitoredItemsCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i12120_ModifyMonitoredItemsCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i12120_ModifyMonitoredItemsCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(12098), true));
@@ -6934,7 +6934,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/12098
-                var ID_i12121_SetMonitoringModeCount = new NodeVariable(new NodeId(12121), new QualifiedName("SetMonitoringModeCount"), new LocalizedText("SetMonitoringModeCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i12121_SetMonitoringModeCount = new NodeVariable(new NodeId(12121), new QualifiedName("SetMonitoringModeCount"), new LocalizedText("SetMonitoringModeCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i12121_SetMonitoringModeCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i12121_SetMonitoringModeCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i12121_SetMonitoringModeCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(12098), true));
@@ -6943,7 +6943,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/12098
-                var ID_i12122_SetTriggeringCount = new NodeVariable(new NodeId(12122), new QualifiedName("SetTriggeringCount"), new LocalizedText("SetTriggeringCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i12122_SetTriggeringCount = new NodeVariable(new NodeId(12122), new QualifiedName("SetTriggeringCount"), new LocalizedText("SetTriggeringCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i12122_SetTriggeringCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i12122_SetTriggeringCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i12122_SetTriggeringCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(12098), true));
@@ -6952,7 +6952,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/12098
-                var ID_i12123_DeleteMonitoredItemsCount = new NodeVariable(new NodeId(12123), new QualifiedName("DeleteMonitoredItemsCount"), new LocalizedText("DeleteMonitoredItemsCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i12123_DeleteMonitoredItemsCount = new NodeVariable(new NodeId(12123), new QualifiedName("DeleteMonitoredItemsCount"), new LocalizedText("DeleteMonitoredItemsCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i12123_DeleteMonitoredItemsCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i12123_DeleteMonitoredItemsCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i12123_DeleteMonitoredItemsCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(12098), true));
@@ -6961,7 +6961,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/12098
-                var ID_i12124_CreateSubscriptionCount = new NodeVariable(new NodeId(12124), new QualifiedName("CreateSubscriptionCount"), new LocalizedText("CreateSubscriptionCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i12124_CreateSubscriptionCount = new NodeVariable(new NodeId(12124), new QualifiedName("CreateSubscriptionCount"), new LocalizedText("CreateSubscriptionCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i12124_CreateSubscriptionCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i12124_CreateSubscriptionCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i12124_CreateSubscriptionCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(12098), true));
@@ -6970,7 +6970,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/12098
-                var ID_i12125_ModifySubscriptionCount = new NodeVariable(new NodeId(12125), new QualifiedName("ModifySubscriptionCount"), new LocalizedText("ModifySubscriptionCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i12125_ModifySubscriptionCount = new NodeVariable(new NodeId(12125), new QualifiedName("ModifySubscriptionCount"), new LocalizedText("ModifySubscriptionCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i12125_ModifySubscriptionCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i12125_ModifySubscriptionCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i12125_ModifySubscriptionCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(12098), true));
@@ -6979,7 +6979,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/12098
-                var ID_i12126_SetPublishingModeCount = new NodeVariable(new NodeId(12126), new QualifiedName("SetPublishingModeCount"), new LocalizedText("SetPublishingModeCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i12126_SetPublishingModeCount = new NodeVariable(new NodeId(12126), new QualifiedName("SetPublishingModeCount"), new LocalizedText("SetPublishingModeCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i12126_SetPublishingModeCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i12126_SetPublishingModeCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i12126_SetPublishingModeCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(12098), true));
@@ -6988,7 +6988,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/12098
-                var ID_i12127_PublishCount = new NodeVariable(new NodeId(12127), new QualifiedName("PublishCount"), new LocalizedText("PublishCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i12127_PublishCount = new NodeVariable(new NodeId(12127), new QualifiedName("PublishCount"), new LocalizedText("PublishCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i12127_PublishCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i12127_PublishCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i12127_PublishCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(12098), true));
@@ -6997,7 +6997,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/12098
-                var ID_i12128_RepublishCount = new NodeVariable(new NodeId(12128), new QualifiedName("RepublishCount"), new LocalizedText("RepublishCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i12128_RepublishCount = new NodeVariable(new NodeId(12128), new QualifiedName("RepublishCount"), new LocalizedText("RepublishCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i12128_RepublishCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i12128_RepublishCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i12128_RepublishCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(12098), true));
@@ -7006,7 +7006,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/12098
-                var ID_i12129_TransferSubscriptionsCount = new NodeVariable(new NodeId(12129), new QualifiedName("TransferSubscriptionsCount"), new LocalizedText("TransferSubscriptionsCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i12129_TransferSubscriptionsCount = new NodeVariable(new NodeId(12129), new QualifiedName("TransferSubscriptionsCount"), new LocalizedText("TransferSubscriptionsCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i12129_TransferSubscriptionsCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i12129_TransferSubscriptionsCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i12129_TransferSubscriptionsCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(12098), true));
@@ -7015,7 +7015,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/12098
-                var ID_i12130_DeleteSubscriptionsCount = new NodeVariable(new NodeId(12130), new QualifiedName("DeleteSubscriptionsCount"), new LocalizedText("DeleteSubscriptionsCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i12130_DeleteSubscriptionsCount = new NodeVariable(new NodeId(12130), new QualifiedName("DeleteSubscriptionsCount"), new LocalizedText("DeleteSubscriptionsCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i12130_DeleteSubscriptionsCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i12130_DeleteSubscriptionsCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i12130_DeleteSubscriptionsCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(12098), true));
@@ -7024,7 +7024,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/12098
-                var ID_i12131_AddNodesCount = new NodeVariable(new NodeId(12131), new QualifiedName("AddNodesCount"), new LocalizedText("AddNodesCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i12131_AddNodesCount = new NodeVariable(new NodeId(12131), new QualifiedName("AddNodesCount"), new LocalizedText("AddNodesCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i12131_AddNodesCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i12131_AddNodesCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i12131_AddNodesCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(12098), true));
@@ -7033,7 +7033,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/12098
-                var ID_i12132_AddReferencesCount = new NodeVariable(new NodeId(12132), new QualifiedName("AddReferencesCount"), new LocalizedText("AddReferencesCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i12132_AddReferencesCount = new NodeVariable(new NodeId(12132), new QualifiedName("AddReferencesCount"), new LocalizedText("AddReferencesCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i12132_AddReferencesCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i12132_AddReferencesCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i12132_AddReferencesCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(12098), true));
@@ -7042,7 +7042,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/12098
-                var ID_i12133_DeleteNodesCount = new NodeVariable(new NodeId(12133), new QualifiedName("DeleteNodesCount"), new LocalizedText("DeleteNodesCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i12133_DeleteNodesCount = new NodeVariable(new NodeId(12133), new QualifiedName("DeleteNodesCount"), new LocalizedText("DeleteNodesCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i12133_DeleteNodesCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i12133_DeleteNodesCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i12133_DeleteNodesCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(12098), true));
@@ -7051,7 +7051,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/12098
-                var ID_i12134_DeleteReferencesCount = new NodeVariable(new NodeId(12134), new QualifiedName("DeleteReferencesCount"), new LocalizedText("DeleteReferencesCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i12134_DeleteReferencesCount = new NodeVariable(new NodeId(12134), new QualifiedName("DeleteReferencesCount"), new LocalizedText("DeleteReferencesCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i12134_DeleteReferencesCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i12134_DeleteReferencesCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i12134_DeleteReferencesCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(12098), true));
@@ -7060,7 +7060,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/12098
-                var ID_i12135_BrowseCount = new NodeVariable(new NodeId(12135), new QualifiedName("BrowseCount"), new LocalizedText("BrowseCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i12135_BrowseCount = new NodeVariable(new NodeId(12135), new QualifiedName("BrowseCount"), new LocalizedText("BrowseCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i12135_BrowseCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i12135_BrowseCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i12135_BrowseCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(12098), true));
@@ -7069,7 +7069,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/12098
-                var ID_i12136_BrowseNextCount = new NodeVariable(new NodeId(12136), new QualifiedName("BrowseNextCount"), new LocalizedText("BrowseNextCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i12136_BrowseNextCount = new NodeVariable(new NodeId(12136), new QualifiedName("BrowseNextCount"), new LocalizedText("BrowseNextCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i12136_BrowseNextCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i12136_BrowseNextCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i12136_BrowseNextCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(12098), true));
@@ -7078,7 +7078,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/12098
-                var ID_i12137_TranslateBrowsePathsToNodeIdsCount = new NodeVariable(new NodeId(12137), new QualifiedName("TranslateBrowsePathsToNodeIdsCount"), new LocalizedText("TranslateBrowsePathsToNodeIdsCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i12137_TranslateBrowsePathsToNodeIdsCount = new NodeVariable(new NodeId(12137), new QualifiedName("TranslateBrowsePathsToNodeIdsCount"), new LocalizedText("TranslateBrowsePathsToNodeIdsCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i12137_TranslateBrowsePathsToNodeIdsCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i12137_TranslateBrowsePathsToNodeIdsCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i12137_TranslateBrowsePathsToNodeIdsCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(12098), true));
@@ -7087,7 +7087,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/12098
-                var ID_i12138_QueryFirstCount = new NodeVariable(new NodeId(12138), new QualifiedName("QueryFirstCount"), new LocalizedText("QueryFirstCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i12138_QueryFirstCount = new NodeVariable(new NodeId(12138), new QualifiedName("QueryFirstCount"), new LocalizedText("QueryFirstCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i12138_QueryFirstCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i12138_QueryFirstCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i12138_QueryFirstCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(12098), true));
@@ -7096,7 +7096,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/12098
-                var ID_i12139_QueryNextCount = new NodeVariable(new NodeId(12139), new QualifiedName("QueryNextCount"), new LocalizedText("QueryNextCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i12139_QueryNextCount = new NodeVariable(new NodeId(12139), new QualifiedName("QueryNextCount"), new LocalizedText("QueryNextCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i12139_QueryNextCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i12139_QueryNextCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i12139_QueryNextCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(12098), true));
@@ -7105,7 +7105,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/12098
-                var ID_i12140_RegisterNodesCount = new NodeVariable(new NodeId(12140), new QualifiedName("RegisterNodesCount"), new LocalizedText("RegisterNodesCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i12140_RegisterNodesCount = new NodeVariable(new NodeId(12140), new QualifiedName("RegisterNodesCount"), new LocalizedText("RegisterNodesCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i12140_RegisterNodesCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i12140_RegisterNodesCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i12140_RegisterNodesCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(12098), true));
@@ -7114,7 +7114,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/12098
-                var ID_i12141_UnregisterNodesCount = new NodeVariable(new NodeId(12141), new QualifiedName("UnregisterNodesCount"), new LocalizedText("UnregisterNodesCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i12141_UnregisterNodesCount = new NodeVariable(new NodeId(12141), new QualifiedName("UnregisterNodesCount"), new LocalizedText("UnregisterNodesCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i12141_UnregisterNodesCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i12141_UnregisterNodesCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i12141_UnregisterNodesCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(12098), true));
@@ -7132,7 +7132,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> SessionSecurityDiagnosticsType/2244
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- <SessionPlaceholder>/12097
-                var ID_i12142_SessionSecurityDiagnostics = new NodeVariable(new NodeId(12142), new QualifiedName("SessionSecurityDiagnostics"), new LocalizedText("SessionSecurityDiagnostics"), new LocalizedText("Security related diagnostics information for an active session."), 0, 0, 0, 0, 0, false, new NodeId(868));
+                var ID_i12142_SessionSecurityDiagnostics = new NodeVariable(new NodeId(12142), new QualifiedName("SessionSecurityDiagnostics"), new LocalizedText("SessionSecurityDiagnostics"), new LocalizedText("Security related diagnostics information for an active session."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(868));
                 ID_i12142_SessionSecurityDiagnostics.References.Add(new ReferenceNode(new NodeId(47), new NodeId(12143), false));
                 ID_i12142_SessionSecurityDiagnostics.References.Add(new ReferenceNode(new NodeId(47), new NodeId(12144), false));
                 ID_i12142_SessionSecurityDiagnostics.References.Add(new ReferenceNode(new NodeId(47), new NodeId(12145), false));
@@ -7150,7 +7150,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionSecurityDiagnostics/12142
-                var ID_i12143_SessionId = new NodeVariable(new NodeId(12143), new QualifiedName("SessionId"), new LocalizedText("SessionId"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(17));
+                var ID_i12143_SessionId = new NodeVariable(new NodeId(12143), new QualifiedName("SessionId"), new LocalizedText("SessionId"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(17));
                 ID_i12143_SessionId.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i12143_SessionId.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i12143_SessionId.References.Add(new ReferenceNode(new NodeId(47), new NodeId(12142), true));
@@ -7159,7 +7159,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionSecurityDiagnostics/12142
-                var ID_i12144_ClientUserIdOfSession = new NodeVariable(new NodeId(12144), new QualifiedName("ClientUserIdOfSession"), new LocalizedText("ClientUserIdOfSession"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i12144_ClientUserIdOfSession = new NodeVariable(new NodeId(12144), new QualifiedName("ClientUserIdOfSession"), new LocalizedText("ClientUserIdOfSession"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i12144_ClientUserIdOfSession.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i12144_ClientUserIdOfSession.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i12144_ClientUserIdOfSession.References.Add(new ReferenceNode(new NodeId(47), new NodeId(12142), true));
@@ -7168,7 +7168,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionSecurityDiagnostics/12142
-                var ID_i12145_ClientUserIdHistory = new NodeVariable(new NodeId(12145), new QualifiedName("ClientUserIdHistory"), new LocalizedText("ClientUserIdHistory"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i12145_ClientUserIdHistory = new NodeVariable(new NodeId(12145), new QualifiedName("ClientUserIdHistory"), new LocalizedText("ClientUserIdHistory"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i12145_ClientUserIdHistory.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i12145_ClientUserIdHistory.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i12145_ClientUserIdHistory.References.Add(new ReferenceNode(new NodeId(47), new NodeId(12142), true));
@@ -7177,7 +7177,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionSecurityDiagnostics/12142
-                var ID_i12146_AuthenticationMechanism = new NodeVariable(new NodeId(12146), new QualifiedName("AuthenticationMechanism"), new LocalizedText("AuthenticationMechanism"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i12146_AuthenticationMechanism = new NodeVariable(new NodeId(12146), new QualifiedName("AuthenticationMechanism"), new LocalizedText("AuthenticationMechanism"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i12146_AuthenticationMechanism.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i12146_AuthenticationMechanism.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i12146_AuthenticationMechanism.References.Add(new ReferenceNode(new NodeId(47), new NodeId(12142), true));
@@ -7186,7 +7186,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionSecurityDiagnostics/12142
-                var ID_i12147_Encoding = new NodeVariable(new NodeId(12147), new QualifiedName("Encoding"), new LocalizedText("Encoding"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i12147_Encoding = new NodeVariable(new NodeId(12147), new QualifiedName("Encoding"), new LocalizedText("Encoding"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i12147_Encoding.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i12147_Encoding.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i12147_Encoding.References.Add(new ReferenceNode(new NodeId(47), new NodeId(12142), true));
@@ -7195,7 +7195,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionSecurityDiagnostics/12142
-                var ID_i12148_TransportProtocol = new NodeVariable(new NodeId(12148), new QualifiedName("TransportProtocol"), new LocalizedText("TransportProtocol"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i12148_TransportProtocol = new NodeVariable(new NodeId(12148), new QualifiedName("TransportProtocol"), new LocalizedText("TransportProtocol"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i12148_TransportProtocol.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i12148_TransportProtocol.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i12148_TransportProtocol.References.Add(new ReferenceNode(new NodeId(47), new NodeId(12142), true));
@@ -7204,7 +7204,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionSecurityDiagnostics/12142
-                var ID_i12149_SecurityMode = new NodeVariable(new NodeId(12149), new QualifiedName("SecurityMode"), new LocalizedText("SecurityMode"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(302));
+                var ID_i12149_SecurityMode = new NodeVariable(new NodeId(12149), new QualifiedName("SecurityMode"), new LocalizedText("SecurityMode"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(302));
                 ID_i12149_SecurityMode.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i12149_SecurityMode.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i12149_SecurityMode.References.Add(new ReferenceNode(new NodeId(47), new NodeId(12142), true));
@@ -7213,7 +7213,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionSecurityDiagnostics/12142
-                var ID_i12150_SecurityPolicyUri = new NodeVariable(new NodeId(12150), new QualifiedName("SecurityPolicyUri"), new LocalizedText("SecurityPolicyUri"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i12150_SecurityPolicyUri = new NodeVariable(new NodeId(12150), new QualifiedName("SecurityPolicyUri"), new LocalizedText("SecurityPolicyUri"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i12150_SecurityPolicyUri.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i12150_SecurityPolicyUri.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i12150_SecurityPolicyUri.References.Add(new ReferenceNode(new NodeId(47), new NodeId(12142), true));
@@ -7222,7 +7222,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionSecurityDiagnostics/12142
-                var ID_i12151_ClientCertificate = new NodeVariable(new NodeId(12151), new QualifiedName("ClientCertificate"), new LocalizedText("ClientCertificate"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(15));
+                var ID_i12151_ClientCertificate = new NodeVariable(new NodeId(12151), new QualifiedName("ClientCertificate"), new LocalizedText("ClientCertificate"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(15));
                 ID_i12151_ClientCertificate.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i12151_ClientCertificate.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i12151_ClientCertificate.References.Add(new ReferenceNode(new NodeId(47), new NodeId(12142), true));
@@ -7231,7 +7231,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> SubscriptionDiagnosticsArrayType/2171
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- <SessionPlaceholder>/12097
-                var ID_i12152_SubscriptionDiagnosticsArray = new NodeVariable(new NodeId(12152), new QualifiedName("SubscriptionDiagnosticsArray"), new LocalizedText("SubscriptionDiagnosticsArray"), new LocalizedText("A list of diagnostics for each subscription owned by the session."), 0, 0, 0, 0, 0, false, new NodeId(874));
+                var ID_i12152_SubscriptionDiagnosticsArray = new NodeVariable(new NodeId(12152), new QualifiedName("SubscriptionDiagnosticsArray"), new LocalizedText("SubscriptionDiagnosticsArray"), new LocalizedText("A list of diagnostics for each subscription owned by the session."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(874));
                 ID_i12152_SubscriptionDiagnosticsArray.References.Add(new ReferenceNode(new NodeId(40), new NodeId(2171), false));
                 ID_i12152_SubscriptionDiagnosticsArray.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i12152_SubscriptionDiagnosticsArray.References.Add(new ReferenceNode(new NodeId(47), new NodeId(12097), true));
@@ -7283,7 +7283,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> SessionDiagnosticsVariableType/2197
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnosticsObjectType/2029
-                var ID_i2030_SessionDiagnostics = new NodeVariable(new NodeId(2030), new QualifiedName("SessionDiagnostics"), new LocalizedText("SessionDiagnostics"), new LocalizedText("Diagnostics information for an active session."), 0, 0, 0, 0, 0, false, new NodeId(865));
+                var ID_i2030_SessionDiagnostics = new NodeVariable(new NodeId(2030), new QualifiedName("SessionDiagnostics"), new LocalizedText("SessionDiagnostics"), new LocalizedText("Diagnostics information for an active session."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(865));
                 ID_i2030_SessionDiagnostics.References.Add(new ReferenceNode(new NodeId(47), new NodeId(3131), false));
                 ID_i2030_SessionDiagnostics.References.Add(new ReferenceNode(new NodeId(47), new NodeId(3132), false));
                 ID_i2030_SessionDiagnostics.References.Add(new ReferenceNode(new NodeId(47), new NodeId(3133), false));
@@ -7335,7 +7335,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/2030
-                var ID_i3131_SessionId = new NodeVariable(new NodeId(3131), new QualifiedName("SessionId"), new LocalizedText("SessionId"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(17));
+                var ID_i3131_SessionId = new NodeVariable(new NodeId(3131), new QualifiedName("SessionId"), new LocalizedText("SessionId"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(17));
                 ID_i3131_SessionId.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3131_SessionId.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3131_SessionId.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2030), true));
@@ -7344,7 +7344,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/2030
-                var ID_i3132_SessionName = new NodeVariable(new NodeId(3132), new QualifiedName("SessionName"), new LocalizedText("SessionName"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i3132_SessionName = new NodeVariable(new NodeId(3132), new QualifiedName("SessionName"), new LocalizedText("SessionName"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i3132_SessionName.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3132_SessionName.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3132_SessionName.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2030), true));
@@ -7353,7 +7353,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/2030
-                var ID_i3133_ClientDescription = new NodeVariable(new NodeId(3133), new QualifiedName("ClientDescription"), new LocalizedText("ClientDescription"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(308));
+                var ID_i3133_ClientDescription = new NodeVariable(new NodeId(3133), new QualifiedName("ClientDescription"), new LocalizedText("ClientDescription"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(308));
                 ID_i3133_ClientDescription.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3133_ClientDescription.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3133_ClientDescription.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2030), true));
@@ -7362,7 +7362,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/2030
-                var ID_i3134_ServerUri = new NodeVariable(new NodeId(3134), new QualifiedName("ServerUri"), new LocalizedText("ServerUri"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i3134_ServerUri = new NodeVariable(new NodeId(3134), new QualifiedName("ServerUri"), new LocalizedText("ServerUri"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i3134_ServerUri.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3134_ServerUri.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3134_ServerUri.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2030), true));
@@ -7371,7 +7371,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/2030
-                var ID_i3135_EndpointUrl = new NodeVariable(new NodeId(3135), new QualifiedName("EndpointUrl"), new LocalizedText("EndpointUrl"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i3135_EndpointUrl = new NodeVariable(new NodeId(3135), new QualifiedName("EndpointUrl"), new LocalizedText("EndpointUrl"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i3135_EndpointUrl.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3135_EndpointUrl.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3135_EndpointUrl.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2030), true));
@@ -7380,7 +7380,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/2030
-                var ID_i3136_LocaleIds = new NodeVariable(new NodeId(3136), new QualifiedName("LocaleIds"), new LocalizedText("LocaleIds"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(295));
+                var ID_i3136_LocaleIds = new NodeVariable(new NodeId(3136), new QualifiedName("LocaleIds"), new LocalizedText("LocaleIds"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(295));
                 ID_i3136_LocaleIds.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3136_LocaleIds.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3136_LocaleIds.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2030), true));
@@ -7389,7 +7389,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/2030
-                var ID_i3137_ActualSessionTimeout = new NodeVariable(new NodeId(3137), new QualifiedName("ActualSessionTimeout"), new LocalizedText("ActualSessionTimeout"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(290));
+                var ID_i3137_ActualSessionTimeout = new NodeVariable(new NodeId(3137), new QualifiedName("ActualSessionTimeout"), new LocalizedText("ActualSessionTimeout"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(290));
                 ID_i3137_ActualSessionTimeout.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3137_ActualSessionTimeout.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3137_ActualSessionTimeout.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2030), true));
@@ -7398,7 +7398,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/2030
-                var ID_i3138_MaxResponseMessageSize = new NodeVariable(new NodeId(3138), new QualifiedName("MaxResponseMessageSize"), new LocalizedText("MaxResponseMessageSize"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i3138_MaxResponseMessageSize = new NodeVariable(new NodeId(3138), new QualifiedName("MaxResponseMessageSize"), new LocalizedText("MaxResponseMessageSize"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i3138_MaxResponseMessageSize.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3138_MaxResponseMessageSize.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3138_MaxResponseMessageSize.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2030), true));
@@ -7407,7 +7407,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/2030
-                var ID_i3139_ClientConnectionTime = new NodeVariable(new NodeId(3139), new QualifiedName("ClientConnectionTime"), new LocalizedText("ClientConnectionTime"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(294));
+                var ID_i3139_ClientConnectionTime = new NodeVariable(new NodeId(3139), new QualifiedName("ClientConnectionTime"), new LocalizedText("ClientConnectionTime"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(294));
                 ID_i3139_ClientConnectionTime.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3139_ClientConnectionTime.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3139_ClientConnectionTime.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2030), true));
@@ -7416,7 +7416,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/2030
-                var ID_i3140_ClientLastContactTime = new NodeVariable(new NodeId(3140), new QualifiedName("ClientLastContactTime"), new LocalizedText("ClientLastContactTime"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(294));
+                var ID_i3140_ClientLastContactTime = new NodeVariable(new NodeId(3140), new QualifiedName("ClientLastContactTime"), new LocalizedText("ClientLastContactTime"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(294));
                 ID_i3140_ClientLastContactTime.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3140_ClientLastContactTime.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3140_ClientLastContactTime.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2030), true));
@@ -7425,7 +7425,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/2030
-                var ID_i3141_CurrentSubscriptionsCount = new NodeVariable(new NodeId(3141), new QualifiedName("CurrentSubscriptionsCount"), new LocalizedText("CurrentSubscriptionsCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i3141_CurrentSubscriptionsCount = new NodeVariable(new NodeId(3141), new QualifiedName("CurrentSubscriptionsCount"), new LocalizedText("CurrentSubscriptionsCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i3141_CurrentSubscriptionsCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3141_CurrentSubscriptionsCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3141_CurrentSubscriptionsCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2030), true));
@@ -7434,7 +7434,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/2030
-                var ID_i3142_CurrentMonitoredItemsCount = new NodeVariable(new NodeId(3142), new QualifiedName("CurrentMonitoredItemsCount"), new LocalizedText("CurrentMonitoredItemsCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i3142_CurrentMonitoredItemsCount = new NodeVariable(new NodeId(3142), new QualifiedName("CurrentMonitoredItemsCount"), new LocalizedText("CurrentMonitoredItemsCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i3142_CurrentMonitoredItemsCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3142_CurrentMonitoredItemsCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3142_CurrentMonitoredItemsCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2030), true));
@@ -7443,7 +7443,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/2030
-                var ID_i3143_CurrentPublishRequestsInQueue = new NodeVariable(new NodeId(3143), new QualifiedName("CurrentPublishRequestsInQueue"), new LocalizedText("CurrentPublishRequestsInQueue"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i3143_CurrentPublishRequestsInQueue = new NodeVariable(new NodeId(3143), new QualifiedName("CurrentPublishRequestsInQueue"), new LocalizedText("CurrentPublishRequestsInQueue"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i3143_CurrentPublishRequestsInQueue.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3143_CurrentPublishRequestsInQueue.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3143_CurrentPublishRequestsInQueue.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2030), true));
@@ -7452,7 +7452,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/2030
-                var ID_i8898_TotalRequestCount = new NodeVariable(new NodeId(8898), new QualifiedName("TotalRequestCount"), new LocalizedText("TotalRequestCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i8898_TotalRequestCount = new NodeVariable(new NodeId(8898), new QualifiedName("TotalRequestCount"), new LocalizedText("TotalRequestCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i8898_TotalRequestCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i8898_TotalRequestCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i8898_TotalRequestCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2030), true));
@@ -7461,7 +7461,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/2030
-                var ID_i11891_UnauthorizedRequestCount = new NodeVariable(new NodeId(11891), new QualifiedName("UnauthorizedRequestCount"), new LocalizedText("UnauthorizedRequestCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i11891_UnauthorizedRequestCount = new NodeVariable(new NodeId(11891), new QualifiedName("UnauthorizedRequestCount"), new LocalizedText("UnauthorizedRequestCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i11891_UnauthorizedRequestCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i11891_UnauthorizedRequestCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11891_UnauthorizedRequestCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2030), true));
@@ -7470,7 +7470,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/2030
-                var ID_i3151_ReadCount = new NodeVariable(new NodeId(3151), new QualifiedName("ReadCount"), new LocalizedText("ReadCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i3151_ReadCount = new NodeVariable(new NodeId(3151), new QualifiedName("ReadCount"), new LocalizedText("ReadCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i3151_ReadCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3151_ReadCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3151_ReadCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2030), true));
@@ -7479,7 +7479,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/2030
-                var ID_i3152_HistoryReadCount = new NodeVariable(new NodeId(3152), new QualifiedName("HistoryReadCount"), new LocalizedText("HistoryReadCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i3152_HistoryReadCount = new NodeVariable(new NodeId(3152), new QualifiedName("HistoryReadCount"), new LocalizedText("HistoryReadCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i3152_HistoryReadCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3152_HistoryReadCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3152_HistoryReadCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2030), true));
@@ -7488,7 +7488,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/2030
-                var ID_i3153_WriteCount = new NodeVariable(new NodeId(3153), new QualifiedName("WriteCount"), new LocalizedText("WriteCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i3153_WriteCount = new NodeVariable(new NodeId(3153), new QualifiedName("WriteCount"), new LocalizedText("WriteCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i3153_WriteCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3153_WriteCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3153_WriteCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2030), true));
@@ -7497,7 +7497,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/2030
-                var ID_i3154_HistoryUpdateCount = new NodeVariable(new NodeId(3154), new QualifiedName("HistoryUpdateCount"), new LocalizedText("HistoryUpdateCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i3154_HistoryUpdateCount = new NodeVariable(new NodeId(3154), new QualifiedName("HistoryUpdateCount"), new LocalizedText("HistoryUpdateCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i3154_HistoryUpdateCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3154_HistoryUpdateCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3154_HistoryUpdateCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2030), true));
@@ -7506,7 +7506,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/2030
-                var ID_i3155_CallCount = new NodeVariable(new NodeId(3155), new QualifiedName("CallCount"), new LocalizedText("CallCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i3155_CallCount = new NodeVariable(new NodeId(3155), new QualifiedName("CallCount"), new LocalizedText("CallCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i3155_CallCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3155_CallCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3155_CallCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2030), true));
@@ -7515,7 +7515,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/2030
-                var ID_i3156_CreateMonitoredItemsCount = new NodeVariable(new NodeId(3156), new QualifiedName("CreateMonitoredItemsCount"), new LocalizedText("CreateMonitoredItemsCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i3156_CreateMonitoredItemsCount = new NodeVariable(new NodeId(3156), new QualifiedName("CreateMonitoredItemsCount"), new LocalizedText("CreateMonitoredItemsCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i3156_CreateMonitoredItemsCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3156_CreateMonitoredItemsCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3156_CreateMonitoredItemsCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2030), true));
@@ -7524,7 +7524,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/2030
-                var ID_i3157_ModifyMonitoredItemsCount = new NodeVariable(new NodeId(3157), new QualifiedName("ModifyMonitoredItemsCount"), new LocalizedText("ModifyMonitoredItemsCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i3157_ModifyMonitoredItemsCount = new NodeVariable(new NodeId(3157), new QualifiedName("ModifyMonitoredItemsCount"), new LocalizedText("ModifyMonitoredItemsCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i3157_ModifyMonitoredItemsCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3157_ModifyMonitoredItemsCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3157_ModifyMonitoredItemsCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2030), true));
@@ -7533,7 +7533,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/2030
-                var ID_i3158_SetMonitoringModeCount = new NodeVariable(new NodeId(3158), new QualifiedName("SetMonitoringModeCount"), new LocalizedText("SetMonitoringModeCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i3158_SetMonitoringModeCount = new NodeVariable(new NodeId(3158), new QualifiedName("SetMonitoringModeCount"), new LocalizedText("SetMonitoringModeCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i3158_SetMonitoringModeCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3158_SetMonitoringModeCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3158_SetMonitoringModeCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2030), true));
@@ -7542,7 +7542,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/2030
-                var ID_i3159_SetTriggeringCount = new NodeVariable(new NodeId(3159), new QualifiedName("SetTriggeringCount"), new LocalizedText("SetTriggeringCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i3159_SetTriggeringCount = new NodeVariable(new NodeId(3159), new QualifiedName("SetTriggeringCount"), new LocalizedText("SetTriggeringCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i3159_SetTriggeringCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3159_SetTriggeringCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3159_SetTriggeringCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2030), true));
@@ -7551,7 +7551,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/2030
-                var ID_i3160_DeleteMonitoredItemsCount = new NodeVariable(new NodeId(3160), new QualifiedName("DeleteMonitoredItemsCount"), new LocalizedText("DeleteMonitoredItemsCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i3160_DeleteMonitoredItemsCount = new NodeVariable(new NodeId(3160), new QualifiedName("DeleteMonitoredItemsCount"), new LocalizedText("DeleteMonitoredItemsCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i3160_DeleteMonitoredItemsCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3160_DeleteMonitoredItemsCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3160_DeleteMonitoredItemsCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2030), true));
@@ -7560,7 +7560,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/2030
-                var ID_i3161_CreateSubscriptionCount = new NodeVariable(new NodeId(3161), new QualifiedName("CreateSubscriptionCount"), new LocalizedText("CreateSubscriptionCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i3161_CreateSubscriptionCount = new NodeVariable(new NodeId(3161), new QualifiedName("CreateSubscriptionCount"), new LocalizedText("CreateSubscriptionCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i3161_CreateSubscriptionCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3161_CreateSubscriptionCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3161_CreateSubscriptionCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2030), true));
@@ -7569,7 +7569,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/2030
-                var ID_i3162_ModifySubscriptionCount = new NodeVariable(new NodeId(3162), new QualifiedName("ModifySubscriptionCount"), new LocalizedText("ModifySubscriptionCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i3162_ModifySubscriptionCount = new NodeVariable(new NodeId(3162), new QualifiedName("ModifySubscriptionCount"), new LocalizedText("ModifySubscriptionCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i3162_ModifySubscriptionCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3162_ModifySubscriptionCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3162_ModifySubscriptionCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2030), true));
@@ -7578,7 +7578,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/2030
-                var ID_i3163_SetPublishingModeCount = new NodeVariable(new NodeId(3163), new QualifiedName("SetPublishingModeCount"), new LocalizedText("SetPublishingModeCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i3163_SetPublishingModeCount = new NodeVariable(new NodeId(3163), new QualifiedName("SetPublishingModeCount"), new LocalizedText("SetPublishingModeCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i3163_SetPublishingModeCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3163_SetPublishingModeCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3163_SetPublishingModeCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2030), true));
@@ -7587,7 +7587,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/2030
-                var ID_i3164_PublishCount = new NodeVariable(new NodeId(3164), new QualifiedName("PublishCount"), new LocalizedText("PublishCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i3164_PublishCount = new NodeVariable(new NodeId(3164), new QualifiedName("PublishCount"), new LocalizedText("PublishCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i3164_PublishCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3164_PublishCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3164_PublishCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2030), true));
@@ -7596,7 +7596,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/2030
-                var ID_i3165_RepublishCount = new NodeVariable(new NodeId(3165), new QualifiedName("RepublishCount"), new LocalizedText("RepublishCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i3165_RepublishCount = new NodeVariable(new NodeId(3165), new QualifiedName("RepublishCount"), new LocalizedText("RepublishCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i3165_RepublishCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3165_RepublishCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3165_RepublishCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2030), true));
@@ -7605,7 +7605,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/2030
-                var ID_i3166_TransferSubscriptionsCount = new NodeVariable(new NodeId(3166), new QualifiedName("TransferSubscriptionsCount"), new LocalizedText("TransferSubscriptionsCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i3166_TransferSubscriptionsCount = new NodeVariable(new NodeId(3166), new QualifiedName("TransferSubscriptionsCount"), new LocalizedText("TransferSubscriptionsCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i3166_TransferSubscriptionsCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3166_TransferSubscriptionsCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3166_TransferSubscriptionsCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2030), true));
@@ -7614,7 +7614,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/2030
-                var ID_i3167_DeleteSubscriptionsCount = new NodeVariable(new NodeId(3167), new QualifiedName("DeleteSubscriptionsCount"), new LocalizedText("DeleteSubscriptionsCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i3167_DeleteSubscriptionsCount = new NodeVariable(new NodeId(3167), new QualifiedName("DeleteSubscriptionsCount"), new LocalizedText("DeleteSubscriptionsCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i3167_DeleteSubscriptionsCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3167_DeleteSubscriptionsCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3167_DeleteSubscriptionsCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2030), true));
@@ -7623,7 +7623,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/2030
-                var ID_i3168_AddNodesCount = new NodeVariable(new NodeId(3168), new QualifiedName("AddNodesCount"), new LocalizedText("AddNodesCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i3168_AddNodesCount = new NodeVariable(new NodeId(3168), new QualifiedName("AddNodesCount"), new LocalizedText("AddNodesCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i3168_AddNodesCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3168_AddNodesCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3168_AddNodesCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2030), true));
@@ -7632,7 +7632,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/2030
-                var ID_i3169_AddReferencesCount = new NodeVariable(new NodeId(3169), new QualifiedName("AddReferencesCount"), new LocalizedText("AddReferencesCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i3169_AddReferencesCount = new NodeVariable(new NodeId(3169), new QualifiedName("AddReferencesCount"), new LocalizedText("AddReferencesCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i3169_AddReferencesCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3169_AddReferencesCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3169_AddReferencesCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2030), true));
@@ -7641,7 +7641,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/2030
-                var ID_i3170_DeleteNodesCount = new NodeVariable(new NodeId(3170), new QualifiedName("DeleteNodesCount"), new LocalizedText("DeleteNodesCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i3170_DeleteNodesCount = new NodeVariable(new NodeId(3170), new QualifiedName("DeleteNodesCount"), new LocalizedText("DeleteNodesCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i3170_DeleteNodesCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3170_DeleteNodesCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3170_DeleteNodesCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2030), true));
@@ -7650,7 +7650,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/2030
-                var ID_i3171_DeleteReferencesCount = new NodeVariable(new NodeId(3171), new QualifiedName("DeleteReferencesCount"), new LocalizedText("DeleteReferencesCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i3171_DeleteReferencesCount = new NodeVariable(new NodeId(3171), new QualifiedName("DeleteReferencesCount"), new LocalizedText("DeleteReferencesCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i3171_DeleteReferencesCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3171_DeleteReferencesCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3171_DeleteReferencesCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2030), true));
@@ -7659,7 +7659,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/2030
-                var ID_i3172_BrowseCount = new NodeVariable(new NodeId(3172), new QualifiedName("BrowseCount"), new LocalizedText("BrowseCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i3172_BrowseCount = new NodeVariable(new NodeId(3172), new QualifiedName("BrowseCount"), new LocalizedText("BrowseCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i3172_BrowseCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3172_BrowseCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3172_BrowseCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2030), true));
@@ -7668,7 +7668,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/2030
-                var ID_i3173_BrowseNextCount = new NodeVariable(new NodeId(3173), new QualifiedName("BrowseNextCount"), new LocalizedText("BrowseNextCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i3173_BrowseNextCount = new NodeVariable(new NodeId(3173), new QualifiedName("BrowseNextCount"), new LocalizedText("BrowseNextCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i3173_BrowseNextCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3173_BrowseNextCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3173_BrowseNextCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2030), true));
@@ -7677,7 +7677,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/2030
-                var ID_i3174_TranslateBrowsePathsToNodeIdsCount = new NodeVariable(new NodeId(3174), new QualifiedName("TranslateBrowsePathsToNodeIdsCount"), new LocalizedText("TranslateBrowsePathsToNodeIdsCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i3174_TranslateBrowsePathsToNodeIdsCount = new NodeVariable(new NodeId(3174), new QualifiedName("TranslateBrowsePathsToNodeIdsCount"), new LocalizedText("TranslateBrowsePathsToNodeIdsCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i3174_TranslateBrowsePathsToNodeIdsCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3174_TranslateBrowsePathsToNodeIdsCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3174_TranslateBrowsePathsToNodeIdsCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2030), true));
@@ -7686,7 +7686,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/2030
-                var ID_i3175_QueryFirstCount = new NodeVariable(new NodeId(3175), new QualifiedName("QueryFirstCount"), new LocalizedText("QueryFirstCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i3175_QueryFirstCount = new NodeVariable(new NodeId(3175), new QualifiedName("QueryFirstCount"), new LocalizedText("QueryFirstCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i3175_QueryFirstCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3175_QueryFirstCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3175_QueryFirstCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2030), true));
@@ -7695,7 +7695,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/2030
-                var ID_i3176_QueryNextCount = new NodeVariable(new NodeId(3176), new QualifiedName("QueryNextCount"), new LocalizedText("QueryNextCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i3176_QueryNextCount = new NodeVariable(new NodeId(3176), new QualifiedName("QueryNextCount"), new LocalizedText("QueryNextCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i3176_QueryNextCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3176_QueryNextCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3176_QueryNextCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2030), true));
@@ -7704,7 +7704,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/2030
-                var ID_i3177_RegisterNodesCount = new NodeVariable(new NodeId(3177), new QualifiedName("RegisterNodesCount"), new LocalizedText("RegisterNodesCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i3177_RegisterNodesCount = new NodeVariable(new NodeId(3177), new QualifiedName("RegisterNodesCount"), new LocalizedText("RegisterNodesCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i3177_RegisterNodesCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3177_RegisterNodesCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3177_RegisterNodesCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2030), true));
@@ -7713,7 +7713,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnostics/2030
-                var ID_i3178_UnregisterNodesCount = new NodeVariable(new NodeId(3178), new QualifiedName("UnregisterNodesCount"), new LocalizedText("UnregisterNodesCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i3178_UnregisterNodesCount = new NodeVariable(new NodeId(3178), new QualifiedName("UnregisterNodesCount"), new LocalizedText("UnregisterNodesCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i3178_UnregisterNodesCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3178_UnregisterNodesCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3178_UnregisterNodesCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2030), true));
@@ -7731,7 +7731,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> SessionSecurityDiagnosticsType/2244
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnosticsObjectType/2029
-                var ID_i2031_SessionSecurityDiagnostics = new NodeVariable(new NodeId(2031), new QualifiedName("SessionSecurityDiagnostics"), new LocalizedText("SessionSecurityDiagnostics"), new LocalizedText("Security related diagnostics information for an active session."), 0, 0, 0, 0, 0, false, new NodeId(868));
+                var ID_i2031_SessionSecurityDiagnostics = new NodeVariable(new NodeId(2031), new QualifiedName("SessionSecurityDiagnostics"), new LocalizedText("SessionSecurityDiagnostics"), new LocalizedText("Security related diagnostics information for an active session."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(868));
                 ID_i2031_SessionSecurityDiagnostics.References.Add(new ReferenceNode(new NodeId(47), new NodeId(3179), false));
                 ID_i2031_SessionSecurityDiagnostics.References.Add(new ReferenceNode(new NodeId(47), new NodeId(3180), false));
                 ID_i2031_SessionSecurityDiagnostics.References.Add(new ReferenceNode(new NodeId(47), new NodeId(3181), false));
@@ -7749,7 +7749,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionSecurityDiagnostics/2031
-                var ID_i3179_SessionId = new NodeVariable(new NodeId(3179), new QualifiedName("SessionId"), new LocalizedText("SessionId"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(17));
+                var ID_i3179_SessionId = new NodeVariable(new NodeId(3179), new QualifiedName("SessionId"), new LocalizedText("SessionId"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(17));
                 ID_i3179_SessionId.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3179_SessionId.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3179_SessionId.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2031), true));
@@ -7758,7 +7758,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionSecurityDiagnostics/2031
-                var ID_i3180_ClientUserIdOfSession = new NodeVariable(new NodeId(3180), new QualifiedName("ClientUserIdOfSession"), new LocalizedText("ClientUserIdOfSession"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i3180_ClientUserIdOfSession = new NodeVariable(new NodeId(3180), new QualifiedName("ClientUserIdOfSession"), new LocalizedText("ClientUserIdOfSession"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i3180_ClientUserIdOfSession.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3180_ClientUserIdOfSession.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3180_ClientUserIdOfSession.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2031), true));
@@ -7767,7 +7767,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionSecurityDiagnostics/2031
-                var ID_i3181_ClientUserIdHistory = new NodeVariable(new NodeId(3181), new QualifiedName("ClientUserIdHistory"), new LocalizedText("ClientUserIdHistory"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i3181_ClientUserIdHistory = new NodeVariable(new NodeId(3181), new QualifiedName("ClientUserIdHistory"), new LocalizedText("ClientUserIdHistory"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i3181_ClientUserIdHistory.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3181_ClientUserIdHistory.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3181_ClientUserIdHistory.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2031), true));
@@ -7776,7 +7776,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionSecurityDiagnostics/2031
-                var ID_i3182_AuthenticationMechanism = new NodeVariable(new NodeId(3182), new QualifiedName("AuthenticationMechanism"), new LocalizedText("AuthenticationMechanism"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i3182_AuthenticationMechanism = new NodeVariable(new NodeId(3182), new QualifiedName("AuthenticationMechanism"), new LocalizedText("AuthenticationMechanism"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i3182_AuthenticationMechanism.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3182_AuthenticationMechanism.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3182_AuthenticationMechanism.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2031), true));
@@ -7785,7 +7785,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionSecurityDiagnostics/2031
-                var ID_i3183_Encoding = new NodeVariable(new NodeId(3183), new QualifiedName("Encoding"), new LocalizedText("Encoding"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i3183_Encoding = new NodeVariable(new NodeId(3183), new QualifiedName("Encoding"), new LocalizedText("Encoding"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i3183_Encoding.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3183_Encoding.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3183_Encoding.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2031), true));
@@ -7794,7 +7794,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionSecurityDiagnostics/2031
-                var ID_i3184_TransportProtocol = new NodeVariable(new NodeId(3184), new QualifiedName("TransportProtocol"), new LocalizedText("TransportProtocol"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i3184_TransportProtocol = new NodeVariable(new NodeId(3184), new QualifiedName("TransportProtocol"), new LocalizedText("TransportProtocol"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i3184_TransportProtocol.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3184_TransportProtocol.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3184_TransportProtocol.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2031), true));
@@ -7803,7 +7803,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionSecurityDiagnostics/2031
-                var ID_i3185_SecurityMode = new NodeVariable(new NodeId(3185), new QualifiedName("SecurityMode"), new LocalizedText("SecurityMode"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(302));
+                var ID_i3185_SecurityMode = new NodeVariable(new NodeId(3185), new QualifiedName("SecurityMode"), new LocalizedText("SecurityMode"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(302));
                 ID_i3185_SecurityMode.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3185_SecurityMode.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3185_SecurityMode.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2031), true));
@@ -7812,7 +7812,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionSecurityDiagnostics/2031
-                var ID_i3186_SecurityPolicyUri = new NodeVariable(new NodeId(3186), new QualifiedName("SecurityPolicyUri"), new LocalizedText("SecurityPolicyUri"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i3186_SecurityPolicyUri = new NodeVariable(new NodeId(3186), new QualifiedName("SecurityPolicyUri"), new LocalizedText("SecurityPolicyUri"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i3186_SecurityPolicyUri.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3186_SecurityPolicyUri.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3186_SecurityPolicyUri.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2031), true));
@@ -7821,7 +7821,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionSecurityDiagnostics/2031
-                var ID_i3187_ClientCertificate = new NodeVariable(new NodeId(3187), new QualifiedName("ClientCertificate"), new LocalizedText("ClientCertificate"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(15));
+                var ID_i3187_ClientCertificate = new NodeVariable(new NodeId(3187), new QualifiedName("ClientCertificate"), new LocalizedText("ClientCertificate"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(15));
                 ID_i3187_ClientCertificate.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3187_ClientCertificate.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3187_ClientCertificate.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2031), true));
@@ -7830,7 +7830,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> SubscriptionDiagnosticsArrayType/2171
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnosticsObjectType/2029
-                var ID_i2032_SubscriptionDiagnosticsArray = new NodeVariable(new NodeId(2032), new QualifiedName("SubscriptionDiagnosticsArray"), new LocalizedText("SubscriptionDiagnosticsArray"), new LocalizedText("A list of diagnostics for each subscription owned by the session."), 0, 0, 0, 0, 0, false, new NodeId(874));
+                var ID_i2032_SubscriptionDiagnosticsArray = new NodeVariable(new NodeId(2032), new QualifiedName("SubscriptionDiagnosticsArray"), new LocalizedText("SubscriptionDiagnosticsArray"), new LocalizedText("A list of diagnostics for each subscription owned by the session."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(874));
                 ID_i2032_SubscriptionDiagnosticsArray.References.Add(new ReferenceNode(new NodeId(40), new NodeId(2171), false));
                 ID_i2032_SubscriptionDiagnosticsArray.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2032_SubscriptionDiagnosticsArray.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2029), true));
@@ -7839,7 +7839,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ServerRedundancyType/2034
-                var ID_i2035_RedundancySupport = new NodeVariable(new NodeId(2035), new QualifiedName("RedundancySupport"), new LocalizedText("RedundancySupport"), new LocalizedText("Indicates what style of redundancy is supported by the server."), 0, 0, 0, 0, 0, false, new NodeId(851));
+                var ID_i2035_RedundancySupport = new NodeVariable(new NodeId(2035), new QualifiedName("RedundancySupport"), new LocalizedText("RedundancySupport"), new LocalizedText("Indicates what style of redundancy is supported by the server."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(851));
                 ID_i2035_RedundancySupport.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2035_RedundancySupport.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2035_RedundancySupport.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2034), true));
@@ -7848,7 +7848,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- TransparentRedundancyType/2036
-                var ID_i2037_CurrentServerId = new NodeVariable(new NodeId(2037), new QualifiedName("CurrentServerId"), new LocalizedText("CurrentServerId"), new LocalizedText("The ID of the server that is currently in use."), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i2037_CurrentServerId = new NodeVariable(new NodeId(2037), new QualifiedName("CurrentServerId"), new LocalizedText("CurrentServerId"), new LocalizedText("The ID of the server that is currently in use."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i2037_CurrentServerId.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2037_CurrentServerId.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2037_CurrentServerId.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2036), true));
@@ -7857,7 +7857,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- TransparentRedundancyType/2036
-                var ID_i2038_RedundantServerArray = new NodeVariable(new NodeId(2038), new QualifiedName("RedundantServerArray"), new LocalizedText("RedundantServerArray"), new LocalizedText("A list of servers in the same redundant set."), 0, 0, 0, 0, 0, false, new NodeId(853));
+                var ID_i2038_RedundantServerArray = new NodeVariable(new NodeId(2038), new QualifiedName("RedundantServerArray"), new LocalizedText("RedundantServerArray"), new LocalizedText("A list of servers in the same redundant set."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(853));
                 ID_i2038_RedundantServerArray.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2038_RedundantServerArray.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2038_RedundantServerArray.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2036), true));
@@ -7866,7 +7866,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- NonTransparentRedundancyType/2039
-                var ID_i2040_ServerUriArray = new NodeVariable(new NodeId(2040), new QualifiedName("ServerUriArray"), new LocalizedText("ServerUriArray"), new LocalizedText("A list of servers in the same redundant set."), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i2040_ServerUriArray = new NodeVariable(new NodeId(2040), new QualifiedName("ServerUriArray"), new LocalizedText("ServerUriArray"), new LocalizedText("A list of servers in the same redundant set."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i2040_ServerUriArray.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2040_ServerUriArray.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2040_ServerUriArray.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2039), true));
@@ -7875,7 +7875,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- NonTransparentNetworkRedundancyType/11945
-                var ID_i11948_ServerNetworkGroups = new NodeVariable(new NodeId(11948), new QualifiedName("ServerNetworkGroups"), new LocalizedText("ServerNetworkGroups"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(11944));
+                var ID_i11948_ServerNetworkGroups = new NodeVariable(new NodeId(11948), new QualifiedName("ServerNetworkGroups"), new LocalizedText("ServerNetworkGroups"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(11944));
                 ID_i11948_ServerNetworkGroups.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11948_ServerNetworkGroups.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11948_ServerNetworkGroups.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11945), true));
@@ -7884,7 +7884,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Optional/80
                 //	HasProperty/46 <- OperationLimitsType/11564
-                var ID_i11565_MaxNodesPerRead = new NodeVariable(new NodeId(11565), new QualifiedName("MaxNodesPerRead"), new LocalizedText("MaxNodesPerRead"), new LocalizedText("The maximum number of operations in a single Read request."), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i11565_MaxNodesPerRead = new NodeVariable(new NodeId(11565), new QualifiedName("MaxNodesPerRead"), new LocalizedText("MaxNodesPerRead"), new LocalizedText("The maximum number of operations in a single Read request."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i11565_MaxNodesPerRead.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11565_MaxNodesPerRead.References.Add(new ReferenceNode(new NodeId(37), new NodeId(80), false));
                 ID_i11565_MaxNodesPerRead.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11564), true));
@@ -7893,7 +7893,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Optional/80
                 //	HasProperty/46 <- OperationLimitsType/11564
-                var ID_i12161_MaxNodesPerHistoryReadData = new NodeVariable(new NodeId(12161), new QualifiedName("MaxNodesPerHistoryReadData"), new LocalizedText("MaxNodesPerHistoryReadData"), new LocalizedText("The maximum number of operations in a single data HistoryRead request."), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i12161_MaxNodesPerHistoryReadData = new NodeVariable(new NodeId(12161), new QualifiedName("MaxNodesPerHistoryReadData"), new LocalizedText("MaxNodesPerHistoryReadData"), new LocalizedText("The maximum number of operations in a single data HistoryRead request."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i12161_MaxNodesPerHistoryReadData.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i12161_MaxNodesPerHistoryReadData.References.Add(new ReferenceNode(new NodeId(37), new NodeId(80), false));
                 ID_i12161_MaxNodesPerHistoryReadData.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11564), true));
@@ -7902,7 +7902,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Optional/80
                 //	HasProperty/46 <- OperationLimitsType/11564
-                var ID_i12162_MaxNodesPerHistoryReadEvents = new NodeVariable(new NodeId(12162), new QualifiedName("MaxNodesPerHistoryReadEvents"), new LocalizedText("MaxNodesPerHistoryReadEvents"), new LocalizedText("The maximum number of operations in a single event HistoryRead request."), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i12162_MaxNodesPerHistoryReadEvents = new NodeVariable(new NodeId(12162), new QualifiedName("MaxNodesPerHistoryReadEvents"), new LocalizedText("MaxNodesPerHistoryReadEvents"), new LocalizedText("The maximum number of operations in a single event HistoryRead request."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i12162_MaxNodesPerHistoryReadEvents.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i12162_MaxNodesPerHistoryReadEvents.References.Add(new ReferenceNode(new NodeId(37), new NodeId(80), false));
                 ID_i12162_MaxNodesPerHistoryReadEvents.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11564), true));
@@ -7911,7 +7911,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Optional/80
                 //	HasProperty/46 <- OperationLimitsType/11564
-                var ID_i11567_MaxNodesPerWrite = new NodeVariable(new NodeId(11567), new QualifiedName("MaxNodesPerWrite"), new LocalizedText("MaxNodesPerWrite"), new LocalizedText("The maximum number of operations in a single Write request."), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i11567_MaxNodesPerWrite = new NodeVariable(new NodeId(11567), new QualifiedName("MaxNodesPerWrite"), new LocalizedText("MaxNodesPerWrite"), new LocalizedText("The maximum number of operations in a single Write request."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i11567_MaxNodesPerWrite.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11567_MaxNodesPerWrite.References.Add(new ReferenceNode(new NodeId(37), new NodeId(80), false));
                 ID_i11567_MaxNodesPerWrite.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11564), true));
@@ -7920,7 +7920,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Optional/80
                 //	HasProperty/46 <- OperationLimitsType/11564
-                var ID_i12163_MaxNodesPerHistoryUpdateData = new NodeVariable(new NodeId(12163), new QualifiedName("MaxNodesPerHistoryUpdateData"), new LocalizedText("MaxNodesPerHistoryUpdateData"), new LocalizedText("The maximum number of operations in a single data HistoryUpdate request."), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i12163_MaxNodesPerHistoryUpdateData = new NodeVariable(new NodeId(12163), new QualifiedName("MaxNodesPerHistoryUpdateData"), new LocalizedText("MaxNodesPerHistoryUpdateData"), new LocalizedText("The maximum number of operations in a single data HistoryUpdate request."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i12163_MaxNodesPerHistoryUpdateData.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i12163_MaxNodesPerHistoryUpdateData.References.Add(new ReferenceNode(new NodeId(37), new NodeId(80), false));
                 ID_i12163_MaxNodesPerHistoryUpdateData.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11564), true));
@@ -7929,7 +7929,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Optional/80
                 //	HasProperty/46 <- OperationLimitsType/11564
-                var ID_i12164_MaxNodesPerHistoryUpdateEvents = new NodeVariable(new NodeId(12164), new QualifiedName("MaxNodesPerHistoryUpdateEvents"), new LocalizedText("MaxNodesPerHistoryUpdateEvents"), new LocalizedText("The maximum number of operations in a single event HistoryUpdate request."), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i12164_MaxNodesPerHistoryUpdateEvents = new NodeVariable(new NodeId(12164), new QualifiedName("MaxNodesPerHistoryUpdateEvents"), new LocalizedText("MaxNodesPerHistoryUpdateEvents"), new LocalizedText("The maximum number of operations in a single event HistoryUpdate request."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i12164_MaxNodesPerHistoryUpdateEvents.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i12164_MaxNodesPerHistoryUpdateEvents.References.Add(new ReferenceNode(new NodeId(37), new NodeId(80), false));
                 ID_i12164_MaxNodesPerHistoryUpdateEvents.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11564), true));
@@ -7938,7 +7938,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Optional/80
                 //	HasProperty/46 <- OperationLimitsType/11564
-                var ID_i11569_MaxNodesPerMethodCall = new NodeVariable(new NodeId(11569), new QualifiedName("MaxNodesPerMethodCall"), new LocalizedText("MaxNodesPerMethodCall"), new LocalizedText("The maximum number of operations in a single Call request."), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i11569_MaxNodesPerMethodCall = new NodeVariable(new NodeId(11569), new QualifiedName("MaxNodesPerMethodCall"), new LocalizedText("MaxNodesPerMethodCall"), new LocalizedText("The maximum number of operations in a single Call request."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i11569_MaxNodesPerMethodCall.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11569_MaxNodesPerMethodCall.References.Add(new ReferenceNode(new NodeId(37), new NodeId(80), false));
                 ID_i11569_MaxNodesPerMethodCall.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11564), true));
@@ -7947,7 +7947,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Optional/80
                 //	HasProperty/46 <- OperationLimitsType/11564
-                var ID_i11570_MaxNodesPerBrowse = new NodeVariable(new NodeId(11570), new QualifiedName("MaxNodesPerBrowse"), new LocalizedText("MaxNodesPerBrowse"), new LocalizedText("The maximum number of operations in a single Browse request."), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i11570_MaxNodesPerBrowse = new NodeVariable(new NodeId(11570), new QualifiedName("MaxNodesPerBrowse"), new LocalizedText("MaxNodesPerBrowse"), new LocalizedText("The maximum number of operations in a single Browse request."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i11570_MaxNodesPerBrowse.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11570_MaxNodesPerBrowse.References.Add(new ReferenceNode(new NodeId(37), new NodeId(80), false));
                 ID_i11570_MaxNodesPerBrowse.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11564), true));
@@ -7956,7 +7956,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Optional/80
                 //	HasProperty/46 <- OperationLimitsType/11564
-                var ID_i11571_MaxNodesPerRegisterNodes = new NodeVariable(new NodeId(11571), new QualifiedName("MaxNodesPerRegisterNodes"), new LocalizedText("MaxNodesPerRegisterNodes"), new LocalizedText("The maximum number of operations in a single RegisterNodes request."), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i11571_MaxNodesPerRegisterNodes = new NodeVariable(new NodeId(11571), new QualifiedName("MaxNodesPerRegisterNodes"), new LocalizedText("MaxNodesPerRegisterNodes"), new LocalizedText("The maximum number of operations in a single RegisterNodes request."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i11571_MaxNodesPerRegisterNodes.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11571_MaxNodesPerRegisterNodes.References.Add(new ReferenceNode(new NodeId(37), new NodeId(80), false));
                 ID_i11571_MaxNodesPerRegisterNodes.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11564), true));
@@ -7965,7 +7965,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Optional/80
                 //	HasProperty/46 <- OperationLimitsType/11564
-                var ID_i11572_MaxNodesPerTranslateBrowsePathsToNodeIds = new NodeVariable(new NodeId(11572), new QualifiedName("MaxNodesPerTranslateBrowsePathsToNodeIds"), new LocalizedText("MaxNodesPerTranslateBrowsePathsToNodeIds"), new LocalizedText("The maximum number of operations in a single TranslateBrowsePathsToNodeIds request."), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i11572_MaxNodesPerTranslateBrowsePathsToNodeIds = new NodeVariable(new NodeId(11572), new QualifiedName("MaxNodesPerTranslateBrowsePathsToNodeIds"), new LocalizedText("MaxNodesPerTranslateBrowsePathsToNodeIds"), new LocalizedText("The maximum number of operations in a single TranslateBrowsePathsToNodeIds request."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i11572_MaxNodesPerTranslateBrowsePathsToNodeIds.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11572_MaxNodesPerTranslateBrowsePathsToNodeIds.References.Add(new ReferenceNode(new NodeId(37), new NodeId(80), false));
                 ID_i11572_MaxNodesPerTranslateBrowsePathsToNodeIds.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11564), true));
@@ -7974,7 +7974,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Optional/80
                 //	HasProperty/46 <- OperationLimitsType/11564
-                var ID_i11573_MaxNodesPerNodeManagement = new NodeVariable(new NodeId(11573), new QualifiedName("MaxNodesPerNodeManagement"), new LocalizedText("MaxNodesPerNodeManagement"), new LocalizedText("The maximum number of operations in a single AddNodes, AddReferences, DeleteNodes or DeleteReferences request."), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i11573_MaxNodesPerNodeManagement = new NodeVariable(new NodeId(11573), new QualifiedName("MaxNodesPerNodeManagement"), new LocalizedText("MaxNodesPerNodeManagement"), new LocalizedText("The maximum number of operations in a single AddNodes, AddReferences, DeleteNodes or DeleteReferences request."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i11573_MaxNodesPerNodeManagement.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11573_MaxNodesPerNodeManagement.References.Add(new ReferenceNode(new NodeId(37), new NodeId(80), false));
                 ID_i11573_MaxNodesPerNodeManagement.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11564), true));
@@ -7983,7 +7983,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Optional/80
                 //	HasProperty/46 <- OperationLimitsType/11564
-                var ID_i11574_MaxMonitoredItemsPerCall = new NodeVariable(new NodeId(11574), new QualifiedName("MaxMonitoredItemsPerCall"), new LocalizedText("MaxMonitoredItemsPerCall"), new LocalizedText("The maximum number of operations in a single MonitoredItem related request."), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i11574_MaxMonitoredItemsPerCall = new NodeVariable(new NodeId(11574), new QualifiedName("MaxMonitoredItemsPerCall"), new LocalizedText("MaxMonitoredItemsPerCall"), new LocalizedText("The maximum number of operations in a single MonitoredItem related request."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i11574_MaxMonitoredItemsPerCall.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11574_MaxMonitoredItemsPerCall.References.Add(new ReferenceNode(new NodeId(37), new NodeId(80), false));
                 ID_i11574_MaxMonitoredItemsPerCall.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11564), true));
@@ -7992,7 +7992,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- FileType/11575
-                var ID_i11576_Size = new NodeVariable(new NodeId(11576), new QualifiedName("Size"), new LocalizedText("Size"), new LocalizedText("The size of the file in bytes."), 0, 0, 0, 0, 0, false, new NodeId(9));
+                var ID_i11576_Size = new NodeVariable(new NodeId(11576), new QualifiedName("Size"), new LocalizedText("Size"), new LocalizedText("The size of the file in bytes."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(9));
                 ID_i11576_Size.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11576_Size.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11576_Size.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11575), true));
@@ -8001,7 +8001,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- FileType/11575
-                var ID_i11577_Writeable = new NodeVariable(new NodeId(11577), new QualifiedName("Writeable"), new LocalizedText("Writeable"), new LocalizedText("Whether the file is writeable."), 0, 0, 0, 0, 0, false, new NodeId(1));
+                var ID_i11577_Writeable = new NodeVariable(new NodeId(11577), new QualifiedName("Writeable"), new LocalizedText("Writeable"), new LocalizedText("Whether the file is writeable."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(1));
                 ID_i11577_Writeable.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11577_Writeable.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11577_Writeable.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11575), true));
@@ -8010,7 +8010,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- FileType/11575
-                var ID_i11578_UserWriteable = new NodeVariable(new NodeId(11578), new QualifiedName("UserWriteable"), new LocalizedText("UserWriteable"), new LocalizedText("Whether the file is writeable by the current user."), 0, 0, 0, 0, 0, false, new NodeId(1));
+                var ID_i11578_UserWriteable = new NodeVariable(new NodeId(11578), new QualifiedName("UserWriteable"), new LocalizedText("UserWriteable"), new LocalizedText("Whether the file is writeable by the current user."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(1));
                 ID_i11578_UserWriteable.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11578_UserWriteable.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11578_UserWriteable.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11575), true));
@@ -8019,7 +8019,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- FileType/11575
-                var ID_i11579_OpenCount = new NodeVariable(new NodeId(11579), new QualifiedName("OpenCount"), new LocalizedText("OpenCount"), new LocalizedText("The current number of open file handles."), 0, 0, 0, 0, 0, false, new NodeId(5));
+                var ID_i11579_OpenCount = new NodeVariable(new NodeId(11579), new QualifiedName("OpenCount"), new LocalizedText("OpenCount"), new LocalizedText("The current number of open file handles."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(5));
                 ID_i11579_OpenCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11579_OpenCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11579_OpenCount.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11575), true));
@@ -8028,7 +8028,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- Open/11580
-                var ID_i11581_InputArguments = new NodeVariable(new NodeId(11581), new QualifiedName("InputArguments"), new LocalizedText("InputArguments"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(296));
+                var ID_i11581_InputArguments = new NodeVariable(new NodeId(11581), new QualifiedName("InputArguments"), new LocalizedText("InputArguments"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(296));
                 ID_i11581_InputArguments.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11581_InputArguments.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11581_InputArguments.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11580), true));
@@ -8037,7 +8037,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- Open/11580
-                var ID_i11582_OutputArguments = new NodeVariable(new NodeId(11582), new QualifiedName("OutputArguments"), new LocalizedText("OutputArguments"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(296));
+                var ID_i11582_OutputArguments = new NodeVariable(new NodeId(11582), new QualifiedName("OutputArguments"), new LocalizedText("OutputArguments"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(296));
                 ID_i11582_OutputArguments.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11582_OutputArguments.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11582_OutputArguments.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11580), true));
@@ -8046,7 +8046,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- Close/11583
-                var ID_i11584_InputArguments = new NodeVariable(new NodeId(11584), new QualifiedName("InputArguments"), new LocalizedText("InputArguments"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(296));
+                var ID_i11584_InputArguments = new NodeVariable(new NodeId(11584), new QualifiedName("InputArguments"), new LocalizedText("InputArguments"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(296));
                 ID_i11584_InputArguments.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11584_InputArguments.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11584_InputArguments.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11583), true));
@@ -8055,7 +8055,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- Read/11585
-                var ID_i11586_InputArguments = new NodeVariable(new NodeId(11586), new QualifiedName("InputArguments"), new LocalizedText("InputArguments"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(296));
+                var ID_i11586_InputArguments = new NodeVariable(new NodeId(11586), new QualifiedName("InputArguments"), new LocalizedText("InputArguments"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(296));
                 ID_i11586_InputArguments.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11586_InputArguments.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11586_InputArguments.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11585), true));
@@ -8064,7 +8064,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- Read/11585
-                var ID_i11587_OutputArguments = new NodeVariable(new NodeId(11587), new QualifiedName("OutputArguments"), new LocalizedText("OutputArguments"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(296));
+                var ID_i11587_OutputArguments = new NodeVariable(new NodeId(11587), new QualifiedName("OutputArguments"), new LocalizedText("OutputArguments"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(296));
                 ID_i11587_OutputArguments.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11587_OutputArguments.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11587_OutputArguments.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11585), true));
@@ -8073,7 +8073,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- Write/11588
-                var ID_i11589_InputArguments = new NodeVariable(new NodeId(11589), new QualifiedName("InputArguments"), new LocalizedText("InputArguments"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(296));
+                var ID_i11589_InputArguments = new NodeVariable(new NodeId(11589), new QualifiedName("InputArguments"), new LocalizedText("InputArguments"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(296));
                 ID_i11589_InputArguments.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11589_InputArguments.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11589_InputArguments.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11588), true));
@@ -8082,7 +8082,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- GetPosition/11590
-                var ID_i11591_InputArguments = new NodeVariable(new NodeId(11591), new QualifiedName("InputArguments"), new LocalizedText("InputArguments"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(296));
+                var ID_i11591_InputArguments = new NodeVariable(new NodeId(11591), new QualifiedName("InputArguments"), new LocalizedText("InputArguments"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(296));
                 ID_i11591_InputArguments.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11591_InputArguments.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11591_InputArguments.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11590), true));
@@ -8091,7 +8091,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- GetPosition/11590
-                var ID_i11592_OutputArguments = new NodeVariable(new NodeId(11592), new QualifiedName("OutputArguments"), new LocalizedText("OutputArguments"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(296));
+                var ID_i11592_OutputArguments = new NodeVariable(new NodeId(11592), new QualifiedName("OutputArguments"), new LocalizedText("OutputArguments"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(296));
                 ID_i11592_OutputArguments.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11592_OutputArguments.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11592_OutputArguments.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11590), true));
@@ -8100,7 +8100,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- SetPosition/11593
-                var ID_i11594_InputArguments = new NodeVariable(new NodeId(11594), new QualifiedName("InputArguments"), new LocalizedText("InputArguments"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(296));
+                var ID_i11594_InputArguments = new NodeVariable(new NodeId(11594), new QualifiedName("InputArguments"), new LocalizedText("InputArguments"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(296));
                 ID_i11594_InputArguments.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11594_InputArguments.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11594_InputArguments.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11593), true));
@@ -8109,7 +8109,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- NamespaceMetadataType/11616
-                var ID_i11617_NamespaceUri = new NodeVariable(new NodeId(11617), new QualifiedName("NamespaceUri"), new LocalizedText("NamespaceUri"), new LocalizedText("The URI of the namespace."), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i11617_NamespaceUri = new NodeVariable(new NodeId(11617), new QualifiedName("NamespaceUri"), new LocalizedText("NamespaceUri"), new LocalizedText("The URI of the namespace."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i11617_NamespaceUri.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11617_NamespaceUri.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11617_NamespaceUri.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11616), true));
@@ -8118,7 +8118,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- NamespaceMetadataType/11616
-                var ID_i11618_NamespaceVersion = new NodeVariable(new NodeId(11618), new QualifiedName("NamespaceVersion"), new LocalizedText("NamespaceVersion"), new LocalizedText("The human readable string representing version of the namespace."), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i11618_NamespaceVersion = new NodeVariable(new NodeId(11618), new QualifiedName("NamespaceVersion"), new LocalizedText("NamespaceVersion"), new LocalizedText("The human readable string representing version of the namespace."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i11618_NamespaceVersion.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11618_NamespaceVersion.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11618_NamespaceVersion.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11616), true));
@@ -8127,7 +8127,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- NamespaceMetadataType/11616
-                var ID_i11619_NamespacePublicationDate = new NodeVariable(new NodeId(11619), new QualifiedName("NamespacePublicationDate"), new LocalizedText("NamespacePublicationDate"), new LocalizedText("The publication date for the namespace."), 0, 0, 0, 0, 0, false, new NodeId(13));
+                var ID_i11619_NamespacePublicationDate = new NodeVariable(new NodeId(11619), new QualifiedName("NamespacePublicationDate"), new LocalizedText("NamespacePublicationDate"), new LocalizedText("The publication date for the namespace."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(13));
                 ID_i11619_NamespacePublicationDate.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11619_NamespacePublicationDate.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11619_NamespacePublicationDate.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11616), true));
@@ -8136,7 +8136,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- NamespaceMetadataType/11616
-                var ID_i11620_IsNamespaceSubset = new NodeVariable(new NodeId(11620), new QualifiedName("IsNamespaceSubset"), new LocalizedText("IsNamespaceSubset"), new LocalizedText("If TRUE then the server only supports a subset of the namespace."), 0, 0, 0, 0, 0, false, new NodeId(1));
+                var ID_i11620_IsNamespaceSubset = new NodeVariable(new NodeId(11620), new QualifiedName("IsNamespaceSubset"), new LocalizedText("IsNamespaceSubset"), new LocalizedText("If TRUE then the server only supports a subset of the namespace."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(1));
                 ID_i11620_IsNamespaceSubset.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11620_IsNamespaceSubset.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11620_IsNamespaceSubset.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11616), true));
@@ -8145,7 +8145,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- NamespaceMetadataType/11616
-                var ID_i11621_StaticNodeIdIdentifierTypes = new NodeVariable(new NodeId(11621), new QualifiedName("StaticNodeIdIdentifierTypes"), new LocalizedText("StaticNodeIdIdentifierTypes"), new LocalizedText("A list of IdTypes for nodes which are the same in every server that exposes them."), 0, 0, 0, 0, 0, false, new NodeId(256));
+                var ID_i11621_StaticNodeIdIdentifierTypes = new NodeVariable(new NodeId(11621), new QualifiedName("StaticNodeIdIdentifierTypes"), new LocalizedText("StaticNodeIdIdentifierTypes"), new LocalizedText("A list of IdTypes for nodes which are the same in every server that exposes them."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(256));
                 ID_i11621_StaticNodeIdIdentifierTypes.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11621_StaticNodeIdIdentifierTypes.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11621_StaticNodeIdIdentifierTypes.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11616), true));
@@ -8154,7 +8154,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- NamespaceMetadataType/11616
-                var ID_i11622_StaticNumericNodeIdRange = new NodeVariable(new NodeId(11622), new QualifiedName("StaticNumericNodeIdRange"), new LocalizedText("StaticNumericNodeIdRange"), new LocalizedText("A list of ranges for numeric node ids which are the same in every server that exposes them."), 0, 0, 0, 0, 0, false, new NodeId(291));
+                var ID_i11622_StaticNumericNodeIdRange = new NodeVariable(new NodeId(11622), new QualifiedName("StaticNumericNodeIdRange"), new LocalizedText("StaticNumericNodeIdRange"), new LocalizedText("A list of ranges for numeric node ids which are the same in every server that exposes them."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(291));
                 ID_i11622_StaticNumericNodeIdRange.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11622_StaticNumericNodeIdRange.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11622_StaticNumericNodeIdRange.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11616), true));
@@ -8163,7 +8163,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- NamespaceMetadataType/11616
-                var ID_i11623_StaticStringNodeIdPattern = new NodeVariable(new NodeId(11623), new QualifiedName("StaticStringNodeIdPattern"), new LocalizedText("StaticStringNodeIdPattern"), new LocalizedText("A regular expression which matches string node ids are the same in every server that exposes them."), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i11623_StaticStringNodeIdPattern = new NodeVariable(new NodeId(11623), new QualifiedName("StaticStringNodeIdPattern"), new LocalizedText("StaticStringNodeIdPattern"), new LocalizedText("A regular expression which matches string node ids are the same in every server that exposes them."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i11623_StaticStringNodeIdPattern.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11623_StaticStringNodeIdPattern.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11623_StaticStringNodeIdPattern.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11616), true));
@@ -8172,7 +8172,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- NamespaceFile/11624
-                var ID_i11625_Size = new NodeVariable(new NodeId(11625), new QualifiedName("Size"), new LocalizedText("Size"), new LocalizedText("The size of the file in bytes."), 0, 0, 0, 0, 0, false, new NodeId(9));
+                var ID_i11625_Size = new NodeVariable(new NodeId(11625), new QualifiedName("Size"), new LocalizedText("Size"), new LocalizedText("The size of the file in bytes."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(9));
                 ID_i11625_Size.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11625_Size.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11625_Size.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11624), true));
@@ -8181,7 +8181,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- NamespaceFile/11624
-                var ID_i11626_Writeable = new NodeVariable(new NodeId(11626), new QualifiedName("Writeable"), new LocalizedText("Writeable"), new LocalizedText("Whether the file is writeable."), 0, 0, 0, 0, 0, false, new NodeId(1));
+                var ID_i11626_Writeable = new NodeVariable(new NodeId(11626), new QualifiedName("Writeable"), new LocalizedText("Writeable"), new LocalizedText("Whether the file is writeable."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(1));
                 ID_i11626_Writeable.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11626_Writeable.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11626_Writeable.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11624), true));
@@ -8190,7 +8190,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- NamespaceFile/11624
-                var ID_i11627_UserWriteable = new NodeVariable(new NodeId(11627), new QualifiedName("UserWriteable"), new LocalizedText("UserWriteable"), new LocalizedText("Whether the file is writeable by the current user."), 0, 0, 0, 0, 0, false, new NodeId(1));
+                var ID_i11627_UserWriteable = new NodeVariable(new NodeId(11627), new QualifiedName("UserWriteable"), new LocalizedText("UserWriteable"), new LocalizedText("Whether the file is writeable by the current user."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(1));
                 ID_i11627_UserWriteable.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11627_UserWriteable.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11627_UserWriteable.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11624), true));
@@ -8199,7 +8199,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- NamespaceFile/11624
-                var ID_i11628_OpenCount = new NodeVariable(new NodeId(11628), new QualifiedName("OpenCount"), new LocalizedText("OpenCount"), new LocalizedText("The current number of open file handles."), 0, 0, 0, 0, 0, false, new NodeId(5));
+                var ID_i11628_OpenCount = new NodeVariable(new NodeId(11628), new QualifiedName("OpenCount"), new LocalizedText("OpenCount"), new LocalizedText("The current number of open file handles."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(5));
                 ID_i11628_OpenCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11628_OpenCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11628_OpenCount.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11624), true));
@@ -8208,7 +8208,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- Open/11629
-                var ID_i11630_InputArguments = new NodeVariable(new NodeId(11630), new QualifiedName("InputArguments"), new LocalizedText("InputArguments"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(296));
+                var ID_i11630_InputArguments = new NodeVariable(new NodeId(11630), new QualifiedName("InputArguments"), new LocalizedText("InputArguments"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(296));
                 ID_i11630_InputArguments.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11630_InputArguments.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11630_InputArguments.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11629), true));
@@ -8217,7 +8217,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- Open/11629
-                var ID_i11631_OutputArguments = new NodeVariable(new NodeId(11631), new QualifiedName("OutputArguments"), new LocalizedText("OutputArguments"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(296));
+                var ID_i11631_OutputArguments = new NodeVariable(new NodeId(11631), new QualifiedName("OutputArguments"), new LocalizedText("OutputArguments"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(296));
                 ID_i11631_OutputArguments.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11631_OutputArguments.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11631_OutputArguments.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11629), true));
@@ -8226,7 +8226,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- Close/11632
-                var ID_i11633_InputArguments = new NodeVariable(new NodeId(11633), new QualifiedName("InputArguments"), new LocalizedText("InputArguments"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(296));
+                var ID_i11633_InputArguments = new NodeVariable(new NodeId(11633), new QualifiedName("InputArguments"), new LocalizedText("InputArguments"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(296));
                 ID_i11633_InputArguments.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11633_InputArguments.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11633_InputArguments.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11632), true));
@@ -8235,7 +8235,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- Read/11634
-                var ID_i11635_InputArguments = new NodeVariable(new NodeId(11635), new QualifiedName("InputArguments"), new LocalizedText("InputArguments"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(296));
+                var ID_i11635_InputArguments = new NodeVariable(new NodeId(11635), new QualifiedName("InputArguments"), new LocalizedText("InputArguments"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(296));
                 ID_i11635_InputArguments.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11635_InputArguments.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11635_InputArguments.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11634), true));
@@ -8244,7 +8244,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- Read/11634
-                var ID_i11636_OutputArguments = new NodeVariable(new NodeId(11636), new QualifiedName("OutputArguments"), new LocalizedText("OutputArguments"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(296));
+                var ID_i11636_OutputArguments = new NodeVariable(new NodeId(11636), new QualifiedName("OutputArguments"), new LocalizedText("OutputArguments"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(296));
                 ID_i11636_OutputArguments.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11636_OutputArguments.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11636_OutputArguments.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11634), true));
@@ -8253,7 +8253,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- Write/11637
-                var ID_i11638_InputArguments = new NodeVariable(new NodeId(11638), new QualifiedName("InputArguments"), new LocalizedText("InputArguments"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(296));
+                var ID_i11638_InputArguments = new NodeVariable(new NodeId(11638), new QualifiedName("InputArguments"), new LocalizedText("InputArguments"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(296));
                 ID_i11638_InputArguments.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11638_InputArguments.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11638_InputArguments.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11637), true));
@@ -8262,7 +8262,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- GetPosition/11639
-                var ID_i11640_InputArguments = new NodeVariable(new NodeId(11640), new QualifiedName("InputArguments"), new LocalizedText("InputArguments"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(296));
+                var ID_i11640_InputArguments = new NodeVariable(new NodeId(11640), new QualifiedName("InputArguments"), new LocalizedText("InputArguments"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(296));
                 ID_i11640_InputArguments.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11640_InputArguments.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11640_InputArguments.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11639), true));
@@ -8271,7 +8271,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- GetPosition/11639
-                var ID_i11641_OutputArguments = new NodeVariable(new NodeId(11641), new QualifiedName("OutputArguments"), new LocalizedText("OutputArguments"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(296));
+                var ID_i11641_OutputArguments = new NodeVariable(new NodeId(11641), new QualifiedName("OutputArguments"), new LocalizedText("OutputArguments"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(296));
                 ID_i11641_OutputArguments.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11641_OutputArguments.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11641_OutputArguments.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11639), true));
@@ -8280,7 +8280,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- SetPosition/11642
-                var ID_i11643_InputArguments = new NodeVariable(new NodeId(11643), new QualifiedName("InputArguments"), new LocalizedText("InputArguments"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(296));
+                var ID_i11643_InputArguments = new NodeVariable(new NodeId(11643), new QualifiedName("InputArguments"), new LocalizedText("InputArguments"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(296));
                 ID_i11643_InputArguments.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11643_InputArguments.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11643_InputArguments.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11642), true));
@@ -8289,7 +8289,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- <NamespaceIdentifier>/11646
-                var ID_i11647_NamespaceUri = new NodeVariable(new NodeId(11647), new QualifiedName("NamespaceUri"), new LocalizedText("NamespaceUri"), new LocalizedText("The URI of the namespace."), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i11647_NamespaceUri = new NodeVariable(new NodeId(11647), new QualifiedName("NamespaceUri"), new LocalizedText("NamespaceUri"), new LocalizedText("The URI of the namespace."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i11647_NamespaceUri.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11647_NamespaceUri.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11647_NamespaceUri.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11646), true));
@@ -8298,7 +8298,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- <NamespaceIdentifier>/11646
-                var ID_i11648_NamespaceVersion = new NodeVariable(new NodeId(11648), new QualifiedName("NamespaceVersion"), new LocalizedText("NamespaceVersion"), new LocalizedText("The human readable string representing version of the namespace."), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i11648_NamespaceVersion = new NodeVariable(new NodeId(11648), new QualifiedName("NamespaceVersion"), new LocalizedText("NamespaceVersion"), new LocalizedText("The human readable string representing version of the namespace."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i11648_NamespaceVersion.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11648_NamespaceVersion.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11648_NamespaceVersion.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11646), true));
@@ -8307,7 +8307,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- <NamespaceIdentifier>/11646
-                var ID_i11649_NamespacePublicationDate = new NodeVariable(new NodeId(11649), new QualifiedName("NamespacePublicationDate"), new LocalizedText("NamespacePublicationDate"), new LocalizedText("The publication date for the namespace."), 0, 0, 0, 0, 0, false, new NodeId(13));
+                var ID_i11649_NamespacePublicationDate = new NodeVariable(new NodeId(11649), new QualifiedName("NamespacePublicationDate"), new LocalizedText("NamespacePublicationDate"), new LocalizedText("The publication date for the namespace."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(13));
                 ID_i11649_NamespacePublicationDate.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11649_NamespacePublicationDate.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11649_NamespacePublicationDate.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11646), true));
@@ -8316,7 +8316,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- <NamespaceIdentifier>/11646
-                var ID_i11650_IsNamespaceSubset = new NodeVariable(new NodeId(11650), new QualifiedName("IsNamespaceSubset"), new LocalizedText("IsNamespaceSubset"), new LocalizedText("If TRUE then the server only supports a subset of the namespace."), 0, 0, 0, 0, 0, false, new NodeId(1));
+                var ID_i11650_IsNamespaceSubset = new NodeVariable(new NodeId(11650), new QualifiedName("IsNamespaceSubset"), new LocalizedText("IsNamespaceSubset"), new LocalizedText("If TRUE then the server only supports a subset of the namespace."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(1));
                 ID_i11650_IsNamespaceSubset.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11650_IsNamespaceSubset.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11650_IsNamespaceSubset.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11646), true));
@@ -8325,7 +8325,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- <NamespaceIdentifier>/11646
-                var ID_i11651_StaticNodeIdIdentifierTypes = new NodeVariable(new NodeId(11651), new QualifiedName("StaticNodeIdIdentifierTypes"), new LocalizedText("StaticNodeIdIdentifierTypes"), new LocalizedText("A list of IdTypes for nodes which are the same in every server that exposes them."), 0, 0, 0, 0, 0, false, new NodeId(256));
+                var ID_i11651_StaticNodeIdIdentifierTypes = new NodeVariable(new NodeId(11651), new QualifiedName("StaticNodeIdIdentifierTypes"), new LocalizedText("StaticNodeIdIdentifierTypes"), new LocalizedText("A list of IdTypes for nodes which are the same in every server that exposes them."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(256));
                 ID_i11651_StaticNodeIdIdentifierTypes.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11651_StaticNodeIdIdentifierTypes.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11651_StaticNodeIdIdentifierTypes.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11646), true));
@@ -8334,7 +8334,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- <NamespaceIdentifier>/11646
-                var ID_i11652_StaticNumericNodeIdRange = new NodeVariable(new NodeId(11652), new QualifiedName("StaticNumericNodeIdRange"), new LocalizedText("StaticNumericNodeIdRange"), new LocalizedText("A list of ranges for numeric node ids which are the same in every server that exposes them."), 0, 0, 0, 0, 0, false, new NodeId(291));
+                var ID_i11652_StaticNumericNodeIdRange = new NodeVariable(new NodeId(11652), new QualifiedName("StaticNumericNodeIdRange"), new LocalizedText("StaticNumericNodeIdRange"), new LocalizedText("A list of ranges for numeric node ids which are the same in every server that exposes them."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(291));
                 ID_i11652_StaticNumericNodeIdRange.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11652_StaticNumericNodeIdRange.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11652_StaticNumericNodeIdRange.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11646), true));
@@ -8343,7 +8343,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- <NamespaceIdentifier>/11646
-                var ID_i11653_StaticStringNodeIdPattern = new NodeVariable(new NodeId(11653), new QualifiedName("StaticStringNodeIdPattern"), new LocalizedText("StaticStringNodeIdPattern"), new LocalizedText("A regular expression which matches string node ids are the same in every server that exposes them."), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i11653_StaticStringNodeIdPattern = new NodeVariable(new NodeId(11653), new QualifiedName("StaticStringNodeIdPattern"), new LocalizedText("StaticStringNodeIdPattern"), new LocalizedText("A regular expression which matches string node ids are the same in every server that exposes them."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i11653_StaticStringNodeIdPattern.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11653_StaticStringNodeIdPattern.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11653_StaticStringNodeIdPattern.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11646), true));
@@ -8352,7 +8352,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AddressSpaceFile/11675
-                var ID_i11676_Size = new NodeVariable(new NodeId(11676), new QualifiedName("Size"), new LocalizedText("Size"), new LocalizedText("The size of the file in bytes."), 0, 0, 0, 0, 0, false, new NodeId(9));
+                var ID_i11676_Size = new NodeVariable(new NodeId(11676), new QualifiedName("Size"), new LocalizedText("Size"), new LocalizedText("The size of the file in bytes."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(9));
                 ID_i11676_Size.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11676_Size.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11676_Size.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11675), true));
@@ -8361,7 +8361,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AddressSpaceFile/11675
-                var ID_i11677_Writeable = new NodeVariable(new NodeId(11677), new QualifiedName("Writeable"), new LocalizedText("Writeable"), new LocalizedText("Whether the file is writeable."), 0, 0, 0, 0, 0, false, new NodeId(1));
+                var ID_i11677_Writeable = new NodeVariable(new NodeId(11677), new QualifiedName("Writeable"), new LocalizedText("Writeable"), new LocalizedText("Whether the file is writeable."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(1));
                 ID_i11677_Writeable.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11677_Writeable.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11677_Writeable.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11675), true));
@@ -8370,7 +8370,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AddressSpaceFile/11675
-                var ID_i11678_UserWriteable = new NodeVariable(new NodeId(11678), new QualifiedName("UserWriteable"), new LocalizedText("UserWriteable"), new LocalizedText("Whether the file is writeable by the current user."), 0, 0, 0, 0, 0, false, new NodeId(1));
+                var ID_i11678_UserWriteable = new NodeVariable(new NodeId(11678), new QualifiedName("UserWriteable"), new LocalizedText("UserWriteable"), new LocalizedText("Whether the file is writeable by the current user."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(1));
                 ID_i11678_UserWriteable.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11678_UserWriteable.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11678_UserWriteable.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11675), true));
@@ -8379,7 +8379,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AddressSpaceFile/11675
-                var ID_i11679_OpenCount = new NodeVariable(new NodeId(11679), new QualifiedName("OpenCount"), new LocalizedText("OpenCount"), new LocalizedText("The current number of open file handles."), 0, 0, 0, 0, 0, false, new NodeId(5));
+                var ID_i11679_OpenCount = new NodeVariable(new NodeId(11679), new QualifiedName("OpenCount"), new LocalizedText("OpenCount"), new LocalizedText("The current number of open file handles."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(5));
                 ID_i11679_OpenCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11679_OpenCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11679_OpenCount.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11675), true));
@@ -8388,7 +8388,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- Open/11680
-                var ID_i11681_InputArguments = new NodeVariable(new NodeId(11681), new QualifiedName("InputArguments"), new LocalizedText("InputArguments"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(296));
+                var ID_i11681_InputArguments = new NodeVariable(new NodeId(11681), new QualifiedName("InputArguments"), new LocalizedText("InputArguments"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(296));
                 ID_i11681_InputArguments.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11681_InputArguments.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11681_InputArguments.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11680), true));
@@ -8397,7 +8397,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- Open/11680
-                var ID_i11682_OutputArguments = new NodeVariable(new NodeId(11682), new QualifiedName("OutputArguments"), new LocalizedText("OutputArguments"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(296));
+                var ID_i11682_OutputArguments = new NodeVariable(new NodeId(11682), new QualifiedName("OutputArguments"), new LocalizedText("OutputArguments"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(296));
                 ID_i11682_OutputArguments.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11682_OutputArguments.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11682_OutputArguments.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11680), true));
@@ -8406,7 +8406,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- Close/11683
-                var ID_i11684_InputArguments = new NodeVariable(new NodeId(11684), new QualifiedName("InputArguments"), new LocalizedText("InputArguments"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(296));
+                var ID_i11684_InputArguments = new NodeVariable(new NodeId(11684), new QualifiedName("InputArguments"), new LocalizedText("InputArguments"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(296));
                 ID_i11684_InputArguments.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11684_InputArguments.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11684_InputArguments.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11683), true));
@@ -8415,7 +8415,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- Read/11685
-                var ID_i11686_InputArguments = new NodeVariable(new NodeId(11686), new QualifiedName("InputArguments"), new LocalizedText("InputArguments"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(296));
+                var ID_i11686_InputArguments = new NodeVariable(new NodeId(11686), new QualifiedName("InputArguments"), new LocalizedText("InputArguments"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(296));
                 ID_i11686_InputArguments.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11686_InputArguments.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11686_InputArguments.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11685), true));
@@ -8424,7 +8424,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- Read/11685
-                var ID_i11687_OutputArguments = new NodeVariable(new NodeId(11687), new QualifiedName("OutputArguments"), new LocalizedText("OutputArguments"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(296));
+                var ID_i11687_OutputArguments = new NodeVariable(new NodeId(11687), new QualifiedName("OutputArguments"), new LocalizedText("OutputArguments"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(296));
                 ID_i11687_OutputArguments.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11687_OutputArguments.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11687_OutputArguments.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11685), true));
@@ -8433,7 +8433,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- Write/11688
-                var ID_i11689_InputArguments = new NodeVariable(new NodeId(11689), new QualifiedName("InputArguments"), new LocalizedText("InputArguments"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(296));
+                var ID_i11689_InputArguments = new NodeVariable(new NodeId(11689), new QualifiedName("InputArguments"), new LocalizedText("InputArguments"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(296));
                 ID_i11689_InputArguments.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11689_InputArguments.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11689_InputArguments.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11688), true));
@@ -8442,7 +8442,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- GetPosition/11690
-                var ID_i11691_InputArguments = new NodeVariable(new NodeId(11691), new QualifiedName("InputArguments"), new LocalizedText("InputArguments"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(296));
+                var ID_i11691_InputArguments = new NodeVariable(new NodeId(11691), new QualifiedName("InputArguments"), new LocalizedText("InputArguments"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(296));
                 ID_i11691_InputArguments.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11691_InputArguments.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11691_InputArguments.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11690), true));
@@ -8451,7 +8451,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- GetPosition/11690
-                var ID_i11692_OutputArguments = new NodeVariable(new NodeId(11692), new QualifiedName("OutputArguments"), new LocalizedText("OutputArguments"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(296));
+                var ID_i11692_OutputArguments = new NodeVariable(new NodeId(11692), new QualifiedName("OutputArguments"), new LocalizedText("OutputArguments"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(296));
                 ID_i11692_OutputArguments.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11692_OutputArguments.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11692_OutputArguments.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11690), true));
@@ -8460,7 +8460,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- SetPosition/11693
-                var ID_i11694_InputArguments = new NodeVariable(new NodeId(11694), new QualifiedName("InputArguments"), new LocalizedText("InputArguments"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(296));
+                var ID_i11694_InputArguments = new NodeVariable(new NodeId(11694), new QualifiedName("InputArguments"), new LocalizedText("InputArguments"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(296));
                 ID_i11694_InputArguments.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11694_InputArguments.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11694_InputArguments.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11693), true));
@@ -8469,7 +8469,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- BaseEventType/2041
-                var ID_i2042_EventId = new NodeVariable(new NodeId(2042), new QualifiedName("EventId"), new LocalizedText("EventId"), new LocalizedText("A globally unique identifier for the event."), 0, 0, 0, 0, 0, false, new NodeId(15));
+                var ID_i2042_EventId = new NodeVariable(new NodeId(2042), new QualifiedName("EventId"), new LocalizedText("EventId"), new LocalizedText("A globally unique identifier for the event."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(15));
                 ID_i2042_EventId.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2042_EventId.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2042_EventId.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2041), true));
@@ -8478,7 +8478,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- BaseEventType/2041
-                var ID_i2043_EventType = new NodeVariable(new NodeId(2043), new QualifiedName("EventType"), new LocalizedText("EventType"), new LocalizedText("The identifier for the event type."), 0, 0, 0, 0, 0, false, new NodeId(17));
+                var ID_i2043_EventType = new NodeVariable(new NodeId(2043), new QualifiedName("EventType"), new LocalizedText("EventType"), new LocalizedText("The identifier for the event type."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(17));
                 ID_i2043_EventType.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2043_EventType.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2043_EventType.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2041), true));
@@ -8487,7 +8487,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- BaseEventType/2041
-                var ID_i2044_SourceNode = new NodeVariable(new NodeId(2044), new QualifiedName("SourceNode"), new LocalizedText("SourceNode"), new LocalizedText("The source of the event."), 0, 0, 0, 0, 0, false, new NodeId(17));
+                var ID_i2044_SourceNode = new NodeVariable(new NodeId(2044), new QualifiedName("SourceNode"), new LocalizedText("SourceNode"), new LocalizedText("The source of the event."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(17));
                 ID_i2044_SourceNode.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2044_SourceNode.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2044_SourceNode.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2041), true));
@@ -8496,7 +8496,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- BaseEventType/2041
-                var ID_i2045_SourceName = new NodeVariable(new NodeId(2045), new QualifiedName("SourceName"), new LocalizedText("SourceName"), new LocalizedText("A description of the source of the event."), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i2045_SourceName = new NodeVariable(new NodeId(2045), new QualifiedName("SourceName"), new LocalizedText("SourceName"), new LocalizedText("A description of the source of the event."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i2045_SourceName.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2045_SourceName.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2045_SourceName.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2041), true));
@@ -8505,7 +8505,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- BaseEventType/2041
-                var ID_i2046_Time = new NodeVariable(new NodeId(2046), new QualifiedName("Time"), new LocalizedText("Time"), new LocalizedText("When the event occurred."), 0, 0, 0, 0, 0, false, new NodeId(294));
+                var ID_i2046_Time = new NodeVariable(new NodeId(2046), new QualifiedName("Time"), new LocalizedText("Time"), new LocalizedText("When the event occurred."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(294));
                 ID_i2046_Time.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2046_Time.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2046_Time.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2041), true));
@@ -8514,7 +8514,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- BaseEventType/2041
-                var ID_i2047_ReceiveTime = new NodeVariable(new NodeId(2047), new QualifiedName("ReceiveTime"), new LocalizedText("ReceiveTime"), new LocalizedText("When the server received the event from the underlying system."), 0, 0, 0, 0, 0, false, new NodeId(294));
+                var ID_i2047_ReceiveTime = new NodeVariable(new NodeId(2047), new QualifiedName("ReceiveTime"), new LocalizedText("ReceiveTime"), new LocalizedText("When the server received the event from the underlying system."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(294));
                 ID_i2047_ReceiveTime.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2047_ReceiveTime.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2047_ReceiveTime.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2041), true));
@@ -8523,7 +8523,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- BaseEventType/2041
-                var ID_i3190_LocalTime = new NodeVariable(new NodeId(3190), new QualifiedName("LocalTime"), new LocalizedText("LocalTime"), new LocalizedText("Information about the local time where the event originated."), 0, 0, 0, 0, 0, false, new NodeId(8912));
+                var ID_i3190_LocalTime = new NodeVariable(new NodeId(3190), new QualifiedName("LocalTime"), new LocalizedText("LocalTime"), new LocalizedText("Information about the local time where the event originated."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(8912));
                 ID_i3190_LocalTime.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i3190_LocalTime.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3190_LocalTime.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2041), true));
@@ -8532,7 +8532,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- BaseEventType/2041
-                var ID_i2050_Message = new NodeVariable(new NodeId(2050), new QualifiedName("Message"), new LocalizedText("Message"), new LocalizedText("A localized description of the event."), 0, 0, 0, 0, 0, false, new NodeId(21));
+                var ID_i2050_Message = new NodeVariable(new NodeId(2050), new QualifiedName("Message"), new LocalizedText("Message"), new LocalizedText("A localized description of the event."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(21));
                 ID_i2050_Message.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2050_Message.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2050_Message.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2041), true));
@@ -8541,7 +8541,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- BaseEventType/2041
-                var ID_i2051_Severity = new NodeVariable(new NodeId(2051), new QualifiedName("Severity"), new LocalizedText("Severity"), new LocalizedText("Indicates how urgent an event is."), 0, 0, 0, 0, 0, false, new NodeId(5));
+                var ID_i2051_Severity = new NodeVariable(new NodeId(2051), new QualifiedName("Severity"), new LocalizedText("Severity"), new LocalizedText("Indicates how urgent an event is."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(5));
                 ID_i2051_Severity.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2051_Severity.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2051_Severity.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2041), true));
@@ -8550,7 +8550,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AuditEventType/2052
-                var ID_i2053_ActionTimeStamp = new NodeVariable(new NodeId(2053), new QualifiedName("ActionTimeStamp"), new LocalizedText("ActionTimeStamp"), new LocalizedText("When the action triggering the event occurred."), 0, 0, 0, 0, 0, false, new NodeId(294));
+                var ID_i2053_ActionTimeStamp = new NodeVariable(new NodeId(2053), new QualifiedName("ActionTimeStamp"), new LocalizedText("ActionTimeStamp"), new LocalizedText("When the action triggering the event occurred."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(294));
                 ID_i2053_ActionTimeStamp.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2053_ActionTimeStamp.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2053_ActionTimeStamp.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2052), true));
@@ -8559,7 +8559,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AuditEventType/2052
-                var ID_i2054_Status = new NodeVariable(new NodeId(2054), new QualifiedName("Status"), new LocalizedText("Status"), new LocalizedText("If TRUE the action was performed. If FALSE the action failed and the server state did not change."), 0, 0, 0, 0, 0, false, new NodeId(1));
+                var ID_i2054_Status = new NodeVariable(new NodeId(2054), new QualifiedName("Status"), new LocalizedText("Status"), new LocalizedText("If TRUE the action was performed. If FALSE the action failed and the server state did not change."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(1));
                 ID_i2054_Status.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2054_Status.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2054_Status.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2052), true));
@@ -8568,7 +8568,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AuditEventType/2052
-                var ID_i2055_ServerId = new NodeVariable(new NodeId(2055), new QualifiedName("ServerId"), new LocalizedText("ServerId"), new LocalizedText("The unique identifier for the server generating the event."), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i2055_ServerId = new NodeVariable(new NodeId(2055), new QualifiedName("ServerId"), new LocalizedText("ServerId"), new LocalizedText("The unique identifier for the server generating the event."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i2055_ServerId.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2055_ServerId.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2055_ServerId.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2052), true));
@@ -8577,7 +8577,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AuditEventType/2052
-                var ID_i2056_ClientAuditEntryId = new NodeVariable(new NodeId(2056), new QualifiedName("ClientAuditEntryId"), new LocalizedText("ClientAuditEntryId"), new LocalizedText("The log entry id provided in the request that initiated the action."), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i2056_ClientAuditEntryId = new NodeVariable(new NodeId(2056), new QualifiedName("ClientAuditEntryId"), new LocalizedText("ClientAuditEntryId"), new LocalizedText("The log entry id provided in the request that initiated the action."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i2056_ClientAuditEntryId.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2056_ClientAuditEntryId.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2056_ClientAuditEntryId.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2052), true));
@@ -8586,7 +8586,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AuditEventType/2052
-                var ID_i2057_ClientUserId = new NodeVariable(new NodeId(2057), new QualifiedName("ClientUserId"), new LocalizedText("ClientUserId"), new LocalizedText("The user identity associated with the session that initiated the action."), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i2057_ClientUserId = new NodeVariable(new NodeId(2057), new QualifiedName("ClientUserId"), new LocalizedText("ClientUserId"), new LocalizedText("The user identity associated with the session that initiated the action."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i2057_ClientUserId.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2057_ClientUserId.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2057_ClientUserId.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2052), true));
@@ -8595,7 +8595,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AuditChannelEventType/2059
-                var ID_i2745_SecureChannelId = new NodeVariable(new NodeId(2745), new QualifiedName("SecureChannelId"), new LocalizedText("SecureChannelId"), new LocalizedText("The identifier for the secure channel that was changed."), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i2745_SecureChannelId = new NodeVariable(new NodeId(2745), new QualifiedName("SecureChannelId"), new LocalizedText("SecureChannelId"), new LocalizedText("The identifier for the secure channel that was changed."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i2745_SecureChannelId.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2745_SecureChannelId.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2745_SecureChannelId.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2059), true));
@@ -8604,7 +8604,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AuditOpenSecureChannelEventType/2060
-                var ID_i2061_ClientCertificate = new NodeVariable(new NodeId(2061), new QualifiedName("ClientCertificate"), new LocalizedText("ClientCertificate"), new LocalizedText("The certificate provided by the client."), 0, 0, 0, 0, 0, false, new NodeId(15));
+                var ID_i2061_ClientCertificate = new NodeVariable(new NodeId(2061), new QualifiedName("ClientCertificate"), new LocalizedText("ClientCertificate"), new LocalizedText("The certificate provided by the client."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(15));
                 ID_i2061_ClientCertificate.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2061_ClientCertificate.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2061_ClientCertificate.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2060), true));
@@ -8613,7 +8613,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AuditOpenSecureChannelEventType/2060
-                var ID_i2746_ClientCertificateThumbprint = new NodeVariable(new NodeId(2746), new QualifiedName("ClientCertificateThumbprint"), new LocalizedText("ClientCertificateThumbprint"), new LocalizedText("The thumbprint for certificate provided by the client."), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i2746_ClientCertificateThumbprint = new NodeVariable(new NodeId(2746), new QualifiedName("ClientCertificateThumbprint"), new LocalizedText("ClientCertificateThumbprint"), new LocalizedText("The thumbprint for certificate provided by the client."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i2746_ClientCertificateThumbprint.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2746_ClientCertificateThumbprint.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2746_ClientCertificateThumbprint.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2060), true));
@@ -8622,7 +8622,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AuditOpenSecureChannelEventType/2060
-                var ID_i2062_RequestType = new NodeVariable(new NodeId(2062), new QualifiedName("RequestType"), new LocalizedText("RequestType"), new LocalizedText("The type of request (NEW or RENEW)."), 0, 0, 0, 0, 0, false, new NodeId(315));
+                var ID_i2062_RequestType = new NodeVariable(new NodeId(2062), new QualifiedName("RequestType"), new LocalizedText("RequestType"), new LocalizedText("The type of request (NEW or RENEW)."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(315));
                 ID_i2062_RequestType.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2062_RequestType.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2062_RequestType.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2060), true));
@@ -8631,7 +8631,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AuditOpenSecureChannelEventType/2060
-                var ID_i2063_SecurityPolicyUri = new NodeVariable(new NodeId(2063), new QualifiedName("SecurityPolicyUri"), new LocalizedText("SecurityPolicyUri"), new LocalizedText("The security policy used by the channel."), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i2063_SecurityPolicyUri = new NodeVariable(new NodeId(2063), new QualifiedName("SecurityPolicyUri"), new LocalizedText("SecurityPolicyUri"), new LocalizedText("The security policy used by the channel."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i2063_SecurityPolicyUri.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2063_SecurityPolicyUri.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2063_SecurityPolicyUri.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2060), true));
@@ -8640,7 +8640,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AuditOpenSecureChannelEventType/2060
-                var ID_i2065_SecurityMode = new NodeVariable(new NodeId(2065), new QualifiedName("SecurityMode"), new LocalizedText("SecurityMode"), new LocalizedText("The security mode used by the channel."), 0, 0, 0, 0, 0, false, new NodeId(302));
+                var ID_i2065_SecurityMode = new NodeVariable(new NodeId(2065), new QualifiedName("SecurityMode"), new LocalizedText("SecurityMode"), new LocalizedText("The security mode used by the channel."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(302));
                 ID_i2065_SecurityMode.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2065_SecurityMode.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2065_SecurityMode.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2060), true));
@@ -8649,7 +8649,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AuditOpenSecureChannelEventType/2060
-                var ID_i2066_RequestedLifetime = new NodeVariable(new NodeId(2066), new QualifiedName("RequestedLifetime"), new LocalizedText("RequestedLifetime"), new LocalizedText("The lifetime of the channel requested by the client."), 0, 0, 0, 0, 0, false, new NodeId(290));
+                var ID_i2066_RequestedLifetime = new NodeVariable(new NodeId(2066), new QualifiedName("RequestedLifetime"), new LocalizedText("RequestedLifetime"), new LocalizedText("The lifetime of the channel requested by the client."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(290));
                 ID_i2066_RequestedLifetime.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2066_RequestedLifetime.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2066_RequestedLifetime.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2060), true));
@@ -8658,7 +8658,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AuditSessionEventType/2069
-                var ID_i2070_SessionId = new NodeVariable(new NodeId(2070), new QualifiedName("SessionId"), new LocalizedText("SessionId"), new LocalizedText("The unique identifier for the session,."), 0, 0, 0, 0, 0, false, new NodeId(17));
+                var ID_i2070_SessionId = new NodeVariable(new NodeId(2070), new QualifiedName("SessionId"), new LocalizedText("SessionId"), new LocalizedText("The unique identifier for the session,."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(17));
                 ID_i2070_SessionId.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2070_SessionId.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2070_SessionId.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2069), true));
@@ -8667,7 +8667,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AuditCreateSessionEventType/2071
-                var ID_i2072_SecureChannelId = new NodeVariable(new NodeId(2072), new QualifiedName("SecureChannelId"), new LocalizedText("SecureChannelId"), new LocalizedText("The secure channel associated with the session."), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i2072_SecureChannelId = new NodeVariable(new NodeId(2072), new QualifiedName("SecureChannelId"), new LocalizedText("SecureChannelId"), new LocalizedText("The secure channel associated with the session."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i2072_SecureChannelId.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2072_SecureChannelId.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2072_SecureChannelId.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2071), true));
@@ -8676,7 +8676,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AuditCreateSessionEventType/2071
-                var ID_i2073_ClientCertificate = new NodeVariable(new NodeId(2073), new QualifiedName("ClientCertificate"), new LocalizedText("ClientCertificate"), new LocalizedText("The certificate provided by the client."), 0, 0, 0, 0, 0, false, new NodeId(15));
+                var ID_i2073_ClientCertificate = new NodeVariable(new NodeId(2073), new QualifiedName("ClientCertificate"), new LocalizedText("ClientCertificate"), new LocalizedText("The certificate provided by the client."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(15));
                 ID_i2073_ClientCertificate.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2073_ClientCertificate.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2073_ClientCertificate.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2071), true));
@@ -8685,7 +8685,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AuditCreateSessionEventType/2071
-                var ID_i2747_ClientCertificateThumbprint = new NodeVariable(new NodeId(2747), new QualifiedName("ClientCertificateThumbprint"), new LocalizedText("ClientCertificateThumbprint"), new LocalizedText("The thumbprint of the certificate provided by the client."), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i2747_ClientCertificateThumbprint = new NodeVariable(new NodeId(2747), new QualifiedName("ClientCertificateThumbprint"), new LocalizedText("ClientCertificateThumbprint"), new LocalizedText("The thumbprint of the certificate provided by the client."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i2747_ClientCertificateThumbprint.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2747_ClientCertificateThumbprint.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2747_ClientCertificateThumbprint.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2071), true));
@@ -8694,7 +8694,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AuditCreateSessionEventType/2071
-                var ID_i2074_RevisedSessionTimeout = new NodeVariable(new NodeId(2074), new QualifiedName("RevisedSessionTimeout"), new LocalizedText("RevisedSessionTimeout"), new LocalizedText("The timeout for the session."), 0, 0, 0, 0, 0, false, new NodeId(290));
+                var ID_i2074_RevisedSessionTimeout = new NodeVariable(new NodeId(2074), new QualifiedName("RevisedSessionTimeout"), new LocalizedText("RevisedSessionTimeout"), new LocalizedText("The timeout for the session."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(290));
                 ID_i2074_RevisedSessionTimeout.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2074_RevisedSessionTimeout.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2074_RevisedSessionTimeout.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2071), true));
@@ -8703,7 +8703,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AuditUrlMismatchEventType/2748
-                var ID_i2749_EndpointUrl = new NodeVariable(new NodeId(2749), new QualifiedName("EndpointUrl"), new LocalizedText("EndpointUrl"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i2749_EndpointUrl = new NodeVariable(new NodeId(2749), new QualifiedName("EndpointUrl"), new LocalizedText("EndpointUrl"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i2749_EndpointUrl.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2749_EndpointUrl.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2749_EndpointUrl.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2748), true));
@@ -8712,7 +8712,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AuditActivateSessionEventType/2075
-                var ID_i2076_ClientSoftwareCertificates = new NodeVariable(new NodeId(2076), new QualifiedName("ClientSoftwareCertificates"), new LocalizedText("ClientSoftwareCertificates"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(344));
+                var ID_i2076_ClientSoftwareCertificates = new NodeVariable(new NodeId(2076), new QualifiedName("ClientSoftwareCertificates"), new LocalizedText("ClientSoftwareCertificates"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(344));
                 ID_i2076_ClientSoftwareCertificates.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2076_ClientSoftwareCertificates.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2076_ClientSoftwareCertificates.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2075), true));
@@ -8721,7 +8721,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AuditActivateSessionEventType/2075
-                var ID_i2077_UserIdentityToken = new NodeVariable(new NodeId(2077), new QualifiedName("UserIdentityToken"), new LocalizedText("UserIdentityToken"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(316));
+                var ID_i2077_UserIdentityToken = new NodeVariable(new NodeId(2077), new QualifiedName("UserIdentityToken"), new LocalizedText("UserIdentityToken"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(316));
                 ID_i2077_UserIdentityToken.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2077_UserIdentityToken.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2077_UserIdentityToken.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2075), true));
@@ -8730,7 +8730,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AuditActivateSessionEventType/2075
-                var ID_i11485_SecureChannelId = new NodeVariable(new NodeId(11485), new QualifiedName("SecureChannelId"), new LocalizedText("SecureChannelId"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i11485_SecureChannelId = new NodeVariable(new NodeId(11485), new QualifiedName("SecureChannelId"), new LocalizedText("SecureChannelId"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i11485_SecureChannelId.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11485_SecureChannelId.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11485_SecureChannelId.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2075), true));
@@ -8739,7 +8739,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AuditCancelEventType/2078
-                var ID_i2079_RequestHandle = new NodeVariable(new NodeId(2079), new QualifiedName("RequestHandle"), new LocalizedText("RequestHandle"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i2079_RequestHandle = new NodeVariable(new NodeId(2079), new QualifiedName("RequestHandle"), new LocalizedText("RequestHandle"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i2079_RequestHandle.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2079_RequestHandle.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2079_RequestHandle.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2078), true));
@@ -8748,7 +8748,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AuditCertificateEventType/2080
-                var ID_i2081_Certificate = new NodeVariable(new NodeId(2081), new QualifiedName("Certificate"), new LocalizedText("Certificate"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(15));
+                var ID_i2081_Certificate = new NodeVariable(new NodeId(2081), new QualifiedName("Certificate"), new LocalizedText("Certificate"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(15));
                 ID_i2081_Certificate.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2081_Certificate.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2081_Certificate.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2080), true));
@@ -8757,7 +8757,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AuditCertificateDataMismatchEventType/2082
-                var ID_i2083_InvalidHostname = new NodeVariable(new NodeId(2083), new QualifiedName("InvalidHostname"), new LocalizedText("InvalidHostname"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i2083_InvalidHostname = new NodeVariable(new NodeId(2083), new QualifiedName("InvalidHostname"), new LocalizedText("InvalidHostname"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i2083_InvalidHostname.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2083_InvalidHostname.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2083_InvalidHostname.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2082), true));
@@ -8766,7 +8766,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AuditCertificateDataMismatchEventType/2082
-                var ID_i2084_InvalidUri = new NodeVariable(new NodeId(2084), new QualifiedName("InvalidUri"), new LocalizedText("InvalidUri"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i2084_InvalidUri = new NodeVariable(new NodeId(2084), new QualifiedName("InvalidUri"), new LocalizedText("InvalidUri"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i2084_InvalidUri.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2084_InvalidUri.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2084_InvalidUri.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2082), true));
@@ -8775,7 +8775,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AuditAddNodesEventType/2091
-                var ID_i2092_NodesToAdd = new NodeVariable(new NodeId(2092), new QualifiedName("NodesToAdd"), new LocalizedText("NodesToAdd"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(376));
+                var ID_i2092_NodesToAdd = new NodeVariable(new NodeId(2092), new QualifiedName("NodesToAdd"), new LocalizedText("NodesToAdd"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(376));
                 ID_i2092_NodesToAdd.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2092_NodesToAdd.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2092_NodesToAdd.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2091), true));
@@ -8784,7 +8784,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AuditDeleteNodesEventType/2093
-                var ID_i2094_NodesToDelete = new NodeVariable(new NodeId(2094), new QualifiedName("NodesToDelete"), new LocalizedText("NodesToDelete"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(382));
+                var ID_i2094_NodesToDelete = new NodeVariable(new NodeId(2094), new QualifiedName("NodesToDelete"), new LocalizedText("NodesToDelete"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(382));
                 ID_i2094_NodesToDelete.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2094_NodesToDelete.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2094_NodesToDelete.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2093), true));
@@ -8793,7 +8793,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AuditAddReferencesEventType/2095
-                var ID_i2096_ReferencesToAdd = new NodeVariable(new NodeId(2096), new QualifiedName("ReferencesToAdd"), new LocalizedText("ReferencesToAdd"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(379));
+                var ID_i2096_ReferencesToAdd = new NodeVariable(new NodeId(2096), new QualifiedName("ReferencesToAdd"), new LocalizedText("ReferencesToAdd"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(379));
                 ID_i2096_ReferencesToAdd.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2096_ReferencesToAdd.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2096_ReferencesToAdd.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2095), true));
@@ -8802,7 +8802,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AuditDeleteReferencesEventType/2097
-                var ID_i2098_ReferencesToDelete = new NodeVariable(new NodeId(2098), new QualifiedName("ReferencesToDelete"), new LocalizedText("ReferencesToDelete"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(385));
+                var ID_i2098_ReferencesToDelete = new NodeVariable(new NodeId(2098), new QualifiedName("ReferencesToDelete"), new LocalizedText("ReferencesToDelete"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(385));
                 ID_i2098_ReferencesToDelete.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2098_ReferencesToDelete.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2098_ReferencesToDelete.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2097), true));
@@ -8811,7 +8811,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AuditWriteUpdateEventType/2100
-                var ID_i2750_AttributeId = new NodeVariable(new NodeId(2750), new QualifiedName("AttributeId"), new LocalizedText("AttributeId"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i2750_AttributeId = new NodeVariable(new NodeId(2750), new QualifiedName("AttributeId"), new LocalizedText("AttributeId"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i2750_AttributeId.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2750_AttributeId.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2750_AttributeId.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2100), true));
@@ -8820,7 +8820,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AuditWriteUpdateEventType/2100
-                var ID_i2101_IndexRange = new NodeVariable(new NodeId(2101), new QualifiedName("IndexRange"), new LocalizedText("IndexRange"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(291));
+                var ID_i2101_IndexRange = new NodeVariable(new NodeId(2101), new QualifiedName("IndexRange"), new LocalizedText("IndexRange"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(291));
                 ID_i2101_IndexRange.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2101_IndexRange.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2101_IndexRange.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2100), true));
@@ -8829,7 +8829,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AuditWriteUpdateEventType/2100
-                var ID_i2102_OldValue = new NodeVariable(new NodeId(2102), new QualifiedName("OldValue"), new LocalizedText("OldValue"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(6));
+                var ID_i2102_OldValue = new NodeVariable(new NodeId(2102), new QualifiedName("OldValue"), new LocalizedText("OldValue"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(6));
                 ID_i2102_OldValue.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2102_OldValue.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2102_OldValue.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2100), true));
@@ -8838,7 +8838,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AuditWriteUpdateEventType/2100
-                var ID_i2103_NewValue = new NodeVariable(new NodeId(2103), new QualifiedName("NewValue"), new LocalizedText("NewValue"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(6));
+                var ID_i2103_NewValue = new NodeVariable(new NodeId(2103), new QualifiedName("NewValue"), new LocalizedText("NewValue"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(6));
                 ID_i2103_NewValue.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2103_NewValue.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2103_NewValue.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2100), true));
@@ -8847,7 +8847,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AuditHistoryUpdateEventType/2104
-                var ID_i2751_ParameterDataTypeId = new NodeVariable(new NodeId(2751), new QualifiedName("ParameterDataTypeId"), new LocalizedText("ParameterDataTypeId"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(17));
+                var ID_i2751_ParameterDataTypeId = new NodeVariable(new NodeId(2751), new QualifiedName("ParameterDataTypeId"), new LocalizedText("ParameterDataTypeId"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(17));
                 ID_i2751_ParameterDataTypeId.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2751_ParameterDataTypeId.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2751_ParameterDataTypeId.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2104), true));
@@ -8856,7 +8856,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AuditUpdateMethodEventType/2127
-                var ID_i2128_MethodId = new NodeVariable(new NodeId(2128), new QualifiedName("MethodId"), new LocalizedText("MethodId"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(17));
+                var ID_i2128_MethodId = new NodeVariable(new NodeId(2128), new QualifiedName("MethodId"), new LocalizedText("MethodId"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(17));
                 ID_i2128_MethodId.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2128_MethodId.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2128_MethodId.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2127), true));
@@ -8865,7 +8865,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AuditUpdateMethodEventType/2127
-                var ID_i2129_InputArguments = new NodeVariable(new NodeId(2129), new QualifiedName("InputArguments"), new LocalizedText("InputArguments"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(6));
+                var ID_i2129_InputArguments = new NodeVariable(new NodeId(2129), new QualifiedName("InputArguments"), new LocalizedText("InputArguments"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(6));
                 ID_i2129_InputArguments.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2129_InputArguments.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2129_InputArguments.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2127), true));
@@ -8874,7 +8874,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- SystemStatusChangeEventType/11446
-                var ID_i11696_SystemState = new NodeVariable(new NodeId(11696), new QualifiedName("SystemState"), new LocalizedText("SystemState"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(852));
+                var ID_i11696_SystemState = new NodeVariable(new NodeId(11696), new QualifiedName("SystemState"), new LocalizedText("SystemState"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(852));
                 ID_i11696_SystemState.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11696_SystemState.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11696_SystemState.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11446), true));
@@ -8883,7 +8883,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- GeneralModelChangeEventType/2133
-                var ID_i2134_Changes = new NodeVariable(new NodeId(2134), new QualifiedName("Changes"), new LocalizedText("Changes"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(877));
+                var ID_i2134_Changes = new NodeVariable(new NodeId(2134), new QualifiedName("Changes"), new LocalizedText("Changes"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(877));
                 ID_i2134_Changes.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2134_Changes.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2134_Changes.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2133), true));
@@ -8892,7 +8892,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- SemanticChangeEventType/2738
-                var ID_i2739_Changes = new NodeVariable(new NodeId(2739), new QualifiedName("Changes"), new LocalizedText("Changes"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(897));
+                var ID_i2739_Changes = new NodeVariable(new NodeId(2739), new QualifiedName("Changes"), new LocalizedText("Changes"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(897));
                 ID_i2739_Changes.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2739_Changes.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2739_Changes.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2738), true));
@@ -8901,7 +8901,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- ServerStatusType/2138
-                var ID_i2139_StartTime = new NodeVariable(new NodeId(2139), new QualifiedName("StartTime"), new LocalizedText("StartTime"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(294));
+                var ID_i2139_StartTime = new NodeVariable(new NodeId(2139), new QualifiedName("StartTime"), new LocalizedText("StartTime"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(294));
                 ID_i2139_StartTime.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2139_StartTime.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2139_StartTime.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2138), true));
@@ -8910,7 +8910,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- ServerStatusType/2138
-                var ID_i2140_CurrentTime = new NodeVariable(new NodeId(2140), new QualifiedName("CurrentTime"), new LocalizedText("CurrentTime"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(294));
+                var ID_i2140_CurrentTime = new NodeVariable(new NodeId(2140), new QualifiedName("CurrentTime"), new LocalizedText("CurrentTime"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(294));
                 ID_i2140_CurrentTime.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2140_CurrentTime.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2140_CurrentTime.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2138), true));
@@ -8919,7 +8919,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- ServerStatusType/2138
-                var ID_i2141_State = new NodeVariable(new NodeId(2141), new QualifiedName("State"), new LocalizedText("State"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(852));
+                var ID_i2141_State = new NodeVariable(new NodeId(2141), new QualifiedName("State"), new LocalizedText("State"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(852));
                 ID_i2141_State.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2141_State.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2141_State.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2138), true));
@@ -8934,7 +8934,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BuildInfoType/3051
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- ServerStatusType/2138
-                var ID_i2142_BuildInfo = new NodeVariable(new NodeId(2142), new QualifiedName("BuildInfo"), new LocalizedText("BuildInfo"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(338));
+                var ID_i2142_BuildInfo = new NodeVariable(new NodeId(2142), new QualifiedName("BuildInfo"), new LocalizedText("BuildInfo"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(338));
                 ID_i2142_BuildInfo.References.Add(new ReferenceNode(new NodeId(47), new NodeId(3698), false));
                 ID_i2142_BuildInfo.References.Add(new ReferenceNode(new NodeId(47), new NodeId(3699), false));
                 ID_i2142_BuildInfo.References.Add(new ReferenceNode(new NodeId(47), new NodeId(3700), false));
@@ -8949,7 +8949,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- BuildInfo/2142
-                var ID_i3698_ProductUri = new NodeVariable(new NodeId(3698), new QualifiedName("ProductUri"), new LocalizedText("ProductUri"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i3698_ProductUri = new NodeVariable(new NodeId(3698), new QualifiedName("ProductUri"), new LocalizedText("ProductUri"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i3698_ProductUri.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3698_ProductUri.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3698_ProductUri.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2142), true));
@@ -8958,7 +8958,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- BuildInfo/2142
-                var ID_i3699_ManufacturerName = new NodeVariable(new NodeId(3699), new QualifiedName("ManufacturerName"), new LocalizedText("ManufacturerName"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i3699_ManufacturerName = new NodeVariable(new NodeId(3699), new QualifiedName("ManufacturerName"), new LocalizedText("ManufacturerName"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i3699_ManufacturerName.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3699_ManufacturerName.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3699_ManufacturerName.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2142), true));
@@ -8967,7 +8967,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- BuildInfo/2142
-                var ID_i3700_ProductName = new NodeVariable(new NodeId(3700), new QualifiedName("ProductName"), new LocalizedText("ProductName"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i3700_ProductName = new NodeVariable(new NodeId(3700), new QualifiedName("ProductName"), new LocalizedText("ProductName"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i3700_ProductName.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3700_ProductName.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3700_ProductName.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2142), true));
@@ -8976,7 +8976,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- BuildInfo/2142
-                var ID_i3701_SoftwareVersion = new NodeVariable(new NodeId(3701), new QualifiedName("SoftwareVersion"), new LocalizedText("SoftwareVersion"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i3701_SoftwareVersion = new NodeVariable(new NodeId(3701), new QualifiedName("SoftwareVersion"), new LocalizedText("SoftwareVersion"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i3701_SoftwareVersion.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3701_SoftwareVersion.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3701_SoftwareVersion.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2142), true));
@@ -8985,7 +8985,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- BuildInfo/2142
-                var ID_i3702_BuildNumber = new NodeVariable(new NodeId(3702), new QualifiedName("BuildNumber"), new LocalizedText("BuildNumber"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i3702_BuildNumber = new NodeVariable(new NodeId(3702), new QualifiedName("BuildNumber"), new LocalizedText("BuildNumber"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i3702_BuildNumber.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3702_BuildNumber.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3702_BuildNumber.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2142), true));
@@ -8994,7 +8994,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- BuildInfo/2142
-                var ID_i3703_BuildDate = new NodeVariable(new NodeId(3703), new QualifiedName("BuildDate"), new LocalizedText("BuildDate"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(294));
+                var ID_i3703_BuildDate = new NodeVariable(new NodeId(3703), new QualifiedName("BuildDate"), new LocalizedText("BuildDate"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(294));
                 ID_i3703_BuildDate.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3703_BuildDate.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3703_BuildDate.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2142), true));
@@ -9003,7 +9003,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- ServerStatusType/2138
-                var ID_i2752_SecondsTillShutdown = new NodeVariable(new NodeId(2752), new QualifiedName("SecondsTillShutdown"), new LocalizedText("SecondsTillShutdown"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i2752_SecondsTillShutdown = new NodeVariable(new NodeId(2752), new QualifiedName("SecondsTillShutdown"), new LocalizedText("SecondsTillShutdown"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i2752_SecondsTillShutdown.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2752_SecondsTillShutdown.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2752_SecondsTillShutdown.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2138), true));
@@ -9012,7 +9012,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- ServerStatusType/2138
-                var ID_i2753_ShutdownReason = new NodeVariable(new NodeId(2753), new QualifiedName("ShutdownReason"), new LocalizedText("ShutdownReason"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(21));
+                var ID_i2753_ShutdownReason = new NodeVariable(new NodeId(2753), new QualifiedName("ShutdownReason"), new LocalizedText("ShutdownReason"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(21));
                 ID_i2753_ShutdownReason.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2753_ShutdownReason.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2753_ShutdownReason.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2138), true));
@@ -9021,7 +9021,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- BuildInfoType/3051
-                var ID_i3052_ProductUri = new NodeVariable(new NodeId(3052), new QualifiedName("ProductUri"), new LocalizedText("ProductUri"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i3052_ProductUri = new NodeVariable(new NodeId(3052), new QualifiedName("ProductUri"), new LocalizedText("ProductUri"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i3052_ProductUri.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3052_ProductUri.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3052_ProductUri.References.Add(new ReferenceNode(new NodeId(47), new NodeId(3051), true));
@@ -9030,7 +9030,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- BuildInfoType/3051
-                var ID_i3053_ManufacturerName = new NodeVariable(new NodeId(3053), new QualifiedName("ManufacturerName"), new LocalizedText("ManufacturerName"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i3053_ManufacturerName = new NodeVariable(new NodeId(3053), new QualifiedName("ManufacturerName"), new LocalizedText("ManufacturerName"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i3053_ManufacturerName.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3053_ManufacturerName.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3053_ManufacturerName.References.Add(new ReferenceNode(new NodeId(47), new NodeId(3051), true));
@@ -9039,7 +9039,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- BuildInfoType/3051
-                var ID_i3054_ProductName = new NodeVariable(new NodeId(3054), new QualifiedName("ProductName"), new LocalizedText("ProductName"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i3054_ProductName = new NodeVariable(new NodeId(3054), new QualifiedName("ProductName"), new LocalizedText("ProductName"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i3054_ProductName.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3054_ProductName.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3054_ProductName.References.Add(new ReferenceNode(new NodeId(47), new NodeId(3051), true));
@@ -9048,7 +9048,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- BuildInfoType/3051
-                var ID_i3055_SoftwareVersion = new NodeVariable(new NodeId(3055), new QualifiedName("SoftwareVersion"), new LocalizedText("SoftwareVersion"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i3055_SoftwareVersion = new NodeVariable(new NodeId(3055), new QualifiedName("SoftwareVersion"), new LocalizedText("SoftwareVersion"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i3055_SoftwareVersion.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3055_SoftwareVersion.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3055_SoftwareVersion.References.Add(new ReferenceNode(new NodeId(47), new NodeId(3051), true));
@@ -9057,7 +9057,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- BuildInfoType/3051
-                var ID_i3056_BuildNumber = new NodeVariable(new NodeId(3056), new QualifiedName("BuildNumber"), new LocalizedText("BuildNumber"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i3056_BuildNumber = new NodeVariable(new NodeId(3056), new QualifiedName("BuildNumber"), new LocalizedText("BuildNumber"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i3056_BuildNumber.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3056_BuildNumber.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3056_BuildNumber.References.Add(new ReferenceNode(new NodeId(47), new NodeId(3051), true));
@@ -9066,7 +9066,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- BuildInfoType/3051
-                var ID_i3057_BuildDate = new NodeVariable(new NodeId(3057), new QualifiedName("BuildDate"), new LocalizedText("BuildDate"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(294));
+                var ID_i3057_BuildDate = new NodeVariable(new NodeId(3057), new QualifiedName("BuildDate"), new LocalizedText("BuildDate"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(294));
                 ID_i3057_BuildDate.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3057_BuildDate.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3057_BuildDate.References.Add(new ReferenceNode(new NodeId(47), new NodeId(3051), true));
@@ -9075,7 +9075,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- ServerDiagnosticsSummaryType/2150
-                var ID_i2151_ServerViewCount = new NodeVariable(new NodeId(2151), new QualifiedName("ServerViewCount"), new LocalizedText("ServerViewCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i2151_ServerViewCount = new NodeVariable(new NodeId(2151), new QualifiedName("ServerViewCount"), new LocalizedText("ServerViewCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i2151_ServerViewCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2151_ServerViewCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2151_ServerViewCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2150), true));
@@ -9084,7 +9084,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- ServerDiagnosticsSummaryType/2150
-                var ID_i2152_CurrentSessionCount = new NodeVariable(new NodeId(2152), new QualifiedName("CurrentSessionCount"), new LocalizedText("CurrentSessionCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i2152_CurrentSessionCount = new NodeVariable(new NodeId(2152), new QualifiedName("CurrentSessionCount"), new LocalizedText("CurrentSessionCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i2152_CurrentSessionCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2152_CurrentSessionCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2152_CurrentSessionCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2150), true));
@@ -9093,7 +9093,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- ServerDiagnosticsSummaryType/2150
-                var ID_i2153_CumulatedSessionCount = new NodeVariable(new NodeId(2153), new QualifiedName("CumulatedSessionCount"), new LocalizedText("CumulatedSessionCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i2153_CumulatedSessionCount = new NodeVariable(new NodeId(2153), new QualifiedName("CumulatedSessionCount"), new LocalizedText("CumulatedSessionCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i2153_CumulatedSessionCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2153_CumulatedSessionCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2153_CumulatedSessionCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2150), true));
@@ -9102,7 +9102,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- ServerDiagnosticsSummaryType/2150
-                var ID_i2154_SecurityRejectedSessionCount = new NodeVariable(new NodeId(2154), new QualifiedName("SecurityRejectedSessionCount"), new LocalizedText("SecurityRejectedSessionCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i2154_SecurityRejectedSessionCount = new NodeVariable(new NodeId(2154), new QualifiedName("SecurityRejectedSessionCount"), new LocalizedText("SecurityRejectedSessionCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i2154_SecurityRejectedSessionCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2154_SecurityRejectedSessionCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2154_SecurityRejectedSessionCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2150), true));
@@ -9111,7 +9111,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- ServerDiagnosticsSummaryType/2150
-                var ID_i2155_RejectedSessionCount = new NodeVariable(new NodeId(2155), new QualifiedName("RejectedSessionCount"), new LocalizedText("RejectedSessionCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i2155_RejectedSessionCount = new NodeVariable(new NodeId(2155), new QualifiedName("RejectedSessionCount"), new LocalizedText("RejectedSessionCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i2155_RejectedSessionCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2155_RejectedSessionCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2155_RejectedSessionCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2150), true));
@@ -9120,7 +9120,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- ServerDiagnosticsSummaryType/2150
-                var ID_i2156_SessionTimeoutCount = new NodeVariable(new NodeId(2156), new QualifiedName("SessionTimeoutCount"), new LocalizedText("SessionTimeoutCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i2156_SessionTimeoutCount = new NodeVariable(new NodeId(2156), new QualifiedName("SessionTimeoutCount"), new LocalizedText("SessionTimeoutCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i2156_SessionTimeoutCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2156_SessionTimeoutCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2156_SessionTimeoutCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2150), true));
@@ -9129,7 +9129,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- ServerDiagnosticsSummaryType/2150
-                var ID_i2157_SessionAbortCount = new NodeVariable(new NodeId(2157), new QualifiedName("SessionAbortCount"), new LocalizedText("SessionAbortCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i2157_SessionAbortCount = new NodeVariable(new NodeId(2157), new QualifiedName("SessionAbortCount"), new LocalizedText("SessionAbortCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i2157_SessionAbortCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2157_SessionAbortCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2157_SessionAbortCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2150), true));
@@ -9138,7 +9138,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- ServerDiagnosticsSummaryType/2150
-                var ID_i2159_PublishingIntervalCount = new NodeVariable(new NodeId(2159), new QualifiedName("PublishingIntervalCount"), new LocalizedText("PublishingIntervalCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i2159_PublishingIntervalCount = new NodeVariable(new NodeId(2159), new QualifiedName("PublishingIntervalCount"), new LocalizedText("PublishingIntervalCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i2159_PublishingIntervalCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2159_PublishingIntervalCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2159_PublishingIntervalCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2150), true));
@@ -9147,7 +9147,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- ServerDiagnosticsSummaryType/2150
-                var ID_i2160_CurrentSubscriptionCount = new NodeVariable(new NodeId(2160), new QualifiedName("CurrentSubscriptionCount"), new LocalizedText("CurrentSubscriptionCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i2160_CurrentSubscriptionCount = new NodeVariable(new NodeId(2160), new QualifiedName("CurrentSubscriptionCount"), new LocalizedText("CurrentSubscriptionCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i2160_CurrentSubscriptionCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2160_CurrentSubscriptionCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2160_CurrentSubscriptionCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2150), true));
@@ -9156,7 +9156,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- ServerDiagnosticsSummaryType/2150
-                var ID_i2161_CumulatedSubscriptionCount = new NodeVariable(new NodeId(2161), new QualifiedName("CumulatedSubscriptionCount"), new LocalizedText("CumulatedSubscriptionCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i2161_CumulatedSubscriptionCount = new NodeVariable(new NodeId(2161), new QualifiedName("CumulatedSubscriptionCount"), new LocalizedText("CumulatedSubscriptionCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i2161_CumulatedSubscriptionCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2161_CumulatedSubscriptionCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2161_CumulatedSubscriptionCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2150), true));
@@ -9165,7 +9165,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- ServerDiagnosticsSummaryType/2150
-                var ID_i2162_SecurityRejectedRequestsCount = new NodeVariable(new NodeId(2162), new QualifiedName("SecurityRejectedRequestsCount"), new LocalizedText("SecurityRejectedRequestsCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i2162_SecurityRejectedRequestsCount = new NodeVariable(new NodeId(2162), new QualifiedName("SecurityRejectedRequestsCount"), new LocalizedText("SecurityRejectedRequestsCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i2162_SecurityRejectedRequestsCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2162_SecurityRejectedRequestsCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2162_SecurityRejectedRequestsCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2150), true));
@@ -9174,7 +9174,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- ServerDiagnosticsSummaryType/2150
-                var ID_i2163_RejectedRequestsCount = new NodeVariable(new NodeId(2163), new QualifiedName("RejectedRequestsCount"), new LocalizedText("RejectedRequestsCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i2163_RejectedRequestsCount = new NodeVariable(new NodeId(2163), new QualifiedName("RejectedRequestsCount"), new LocalizedText("RejectedRequestsCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i2163_RejectedRequestsCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2163_RejectedRequestsCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2163_RejectedRequestsCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2150), true));
@@ -9183,7 +9183,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SamplingIntervalDiagnosticsType/2165
-                var ID_i2166_SamplingInterval = new NodeVariable(new NodeId(2166), new QualifiedName("SamplingInterval"), new LocalizedText("SamplingInterval"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(290));
+                var ID_i2166_SamplingInterval = new NodeVariable(new NodeId(2166), new QualifiedName("SamplingInterval"), new LocalizedText("SamplingInterval"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(290));
                 ID_i2166_SamplingInterval.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2166_SamplingInterval.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2166_SamplingInterval.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2165), true));
@@ -9192,7 +9192,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SamplingIntervalDiagnosticsType/2165
-                var ID_i11697_SampledMonitoredItemsCount = new NodeVariable(new NodeId(11697), new QualifiedName("SampledMonitoredItemsCount"), new LocalizedText("SampledMonitoredItemsCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i11697_SampledMonitoredItemsCount = new NodeVariable(new NodeId(11697), new QualifiedName("SampledMonitoredItemsCount"), new LocalizedText("SampledMonitoredItemsCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i11697_SampledMonitoredItemsCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i11697_SampledMonitoredItemsCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11697_SampledMonitoredItemsCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2165), true));
@@ -9201,7 +9201,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SamplingIntervalDiagnosticsType/2165
-                var ID_i11698_MaxSampledMonitoredItemsCount = new NodeVariable(new NodeId(11698), new QualifiedName("MaxSampledMonitoredItemsCount"), new LocalizedText("MaxSampledMonitoredItemsCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i11698_MaxSampledMonitoredItemsCount = new NodeVariable(new NodeId(11698), new QualifiedName("MaxSampledMonitoredItemsCount"), new LocalizedText("MaxSampledMonitoredItemsCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i11698_MaxSampledMonitoredItemsCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i11698_MaxSampledMonitoredItemsCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11698_MaxSampledMonitoredItemsCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2165), true));
@@ -9210,7 +9210,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SamplingIntervalDiagnosticsType/2165
-                var ID_i11699_DisabledMonitoredItemsSamplingCount = new NodeVariable(new NodeId(11699), new QualifiedName("DisabledMonitoredItemsSamplingCount"), new LocalizedText("DisabledMonitoredItemsSamplingCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i11699_DisabledMonitoredItemsSamplingCount = new NodeVariable(new NodeId(11699), new QualifiedName("DisabledMonitoredItemsSamplingCount"), new LocalizedText("DisabledMonitoredItemsSamplingCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i11699_DisabledMonitoredItemsSamplingCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i11699_DisabledMonitoredItemsSamplingCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11699_DisabledMonitoredItemsSamplingCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2165), true));
@@ -9219,7 +9219,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SubscriptionDiagnosticsType/2172
-                var ID_i2173_SessionId = new NodeVariable(new NodeId(2173), new QualifiedName("SessionId"), new LocalizedText("SessionId"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(17));
+                var ID_i2173_SessionId = new NodeVariable(new NodeId(2173), new QualifiedName("SessionId"), new LocalizedText("SessionId"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(17));
                 ID_i2173_SessionId.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2173_SessionId.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2173_SessionId.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2172), true));
@@ -9228,7 +9228,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SubscriptionDiagnosticsType/2172
-                var ID_i2174_SubscriptionId = new NodeVariable(new NodeId(2174), new QualifiedName("SubscriptionId"), new LocalizedText("SubscriptionId"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i2174_SubscriptionId = new NodeVariable(new NodeId(2174), new QualifiedName("SubscriptionId"), new LocalizedText("SubscriptionId"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i2174_SubscriptionId.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2174_SubscriptionId.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2174_SubscriptionId.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2172), true));
@@ -9237,7 +9237,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SubscriptionDiagnosticsType/2172
-                var ID_i2175_Priority = new NodeVariable(new NodeId(2175), new QualifiedName("Priority"), new LocalizedText("Priority"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(3));
+                var ID_i2175_Priority = new NodeVariable(new NodeId(2175), new QualifiedName("Priority"), new LocalizedText("Priority"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(3));
                 ID_i2175_Priority.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2175_Priority.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2175_Priority.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2172), true));
@@ -9246,7 +9246,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SubscriptionDiagnosticsType/2172
-                var ID_i2176_PublishingInterval = new NodeVariable(new NodeId(2176), new QualifiedName("PublishingInterval"), new LocalizedText("PublishingInterval"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(11));
+                var ID_i2176_PublishingInterval = new NodeVariable(new NodeId(2176), new QualifiedName("PublishingInterval"), new LocalizedText("PublishingInterval"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(11));
                 ID_i2176_PublishingInterval.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2176_PublishingInterval.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2176_PublishingInterval.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2172), true));
@@ -9255,7 +9255,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SubscriptionDiagnosticsType/2172
-                var ID_i2177_MaxKeepAliveCount = new NodeVariable(new NodeId(2177), new QualifiedName("MaxKeepAliveCount"), new LocalizedText("MaxKeepAliveCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i2177_MaxKeepAliveCount = new NodeVariable(new NodeId(2177), new QualifiedName("MaxKeepAliveCount"), new LocalizedText("MaxKeepAliveCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i2177_MaxKeepAliveCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2177_MaxKeepAliveCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2177_MaxKeepAliveCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2172), true));
@@ -9264,7 +9264,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SubscriptionDiagnosticsType/2172
-                var ID_i8888_MaxLifetimeCount = new NodeVariable(new NodeId(8888), new QualifiedName("MaxLifetimeCount"), new LocalizedText("MaxLifetimeCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i8888_MaxLifetimeCount = new NodeVariable(new NodeId(8888), new QualifiedName("MaxLifetimeCount"), new LocalizedText("MaxLifetimeCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i8888_MaxLifetimeCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i8888_MaxLifetimeCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i8888_MaxLifetimeCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2172), true));
@@ -9273,7 +9273,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SubscriptionDiagnosticsType/2172
-                var ID_i2179_MaxNotificationsPerPublish = new NodeVariable(new NodeId(2179), new QualifiedName("MaxNotificationsPerPublish"), new LocalizedText("MaxNotificationsPerPublish"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i2179_MaxNotificationsPerPublish = new NodeVariable(new NodeId(2179), new QualifiedName("MaxNotificationsPerPublish"), new LocalizedText("MaxNotificationsPerPublish"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i2179_MaxNotificationsPerPublish.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2179_MaxNotificationsPerPublish.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2179_MaxNotificationsPerPublish.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2172), true));
@@ -9282,7 +9282,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SubscriptionDiagnosticsType/2172
-                var ID_i2180_PublishingEnabled = new NodeVariable(new NodeId(2180), new QualifiedName("PublishingEnabled"), new LocalizedText("PublishingEnabled"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(1));
+                var ID_i2180_PublishingEnabled = new NodeVariable(new NodeId(2180), new QualifiedName("PublishingEnabled"), new LocalizedText("PublishingEnabled"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(1));
                 ID_i2180_PublishingEnabled.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2180_PublishingEnabled.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2180_PublishingEnabled.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2172), true));
@@ -9291,7 +9291,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SubscriptionDiagnosticsType/2172
-                var ID_i2181_ModifyCount = new NodeVariable(new NodeId(2181), new QualifiedName("ModifyCount"), new LocalizedText("ModifyCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i2181_ModifyCount = new NodeVariable(new NodeId(2181), new QualifiedName("ModifyCount"), new LocalizedText("ModifyCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i2181_ModifyCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2181_ModifyCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2181_ModifyCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2172), true));
@@ -9300,7 +9300,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SubscriptionDiagnosticsType/2172
-                var ID_i2182_EnableCount = new NodeVariable(new NodeId(2182), new QualifiedName("EnableCount"), new LocalizedText("EnableCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i2182_EnableCount = new NodeVariable(new NodeId(2182), new QualifiedName("EnableCount"), new LocalizedText("EnableCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i2182_EnableCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2182_EnableCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2182_EnableCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2172), true));
@@ -9309,7 +9309,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SubscriptionDiagnosticsType/2172
-                var ID_i2183_DisableCount = new NodeVariable(new NodeId(2183), new QualifiedName("DisableCount"), new LocalizedText("DisableCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i2183_DisableCount = new NodeVariable(new NodeId(2183), new QualifiedName("DisableCount"), new LocalizedText("DisableCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i2183_DisableCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2183_DisableCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2183_DisableCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2172), true));
@@ -9318,7 +9318,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SubscriptionDiagnosticsType/2172
-                var ID_i2184_RepublishRequestCount = new NodeVariable(new NodeId(2184), new QualifiedName("RepublishRequestCount"), new LocalizedText("RepublishRequestCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i2184_RepublishRequestCount = new NodeVariable(new NodeId(2184), new QualifiedName("RepublishRequestCount"), new LocalizedText("RepublishRequestCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i2184_RepublishRequestCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2184_RepublishRequestCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2184_RepublishRequestCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2172), true));
@@ -9327,7 +9327,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SubscriptionDiagnosticsType/2172
-                var ID_i2185_RepublishMessageRequestCount = new NodeVariable(new NodeId(2185), new QualifiedName("RepublishMessageRequestCount"), new LocalizedText("RepublishMessageRequestCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i2185_RepublishMessageRequestCount = new NodeVariable(new NodeId(2185), new QualifiedName("RepublishMessageRequestCount"), new LocalizedText("RepublishMessageRequestCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i2185_RepublishMessageRequestCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2185_RepublishMessageRequestCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2185_RepublishMessageRequestCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2172), true));
@@ -9336,7 +9336,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SubscriptionDiagnosticsType/2172
-                var ID_i2186_RepublishMessageCount = new NodeVariable(new NodeId(2186), new QualifiedName("RepublishMessageCount"), new LocalizedText("RepublishMessageCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i2186_RepublishMessageCount = new NodeVariable(new NodeId(2186), new QualifiedName("RepublishMessageCount"), new LocalizedText("RepublishMessageCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i2186_RepublishMessageCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2186_RepublishMessageCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2186_RepublishMessageCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2172), true));
@@ -9345,7 +9345,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SubscriptionDiagnosticsType/2172
-                var ID_i2187_TransferRequestCount = new NodeVariable(new NodeId(2187), new QualifiedName("TransferRequestCount"), new LocalizedText("TransferRequestCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i2187_TransferRequestCount = new NodeVariable(new NodeId(2187), new QualifiedName("TransferRequestCount"), new LocalizedText("TransferRequestCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i2187_TransferRequestCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2187_TransferRequestCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2187_TransferRequestCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2172), true));
@@ -9354,7 +9354,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SubscriptionDiagnosticsType/2172
-                var ID_i2188_TransferredToAltClientCount = new NodeVariable(new NodeId(2188), new QualifiedName("TransferredToAltClientCount"), new LocalizedText("TransferredToAltClientCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i2188_TransferredToAltClientCount = new NodeVariable(new NodeId(2188), new QualifiedName("TransferredToAltClientCount"), new LocalizedText("TransferredToAltClientCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i2188_TransferredToAltClientCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2188_TransferredToAltClientCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2188_TransferredToAltClientCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2172), true));
@@ -9363,7 +9363,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SubscriptionDiagnosticsType/2172
-                var ID_i2189_TransferredToSameClientCount = new NodeVariable(new NodeId(2189), new QualifiedName("TransferredToSameClientCount"), new LocalizedText("TransferredToSameClientCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i2189_TransferredToSameClientCount = new NodeVariable(new NodeId(2189), new QualifiedName("TransferredToSameClientCount"), new LocalizedText("TransferredToSameClientCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i2189_TransferredToSameClientCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2189_TransferredToSameClientCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2189_TransferredToSameClientCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2172), true));
@@ -9372,7 +9372,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SubscriptionDiagnosticsType/2172
-                var ID_i2190_PublishRequestCount = new NodeVariable(new NodeId(2190), new QualifiedName("PublishRequestCount"), new LocalizedText("PublishRequestCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i2190_PublishRequestCount = new NodeVariable(new NodeId(2190), new QualifiedName("PublishRequestCount"), new LocalizedText("PublishRequestCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i2190_PublishRequestCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2190_PublishRequestCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2190_PublishRequestCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2172), true));
@@ -9381,7 +9381,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SubscriptionDiagnosticsType/2172
-                var ID_i2191_DataChangeNotificationsCount = new NodeVariable(new NodeId(2191), new QualifiedName("DataChangeNotificationsCount"), new LocalizedText("DataChangeNotificationsCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i2191_DataChangeNotificationsCount = new NodeVariable(new NodeId(2191), new QualifiedName("DataChangeNotificationsCount"), new LocalizedText("DataChangeNotificationsCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i2191_DataChangeNotificationsCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2191_DataChangeNotificationsCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2191_DataChangeNotificationsCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2172), true));
@@ -9390,7 +9390,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SubscriptionDiagnosticsType/2172
-                var ID_i2998_EventNotificationsCount = new NodeVariable(new NodeId(2998), new QualifiedName("EventNotificationsCount"), new LocalizedText("EventNotificationsCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i2998_EventNotificationsCount = new NodeVariable(new NodeId(2998), new QualifiedName("EventNotificationsCount"), new LocalizedText("EventNotificationsCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i2998_EventNotificationsCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2998_EventNotificationsCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2998_EventNotificationsCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2172), true));
@@ -9399,7 +9399,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SubscriptionDiagnosticsType/2172
-                var ID_i2193_NotificationsCount = new NodeVariable(new NodeId(2193), new QualifiedName("NotificationsCount"), new LocalizedText("NotificationsCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i2193_NotificationsCount = new NodeVariable(new NodeId(2193), new QualifiedName("NotificationsCount"), new LocalizedText("NotificationsCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i2193_NotificationsCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2193_NotificationsCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2193_NotificationsCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2172), true));
@@ -9408,7 +9408,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SubscriptionDiagnosticsType/2172
-                var ID_i8889_LatePublishRequestCount = new NodeVariable(new NodeId(8889), new QualifiedName("LatePublishRequestCount"), new LocalizedText("LatePublishRequestCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i8889_LatePublishRequestCount = new NodeVariable(new NodeId(8889), new QualifiedName("LatePublishRequestCount"), new LocalizedText("LatePublishRequestCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i8889_LatePublishRequestCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i8889_LatePublishRequestCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i8889_LatePublishRequestCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2172), true));
@@ -9417,7 +9417,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SubscriptionDiagnosticsType/2172
-                var ID_i8890_CurrentKeepAliveCount = new NodeVariable(new NodeId(8890), new QualifiedName("CurrentKeepAliveCount"), new LocalizedText("CurrentKeepAliveCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i8890_CurrentKeepAliveCount = new NodeVariable(new NodeId(8890), new QualifiedName("CurrentKeepAliveCount"), new LocalizedText("CurrentKeepAliveCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i8890_CurrentKeepAliveCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i8890_CurrentKeepAliveCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i8890_CurrentKeepAliveCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2172), true));
@@ -9426,7 +9426,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SubscriptionDiagnosticsType/2172
-                var ID_i8891_CurrentLifetimeCount = new NodeVariable(new NodeId(8891), new QualifiedName("CurrentLifetimeCount"), new LocalizedText("CurrentLifetimeCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i8891_CurrentLifetimeCount = new NodeVariable(new NodeId(8891), new QualifiedName("CurrentLifetimeCount"), new LocalizedText("CurrentLifetimeCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i8891_CurrentLifetimeCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i8891_CurrentLifetimeCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i8891_CurrentLifetimeCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2172), true));
@@ -9435,7 +9435,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SubscriptionDiagnosticsType/2172
-                var ID_i8892_UnacknowledgedMessageCount = new NodeVariable(new NodeId(8892), new QualifiedName("UnacknowledgedMessageCount"), new LocalizedText("UnacknowledgedMessageCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i8892_UnacknowledgedMessageCount = new NodeVariable(new NodeId(8892), new QualifiedName("UnacknowledgedMessageCount"), new LocalizedText("UnacknowledgedMessageCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i8892_UnacknowledgedMessageCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i8892_UnacknowledgedMessageCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i8892_UnacknowledgedMessageCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2172), true));
@@ -9444,7 +9444,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SubscriptionDiagnosticsType/2172
-                var ID_i8893_DiscardedMessageCount = new NodeVariable(new NodeId(8893), new QualifiedName("DiscardedMessageCount"), new LocalizedText("DiscardedMessageCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i8893_DiscardedMessageCount = new NodeVariable(new NodeId(8893), new QualifiedName("DiscardedMessageCount"), new LocalizedText("DiscardedMessageCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i8893_DiscardedMessageCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i8893_DiscardedMessageCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i8893_DiscardedMessageCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2172), true));
@@ -9453,7 +9453,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SubscriptionDiagnosticsType/2172
-                var ID_i8894_MonitoredItemCount = new NodeVariable(new NodeId(8894), new QualifiedName("MonitoredItemCount"), new LocalizedText("MonitoredItemCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i8894_MonitoredItemCount = new NodeVariable(new NodeId(8894), new QualifiedName("MonitoredItemCount"), new LocalizedText("MonitoredItemCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i8894_MonitoredItemCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i8894_MonitoredItemCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i8894_MonitoredItemCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2172), true));
@@ -9462,7 +9462,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SubscriptionDiagnosticsType/2172
-                var ID_i8895_DisabledMonitoredItemCount = new NodeVariable(new NodeId(8895), new QualifiedName("DisabledMonitoredItemCount"), new LocalizedText("DisabledMonitoredItemCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i8895_DisabledMonitoredItemCount = new NodeVariable(new NodeId(8895), new QualifiedName("DisabledMonitoredItemCount"), new LocalizedText("DisabledMonitoredItemCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i8895_DisabledMonitoredItemCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i8895_DisabledMonitoredItemCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i8895_DisabledMonitoredItemCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2172), true));
@@ -9471,7 +9471,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SubscriptionDiagnosticsType/2172
-                var ID_i8896_MonitoringQueueOverflowCount = new NodeVariable(new NodeId(8896), new QualifiedName("MonitoringQueueOverflowCount"), new LocalizedText("MonitoringQueueOverflowCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i8896_MonitoringQueueOverflowCount = new NodeVariable(new NodeId(8896), new QualifiedName("MonitoringQueueOverflowCount"), new LocalizedText("MonitoringQueueOverflowCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i8896_MonitoringQueueOverflowCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i8896_MonitoringQueueOverflowCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i8896_MonitoringQueueOverflowCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2172), true));
@@ -9480,7 +9480,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SubscriptionDiagnosticsType/2172
-                var ID_i8897_NextSequenceNumber = new NodeVariable(new NodeId(8897), new QualifiedName("NextSequenceNumber"), new LocalizedText("NextSequenceNumber"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i8897_NextSequenceNumber = new NodeVariable(new NodeId(8897), new QualifiedName("NextSequenceNumber"), new LocalizedText("NextSequenceNumber"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i8897_NextSequenceNumber.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i8897_NextSequenceNumber.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i8897_NextSequenceNumber.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2172), true));
@@ -9489,7 +9489,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SubscriptionDiagnosticsType/2172
-                var ID_i8902_EventQueueOverFlowCount = new NodeVariable(new NodeId(8902), new QualifiedName("EventQueueOverFlowCount"), new LocalizedText("EventQueueOverFlowCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i8902_EventQueueOverFlowCount = new NodeVariable(new NodeId(8902), new QualifiedName("EventQueueOverFlowCount"), new LocalizedText("EventQueueOverFlowCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i8902_EventQueueOverFlowCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i8902_EventQueueOverFlowCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i8902_EventQueueOverFlowCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2172), true));
@@ -9498,7 +9498,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnosticsVariableType/2197
-                var ID_i2198_SessionId = new NodeVariable(new NodeId(2198), new QualifiedName("SessionId"), new LocalizedText("SessionId"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(17));
+                var ID_i2198_SessionId = new NodeVariable(new NodeId(2198), new QualifiedName("SessionId"), new LocalizedText("SessionId"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(17));
                 ID_i2198_SessionId.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2198_SessionId.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2198_SessionId.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2197), true));
@@ -9507,7 +9507,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnosticsVariableType/2197
-                var ID_i2199_SessionName = new NodeVariable(new NodeId(2199), new QualifiedName("SessionName"), new LocalizedText("SessionName"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i2199_SessionName = new NodeVariable(new NodeId(2199), new QualifiedName("SessionName"), new LocalizedText("SessionName"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i2199_SessionName.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2199_SessionName.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2199_SessionName.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2197), true));
@@ -9516,7 +9516,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnosticsVariableType/2197
-                var ID_i2200_ClientDescription = new NodeVariable(new NodeId(2200), new QualifiedName("ClientDescription"), new LocalizedText("ClientDescription"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(308));
+                var ID_i2200_ClientDescription = new NodeVariable(new NodeId(2200), new QualifiedName("ClientDescription"), new LocalizedText("ClientDescription"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(308));
                 ID_i2200_ClientDescription.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2200_ClientDescription.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2200_ClientDescription.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2197), true));
@@ -9525,7 +9525,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnosticsVariableType/2197
-                var ID_i2201_ServerUri = new NodeVariable(new NodeId(2201), new QualifiedName("ServerUri"), new LocalizedText("ServerUri"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i2201_ServerUri = new NodeVariable(new NodeId(2201), new QualifiedName("ServerUri"), new LocalizedText("ServerUri"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i2201_ServerUri.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2201_ServerUri.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2201_ServerUri.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2197), true));
@@ -9534,7 +9534,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnosticsVariableType/2197
-                var ID_i2202_EndpointUrl = new NodeVariable(new NodeId(2202), new QualifiedName("EndpointUrl"), new LocalizedText("EndpointUrl"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i2202_EndpointUrl = new NodeVariable(new NodeId(2202), new QualifiedName("EndpointUrl"), new LocalizedText("EndpointUrl"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i2202_EndpointUrl.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2202_EndpointUrl.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2202_EndpointUrl.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2197), true));
@@ -9543,7 +9543,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnosticsVariableType/2197
-                var ID_i2203_LocaleIds = new NodeVariable(new NodeId(2203), new QualifiedName("LocaleIds"), new LocalizedText("LocaleIds"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(295));
+                var ID_i2203_LocaleIds = new NodeVariable(new NodeId(2203), new QualifiedName("LocaleIds"), new LocalizedText("LocaleIds"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(295));
                 ID_i2203_LocaleIds.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2203_LocaleIds.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2203_LocaleIds.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2197), true));
@@ -9552,7 +9552,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnosticsVariableType/2197
-                var ID_i2204_ActualSessionTimeout = new NodeVariable(new NodeId(2204), new QualifiedName("ActualSessionTimeout"), new LocalizedText("ActualSessionTimeout"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(290));
+                var ID_i2204_ActualSessionTimeout = new NodeVariable(new NodeId(2204), new QualifiedName("ActualSessionTimeout"), new LocalizedText("ActualSessionTimeout"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(290));
                 ID_i2204_ActualSessionTimeout.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2204_ActualSessionTimeout.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2204_ActualSessionTimeout.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2197), true));
@@ -9561,7 +9561,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnosticsVariableType/2197
-                var ID_i3050_MaxResponseMessageSize = new NodeVariable(new NodeId(3050), new QualifiedName("MaxResponseMessageSize"), new LocalizedText("MaxResponseMessageSize"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i3050_MaxResponseMessageSize = new NodeVariable(new NodeId(3050), new QualifiedName("MaxResponseMessageSize"), new LocalizedText("MaxResponseMessageSize"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i3050_MaxResponseMessageSize.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3050_MaxResponseMessageSize.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3050_MaxResponseMessageSize.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2197), true));
@@ -9570,7 +9570,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnosticsVariableType/2197
-                var ID_i2205_ClientConnectionTime = new NodeVariable(new NodeId(2205), new QualifiedName("ClientConnectionTime"), new LocalizedText("ClientConnectionTime"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(294));
+                var ID_i2205_ClientConnectionTime = new NodeVariable(new NodeId(2205), new QualifiedName("ClientConnectionTime"), new LocalizedText("ClientConnectionTime"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(294));
                 ID_i2205_ClientConnectionTime.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2205_ClientConnectionTime.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2205_ClientConnectionTime.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2197), true));
@@ -9579,7 +9579,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnosticsVariableType/2197
-                var ID_i2206_ClientLastContactTime = new NodeVariable(new NodeId(2206), new QualifiedName("ClientLastContactTime"), new LocalizedText("ClientLastContactTime"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(294));
+                var ID_i2206_ClientLastContactTime = new NodeVariable(new NodeId(2206), new QualifiedName("ClientLastContactTime"), new LocalizedText("ClientLastContactTime"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(294));
                 ID_i2206_ClientLastContactTime.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2206_ClientLastContactTime.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2206_ClientLastContactTime.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2197), true));
@@ -9588,7 +9588,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnosticsVariableType/2197
-                var ID_i2207_CurrentSubscriptionsCount = new NodeVariable(new NodeId(2207), new QualifiedName("CurrentSubscriptionsCount"), new LocalizedText("CurrentSubscriptionsCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i2207_CurrentSubscriptionsCount = new NodeVariable(new NodeId(2207), new QualifiedName("CurrentSubscriptionsCount"), new LocalizedText("CurrentSubscriptionsCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i2207_CurrentSubscriptionsCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2207_CurrentSubscriptionsCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2207_CurrentSubscriptionsCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2197), true));
@@ -9597,7 +9597,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnosticsVariableType/2197
-                var ID_i2208_CurrentMonitoredItemsCount = new NodeVariable(new NodeId(2208), new QualifiedName("CurrentMonitoredItemsCount"), new LocalizedText("CurrentMonitoredItemsCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i2208_CurrentMonitoredItemsCount = new NodeVariable(new NodeId(2208), new QualifiedName("CurrentMonitoredItemsCount"), new LocalizedText("CurrentMonitoredItemsCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i2208_CurrentMonitoredItemsCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2208_CurrentMonitoredItemsCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2208_CurrentMonitoredItemsCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2197), true));
@@ -9606,7 +9606,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnosticsVariableType/2197
-                var ID_i2209_CurrentPublishRequestsInQueue = new NodeVariable(new NodeId(2209), new QualifiedName("CurrentPublishRequestsInQueue"), new LocalizedText("CurrentPublishRequestsInQueue"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i2209_CurrentPublishRequestsInQueue = new NodeVariable(new NodeId(2209), new QualifiedName("CurrentPublishRequestsInQueue"), new LocalizedText("CurrentPublishRequestsInQueue"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i2209_CurrentPublishRequestsInQueue.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2209_CurrentPublishRequestsInQueue.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2209_CurrentPublishRequestsInQueue.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2197), true));
@@ -9615,7 +9615,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnosticsVariableType/2197
-                var ID_i8900_TotalRequestCount = new NodeVariable(new NodeId(8900), new QualifiedName("TotalRequestCount"), new LocalizedText("TotalRequestCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i8900_TotalRequestCount = new NodeVariable(new NodeId(8900), new QualifiedName("TotalRequestCount"), new LocalizedText("TotalRequestCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i8900_TotalRequestCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i8900_TotalRequestCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i8900_TotalRequestCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2197), true));
@@ -9624,7 +9624,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnosticsVariableType/2197
-                var ID_i11892_UnauthorizedRequestCount = new NodeVariable(new NodeId(11892), new QualifiedName("UnauthorizedRequestCount"), new LocalizedText("UnauthorizedRequestCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i11892_UnauthorizedRequestCount = new NodeVariable(new NodeId(11892), new QualifiedName("UnauthorizedRequestCount"), new LocalizedText("UnauthorizedRequestCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i11892_UnauthorizedRequestCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i11892_UnauthorizedRequestCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11892_UnauthorizedRequestCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2197), true));
@@ -9633,7 +9633,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnosticsVariableType/2197
-                var ID_i2217_ReadCount = new NodeVariable(new NodeId(2217), new QualifiedName("ReadCount"), new LocalizedText("ReadCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i2217_ReadCount = new NodeVariable(new NodeId(2217), new QualifiedName("ReadCount"), new LocalizedText("ReadCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i2217_ReadCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2217_ReadCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2217_ReadCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2197), true));
@@ -9642,7 +9642,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnosticsVariableType/2197
-                var ID_i2218_HistoryReadCount = new NodeVariable(new NodeId(2218), new QualifiedName("HistoryReadCount"), new LocalizedText("HistoryReadCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i2218_HistoryReadCount = new NodeVariable(new NodeId(2218), new QualifiedName("HistoryReadCount"), new LocalizedText("HistoryReadCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i2218_HistoryReadCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2218_HistoryReadCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2218_HistoryReadCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2197), true));
@@ -9651,7 +9651,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnosticsVariableType/2197
-                var ID_i2219_WriteCount = new NodeVariable(new NodeId(2219), new QualifiedName("WriteCount"), new LocalizedText("WriteCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i2219_WriteCount = new NodeVariable(new NodeId(2219), new QualifiedName("WriteCount"), new LocalizedText("WriteCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i2219_WriteCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2219_WriteCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2219_WriteCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2197), true));
@@ -9660,7 +9660,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnosticsVariableType/2197
-                var ID_i2220_HistoryUpdateCount = new NodeVariable(new NodeId(2220), new QualifiedName("HistoryUpdateCount"), new LocalizedText("HistoryUpdateCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i2220_HistoryUpdateCount = new NodeVariable(new NodeId(2220), new QualifiedName("HistoryUpdateCount"), new LocalizedText("HistoryUpdateCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i2220_HistoryUpdateCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2220_HistoryUpdateCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2220_HistoryUpdateCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2197), true));
@@ -9669,7 +9669,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnosticsVariableType/2197
-                var ID_i2221_CallCount = new NodeVariable(new NodeId(2221), new QualifiedName("CallCount"), new LocalizedText("CallCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i2221_CallCount = new NodeVariable(new NodeId(2221), new QualifiedName("CallCount"), new LocalizedText("CallCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i2221_CallCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2221_CallCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2221_CallCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2197), true));
@@ -9678,7 +9678,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnosticsVariableType/2197
-                var ID_i2222_CreateMonitoredItemsCount = new NodeVariable(new NodeId(2222), new QualifiedName("CreateMonitoredItemsCount"), new LocalizedText("CreateMonitoredItemsCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i2222_CreateMonitoredItemsCount = new NodeVariable(new NodeId(2222), new QualifiedName("CreateMonitoredItemsCount"), new LocalizedText("CreateMonitoredItemsCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i2222_CreateMonitoredItemsCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2222_CreateMonitoredItemsCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2222_CreateMonitoredItemsCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2197), true));
@@ -9687,7 +9687,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnosticsVariableType/2197
-                var ID_i2223_ModifyMonitoredItemsCount = new NodeVariable(new NodeId(2223), new QualifiedName("ModifyMonitoredItemsCount"), new LocalizedText("ModifyMonitoredItemsCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i2223_ModifyMonitoredItemsCount = new NodeVariable(new NodeId(2223), new QualifiedName("ModifyMonitoredItemsCount"), new LocalizedText("ModifyMonitoredItemsCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i2223_ModifyMonitoredItemsCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2223_ModifyMonitoredItemsCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2223_ModifyMonitoredItemsCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2197), true));
@@ -9696,7 +9696,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnosticsVariableType/2197
-                var ID_i2224_SetMonitoringModeCount = new NodeVariable(new NodeId(2224), new QualifiedName("SetMonitoringModeCount"), new LocalizedText("SetMonitoringModeCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i2224_SetMonitoringModeCount = new NodeVariable(new NodeId(2224), new QualifiedName("SetMonitoringModeCount"), new LocalizedText("SetMonitoringModeCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i2224_SetMonitoringModeCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2224_SetMonitoringModeCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2224_SetMonitoringModeCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2197), true));
@@ -9705,7 +9705,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnosticsVariableType/2197
-                var ID_i2225_SetTriggeringCount = new NodeVariable(new NodeId(2225), new QualifiedName("SetTriggeringCount"), new LocalizedText("SetTriggeringCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i2225_SetTriggeringCount = new NodeVariable(new NodeId(2225), new QualifiedName("SetTriggeringCount"), new LocalizedText("SetTriggeringCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i2225_SetTriggeringCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2225_SetTriggeringCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2225_SetTriggeringCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2197), true));
@@ -9714,7 +9714,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnosticsVariableType/2197
-                var ID_i2226_DeleteMonitoredItemsCount = new NodeVariable(new NodeId(2226), new QualifiedName("DeleteMonitoredItemsCount"), new LocalizedText("DeleteMonitoredItemsCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i2226_DeleteMonitoredItemsCount = new NodeVariable(new NodeId(2226), new QualifiedName("DeleteMonitoredItemsCount"), new LocalizedText("DeleteMonitoredItemsCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i2226_DeleteMonitoredItemsCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2226_DeleteMonitoredItemsCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2226_DeleteMonitoredItemsCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2197), true));
@@ -9723,7 +9723,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnosticsVariableType/2197
-                var ID_i2227_CreateSubscriptionCount = new NodeVariable(new NodeId(2227), new QualifiedName("CreateSubscriptionCount"), new LocalizedText("CreateSubscriptionCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i2227_CreateSubscriptionCount = new NodeVariable(new NodeId(2227), new QualifiedName("CreateSubscriptionCount"), new LocalizedText("CreateSubscriptionCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i2227_CreateSubscriptionCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2227_CreateSubscriptionCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2227_CreateSubscriptionCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2197), true));
@@ -9732,7 +9732,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnosticsVariableType/2197
-                var ID_i2228_ModifySubscriptionCount = new NodeVariable(new NodeId(2228), new QualifiedName("ModifySubscriptionCount"), new LocalizedText("ModifySubscriptionCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i2228_ModifySubscriptionCount = new NodeVariable(new NodeId(2228), new QualifiedName("ModifySubscriptionCount"), new LocalizedText("ModifySubscriptionCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i2228_ModifySubscriptionCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2228_ModifySubscriptionCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2228_ModifySubscriptionCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2197), true));
@@ -9741,7 +9741,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnosticsVariableType/2197
-                var ID_i2229_SetPublishingModeCount = new NodeVariable(new NodeId(2229), new QualifiedName("SetPublishingModeCount"), new LocalizedText("SetPublishingModeCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i2229_SetPublishingModeCount = new NodeVariable(new NodeId(2229), new QualifiedName("SetPublishingModeCount"), new LocalizedText("SetPublishingModeCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i2229_SetPublishingModeCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2229_SetPublishingModeCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2229_SetPublishingModeCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2197), true));
@@ -9750,7 +9750,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnosticsVariableType/2197
-                var ID_i2230_PublishCount = new NodeVariable(new NodeId(2230), new QualifiedName("PublishCount"), new LocalizedText("PublishCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i2230_PublishCount = new NodeVariable(new NodeId(2230), new QualifiedName("PublishCount"), new LocalizedText("PublishCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i2230_PublishCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2230_PublishCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2230_PublishCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2197), true));
@@ -9759,7 +9759,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnosticsVariableType/2197
-                var ID_i2231_RepublishCount = new NodeVariable(new NodeId(2231), new QualifiedName("RepublishCount"), new LocalizedText("RepublishCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i2231_RepublishCount = new NodeVariable(new NodeId(2231), new QualifiedName("RepublishCount"), new LocalizedText("RepublishCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i2231_RepublishCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2231_RepublishCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2231_RepublishCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2197), true));
@@ -9768,7 +9768,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnosticsVariableType/2197
-                var ID_i2232_TransferSubscriptionsCount = new NodeVariable(new NodeId(2232), new QualifiedName("TransferSubscriptionsCount"), new LocalizedText("TransferSubscriptionsCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i2232_TransferSubscriptionsCount = new NodeVariable(new NodeId(2232), new QualifiedName("TransferSubscriptionsCount"), new LocalizedText("TransferSubscriptionsCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i2232_TransferSubscriptionsCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2232_TransferSubscriptionsCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2232_TransferSubscriptionsCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2197), true));
@@ -9777,7 +9777,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnosticsVariableType/2197
-                var ID_i2233_DeleteSubscriptionsCount = new NodeVariable(new NodeId(2233), new QualifiedName("DeleteSubscriptionsCount"), new LocalizedText("DeleteSubscriptionsCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i2233_DeleteSubscriptionsCount = new NodeVariable(new NodeId(2233), new QualifiedName("DeleteSubscriptionsCount"), new LocalizedText("DeleteSubscriptionsCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i2233_DeleteSubscriptionsCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2233_DeleteSubscriptionsCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2233_DeleteSubscriptionsCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2197), true));
@@ -9786,7 +9786,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnosticsVariableType/2197
-                var ID_i2234_AddNodesCount = new NodeVariable(new NodeId(2234), new QualifiedName("AddNodesCount"), new LocalizedText("AddNodesCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i2234_AddNodesCount = new NodeVariable(new NodeId(2234), new QualifiedName("AddNodesCount"), new LocalizedText("AddNodesCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i2234_AddNodesCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2234_AddNodesCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2234_AddNodesCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2197), true));
@@ -9795,7 +9795,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnosticsVariableType/2197
-                var ID_i2235_AddReferencesCount = new NodeVariable(new NodeId(2235), new QualifiedName("AddReferencesCount"), new LocalizedText("AddReferencesCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i2235_AddReferencesCount = new NodeVariable(new NodeId(2235), new QualifiedName("AddReferencesCount"), new LocalizedText("AddReferencesCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i2235_AddReferencesCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2235_AddReferencesCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2235_AddReferencesCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2197), true));
@@ -9804,7 +9804,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnosticsVariableType/2197
-                var ID_i2236_DeleteNodesCount = new NodeVariable(new NodeId(2236), new QualifiedName("DeleteNodesCount"), new LocalizedText("DeleteNodesCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i2236_DeleteNodesCount = new NodeVariable(new NodeId(2236), new QualifiedName("DeleteNodesCount"), new LocalizedText("DeleteNodesCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i2236_DeleteNodesCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2236_DeleteNodesCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2236_DeleteNodesCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2197), true));
@@ -9813,7 +9813,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnosticsVariableType/2197
-                var ID_i2237_DeleteReferencesCount = new NodeVariable(new NodeId(2237), new QualifiedName("DeleteReferencesCount"), new LocalizedText("DeleteReferencesCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i2237_DeleteReferencesCount = new NodeVariable(new NodeId(2237), new QualifiedName("DeleteReferencesCount"), new LocalizedText("DeleteReferencesCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i2237_DeleteReferencesCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2237_DeleteReferencesCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2237_DeleteReferencesCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2197), true));
@@ -9822,7 +9822,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnosticsVariableType/2197
-                var ID_i2238_BrowseCount = new NodeVariable(new NodeId(2238), new QualifiedName("BrowseCount"), new LocalizedText("BrowseCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i2238_BrowseCount = new NodeVariable(new NodeId(2238), new QualifiedName("BrowseCount"), new LocalizedText("BrowseCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i2238_BrowseCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2238_BrowseCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2238_BrowseCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2197), true));
@@ -9831,7 +9831,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnosticsVariableType/2197
-                var ID_i2239_BrowseNextCount = new NodeVariable(new NodeId(2239), new QualifiedName("BrowseNextCount"), new LocalizedText("BrowseNextCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i2239_BrowseNextCount = new NodeVariable(new NodeId(2239), new QualifiedName("BrowseNextCount"), new LocalizedText("BrowseNextCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i2239_BrowseNextCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2239_BrowseNextCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2239_BrowseNextCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2197), true));
@@ -9840,7 +9840,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnosticsVariableType/2197
-                var ID_i2240_TranslateBrowsePathsToNodeIdsCount = new NodeVariable(new NodeId(2240), new QualifiedName("TranslateBrowsePathsToNodeIdsCount"), new LocalizedText("TranslateBrowsePathsToNodeIdsCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i2240_TranslateBrowsePathsToNodeIdsCount = new NodeVariable(new NodeId(2240), new QualifiedName("TranslateBrowsePathsToNodeIdsCount"), new LocalizedText("TranslateBrowsePathsToNodeIdsCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i2240_TranslateBrowsePathsToNodeIdsCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2240_TranslateBrowsePathsToNodeIdsCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2240_TranslateBrowsePathsToNodeIdsCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2197), true));
@@ -9849,7 +9849,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnosticsVariableType/2197
-                var ID_i2241_QueryFirstCount = new NodeVariable(new NodeId(2241), new QualifiedName("QueryFirstCount"), new LocalizedText("QueryFirstCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i2241_QueryFirstCount = new NodeVariable(new NodeId(2241), new QualifiedName("QueryFirstCount"), new LocalizedText("QueryFirstCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i2241_QueryFirstCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2241_QueryFirstCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2241_QueryFirstCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2197), true));
@@ -9858,7 +9858,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnosticsVariableType/2197
-                var ID_i2242_QueryNextCount = new NodeVariable(new NodeId(2242), new QualifiedName("QueryNextCount"), new LocalizedText("QueryNextCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i2242_QueryNextCount = new NodeVariable(new NodeId(2242), new QualifiedName("QueryNextCount"), new LocalizedText("QueryNextCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i2242_QueryNextCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2242_QueryNextCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2242_QueryNextCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2197), true));
@@ -9867,7 +9867,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnosticsVariableType/2197
-                var ID_i2730_RegisterNodesCount = new NodeVariable(new NodeId(2730), new QualifiedName("RegisterNodesCount"), new LocalizedText("RegisterNodesCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i2730_RegisterNodesCount = new NodeVariable(new NodeId(2730), new QualifiedName("RegisterNodesCount"), new LocalizedText("RegisterNodesCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i2730_RegisterNodesCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2730_RegisterNodesCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2730_RegisterNodesCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2197), true));
@@ -9876,7 +9876,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionDiagnosticsVariableType/2197
-                var ID_i2731_UnregisterNodesCount = new NodeVariable(new NodeId(2731), new QualifiedName("UnregisterNodesCount"), new LocalizedText("UnregisterNodesCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(871));
+                var ID_i2731_UnregisterNodesCount = new NodeVariable(new NodeId(2731), new QualifiedName("UnregisterNodesCount"), new LocalizedText("UnregisterNodesCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(871));
                 ID_i2731_UnregisterNodesCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2731_UnregisterNodesCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2731_UnregisterNodesCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2197), true));
@@ -9885,7 +9885,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionSecurityDiagnosticsType/2244
-                var ID_i2245_SessionId = new NodeVariable(new NodeId(2245), new QualifiedName("SessionId"), new LocalizedText("SessionId"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(17));
+                var ID_i2245_SessionId = new NodeVariable(new NodeId(2245), new QualifiedName("SessionId"), new LocalizedText("SessionId"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(17));
                 ID_i2245_SessionId.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2245_SessionId.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2245_SessionId.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2244), true));
@@ -9894,7 +9894,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionSecurityDiagnosticsType/2244
-                var ID_i2246_ClientUserIdOfSession = new NodeVariable(new NodeId(2246), new QualifiedName("ClientUserIdOfSession"), new LocalizedText("ClientUserIdOfSession"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i2246_ClientUserIdOfSession = new NodeVariable(new NodeId(2246), new QualifiedName("ClientUserIdOfSession"), new LocalizedText("ClientUserIdOfSession"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i2246_ClientUserIdOfSession.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2246_ClientUserIdOfSession.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2246_ClientUserIdOfSession.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2244), true));
@@ -9903,7 +9903,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionSecurityDiagnosticsType/2244
-                var ID_i2247_ClientUserIdHistory = new NodeVariable(new NodeId(2247), new QualifiedName("ClientUserIdHistory"), new LocalizedText("ClientUserIdHistory"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i2247_ClientUserIdHistory = new NodeVariable(new NodeId(2247), new QualifiedName("ClientUserIdHistory"), new LocalizedText("ClientUserIdHistory"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i2247_ClientUserIdHistory.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2247_ClientUserIdHistory.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2247_ClientUserIdHistory.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2244), true));
@@ -9912,7 +9912,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionSecurityDiagnosticsType/2244
-                var ID_i2248_AuthenticationMechanism = new NodeVariable(new NodeId(2248), new QualifiedName("AuthenticationMechanism"), new LocalizedText("AuthenticationMechanism"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i2248_AuthenticationMechanism = new NodeVariable(new NodeId(2248), new QualifiedName("AuthenticationMechanism"), new LocalizedText("AuthenticationMechanism"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i2248_AuthenticationMechanism.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2248_AuthenticationMechanism.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2248_AuthenticationMechanism.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2244), true));
@@ -9921,7 +9921,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionSecurityDiagnosticsType/2244
-                var ID_i2249_Encoding = new NodeVariable(new NodeId(2249), new QualifiedName("Encoding"), new LocalizedText("Encoding"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i2249_Encoding = new NodeVariable(new NodeId(2249), new QualifiedName("Encoding"), new LocalizedText("Encoding"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i2249_Encoding.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2249_Encoding.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2249_Encoding.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2244), true));
@@ -9930,7 +9930,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionSecurityDiagnosticsType/2244
-                var ID_i2250_TransportProtocol = new NodeVariable(new NodeId(2250), new QualifiedName("TransportProtocol"), new LocalizedText("TransportProtocol"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i2250_TransportProtocol = new NodeVariable(new NodeId(2250), new QualifiedName("TransportProtocol"), new LocalizedText("TransportProtocol"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i2250_TransportProtocol.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2250_TransportProtocol.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2250_TransportProtocol.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2244), true));
@@ -9939,7 +9939,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionSecurityDiagnosticsType/2244
-                var ID_i2251_SecurityMode = new NodeVariable(new NodeId(2251), new QualifiedName("SecurityMode"), new LocalizedText("SecurityMode"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(302));
+                var ID_i2251_SecurityMode = new NodeVariable(new NodeId(2251), new QualifiedName("SecurityMode"), new LocalizedText("SecurityMode"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(302));
                 ID_i2251_SecurityMode.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2251_SecurityMode.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2251_SecurityMode.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2244), true));
@@ -9948,7 +9948,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionSecurityDiagnosticsType/2244
-                var ID_i2252_SecurityPolicyUri = new NodeVariable(new NodeId(2252), new QualifiedName("SecurityPolicyUri"), new LocalizedText("SecurityPolicyUri"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i2252_SecurityPolicyUri = new NodeVariable(new NodeId(2252), new QualifiedName("SecurityPolicyUri"), new LocalizedText("SecurityPolicyUri"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i2252_SecurityPolicyUri.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2252_SecurityPolicyUri.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2252_SecurityPolicyUri.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2244), true));
@@ -9957,7 +9957,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- SessionSecurityDiagnosticsType/2244
-                var ID_i3058_ClientCertificate = new NodeVariable(new NodeId(3058), new QualifiedName("ClientCertificate"), new LocalizedText("ClientCertificate"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(15));
+                var ID_i3058_ClientCertificate = new NodeVariable(new NodeId(3058), new QualifiedName("ClientCertificate"), new LocalizedText("ClientCertificate"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(15));
                 ID_i3058_ClientCertificate.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3058_ClientCertificate.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3058_ClientCertificate.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2244), true));
@@ -9966,7 +9966,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- OptionSetType/11487
-                var ID_i11488_OptionSetValues = new NodeVariable(new NodeId(11488), new QualifiedName("OptionSetValues"), new LocalizedText("OptionSetValues"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(21));
+                var ID_i11488_OptionSetValues = new NodeVariable(new NodeId(11488), new QualifiedName("OptionSetValues"), new LocalizedText("OptionSetValues"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(21));
                 ID_i11488_OptionSetValues.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11488_OptionSetValues.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11488_OptionSetValues.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11487), true));
@@ -9975,7 +9975,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Optional/80
                 //	HasProperty/46 <- OptionSetType/11487
-                var ID_i11701_BitMask = new NodeVariable(new NodeId(11701), new QualifiedName("BitMask"), new LocalizedText("BitMask"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(1));
+                var ID_i11701_BitMask = new NodeVariable(new NodeId(11701), new QualifiedName("BitMask"), new LocalizedText("BitMask"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(1));
                 ID_i11701_BitMask.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11701_BitMask.References.Add(new ReferenceNode(new NodeId(37), new NodeId(80), false));
                 ID_i11701_BitMask.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11487), true));
@@ -9983,14 +9983,14 @@ namespace LibUA
                 // ServerArray, i=2254, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasProperty/46 <- Server/2253
-                var ID_i2254_ServerArray = new NodeVariable(new NodeId(2254), new QualifiedName("ServerArray"), new LocalizedText("ServerArray"), new LocalizedText("The list of server URIs used by the server."), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i2254_ServerArray = new NodeVariable(new NodeId(2254), new QualifiedName("ServerArray"), new LocalizedText("ServerArray"), new LocalizedText("The list of server URIs used by the server."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i2254_ServerArray.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2254_ServerArray.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2253), true));
 
                 // NamespaceArray, i=2255, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasProperty/46 <- Server/2253
-                var ID_i2255_NamespaceArray = new NodeVariable(new NodeId(2255), new QualifiedName("NamespaceArray"), new LocalizedText("NamespaceArray"), new LocalizedText("The list of namespace URIs used by the server."), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i2255_NamespaceArray = new NodeVariable(new NodeId(2255), new QualifiedName("NamespaceArray"), new LocalizedText("NamespaceArray"), new LocalizedText("The list of namespace URIs used by the server."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i2255_NamespaceArray.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2255_NamespaceArray.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2253), true));
 
@@ -10003,7 +10003,7 @@ namespace LibUA
                 //	HasComponent/47 -> ShutdownReason/2993
                 //	HasTypeDefinition/40 -> ServerStatusType/2138
                 //	HasComponent/47 <- Server/2253
-                var ID_i2256_ServerStatus = new NodeVariable(new NodeId(2256), new QualifiedName("ServerStatus"), new LocalizedText("ServerStatus"), new LocalizedText("The current status of the server."), 0, 0, 0, 0, 0, false, new NodeId(862));
+                var ID_i2256_ServerStatus = new NodeVariable(new NodeId(2256), new QualifiedName("ServerStatus"), new LocalizedText("ServerStatus"), new LocalizedText("The current status of the server."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(862));
                 ID_i2256_ServerStatus.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2257), false));
                 ID_i2256_ServerStatus.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2258), false));
                 ID_i2256_ServerStatus.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2259), false));
@@ -10016,21 +10016,21 @@ namespace LibUA
                 // StartTime, i=2257, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasComponent/47 <- ServerStatus/2256
-                var ID_i2257_StartTime = new NodeVariable(new NodeId(2257), new QualifiedName("StartTime"), new LocalizedText("StartTime"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(294));
+                var ID_i2257_StartTime = new NodeVariable(new NodeId(2257), new QualifiedName("StartTime"), new LocalizedText("StartTime"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(294));
                 ID_i2257_StartTime.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2257_StartTime.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2256), true));
 
                 // CurrentTime, i=2258, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasComponent/47 <- ServerStatus/2256
-                var ID_i2258_CurrentTime = new NodeVariable(new NodeId(2258), new QualifiedName("CurrentTime"), new LocalizedText("CurrentTime"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(294));
+                var ID_i2258_CurrentTime = new NodeVariable(new NodeId(2258), new QualifiedName("CurrentTime"), new LocalizedText("CurrentTime"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(294));
                 ID_i2258_CurrentTime.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2258_CurrentTime.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2256), true));
 
                 // State, i=2259, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasComponent/47 <- ServerStatus/2256
-                var ID_i2259_State = new NodeVariable(new NodeId(2259), new QualifiedName("State"), new LocalizedText("State"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(852));
+                var ID_i2259_State = new NodeVariable(new NodeId(2259), new QualifiedName("State"), new LocalizedText("State"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(852));
                 ID_i2259_State.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2259_State.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2256), true));
 
@@ -10043,7 +10043,7 @@ namespace LibUA
                 //	HasComponent/47 -> BuildDate/2266
                 //	HasTypeDefinition/40 -> BuildInfoType/3051
                 //	HasComponent/47 <- ServerStatus/2256
-                var ID_i2260_BuildInfo = new NodeVariable(new NodeId(2260), new QualifiedName("BuildInfo"), new LocalizedText("BuildInfo"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(338));
+                var ID_i2260_BuildInfo = new NodeVariable(new NodeId(2260), new QualifiedName("BuildInfo"), new LocalizedText("BuildInfo"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(338));
                 ID_i2260_BuildInfo.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2262), false));
                 ID_i2260_BuildInfo.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2263), false));
                 ID_i2260_BuildInfo.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2261), false));
@@ -10056,217 +10056,217 @@ namespace LibUA
                 // ProductUri, i=2262, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasComponent/47 <- BuildInfo/2260
-                var ID_i2262_ProductUri = new NodeVariable(new NodeId(2262), new QualifiedName("ProductUri"), new LocalizedText("ProductUri"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i2262_ProductUri = new NodeVariable(new NodeId(2262), new QualifiedName("ProductUri"), new LocalizedText("ProductUri"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i2262_ProductUri.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2262_ProductUri.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2260), true));
 
                 // ManufacturerName, i=2263, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasComponent/47 <- BuildInfo/2260
-                var ID_i2263_ManufacturerName = new NodeVariable(new NodeId(2263), new QualifiedName("ManufacturerName"), new LocalizedText("ManufacturerName"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i2263_ManufacturerName = new NodeVariable(new NodeId(2263), new QualifiedName("ManufacturerName"), new LocalizedText("ManufacturerName"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i2263_ManufacturerName.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2263_ManufacturerName.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2260), true));
 
                 // ProductName, i=2261, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasComponent/47 <- BuildInfo/2260
-                var ID_i2261_ProductName = new NodeVariable(new NodeId(2261), new QualifiedName("ProductName"), new LocalizedText("ProductName"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i2261_ProductName = new NodeVariable(new NodeId(2261), new QualifiedName("ProductName"), new LocalizedText("ProductName"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i2261_ProductName.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2261_ProductName.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2260), true));
 
                 // SoftwareVersion, i=2264, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasComponent/47 <- BuildInfo/2260
-                var ID_i2264_SoftwareVersion = new NodeVariable(new NodeId(2264), new QualifiedName("SoftwareVersion"), new LocalizedText("SoftwareVersion"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i2264_SoftwareVersion = new NodeVariable(new NodeId(2264), new QualifiedName("SoftwareVersion"), new LocalizedText("SoftwareVersion"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i2264_SoftwareVersion.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2264_SoftwareVersion.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2260), true));
 
                 // BuildNumber, i=2265, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasComponent/47 <- BuildInfo/2260
-                var ID_i2265_BuildNumber = new NodeVariable(new NodeId(2265), new QualifiedName("BuildNumber"), new LocalizedText("BuildNumber"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i2265_BuildNumber = new NodeVariable(new NodeId(2265), new QualifiedName("BuildNumber"), new LocalizedText("BuildNumber"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i2265_BuildNumber.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2265_BuildNumber.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2260), true));
 
                 // BuildDate, i=2266, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasComponent/47 <- BuildInfo/2260
-                var ID_i2266_BuildDate = new NodeVariable(new NodeId(2266), new QualifiedName("BuildDate"), new LocalizedText("BuildDate"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(294));
+                var ID_i2266_BuildDate = new NodeVariable(new NodeId(2266), new QualifiedName("BuildDate"), new LocalizedText("BuildDate"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(294));
                 ID_i2266_BuildDate.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2266_BuildDate.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2260), true));
 
                 // SecondsTillShutdown, i=2992, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasComponent/47 <- ServerStatus/2256
-                var ID_i2992_SecondsTillShutdown = new NodeVariable(new NodeId(2992), new QualifiedName("SecondsTillShutdown"), new LocalizedText("SecondsTillShutdown"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i2992_SecondsTillShutdown = new NodeVariable(new NodeId(2992), new QualifiedName("SecondsTillShutdown"), new LocalizedText("SecondsTillShutdown"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i2992_SecondsTillShutdown.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2992_SecondsTillShutdown.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2256), true));
 
                 // ShutdownReason, i=2993, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasComponent/47 <- ServerStatus/2256
-                var ID_i2993_ShutdownReason = new NodeVariable(new NodeId(2993), new QualifiedName("ShutdownReason"), new LocalizedText("ShutdownReason"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(21));
+                var ID_i2993_ShutdownReason = new NodeVariable(new NodeId(2993), new QualifiedName("ShutdownReason"), new LocalizedText("ShutdownReason"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(21));
                 ID_i2993_ShutdownReason.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2993_ShutdownReason.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2256), true));
 
                 // ServiceLevel, i=2267, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasProperty/46 <- Server/2253
-                var ID_i2267_ServiceLevel = new NodeVariable(new NodeId(2267), new QualifiedName("ServiceLevel"), new LocalizedText("ServiceLevel"), new LocalizedText("A value indicating the level of service the server can provide. 255 indicates the best."), 0, 0, 0, 0, 0, false, new NodeId(3));
+                var ID_i2267_ServiceLevel = new NodeVariable(new NodeId(2267), new QualifiedName("ServiceLevel"), new LocalizedText("ServiceLevel"), new LocalizedText("A value indicating the level of service the server can provide. 255 indicates the best."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(3));
                 ID_i2267_ServiceLevel.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2267_ServiceLevel.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2253), true));
 
                 // Auditing, i=2994, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasProperty/46 <- Server/2253
-                var ID_i2994_Auditing = new NodeVariable(new NodeId(2994), new QualifiedName("Auditing"), new LocalizedText("Auditing"), new LocalizedText("A flag indicating whether the server is currently generating audit events."), 0, 0, 0, 0, 0, false, new NodeId(1));
+                var ID_i2994_Auditing = new NodeVariable(new NodeId(2994), new QualifiedName("Auditing"), new LocalizedText("Auditing"), new LocalizedText("A flag indicating whether the server is currently generating audit events."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(1));
                 ID_i2994_Auditing.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2994_Auditing.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2253), true));
 
                 // ServerProfileArray, i=2269, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasProperty/46 <- ServerCapabilities/2268
-                var ID_i2269_ServerProfileArray = new NodeVariable(new NodeId(2269), new QualifiedName("ServerProfileArray"), new LocalizedText("ServerProfileArray"), new LocalizedText("A list of profiles supported by the server."), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i2269_ServerProfileArray = new NodeVariable(new NodeId(2269), new QualifiedName("ServerProfileArray"), new LocalizedText("ServerProfileArray"), new LocalizedText("A list of profiles supported by the server."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i2269_ServerProfileArray.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2269_ServerProfileArray.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2268), true));
 
                 // LocaleIdArray, i=2271, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasProperty/46 <- ServerCapabilities/2268
-                var ID_i2271_LocaleIdArray = new NodeVariable(new NodeId(2271), new QualifiedName("LocaleIdArray"), new LocalizedText("LocaleIdArray"), new LocalizedText("A list of locales supported by the server."), 0, 0, 0, 0, 0, false, new NodeId(295));
+                var ID_i2271_LocaleIdArray = new NodeVariable(new NodeId(2271), new QualifiedName("LocaleIdArray"), new LocalizedText("LocaleIdArray"), new LocalizedText("A list of locales supported by the server."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(295));
                 ID_i2271_LocaleIdArray.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2271_LocaleIdArray.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2268), true));
 
                 // MinSupportedSampleRate, i=2272, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasProperty/46 <- ServerCapabilities/2268
-                var ID_i2272_MinSupportedSampleRate = new NodeVariable(new NodeId(2272), new QualifiedName("MinSupportedSampleRate"), new LocalizedText("MinSupportedSampleRate"), new LocalizedText("The minimum sampling interval supported by the server."), 0, 0, 0, 0, 0, false, new NodeId(290));
+                var ID_i2272_MinSupportedSampleRate = new NodeVariable(new NodeId(2272), new QualifiedName("MinSupportedSampleRate"), new LocalizedText("MinSupportedSampleRate"), new LocalizedText("The minimum sampling interval supported by the server."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(290));
                 ID_i2272_MinSupportedSampleRate.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2272_MinSupportedSampleRate.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2268), true));
 
                 // MaxBrowseContinuationPoints, i=2735, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasProperty/46 <- ServerCapabilities/2268
-                var ID_i2735_MaxBrowseContinuationPoints = new NodeVariable(new NodeId(2735), new QualifiedName("MaxBrowseContinuationPoints"), new LocalizedText("MaxBrowseContinuationPoints"), new LocalizedText("The maximum number of continuation points for Browse operations per session."), 0, 0, 0, 0, 0, false, new NodeId(5));
+                var ID_i2735_MaxBrowseContinuationPoints = new NodeVariable(new NodeId(2735), new QualifiedName("MaxBrowseContinuationPoints"), new LocalizedText("MaxBrowseContinuationPoints"), new LocalizedText("The maximum number of continuation points for Browse operations per session."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(5));
                 ID_i2735_MaxBrowseContinuationPoints.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2735_MaxBrowseContinuationPoints.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2268), true));
 
                 // MaxQueryContinuationPoints, i=2736, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasProperty/46 <- ServerCapabilities/2268
-                var ID_i2736_MaxQueryContinuationPoints = new NodeVariable(new NodeId(2736), new QualifiedName("MaxQueryContinuationPoints"), new LocalizedText("MaxQueryContinuationPoints"), new LocalizedText("The maximum number of continuation points for Query operations per session."), 0, 0, 0, 0, 0, false, new NodeId(5));
+                var ID_i2736_MaxQueryContinuationPoints = new NodeVariable(new NodeId(2736), new QualifiedName("MaxQueryContinuationPoints"), new LocalizedText("MaxQueryContinuationPoints"), new LocalizedText("The maximum number of continuation points for Query operations per session."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(5));
                 ID_i2736_MaxQueryContinuationPoints.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2736_MaxQueryContinuationPoints.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2268), true));
 
                 // MaxHistoryContinuationPoints, i=2737, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasProperty/46 <- ServerCapabilities/2268
-                var ID_i2737_MaxHistoryContinuationPoints = new NodeVariable(new NodeId(2737), new QualifiedName("MaxHistoryContinuationPoints"), new LocalizedText("MaxHistoryContinuationPoints"), new LocalizedText("The maximum number of continuation points for ReadHistory operations per session."), 0, 0, 0, 0, 0, false, new NodeId(5));
+                var ID_i2737_MaxHistoryContinuationPoints = new NodeVariable(new NodeId(2737), new QualifiedName("MaxHistoryContinuationPoints"), new LocalizedText("MaxHistoryContinuationPoints"), new LocalizedText("The maximum number of continuation points for ReadHistory operations per session."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(5));
                 ID_i2737_MaxHistoryContinuationPoints.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2737_MaxHistoryContinuationPoints.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2268), true));
 
                 // SoftwareCertificates, i=3704, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasProperty/46 <- ServerCapabilities/2268
-                var ID_i3704_SoftwareCertificates = new NodeVariable(new NodeId(3704), new QualifiedName("SoftwareCertificates"), new LocalizedText("SoftwareCertificates"), new LocalizedText("The software certificates owned by the server."), 0, 0, 0, 0, 0, false, new NodeId(344));
+                var ID_i3704_SoftwareCertificates = new NodeVariable(new NodeId(3704), new QualifiedName("SoftwareCertificates"), new LocalizedText("SoftwareCertificates"), new LocalizedText("The software certificates owned by the server."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(344));
                 ID_i3704_SoftwareCertificates.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i3704_SoftwareCertificates.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2268), true));
 
                 // MaxArrayLength, i=11702, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasProperty/46 <- ServerCapabilities/2268
-                var ID_i11702_MaxArrayLength = new NodeVariable(new NodeId(11702), new QualifiedName("MaxArrayLength"), new LocalizedText("MaxArrayLength"), new LocalizedText("The maximum length for an array value supported by the server."), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i11702_MaxArrayLength = new NodeVariable(new NodeId(11702), new QualifiedName("MaxArrayLength"), new LocalizedText("MaxArrayLength"), new LocalizedText("The maximum length for an array value supported by the server."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i11702_MaxArrayLength.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11702_MaxArrayLength.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2268), true));
 
                 // MaxStringLength, i=11703, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasProperty/46 <- ServerCapabilities/2268
-                var ID_i11703_MaxStringLength = new NodeVariable(new NodeId(11703), new QualifiedName("MaxStringLength"), new LocalizedText("MaxStringLength"), new LocalizedText("The maximum length for a string value supported by the server."), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i11703_MaxStringLength = new NodeVariable(new NodeId(11703), new QualifiedName("MaxStringLength"), new LocalizedText("MaxStringLength"), new LocalizedText("The maximum length for a string value supported by the server."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i11703_MaxStringLength.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11703_MaxStringLength.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2268), true));
 
                 // MaxNodesPerRead, i=11705, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasProperty/46 <- OperationLimits/11704
-                var ID_i11705_MaxNodesPerRead = new NodeVariable(new NodeId(11705), new QualifiedName("MaxNodesPerRead"), new LocalizedText("MaxNodesPerRead"), new LocalizedText("The maximum number of operations in a single Read request."), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i11705_MaxNodesPerRead = new NodeVariable(new NodeId(11705), new QualifiedName("MaxNodesPerRead"), new LocalizedText("MaxNodesPerRead"), new LocalizedText("The maximum number of operations in a single Read request."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i11705_MaxNodesPerRead.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11705_MaxNodesPerRead.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11704), true));
 
                 // MaxNodesPerHistoryReadData, i=12165, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasProperty/46 <- OperationLimits/11704
-                var ID_i12165_MaxNodesPerHistoryReadData = new NodeVariable(new NodeId(12165), new QualifiedName("MaxNodesPerHistoryReadData"), new LocalizedText("MaxNodesPerHistoryReadData"), new LocalizedText("The maximum number of operations in a single data HistoryRead request."), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i12165_MaxNodesPerHistoryReadData = new NodeVariable(new NodeId(12165), new QualifiedName("MaxNodesPerHistoryReadData"), new LocalizedText("MaxNodesPerHistoryReadData"), new LocalizedText("The maximum number of operations in a single data HistoryRead request."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i12165_MaxNodesPerHistoryReadData.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i12165_MaxNodesPerHistoryReadData.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11704), true));
 
                 // MaxNodesPerHistoryReadEvents, i=12166, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasProperty/46 <- OperationLimits/11704
-                var ID_i12166_MaxNodesPerHistoryReadEvents = new NodeVariable(new NodeId(12166), new QualifiedName("MaxNodesPerHistoryReadEvents"), new LocalizedText("MaxNodesPerHistoryReadEvents"), new LocalizedText("The maximum number of operations in a single event HistoryRead request."), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i12166_MaxNodesPerHistoryReadEvents = new NodeVariable(new NodeId(12166), new QualifiedName("MaxNodesPerHistoryReadEvents"), new LocalizedText("MaxNodesPerHistoryReadEvents"), new LocalizedText("The maximum number of operations in a single event HistoryRead request."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i12166_MaxNodesPerHistoryReadEvents.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i12166_MaxNodesPerHistoryReadEvents.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11704), true));
 
                 // MaxNodesPerWrite, i=11707, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasProperty/46 <- OperationLimits/11704
-                var ID_i11707_MaxNodesPerWrite = new NodeVariable(new NodeId(11707), new QualifiedName("MaxNodesPerWrite"), new LocalizedText("MaxNodesPerWrite"), new LocalizedText("The maximum number of operations in a single Write request."), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i11707_MaxNodesPerWrite = new NodeVariable(new NodeId(11707), new QualifiedName("MaxNodesPerWrite"), new LocalizedText("MaxNodesPerWrite"), new LocalizedText("The maximum number of operations in a single Write request."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i11707_MaxNodesPerWrite.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11707_MaxNodesPerWrite.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11704), true));
 
                 // MaxNodesPerHistoryUpdateData, i=12167, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasProperty/46 <- OperationLimits/11704
-                var ID_i12167_MaxNodesPerHistoryUpdateData = new NodeVariable(new NodeId(12167), new QualifiedName("MaxNodesPerHistoryUpdateData"), new LocalizedText("MaxNodesPerHistoryUpdateData"), new LocalizedText("The maximum number of operations in a single data HistoryUpdate request."), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i12167_MaxNodesPerHistoryUpdateData = new NodeVariable(new NodeId(12167), new QualifiedName("MaxNodesPerHistoryUpdateData"), new LocalizedText("MaxNodesPerHistoryUpdateData"), new LocalizedText("The maximum number of operations in a single data HistoryUpdate request."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i12167_MaxNodesPerHistoryUpdateData.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i12167_MaxNodesPerHistoryUpdateData.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11704), true));
 
                 // MaxNodesPerHistoryUpdateEvents, i=12168, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasProperty/46 <- OperationLimits/11704
-                var ID_i12168_MaxNodesPerHistoryUpdateEvents = new NodeVariable(new NodeId(12168), new QualifiedName("MaxNodesPerHistoryUpdateEvents"), new LocalizedText("MaxNodesPerHistoryUpdateEvents"), new LocalizedText("The maximum number of operations in a single event HistoryUpdate request."), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i12168_MaxNodesPerHistoryUpdateEvents = new NodeVariable(new NodeId(12168), new QualifiedName("MaxNodesPerHistoryUpdateEvents"), new LocalizedText("MaxNodesPerHistoryUpdateEvents"), new LocalizedText("The maximum number of operations in a single event HistoryUpdate request."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i12168_MaxNodesPerHistoryUpdateEvents.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i12168_MaxNodesPerHistoryUpdateEvents.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11704), true));
 
                 // MaxNodesPerMethodCall, i=11709, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasProperty/46 <- OperationLimits/11704
-                var ID_i11709_MaxNodesPerMethodCall = new NodeVariable(new NodeId(11709), new QualifiedName("MaxNodesPerMethodCall"), new LocalizedText("MaxNodesPerMethodCall"), new LocalizedText("The maximum number of operations in a single Call request."), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i11709_MaxNodesPerMethodCall = new NodeVariable(new NodeId(11709), new QualifiedName("MaxNodesPerMethodCall"), new LocalizedText("MaxNodesPerMethodCall"), new LocalizedText("The maximum number of operations in a single Call request."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i11709_MaxNodesPerMethodCall.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11709_MaxNodesPerMethodCall.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11704), true));
 
                 // MaxNodesPerBrowse, i=11710, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasProperty/46 <- OperationLimits/11704
-                var ID_i11710_MaxNodesPerBrowse = new NodeVariable(new NodeId(11710), new QualifiedName("MaxNodesPerBrowse"), new LocalizedText("MaxNodesPerBrowse"), new LocalizedText("The maximum number of operations in a single Browse request."), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i11710_MaxNodesPerBrowse = new NodeVariable(new NodeId(11710), new QualifiedName("MaxNodesPerBrowse"), new LocalizedText("MaxNodesPerBrowse"), new LocalizedText("The maximum number of operations in a single Browse request."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i11710_MaxNodesPerBrowse.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11710_MaxNodesPerBrowse.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11704), true));
 
                 // MaxNodesPerRegisterNodes, i=11711, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasProperty/46 <- OperationLimits/11704
-                var ID_i11711_MaxNodesPerRegisterNodes = new NodeVariable(new NodeId(11711), new QualifiedName("MaxNodesPerRegisterNodes"), new LocalizedText("MaxNodesPerRegisterNodes"), new LocalizedText("The maximum number of operations in a single RegisterNodes request."), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i11711_MaxNodesPerRegisterNodes = new NodeVariable(new NodeId(11711), new QualifiedName("MaxNodesPerRegisterNodes"), new LocalizedText("MaxNodesPerRegisterNodes"), new LocalizedText("The maximum number of operations in a single RegisterNodes request."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i11711_MaxNodesPerRegisterNodes.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11711_MaxNodesPerRegisterNodes.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11704), true));
 
                 // MaxNodesPerTranslateBrowsePathsToNodeIds, i=11712, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasProperty/46 <- OperationLimits/11704
-                var ID_i11712_MaxNodesPerTranslateBrowsePathsToNodeIds = new NodeVariable(new NodeId(11712), new QualifiedName("MaxNodesPerTranslateBrowsePathsToNodeIds"), new LocalizedText("MaxNodesPerTranslateBrowsePathsToNodeIds"), new LocalizedText("The maximum number of operations in a single TranslateBrowsePathsToNodeIds request."), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i11712_MaxNodesPerTranslateBrowsePathsToNodeIds = new NodeVariable(new NodeId(11712), new QualifiedName("MaxNodesPerTranslateBrowsePathsToNodeIds"), new LocalizedText("MaxNodesPerTranslateBrowsePathsToNodeIds"), new LocalizedText("The maximum number of operations in a single TranslateBrowsePathsToNodeIds request."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i11712_MaxNodesPerTranslateBrowsePathsToNodeIds.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11712_MaxNodesPerTranslateBrowsePathsToNodeIds.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11704), true));
 
                 // MaxNodesPerNodeManagement, i=11713, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasProperty/46 <- OperationLimits/11704
-                var ID_i11713_MaxNodesPerNodeManagement = new NodeVariable(new NodeId(11713), new QualifiedName("MaxNodesPerNodeManagement"), new LocalizedText("MaxNodesPerNodeManagement"), new LocalizedText("The maximum number of operations in a single AddNodes, AddReferences, DeleteNodes or DeleteReferences request."), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i11713_MaxNodesPerNodeManagement = new NodeVariable(new NodeId(11713), new QualifiedName("MaxNodesPerNodeManagement"), new LocalizedText("MaxNodesPerNodeManagement"), new LocalizedText("The maximum number of operations in a single AddNodes, AddReferences, DeleteNodes or DeleteReferences request."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i11713_MaxNodesPerNodeManagement.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11713_MaxNodesPerNodeManagement.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11704), true));
 
                 // MaxMonitoredItemsPerCall, i=11714, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasProperty/46 <- OperationLimits/11704
-                var ID_i11714_MaxMonitoredItemsPerCall = new NodeVariable(new NodeId(11714), new QualifiedName("MaxMonitoredItemsPerCall"), new LocalizedText("MaxMonitoredItemsPerCall"), new LocalizedText("The maximum number of operations in a single MonitoredItem related request."), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i11714_MaxMonitoredItemsPerCall = new NodeVariable(new NodeId(11714), new QualifiedName("MaxMonitoredItemsPerCall"), new LocalizedText("MaxMonitoredItemsPerCall"), new LocalizedText("The maximum number of operations in a single MonitoredItem related request."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i11714_MaxMonitoredItemsPerCall.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11714_MaxMonitoredItemsPerCall.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11704), true));
 
@@ -10285,7 +10285,7 @@ namespace LibUA
                 //	HasComponent/47 -> RejectedRequestsCount/2288
                 //	HasTypeDefinition/40 -> ServerDiagnosticsSummaryType/2150
                 //	HasComponent/47 <- ServerDiagnostics/2274
-                var ID_i2275_ServerDiagnosticsSummary = new NodeVariable(new NodeId(2275), new QualifiedName("ServerDiagnosticsSummary"), new LocalizedText("ServerDiagnosticsSummary"), new LocalizedText("A summary of server level diagnostics."), 0, 0, 0, 0, 0, false, new NodeId(859));
+                var ID_i2275_ServerDiagnosticsSummary = new NodeVariable(new NodeId(2275), new QualifiedName("ServerDiagnosticsSummary"), new LocalizedText("ServerDiagnosticsSummary"), new LocalizedText("A summary of server level diagnostics."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(859));
                 ID_i2275_ServerDiagnosticsSummary.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2276), false));
                 ID_i2275_ServerDiagnosticsSummary.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2277), false));
                 ID_i2275_ServerDiagnosticsSummary.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2278), false));
@@ -10304,259 +10304,259 @@ namespace LibUA
                 // ServerViewCount, i=2276, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasComponent/47 <- ServerDiagnosticsSummary/2275
-                var ID_i2276_ServerViewCount = new NodeVariable(new NodeId(2276), new QualifiedName("ServerViewCount"), new LocalizedText("ServerViewCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i2276_ServerViewCount = new NodeVariable(new NodeId(2276), new QualifiedName("ServerViewCount"), new LocalizedText("ServerViewCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i2276_ServerViewCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2276_ServerViewCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2275), true));
 
                 // CurrentSessionCount, i=2277, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasComponent/47 <- ServerDiagnosticsSummary/2275
-                var ID_i2277_CurrentSessionCount = new NodeVariable(new NodeId(2277), new QualifiedName("CurrentSessionCount"), new LocalizedText("CurrentSessionCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i2277_CurrentSessionCount = new NodeVariable(new NodeId(2277), new QualifiedName("CurrentSessionCount"), new LocalizedText("CurrentSessionCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i2277_CurrentSessionCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2277_CurrentSessionCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2275), true));
 
                 // CumulatedSessionCount, i=2278, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasComponent/47 <- ServerDiagnosticsSummary/2275
-                var ID_i2278_CumulatedSessionCount = new NodeVariable(new NodeId(2278), new QualifiedName("CumulatedSessionCount"), new LocalizedText("CumulatedSessionCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i2278_CumulatedSessionCount = new NodeVariable(new NodeId(2278), new QualifiedName("CumulatedSessionCount"), new LocalizedText("CumulatedSessionCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i2278_CumulatedSessionCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2278_CumulatedSessionCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2275), true));
 
                 // SecurityRejectedSessionCount, i=2279, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasComponent/47 <- ServerDiagnosticsSummary/2275
-                var ID_i2279_SecurityRejectedSessionCount = new NodeVariable(new NodeId(2279), new QualifiedName("SecurityRejectedSessionCount"), new LocalizedText("SecurityRejectedSessionCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i2279_SecurityRejectedSessionCount = new NodeVariable(new NodeId(2279), new QualifiedName("SecurityRejectedSessionCount"), new LocalizedText("SecurityRejectedSessionCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i2279_SecurityRejectedSessionCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2279_SecurityRejectedSessionCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2275), true));
 
                 // RejectedSessionCount, i=3705, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasComponent/47 <- ServerDiagnosticsSummary/2275
-                var ID_i3705_RejectedSessionCount = new NodeVariable(new NodeId(3705), new QualifiedName("RejectedSessionCount"), new LocalizedText("RejectedSessionCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i3705_RejectedSessionCount = new NodeVariable(new NodeId(3705), new QualifiedName("RejectedSessionCount"), new LocalizedText("RejectedSessionCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i3705_RejectedSessionCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i3705_RejectedSessionCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2275), true));
 
                 // SessionTimeoutCount, i=2281, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasComponent/47 <- ServerDiagnosticsSummary/2275
-                var ID_i2281_SessionTimeoutCount = new NodeVariable(new NodeId(2281), new QualifiedName("SessionTimeoutCount"), new LocalizedText("SessionTimeoutCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i2281_SessionTimeoutCount = new NodeVariable(new NodeId(2281), new QualifiedName("SessionTimeoutCount"), new LocalizedText("SessionTimeoutCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i2281_SessionTimeoutCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2281_SessionTimeoutCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2275), true));
 
                 // SessionAbortCount, i=2282, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasComponent/47 <- ServerDiagnosticsSummary/2275
-                var ID_i2282_SessionAbortCount = new NodeVariable(new NodeId(2282), new QualifiedName("SessionAbortCount"), new LocalizedText("SessionAbortCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i2282_SessionAbortCount = new NodeVariable(new NodeId(2282), new QualifiedName("SessionAbortCount"), new LocalizedText("SessionAbortCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i2282_SessionAbortCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2282_SessionAbortCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2275), true));
 
                 // PublishingIntervalCount, i=2284, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasComponent/47 <- ServerDiagnosticsSummary/2275
-                var ID_i2284_PublishingIntervalCount = new NodeVariable(new NodeId(2284), new QualifiedName("PublishingIntervalCount"), new LocalizedText("PublishingIntervalCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i2284_PublishingIntervalCount = new NodeVariable(new NodeId(2284), new QualifiedName("PublishingIntervalCount"), new LocalizedText("PublishingIntervalCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i2284_PublishingIntervalCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2284_PublishingIntervalCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2275), true));
 
                 // CurrentSubscriptionCount, i=2285, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasComponent/47 <- ServerDiagnosticsSummary/2275
-                var ID_i2285_CurrentSubscriptionCount = new NodeVariable(new NodeId(2285), new QualifiedName("CurrentSubscriptionCount"), new LocalizedText("CurrentSubscriptionCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i2285_CurrentSubscriptionCount = new NodeVariable(new NodeId(2285), new QualifiedName("CurrentSubscriptionCount"), new LocalizedText("CurrentSubscriptionCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i2285_CurrentSubscriptionCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2285_CurrentSubscriptionCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2275), true));
 
                 // CumulatedSubscriptionCount, i=2286, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasComponent/47 <- ServerDiagnosticsSummary/2275
-                var ID_i2286_CumulatedSubscriptionCount = new NodeVariable(new NodeId(2286), new QualifiedName("CumulatedSubscriptionCount"), new LocalizedText("CumulatedSubscriptionCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i2286_CumulatedSubscriptionCount = new NodeVariable(new NodeId(2286), new QualifiedName("CumulatedSubscriptionCount"), new LocalizedText("CumulatedSubscriptionCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i2286_CumulatedSubscriptionCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2286_CumulatedSubscriptionCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2275), true));
 
                 // SecurityRejectedRequestsCount, i=2287, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasComponent/47 <- ServerDiagnosticsSummary/2275
-                var ID_i2287_SecurityRejectedRequestsCount = new NodeVariable(new NodeId(2287), new QualifiedName("SecurityRejectedRequestsCount"), new LocalizedText("SecurityRejectedRequestsCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i2287_SecurityRejectedRequestsCount = new NodeVariable(new NodeId(2287), new QualifiedName("SecurityRejectedRequestsCount"), new LocalizedText("SecurityRejectedRequestsCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i2287_SecurityRejectedRequestsCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2287_SecurityRejectedRequestsCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2275), true));
 
                 // RejectedRequestsCount, i=2288, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> BaseDataVariableType/63
                 //	HasComponent/47 <- ServerDiagnosticsSummary/2275
-                var ID_i2288_RejectedRequestsCount = new NodeVariable(new NodeId(2288), new QualifiedName("RejectedRequestsCount"), new LocalizedText("RejectedRequestsCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i2288_RejectedRequestsCount = new NodeVariable(new NodeId(2288), new QualifiedName("RejectedRequestsCount"), new LocalizedText("RejectedRequestsCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i2288_RejectedRequestsCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(63), false));
                 ID_i2288_RejectedRequestsCount.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2275), true));
 
                 // SamplingIntervalDiagnosticsArray, i=2289, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> SamplingIntervalDiagnosticsArrayType/2164
                 //	HasComponent/47 <- ServerDiagnostics/2274
-                var ID_i2289_SamplingIntervalDiagnosticsArray = new NodeVariable(new NodeId(2289), new QualifiedName("SamplingIntervalDiagnosticsArray"), new LocalizedText("SamplingIntervalDiagnosticsArray"), new LocalizedText("A list of diagnostics for each sampling interval supported by the server."), 0, 0, 0, 0, 0, false, new NodeId(856));
+                var ID_i2289_SamplingIntervalDiagnosticsArray = new NodeVariable(new NodeId(2289), new QualifiedName("SamplingIntervalDiagnosticsArray"), new LocalizedText("SamplingIntervalDiagnosticsArray"), new LocalizedText("A list of diagnostics for each sampling interval supported by the server."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(856));
                 ID_i2289_SamplingIntervalDiagnosticsArray.References.Add(new ReferenceNode(new NodeId(40), new NodeId(2164), false));
                 ID_i2289_SamplingIntervalDiagnosticsArray.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2274), true));
 
                 // SubscriptionDiagnosticsArray, i=2290, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> SubscriptionDiagnosticsArrayType/2171
                 //	HasComponent/47 <- ServerDiagnostics/2274
-                var ID_i2290_SubscriptionDiagnosticsArray = new NodeVariable(new NodeId(2290), new QualifiedName("SubscriptionDiagnosticsArray"), new LocalizedText("SubscriptionDiagnosticsArray"), new LocalizedText("A list of diagnostics for each active subscription."), 0, 0, 0, 0, 0, false, new NodeId(874));
+                var ID_i2290_SubscriptionDiagnosticsArray = new NodeVariable(new NodeId(2290), new QualifiedName("SubscriptionDiagnosticsArray"), new LocalizedText("SubscriptionDiagnosticsArray"), new LocalizedText("A list of diagnostics for each active subscription."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(874));
                 ID_i2290_SubscriptionDiagnosticsArray.References.Add(new ReferenceNode(new NodeId(40), new NodeId(2171), false));
                 ID_i2290_SubscriptionDiagnosticsArray.References.Add(new ReferenceNode(new NodeId(47), new NodeId(2274), true));
 
                 // SessionDiagnosticsArray, i=3707, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> SessionDiagnosticsArrayType/2196
                 //	HasComponent/47 <- SessionsDiagnosticsSummary/3706
-                var ID_i3707_SessionDiagnosticsArray = new NodeVariable(new NodeId(3707), new QualifiedName("SessionDiagnosticsArray"), new LocalizedText("SessionDiagnosticsArray"), new LocalizedText("A list of diagnostics for each active session."), 0, 0, 0, 0, 0, false, new NodeId(865));
+                var ID_i3707_SessionDiagnosticsArray = new NodeVariable(new NodeId(3707), new QualifiedName("SessionDiagnosticsArray"), new LocalizedText("SessionDiagnosticsArray"), new LocalizedText("A list of diagnostics for each active session."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(865));
                 ID_i3707_SessionDiagnosticsArray.References.Add(new ReferenceNode(new NodeId(40), new NodeId(2196), false));
                 ID_i3707_SessionDiagnosticsArray.References.Add(new ReferenceNode(new NodeId(47), new NodeId(3706), true));
 
                 // SessionSecurityDiagnosticsArray, i=3708, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> SessionSecurityDiagnosticsArrayType/2243
                 //	HasComponent/47 <- SessionsDiagnosticsSummary/3706
-                var ID_i3708_SessionSecurityDiagnosticsArray = new NodeVariable(new NodeId(3708), new QualifiedName("SessionSecurityDiagnosticsArray"), new LocalizedText("SessionSecurityDiagnosticsArray"), new LocalizedText("A list of security related diagnostics for each active session."), 0, 0, 0, 0, 0, false, new NodeId(868));
+                var ID_i3708_SessionSecurityDiagnosticsArray = new NodeVariable(new NodeId(3708), new QualifiedName("SessionSecurityDiagnosticsArray"), new LocalizedText("SessionSecurityDiagnosticsArray"), new LocalizedText("A list of security related diagnostics for each active session."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(868));
                 ID_i3708_SessionSecurityDiagnosticsArray.References.Add(new ReferenceNode(new NodeId(40), new NodeId(2243), false));
                 ID_i3708_SessionSecurityDiagnosticsArray.References.Add(new ReferenceNode(new NodeId(47), new NodeId(3706), true));
 
                 // EnabledFlag, i=2294, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasProperty/46 <- ServerDiagnostics/2274
-                var ID_i2294_EnabledFlag = new NodeVariable(new NodeId(2294), new QualifiedName("EnabledFlag"), new LocalizedText("EnabledFlag"), new LocalizedText("If TRUE the diagnostics collection is enabled."), 0, 0, 0, 0, 0, false, new NodeId(1));
+                var ID_i2294_EnabledFlag = new NodeVariable(new NodeId(2294), new QualifiedName("EnabledFlag"), new LocalizedText("EnabledFlag"), new LocalizedText("If TRUE the diagnostics collection is enabled."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(1));
                 ID_i2294_EnabledFlag.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2294_EnabledFlag.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2274), true));
 
                 // RedundancySupport, i=3709, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasProperty/46 <- ServerRedundancy/2296
-                var ID_i3709_RedundancySupport = new NodeVariable(new NodeId(3709), new QualifiedName("RedundancySupport"), new LocalizedText("RedundancySupport"), new LocalizedText("Indicates what style of redundancy is supported by the server."), 0, 0, 0, 0, 0, false, new NodeId(851));
+                var ID_i3709_RedundancySupport = new NodeVariable(new NodeId(3709), new QualifiedName("RedundancySupport"), new LocalizedText("RedundancySupport"), new LocalizedText("Indicates what style of redundancy is supported by the server."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(851));
                 ID_i3709_RedundancySupport.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i3709_RedundancySupport.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2296), true));
 
                 // CurrentServerId, i=11312, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasProperty/46 <- ServerRedundancy/2296
-                var ID_i11312_CurrentServerId = new NodeVariable(new NodeId(11312), new QualifiedName("CurrentServerId"), new LocalizedText("CurrentServerId"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i11312_CurrentServerId = new NodeVariable(new NodeId(11312), new QualifiedName("CurrentServerId"), new LocalizedText("CurrentServerId"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i11312_CurrentServerId.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11312_CurrentServerId.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2296), true));
 
                 // RedundantServerArray, i=11313, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasProperty/46 <- ServerRedundancy/2296
-                var ID_i11313_RedundantServerArray = new NodeVariable(new NodeId(11313), new QualifiedName("RedundantServerArray"), new LocalizedText("RedundantServerArray"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(853));
+                var ID_i11313_RedundantServerArray = new NodeVariable(new NodeId(11313), new QualifiedName("RedundantServerArray"), new LocalizedText("RedundantServerArray"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(853));
                 ID_i11313_RedundantServerArray.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11313_RedundantServerArray.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2296), true));
 
                 // ServerUriArray, i=11314, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasProperty/46 <- ServerRedundancy/2296
-                var ID_i11314_ServerUriArray = new NodeVariable(new NodeId(11314), new QualifiedName("ServerUriArray"), new LocalizedText("ServerUriArray"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i11314_ServerUriArray = new NodeVariable(new NodeId(11314), new QualifiedName("ServerUriArray"), new LocalizedText("ServerUriArray"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i11314_ServerUriArray.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11314_ServerUriArray.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2296), true));
 
                 // InputArguments, i=11493, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasProperty/46 <- GetMonitoredItems/11492
-                var ID_i11493_InputArguments = new NodeVariable(new NodeId(11493), new QualifiedName("InputArguments"), new LocalizedText("InputArguments"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(296));
+                var ID_i11493_InputArguments = new NodeVariable(new NodeId(11493), new QualifiedName("InputArguments"), new LocalizedText("InputArguments"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(296));
                 ID_i11493_InputArguments.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11493_InputArguments.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11492), true));
 
                 // OutputArguments, i=11494, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasProperty/46 <- GetMonitoredItems/11492
-                var ID_i11494_OutputArguments = new NodeVariable(new NodeId(11494), new QualifiedName("OutputArguments"), new LocalizedText("OutputArguments"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(296));
+                var ID_i11494_OutputArguments = new NodeVariable(new NodeId(11494), new QualifiedName("OutputArguments"), new LocalizedText("OutputArguments"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(296));
                 ID_i11494_OutputArguments.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11494_OutputArguments.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11492), true));
 
                 // AccessHistoryDataCapability, i=11193, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasProperty/46 <- HistoryServerCapabilities/11192
-                var ID_i11193_AccessHistoryDataCapability = new NodeVariable(new NodeId(11193), new QualifiedName("AccessHistoryDataCapability"), new LocalizedText("AccessHistoryDataCapability"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(1));
+                var ID_i11193_AccessHistoryDataCapability = new NodeVariable(new NodeId(11193), new QualifiedName("AccessHistoryDataCapability"), new LocalizedText("AccessHistoryDataCapability"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(1));
                 ID_i11193_AccessHistoryDataCapability.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11193_AccessHistoryDataCapability.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11192), true));
 
                 // AccessHistoryEventsCapability, i=11242, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasProperty/46 <- HistoryServerCapabilities/11192
-                var ID_i11242_AccessHistoryEventsCapability = new NodeVariable(new NodeId(11242), new QualifiedName("AccessHistoryEventsCapability"), new LocalizedText("AccessHistoryEventsCapability"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(1));
+                var ID_i11242_AccessHistoryEventsCapability = new NodeVariable(new NodeId(11242), new QualifiedName("AccessHistoryEventsCapability"), new LocalizedText("AccessHistoryEventsCapability"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(1));
                 ID_i11242_AccessHistoryEventsCapability.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11242_AccessHistoryEventsCapability.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11192), true));
 
                 // MaxReturnDataValues, i=11273, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasProperty/46 <- HistoryServerCapabilities/11192
-                var ID_i11273_MaxReturnDataValues = new NodeVariable(new NodeId(11273), new QualifiedName("MaxReturnDataValues"), new LocalizedText("MaxReturnDataValues"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i11273_MaxReturnDataValues = new NodeVariable(new NodeId(11273), new QualifiedName("MaxReturnDataValues"), new LocalizedText("MaxReturnDataValues"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i11273_MaxReturnDataValues.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11273_MaxReturnDataValues.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11192), true));
 
                 // MaxReturnEventValues, i=11274, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasProperty/46 <- HistoryServerCapabilities/11192
-                var ID_i11274_MaxReturnEventValues = new NodeVariable(new NodeId(11274), new QualifiedName("MaxReturnEventValues"), new LocalizedText("MaxReturnEventValues"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i11274_MaxReturnEventValues = new NodeVariable(new NodeId(11274), new QualifiedName("MaxReturnEventValues"), new LocalizedText("MaxReturnEventValues"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i11274_MaxReturnEventValues.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11274_MaxReturnEventValues.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11192), true));
 
                 // InsertDataCapability, i=11196, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasProperty/46 <- HistoryServerCapabilities/11192
-                var ID_i11196_InsertDataCapability = new NodeVariable(new NodeId(11196), new QualifiedName("InsertDataCapability"), new LocalizedText("InsertDataCapability"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(1));
+                var ID_i11196_InsertDataCapability = new NodeVariable(new NodeId(11196), new QualifiedName("InsertDataCapability"), new LocalizedText("InsertDataCapability"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(1));
                 ID_i11196_InsertDataCapability.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11196_InsertDataCapability.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11192), true));
 
                 // ReplaceDataCapability, i=11197, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasProperty/46 <- HistoryServerCapabilities/11192
-                var ID_i11197_ReplaceDataCapability = new NodeVariable(new NodeId(11197), new QualifiedName("ReplaceDataCapability"), new LocalizedText("ReplaceDataCapability"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(1));
+                var ID_i11197_ReplaceDataCapability = new NodeVariable(new NodeId(11197), new QualifiedName("ReplaceDataCapability"), new LocalizedText("ReplaceDataCapability"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(1));
                 ID_i11197_ReplaceDataCapability.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11197_ReplaceDataCapability.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11192), true));
 
                 // UpdateDataCapability, i=11198, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasProperty/46 <- HistoryServerCapabilities/11192
-                var ID_i11198_UpdateDataCapability = new NodeVariable(new NodeId(11198), new QualifiedName("UpdateDataCapability"), new LocalizedText("UpdateDataCapability"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(1));
+                var ID_i11198_UpdateDataCapability = new NodeVariable(new NodeId(11198), new QualifiedName("UpdateDataCapability"), new LocalizedText("UpdateDataCapability"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(1));
                 ID_i11198_UpdateDataCapability.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11198_UpdateDataCapability.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11192), true));
 
                 // DeleteRawCapability, i=11199, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasProperty/46 <- HistoryServerCapabilities/11192
-                var ID_i11199_DeleteRawCapability = new NodeVariable(new NodeId(11199), new QualifiedName("DeleteRawCapability"), new LocalizedText("DeleteRawCapability"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(1));
+                var ID_i11199_DeleteRawCapability = new NodeVariable(new NodeId(11199), new QualifiedName("DeleteRawCapability"), new LocalizedText("DeleteRawCapability"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(1));
                 ID_i11199_DeleteRawCapability.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11199_DeleteRawCapability.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11192), true));
 
                 // DeleteAtTimeCapability, i=11200, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasProperty/46 <- HistoryServerCapabilities/11192
-                var ID_i11200_DeleteAtTimeCapability = new NodeVariable(new NodeId(11200), new QualifiedName("DeleteAtTimeCapability"), new LocalizedText("DeleteAtTimeCapability"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(1));
+                var ID_i11200_DeleteAtTimeCapability = new NodeVariable(new NodeId(11200), new QualifiedName("DeleteAtTimeCapability"), new LocalizedText("DeleteAtTimeCapability"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(1));
                 ID_i11200_DeleteAtTimeCapability.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11200_DeleteAtTimeCapability.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11192), true));
 
                 // InsertEventCapability, i=11281, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasProperty/46 <- HistoryServerCapabilities/11192
-                var ID_i11281_InsertEventCapability = new NodeVariable(new NodeId(11281), new QualifiedName("InsertEventCapability"), new LocalizedText("InsertEventCapability"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(1));
+                var ID_i11281_InsertEventCapability = new NodeVariable(new NodeId(11281), new QualifiedName("InsertEventCapability"), new LocalizedText("InsertEventCapability"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(1));
                 ID_i11281_InsertEventCapability.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11281_InsertEventCapability.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11192), true));
 
                 // ReplaceEventCapability, i=11282, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasProperty/46 <- HistoryServerCapabilities/11192
-                var ID_i11282_ReplaceEventCapability = new NodeVariable(new NodeId(11282), new QualifiedName("ReplaceEventCapability"), new LocalizedText("ReplaceEventCapability"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(1));
+                var ID_i11282_ReplaceEventCapability = new NodeVariable(new NodeId(11282), new QualifiedName("ReplaceEventCapability"), new LocalizedText("ReplaceEventCapability"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(1));
                 ID_i11282_ReplaceEventCapability.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11282_ReplaceEventCapability.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11192), true));
 
                 // UpdateEventCapability, i=11283, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasProperty/46 <- HistoryServerCapabilities/11192
-                var ID_i11283_UpdateEventCapability = new NodeVariable(new NodeId(11283), new QualifiedName("UpdateEventCapability"), new LocalizedText("UpdateEventCapability"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(1));
+                var ID_i11283_UpdateEventCapability = new NodeVariable(new NodeId(11283), new QualifiedName("UpdateEventCapability"), new LocalizedText("UpdateEventCapability"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(1));
                 ID_i11283_UpdateEventCapability.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11283_UpdateEventCapability.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11192), true));
 
                 // DeleteEventCapability, i=11502, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasProperty/46 <- HistoryServerCapabilities/11192
-                var ID_i11502_DeleteEventCapability = new NodeVariable(new NodeId(11502), new QualifiedName("DeleteEventCapability"), new LocalizedText("DeleteEventCapability"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(1));
+                var ID_i11502_DeleteEventCapability = new NodeVariable(new NodeId(11502), new QualifiedName("DeleteEventCapability"), new LocalizedText("DeleteEventCapability"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(1));
                 ID_i11502_DeleteEventCapability.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11502_DeleteEventCapability.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11192), true));
 
                 // InsertAnnotationCapability, i=11275, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasProperty/46 <- HistoryServerCapabilities/11192
-                var ID_i11275_InsertAnnotationCapability = new NodeVariable(new NodeId(11275), new QualifiedName("InsertAnnotationCapability"), new LocalizedText("InsertAnnotationCapability"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(1));
+                var ID_i11275_InsertAnnotationCapability = new NodeVariable(new NodeId(11275), new QualifiedName("InsertAnnotationCapability"), new LocalizedText("InsertAnnotationCapability"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(1));
                 ID_i11275_InsertAnnotationCapability.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11275_InsertAnnotationCapability.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11192), true));
 
@@ -10565,7 +10565,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> StateVariableType/2755
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- StateMachineType/2299
-                var ID_i2769_CurrentState = new NodeVariable(new NodeId(2769), new QualifiedName("CurrentState"), new LocalizedText("CurrentState"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(21));
+                var ID_i2769_CurrentState = new NodeVariable(new NodeId(2769), new QualifiedName("CurrentState"), new LocalizedText("CurrentState"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(21));
                 ID_i2769_CurrentState.References.Add(new ReferenceNode(new NodeId(46), new NodeId(3720), false));
                 ID_i2769_CurrentState.References.Add(new ReferenceNode(new NodeId(40), new NodeId(2755), false));
                 ID_i2769_CurrentState.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
@@ -10575,7 +10575,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- CurrentState/2769
-                var ID_i3720_Id = new NodeVariable(new NodeId(3720), new QualifiedName("Id"), new LocalizedText("Id"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(6));
+                var ID_i3720_Id = new NodeVariable(new NodeId(3720), new QualifiedName("Id"), new LocalizedText("Id"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(6));
                 ID_i3720_Id.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i3720_Id.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3720_Id.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2769), true));
@@ -10585,7 +10585,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> TransitionVariableType/2762
                 //	HasModellingRule/37 -> Optional/80
                 //	HasComponent/47 <- StateMachineType/2299
-                var ID_i2770_LastTransition = new NodeVariable(new NodeId(2770), new QualifiedName("LastTransition"), new LocalizedText("LastTransition"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(21));
+                var ID_i2770_LastTransition = new NodeVariable(new NodeId(2770), new QualifiedName("LastTransition"), new LocalizedText("LastTransition"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(21));
                 ID_i2770_LastTransition.References.Add(new ReferenceNode(new NodeId(46), new NodeId(3724), false));
                 ID_i2770_LastTransition.References.Add(new ReferenceNode(new NodeId(40), new NodeId(2762), false));
                 ID_i2770_LastTransition.References.Add(new ReferenceNode(new NodeId(37), new NodeId(80), false));
@@ -10595,7 +10595,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- LastTransition/2770
-                var ID_i3724_Id = new NodeVariable(new NodeId(3724), new QualifiedName("Id"), new LocalizedText("Id"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(6));
+                var ID_i3724_Id = new NodeVariable(new NodeId(3724), new QualifiedName("Id"), new LocalizedText("Id"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(6));
                 ID_i3724_Id.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i3724_Id.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3724_Id.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2770), true));
@@ -10604,7 +10604,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- StateVariableType/2755
-                var ID_i2756_Id = new NodeVariable(new NodeId(2756), new QualifiedName("Id"), new LocalizedText("Id"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(6));
+                var ID_i2756_Id = new NodeVariable(new NodeId(2756), new QualifiedName("Id"), new LocalizedText("Id"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(6));
                 ID_i2756_Id.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2756_Id.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2756_Id.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2755), true));
@@ -10613,7 +10613,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Optional/80
                 //	HasProperty/46 <- StateVariableType/2755
-                var ID_i2757_Name = new NodeVariable(new NodeId(2757), new QualifiedName("Name"), new LocalizedText("Name"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(20));
+                var ID_i2757_Name = new NodeVariable(new NodeId(2757), new QualifiedName("Name"), new LocalizedText("Name"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(20));
                 ID_i2757_Name.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2757_Name.References.Add(new ReferenceNode(new NodeId(37), new NodeId(80), false));
                 ID_i2757_Name.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2755), true));
@@ -10622,7 +10622,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Optional/80
                 //	HasProperty/46 <- StateVariableType/2755
-                var ID_i2758_Number = new NodeVariable(new NodeId(2758), new QualifiedName("Number"), new LocalizedText("Number"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i2758_Number = new NodeVariable(new NodeId(2758), new QualifiedName("Number"), new LocalizedText("Number"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i2758_Number.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2758_Number.References.Add(new ReferenceNode(new NodeId(37), new NodeId(80), false));
                 ID_i2758_Number.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2755), true));
@@ -10631,7 +10631,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Optional/80
                 //	HasProperty/46 <- StateVariableType/2755
-                var ID_i2759_EffectiveDisplayName = new NodeVariable(new NodeId(2759), new QualifiedName("EffectiveDisplayName"), new LocalizedText("EffectiveDisplayName"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(21));
+                var ID_i2759_EffectiveDisplayName = new NodeVariable(new NodeId(2759), new QualifiedName("EffectiveDisplayName"), new LocalizedText("EffectiveDisplayName"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(21));
                 ID_i2759_EffectiveDisplayName.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2759_EffectiveDisplayName.References.Add(new ReferenceNode(new NodeId(37), new NodeId(80), false));
                 ID_i2759_EffectiveDisplayName.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2755), true));
@@ -10640,7 +10640,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- TransitionVariableType/2762
-                var ID_i2763_Id = new NodeVariable(new NodeId(2763), new QualifiedName("Id"), new LocalizedText("Id"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(6));
+                var ID_i2763_Id = new NodeVariable(new NodeId(2763), new QualifiedName("Id"), new LocalizedText("Id"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(6));
                 ID_i2763_Id.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2763_Id.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2763_Id.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2762), true));
@@ -10649,7 +10649,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Optional/80
                 //	HasProperty/46 <- TransitionVariableType/2762
-                var ID_i2764_Name = new NodeVariable(new NodeId(2764), new QualifiedName("Name"), new LocalizedText("Name"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(20));
+                var ID_i2764_Name = new NodeVariable(new NodeId(2764), new QualifiedName("Name"), new LocalizedText("Name"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(20));
                 ID_i2764_Name.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2764_Name.References.Add(new ReferenceNode(new NodeId(37), new NodeId(80), false));
                 ID_i2764_Name.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2762), true));
@@ -10658,7 +10658,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Optional/80
                 //	HasProperty/46 <- TransitionVariableType/2762
-                var ID_i2765_Number = new NodeVariable(new NodeId(2765), new QualifiedName("Number"), new LocalizedText("Number"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i2765_Number = new NodeVariable(new NodeId(2765), new QualifiedName("Number"), new LocalizedText("Number"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i2765_Number.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2765_Number.References.Add(new ReferenceNode(new NodeId(37), new NodeId(80), false));
                 ID_i2765_Number.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2762), true));
@@ -10667,7 +10667,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Optional/80
                 //	HasProperty/46 <- TransitionVariableType/2762
-                var ID_i2766_TransitionTime = new NodeVariable(new NodeId(2766), new QualifiedName("TransitionTime"), new LocalizedText("TransitionTime"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(294));
+                var ID_i2766_TransitionTime = new NodeVariable(new NodeId(2766), new QualifiedName("TransitionTime"), new LocalizedText("TransitionTime"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(294));
                 ID_i2766_TransitionTime.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2766_TransitionTime.References.Add(new ReferenceNode(new NodeId(37), new NodeId(80), false));
                 ID_i2766_TransitionTime.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2762), true));
@@ -10676,7 +10676,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Optional/80
                 //	HasProperty/46 <- TransitionVariableType/2762
-                var ID_i11456_EffectiveTransitionTime = new NodeVariable(new NodeId(11456), new QualifiedName("EffectiveTransitionTime"), new LocalizedText("EffectiveTransitionTime"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(294));
+                var ID_i11456_EffectiveTransitionTime = new NodeVariable(new NodeId(11456), new QualifiedName("EffectiveTransitionTime"), new LocalizedText("EffectiveTransitionTime"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(294));
                 ID_i11456_EffectiveTransitionTime.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11456_EffectiveTransitionTime.References.Add(new ReferenceNode(new NodeId(37), new NodeId(80), false));
                 ID_i11456_EffectiveTransitionTime.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2762), true));
@@ -10686,7 +10686,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> FiniteStateVariableType/2760
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- FiniteStateMachineType/2771
-                var ID_i2772_CurrentState = new NodeVariable(new NodeId(2772), new QualifiedName("CurrentState"), new LocalizedText("CurrentState"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(21));
+                var ID_i2772_CurrentState = new NodeVariable(new NodeId(2772), new QualifiedName("CurrentState"), new LocalizedText("CurrentState"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(21));
                 ID_i2772_CurrentState.References.Add(new ReferenceNode(new NodeId(46), new NodeId(3728), false));
                 ID_i2772_CurrentState.References.Add(new ReferenceNode(new NodeId(40), new NodeId(2760), false));
                 ID_i2772_CurrentState.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
@@ -10696,7 +10696,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- CurrentState/2772
-                var ID_i3728_Id = new NodeVariable(new NodeId(3728), new QualifiedName("Id"), new LocalizedText("Id"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(17));
+                var ID_i3728_Id = new NodeVariable(new NodeId(3728), new QualifiedName("Id"), new LocalizedText("Id"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(17));
                 ID_i3728_Id.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i3728_Id.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3728_Id.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2772), true));
@@ -10706,7 +10706,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> FiniteTransitionVariableType/2767
                 //	HasModellingRule/37 -> Optional/80
                 //	HasComponent/47 <- FiniteStateMachineType/2771
-                var ID_i2773_LastTransition = new NodeVariable(new NodeId(2773), new QualifiedName("LastTransition"), new LocalizedText("LastTransition"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(21));
+                var ID_i2773_LastTransition = new NodeVariable(new NodeId(2773), new QualifiedName("LastTransition"), new LocalizedText("LastTransition"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(21));
                 ID_i2773_LastTransition.References.Add(new ReferenceNode(new NodeId(46), new NodeId(3732), false));
                 ID_i2773_LastTransition.References.Add(new ReferenceNode(new NodeId(40), new NodeId(2767), false));
                 ID_i2773_LastTransition.References.Add(new ReferenceNode(new NodeId(37), new NodeId(80), false));
@@ -10716,7 +10716,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- LastTransition/2773
-                var ID_i3732_Id = new NodeVariable(new NodeId(3732), new QualifiedName("Id"), new LocalizedText("Id"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(17));
+                var ID_i3732_Id = new NodeVariable(new NodeId(3732), new QualifiedName("Id"), new LocalizedText("Id"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(17));
                 ID_i3732_Id.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i3732_Id.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3732_Id.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2773), true));
@@ -10725,7 +10725,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- FiniteStateVariableType/2760
-                var ID_i2761_Id = new NodeVariable(new NodeId(2761), new QualifiedName("Id"), new LocalizedText("Id"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(17));
+                var ID_i2761_Id = new NodeVariable(new NodeId(2761), new QualifiedName("Id"), new LocalizedText("Id"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(17));
                 ID_i2761_Id.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2761_Id.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2761_Id.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2760), true));
@@ -10734,7 +10734,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- FiniteTransitionVariableType/2767
-                var ID_i2768_Id = new NodeVariable(new NodeId(2768), new QualifiedName("Id"), new LocalizedText("Id"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(17));
+                var ID_i2768_Id = new NodeVariable(new NodeId(2768), new QualifiedName("Id"), new LocalizedText("Id"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(17));
                 ID_i2768_Id.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2768_Id.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2768_Id.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2767), true));
@@ -10743,7 +10743,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- StateType/2307
-                var ID_i2308_StateNumber = new NodeVariable(new NodeId(2308), new QualifiedName("StateNumber"), new LocalizedText("StateNumber"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i2308_StateNumber = new NodeVariable(new NodeId(2308), new QualifiedName("StateNumber"), new LocalizedText("StateNumber"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i2308_StateNumber.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2308_StateNumber.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2308_StateNumber.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2307), true));
@@ -10752,7 +10752,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- TransitionType/2310
-                var ID_i2312_TransitionNumber = new NodeVariable(new NodeId(2312), new QualifiedName("TransitionNumber"), new LocalizedText("TransitionNumber"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i2312_TransitionNumber = new NodeVariable(new NodeId(2312), new QualifiedName("TransitionNumber"), new LocalizedText("TransitionNumber"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i2312_TransitionNumber.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2312_TransitionNumber.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2312_TransitionNumber.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2310), true));
@@ -10762,7 +10762,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> TransitionVariableType/2762
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- TransitionEventType/2311
-                var ID_i2774_Transition = new NodeVariable(new NodeId(2774), new QualifiedName("Transition"), new LocalizedText("Transition"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(21));
+                var ID_i2774_Transition = new NodeVariable(new NodeId(2774), new QualifiedName("Transition"), new LocalizedText("Transition"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(21));
                 ID_i2774_Transition.References.Add(new ReferenceNode(new NodeId(46), new NodeId(3754), false));
                 ID_i2774_Transition.References.Add(new ReferenceNode(new NodeId(40), new NodeId(2762), false));
                 ID_i2774_Transition.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
@@ -10772,7 +10772,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- Transition/2774
-                var ID_i3754_Id = new NodeVariable(new NodeId(3754), new QualifiedName("Id"), new LocalizedText("Id"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(6));
+                var ID_i3754_Id = new NodeVariable(new NodeId(3754), new QualifiedName("Id"), new LocalizedText("Id"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(6));
                 ID_i3754_Id.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i3754_Id.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3754_Id.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2774), true));
@@ -10782,7 +10782,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> StateVariableType/2755
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- TransitionEventType/2311
-                var ID_i2775_FromState = new NodeVariable(new NodeId(2775), new QualifiedName("FromState"), new LocalizedText("FromState"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(21));
+                var ID_i2775_FromState = new NodeVariable(new NodeId(2775), new QualifiedName("FromState"), new LocalizedText("FromState"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(21));
                 ID_i2775_FromState.References.Add(new ReferenceNode(new NodeId(46), new NodeId(3746), false));
                 ID_i2775_FromState.References.Add(new ReferenceNode(new NodeId(40), new NodeId(2755), false));
                 ID_i2775_FromState.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
@@ -10792,7 +10792,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- FromState/2775
-                var ID_i3746_Id = new NodeVariable(new NodeId(3746), new QualifiedName("Id"), new LocalizedText("Id"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(6));
+                var ID_i3746_Id = new NodeVariable(new NodeId(3746), new QualifiedName("Id"), new LocalizedText("Id"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(6));
                 ID_i3746_Id.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i3746_Id.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3746_Id.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2775), true));
@@ -10802,7 +10802,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> StateVariableType/2755
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- TransitionEventType/2311
-                var ID_i2776_ToState = new NodeVariable(new NodeId(2776), new QualifiedName("ToState"), new LocalizedText("ToState"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(21));
+                var ID_i2776_ToState = new NodeVariable(new NodeId(2776), new QualifiedName("ToState"), new LocalizedText("ToState"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(21));
                 ID_i2776_ToState.References.Add(new ReferenceNode(new NodeId(46), new NodeId(3750), false));
                 ID_i2776_ToState.References.Add(new ReferenceNode(new NodeId(40), new NodeId(2755), false));
                 ID_i2776_ToState.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
@@ -10812,7 +10812,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ToState/2776
-                var ID_i3750_Id = new NodeVariable(new NodeId(3750), new QualifiedName("Id"), new LocalizedText("Id"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(6));
+                var ID_i3750_Id = new NodeVariable(new NodeId(3750), new QualifiedName("Id"), new LocalizedText("Id"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(6));
                 ID_i3750_Id.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i3750_Id.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3750_Id.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2776), true));
@@ -10821,7 +10821,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AuditUpdateStateEventType/2315
-                var ID_i2777_OldStateId = new NodeVariable(new NodeId(2777), new QualifiedName("OldStateId"), new LocalizedText("OldStateId"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(6));
+                var ID_i2777_OldStateId = new NodeVariable(new NodeId(2777), new QualifiedName("OldStateId"), new LocalizedText("OldStateId"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(6));
                 ID_i2777_OldStateId.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2777_OldStateId.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2777_OldStateId.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2315), true));
@@ -10830,7 +10830,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AuditUpdateStateEventType/2315
-                var ID_i2778_NewStateId = new NodeVariable(new NodeId(2778), new QualifiedName("NewStateId"), new LocalizedText("NewStateId"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(6));
+                var ID_i2778_NewStateId = new NodeVariable(new NodeId(2778), new QualifiedName("NewStateId"), new LocalizedText("NewStateId"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(6));
                 ID_i2778_NewStateId.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2778_NewStateId.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2778_NewStateId.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2315), true));
@@ -10839,7 +10839,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- OpenFileMode/11939
-                var ID_i11940_EnumValues = new NodeVariable(new NodeId(11940), new QualifiedName("EnumValues"), new LocalizedText("EnumValues"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7594));
+                var ID_i11940_EnumValues = new NodeVariable(new NodeId(11940), new QualifiedName("EnumValues"), new LocalizedText("EnumValues"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7594));
                 ID_i11940_EnumValues.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11940_EnumValues.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11940_EnumValues.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11939), true));
@@ -10848,7 +10848,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Optional/80
                 //	HasProperty/46 <- DataItemType/2365
-                var ID_i2366_Definition = new NodeVariable(new NodeId(2366), new QualifiedName("Definition"), new LocalizedText("Definition"), new LocalizedText("A vendor-specific, human readable string that specifies how the value of this DataItem is calculated."), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i2366_Definition = new NodeVariable(new NodeId(2366), new QualifiedName("Definition"), new LocalizedText("Definition"), new LocalizedText("A vendor-specific, human readable string that specifies how the value of this DataItem is calculated."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i2366_Definition.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2366_Definition.References.Add(new ReferenceNode(new NodeId(37), new NodeId(80), false));
                 ID_i2366_Definition.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2365), true));
@@ -10857,7 +10857,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Optional/80
                 //	HasProperty/46 <- DataItemType/2365
-                var ID_i2367_ValuePrecision = new NodeVariable(new NodeId(2367), new QualifiedName("ValuePrecision"), new LocalizedText("ValuePrecision"), new LocalizedText("The maximum precision that the server can maintain for the item based on restrictions in the target environment."), 0, 0, 0, 0, 0, false, new NodeId(11));
+                var ID_i2367_ValuePrecision = new NodeVariable(new NodeId(2367), new QualifiedName("ValuePrecision"), new LocalizedText("ValuePrecision"), new LocalizedText("The maximum precision that the server can maintain for the item based on restrictions in the target environment."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(11));
                 ID_i2367_ValuePrecision.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2367_ValuePrecision.References.Add(new ReferenceNode(new NodeId(37), new NodeId(80), false));
                 ID_i2367_ValuePrecision.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2365), true));
@@ -10866,7 +10866,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Optional/80
                 //	HasProperty/46 <- AnalogItemType/2368
-                var ID_i2370_InstrumentRange = new NodeVariable(new NodeId(2370), new QualifiedName("InstrumentRange"), new LocalizedText("InstrumentRange"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(884));
+                var ID_i2370_InstrumentRange = new NodeVariable(new NodeId(2370), new QualifiedName("InstrumentRange"), new LocalizedText("InstrumentRange"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(884));
                 ID_i2370_InstrumentRange.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2370_InstrumentRange.References.Add(new ReferenceNode(new NodeId(37), new NodeId(80), false));
                 ID_i2370_InstrumentRange.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2368), true));
@@ -10875,7 +10875,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AnalogItemType/2368
-                var ID_i2369_EURange = new NodeVariable(new NodeId(2369), new QualifiedName("EURange"), new LocalizedText("EURange"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(884));
+                var ID_i2369_EURange = new NodeVariable(new NodeId(2369), new QualifiedName("EURange"), new LocalizedText("EURange"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(884));
                 ID_i2369_EURange.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2369_EURange.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2369_EURange.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2368), true));
@@ -10884,7 +10884,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Optional/80
                 //	HasProperty/46 <- AnalogItemType/2368
-                var ID_i2371_EngineeringUnits = new NodeVariable(new NodeId(2371), new QualifiedName("EngineeringUnits"), new LocalizedText("EngineeringUnits"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(887));
+                var ID_i2371_EngineeringUnits = new NodeVariable(new NodeId(2371), new QualifiedName("EngineeringUnits"), new LocalizedText("EngineeringUnits"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(887));
                 ID_i2371_EngineeringUnits.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2371_EngineeringUnits.References.Add(new ReferenceNode(new NodeId(37), new NodeId(80), false));
                 ID_i2371_EngineeringUnits.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2368), true));
@@ -10893,7 +10893,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- TwoStateDiscreteType/2373
-                var ID_i2374_FalseState = new NodeVariable(new NodeId(2374), new QualifiedName("FalseState"), new LocalizedText("FalseState"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(21));
+                var ID_i2374_FalseState = new NodeVariable(new NodeId(2374), new QualifiedName("FalseState"), new LocalizedText("FalseState"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(21));
                 ID_i2374_FalseState.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2374_FalseState.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2374_FalseState.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2373), true));
@@ -10902,7 +10902,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- TwoStateDiscreteType/2373
-                var ID_i2375_TrueState = new NodeVariable(new NodeId(2375), new QualifiedName("TrueState"), new LocalizedText("TrueState"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(21));
+                var ID_i2375_TrueState = new NodeVariable(new NodeId(2375), new QualifiedName("TrueState"), new LocalizedText("TrueState"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(21));
                 ID_i2375_TrueState.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2375_TrueState.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2375_TrueState.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2373), true));
@@ -10911,7 +10911,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- MultiStateDiscreteType/2376
-                var ID_i2377_EnumStrings = new NodeVariable(new NodeId(2377), new QualifiedName("EnumStrings"), new LocalizedText("EnumStrings"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(21));
+                var ID_i2377_EnumStrings = new NodeVariable(new NodeId(2377), new QualifiedName("EnumStrings"), new LocalizedText("EnumStrings"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(21));
                 ID_i2377_EnumStrings.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2377_EnumStrings.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2377_EnumStrings.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2376), true));
@@ -10920,7 +10920,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- MultiStateValueDiscreteType/11238
-                var ID_i11241_EnumValues = new NodeVariable(new NodeId(11241), new QualifiedName("EnumValues"), new LocalizedText("EnumValues"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7594));
+                var ID_i11241_EnumValues = new NodeVariable(new NodeId(11241), new QualifiedName("EnumValues"), new LocalizedText("EnumValues"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7594));
                 ID_i11241_EnumValues.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11241_EnumValues.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11241_EnumValues.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11238), true));
@@ -10929,7 +10929,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- MultiStateValueDiscreteType/11238
-                var ID_i11461_ValueAsText = new NodeVariable(new NodeId(11461), new QualifiedName("ValueAsText"), new LocalizedText("ValueAsText"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(21));
+                var ID_i11461_ValueAsText = new NodeVariable(new NodeId(11461), new QualifiedName("ValueAsText"), new LocalizedText("ValueAsText"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(21));
                 ID_i11461_ValueAsText.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11461_ValueAsText.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11461_ValueAsText.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11238), true));
@@ -10938,7 +10938,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Optional/80
                 //	HasProperty/46 <- ArrayItemType/12021
-                var ID_i12024_InstrumentRange = new NodeVariable(new NodeId(12024), new QualifiedName("InstrumentRange"), new LocalizedText("InstrumentRange"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(884));
+                var ID_i12024_InstrumentRange = new NodeVariable(new NodeId(12024), new QualifiedName("InstrumentRange"), new LocalizedText("InstrumentRange"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(884));
                 ID_i12024_InstrumentRange.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i12024_InstrumentRange.References.Add(new ReferenceNode(new NodeId(37), new NodeId(80), false));
                 ID_i12024_InstrumentRange.References.Add(new ReferenceNode(new NodeId(46), new NodeId(12021), true));
@@ -10947,7 +10947,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ArrayItemType/12021
-                var ID_i12025_EURange = new NodeVariable(new NodeId(12025), new QualifiedName("EURange"), new LocalizedText("EURange"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(884));
+                var ID_i12025_EURange = new NodeVariable(new NodeId(12025), new QualifiedName("EURange"), new LocalizedText("EURange"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(884));
                 ID_i12025_EURange.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i12025_EURange.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i12025_EURange.References.Add(new ReferenceNode(new NodeId(46), new NodeId(12021), true));
@@ -10956,7 +10956,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ArrayItemType/12021
-                var ID_i12026_EngineeringUnits = new NodeVariable(new NodeId(12026), new QualifiedName("EngineeringUnits"), new LocalizedText("EngineeringUnits"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(887));
+                var ID_i12026_EngineeringUnits = new NodeVariable(new NodeId(12026), new QualifiedName("EngineeringUnits"), new LocalizedText("EngineeringUnits"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(887));
                 ID_i12026_EngineeringUnits.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i12026_EngineeringUnits.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i12026_EngineeringUnits.References.Add(new ReferenceNode(new NodeId(46), new NodeId(12021), true));
@@ -10965,7 +10965,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ArrayItemType/12021
-                var ID_i12027_Title = new NodeVariable(new NodeId(12027), new QualifiedName("Title"), new LocalizedText("Title"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(21));
+                var ID_i12027_Title = new NodeVariable(new NodeId(12027), new QualifiedName("Title"), new LocalizedText("Title"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(21));
                 ID_i12027_Title.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i12027_Title.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i12027_Title.References.Add(new ReferenceNode(new NodeId(46), new NodeId(12021), true));
@@ -10974,7 +10974,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ArrayItemType/12021
-                var ID_i12028_AxisScaleType = new NodeVariable(new NodeId(12028), new QualifiedName("AxisScaleType"), new LocalizedText("AxisScaleType"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12077));
+                var ID_i12028_AxisScaleType = new NodeVariable(new NodeId(12028), new QualifiedName("AxisScaleType"), new LocalizedText("AxisScaleType"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12077));
                 ID_i12028_AxisScaleType.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i12028_AxisScaleType.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i12028_AxisScaleType.References.Add(new ReferenceNode(new NodeId(46), new NodeId(12021), true));
@@ -10983,7 +10983,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- YArrayItemType/12029
-                var ID_i12037_XAxisDefinition = new NodeVariable(new NodeId(12037), new QualifiedName("XAxisDefinition"), new LocalizedText("XAxisDefinition"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12079));
+                var ID_i12037_XAxisDefinition = new NodeVariable(new NodeId(12037), new QualifiedName("XAxisDefinition"), new LocalizedText("XAxisDefinition"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12079));
                 ID_i12037_XAxisDefinition.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i12037_XAxisDefinition.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i12037_XAxisDefinition.References.Add(new ReferenceNode(new NodeId(46), new NodeId(12029), true));
@@ -10992,7 +10992,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- XYArrayItemType/12038
-                var ID_i12046_XAxisDefinition = new NodeVariable(new NodeId(12046), new QualifiedName("XAxisDefinition"), new LocalizedText("XAxisDefinition"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12079));
+                var ID_i12046_XAxisDefinition = new NodeVariable(new NodeId(12046), new QualifiedName("XAxisDefinition"), new LocalizedText("XAxisDefinition"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12079));
                 ID_i12046_XAxisDefinition.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i12046_XAxisDefinition.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i12046_XAxisDefinition.References.Add(new ReferenceNode(new NodeId(46), new NodeId(12038), true));
@@ -11001,7 +11001,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ImageItemType/12047
-                var ID_i12055_XAxisDefinition = new NodeVariable(new NodeId(12055), new QualifiedName("XAxisDefinition"), new LocalizedText("XAxisDefinition"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12079));
+                var ID_i12055_XAxisDefinition = new NodeVariable(new NodeId(12055), new QualifiedName("XAxisDefinition"), new LocalizedText("XAxisDefinition"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12079));
                 ID_i12055_XAxisDefinition.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i12055_XAxisDefinition.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i12055_XAxisDefinition.References.Add(new ReferenceNode(new NodeId(46), new NodeId(12047), true));
@@ -11010,7 +11010,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ImageItemType/12047
-                var ID_i12056_YAxisDefinition = new NodeVariable(new NodeId(12056), new QualifiedName("YAxisDefinition"), new LocalizedText("YAxisDefinition"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12079));
+                var ID_i12056_YAxisDefinition = new NodeVariable(new NodeId(12056), new QualifiedName("YAxisDefinition"), new LocalizedText("YAxisDefinition"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12079));
                 ID_i12056_YAxisDefinition.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i12056_YAxisDefinition.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i12056_YAxisDefinition.References.Add(new ReferenceNode(new NodeId(46), new NodeId(12047), true));
@@ -11019,7 +11019,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- CubeItemType/12057
-                var ID_i12065_XAxisDefinition = new NodeVariable(new NodeId(12065), new QualifiedName("XAxisDefinition"), new LocalizedText("XAxisDefinition"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12079));
+                var ID_i12065_XAxisDefinition = new NodeVariable(new NodeId(12065), new QualifiedName("XAxisDefinition"), new LocalizedText("XAxisDefinition"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12079));
                 ID_i12065_XAxisDefinition.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i12065_XAxisDefinition.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i12065_XAxisDefinition.References.Add(new ReferenceNode(new NodeId(46), new NodeId(12057), true));
@@ -11028,7 +11028,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- CubeItemType/12057
-                var ID_i12066_YAxisDefinition = new NodeVariable(new NodeId(12066), new QualifiedName("YAxisDefinition"), new LocalizedText("YAxisDefinition"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12079));
+                var ID_i12066_YAxisDefinition = new NodeVariable(new NodeId(12066), new QualifiedName("YAxisDefinition"), new LocalizedText("YAxisDefinition"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12079));
                 ID_i12066_YAxisDefinition.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i12066_YAxisDefinition.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i12066_YAxisDefinition.References.Add(new ReferenceNode(new NodeId(46), new NodeId(12057), true));
@@ -11037,7 +11037,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- CubeItemType/12057
-                var ID_i12067_ZAxisDefinition = new NodeVariable(new NodeId(12067), new QualifiedName("ZAxisDefinition"), new LocalizedText("ZAxisDefinition"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12079));
+                var ID_i12067_ZAxisDefinition = new NodeVariable(new NodeId(12067), new QualifiedName("ZAxisDefinition"), new LocalizedText("ZAxisDefinition"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12079));
                 ID_i12067_ZAxisDefinition.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i12067_ZAxisDefinition.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i12067_ZAxisDefinition.References.Add(new ReferenceNode(new NodeId(46), new NodeId(12057), true));
@@ -11046,7 +11046,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- NDimensionArrayItemType/12068
-                var ID_i12076_AxisDefinition = new NodeVariable(new NodeId(12076), new QualifiedName("AxisDefinition"), new LocalizedText("AxisDefinition"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12079));
+                var ID_i12076_AxisDefinition = new NodeVariable(new NodeId(12076), new QualifiedName("AxisDefinition"), new LocalizedText("AxisDefinition"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12079));
                 ID_i12076_AxisDefinition.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i12076_AxisDefinition.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i12076_AxisDefinition.References.Add(new ReferenceNode(new NodeId(46), new NodeId(12068), true));
@@ -11055,7 +11055,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- TwoStateVariableType/8995
-                var ID_i8996_Id = new NodeVariable(new NodeId(8996), new QualifiedName("Id"), new LocalizedText("Id"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(1));
+                var ID_i8996_Id = new NodeVariable(new NodeId(8996), new QualifiedName("Id"), new LocalizedText("Id"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(1));
                 ID_i8996_Id.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i8996_Id.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i8996_Id.References.Add(new ReferenceNode(new NodeId(46), new NodeId(8995), true));
@@ -11064,7 +11064,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Optional/80
                 //	HasProperty/46 <- TwoStateVariableType/8995
-                var ID_i9000_TransitionTime = new NodeVariable(new NodeId(9000), new QualifiedName("TransitionTime"), new LocalizedText("TransitionTime"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(294));
+                var ID_i9000_TransitionTime = new NodeVariable(new NodeId(9000), new QualifiedName("TransitionTime"), new LocalizedText("TransitionTime"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(294));
                 ID_i9000_TransitionTime.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i9000_TransitionTime.References.Add(new ReferenceNode(new NodeId(37), new NodeId(80), false));
                 ID_i9000_TransitionTime.References.Add(new ReferenceNode(new NodeId(46), new NodeId(8995), true));
@@ -11073,7 +11073,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Optional/80
                 //	HasProperty/46 <- TwoStateVariableType/8995
-                var ID_i9001_EffectiveTransitionTime = new NodeVariable(new NodeId(9001), new QualifiedName("EffectiveTransitionTime"), new LocalizedText("EffectiveTransitionTime"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(294));
+                var ID_i9001_EffectiveTransitionTime = new NodeVariable(new NodeId(9001), new QualifiedName("EffectiveTransitionTime"), new LocalizedText("EffectiveTransitionTime"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(294));
                 ID_i9001_EffectiveTransitionTime.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i9001_EffectiveTransitionTime.References.Add(new ReferenceNode(new NodeId(37), new NodeId(80), false));
                 ID_i9001_EffectiveTransitionTime.References.Add(new ReferenceNode(new NodeId(46), new NodeId(8995), true));
@@ -11082,7 +11082,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Optional/80
                 //	HasProperty/46 <- TwoStateVariableType/8995
-                var ID_i11110_TrueState = new NodeVariable(new NodeId(11110), new QualifiedName("TrueState"), new LocalizedText("TrueState"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(21));
+                var ID_i11110_TrueState = new NodeVariable(new NodeId(11110), new QualifiedName("TrueState"), new LocalizedText("TrueState"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(21));
                 ID_i11110_TrueState.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11110_TrueState.References.Add(new ReferenceNode(new NodeId(37), new NodeId(80), false));
                 ID_i11110_TrueState.References.Add(new ReferenceNode(new NodeId(46), new NodeId(8995), true));
@@ -11091,7 +11091,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Optional/80
                 //	HasProperty/46 <- TwoStateVariableType/8995
-                var ID_i11111_FalseState = new NodeVariable(new NodeId(11111), new QualifiedName("FalseState"), new LocalizedText("FalseState"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(21));
+                var ID_i11111_FalseState = new NodeVariable(new NodeId(11111), new QualifiedName("FalseState"), new LocalizedText("FalseState"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(21));
                 ID_i11111_FalseState.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11111_FalseState.References.Add(new ReferenceNode(new NodeId(37), new NodeId(80), false));
                 ID_i11111_FalseState.References.Add(new ReferenceNode(new NodeId(46), new NodeId(8995), true));
@@ -11100,7 +11100,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ConditionVariableType/9002
-                var ID_i9003_SourceTimestamp = new NodeVariable(new NodeId(9003), new QualifiedName("SourceTimestamp"), new LocalizedText("SourceTimestamp"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(294));
+                var ID_i9003_SourceTimestamp = new NodeVariable(new NodeId(9003), new QualifiedName("SourceTimestamp"), new LocalizedText("SourceTimestamp"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(294));
                 ID_i9003_SourceTimestamp.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i9003_SourceTimestamp.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i9003_SourceTimestamp.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9002), true));
@@ -11109,7 +11109,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ConditionType/2782
-                var ID_i11112_ConditionClassId = new NodeVariable(new NodeId(11112), new QualifiedName("ConditionClassId"), new LocalizedText("ConditionClassId"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(17));
+                var ID_i11112_ConditionClassId = new NodeVariable(new NodeId(11112), new QualifiedName("ConditionClassId"), new LocalizedText("ConditionClassId"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(17));
                 ID_i11112_ConditionClassId.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11112_ConditionClassId.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11112_ConditionClassId.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2782), true));
@@ -11118,7 +11118,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ConditionType/2782
-                var ID_i11113_ConditionClassName = new NodeVariable(new NodeId(11113), new QualifiedName("ConditionClassName"), new LocalizedText("ConditionClassName"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(21));
+                var ID_i11113_ConditionClassName = new NodeVariable(new NodeId(11113), new QualifiedName("ConditionClassName"), new LocalizedText("ConditionClassName"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(21));
                 ID_i11113_ConditionClassName.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11113_ConditionClassName.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11113_ConditionClassName.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2782), true));
@@ -11127,7 +11127,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ConditionType/2782
-                var ID_i9009_ConditionName = new NodeVariable(new NodeId(9009), new QualifiedName("ConditionName"), new LocalizedText("ConditionName"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i9009_ConditionName = new NodeVariable(new NodeId(9009), new QualifiedName("ConditionName"), new LocalizedText("ConditionName"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i9009_ConditionName.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i9009_ConditionName.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i9009_ConditionName.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2782), true));
@@ -11136,7 +11136,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ConditionType/2782
-                var ID_i9010_BranchId = new NodeVariable(new NodeId(9010), new QualifiedName("BranchId"), new LocalizedText("BranchId"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(17));
+                var ID_i9010_BranchId = new NodeVariable(new NodeId(9010), new QualifiedName("BranchId"), new LocalizedText("BranchId"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(17));
                 ID_i9010_BranchId.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i9010_BranchId.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i9010_BranchId.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2782), true));
@@ -11145,7 +11145,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ConditionType/2782
-                var ID_i3874_Retain = new NodeVariable(new NodeId(3874), new QualifiedName("Retain"), new LocalizedText("Retain"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(1));
+                var ID_i3874_Retain = new NodeVariable(new NodeId(3874), new QualifiedName("Retain"), new LocalizedText("Retain"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(1));
                 ID_i3874_Retain.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i3874_Retain.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3874_Retain.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2782), true));
@@ -11158,7 +11158,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> TwoStateVariableType/8995
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- ConditionType/2782
-                var ID_i9011_EnabledState = new NodeVariable(new NodeId(9011), new QualifiedName("EnabledState"), new LocalizedText("EnabledState"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(21));
+                var ID_i9011_EnabledState = new NodeVariable(new NodeId(9011), new QualifiedName("EnabledState"), new LocalizedText("EnabledState"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(21));
                 ID_i9011_EnabledState.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9012), false));
                 ID_i9011_EnabledState.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9015), false));
                 ID_i9011_EnabledState.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9016), false));
@@ -11171,7 +11171,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- EnabledState/9011
-                var ID_i9012_Id = new NodeVariable(new NodeId(9012), new QualifiedName("Id"), new LocalizedText("Id"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(1));
+                var ID_i9012_Id = new NodeVariable(new NodeId(9012), new QualifiedName("Id"), new LocalizedText("Id"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(1));
                 ID_i9012_Id.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i9012_Id.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i9012_Id.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9011), true));
@@ -11180,7 +11180,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Optional/80
                 //	HasProperty/46 <- EnabledState/9011
-                var ID_i9015_EffectiveDisplayName = new NodeVariable(new NodeId(9015), new QualifiedName("EffectiveDisplayName"), new LocalizedText("EffectiveDisplayName"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(21));
+                var ID_i9015_EffectiveDisplayName = new NodeVariable(new NodeId(9015), new QualifiedName("EffectiveDisplayName"), new LocalizedText("EffectiveDisplayName"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(21));
                 ID_i9015_EffectiveDisplayName.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i9015_EffectiveDisplayName.References.Add(new ReferenceNode(new NodeId(37), new NodeId(80), false));
                 ID_i9015_EffectiveDisplayName.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9011), true));
@@ -11189,7 +11189,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Optional/80
                 //	HasProperty/46 <- EnabledState/9011
-                var ID_i9016_TransitionTime = new NodeVariable(new NodeId(9016), new QualifiedName("TransitionTime"), new LocalizedText("TransitionTime"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(294));
+                var ID_i9016_TransitionTime = new NodeVariable(new NodeId(9016), new QualifiedName("TransitionTime"), new LocalizedText("TransitionTime"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(294));
                 ID_i9016_TransitionTime.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i9016_TransitionTime.References.Add(new ReferenceNode(new NodeId(37), new NodeId(80), false));
                 ID_i9016_TransitionTime.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9011), true));
@@ -11198,7 +11198,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Optional/80
                 //	HasProperty/46 <- EnabledState/9011
-                var ID_i9017_EffectiveTransitionTime = new NodeVariable(new NodeId(9017), new QualifiedName("EffectiveTransitionTime"), new LocalizedText("EffectiveTransitionTime"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(294));
+                var ID_i9017_EffectiveTransitionTime = new NodeVariable(new NodeId(9017), new QualifiedName("EffectiveTransitionTime"), new LocalizedText("EffectiveTransitionTime"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(294));
                 ID_i9017_EffectiveTransitionTime.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i9017_EffectiveTransitionTime.References.Add(new ReferenceNode(new NodeId(37), new NodeId(80), false));
                 ID_i9017_EffectiveTransitionTime.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9011), true));
@@ -11208,7 +11208,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> ConditionVariableType/9002
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- ConditionType/2782
-                var ID_i9020_Quality = new NodeVariable(new NodeId(9020), new QualifiedName("Quality"), new LocalizedText("Quality"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(19));
+                var ID_i9020_Quality = new NodeVariable(new NodeId(9020), new QualifiedName("Quality"), new LocalizedText("Quality"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(19));
                 ID_i9020_Quality.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9021), false));
                 ID_i9020_Quality.References.Add(new ReferenceNode(new NodeId(40), new NodeId(9002), false));
                 ID_i9020_Quality.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
@@ -11218,7 +11218,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- Quality/9020
-                var ID_i9021_SourceTimestamp = new NodeVariable(new NodeId(9021), new QualifiedName("SourceTimestamp"), new LocalizedText("SourceTimestamp"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(294));
+                var ID_i9021_SourceTimestamp = new NodeVariable(new NodeId(9021), new QualifiedName("SourceTimestamp"), new LocalizedText("SourceTimestamp"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(294));
                 ID_i9021_SourceTimestamp.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i9021_SourceTimestamp.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i9021_SourceTimestamp.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9020), true));
@@ -11228,7 +11228,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> ConditionVariableType/9002
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- ConditionType/2782
-                var ID_i9022_LastSeverity = new NodeVariable(new NodeId(9022), new QualifiedName("LastSeverity"), new LocalizedText("LastSeverity"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(5));
+                var ID_i9022_LastSeverity = new NodeVariable(new NodeId(9022), new QualifiedName("LastSeverity"), new LocalizedText("LastSeverity"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(5));
                 ID_i9022_LastSeverity.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9023), false));
                 ID_i9022_LastSeverity.References.Add(new ReferenceNode(new NodeId(40), new NodeId(9002), false));
                 ID_i9022_LastSeverity.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
@@ -11238,7 +11238,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- LastSeverity/9022
-                var ID_i9023_SourceTimestamp = new NodeVariable(new NodeId(9023), new QualifiedName("SourceTimestamp"), new LocalizedText("SourceTimestamp"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(294));
+                var ID_i9023_SourceTimestamp = new NodeVariable(new NodeId(9023), new QualifiedName("SourceTimestamp"), new LocalizedText("SourceTimestamp"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(294));
                 ID_i9023_SourceTimestamp.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i9023_SourceTimestamp.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i9023_SourceTimestamp.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9022), true));
@@ -11248,7 +11248,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> ConditionVariableType/9002
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- ConditionType/2782
-                var ID_i9024_Comment = new NodeVariable(new NodeId(9024), new QualifiedName("Comment"), new LocalizedText("Comment"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(21));
+                var ID_i9024_Comment = new NodeVariable(new NodeId(9024), new QualifiedName("Comment"), new LocalizedText("Comment"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(21));
                 ID_i9024_Comment.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9025), false));
                 ID_i9024_Comment.References.Add(new ReferenceNode(new NodeId(40), new NodeId(9002), false));
                 ID_i9024_Comment.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
@@ -11258,7 +11258,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- Comment/9024
-                var ID_i9025_SourceTimestamp = new NodeVariable(new NodeId(9025), new QualifiedName("SourceTimestamp"), new LocalizedText("SourceTimestamp"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(294));
+                var ID_i9025_SourceTimestamp = new NodeVariable(new NodeId(9025), new QualifiedName("SourceTimestamp"), new LocalizedText("SourceTimestamp"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(294));
                 ID_i9025_SourceTimestamp.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i9025_SourceTimestamp.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i9025_SourceTimestamp.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9024), true));
@@ -11267,7 +11267,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ConditionType/2782
-                var ID_i9026_ClientUserId = new NodeVariable(new NodeId(9026), new QualifiedName("ClientUserId"), new LocalizedText("ClientUserId"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i9026_ClientUserId = new NodeVariable(new NodeId(9026), new QualifiedName("ClientUserId"), new LocalizedText("ClientUserId"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i9026_ClientUserId.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i9026_ClientUserId.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i9026_ClientUserId.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2782), true));
@@ -11276,7 +11276,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AddComment/9029
-                var ID_i9030_InputArguments = new NodeVariable(new NodeId(9030), new QualifiedName("InputArguments"), new LocalizedText("InputArguments"), new LocalizedText("The identifier for the event to comment."), 0, 0, 0, 0, 0, false, new NodeId(296));
+                var ID_i9030_InputArguments = new NodeVariable(new NodeId(9030), new QualifiedName("InputArguments"), new LocalizedText("InputArguments"), new LocalizedText("The identifier for the event to comment."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(296));
                 ID_i9030_InputArguments.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i9030_InputArguments.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i9030_InputArguments.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9029), true));
@@ -11285,7 +11285,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ConditionRefresh/3875
-                var ID_i3876_InputArguments = new NodeVariable(new NodeId(3876), new QualifiedName("InputArguments"), new LocalizedText("InputArguments"), new LocalizedText("The identifier for the suscription to refresh."), 0, 0, 0, 0, 0, false, new NodeId(296));
+                var ID_i3876_InputArguments = new NodeVariable(new NodeId(3876), new QualifiedName("InputArguments"), new LocalizedText("InputArguments"), new LocalizedText("The identifier for the suscription to refresh."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(296));
                 ID_i3876_InputArguments.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i3876_InputArguments.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3876_InputArguments.References.Add(new ReferenceNode(new NodeId(46), new NodeId(3875), true));
@@ -11296,7 +11296,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> TwoStateVariableType/8995
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- DialogConditionType/2830
-                var ID_i9035_EnabledState = new NodeVariable(new NodeId(9035), new QualifiedName("EnabledState"), new LocalizedText("EnabledState"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(21));
+                var ID_i9035_EnabledState = new NodeVariable(new NodeId(9035), new QualifiedName("EnabledState"), new LocalizedText("EnabledState"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(21));
                 ID_i9035_EnabledState.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9036), false));
                 ID_i9035_EnabledState.References.Add(new ReferenceNode(new NodeId(9004), new NodeId(9055), false));
                 ID_i9035_EnabledState.References.Add(new ReferenceNode(new NodeId(40), new NodeId(8995), false));
@@ -11307,7 +11307,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- EnabledState/9035
-                var ID_i9036_Id = new NodeVariable(new NodeId(9036), new QualifiedName("Id"), new LocalizedText("Id"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(1));
+                var ID_i9036_Id = new NodeVariable(new NodeId(9036), new QualifiedName("Id"), new LocalizedText("Id"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(1));
                 ID_i9036_Id.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i9036_Id.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i9036_Id.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9035), true));
@@ -11319,7 +11319,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> TwoStateVariableType/8995
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- DialogConditionType/2830
-                var ID_i9055_DialogState = new NodeVariable(new NodeId(9055), new QualifiedName("DialogState"), new LocalizedText("DialogState"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(21));
+                var ID_i9055_DialogState = new NodeVariable(new NodeId(9055), new QualifiedName("DialogState"), new LocalizedText("DialogState"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(21));
                 ID_i9055_DialogState.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9056), false));
                 ID_i9055_DialogState.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9060), false));
                 ID_i9055_DialogState.References.Add(new ReferenceNode(new NodeId(9004), new NodeId(9035), true));
@@ -11331,7 +11331,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- DialogState/9055
-                var ID_i9056_Id = new NodeVariable(new NodeId(9056), new QualifiedName("Id"), new LocalizedText("Id"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(1));
+                var ID_i9056_Id = new NodeVariable(new NodeId(9056), new QualifiedName("Id"), new LocalizedText("Id"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(1));
                 ID_i9056_Id.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i9056_Id.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i9056_Id.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9055), true));
@@ -11340,7 +11340,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Optional/80
                 //	HasProperty/46 <- DialogState/9055
-                var ID_i9060_TransitionTime = new NodeVariable(new NodeId(9060), new QualifiedName("TransitionTime"), new LocalizedText("TransitionTime"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(294));
+                var ID_i9060_TransitionTime = new NodeVariable(new NodeId(9060), new QualifiedName("TransitionTime"), new LocalizedText("TransitionTime"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(294));
                 ID_i9060_TransitionTime.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i9060_TransitionTime.References.Add(new ReferenceNode(new NodeId(37), new NodeId(80), false));
                 ID_i9060_TransitionTime.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9055), true));
@@ -11349,7 +11349,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- DialogConditionType/2830
-                var ID_i2831_Prompt = new NodeVariable(new NodeId(2831), new QualifiedName("Prompt"), new LocalizedText("Prompt"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(21));
+                var ID_i2831_Prompt = new NodeVariable(new NodeId(2831), new QualifiedName("Prompt"), new LocalizedText("Prompt"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(21));
                 ID_i2831_Prompt.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2831_Prompt.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2831_Prompt.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2830), true));
@@ -11358,7 +11358,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- DialogConditionType/2830
-                var ID_i9064_ResponseOptionSet = new NodeVariable(new NodeId(9064), new QualifiedName("ResponseOptionSet"), new LocalizedText("ResponseOptionSet"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(21));
+                var ID_i9064_ResponseOptionSet = new NodeVariable(new NodeId(9064), new QualifiedName("ResponseOptionSet"), new LocalizedText("ResponseOptionSet"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(21));
                 ID_i9064_ResponseOptionSet.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i9064_ResponseOptionSet.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i9064_ResponseOptionSet.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2830), true));
@@ -11367,7 +11367,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- DialogConditionType/2830
-                var ID_i9065_DefaultResponse = new NodeVariable(new NodeId(9065), new QualifiedName("DefaultResponse"), new LocalizedText("DefaultResponse"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(6));
+                var ID_i9065_DefaultResponse = new NodeVariable(new NodeId(9065), new QualifiedName("DefaultResponse"), new LocalizedText("DefaultResponse"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(6));
                 ID_i9065_DefaultResponse.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i9065_DefaultResponse.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i9065_DefaultResponse.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2830), true));
@@ -11376,7 +11376,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- DialogConditionType/2830
-                var ID_i9066_OkResponse = new NodeVariable(new NodeId(9066), new QualifiedName("OkResponse"), new LocalizedText("OkResponse"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(6));
+                var ID_i9066_OkResponse = new NodeVariable(new NodeId(9066), new QualifiedName("OkResponse"), new LocalizedText("OkResponse"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(6));
                 ID_i9066_OkResponse.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i9066_OkResponse.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i9066_OkResponse.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2830), true));
@@ -11385,7 +11385,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- DialogConditionType/2830
-                var ID_i9067_CancelResponse = new NodeVariable(new NodeId(9067), new QualifiedName("CancelResponse"), new LocalizedText("CancelResponse"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(6));
+                var ID_i9067_CancelResponse = new NodeVariable(new NodeId(9067), new QualifiedName("CancelResponse"), new LocalizedText("CancelResponse"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(6));
                 ID_i9067_CancelResponse.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i9067_CancelResponse.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i9067_CancelResponse.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2830), true));
@@ -11394,7 +11394,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- DialogConditionType/2830
-                var ID_i9068_LastResponse = new NodeVariable(new NodeId(9068), new QualifiedName("LastResponse"), new LocalizedText("LastResponse"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(6));
+                var ID_i9068_LastResponse = new NodeVariable(new NodeId(9068), new QualifiedName("LastResponse"), new LocalizedText("LastResponse"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(6));
                 ID_i9068_LastResponse.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i9068_LastResponse.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i9068_LastResponse.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2830), true));
@@ -11403,7 +11403,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- Respond/9069
-                var ID_i9070_InputArguments = new NodeVariable(new NodeId(9070), new QualifiedName("InputArguments"), new LocalizedText("InputArguments"), new LocalizedText("The response to the dialog condition."), 0, 0, 0, 0, 0, false, new NodeId(296));
+                var ID_i9070_InputArguments = new NodeVariable(new NodeId(9070), new QualifiedName("InputArguments"), new LocalizedText("InputArguments"), new LocalizedText("The response to the dialog condition."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(296));
                 ID_i9070_InputArguments.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i9070_InputArguments.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i9070_InputArguments.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9069), true));
@@ -11415,7 +11415,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> TwoStateVariableType/8995
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- AcknowledgeableConditionType/2881
-                var ID_i9073_EnabledState = new NodeVariable(new NodeId(9073), new QualifiedName("EnabledState"), new LocalizedText("EnabledState"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(21));
+                var ID_i9073_EnabledState = new NodeVariable(new NodeId(9073), new QualifiedName("EnabledState"), new LocalizedText("EnabledState"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(21));
                 ID_i9073_EnabledState.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9074), false));
                 ID_i9073_EnabledState.References.Add(new ReferenceNode(new NodeId(9004), new NodeId(9093), false));
                 ID_i9073_EnabledState.References.Add(new ReferenceNode(new NodeId(9004), new NodeId(9102), false));
@@ -11427,7 +11427,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- EnabledState/9073
-                var ID_i9074_Id = new NodeVariable(new NodeId(9074), new QualifiedName("Id"), new LocalizedText("Id"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(1));
+                var ID_i9074_Id = new NodeVariable(new NodeId(9074), new QualifiedName("Id"), new LocalizedText("Id"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(1));
                 ID_i9074_Id.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i9074_Id.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i9074_Id.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9073), true));
@@ -11439,7 +11439,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> TwoStateVariableType/8995
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- AcknowledgeableConditionType/2881
-                var ID_i9093_AckedState = new NodeVariable(new NodeId(9093), new QualifiedName("AckedState"), new LocalizedText("AckedState"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(21));
+                var ID_i9093_AckedState = new NodeVariable(new NodeId(9093), new QualifiedName("AckedState"), new LocalizedText("AckedState"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(21));
                 ID_i9093_AckedState.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9094), false));
                 ID_i9093_AckedState.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9098), false));
                 ID_i9093_AckedState.References.Add(new ReferenceNode(new NodeId(9004), new NodeId(9073), true));
@@ -11451,7 +11451,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AckedState/9093
-                var ID_i9094_Id = new NodeVariable(new NodeId(9094), new QualifiedName("Id"), new LocalizedText("Id"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(1));
+                var ID_i9094_Id = new NodeVariable(new NodeId(9094), new QualifiedName("Id"), new LocalizedText("Id"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(1));
                 ID_i9094_Id.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i9094_Id.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i9094_Id.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9093), true));
@@ -11460,7 +11460,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Optional/80
                 //	HasProperty/46 <- AckedState/9093
-                var ID_i9098_TransitionTime = new NodeVariable(new NodeId(9098), new QualifiedName("TransitionTime"), new LocalizedText("TransitionTime"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(294));
+                var ID_i9098_TransitionTime = new NodeVariable(new NodeId(9098), new QualifiedName("TransitionTime"), new LocalizedText("TransitionTime"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(294));
                 ID_i9098_TransitionTime.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i9098_TransitionTime.References.Add(new ReferenceNode(new NodeId(37), new NodeId(80), false));
                 ID_i9098_TransitionTime.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9093), true));
@@ -11472,7 +11472,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> TwoStateVariableType/8995
                 //	HasModellingRule/37 -> Optional/80
                 //	HasComponent/47 <- AcknowledgeableConditionType/2881
-                var ID_i9102_ConfirmedState = new NodeVariable(new NodeId(9102), new QualifiedName("ConfirmedState"), new LocalizedText("ConfirmedState"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(21));
+                var ID_i9102_ConfirmedState = new NodeVariable(new NodeId(9102), new QualifiedName("ConfirmedState"), new LocalizedText("ConfirmedState"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(21));
                 ID_i9102_ConfirmedState.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9103), false));
                 ID_i9102_ConfirmedState.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9107), false));
                 ID_i9102_ConfirmedState.References.Add(new ReferenceNode(new NodeId(9004), new NodeId(9073), true));
@@ -11484,7 +11484,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ConfirmedState/9102
-                var ID_i9103_Id = new NodeVariable(new NodeId(9103), new QualifiedName("Id"), new LocalizedText("Id"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(1));
+                var ID_i9103_Id = new NodeVariable(new NodeId(9103), new QualifiedName("Id"), new LocalizedText("Id"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(1));
                 ID_i9103_Id.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i9103_Id.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i9103_Id.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9102), true));
@@ -11493,7 +11493,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Optional/80
                 //	HasProperty/46 <- ConfirmedState/9102
-                var ID_i9107_TransitionTime = new NodeVariable(new NodeId(9107), new QualifiedName("TransitionTime"), new LocalizedText("TransitionTime"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(294));
+                var ID_i9107_TransitionTime = new NodeVariable(new NodeId(9107), new QualifiedName("TransitionTime"), new LocalizedText("TransitionTime"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(294));
                 ID_i9107_TransitionTime.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i9107_TransitionTime.References.Add(new ReferenceNode(new NodeId(37), new NodeId(80), false));
                 ID_i9107_TransitionTime.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9102), true));
@@ -11502,7 +11502,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- Acknowledge/9111
-                var ID_i9112_InputArguments = new NodeVariable(new NodeId(9112), new QualifiedName("InputArguments"), new LocalizedText("InputArguments"), new LocalizedText("The identifier for the event to comment."), 0, 0, 0, 0, 0, false, new NodeId(296));
+                var ID_i9112_InputArguments = new NodeVariable(new NodeId(9112), new QualifiedName("InputArguments"), new LocalizedText("InputArguments"), new LocalizedText("The identifier for the event to comment."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(296));
                 ID_i9112_InputArguments.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i9112_InputArguments.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i9112_InputArguments.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9111), true));
@@ -11511,7 +11511,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- Confirm/9113
-                var ID_i9114_InputArguments = new NodeVariable(new NodeId(9114), new QualifiedName("InputArguments"), new LocalizedText("InputArguments"), new LocalizedText("The identifier for the event to comment."), 0, 0, 0, 0, 0, false, new NodeId(296));
+                var ID_i9114_InputArguments = new NodeVariable(new NodeId(9114), new QualifiedName("InputArguments"), new LocalizedText("InputArguments"), new LocalizedText("The identifier for the event to comment."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(296));
                 ID_i9114_InputArguments.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i9114_InputArguments.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i9114_InputArguments.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9113), true));
@@ -11524,7 +11524,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> TwoStateVariableType/8995
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- AlarmConditionType/2915
-                var ID_i9118_EnabledState = new NodeVariable(new NodeId(9118), new QualifiedName("EnabledState"), new LocalizedText("EnabledState"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(21));
+                var ID_i9118_EnabledState = new NodeVariable(new NodeId(9118), new QualifiedName("EnabledState"), new LocalizedText("EnabledState"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(21));
                 ID_i9118_EnabledState.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9119), false));
                 ID_i9118_EnabledState.References.Add(new ReferenceNode(new NodeId(9004), new NodeId(9160), false));
                 ID_i9118_EnabledState.References.Add(new ReferenceNode(new NodeId(9004), new NodeId(9169), false));
@@ -11537,7 +11537,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- EnabledState/9118
-                var ID_i9119_Id = new NodeVariable(new NodeId(9119), new QualifiedName("Id"), new LocalizedText("Id"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(1));
+                var ID_i9119_Id = new NodeVariable(new NodeId(9119), new QualifiedName("Id"), new LocalizedText("Id"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(1));
                 ID_i9119_Id.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i9119_Id.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i9119_Id.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9118), true));
@@ -11551,7 +11551,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> TwoStateVariableType/8995
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- AlarmConditionType/2915
-                var ID_i9160_ActiveState = new NodeVariable(new NodeId(9160), new QualifiedName("ActiveState"), new LocalizedText("ActiveState"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(21));
+                var ID_i9160_ActiveState = new NodeVariable(new NodeId(9160), new QualifiedName("ActiveState"), new LocalizedText("ActiveState"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(21));
                 ID_i9160_ActiveState.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9161), false));
                 ID_i9160_ActiveState.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9164), false));
                 ID_i9160_ActiveState.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9165), false));
@@ -11565,7 +11565,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ActiveState/9160
-                var ID_i9161_Id = new NodeVariable(new NodeId(9161), new QualifiedName("Id"), new LocalizedText("Id"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(1));
+                var ID_i9161_Id = new NodeVariable(new NodeId(9161), new QualifiedName("Id"), new LocalizedText("Id"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(1));
                 ID_i9161_Id.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i9161_Id.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i9161_Id.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9160), true));
@@ -11574,7 +11574,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Optional/80
                 //	HasProperty/46 <- ActiveState/9160
-                var ID_i9164_EffectiveDisplayName = new NodeVariable(new NodeId(9164), new QualifiedName("EffectiveDisplayName"), new LocalizedText("EffectiveDisplayName"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(21));
+                var ID_i9164_EffectiveDisplayName = new NodeVariable(new NodeId(9164), new QualifiedName("EffectiveDisplayName"), new LocalizedText("EffectiveDisplayName"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(21));
                 ID_i9164_EffectiveDisplayName.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i9164_EffectiveDisplayName.References.Add(new ReferenceNode(new NodeId(37), new NodeId(80), false));
                 ID_i9164_EffectiveDisplayName.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9160), true));
@@ -11583,7 +11583,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Optional/80
                 //	HasProperty/46 <- ActiveState/9160
-                var ID_i9165_TransitionTime = new NodeVariable(new NodeId(9165), new QualifiedName("TransitionTime"), new LocalizedText("TransitionTime"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(294));
+                var ID_i9165_TransitionTime = new NodeVariable(new NodeId(9165), new QualifiedName("TransitionTime"), new LocalizedText("TransitionTime"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(294));
                 ID_i9165_TransitionTime.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i9165_TransitionTime.References.Add(new ReferenceNode(new NodeId(37), new NodeId(80), false));
                 ID_i9165_TransitionTime.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9160), true));
@@ -11592,7 +11592,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Optional/80
                 //	HasProperty/46 <- ActiveState/9160
-                var ID_i9166_EffectiveTransitionTime = new NodeVariable(new NodeId(9166), new QualifiedName("EffectiveTransitionTime"), new LocalizedText("EffectiveTransitionTime"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(294));
+                var ID_i9166_EffectiveTransitionTime = new NodeVariable(new NodeId(9166), new QualifiedName("EffectiveTransitionTime"), new LocalizedText("EffectiveTransitionTime"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(294));
                 ID_i9166_EffectiveTransitionTime.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i9166_EffectiveTransitionTime.References.Add(new ReferenceNode(new NodeId(37), new NodeId(80), false));
                 ID_i9166_EffectiveTransitionTime.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9160), true));
@@ -11601,7 +11601,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AlarmConditionType/2915
-                var ID_i11120_InputNode = new NodeVariable(new NodeId(11120), new QualifiedName("InputNode"), new LocalizedText("InputNode"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(17));
+                var ID_i11120_InputNode = new NodeVariable(new NodeId(11120), new QualifiedName("InputNode"), new LocalizedText("InputNode"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(17));
                 ID_i11120_InputNode.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11120_InputNode.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11120_InputNode.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2915), true));
@@ -11613,7 +11613,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> TwoStateVariableType/8995
                 //	HasModellingRule/37 -> Optional/80
                 //	HasComponent/47 <- AlarmConditionType/2915
-                var ID_i9169_SuppressedState = new NodeVariable(new NodeId(9169), new QualifiedName("SuppressedState"), new LocalizedText("SuppressedState"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(21));
+                var ID_i9169_SuppressedState = new NodeVariable(new NodeId(9169), new QualifiedName("SuppressedState"), new LocalizedText("SuppressedState"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(21));
                 ID_i9169_SuppressedState.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9170), false));
                 ID_i9169_SuppressedState.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9174), false));
                 ID_i9169_SuppressedState.References.Add(new ReferenceNode(new NodeId(9004), new NodeId(9118), true));
@@ -11625,7 +11625,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- SuppressedState/9169
-                var ID_i9170_Id = new NodeVariable(new NodeId(9170), new QualifiedName("Id"), new LocalizedText("Id"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(1));
+                var ID_i9170_Id = new NodeVariable(new NodeId(9170), new QualifiedName("Id"), new LocalizedText("Id"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(1));
                 ID_i9170_Id.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i9170_Id.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i9170_Id.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9169), true));
@@ -11634,7 +11634,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Optional/80
                 //	HasProperty/46 <- SuppressedState/9169
-                var ID_i9174_TransitionTime = new NodeVariable(new NodeId(9174), new QualifiedName("TransitionTime"), new LocalizedText("TransitionTime"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(294));
+                var ID_i9174_TransitionTime = new NodeVariable(new NodeId(9174), new QualifiedName("TransitionTime"), new LocalizedText("TransitionTime"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(294));
                 ID_i9174_TransitionTime.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i9174_TransitionTime.References.Add(new ReferenceNode(new NodeId(37), new NodeId(80), false));
                 ID_i9174_TransitionTime.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9169), true));
@@ -11644,7 +11644,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> FiniteStateVariableType/2760
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- ShelvingState/9178
-                var ID_i9179_CurrentState = new NodeVariable(new NodeId(9179), new QualifiedName("CurrentState"), new LocalizedText("CurrentState"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(21));
+                var ID_i9179_CurrentState = new NodeVariable(new NodeId(9179), new QualifiedName("CurrentState"), new LocalizedText("CurrentState"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(21));
                 ID_i9179_CurrentState.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9180), false));
                 ID_i9179_CurrentState.References.Add(new ReferenceNode(new NodeId(40), new NodeId(2760), false));
                 ID_i9179_CurrentState.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
@@ -11654,7 +11654,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- CurrentState/9179
-                var ID_i9180_Id = new NodeVariable(new NodeId(9180), new QualifiedName("Id"), new LocalizedText("Id"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(17));
+                var ID_i9180_Id = new NodeVariable(new NodeId(9180), new QualifiedName("Id"), new LocalizedText("Id"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(17));
                 ID_i9180_Id.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i9180_Id.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i9180_Id.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9179), true));
@@ -11665,7 +11665,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> FiniteTransitionVariableType/2767
                 //	HasModellingRule/37 -> Optional/80
                 //	HasComponent/47 <- ShelvingState/9178
-                var ID_i9184_LastTransition = new NodeVariable(new NodeId(9184), new QualifiedName("LastTransition"), new LocalizedText("LastTransition"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(21));
+                var ID_i9184_LastTransition = new NodeVariable(new NodeId(9184), new QualifiedName("LastTransition"), new LocalizedText("LastTransition"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(21));
                 ID_i9184_LastTransition.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9185), false));
                 ID_i9184_LastTransition.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9188), false));
                 ID_i9184_LastTransition.References.Add(new ReferenceNode(new NodeId(40), new NodeId(2767), false));
@@ -11676,7 +11676,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- LastTransition/9184
-                var ID_i9185_Id = new NodeVariable(new NodeId(9185), new QualifiedName("Id"), new LocalizedText("Id"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(17));
+                var ID_i9185_Id = new NodeVariable(new NodeId(9185), new QualifiedName("Id"), new LocalizedText("Id"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(17));
                 ID_i9185_Id.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i9185_Id.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i9185_Id.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9184), true));
@@ -11685,7 +11685,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Optional/80
                 //	HasProperty/46 <- LastTransition/9184
-                var ID_i9188_TransitionTime = new NodeVariable(new NodeId(9188), new QualifiedName("TransitionTime"), new LocalizedText("TransitionTime"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(294));
+                var ID_i9188_TransitionTime = new NodeVariable(new NodeId(9188), new QualifiedName("TransitionTime"), new LocalizedText("TransitionTime"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(294));
                 ID_i9188_TransitionTime.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i9188_TransitionTime.References.Add(new ReferenceNode(new NodeId(37), new NodeId(80), false));
                 ID_i9188_TransitionTime.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9184), true));
@@ -11694,7 +11694,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ShelvingState/9178
-                var ID_i9189_UnshelveTime = new NodeVariable(new NodeId(9189), new QualifiedName("UnshelveTime"), new LocalizedText("UnshelveTime"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(290));
+                var ID_i9189_UnshelveTime = new NodeVariable(new NodeId(9189), new QualifiedName("UnshelveTime"), new LocalizedText("UnshelveTime"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(290));
                 ID_i9189_UnshelveTime.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i9189_UnshelveTime.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i9189_UnshelveTime.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9178), true));
@@ -11703,7 +11703,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- TimedShelve/9213
-                var ID_i9214_InputArguments = new NodeVariable(new NodeId(9214), new QualifiedName("InputArguments"), new LocalizedText("InputArguments"), new LocalizedText("If not 0, this parameter specifies a fixed time for which the Alarm is to be shelved."), 0, 0, 0, 0, 0, false, new NodeId(296));
+                var ID_i9214_InputArguments = new NodeVariable(new NodeId(9214), new QualifiedName("InputArguments"), new LocalizedText("InputArguments"), new LocalizedText("If not 0, this parameter specifies a fixed time for which the Alarm is to be shelved."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(296));
                 ID_i9214_InputArguments.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i9214_InputArguments.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i9214_InputArguments.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9213), true));
@@ -11712,7 +11712,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AlarmConditionType/2915
-                var ID_i9215_SuppressedOrShelved = new NodeVariable(new NodeId(9215), new QualifiedName("SuppressedOrShelved"), new LocalizedText("SuppressedOrShelved"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(1));
+                var ID_i9215_SuppressedOrShelved = new NodeVariable(new NodeId(9215), new QualifiedName("SuppressedOrShelved"), new LocalizedText("SuppressedOrShelved"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(1));
                 ID_i9215_SuppressedOrShelved.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i9215_SuppressedOrShelved.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i9215_SuppressedOrShelved.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2915), true));
@@ -11721,7 +11721,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Optional/80
                 //	HasProperty/46 <- AlarmConditionType/2915
-                var ID_i9216_MaxTimeShelved = new NodeVariable(new NodeId(9216), new QualifiedName("MaxTimeShelved"), new LocalizedText("MaxTimeShelved"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(290));
+                var ID_i9216_MaxTimeShelved = new NodeVariable(new NodeId(9216), new QualifiedName("MaxTimeShelved"), new LocalizedText("MaxTimeShelved"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(290));
                 ID_i9216_MaxTimeShelved.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i9216_MaxTimeShelved.References.Add(new ReferenceNode(new NodeId(37), new NodeId(80), false));
                 ID_i9216_MaxTimeShelved.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2915), true));
@@ -11730,7 +11730,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ShelvedStateMachineType/2929
-                var ID_i9115_UnshelveTime = new NodeVariable(new NodeId(9115), new QualifiedName("UnshelveTime"), new LocalizedText("UnshelveTime"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(290));
+                var ID_i9115_UnshelveTime = new NodeVariable(new NodeId(9115), new QualifiedName("UnshelveTime"), new LocalizedText("UnshelveTime"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(290));
                 ID_i9115_UnshelveTime.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i9115_UnshelveTime.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i9115_UnshelveTime.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2929), true));
@@ -11739,7 +11739,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- Unshelved/2930
-                var ID_i6098_StateNumber = new NodeVariable(new NodeId(6098), new QualifiedName("StateNumber"), new LocalizedText("StateNumber"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i6098_StateNumber = new NodeVariable(new NodeId(6098), new QualifiedName("StateNumber"), new LocalizedText("StateNumber"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i6098_StateNumber.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i6098_StateNumber.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i6098_StateNumber.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2930), true));
@@ -11748,7 +11748,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- TimedShelved/2932
-                var ID_i6100_StateNumber = new NodeVariable(new NodeId(6100), new QualifiedName("StateNumber"), new LocalizedText("StateNumber"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i6100_StateNumber = new NodeVariable(new NodeId(6100), new QualifiedName("StateNumber"), new LocalizedText("StateNumber"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i6100_StateNumber.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i6100_StateNumber.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i6100_StateNumber.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2932), true));
@@ -11757,7 +11757,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- OneShotShelved/2933
-                var ID_i6101_StateNumber = new NodeVariable(new NodeId(6101), new QualifiedName("StateNumber"), new LocalizedText("StateNumber"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i6101_StateNumber = new NodeVariable(new NodeId(6101), new QualifiedName("StateNumber"), new LocalizedText("StateNumber"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i6101_StateNumber.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i6101_StateNumber.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i6101_StateNumber.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2933), true));
@@ -11766,7 +11766,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- UnshelvedToTimedShelved/2935
-                var ID_i11322_TransitionNumber = new NodeVariable(new NodeId(11322), new QualifiedName("TransitionNumber"), new LocalizedText("TransitionNumber"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i11322_TransitionNumber = new NodeVariable(new NodeId(11322), new QualifiedName("TransitionNumber"), new LocalizedText("TransitionNumber"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i11322_TransitionNumber.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11322_TransitionNumber.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11322_TransitionNumber.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2935), true));
@@ -11775,7 +11775,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- UnshelvedToOneShotShelved/2936
-                var ID_i11323_TransitionNumber = new NodeVariable(new NodeId(11323), new QualifiedName("TransitionNumber"), new LocalizedText("TransitionNumber"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i11323_TransitionNumber = new NodeVariable(new NodeId(11323), new QualifiedName("TransitionNumber"), new LocalizedText("TransitionNumber"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i11323_TransitionNumber.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11323_TransitionNumber.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11323_TransitionNumber.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2936), true));
@@ -11784,7 +11784,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- TimedShelvedToUnshelved/2940
-                var ID_i11324_TransitionNumber = new NodeVariable(new NodeId(11324), new QualifiedName("TransitionNumber"), new LocalizedText("TransitionNumber"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i11324_TransitionNumber = new NodeVariable(new NodeId(11324), new QualifiedName("TransitionNumber"), new LocalizedText("TransitionNumber"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i11324_TransitionNumber.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11324_TransitionNumber.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11324_TransitionNumber.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2940), true));
@@ -11793,7 +11793,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- TimedShelvedToOneShotShelved/2942
-                var ID_i11325_TransitionNumber = new NodeVariable(new NodeId(11325), new QualifiedName("TransitionNumber"), new LocalizedText("TransitionNumber"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i11325_TransitionNumber = new NodeVariable(new NodeId(11325), new QualifiedName("TransitionNumber"), new LocalizedText("TransitionNumber"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i11325_TransitionNumber.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11325_TransitionNumber.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11325_TransitionNumber.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2942), true));
@@ -11802,7 +11802,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- OneShotShelvedToUnshelved/2943
-                var ID_i11326_TransitionNumber = new NodeVariable(new NodeId(11326), new QualifiedName("TransitionNumber"), new LocalizedText("TransitionNumber"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i11326_TransitionNumber = new NodeVariable(new NodeId(11326), new QualifiedName("TransitionNumber"), new LocalizedText("TransitionNumber"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i11326_TransitionNumber.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11326_TransitionNumber.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11326_TransitionNumber.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2943), true));
@@ -11811,7 +11811,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- OneShotShelvedToTimedShelved/2945
-                var ID_i11327_TransitionNumber = new NodeVariable(new NodeId(11327), new QualifiedName("TransitionNumber"), new LocalizedText("TransitionNumber"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i11327_TransitionNumber = new NodeVariable(new NodeId(11327), new QualifiedName("TransitionNumber"), new LocalizedText("TransitionNumber"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i11327_TransitionNumber.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11327_TransitionNumber.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11327_TransitionNumber.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2945), true));
@@ -11820,7 +11820,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- TimedShelve/2949
-                var ID_i2991_InputArguments = new NodeVariable(new NodeId(2991), new QualifiedName("InputArguments"), new LocalizedText("InputArguments"), new LocalizedText("If not 0, this parameter specifies a fixed time for which the Alarm is to be shelved."), 0, 0, 0, 0, 0, false, new NodeId(296));
+                var ID_i2991_InputArguments = new NodeVariable(new NodeId(2991), new QualifiedName("InputArguments"), new LocalizedText("InputArguments"), new LocalizedText("If not 0, this parameter specifies a fixed time for which the Alarm is to be shelved."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(296));
                 ID_i2991_InputArguments.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2991_InputArguments.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2991_InputArguments.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2949), true));
@@ -11829,7 +11829,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Optional/80
                 //	HasProperty/46 <- LimitAlarmType/2955
-                var ID_i11124_HighHighLimit = new NodeVariable(new NodeId(11124), new QualifiedName("HighHighLimit"), new LocalizedText("HighHighLimit"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(11));
+                var ID_i11124_HighHighLimit = new NodeVariable(new NodeId(11124), new QualifiedName("HighHighLimit"), new LocalizedText("HighHighLimit"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(11));
                 ID_i11124_HighHighLimit.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11124_HighHighLimit.References.Add(new ReferenceNode(new NodeId(37), new NodeId(80), false));
                 ID_i11124_HighHighLimit.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2955), true));
@@ -11838,7 +11838,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Optional/80
                 //	HasProperty/46 <- LimitAlarmType/2955
-                var ID_i11125_HighLimit = new NodeVariable(new NodeId(11125), new QualifiedName("HighLimit"), new LocalizedText("HighLimit"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(11));
+                var ID_i11125_HighLimit = new NodeVariable(new NodeId(11125), new QualifiedName("HighLimit"), new LocalizedText("HighLimit"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(11));
                 ID_i11125_HighLimit.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11125_HighLimit.References.Add(new ReferenceNode(new NodeId(37), new NodeId(80), false));
                 ID_i11125_HighLimit.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2955), true));
@@ -11847,7 +11847,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Optional/80
                 //	HasProperty/46 <- LimitAlarmType/2955
-                var ID_i11126_LowLimit = new NodeVariable(new NodeId(11126), new QualifiedName("LowLimit"), new LocalizedText("LowLimit"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(11));
+                var ID_i11126_LowLimit = new NodeVariable(new NodeId(11126), new QualifiedName("LowLimit"), new LocalizedText("LowLimit"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(11));
                 ID_i11126_LowLimit.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11126_LowLimit.References.Add(new ReferenceNode(new NodeId(37), new NodeId(80), false));
                 ID_i11126_LowLimit.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2955), true));
@@ -11856,7 +11856,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Optional/80
                 //	HasProperty/46 <- LimitAlarmType/2955
-                var ID_i11127_LowLowLimit = new NodeVariable(new NodeId(11127), new QualifiedName("LowLowLimit"), new LocalizedText("LowLowLimit"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(11));
+                var ID_i11127_LowLowLimit = new NodeVariable(new NodeId(11127), new QualifiedName("LowLowLimit"), new LocalizedText("LowLowLimit"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(11));
                 ID_i11127_LowLowLimit.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11127_LowLowLimit.References.Add(new ReferenceNode(new NodeId(37), new NodeId(80), false));
                 ID_i11127_LowLowLimit.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2955), true));
@@ -11865,7 +11865,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- HighHigh/9329
-                var ID_i9330_StateNumber = new NodeVariable(new NodeId(9330), new QualifiedName("StateNumber"), new LocalizedText("StateNumber"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i9330_StateNumber = new NodeVariable(new NodeId(9330), new QualifiedName("StateNumber"), new LocalizedText("StateNumber"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i9330_StateNumber.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i9330_StateNumber.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i9330_StateNumber.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9329), true));
@@ -11874,7 +11874,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- High/9331
-                var ID_i9332_StateNumber = new NodeVariable(new NodeId(9332), new QualifiedName("StateNumber"), new LocalizedText("StateNumber"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i9332_StateNumber = new NodeVariable(new NodeId(9332), new QualifiedName("StateNumber"), new LocalizedText("StateNumber"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i9332_StateNumber.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i9332_StateNumber.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i9332_StateNumber.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9331), true));
@@ -11883,7 +11883,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- Low/9333
-                var ID_i9334_StateNumber = new NodeVariable(new NodeId(9334), new QualifiedName("StateNumber"), new LocalizedText("StateNumber"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i9334_StateNumber = new NodeVariable(new NodeId(9334), new QualifiedName("StateNumber"), new LocalizedText("StateNumber"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i9334_StateNumber.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i9334_StateNumber.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i9334_StateNumber.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9333), true));
@@ -11892,7 +11892,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- LowLow/9335
-                var ID_i9336_StateNumber = new NodeVariable(new NodeId(9336), new QualifiedName("StateNumber"), new LocalizedText("StateNumber"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i9336_StateNumber = new NodeVariable(new NodeId(9336), new QualifiedName("StateNumber"), new LocalizedText("StateNumber"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i9336_StateNumber.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i9336_StateNumber.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i9336_StateNumber.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9335), true));
@@ -11901,7 +11901,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- LowLowToLow/9337
-                var ID_i11340_TransitionNumber = new NodeVariable(new NodeId(11340), new QualifiedName("TransitionNumber"), new LocalizedText("TransitionNumber"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i11340_TransitionNumber = new NodeVariable(new NodeId(11340), new QualifiedName("TransitionNumber"), new LocalizedText("TransitionNumber"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i11340_TransitionNumber.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11340_TransitionNumber.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11340_TransitionNumber.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9337), true));
@@ -11910,7 +11910,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- LowToLowLow/9338
-                var ID_i11341_TransitionNumber = new NodeVariable(new NodeId(11341), new QualifiedName("TransitionNumber"), new LocalizedText("TransitionNumber"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i11341_TransitionNumber = new NodeVariable(new NodeId(11341), new QualifiedName("TransitionNumber"), new LocalizedText("TransitionNumber"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i11341_TransitionNumber.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11341_TransitionNumber.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11341_TransitionNumber.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9338), true));
@@ -11919,7 +11919,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- HighHighToHigh/9339
-                var ID_i11342_TransitionNumber = new NodeVariable(new NodeId(11342), new QualifiedName("TransitionNumber"), new LocalizedText("TransitionNumber"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i11342_TransitionNumber = new NodeVariable(new NodeId(11342), new QualifiedName("TransitionNumber"), new LocalizedText("TransitionNumber"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i11342_TransitionNumber.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11342_TransitionNumber.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11342_TransitionNumber.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9339), true));
@@ -11928,7 +11928,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- HighToHighHigh/9340
-                var ID_i11343_TransitionNumber = new NodeVariable(new NodeId(11343), new QualifiedName("TransitionNumber"), new LocalizedText("TransitionNumber"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i11343_TransitionNumber = new NodeVariable(new NodeId(11343), new QualifiedName("TransitionNumber"), new LocalizedText("TransitionNumber"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i11343_TransitionNumber.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11343_TransitionNumber.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11343_TransitionNumber.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9340), true));
@@ -11939,7 +11939,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> TwoStateVariableType/8995
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- ExclusiveLimitAlarmType/9341
-                var ID_i9398_ActiveState = new NodeVariable(new NodeId(9398), new QualifiedName("ActiveState"), new LocalizedText("ActiveState"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(21));
+                var ID_i9398_ActiveState = new NodeVariable(new NodeId(9398), new QualifiedName("ActiveState"), new LocalizedText("ActiveState"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(21));
                 ID_i9398_ActiveState.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9399), false));
                 ID_i9398_ActiveState.References.Add(new ReferenceNode(new NodeId(9004), new NodeId(9455), false));
                 ID_i9398_ActiveState.References.Add(new ReferenceNode(new NodeId(40), new NodeId(8995), false));
@@ -11950,7 +11950,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ActiveState/9398
-                var ID_i9399_Id = new NodeVariable(new NodeId(9399), new QualifiedName("Id"), new LocalizedText("Id"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(1));
+                var ID_i9399_Id = new NodeVariable(new NodeId(9399), new QualifiedName("Id"), new LocalizedText("Id"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(1));
                 ID_i9399_Id.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i9399_Id.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i9399_Id.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9398), true));
@@ -11960,7 +11960,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> FiniteStateVariableType/2760
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- LimitState/9455
-                var ID_i9456_CurrentState = new NodeVariable(new NodeId(9456), new QualifiedName("CurrentState"), new LocalizedText("CurrentState"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(21));
+                var ID_i9456_CurrentState = new NodeVariable(new NodeId(9456), new QualifiedName("CurrentState"), new LocalizedText("CurrentState"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(21));
                 ID_i9456_CurrentState.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9457), false));
                 ID_i9456_CurrentState.References.Add(new ReferenceNode(new NodeId(40), new NodeId(2760), false));
                 ID_i9456_CurrentState.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
@@ -11970,7 +11970,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- CurrentState/9456
-                var ID_i9457_Id = new NodeVariable(new NodeId(9457), new QualifiedName("Id"), new LocalizedText("Id"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(17));
+                var ID_i9457_Id = new NodeVariable(new NodeId(9457), new QualifiedName("Id"), new LocalizedText("Id"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(17));
                 ID_i9457_Id.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i9457_Id.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i9457_Id.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9456), true));
@@ -11981,7 +11981,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> FiniteTransitionVariableType/2767
                 //	HasModellingRule/37 -> Optional/80
                 //	HasComponent/47 <- LimitState/9455
-                var ID_i9461_LastTransition = new NodeVariable(new NodeId(9461), new QualifiedName("LastTransition"), new LocalizedText("LastTransition"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(21));
+                var ID_i9461_LastTransition = new NodeVariable(new NodeId(9461), new QualifiedName("LastTransition"), new LocalizedText("LastTransition"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(21));
                 ID_i9461_LastTransition.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9462), false));
                 ID_i9461_LastTransition.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9465), false));
                 ID_i9461_LastTransition.References.Add(new ReferenceNode(new NodeId(40), new NodeId(2767), false));
@@ -11992,7 +11992,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- LastTransition/9461
-                var ID_i9462_Id = new NodeVariable(new NodeId(9462), new QualifiedName("Id"), new LocalizedText("Id"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(17));
+                var ID_i9462_Id = new NodeVariable(new NodeId(9462), new QualifiedName("Id"), new LocalizedText("Id"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(17));
                 ID_i9462_Id.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i9462_Id.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i9462_Id.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9461), true));
@@ -12001,7 +12001,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Optional/80
                 //	HasProperty/46 <- LastTransition/9461
-                var ID_i9465_TransitionTime = new NodeVariable(new NodeId(9465), new QualifiedName("TransitionTime"), new LocalizedText("TransitionTime"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(294));
+                var ID_i9465_TransitionTime = new NodeVariable(new NodeId(9465), new QualifiedName("TransitionTime"), new LocalizedText("TransitionTime"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(294));
                 ID_i9465_TransitionTime.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i9465_TransitionTime.References.Add(new ReferenceNode(new NodeId(37), new NodeId(80), false));
                 ID_i9465_TransitionTime.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9461), true));
@@ -12015,7 +12015,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> TwoStateVariableType/8995
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- NonExclusiveLimitAlarmType/9906
-                var ID_i9963_ActiveState = new NodeVariable(new NodeId(9963), new QualifiedName("ActiveState"), new LocalizedText("ActiveState"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(21));
+                var ID_i9963_ActiveState = new NodeVariable(new NodeId(9963), new QualifiedName("ActiveState"), new LocalizedText("ActiveState"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(21));
                 ID_i9963_ActiveState.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9964), false));
                 ID_i9963_ActiveState.References.Add(new ReferenceNode(new NodeId(9004), new NodeId(10020), false));
                 ID_i9963_ActiveState.References.Add(new ReferenceNode(new NodeId(9004), new NodeId(10029), false));
@@ -12029,7 +12029,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ActiveState/9963
-                var ID_i9964_Id = new NodeVariable(new NodeId(9964), new QualifiedName("Id"), new LocalizedText("Id"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(1));
+                var ID_i9964_Id = new NodeVariable(new NodeId(9964), new QualifiedName("Id"), new LocalizedText("Id"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(1));
                 ID_i9964_Id.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i9964_Id.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i9964_Id.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9963), true));
@@ -12041,7 +12041,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> TwoStateVariableType/8995
                 //	HasModellingRule/37 -> Optional/80
                 //	HasComponent/47 <- NonExclusiveLimitAlarmType/9906
-                var ID_i10020_HighHighState = new NodeVariable(new NodeId(10020), new QualifiedName("HighHighState"), new LocalizedText("HighHighState"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(21));
+                var ID_i10020_HighHighState = new NodeVariable(new NodeId(10020), new QualifiedName("HighHighState"), new LocalizedText("HighHighState"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(21));
                 ID_i10020_HighHighState.References.Add(new ReferenceNode(new NodeId(46), new NodeId(10021), false));
                 ID_i10020_HighHighState.References.Add(new ReferenceNode(new NodeId(46), new NodeId(10025), false));
                 ID_i10020_HighHighState.References.Add(new ReferenceNode(new NodeId(9004), new NodeId(9963), true));
@@ -12053,7 +12053,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- HighHighState/10020
-                var ID_i10021_Id = new NodeVariable(new NodeId(10021), new QualifiedName("Id"), new LocalizedText("Id"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(1));
+                var ID_i10021_Id = new NodeVariable(new NodeId(10021), new QualifiedName("Id"), new LocalizedText("Id"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(1));
                 ID_i10021_Id.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i10021_Id.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i10021_Id.References.Add(new ReferenceNode(new NodeId(46), new NodeId(10020), true));
@@ -12062,7 +12062,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Optional/80
                 //	HasProperty/46 <- HighHighState/10020
-                var ID_i10025_TransitionTime = new NodeVariable(new NodeId(10025), new QualifiedName("TransitionTime"), new LocalizedText("TransitionTime"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(294));
+                var ID_i10025_TransitionTime = new NodeVariable(new NodeId(10025), new QualifiedName("TransitionTime"), new LocalizedText("TransitionTime"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(294));
                 ID_i10025_TransitionTime.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i10025_TransitionTime.References.Add(new ReferenceNode(new NodeId(37), new NodeId(80), false));
                 ID_i10025_TransitionTime.References.Add(new ReferenceNode(new NodeId(46), new NodeId(10020), true));
@@ -12074,7 +12074,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> TwoStateVariableType/8995
                 //	HasModellingRule/37 -> Optional/80
                 //	HasComponent/47 <- NonExclusiveLimitAlarmType/9906
-                var ID_i10029_HighState = new NodeVariable(new NodeId(10029), new QualifiedName("HighState"), new LocalizedText("HighState"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(21));
+                var ID_i10029_HighState = new NodeVariable(new NodeId(10029), new QualifiedName("HighState"), new LocalizedText("HighState"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(21));
                 ID_i10029_HighState.References.Add(new ReferenceNode(new NodeId(46), new NodeId(10030), false));
                 ID_i10029_HighState.References.Add(new ReferenceNode(new NodeId(46), new NodeId(10034), false));
                 ID_i10029_HighState.References.Add(new ReferenceNode(new NodeId(9004), new NodeId(9963), true));
@@ -12086,7 +12086,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- HighState/10029
-                var ID_i10030_Id = new NodeVariable(new NodeId(10030), new QualifiedName("Id"), new LocalizedText("Id"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(1));
+                var ID_i10030_Id = new NodeVariable(new NodeId(10030), new QualifiedName("Id"), new LocalizedText("Id"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(1));
                 ID_i10030_Id.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i10030_Id.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i10030_Id.References.Add(new ReferenceNode(new NodeId(46), new NodeId(10029), true));
@@ -12095,7 +12095,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Optional/80
                 //	HasProperty/46 <- HighState/10029
-                var ID_i10034_TransitionTime = new NodeVariable(new NodeId(10034), new QualifiedName("TransitionTime"), new LocalizedText("TransitionTime"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(294));
+                var ID_i10034_TransitionTime = new NodeVariable(new NodeId(10034), new QualifiedName("TransitionTime"), new LocalizedText("TransitionTime"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(294));
                 ID_i10034_TransitionTime.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i10034_TransitionTime.References.Add(new ReferenceNode(new NodeId(37), new NodeId(80), false));
                 ID_i10034_TransitionTime.References.Add(new ReferenceNode(new NodeId(46), new NodeId(10029), true));
@@ -12107,7 +12107,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> TwoStateVariableType/8995
                 //	HasModellingRule/37 -> Optional/80
                 //	HasComponent/47 <- NonExclusiveLimitAlarmType/9906
-                var ID_i10038_LowState = new NodeVariable(new NodeId(10038), new QualifiedName("LowState"), new LocalizedText("LowState"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(21));
+                var ID_i10038_LowState = new NodeVariable(new NodeId(10038), new QualifiedName("LowState"), new LocalizedText("LowState"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(21));
                 ID_i10038_LowState.References.Add(new ReferenceNode(new NodeId(46), new NodeId(10039), false));
                 ID_i10038_LowState.References.Add(new ReferenceNode(new NodeId(46), new NodeId(10043), false));
                 ID_i10038_LowState.References.Add(new ReferenceNode(new NodeId(9004), new NodeId(9963), true));
@@ -12119,7 +12119,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- LowState/10038
-                var ID_i10039_Id = new NodeVariable(new NodeId(10039), new QualifiedName("Id"), new LocalizedText("Id"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(1));
+                var ID_i10039_Id = new NodeVariable(new NodeId(10039), new QualifiedName("Id"), new LocalizedText("Id"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(1));
                 ID_i10039_Id.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i10039_Id.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i10039_Id.References.Add(new ReferenceNode(new NodeId(46), new NodeId(10038), true));
@@ -12128,7 +12128,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Optional/80
                 //	HasProperty/46 <- LowState/10038
-                var ID_i10043_TransitionTime = new NodeVariable(new NodeId(10043), new QualifiedName("TransitionTime"), new LocalizedText("TransitionTime"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(294));
+                var ID_i10043_TransitionTime = new NodeVariable(new NodeId(10043), new QualifiedName("TransitionTime"), new LocalizedText("TransitionTime"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(294));
                 ID_i10043_TransitionTime.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i10043_TransitionTime.References.Add(new ReferenceNode(new NodeId(37), new NodeId(80), false));
                 ID_i10043_TransitionTime.References.Add(new ReferenceNode(new NodeId(46), new NodeId(10038), true));
@@ -12140,7 +12140,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> TwoStateVariableType/8995
                 //	HasModellingRule/37 -> Optional/80
                 //	HasComponent/47 <- NonExclusiveLimitAlarmType/9906
-                var ID_i10047_LowLowState = new NodeVariable(new NodeId(10047), new QualifiedName("LowLowState"), new LocalizedText("LowLowState"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(21));
+                var ID_i10047_LowLowState = new NodeVariable(new NodeId(10047), new QualifiedName("LowLowState"), new LocalizedText("LowLowState"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(21));
                 ID_i10047_LowLowState.References.Add(new ReferenceNode(new NodeId(46), new NodeId(10048), false));
                 ID_i10047_LowLowState.References.Add(new ReferenceNode(new NodeId(46), new NodeId(10052), false));
                 ID_i10047_LowLowState.References.Add(new ReferenceNode(new NodeId(9004), new NodeId(9963), true));
@@ -12152,7 +12152,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- LowLowState/10047
-                var ID_i10048_Id = new NodeVariable(new NodeId(10048), new QualifiedName("Id"), new LocalizedText("Id"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(1));
+                var ID_i10048_Id = new NodeVariable(new NodeId(10048), new QualifiedName("Id"), new LocalizedText("Id"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(1));
                 ID_i10048_Id.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i10048_Id.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i10048_Id.References.Add(new ReferenceNode(new NodeId(46), new NodeId(10047), true));
@@ -12161,7 +12161,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Optional/80
                 //	HasProperty/46 <- LowLowState/10047
-                var ID_i10052_TransitionTime = new NodeVariable(new NodeId(10052), new QualifiedName("TransitionTime"), new LocalizedText("TransitionTime"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(294));
+                var ID_i10052_TransitionTime = new NodeVariable(new NodeId(10052), new QualifiedName("TransitionTime"), new LocalizedText("TransitionTime"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(294));
                 ID_i10052_TransitionTime.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i10052_TransitionTime.References.Add(new ReferenceNode(new NodeId(37), new NodeId(80), false));
                 ID_i10052_TransitionTime.References.Add(new ReferenceNode(new NodeId(46), new NodeId(10047), true));
@@ -12170,7 +12170,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- NonExclusiveDeviationAlarmType/10368
-                var ID_i10522_SetpointNode = new NodeVariable(new NodeId(10522), new QualifiedName("SetpointNode"), new LocalizedText("SetpointNode"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(17));
+                var ID_i10522_SetpointNode = new NodeVariable(new NodeId(10522), new QualifiedName("SetpointNode"), new LocalizedText("SetpointNode"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(17));
                 ID_i10522_SetpointNode.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i10522_SetpointNode.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i10522_SetpointNode.References.Add(new ReferenceNode(new NodeId(46), new NodeId(10368), true));
@@ -12179,7 +12179,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ExclusiveDeviationAlarmType/9764
-                var ID_i9905_SetpointNode = new NodeVariable(new NodeId(9905), new QualifiedName("SetpointNode"), new LocalizedText("SetpointNode"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(17));
+                var ID_i9905_SetpointNode = new NodeVariable(new NodeId(9905), new QualifiedName("SetpointNode"), new LocalizedText("SetpointNode"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(17));
                 ID_i9905_SetpointNode.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i9905_SetpointNode.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i9905_SetpointNode.References.Add(new ReferenceNode(new NodeId(46), new NodeId(9764), true));
@@ -12188,7 +12188,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- OffNormalAlarmType/10637
-                var ID_i11158_NormalState = new NodeVariable(new NodeId(11158), new QualifiedName("NormalState"), new LocalizedText("NormalState"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(17));
+                var ID_i11158_NormalState = new NodeVariable(new NodeId(11158), new QualifiedName("NormalState"), new LocalizedText("NormalState"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(17));
                 ID_i11158_NormalState.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11158_NormalState.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11158_NormalState.References.Add(new ReferenceNode(new NodeId(46), new NodeId(10637), true));
@@ -12197,7 +12197,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AuditConditionCommentEventType/2829
-                var ID_i4170_EventId = new NodeVariable(new NodeId(4170), new QualifiedName("EventId"), new LocalizedText("EventId"), new LocalizedText("A globally unique identifier for the event."), 0, 0, 0, 0, 0, false, new NodeId(15));
+                var ID_i4170_EventId = new NodeVariable(new NodeId(4170), new QualifiedName("EventId"), new LocalizedText("EventId"), new LocalizedText("A globally unique identifier for the event."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(15));
                 ID_i4170_EventId.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i4170_EventId.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i4170_EventId.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2829), true));
@@ -12206,7 +12206,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AuditConditionCommentEventType/2829
-                var ID_i11851_Comment = new NodeVariable(new NodeId(11851), new QualifiedName("Comment"), new LocalizedText("Comment"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(21));
+                var ID_i11851_Comment = new NodeVariable(new NodeId(11851), new QualifiedName("Comment"), new LocalizedText("Comment"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(21));
                 ID_i11851_Comment.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11851_Comment.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11851_Comment.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2829), true));
@@ -12215,7 +12215,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AuditConditionRespondEventType/8927
-                var ID_i11852_SelectedResponse = new NodeVariable(new NodeId(11852), new QualifiedName("SelectedResponse"), new LocalizedText("SelectedResponse"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(6));
+                var ID_i11852_SelectedResponse = new NodeVariable(new NodeId(11852), new QualifiedName("SelectedResponse"), new LocalizedText("SelectedResponse"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(6));
                 ID_i11852_SelectedResponse.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11852_SelectedResponse.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11852_SelectedResponse.References.Add(new ReferenceNode(new NodeId(46), new NodeId(8927), true));
@@ -12224,7 +12224,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AuditConditionAcknowledgeEventType/8944
-                var ID_i8945_EventId = new NodeVariable(new NodeId(8945), new QualifiedName("EventId"), new LocalizedText("EventId"), new LocalizedText("A globally unique identifier for the event."), 0, 0, 0, 0, 0, false, new NodeId(15));
+                var ID_i8945_EventId = new NodeVariable(new NodeId(8945), new QualifiedName("EventId"), new LocalizedText("EventId"), new LocalizedText("A globally unique identifier for the event."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(15));
                 ID_i8945_EventId.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i8945_EventId.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i8945_EventId.References.Add(new ReferenceNode(new NodeId(46), new NodeId(8944), true));
@@ -12233,7 +12233,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AuditConditionAcknowledgeEventType/8944
-                var ID_i11853_Comment = new NodeVariable(new NodeId(11853), new QualifiedName("Comment"), new LocalizedText("Comment"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(21));
+                var ID_i11853_Comment = new NodeVariable(new NodeId(11853), new QualifiedName("Comment"), new LocalizedText("Comment"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(21));
                 ID_i11853_Comment.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11853_Comment.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11853_Comment.References.Add(new ReferenceNode(new NodeId(46), new NodeId(8944), true));
@@ -12242,7 +12242,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AuditConditionConfirmEventType/8961
-                var ID_i8962_EventId = new NodeVariable(new NodeId(8962), new QualifiedName("EventId"), new LocalizedText("EventId"), new LocalizedText("A globally unique identifier for the event."), 0, 0, 0, 0, 0, false, new NodeId(15));
+                var ID_i8962_EventId = new NodeVariable(new NodeId(8962), new QualifiedName("EventId"), new LocalizedText("EventId"), new LocalizedText("A globally unique identifier for the event."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(15));
                 ID_i8962_EventId.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i8962_EventId.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i8962_EventId.References.Add(new ReferenceNode(new NodeId(46), new NodeId(8961), true));
@@ -12251,7 +12251,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AuditConditionConfirmEventType/8961
-                var ID_i11854_Comment = new NodeVariable(new NodeId(11854), new QualifiedName("Comment"), new LocalizedText("Comment"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(21));
+                var ID_i11854_Comment = new NodeVariable(new NodeId(11854), new QualifiedName("Comment"), new LocalizedText("Comment"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(21));
                 ID_i11854_Comment.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11854_Comment.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11854_Comment.References.Add(new ReferenceNode(new NodeId(46), new NodeId(8961), true));
@@ -12260,7 +12260,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AuditConditionShelvingEventType/11093
-                var ID_i11855_ShelvingTime = new NodeVariable(new NodeId(11855), new QualifiedName("ShelvingTime"), new LocalizedText("ShelvingTime"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(290));
+                var ID_i11855_ShelvingTime = new NodeVariable(new NodeId(11855), new QualifiedName("ShelvingTime"), new LocalizedText("ShelvingTime"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(290));
                 ID_i11855_ShelvingTime.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11855_ShelvingTime.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11855_ShelvingTime.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11093), true));
@@ -12271,7 +12271,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> FiniteStateVariableType/2760
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- ProgramStateMachineType/2391
-                var ID_i3830_CurrentState = new NodeVariable(new NodeId(3830), new QualifiedName("CurrentState"), new LocalizedText("CurrentState"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(21));
+                var ID_i3830_CurrentState = new NodeVariable(new NodeId(3830), new QualifiedName("CurrentState"), new LocalizedText("CurrentState"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(21));
                 ID_i3830_CurrentState.References.Add(new ReferenceNode(new NodeId(46), new NodeId(3831), false));
                 ID_i3830_CurrentState.References.Add(new ReferenceNode(new NodeId(46), new NodeId(3833), false));
                 ID_i3830_CurrentState.References.Add(new ReferenceNode(new NodeId(40), new NodeId(2760), false));
@@ -12282,7 +12282,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- CurrentState/3830
-                var ID_i3831_Id = new NodeVariable(new NodeId(3831), new QualifiedName("Id"), new LocalizedText("Id"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(17));
+                var ID_i3831_Id = new NodeVariable(new NodeId(3831), new QualifiedName("Id"), new LocalizedText("Id"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(17));
                 ID_i3831_Id.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i3831_Id.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3831_Id.References.Add(new ReferenceNode(new NodeId(46), new NodeId(3830), true));
@@ -12291,7 +12291,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- CurrentState/3830
-                var ID_i3833_Number = new NodeVariable(new NodeId(3833), new QualifiedName("Number"), new LocalizedText("Number"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i3833_Number = new NodeVariable(new NodeId(3833), new QualifiedName("Number"), new LocalizedText("Number"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i3833_Number.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i3833_Number.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3833_Number.References.Add(new ReferenceNode(new NodeId(46), new NodeId(3830), true));
@@ -12303,7 +12303,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> FiniteTransitionVariableType/2767
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- ProgramStateMachineType/2391
-                var ID_i3835_LastTransition = new NodeVariable(new NodeId(3835), new QualifiedName("LastTransition"), new LocalizedText("LastTransition"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(21));
+                var ID_i3835_LastTransition = new NodeVariable(new NodeId(3835), new QualifiedName("LastTransition"), new LocalizedText("LastTransition"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(21));
                 ID_i3835_LastTransition.References.Add(new ReferenceNode(new NodeId(46), new NodeId(3836), false));
                 ID_i3835_LastTransition.References.Add(new ReferenceNode(new NodeId(46), new NodeId(3838), false));
                 ID_i3835_LastTransition.References.Add(new ReferenceNode(new NodeId(46), new NodeId(3839), false));
@@ -12315,7 +12315,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- LastTransition/3835
-                var ID_i3836_Id = new NodeVariable(new NodeId(3836), new QualifiedName("Id"), new LocalizedText("Id"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(17));
+                var ID_i3836_Id = new NodeVariable(new NodeId(3836), new QualifiedName("Id"), new LocalizedText("Id"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(17));
                 ID_i3836_Id.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i3836_Id.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3836_Id.References.Add(new ReferenceNode(new NodeId(46), new NodeId(3835), true));
@@ -12324,7 +12324,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- LastTransition/3835
-                var ID_i3838_Number = new NodeVariable(new NodeId(3838), new QualifiedName("Number"), new LocalizedText("Number"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i3838_Number = new NodeVariable(new NodeId(3838), new QualifiedName("Number"), new LocalizedText("Number"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i3838_Number.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i3838_Number.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3838_Number.References.Add(new ReferenceNode(new NodeId(46), new NodeId(3835), true));
@@ -12333,7 +12333,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- LastTransition/3835
-                var ID_i3839_TransitionTime = new NodeVariable(new NodeId(3839), new QualifiedName("TransitionTime"), new LocalizedText("TransitionTime"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(294));
+                var ID_i3839_TransitionTime = new NodeVariable(new NodeId(3839), new QualifiedName("TransitionTime"), new LocalizedText("TransitionTime"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(294));
                 ID_i3839_TransitionTime.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i3839_TransitionTime.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3839_TransitionTime.References.Add(new ReferenceNode(new NodeId(46), new NodeId(3835), true));
@@ -12341,7 +12341,7 @@ namespace LibUA
                 // Creatable, i=2392, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasProperty/46 <- ProgramStateMachineType/2391
-                var ID_i2392_Creatable = new NodeVariable(new NodeId(2392), new QualifiedName("Creatable"), new LocalizedText("Creatable"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(1));
+                var ID_i2392_Creatable = new NodeVariable(new NodeId(2392), new QualifiedName("Creatable"), new LocalizedText("Creatable"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(1));
                 ID_i2392_Creatable.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2392_Creatable.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2391), true));
 
@@ -12349,7 +12349,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ProgramStateMachineType/2391
-                var ID_i2393_Deletable = new NodeVariable(new NodeId(2393), new QualifiedName("Deletable"), new LocalizedText("Deletable"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(1));
+                var ID_i2393_Deletable = new NodeVariable(new NodeId(2393), new QualifiedName("Deletable"), new LocalizedText("Deletable"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(1));
                 ID_i2393_Deletable.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2393_Deletable.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2393_Deletable.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2391), true));
@@ -12358,7 +12358,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> MandatoryShared/79
                 //	HasProperty/46 <- ProgramStateMachineType/2391
-                var ID_i2394_AutoDelete = new NodeVariable(new NodeId(2394), new QualifiedName("AutoDelete"), new LocalizedText("AutoDelete"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(1));
+                var ID_i2394_AutoDelete = new NodeVariable(new NodeId(2394), new QualifiedName("AutoDelete"), new LocalizedText("AutoDelete"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(1));
                 ID_i2394_AutoDelete.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2394_AutoDelete.References.Add(new ReferenceNode(new NodeId(37), new NodeId(79), false));
                 ID_i2394_AutoDelete.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2391), true));
@@ -12367,7 +12367,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ProgramStateMachineType/2391
-                var ID_i2395_RecycleCount = new NodeVariable(new NodeId(2395), new QualifiedName("RecycleCount"), new LocalizedText("RecycleCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(6));
+                var ID_i2395_RecycleCount = new NodeVariable(new NodeId(2395), new QualifiedName("RecycleCount"), new LocalizedText("RecycleCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(6));
                 ID_i2395_RecycleCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2395_RecycleCount.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2395_RecycleCount.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2391), true));
@@ -12375,21 +12375,21 @@ namespace LibUA
                 // InstanceCount, i=2396, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasProperty/46 <- ProgramStateMachineType/2391
-                var ID_i2396_InstanceCount = new NodeVariable(new NodeId(2396), new QualifiedName("InstanceCount"), new LocalizedText("InstanceCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i2396_InstanceCount = new NodeVariable(new NodeId(2396), new QualifiedName("InstanceCount"), new LocalizedText("InstanceCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i2396_InstanceCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2396_InstanceCount.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2391), true));
 
                 // MaxInstanceCount, i=2397, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasProperty/46 <- ProgramStateMachineType/2391
-                var ID_i2397_MaxInstanceCount = new NodeVariable(new NodeId(2397), new QualifiedName("MaxInstanceCount"), new LocalizedText("MaxInstanceCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i2397_MaxInstanceCount = new NodeVariable(new NodeId(2397), new QualifiedName("MaxInstanceCount"), new LocalizedText("MaxInstanceCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i2397_MaxInstanceCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2397_MaxInstanceCount.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2391), true));
 
                 // MaxRecycleCount, i=2398, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasProperty/46 <- ProgramStateMachineType/2391
-                var ID_i2398_MaxRecycleCount = new NodeVariable(new NodeId(2398), new QualifiedName("MaxRecycleCount"), new LocalizedText("MaxRecycleCount"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i2398_MaxRecycleCount = new NodeVariable(new NodeId(2398), new QualifiedName("MaxRecycleCount"), new LocalizedText("MaxRecycleCount"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i2398_MaxRecycleCount.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2398_MaxRecycleCount.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2391), true));
 
@@ -12407,7 +12407,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> ProgramDiagnosticType/2380
                 //	HasModellingRule/37 -> Optional/80
                 //	HasComponent/47 <- ProgramStateMachineType/2391
-                var ID_i2399_ProgramDiagnostics = new NodeVariable(new NodeId(2399), new QualifiedName("ProgramDiagnostics"), new LocalizedText("ProgramDiagnostics"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(894));
+                var ID_i2399_ProgramDiagnostics = new NodeVariable(new NodeId(2399), new QualifiedName("ProgramDiagnostics"), new LocalizedText("ProgramDiagnostics"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(894));
                 ID_i2399_ProgramDiagnostics.References.Add(new ReferenceNode(new NodeId(46), new NodeId(3840), false));
                 ID_i2399_ProgramDiagnostics.References.Add(new ReferenceNode(new NodeId(46), new NodeId(3841), false));
                 ID_i2399_ProgramDiagnostics.References.Add(new ReferenceNode(new NodeId(46), new NodeId(3842), false));
@@ -12426,7 +12426,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ProgramDiagnostics/2399
-                var ID_i3840_CreateSessionId = new NodeVariable(new NodeId(3840), new QualifiedName("CreateSessionId"), new LocalizedText("CreateSessionId"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(17));
+                var ID_i3840_CreateSessionId = new NodeVariable(new NodeId(3840), new QualifiedName("CreateSessionId"), new LocalizedText("CreateSessionId"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(17));
                 ID_i3840_CreateSessionId.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i3840_CreateSessionId.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3840_CreateSessionId.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2399), true));
@@ -12435,7 +12435,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ProgramDiagnostics/2399
-                var ID_i3841_CreateClientName = new NodeVariable(new NodeId(3841), new QualifiedName("CreateClientName"), new LocalizedText("CreateClientName"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i3841_CreateClientName = new NodeVariable(new NodeId(3841), new QualifiedName("CreateClientName"), new LocalizedText("CreateClientName"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i3841_CreateClientName.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i3841_CreateClientName.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3841_CreateClientName.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2399), true));
@@ -12444,7 +12444,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ProgramDiagnostics/2399
-                var ID_i3842_InvocationCreationTime = new NodeVariable(new NodeId(3842), new QualifiedName("InvocationCreationTime"), new LocalizedText("InvocationCreationTime"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(294));
+                var ID_i3842_InvocationCreationTime = new NodeVariable(new NodeId(3842), new QualifiedName("InvocationCreationTime"), new LocalizedText("InvocationCreationTime"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(294));
                 ID_i3842_InvocationCreationTime.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i3842_InvocationCreationTime.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3842_InvocationCreationTime.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2399), true));
@@ -12453,7 +12453,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ProgramDiagnostics/2399
-                var ID_i3843_LastTransitionTime = new NodeVariable(new NodeId(3843), new QualifiedName("LastTransitionTime"), new LocalizedText("LastTransitionTime"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(294));
+                var ID_i3843_LastTransitionTime = new NodeVariable(new NodeId(3843), new QualifiedName("LastTransitionTime"), new LocalizedText("LastTransitionTime"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(294));
                 ID_i3843_LastTransitionTime.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i3843_LastTransitionTime.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3843_LastTransitionTime.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2399), true));
@@ -12462,7 +12462,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ProgramDiagnostics/2399
-                var ID_i3844_LastMethodCall = new NodeVariable(new NodeId(3844), new QualifiedName("LastMethodCall"), new LocalizedText("LastMethodCall"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i3844_LastMethodCall = new NodeVariable(new NodeId(3844), new QualifiedName("LastMethodCall"), new LocalizedText("LastMethodCall"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i3844_LastMethodCall.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i3844_LastMethodCall.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3844_LastMethodCall.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2399), true));
@@ -12471,7 +12471,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ProgramDiagnostics/2399
-                var ID_i3845_LastMethodSessionId = new NodeVariable(new NodeId(3845), new QualifiedName("LastMethodSessionId"), new LocalizedText("LastMethodSessionId"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(17));
+                var ID_i3845_LastMethodSessionId = new NodeVariable(new NodeId(3845), new QualifiedName("LastMethodSessionId"), new LocalizedText("LastMethodSessionId"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(17));
                 ID_i3845_LastMethodSessionId.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i3845_LastMethodSessionId.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3845_LastMethodSessionId.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2399), true));
@@ -12480,7 +12480,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ProgramDiagnostics/2399
-                var ID_i3846_LastMethodInputArguments = new NodeVariable(new NodeId(3846), new QualifiedName("LastMethodInputArguments"), new LocalizedText("LastMethodInputArguments"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(296));
+                var ID_i3846_LastMethodInputArguments = new NodeVariable(new NodeId(3846), new QualifiedName("LastMethodInputArguments"), new LocalizedText("LastMethodInputArguments"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(296));
                 ID_i3846_LastMethodInputArguments.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i3846_LastMethodInputArguments.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3846_LastMethodInputArguments.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2399), true));
@@ -12489,7 +12489,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ProgramDiagnostics/2399
-                var ID_i3847_LastMethodOutputArguments = new NodeVariable(new NodeId(3847), new QualifiedName("LastMethodOutputArguments"), new LocalizedText("LastMethodOutputArguments"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(296));
+                var ID_i3847_LastMethodOutputArguments = new NodeVariable(new NodeId(3847), new QualifiedName("LastMethodOutputArguments"), new LocalizedText("LastMethodOutputArguments"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(296));
                 ID_i3847_LastMethodOutputArguments.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i3847_LastMethodOutputArguments.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3847_LastMethodOutputArguments.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2399), true));
@@ -12498,7 +12498,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ProgramDiagnostics/2399
-                var ID_i3848_LastMethodCallTime = new NodeVariable(new NodeId(3848), new QualifiedName("LastMethodCallTime"), new LocalizedText("LastMethodCallTime"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(294));
+                var ID_i3848_LastMethodCallTime = new NodeVariable(new NodeId(3848), new QualifiedName("LastMethodCallTime"), new LocalizedText("LastMethodCallTime"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(294));
                 ID_i3848_LastMethodCallTime.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i3848_LastMethodCallTime.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3848_LastMethodCallTime.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2399), true));
@@ -12507,7 +12507,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ProgramDiagnostics/2399
-                var ID_i3849_LastMethodReturnStatus = new NodeVariable(new NodeId(3849), new QualifiedName("LastMethodReturnStatus"), new LocalizedText("LastMethodReturnStatus"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(299));
+                var ID_i3849_LastMethodReturnStatus = new NodeVariable(new NodeId(3849), new QualifiedName("LastMethodReturnStatus"), new LocalizedText("LastMethodReturnStatus"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(299));
                 ID_i3849_LastMethodReturnStatus.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i3849_LastMethodReturnStatus.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3849_LastMethodReturnStatus.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2399), true));
@@ -12516,7 +12516,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- Ready/2400
-                var ID_i2401_StateNumber = new NodeVariable(new NodeId(2401), new QualifiedName("StateNumber"), new LocalizedText("StateNumber"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i2401_StateNumber = new NodeVariable(new NodeId(2401), new QualifiedName("StateNumber"), new LocalizedText("StateNumber"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i2401_StateNumber.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2401_StateNumber.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2401_StateNumber.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2400), true));
@@ -12525,7 +12525,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- Running/2402
-                var ID_i2403_StateNumber = new NodeVariable(new NodeId(2403), new QualifiedName("StateNumber"), new LocalizedText("StateNumber"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i2403_StateNumber = new NodeVariable(new NodeId(2403), new QualifiedName("StateNumber"), new LocalizedText("StateNumber"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i2403_StateNumber.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2403_StateNumber.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2403_StateNumber.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2402), true));
@@ -12534,7 +12534,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- Suspended/2404
-                var ID_i2405_StateNumber = new NodeVariable(new NodeId(2405), new QualifiedName("StateNumber"), new LocalizedText("StateNumber"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i2405_StateNumber = new NodeVariable(new NodeId(2405), new QualifiedName("StateNumber"), new LocalizedText("StateNumber"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i2405_StateNumber.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2405_StateNumber.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2405_StateNumber.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2404), true));
@@ -12543,7 +12543,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- Halted/2406
-                var ID_i2407_StateNumber = new NodeVariable(new NodeId(2407), new QualifiedName("StateNumber"), new LocalizedText("StateNumber"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i2407_StateNumber = new NodeVariable(new NodeId(2407), new QualifiedName("StateNumber"), new LocalizedText("StateNumber"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i2407_StateNumber.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2407_StateNumber.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2407_StateNumber.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2406), true));
@@ -12552,7 +12552,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- HaltedToReady/2408
-                var ID_i2409_TransitionNumber = new NodeVariable(new NodeId(2409), new QualifiedName("TransitionNumber"), new LocalizedText("TransitionNumber"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i2409_TransitionNumber = new NodeVariable(new NodeId(2409), new QualifiedName("TransitionNumber"), new LocalizedText("TransitionNumber"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i2409_TransitionNumber.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2409_TransitionNumber.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2409_TransitionNumber.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2408), true));
@@ -12561,7 +12561,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ReadyToRunning/2410
-                var ID_i2411_TransitionNumber = new NodeVariable(new NodeId(2411), new QualifiedName("TransitionNumber"), new LocalizedText("TransitionNumber"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i2411_TransitionNumber = new NodeVariable(new NodeId(2411), new QualifiedName("TransitionNumber"), new LocalizedText("TransitionNumber"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i2411_TransitionNumber.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2411_TransitionNumber.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2411_TransitionNumber.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2410), true));
@@ -12570,7 +12570,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- RunningToHalted/2412
-                var ID_i2413_TransitionNumber = new NodeVariable(new NodeId(2413), new QualifiedName("TransitionNumber"), new LocalizedText("TransitionNumber"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i2413_TransitionNumber = new NodeVariable(new NodeId(2413), new QualifiedName("TransitionNumber"), new LocalizedText("TransitionNumber"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i2413_TransitionNumber.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2413_TransitionNumber.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2413_TransitionNumber.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2412), true));
@@ -12579,7 +12579,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- RunningToReady/2414
-                var ID_i2415_TransitionNumber = new NodeVariable(new NodeId(2415), new QualifiedName("TransitionNumber"), new LocalizedText("TransitionNumber"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i2415_TransitionNumber = new NodeVariable(new NodeId(2415), new QualifiedName("TransitionNumber"), new LocalizedText("TransitionNumber"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i2415_TransitionNumber.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2415_TransitionNumber.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2415_TransitionNumber.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2414), true));
@@ -12588,7 +12588,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- RunningToSuspended/2416
-                var ID_i2417_TransitionNumber = new NodeVariable(new NodeId(2417), new QualifiedName("TransitionNumber"), new LocalizedText("TransitionNumber"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i2417_TransitionNumber = new NodeVariable(new NodeId(2417), new QualifiedName("TransitionNumber"), new LocalizedText("TransitionNumber"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i2417_TransitionNumber.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2417_TransitionNumber.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2417_TransitionNumber.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2416), true));
@@ -12597,7 +12597,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- SuspendedToRunning/2418
-                var ID_i2419_TransitionNumber = new NodeVariable(new NodeId(2419), new QualifiedName("TransitionNumber"), new LocalizedText("TransitionNumber"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i2419_TransitionNumber = new NodeVariable(new NodeId(2419), new QualifiedName("TransitionNumber"), new LocalizedText("TransitionNumber"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i2419_TransitionNumber.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2419_TransitionNumber.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2419_TransitionNumber.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2418), true));
@@ -12606,7 +12606,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- SuspendedToHalted/2420
-                var ID_i2421_TransitionNumber = new NodeVariable(new NodeId(2421), new QualifiedName("TransitionNumber"), new LocalizedText("TransitionNumber"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i2421_TransitionNumber = new NodeVariable(new NodeId(2421), new QualifiedName("TransitionNumber"), new LocalizedText("TransitionNumber"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i2421_TransitionNumber.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2421_TransitionNumber.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2421_TransitionNumber.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2420), true));
@@ -12615,7 +12615,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- SuspendedToReady/2422
-                var ID_i2423_TransitionNumber = new NodeVariable(new NodeId(2423), new QualifiedName("TransitionNumber"), new LocalizedText("TransitionNumber"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i2423_TransitionNumber = new NodeVariable(new NodeId(2423), new QualifiedName("TransitionNumber"), new LocalizedText("TransitionNumber"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i2423_TransitionNumber.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2423_TransitionNumber.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2423_TransitionNumber.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2422), true));
@@ -12624,7 +12624,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ReadyToHalted/2424
-                var ID_i2425_TransitionNumber = new NodeVariable(new NodeId(2425), new QualifiedName("TransitionNumber"), new LocalizedText("TransitionNumber"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i2425_TransitionNumber = new NodeVariable(new NodeId(2425), new QualifiedName("TransitionNumber"), new LocalizedText("TransitionNumber"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i2425_TransitionNumber.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2425_TransitionNumber.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2425_TransitionNumber.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2424), true));
@@ -12633,7 +12633,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ProgramTransitionEventType/2378
-                var ID_i2379_IntermediateResult = new NodeVariable(new NodeId(2379), new QualifiedName("IntermediateResult"), new LocalizedText("IntermediateResult"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(6));
+                var ID_i2379_IntermediateResult = new NodeVariable(new NodeId(2379), new QualifiedName("IntermediateResult"), new LocalizedText("IntermediateResult"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(6));
                 ID_i2379_IntermediateResult.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2379_IntermediateResult.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2379_IntermediateResult.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2378), true));
@@ -12642,7 +12642,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AuditProgramTransitionEventType/11856
-                var ID_i11875_TransitionNumber = new NodeVariable(new NodeId(11875), new QualifiedName("TransitionNumber"), new LocalizedText("TransitionNumber"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i11875_TransitionNumber = new NodeVariable(new NodeId(11875), new QualifiedName("TransitionNumber"), new LocalizedText("TransitionNumber"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i11875_TransitionNumber.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11875_TransitionNumber.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11875_TransitionNumber.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11856), true));
@@ -12652,7 +12652,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> FiniteTransitionVariableType/2767
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasComponent/47 <- ProgramTransitionAuditEventType/3806
-                var ID_i3825_Transition = new NodeVariable(new NodeId(3825), new QualifiedName("Transition"), new LocalizedText("Transition"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(21));
+                var ID_i3825_Transition = new NodeVariable(new NodeId(3825), new QualifiedName("Transition"), new LocalizedText("Transition"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(21));
                 ID_i3825_Transition.References.Add(new ReferenceNode(new NodeId(46), new NodeId(3826), false));
                 ID_i3825_Transition.References.Add(new ReferenceNode(new NodeId(40), new NodeId(2767), false));
                 ID_i3825_Transition.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
@@ -12662,7 +12662,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- Transition/3825
-                var ID_i3826_Id = new NodeVariable(new NodeId(3826), new QualifiedName("Id"), new LocalizedText("Id"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(17));
+                var ID_i3826_Id = new NodeVariable(new NodeId(3826), new QualifiedName("Id"), new LocalizedText("Id"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(17));
                 ID_i3826_Id.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i3826_Id.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3826_Id.References.Add(new ReferenceNode(new NodeId(46), new NodeId(3825), true));
@@ -12671,7 +12671,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ProgramDiagnosticType/2380
-                var ID_i2381_CreateSessionId = new NodeVariable(new NodeId(2381), new QualifiedName("CreateSessionId"), new LocalizedText("CreateSessionId"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(17));
+                var ID_i2381_CreateSessionId = new NodeVariable(new NodeId(2381), new QualifiedName("CreateSessionId"), new LocalizedText("CreateSessionId"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(17));
                 ID_i2381_CreateSessionId.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2381_CreateSessionId.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2381_CreateSessionId.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2380), true));
@@ -12680,7 +12680,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ProgramDiagnosticType/2380
-                var ID_i2382_CreateClientName = new NodeVariable(new NodeId(2382), new QualifiedName("CreateClientName"), new LocalizedText("CreateClientName"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i2382_CreateClientName = new NodeVariable(new NodeId(2382), new QualifiedName("CreateClientName"), new LocalizedText("CreateClientName"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i2382_CreateClientName.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2382_CreateClientName.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2382_CreateClientName.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2380), true));
@@ -12689,7 +12689,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ProgramDiagnosticType/2380
-                var ID_i2383_InvocationCreationTime = new NodeVariable(new NodeId(2383), new QualifiedName("InvocationCreationTime"), new LocalizedText("InvocationCreationTime"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(294));
+                var ID_i2383_InvocationCreationTime = new NodeVariable(new NodeId(2383), new QualifiedName("InvocationCreationTime"), new LocalizedText("InvocationCreationTime"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(294));
                 ID_i2383_InvocationCreationTime.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2383_InvocationCreationTime.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2383_InvocationCreationTime.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2380), true));
@@ -12698,7 +12698,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ProgramDiagnosticType/2380
-                var ID_i2384_LastTransitionTime = new NodeVariable(new NodeId(2384), new QualifiedName("LastTransitionTime"), new LocalizedText("LastTransitionTime"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(294));
+                var ID_i2384_LastTransitionTime = new NodeVariable(new NodeId(2384), new QualifiedName("LastTransitionTime"), new LocalizedText("LastTransitionTime"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(294));
                 ID_i2384_LastTransitionTime.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2384_LastTransitionTime.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2384_LastTransitionTime.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2380), true));
@@ -12707,7 +12707,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ProgramDiagnosticType/2380
-                var ID_i2385_LastMethodCall = new NodeVariable(new NodeId(2385), new QualifiedName("LastMethodCall"), new LocalizedText("LastMethodCall"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i2385_LastMethodCall = new NodeVariable(new NodeId(2385), new QualifiedName("LastMethodCall"), new LocalizedText("LastMethodCall"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i2385_LastMethodCall.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2385_LastMethodCall.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2385_LastMethodCall.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2380), true));
@@ -12716,7 +12716,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ProgramDiagnosticType/2380
-                var ID_i2386_LastMethodSessionId = new NodeVariable(new NodeId(2386), new QualifiedName("LastMethodSessionId"), new LocalizedText("LastMethodSessionId"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(17));
+                var ID_i2386_LastMethodSessionId = new NodeVariable(new NodeId(2386), new QualifiedName("LastMethodSessionId"), new LocalizedText("LastMethodSessionId"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(17));
                 ID_i2386_LastMethodSessionId.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2386_LastMethodSessionId.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2386_LastMethodSessionId.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2380), true));
@@ -12725,7 +12725,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ProgramDiagnosticType/2380
-                var ID_i2387_LastMethodInputArguments = new NodeVariable(new NodeId(2387), new QualifiedName("LastMethodInputArguments"), new LocalizedText("LastMethodInputArguments"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(296));
+                var ID_i2387_LastMethodInputArguments = new NodeVariable(new NodeId(2387), new QualifiedName("LastMethodInputArguments"), new LocalizedText("LastMethodInputArguments"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(296));
                 ID_i2387_LastMethodInputArguments.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2387_LastMethodInputArguments.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2387_LastMethodInputArguments.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2380), true));
@@ -12734,7 +12734,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ProgramDiagnosticType/2380
-                var ID_i2388_LastMethodOutputArguments = new NodeVariable(new NodeId(2388), new QualifiedName("LastMethodOutputArguments"), new LocalizedText("LastMethodOutputArguments"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(296));
+                var ID_i2388_LastMethodOutputArguments = new NodeVariable(new NodeId(2388), new QualifiedName("LastMethodOutputArguments"), new LocalizedText("LastMethodOutputArguments"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(296));
                 ID_i2388_LastMethodOutputArguments.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2388_LastMethodOutputArguments.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2388_LastMethodOutputArguments.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2380), true));
@@ -12743,7 +12743,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ProgramDiagnosticType/2380
-                var ID_i2389_LastMethodCallTime = new NodeVariable(new NodeId(2389), new QualifiedName("LastMethodCallTime"), new LocalizedText("LastMethodCallTime"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(294));
+                var ID_i2389_LastMethodCallTime = new NodeVariable(new NodeId(2389), new QualifiedName("LastMethodCallTime"), new LocalizedText("LastMethodCallTime"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(294));
                 ID_i2389_LastMethodCallTime.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2389_LastMethodCallTime.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2389_LastMethodCallTime.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2380), true));
@@ -12752,21 +12752,21 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ProgramDiagnosticType/2380
-                var ID_i2390_LastMethodReturnStatus = new NodeVariable(new NodeId(2390), new QualifiedName("LastMethodReturnStatus"), new LocalizedText("LastMethodReturnStatus"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(299));
+                var ID_i2390_LastMethodReturnStatus = new NodeVariable(new NodeId(2390), new QualifiedName("LastMethodReturnStatus"), new LocalizedText("LastMethodReturnStatus"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(299));
                 ID_i2390_LastMethodReturnStatus.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2390_LastMethodReturnStatus.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2390_LastMethodReturnStatus.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2380), true));
 
                 // Annotations, i=11214, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
-                var ID_i11214_Annotations = new NodeVariable(new NodeId(11214), new QualifiedName("Annotations"), new LocalizedText("Annotations"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(891));
+                var ID_i11214_Annotations = new NodeVariable(new NodeId(11214), new QualifiedName("Annotations"), new LocalizedText("Annotations"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(891));
                 ID_i11214_Annotations.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
 
                 // TreatUncertainAsBad, i=11168, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AggregateConfiguration/3059
-                var ID_i11168_TreatUncertainAsBad = new NodeVariable(new NodeId(11168), new QualifiedName("TreatUncertainAsBad"), new LocalizedText("TreatUncertainAsBad"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(1));
+                var ID_i11168_TreatUncertainAsBad = new NodeVariable(new NodeId(11168), new QualifiedName("TreatUncertainAsBad"), new LocalizedText("TreatUncertainAsBad"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(1));
                 ID_i11168_TreatUncertainAsBad.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11168_TreatUncertainAsBad.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11168_TreatUncertainAsBad.References.Add(new ReferenceNode(new NodeId(46), new NodeId(3059), true));
@@ -12775,7 +12775,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AggregateConfiguration/3059
-                var ID_i11169_PercentDataBad = new NodeVariable(new NodeId(11169), new QualifiedName("PercentDataBad"), new LocalizedText("PercentDataBad"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(3));
+                var ID_i11169_PercentDataBad = new NodeVariable(new NodeId(11169), new QualifiedName("PercentDataBad"), new LocalizedText("PercentDataBad"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(3));
                 ID_i11169_PercentDataBad.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11169_PercentDataBad.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11169_PercentDataBad.References.Add(new ReferenceNode(new NodeId(46), new NodeId(3059), true));
@@ -12784,7 +12784,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AggregateConfiguration/3059
-                var ID_i11170_PercentDataGood = new NodeVariable(new NodeId(11170), new QualifiedName("PercentDataGood"), new LocalizedText("PercentDataGood"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(3));
+                var ID_i11170_PercentDataGood = new NodeVariable(new NodeId(11170), new QualifiedName("PercentDataGood"), new LocalizedText("PercentDataGood"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(3));
                 ID_i11170_PercentDataGood.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11170_PercentDataGood.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11170_PercentDataGood.References.Add(new ReferenceNode(new NodeId(46), new NodeId(3059), true));
@@ -12793,7 +12793,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AggregateConfiguration/3059
-                var ID_i11171_UseSlopedExtrapolation = new NodeVariable(new NodeId(11171), new QualifiedName("UseSlopedExtrapolation"), new LocalizedText("UseSlopedExtrapolation"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(1));
+                var ID_i11171_UseSlopedExtrapolation = new NodeVariable(new NodeId(11171), new QualifiedName("UseSlopedExtrapolation"), new LocalizedText("UseSlopedExtrapolation"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(1));
                 ID_i11171_UseSlopedExtrapolation.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11171_UseSlopedExtrapolation.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11171_UseSlopedExtrapolation.References.Add(new ReferenceNode(new NodeId(46), new NodeId(3059), true));
@@ -12802,7 +12802,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- HistoricalDataConfigurationType/2318
-                var ID_i2323_Stepped = new NodeVariable(new NodeId(2323), new QualifiedName("Stepped"), new LocalizedText("Stepped"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(1));
+                var ID_i2323_Stepped = new NodeVariable(new NodeId(2323), new QualifiedName("Stepped"), new LocalizedText("Stepped"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(1));
                 ID_i2323_Stepped.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2323_Stepped.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2323_Stepped.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2318), true));
@@ -12811,7 +12811,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Optional/80
                 //	HasProperty/46 <- HistoricalDataConfigurationType/2318
-                var ID_i2324_Definition = new NodeVariable(new NodeId(2324), new QualifiedName("Definition"), new LocalizedText("Definition"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i2324_Definition = new NodeVariable(new NodeId(2324), new QualifiedName("Definition"), new LocalizedText("Definition"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i2324_Definition.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2324_Definition.References.Add(new ReferenceNode(new NodeId(37), new NodeId(80), false));
                 ID_i2324_Definition.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2318), true));
@@ -12820,7 +12820,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Optional/80
                 //	HasProperty/46 <- HistoricalDataConfigurationType/2318
-                var ID_i2325_MaxTimeInterval = new NodeVariable(new NodeId(2325), new QualifiedName("MaxTimeInterval"), new LocalizedText("MaxTimeInterval"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(290));
+                var ID_i2325_MaxTimeInterval = new NodeVariable(new NodeId(2325), new QualifiedName("MaxTimeInterval"), new LocalizedText("MaxTimeInterval"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(290));
                 ID_i2325_MaxTimeInterval.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2325_MaxTimeInterval.References.Add(new ReferenceNode(new NodeId(37), new NodeId(80), false));
                 ID_i2325_MaxTimeInterval.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2318), true));
@@ -12829,7 +12829,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Optional/80
                 //	HasProperty/46 <- HistoricalDataConfigurationType/2318
-                var ID_i2326_MinTimeInterval = new NodeVariable(new NodeId(2326), new QualifiedName("MinTimeInterval"), new LocalizedText("MinTimeInterval"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(290));
+                var ID_i2326_MinTimeInterval = new NodeVariable(new NodeId(2326), new QualifiedName("MinTimeInterval"), new LocalizedText("MinTimeInterval"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(290));
                 ID_i2326_MinTimeInterval.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2326_MinTimeInterval.References.Add(new ReferenceNode(new NodeId(37), new NodeId(80), false));
                 ID_i2326_MinTimeInterval.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2318), true));
@@ -12838,7 +12838,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Optional/80
                 //	HasProperty/46 <- HistoricalDataConfigurationType/2318
-                var ID_i2327_ExceptionDeviation = new NodeVariable(new NodeId(2327), new QualifiedName("ExceptionDeviation"), new LocalizedText("ExceptionDeviation"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(11));
+                var ID_i2327_ExceptionDeviation = new NodeVariable(new NodeId(2327), new QualifiedName("ExceptionDeviation"), new LocalizedText("ExceptionDeviation"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(11));
                 ID_i2327_ExceptionDeviation.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2327_ExceptionDeviation.References.Add(new ReferenceNode(new NodeId(37), new NodeId(80), false));
                 ID_i2327_ExceptionDeviation.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2318), true));
@@ -12847,7 +12847,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Optional/80
                 //	HasProperty/46 <- HistoricalDataConfigurationType/2318
-                var ID_i2328_ExceptionDeviationFormat = new NodeVariable(new NodeId(2328), new QualifiedName("ExceptionDeviationFormat"), new LocalizedText("ExceptionDeviationFormat"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(890));
+                var ID_i2328_ExceptionDeviationFormat = new NodeVariable(new NodeId(2328), new QualifiedName("ExceptionDeviationFormat"), new LocalizedText("ExceptionDeviationFormat"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(890));
                 ID_i2328_ExceptionDeviationFormat.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2328_ExceptionDeviationFormat.References.Add(new ReferenceNode(new NodeId(37), new NodeId(80), false));
                 ID_i2328_ExceptionDeviationFormat.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2318), true));
@@ -12856,7 +12856,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Optional/80
                 //	HasProperty/46 <- HistoricalDataConfigurationType/2318
-                var ID_i11499_StartOfArchive = new NodeVariable(new NodeId(11499), new QualifiedName("StartOfArchive"), new LocalizedText("StartOfArchive"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(294));
+                var ID_i11499_StartOfArchive = new NodeVariable(new NodeId(11499), new QualifiedName("StartOfArchive"), new LocalizedText("StartOfArchive"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(294));
                 ID_i11499_StartOfArchive.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11499_StartOfArchive.References.Add(new ReferenceNode(new NodeId(37), new NodeId(80), false));
                 ID_i11499_StartOfArchive.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2318), true));
@@ -12865,7 +12865,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Optional/80
                 //	HasProperty/46 <- HistoricalDataConfigurationType/2318
-                var ID_i11500_StartOfOnlineArchive = new NodeVariable(new NodeId(11500), new QualifiedName("StartOfOnlineArchive"), new LocalizedText("StartOfOnlineArchive"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(294));
+                var ID_i11500_StartOfOnlineArchive = new NodeVariable(new NodeId(11500), new QualifiedName("StartOfOnlineArchive"), new LocalizedText("StartOfOnlineArchive"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(294));
                 ID_i11500_StartOfOnlineArchive.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11500_StartOfOnlineArchive.References.Add(new ReferenceNode(new NodeId(37), new NodeId(80), false));
                 ID_i11500_StartOfOnlineArchive.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2318), true));
@@ -12873,48 +12873,48 @@ namespace LibUA
                 // TreatUncertainAsBad, i=11204, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasProperty/46 <- AggregateConfiguration/11203
-                var ID_i11204_TreatUncertainAsBad = new NodeVariable(new NodeId(11204), new QualifiedName("TreatUncertainAsBad"), new LocalizedText("TreatUncertainAsBad"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(1));
+                var ID_i11204_TreatUncertainAsBad = new NodeVariable(new NodeId(11204), new QualifiedName("TreatUncertainAsBad"), new LocalizedText("TreatUncertainAsBad"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(1));
                 ID_i11204_TreatUncertainAsBad.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11204_TreatUncertainAsBad.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11203), true));
 
                 // PercentDataBad, i=11205, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasProperty/46 <- AggregateConfiguration/11203
-                var ID_i11205_PercentDataBad = new NodeVariable(new NodeId(11205), new QualifiedName("PercentDataBad"), new LocalizedText("PercentDataBad"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(3));
+                var ID_i11205_PercentDataBad = new NodeVariable(new NodeId(11205), new QualifiedName("PercentDataBad"), new LocalizedText("PercentDataBad"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(3));
                 ID_i11205_PercentDataBad.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11205_PercentDataBad.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11203), true));
 
                 // PercentDataGood, i=11206, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasProperty/46 <- AggregateConfiguration/11203
-                var ID_i11206_PercentDataGood = new NodeVariable(new NodeId(11206), new QualifiedName("PercentDataGood"), new LocalizedText("PercentDataGood"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(3));
+                var ID_i11206_PercentDataGood = new NodeVariable(new NodeId(11206), new QualifiedName("PercentDataGood"), new LocalizedText("PercentDataGood"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(3));
                 ID_i11206_PercentDataGood.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11206_PercentDataGood.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11203), true));
 
                 // UseSlopedExtrapolation, i=11207, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasProperty/46 <- AggregateConfiguration/11203
-                var ID_i11207_UseSlopedExtrapolation = new NodeVariable(new NodeId(11207), new QualifiedName("UseSlopedExtrapolation"), new LocalizedText("UseSlopedExtrapolation"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(1));
+                var ID_i11207_UseSlopedExtrapolation = new NodeVariable(new NodeId(11207), new QualifiedName("UseSlopedExtrapolation"), new LocalizedText("UseSlopedExtrapolation"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(1));
                 ID_i11207_UseSlopedExtrapolation.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11207_UseSlopedExtrapolation.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11203), true));
 
                 // Stepped, i=11208, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasProperty/46 <- HA Configuration/11202
-                var ID_i11208_Stepped = new NodeVariable(new NodeId(11208), new QualifiedName("Stepped"), new LocalizedText("Stepped"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(1));
+                var ID_i11208_Stepped = new NodeVariable(new NodeId(11208), new QualifiedName("Stepped"), new LocalizedText("Stepped"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(1));
                 ID_i11208_Stepped.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11208_Stepped.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11202), true));
 
                 // HistoricalEventFilter, i=11215, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
-                var ID_i11215_HistoricalEventFilter = new NodeVariable(new NodeId(11215), new QualifiedName("HistoricalEventFilter"), new LocalizedText("HistoricalEventFilter"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(725));
+                var ID_i11215_HistoricalEventFilter = new NodeVariable(new NodeId(11215), new QualifiedName("HistoricalEventFilter"), new LocalizedText("HistoricalEventFilter"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(725));
                 ID_i11215_HistoricalEventFilter.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
 
                 // AccessHistoryDataCapability, i=2331, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- HistoryServerCapabilitiesType/2330
-                var ID_i2331_AccessHistoryDataCapability = new NodeVariable(new NodeId(2331), new QualifiedName("AccessHistoryDataCapability"), new LocalizedText("AccessHistoryDataCapability"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(1));
+                var ID_i2331_AccessHistoryDataCapability = new NodeVariable(new NodeId(2331), new QualifiedName("AccessHistoryDataCapability"), new LocalizedText("AccessHistoryDataCapability"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(1));
                 ID_i2331_AccessHistoryDataCapability.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2331_AccessHistoryDataCapability.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2331_AccessHistoryDataCapability.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2330), true));
@@ -12923,7 +12923,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- HistoryServerCapabilitiesType/2330
-                var ID_i2332_AccessHistoryEventsCapability = new NodeVariable(new NodeId(2332), new QualifiedName("AccessHistoryEventsCapability"), new LocalizedText("AccessHistoryEventsCapability"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(1));
+                var ID_i2332_AccessHistoryEventsCapability = new NodeVariable(new NodeId(2332), new QualifiedName("AccessHistoryEventsCapability"), new LocalizedText("AccessHistoryEventsCapability"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(1));
                 ID_i2332_AccessHistoryEventsCapability.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2332_AccessHistoryEventsCapability.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2332_AccessHistoryEventsCapability.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2330), true));
@@ -12932,7 +12932,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- HistoryServerCapabilitiesType/2330
-                var ID_i11268_MaxReturnDataValues = new NodeVariable(new NodeId(11268), new QualifiedName("MaxReturnDataValues"), new LocalizedText("MaxReturnDataValues"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i11268_MaxReturnDataValues = new NodeVariable(new NodeId(11268), new QualifiedName("MaxReturnDataValues"), new LocalizedText("MaxReturnDataValues"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i11268_MaxReturnDataValues.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11268_MaxReturnDataValues.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11268_MaxReturnDataValues.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2330), true));
@@ -12941,7 +12941,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- HistoryServerCapabilitiesType/2330
-                var ID_i11269_MaxReturnEventValues = new NodeVariable(new NodeId(11269), new QualifiedName("MaxReturnEventValues"), new LocalizedText("MaxReturnEventValues"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7));
+                var ID_i11269_MaxReturnEventValues = new NodeVariable(new NodeId(11269), new QualifiedName("MaxReturnEventValues"), new LocalizedText("MaxReturnEventValues"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7));
                 ID_i11269_MaxReturnEventValues.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11269_MaxReturnEventValues.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11269_MaxReturnEventValues.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2330), true));
@@ -12950,7 +12950,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- HistoryServerCapabilitiesType/2330
-                var ID_i2334_InsertDataCapability = new NodeVariable(new NodeId(2334), new QualifiedName("InsertDataCapability"), new LocalizedText("InsertDataCapability"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(1));
+                var ID_i2334_InsertDataCapability = new NodeVariable(new NodeId(2334), new QualifiedName("InsertDataCapability"), new LocalizedText("InsertDataCapability"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(1));
                 ID_i2334_InsertDataCapability.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2334_InsertDataCapability.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2334_InsertDataCapability.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2330), true));
@@ -12959,7 +12959,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- HistoryServerCapabilitiesType/2330
-                var ID_i2335_ReplaceDataCapability = new NodeVariable(new NodeId(2335), new QualifiedName("ReplaceDataCapability"), new LocalizedText("ReplaceDataCapability"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(1));
+                var ID_i2335_ReplaceDataCapability = new NodeVariable(new NodeId(2335), new QualifiedName("ReplaceDataCapability"), new LocalizedText("ReplaceDataCapability"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(1));
                 ID_i2335_ReplaceDataCapability.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2335_ReplaceDataCapability.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2335_ReplaceDataCapability.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2330), true));
@@ -12968,7 +12968,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- HistoryServerCapabilitiesType/2330
-                var ID_i2336_UpdateDataCapability = new NodeVariable(new NodeId(2336), new QualifiedName("UpdateDataCapability"), new LocalizedText("UpdateDataCapability"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(1));
+                var ID_i2336_UpdateDataCapability = new NodeVariable(new NodeId(2336), new QualifiedName("UpdateDataCapability"), new LocalizedText("UpdateDataCapability"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(1));
                 ID_i2336_UpdateDataCapability.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2336_UpdateDataCapability.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2336_UpdateDataCapability.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2330), true));
@@ -12977,7 +12977,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- HistoryServerCapabilitiesType/2330
-                var ID_i2337_DeleteRawCapability = new NodeVariable(new NodeId(2337), new QualifiedName("DeleteRawCapability"), new LocalizedText("DeleteRawCapability"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(1));
+                var ID_i2337_DeleteRawCapability = new NodeVariable(new NodeId(2337), new QualifiedName("DeleteRawCapability"), new LocalizedText("DeleteRawCapability"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(1));
                 ID_i2337_DeleteRawCapability.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2337_DeleteRawCapability.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2337_DeleteRawCapability.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2330), true));
@@ -12986,7 +12986,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- HistoryServerCapabilitiesType/2330
-                var ID_i2338_DeleteAtTimeCapability = new NodeVariable(new NodeId(2338), new QualifiedName("DeleteAtTimeCapability"), new LocalizedText("DeleteAtTimeCapability"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(1));
+                var ID_i2338_DeleteAtTimeCapability = new NodeVariable(new NodeId(2338), new QualifiedName("DeleteAtTimeCapability"), new LocalizedText("DeleteAtTimeCapability"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(1));
                 ID_i2338_DeleteAtTimeCapability.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i2338_DeleteAtTimeCapability.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i2338_DeleteAtTimeCapability.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2330), true));
@@ -12995,7 +12995,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- HistoryServerCapabilitiesType/2330
-                var ID_i11278_InsertEventCapability = new NodeVariable(new NodeId(11278), new QualifiedName("InsertEventCapability"), new LocalizedText("InsertEventCapability"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(1));
+                var ID_i11278_InsertEventCapability = new NodeVariable(new NodeId(11278), new QualifiedName("InsertEventCapability"), new LocalizedText("InsertEventCapability"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(1));
                 ID_i11278_InsertEventCapability.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11278_InsertEventCapability.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11278_InsertEventCapability.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2330), true));
@@ -13004,7 +13004,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- HistoryServerCapabilitiesType/2330
-                var ID_i11279_ReplaceEventCapability = new NodeVariable(new NodeId(11279), new QualifiedName("ReplaceEventCapability"), new LocalizedText("ReplaceEventCapability"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(1));
+                var ID_i11279_ReplaceEventCapability = new NodeVariable(new NodeId(11279), new QualifiedName("ReplaceEventCapability"), new LocalizedText("ReplaceEventCapability"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(1));
                 ID_i11279_ReplaceEventCapability.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11279_ReplaceEventCapability.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11279_ReplaceEventCapability.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2330), true));
@@ -13013,7 +13013,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- HistoryServerCapabilitiesType/2330
-                var ID_i11280_UpdateEventCapability = new NodeVariable(new NodeId(11280), new QualifiedName("UpdateEventCapability"), new LocalizedText("UpdateEventCapability"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(1));
+                var ID_i11280_UpdateEventCapability = new NodeVariable(new NodeId(11280), new QualifiedName("UpdateEventCapability"), new LocalizedText("UpdateEventCapability"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(1));
                 ID_i11280_UpdateEventCapability.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11280_UpdateEventCapability.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11280_UpdateEventCapability.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2330), true));
@@ -13022,7 +13022,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- HistoryServerCapabilitiesType/2330
-                var ID_i11501_DeleteEventCapability = new NodeVariable(new NodeId(11501), new QualifiedName("DeleteEventCapability"), new LocalizedText("DeleteEventCapability"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(1));
+                var ID_i11501_DeleteEventCapability = new NodeVariable(new NodeId(11501), new QualifiedName("DeleteEventCapability"), new LocalizedText("DeleteEventCapability"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(1));
                 ID_i11501_DeleteEventCapability.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11501_DeleteEventCapability.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11501_DeleteEventCapability.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2330), true));
@@ -13031,7 +13031,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- HistoryServerCapabilitiesType/2330
-                var ID_i11270_InsertAnnotationCapability = new NodeVariable(new NodeId(11270), new QualifiedName("InsertAnnotationCapability"), new LocalizedText("InsertAnnotationCapability"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(1));
+                var ID_i11270_InsertAnnotationCapability = new NodeVariable(new NodeId(11270), new QualifiedName("InsertAnnotationCapability"), new LocalizedText("InsertAnnotationCapability"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(1));
                 ID_i11270_InsertAnnotationCapability.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11270_InsertAnnotationCapability.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11270_InsertAnnotationCapability.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2330), true));
@@ -13040,7 +13040,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AuditHistoryEventUpdateEventType/2999
-                var ID_i3025_UpdatedNode = new NodeVariable(new NodeId(3025), new QualifiedName("UpdatedNode"), new LocalizedText("UpdatedNode"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(17));
+                var ID_i3025_UpdatedNode = new NodeVariable(new NodeId(3025), new QualifiedName("UpdatedNode"), new LocalizedText("UpdatedNode"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(17));
                 ID_i3025_UpdatedNode.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i3025_UpdatedNode.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3025_UpdatedNode.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2999), true));
@@ -13049,7 +13049,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AuditHistoryEventUpdateEventType/2999
-                var ID_i3028_PerformInsertReplace = new NodeVariable(new NodeId(3028), new QualifiedName("PerformInsertReplace"), new LocalizedText("PerformInsertReplace"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(11293));
+                var ID_i3028_PerformInsertReplace = new NodeVariable(new NodeId(3028), new QualifiedName("PerformInsertReplace"), new LocalizedText("PerformInsertReplace"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(11293));
                 ID_i3028_PerformInsertReplace.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i3028_PerformInsertReplace.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3028_PerformInsertReplace.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2999), true));
@@ -13058,7 +13058,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AuditHistoryEventUpdateEventType/2999
-                var ID_i3003_Filter = new NodeVariable(new NodeId(3003), new QualifiedName("Filter"), new LocalizedText("Filter"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(725));
+                var ID_i3003_Filter = new NodeVariable(new NodeId(3003), new QualifiedName("Filter"), new LocalizedText("Filter"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(725));
                 ID_i3003_Filter.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i3003_Filter.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3003_Filter.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2999), true));
@@ -13067,7 +13067,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AuditHistoryEventUpdateEventType/2999
-                var ID_i3029_NewValues = new NodeVariable(new NodeId(3029), new QualifiedName("NewValues"), new LocalizedText("NewValues"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(920));
+                var ID_i3029_NewValues = new NodeVariable(new NodeId(3029), new QualifiedName("NewValues"), new LocalizedText("NewValues"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(920));
                 ID_i3029_NewValues.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i3029_NewValues.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3029_NewValues.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2999), true));
@@ -13076,7 +13076,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AuditHistoryEventUpdateEventType/2999
-                var ID_i3030_OldValues = new NodeVariable(new NodeId(3030), new QualifiedName("OldValues"), new LocalizedText("OldValues"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(920));
+                var ID_i3030_OldValues = new NodeVariable(new NodeId(3030), new QualifiedName("OldValues"), new LocalizedText("OldValues"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(920));
                 ID_i3030_OldValues.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i3030_OldValues.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3030_OldValues.References.Add(new ReferenceNode(new NodeId(46), new NodeId(2999), true));
@@ -13085,7 +13085,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AuditHistoryValueUpdateEventType/3006
-                var ID_i3026_UpdatedNode = new NodeVariable(new NodeId(3026), new QualifiedName("UpdatedNode"), new LocalizedText("UpdatedNode"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(17));
+                var ID_i3026_UpdatedNode = new NodeVariable(new NodeId(3026), new QualifiedName("UpdatedNode"), new LocalizedText("UpdatedNode"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(17));
                 ID_i3026_UpdatedNode.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i3026_UpdatedNode.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3026_UpdatedNode.References.Add(new ReferenceNode(new NodeId(46), new NodeId(3006), true));
@@ -13094,7 +13094,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AuditHistoryValueUpdateEventType/3006
-                var ID_i3031_PerformInsertReplace = new NodeVariable(new NodeId(3031), new QualifiedName("PerformInsertReplace"), new LocalizedText("PerformInsertReplace"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(11293));
+                var ID_i3031_PerformInsertReplace = new NodeVariable(new NodeId(3031), new QualifiedName("PerformInsertReplace"), new LocalizedText("PerformInsertReplace"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(11293));
                 ID_i3031_PerformInsertReplace.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i3031_PerformInsertReplace.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3031_PerformInsertReplace.References.Add(new ReferenceNode(new NodeId(46), new NodeId(3006), true));
@@ -13103,7 +13103,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AuditHistoryValueUpdateEventType/3006
-                var ID_i3032_NewValues = new NodeVariable(new NodeId(3032), new QualifiedName("NewValues"), new LocalizedText("NewValues"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(23));
+                var ID_i3032_NewValues = new NodeVariable(new NodeId(3032), new QualifiedName("NewValues"), new LocalizedText("NewValues"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(23));
                 ID_i3032_NewValues.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i3032_NewValues.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3032_NewValues.References.Add(new ReferenceNode(new NodeId(46), new NodeId(3006), true));
@@ -13112,7 +13112,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AuditHistoryValueUpdateEventType/3006
-                var ID_i3033_OldValues = new NodeVariable(new NodeId(3033), new QualifiedName("OldValues"), new LocalizedText("OldValues"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(23));
+                var ID_i3033_OldValues = new NodeVariable(new NodeId(3033), new QualifiedName("OldValues"), new LocalizedText("OldValues"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(23));
                 ID_i3033_OldValues.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i3033_OldValues.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3033_OldValues.References.Add(new ReferenceNode(new NodeId(46), new NodeId(3006), true));
@@ -13121,7 +13121,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AuditHistoryDeleteEventType/3012
-                var ID_i3027_UpdatedNode = new NodeVariable(new NodeId(3027), new QualifiedName("UpdatedNode"), new LocalizedText("UpdatedNode"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(17));
+                var ID_i3027_UpdatedNode = new NodeVariable(new NodeId(3027), new QualifiedName("UpdatedNode"), new LocalizedText("UpdatedNode"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(17));
                 ID_i3027_UpdatedNode.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i3027_UpdatedNode.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3027_UpdatedNode.References.Add(new ReferenceNode(new NodeId(46), new NodeId(3012), true));
@@ -13130,7 +13130,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AuditHistoryRawModifyDeleteEventType/3014
-                var ID_i3015_IsDeleteModified = new NodeVariable(new NodeId(3015), new QualifiedName("IsDeleteModified"), new LocalizedText("IsDeleteModified"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(1));
+                var ID_i3015_IsDeleteModified = new NodeVariable(new NodeId(3015), new QualifiedName("IsDeleteModified"), new LocalizedText("IsDeleteModified"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(1));
                 ID_i3015_IsDeleteModified.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i3015_IsDeleteModified.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3015_IsDeleteModified.References.Add(new ReferenceNode(new NodeId(46), new NodeId(3014), true));
@@ -13139,7 +13139,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AuditHistoryRawModifyDeleteEventType/3014
-                var ID_i3016_StartTime = new NodeVariable(new NodeId(3016), new QualifiedName("StartTime"), new LocalizedText("StartTime"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(294));
+                var ID_i3016_StartTime = new NodeVariable(new NodeId(3016), new QualifiedName("StartTime"), new LocalizedText("StartTime"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(294));
                 ID_i3016_StartTime.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i3016_StartTime.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3016_StartTime.References.Add(new ReferenceNode(new NodeId(46), new NodeId(3014), true));
@@ -13148,7 +13148,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AuditHistoryRawModifyDeleteEventType/3014
-                var ID_i3017_EndTime = new NodeVariable(new NodeId(3017), new QualifiedName("EndTime"), new LocalizedText("EndTime"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(294));
+                var ID_i3017_EndTime = new NodeVariable(new NodeId(3017), new QualifiedName("EndTime"), new LocalizedText("EndTime"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(294));
                 ID_i3017_EndTime.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i3017_EndTime.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3017_EndTime.References.Add(new ReferenceNode(new NodeId(46), new NodeId(3014), true));
@@ -13157,7 +13157,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AuditHistoryRawModifyDeleteEventType/3014
-                var ID_i3034_OldValues = new NodeVariable(new NodeId(3034), new QualifiedName("OldValues"), new LocalizedText("OldValues"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(23));
+                var ID_i3034_OldValues = new NodeVariable(new NodeId(3034), new QualifiedName("OldValues"), new LocalizedText("OldValues"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(23));
                 ID_i3034_OldValues.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i3034_OldValues.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3034_OldValues.References.Add(new ReferenceNode(new NodeId(46), new NodeId(3014), true));
@@ -13166,7 +13166,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AuditHistoryAtTimeDeleteEventType/3019
-                var ID_i3020_ReqTimes = new NodeVariable(new NodeId(3020), new QualifiedName("ReqTimes"), new LocalizedText("ReqTimes"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(294));
+                var ID_i3020_ReqTimes = new NodeVariable(new NodeId(3020), new QualifiedName("ReqTimes"), new LocalizedText("ReqTimes"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(294));
                 ID_i3020_ReqTimes.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i3020_ReqTimes.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3020_ReqTimes.References.Add(new ReferenceNode(new NodeId(46), new NodeId(3019), true));
@@ -13175,7 +13175,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AuditHistoryAtTimeDeleteEventType/3019
-                var ID_i3021_OldValues = new NodeVariable(new NodeId(3021), new QualifiedName("OldValues"), new LocalizedText("OldValues"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(23));
+                var ID_i3021_OldValues = new NodeVariable(new NodeId(3021), new QualifiedName("OldValues"), new LocalizedText("OldValues"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(23));
                 ID_i3021_OldValues.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i3021_OldValues.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3021_OldValues.References.Add(new ReferenceNode(new NodeId(46), new NodeId(3019), true));
@@ -13184,7 +13184,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AuditHistoryEventDeleteEventType/3022
-                var ID_i3023_EventIds = new NodeVariable(new NodeId(3023), new QualifiedName("EventIds"), new LocalizedText("EventIds"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(15));
+                var ID_i3023_EventIds = new NodeVariable(new NodeId(3023), new QualifiedName("EventIds"), new LocalizedText("EventIds"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(15));
                 ID_i3023_EventIds.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i3023_EventIds.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3023_EventIds.References.Add(new ReferenceNode(new NodeId(46), new NodeId(3022), true));
@@ -13193,7 +13193,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AuditHistoryEventDeleteEventType/3022
-                var ID_i3024_OldValues = new NodeVariable(new NodeId(3024), new QualifiedName("OldValues"), new LocalizedText("OldValues"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(920));
+                var ID_i3024_OldValues = new NodeVariable(new NodeId(3024), new QualifiedName("OldValues"), new LocalizedText("OldValues"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(920));
                 ID_i3024_OldValues.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i3024_OldValues.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i3024_OldValues.References.Add(new ReferenceNode(new NodeId(46), new NodeId(3022), true));
@@ -13202,7 +13202,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AggregateConfigurationType/11187
-                var ID_i11188_TreatUncertainAsBad = new NodeVariable(new NodeId(11188), new QualifiedName("TreatUncertainAsBad"), new LocalizedText("TreatUncertainAsBad"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(1));
+                var ID_i11188_TreatUncertainAsBad = new NodeVariable(new NodeId(11188), new QualifiedName("TreatUncertainAsBad"), new LocalizedText("TreatUncertainAsBad"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(1));
                 ID_i11188_TreatUncertainAsBad.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11188_TreatUncertainAsBad.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11188_TreatUncertainAsBad.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11187), true));
@@ -13211,7 +13211,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AggregateConfigurationType/11187
-                var ID_i11189_PercentDataBad = new NodeVariable(new NodeId(11189), new QualifiedName("PercentDataBad"), new LocalizedText("PercentDataBad"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(3));
+                var ID_i11189_PercentDataBad = new NodeVariable(new NodeId(11189), new QualifiedName("PercentDataBad"), new LocalizedText("PercentDataBad"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(3));
                 ID_i11189_PercentDataBad.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11189_PercentDataBad.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11189_PercentDataBad.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11187), true));
@@ -13220,7 +13220,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AggregateConfigurationType/11187
-                var ID_i11190_PercentDataGood = new NodeVariable(new NodeId(11190), new QualifiedName("PercentDataGood"), new LocalizedText("PercentDataGood"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(3));
+                var ID_i11190_PercentDataGood = new NodeVariable(new NodeId(11190), new QualifiedName("PercentDataGood"), new LocalizedText("PercentDataGood"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(3));
                 ID_i11190_PercentDataGood.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11190_PercentDataGood.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11190_PercentDataGood.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11187), true));
@@ -13229,7 +13229,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AggregateConfigurationType/11187
-                var ID_i11191_UseSlopedExtrapolation = new NodeVariable(new NodeId(11191), new QualifiedName("UseSlopedExtrapolation"), new LocalizedText("UseSlopedExtrapolation"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(1));
+                var ID_i11191_UseSlopedExtrapolation = new NodeVariable(new NodeId(11191), new QualifiedName("UseSlopedExtrapolation"), new LocalizedText("UseSlopedExtrapolation"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(1));
                 ID_i11191_UseSlopedExtrapolation.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11191_UseSlopedExtrapolation.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11191_UseSlopedExtrapolation.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11187), true));
@@ -13238,7 +13238,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- IdType/256
-                var ID_i7591_EnumStrings = new NodeVariable(new NodeId(7591), new QualifiedName("EnumStrings"), new LocalizedText("EnumStrings"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(21));
+                var ID_i7591_EnumStrings = new NodeVariable(new NodeId(7591), new QualifiedName("EnumStrings"), new LocalizedText("EnumStrings"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(21));
                 ID_i7591_EnumStrings.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i7591_EnumStrings.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i7591_EnumStrings.References.Add(new ReferenceNode(new NodeId(46), new NodeId(256), true));
@@ -13247,7 +13247,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- NodeClass/257
-                var ID_i11878_EnumValues = new NodeVariable(new NodeId(11878), new QualifiedName("EnumValues"), new LocalizedText("EnumValues"), new LocalizedText("No classes are selected."), 0, 0, 0, 0, 0, false, new NodeId(7594));
+                var ID_i11878_EnumValues = new NodeVariable(new NodeId(11878), new QualifiedName("EnumValues"), new LocalizedText("EnumValues"), new LocalizedText("No classes are selected."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7594));
                 ID_i11878_EnumValues.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11878_EnumValues.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11878_EnumValues.References.Add(new ReferenceNode(new NodeId(46), new NodeId(257), true));
@@ -13256,7 +13256,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ApplicationType/307
-                var ID_i7597_EnumStrings = new NodeVariable(new NodeId(7597), new QualifiedName("EnumStrings"), new LocalizedText("EnumStrings"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(21));
+                var ID_i7597_EnumStrings = new NodeVariable(new NodeId(7597), new QualifiedName("EnumStrings"), new LocalizedText("EnumStrings"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(21));
                 ID_i7597_EnumStrings.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i7597_EnumStrings.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i7597_EnumStrings.References.Add(new ReferenceNode(new NodeId(46), new NodeId(307), true));
@@ -13265,7 +13265,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- MessageSecurityMode/302
-                var ID_i7595_EnumStrings = new NodeVariable(new NodeId(7595), new QualifiedName("EnumStrings"), new LocalizedText("EnumStrings"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(21));
+                var ID_i7595_EnumStrings = new NodeVariable(new NodeId(7595), new QualifiedName("EnumStrings"), new LocalizedText("EnumStrings"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(21));
                 ID_i7595_EnumStrings.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i7595_EnumStrings.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i7595_EnumStrings.References.Add(new ReferenceNode(new NodeId(46), new NodeId(302), true));
@@ -13274,7 +13274,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- UserTokenType/303
-                var ID_i7596_EnumStrings = new NodeVariable(new NodeId(7596), new QualifiedName("EnumStrings"), new LocalizedText("EnumStrings"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(21));
+                var ID_i7596_EnumStrings = new NodeVariable(new NodeId(7596), new QualifiedName("EnumStrings"), new LocalizedText("EnumStrings"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(21));
                 ID_i7596_EnumStrings.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i7596_EnumStrings.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i7596_EnumStrings.References.Add(new ReferenceNode(new NodeId(46), new NodeId(303), true));
@@ -13283,7 +13283,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- SecurityTokenRequestType/315
-                var ID_i7598_EnumStrings = new NodeVariable(new NodeId(7598), new QualifiedName("EnumStrings"), new LocalizedText("EnumStrings"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(21));
+                var ID_i7598_EnumStrings = new NodeVariable(new NodeId(7598), new QualifiedName("EnumStrings"), new LocalizedText("EnumStrings"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(21));
                 ID_i7598_EnumStrings.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i7598_EnumStrings.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i7598_EnumStrings.References.Add(new ReferenceNode(new NodeId(46), new NodeId(315), true));
@@ -13292,7 +13292,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- NodeAttributesMask/348
-                var ID_i11881_EnumValues = new NodeVariable(new NodeId(11881), new QualifiedName("EnumValues"), new LocalizedText("EnumValues"), new LocalizedText("No attribuites provided."), 0, 0, 0, 0, 0, false, new NodeId(7594));
+                var ID_i11881_EnumValues = new NodeVariable(new NodeId(11881), new QualifiedName("EnumValues"), new LocalizedText("EnumValues"), new LocalizedText("No attribuites provided."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7594));
                 ID_i11881_EnumValues.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11881_EnumValues.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11881_EnumValues.References.Add(new ReferenceNode(new NodeId(46), new NodeId(348), true));
@@ -13301,7 +13301,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AttributeWriteMask/347
-                var ID_i11882_EnumValues = new NodeVariable(new NodeId(11882), new QualifiedName("EnumValues"), new LocalizedText("EnumValues"), new LocalizedText("No attributes are writeable."), 0, 0, 0, 0, 0, false, new NodeId(7594));
+                var ID_i11882_EnumValues = new NodeVariable(new NodeId(11882), new QualifiedName("EnumValues"), new LocalizedText("EnumValues"), new LocalizedText("No attributes are writeable."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7594));
                 ID_i11882_EnumValues.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11882_EnumValues.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11882_EnumValues.References.Add(new ReferenceNode(new NodeId(46), new NodeId(347), true));
@@ -13310,7 +13310,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ComplianceLevel/334
-                var ID_i7599_EnumStrings = new NodeVariable(new NodeId(7599), new QualifiedName("EnumStrings"), new LocalizedText("EnumStrings"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(21));
+                var ID_i7599_EnumStrings = new NodeVariable(new NodeId(7599), new QualifiedName("EnumStrings"), new LocalizedText("EnumStrings"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(21));
                 ID_i7599_EnumStrings.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i7599_EnumStrings.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i7599_EnumStrings.References.Add(new ReferenceNode(new NodeId(46), new NodeId(334), true));
@@ -13319,7 +13319,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- FilterOperator/576
-                var ID_i7605_EnumStrings = new NodeVariable(new NodeId(7605), new QualifiedName("EnumStrings"), new LocalizedText("EnumStrings"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(21));
+                var ID_i7605_EnumStrings = new NodeVariable(new NodeId(7605), new QualifiedName("EnumStrings"), new LocalizedText("EnumStrings"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(21));
                 ID_i7605_EnumStrings.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i7605_EnumStrings.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i7605_EnumStrings.References.Add(new ReferenceNode(new NodeId(46), new NodeId(576), true));
@@ -13328,7 +13328,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- HistoryUpdateType/11234
-                var ID_i11884_EnumValues = new NodeVariable(new NodeId(11884), new QualifiedName("EnumValues"), new LocalizedText("EnumValues"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7594));
+                var ID_i11884_EnumValues = new NodeVariable(new NodeId(11884), new QualifiedName("EnumValues"), new LocalizedText("EnumValues"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7594));
                 ID_i11884_EnumValues.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11884_EnumValues.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11884_EnumValues.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11234), true));
@@ -13337,7 +13337,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- PerformUpdateType/11293
-                var ID_i11885_EnumValues = new NodeVariable(new NodeId(11885), new QualifiedName("EnumValues"), new LocalizedText("EnumValues"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(7594));
+                var ID_i11885_EnumValues = new NodeVariable(new NodeId(11885), new QualifiedName("EnumValues"), new LocalizedText("EnumValues"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7594));
                 ID_i11885_EnumValues.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11885_EnumValues.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11885_EnumValues.References.Add(new ReferenceNode(new NodeId(46), new NodeId(11293), true));
@@ -13346,7 +13346,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- EnumeratedTestType/398
-                var ID_i11886_EnumValues = new NodeVariable(new NodeId(11886), new QualifiedName("EnumValues"), new LocalizedText("EnumValues"), new LocalizedText("Operation has halted."), 0, 0, 0, 0, 0, false, new NodeId(7594));
+                var ID_i11886_EnumValues = new NodeVariable(new NodeId(11886), new QualifiedName("EnumValues"), new LocalizedText("EnumValues"), new LocalizedText("Operation has halted."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(7594));
                 ID_i11886_EnumValues.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i11886_EnumValues.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i11886_EnumValues.References.Add(new ReferenceNode(new NodeId(46), new NodeId(398), true));
@@ -13355,7 +13355,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- RedundancySupport/851
-                var ID_i7611_EnumStrings = new NodeVariable(new NodeId(7611), new QualifiedName("EnumStrings"), new LocalizedText("EnumStrings"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(21));
+                var ID_i7611_EnumStrings = new NodeVariable(new NodeId(7611), new QualifiedName("EnumStrings"), new LocalizedText("EnumStrings"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(21));
                 ID_i7611_EnumStrings.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i7611_EnumStrings.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i7611_EnumStrings.References.Add(new ReferenceNode(new NodeId(46), new NodeId(851), true));
@@ -13364,7 +13364,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ServerState/852
-                var ID_i7612_EnumStrings = new NodeVariable(new NodeId(7612), new QualifiedName("EnumStrings"), new LocalizedText("EnumStrings"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(21));
+                var ID_i7612_EnumStrings = new NodeVariable(new NodeId(7612), new QualifiedName("EnumStrings"), new LocalizedText("EnumStrings"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(21));
                 ID_i7612_EnumStrings.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i7612_EnumStrings.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i7612_EnumStrings.References.Add(new ReferenceNode(new NodeId(46), new NodeId(852), true));
@@ -13373,7 +13373,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- AxisScaleEnumeration/12077
-                var ID_i12078_EnumStrings = new NodeVariable(new NodeId(12078), new QualifiedName("EnumStrings"), new LocalizedText("EnumStrings"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(21));
+                var ID_i12078_EnumStrings = new NodeVariable(new NodeId(12078), new QualifiedName("EnumStrings"), new LocalizedText("EnumStrings"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(21));
                 ID_i12078_EnumStrings.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i12078_EnumStrings.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i12078_EnumStrings.References.Add(new ReferenceNode(new NodeId(46), new NodeId(12077), true));
@@ -13382,7 +13382,7 @@ namespace LibUA
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasModellingRule/37 -> Mandatory/78
                 //	HasProperty/46 <- ExceptionDeviationFormat/890
-                var ID_i7614_EnumStrings = new NodeVariable(new NodeId(7614), new QualifiedName("EnumStrings"), new LocalizedText("EnumStrings"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(21));
+                var ID_i7614_EnumStrings = new NodeVariable(new NodeId(7614), new QualifiedName("EnumStrings"), new LocalizedText("EnumStrings"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(21));
                 ID_i7614_EnumStrings.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i7614_EnumStrings.References.Add(new ReferenceNode(new NodeId(37), new NodeId(78), false));
                 ID_i7614_EnumStrings.References.Add(new ReferenceNode(new NodeId(46), new NodeId(890), true));
@@ -13448,7 +13448,7 @@ namespace LibUA
                 //	HasComponent/47 -> Annotation/8879
                 //	HasComponent/47 <- XML Schema/92
                 //	HasTypeDefinition/40 -> DataTypeDictionaryType/72
-                var ID_i8252_OpcUa = new NodeVariable(new NodeId(8252), new QualifiedName("Opc.Ua"), new LocalizedText("Opc.Ua"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(15));
+                var ID_i8252_OpcUa = new NodeVariable(new NodeId(8252), new QualifiedName("Opc.Ua"), new LocalizedText("Opc.Ua"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(15));
                 ID_i8252_OpcUa.References.Add(new ReferenceNode(new NodeId(46), new NodeId(8254), false));
                 ID_i8252_OpcUa.References.Add(new ReferenceNode(new NodeId(47), new NodeId(8285), false));
                 ID_i8252_OpcUa.References.Add(new ReferenceNode(new NodeId(47), new NodeId(8291), false));
@@ -13513,406 +13513,406 @@ namespace LibUA
                 // NamespaceUri, i=8254, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasProperty/46 <- Opc.Ua/8252
-                var ID_i8254_NamespaceUri = new NodeVariable(new NodeId(8254), new QualifiedName("NamespaceUri"), new LocalizedText("NamespaceUri"), new LocalizedText("A URI that uniquely identifies the dictionary."), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8254_NamespaceUri = new NodeVariable(new NodeId(8254), new QualifiedName("NamespaceUri"), new LocalizedText("NamespaceUri"), new LocalizedText("A URI that uniquely identifies the dictionary."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8254_NamespaceUri.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i8254_NamespaceUri.References.Add(new ReferenceNode(new NodeId(46), new NodeId(8252), true));
 
                 // Argument, i=8285, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/8252
-                var ID_i8285_Argument = new NodeVariable(new NodeId(8285), new QualifiedName("Argument"), new LocalizedText("Argument"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8285_Argument = new NodeVariable(new NodeId(8285), new QualifiedName("Argument"), new LocalizedText("Argument"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8285_Argument.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i8285_Argument.References.Add(new ReferenceNode(new NodeId(47), new NodeId(8252), true));
 
                 // EnumValueType, i=8291, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/8252
-                var ID_i8291_EnumValueType = new NodeVariable(new NodeId(8291), new QualifiedName("EnumValueType"), new LocalizedText("EnumValueType"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8291_EnumValueType = new NodeVariable(new NodeId(8291), new QualifiedName("EnumValueType"), new LocalizedText("EnumValueType"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8291_EnumValueType.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i8291_EnumValueType.References.Add(new ReferenceNode(new NodeId(47), new NodeId(8252), true));
 
                 // TimeZoneDataType, i=8918, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/8252
-                var ID_i8918_TimeZoneDataType = new NodeVariable(new NodeId(8918), new QualifiedName("TimeZoneDataType"), new LocalizedText("TimeZoneDataType"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8918_TimeZoneDataType = new NodeVariable(new NodeId(8918), new QualifiedName("TimeZoneDataType"), new LocalizedText("TimeZoneDataType"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8918_TimeZoneDataType.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i8918_TimeZoneDataType.References.Add(new ReferenceNode(new NodeId(47), new NodeId(8252), true));
 
                 // ApplicationDescription, i=8300, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/8252
-                var ID_i8300_ApplicationDescription = new NodeVariable(new NodeId(8300), new QualifiedName("ApplicationDescription"), new LocalizedText("ApplicationDescription"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8300_ApplicationDescription = new NodeVariable(new NodeId(8300), new QualifiedName("ApplicationDescription"), new LocalizedText("ApplicationDescription"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8300_ApplicationDescription.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i8300_ApplicationDescription.References.Add(new ReferenceNode(new NodeId(47), new NodeId(8252), true));
 
                 // UserTokenPolicy, i=8297, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/8252
-                var ID_i8297_UserTokenPolicy = new NodeVariable(new NodeId(8297), new QualifiedName("UserTokenPolicy"), new LocalizedText("UserTokenPolicy"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8297_UserTokenPolicy = new NodeVariable(new NodeId(8297), new QualifiedName("UserTokenPolicy"), new LocalizedText("UserTokenPolicy"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8297_UserTokenPolicy.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i8297_UserTokenPolicy.References.Add(new ReferenceNode(new NodeId(47), new NodeId(8252), true));
 
                 // EndpointDescription, i=8303, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/8252
-                var ID_i8303_EndpointDescription = new NodeVariable(new NodeId(8303), new QualifiedName("EndpointDescription"), new LocalizedText("EndpointDescription"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8303_EndpointDescription = new NodeVariable(new NodeId(8303), new QualifiedName("EndpointDescription"), new LocalizedText("EndpointDescription"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8303_EndpointDescription.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i8303_EndpointDescription.References.Add(new ReferenceNode(new NodeId(47), new NodeId(8252), true));
 
                 // RegisteredServer, i=8417, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/8252
-                var ID_i8417_RegisteredServer = new NodeVariable(new NodeId(8417), new QualifiedName("RegisteredServer"), new LocalizedText("RegisteredServer"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8417_RegisteredServer = new NodeVariable(new NodeId(8417), new QualifiedName("RegisteredServer"), new LocalizedText("RegisteredServer"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8417_RegisteredServer.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i8417_RegisteredServer.References.Add(new ReferenceNode(new NodeId(47), new NodeId(8252), true));
 
                 // SignedSoftwareCertificate, i=8333, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/8252
-                var ID_i8333_SignedSoftwareCertificate = new NodeVariable(new NodeId(8333), new QualifiedName("SignedSoftwareCertificate"), new LocalizedText("SignedSoftwareCertificate"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8333_SignedSoftwareCertificate = new NodeVariable(new NodeId(8333), new QualifiedName("SignedSoftwareCertificate"), new LocalizedText("SignedSoftwareCertificate"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8333_SignedSoftwareCertificate.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i8333_SignedSoftwareCertificate.References.Add(new ReferenceNode(new NodeId(47), new NodeId(8252), true));
 
                 // UserIdentityToken, i=8306, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/8252
-                var ID_i8306_UserIdentityToken = new NodeVariable(new NodeId(8306), new QualifiedName("UserIdentityToken"), new LocalizedText("UserIdentityToken"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8306_UserIdentityToken = new NodeVariable(new NodeId(8306), new QualifiedName("UserIdentityToken"), new LocalizedText("UserIdentityToken"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8306_UserIdentityToken.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i8306_UserIdentityToken.References.Add(new ReferenceNode(new NodeId(47), new NodeId(8252), true));
 
                 // AnonymousIdentityToken, i=8309, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/8252
-                var ID_i8309_AnonymousIdentityToken = new NodeVariable(new NodeId(8309), new QualifiedName("AnonymousIdentityToken"), new LocalizedText("AnonymousIdentityToken"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8309_AnonymousIdentityToken = new NodeVariable(new NodeId(8309), new QualifiedName("AnonymousIdentityToken"), new LocalizedText("AnonymousIdentityToken"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8309_AnonymousIdentityToken.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i8309_AnonymousIdentityToken.References.Add(new ReferenceNode(new NodeId(47), new NodeId(8252), true));
 
                 // UserNameIdentityToken, i=8312, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/8252
-                var ID_i8312_UserNameIdentityToken = new NodeVariable(new NodeId(8312), new QualifiedName("UserNameIdentityToken"), new LocalizedText("UserNameIdentityToken"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8312_UserNameIdentityToken = new NodeVariable(new NodeId(8312), new QualifiedName("UserNameIdentityToken"), new LocalizedText("UserNameIdentityToken"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8312_UserNameIdentityToken.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i8312_UserNameIdentityToken.References.Add(new ReferenceNode(new NodeId(47), new NodeId(8252), true));
 
                 // X509IdentityToken, i=8315, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/8252
-                var ID_i8315_XIdentityToken = new NodeVariable(new NodeId(8315), new QualifiedName("X509IdentityToken"), new LocalizedText("X509IdentityToken"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8315_XIdentityToken = new NodeVariable(new NodeId(8315), new QualifiedName("X509IdentityToken"), new LocalizedText("X509IdentityToken"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8315_XIdentityToken.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i8315_XIdentityToken.References.Add(new ReferenceNode(new NodeId(47), new NodeId(8252), true));
 
                 // IssuedIdentityToken, i=8318, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/8252
-                var ID_i8318_IssuedIdentityToken = new NodeVariable(new NodeId(8318), new QualifiedName("IssuedIdentityToken"), new LocalizedText("IssuedIdentityToken"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8318_IssuedIdentityToken = new NodeVariable(new NodeId(8318), new QualifiedName("IssuedIdentityToken"), new LocalizedText("IssuedIdentityToken"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8318_IssuedIdentityToken.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i8318_IssuedIdentityToken.References.Add(new ReferenceNode(new NodeId(47), new NodeId(8252), true));
 
                 // AddNodesItem, i=8363, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/8252
-                var ID_i8363_AddNodesItem = new NodeVariable(new NodeId(8363), new QualifiedName("AddNodesItem"), new LocalizedText("AddNodesItem"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8363_AddNodesItem = new NodeVariable(new NodeId(8363), new QualifiedName("AddNodesItem"), new LocalizedText("AddNodesItem"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8363_AddNodesItem.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i8363_AddNodesItem.References.Add(new ReferenceNode(new NodeId(47), new NodeId(8252), true));
 
                 // AddReferencesItem, i=8366, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/8252
-                var ID_i8366_AddReferencesItem = new NodeVariable(new NodeId(8366), new QualifiedName("AddReferencesItem"), new LocalizedText("AddReferencesItem"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8366_AddReferencesItem = new NodeVariable(new NodeId(8366), new QualifiedName("AddReferencesItem"), new LocalizedText("AddReferencesItem"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8366_AddReferencesItem.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i8366_AddReferencesItem.References.Add(new ReferenceNode(new NodeId(47), new NodeId(8252), true));
 
                 // DeleteNodesItem, i=8369, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/8252
-                var ID_i8369_DeleteNodesItem = new NodeVariable(new NodeId(8369), new QualifiedName("DeleteNodesItem"), new LocalizedText("DeleteNodesItem"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8369_DeleteNodesItem = new NodeVariable(new NodeId(8369), new QualifiedName("DeleteNodesItem"), new LocalizedText("DeleteNodesItem"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8369_DeleteNodesItem.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i8369_DeleteNodesItem.References.Add(new ReferenceNode(new NodeId(47), new NodeId(8252), true));
 
                 // DeleteReferencesItem, i=8372, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/8252
-                var ID_i8372_DeleteReferencesItem = new NodeVariable(new NodeId(8372), new QualifiedName("DeleteReferencesItem"), new LocalizedText("DeleteReferencesItem"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8372_DeleteReferencesItem = new NodeVariable(new NodeId(8372), new QualifiedName("DeleteReferencesItem"), new LocalizedText("DeleteReferencesItem"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8372_DeleteReferencesItem.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i8372_DeleteReferencesItem.References.Add(new ReferenceNode(new NodeId(47), new NodeId(8252), true));
 
                 // EndpointConfiguration, i=8321, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/8252
-                var ID_i8321_EndpointConfiguration = new NodeVariable(new NodeId(8321), new QualifiedName("EndpointConfiguration"), new LocalizedText("EndpointConfiguration"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8321_EndpointConfiguration = new NodeVariable(new NodeId(8321), new QualifiedName("EndpointConfiguration"), new LocalizedText("EndpointConfiguration"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8321_EndpointConfiguration.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i8321_EndpointConfiguration.References.Add(new ReferenceNode(new NodeId(47), new NodeId(8252), true));
 
                 // SupportedProfile, i=8324, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/8252
-                var ID_i8324_SupportedProfile = new NodeVariable(new NodeId(8324), new QualifiedName("SupportedProfile"), new LocalizedText("SupportedProfile"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8324_SupportedProfile = new NodeVariable(new NodeId(8324), new QualifiedName("SupportedProfile"), new LocalizedText("SupportedProfile"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8324_SupportedProfile.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i8324_SupportedProfile.References.Add(new ReferenceNode(new NodeId(47), new NodeId(8252), true));
 
                 // SoftwareCertificate, i=8330, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/8252
-                var ID_i8330_SoftwareCertificate = new NodeVariable(new NodeId(8330), new QualifiedName("SoftwareCertificate"), new LocalizedText("SoftwareCertificate"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8330_SoftwareCertificate = new NodeVariable(new NodeId(8330), new QualifiedName("SoftwareCertificate"), new LocalizedText("SoftwareCertificate"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8330_SoftwareCertificate.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i8330_SoftwareCertificate.References.Add(new ReferenceNode(new NodeId(47), new NodeId(8252), true));
 
                 // ContentFilterElement, i=8564, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/8252
-                var ID_i8564_ContentFilterElement = new NodeVariable(new NodeId(8564), new QualifiedName("ContentFilterElement"), new LocalizedText("ContentFilterElement"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8564_ContentFilterElement = new NodeVariable(new NodeId(8564), new QualifiedName("ContentFilterElement"), new LocalizedText("ContentFilterElement"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8564_ContentFilterElement.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i8564_ContentFilterElement.References.Add(new ReferenceNode(new NodeId(47), new NodeId(8252), true));
 
                 // ContentFilter, i=8567, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/8252
-                var ID_i8567_ContentFilter = new NodeVariable(new NodeId(8567), new QualifiedName("ContentFilter"), new LocalizedText("ContentFilter"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8567_ContentFilter = new NodeVariable(new NodeId(8567), new QualifiedName("ContentFilter"), new LocalizedText("ContentFilter"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8567_ContentFilter.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i8567_ContentFilter.References.Add(new ReferenceNode(new NodeId(47), new NodeId(8252), true));
 
                 // FilterOperand, i=8570, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/8252
-                var ID_i8570_FilterOperand = new NodeVariable(new NodeId(8570), new QualifiedName("FilterOperand"), new LocalizedText("FilterOperand"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8570_FilterOperand = new NodeVariable(new NodeId(8570), new QualifiedName("FilterOperand"), new LocalizedText("FilterOperand"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8570_FilterOperand.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i8570_FilterOperand.References.Add(new ReferenceNode(new NodeId(47), new NodeId(8252), true));
 
                 // ElementOperand, i=8573, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/8252
-                var ID_i8573_ElementOperand = new NodeVariable(new NodeId(8573), new QualifiedName("ElementOperand"), new LocalizedText("ElementOperand"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8573_ElementOperand = new NodeVariable(new NodeId(8573), new QualifiedName("ElementOperand"), new LocalizedText("ElementOperand"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8573_ElementOperand.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i8573_ElementOperand.References.Add(new ReferenceNode(new NodeId(47), new NodeId(8252), true));
 
                 // LiteralOperand, i=8576, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/8252
-                var ID_i8576_LiteralOperand = new NodeVariable(new NodeId(8576), new QualifiedName("LiteralOperand"), new LocalizedText("LiteralOperand"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8576_LiteralOperand = new NodeVariable(new NodeId(8576), new QualifiedName("LiteralOperand"), new LocalizedText("LiteralOperand"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8576_LiteralOperand.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i8576_LiteralOperand.References.Add(new ReferenceNode(new NodeId(47), new NodeId(8252), true));
 
                 // AttributeOperand, i=8579, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/8252
-                var ID_i8579_AttributeOperand = new NodeVariable(new NodeId(8579), new QualifiedName("AttributeOperand"), new LocalizedText("AttributeOperand"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8579_AttributeOperand = new NodeVariable(new NodeId(8579), new QualifiedName("AttributeOperand"), new LocalizedText("AttributeOperand"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8579_AttributeOperand.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i8579_AttributeOperand.References.Add(new ReferenceNode(new NodeId(47), new NodeId(8252), true));
 
                 // SimpleAttributeOperand, i=8582, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/8252
-                var ID_i8582_SimpleAttributeOperand = new NodeVariable(new NodeId(8582), new QualifiedName("SimpleAttributeOperand"), new LocalizedText("SimpleAttributeOperand"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8582_SimpleAttributeOperand = new NodeVariable(new NodeId(8582), new QualifiedName("SimpleAttributeOperand"), new LocalizedText("SimpleAttributeOperand"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8582_SimpleAttributeOperand.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i8582_SimpleAttributeOperand.References.Add(new ReferenceNode(new NodeId(47), new NodeId(8252), true));
 
                 // HistoryEvent, i=8639, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/8252
-                var ID_i8639_HistoryEvent = new NodeVariable(new NodeId(8639), new QualifiedName("HistoryEvent"), new LocalizedText("HistoryEvent"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8639_HistoryEvent = new NodeVariable(new NodeId(8639), new QualifiedName("HistoryEvent"), new LocalizedText("HistoryEvent"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8639_HistoryEvent.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i8639_HistoryEvent.References.Add(new ReferenceNode(new NodeId(47), new NodeId(8252), true));
 
                 // MonitoringFilter, i=8702, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/8252
-                var ID_i8702_MonitoringFilter = new NodeVariable(new NodeId(8702), new QualifiedName("MonitoringFilter"), new LocalizedText("MonitoringFilter"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8702_MonitoringFilter = new NodeVariable(new NodeId(8702), new QualifiedName("MonitoringFilter"), new LocalizedText("MonitoringFilter"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8702_MonitoringFilter.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i8702_MonitoringFilter.References.Add(new ReferenceNode(new NodeId(47), new NodeId(8252), true));
 
                 // EventFilter, i=8708, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/8252
-                var ID_i8708_EventFilter = new NodeVariable(new NodeId(8708), new QualifiedName("EventFilter"), new LocalizedText("EventFilter"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8708_EventFilter = new NodeVariable(new NodeId(8708), new QualifiedName("EventFilter"), new LocalizedText("EventFilter"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8708_EventFilter.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i8708_EventFilter.References.Add(new ReferenceNode(new NodeId(47), new NodeId(8252), true));
 
                 // AggregateConfiguration, i=8711, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/8252
-                var ID_i8711_AggregateConfiguration = new NodeVariable(new NodeId(8711), new QualifiedName("AggregateConfiguration"), new LocalizedText("AggregateConfiguration"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8711_AggregateConfiguration = new NodeVariable(new NodeId(8711), new QualifiedName("AggregateConfiguration"), new LocalizedText("AggregateConfiguration"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8711_AggregateConfiguration.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i8711_AggregateConfiguration.References.Add(new ReferenceNode(new NodeId(47), new NodeId(8252), true));
 
                 // HistoryEventFieldList, i=8807, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/8252
-                var ID_i8807_HistoryEventFieldList = new NodeVariable(new NodeId(8807), new QualifiedName("HistoryEventFieldList"), new LocalizedText("HistoryEventFieldList"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8807_HistoryEventFieldList = new NodeVariable(new NodeId(8807), new QualifiedName("HistoryEventFieldList"), new LocalizedText("HistoryEventFieldList"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8807_HistoryEventFieldList.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i8807_HistoryEventFieldList.References.Add(new ReferenceNode(new NodeId(47), new NodeId(8252), true));
 
                 // ScalarTestType, i=8384, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/8252
-                var ID_i8384_ScalarTestType = new NodeVariable(new NodeId(8384), new QualifiedName("ScalarTestType"), new LocalizedText("ScalarTestType"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8384_ScalarTestType = new NodeVariable(new NodeId(8384), new QualifiedName("ScalarTestType"), new LocalizedText("ScalarTestType"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8384_ScalarTestType.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i8384_ScalarTestType.References.Add(new ReferenceNode(new NodeId(47), new NodeId(8252), true));
 
                 // ArrayTestType, i=8387, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/8252
-                var ID_i8387_ArrayTestType = new NodeVariable(new NodeId(8387), new QualifiedName("ArrayTestType"), new LocalizedText("ArrayTestType"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8387_ArrayTestType = new NodeVariable(new NodeId(8387), new QualifiedName("ArrayTestType"), new LocalizedText("ArrayTestType"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8387_ArrayTestType.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i8387_ArrayTestType.References.Add(new ReferenceNode(new NodeId(47), new NodeId(8252), true));
 
                 // CompositeTestType, i=8390, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/8252
-                var ID_i8390_CompositeTestType = new NodeVariable(new NodeId(8390), new QualifiedName("CompositeTestType"), new LocalizedText("CompositeTestType"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8390_CompositeTestType = new NodeVariable(new NodeId(8390), new QualifiedName("CompositeTestType"), new LocalizedText("CompositeTestType"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8390_CompositeTestType.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i8390_CompositeTestType.References.Add(new ReferenceNode(new NodeId(47), new NodeId(8252), true));
 
                 // BuildInfo, i=8327, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/8252
-                var ID_i8327_BuildInfo = new NodeVariable(new NodeId(8327), new QualifiedName("BuildInfo"), new LocalizedText("BuildInfo"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8327_BuildInfo = new NodeVariable(new NodeId(8327), new QualifiedName("BuildInfo"), new LocalizedText("BuildInfo"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8327_BuildInfo.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i8327_BuildInfo.References.Add(new ReferenceNode(new NodeId(47), new NodeId(8252), true));
 
                 // RedundantServerDataType, i=8843, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/8252
-                var ID_i8843_RedundantServerDataType = new NodeVariable(new NodeId(8843), new QualifiedName("RedundantServerDataType"), new LocalizedText("RedundantServerDataType"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8843_RedundantServerDataType = new NodeVariable(new NodeId(8843), new QualifiedName("RedundantServerDataType"), new LocalizedText("RedundantServerDataType"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8843_RedundantServerDataType.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i8843_RedundantServerDataType.References.Add(new ReferenceNode(new NodeId(47), new NodeId(8252), true));
 
                 // EndpointUrlListDataType, i=11951, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/8252
-                var ID_i11951_EndpointUrlListDataType = new NodeVariable(new NodeId(11951), new QualifiedName("EndpointUrlListDataType"), new LocalizedText("EndpointUrlListDataType"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i11951_EndpointUrlListDataType = new NodeVariable(new NodeId(11951), new QualifiedName("EndpointUrlListDataType"), new LocalizedText("EndpointUrlListDataType"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i11951_EndpointUrlListDataType.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i11951_EndpointUrlListDataType.References.Add(new ReferenceNode(new NodeId(47), new NodeId(8252), true));
 
                 // NetworkGroupDataType, i=11954, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/8252
-                var ID_i11954_NetworkGroupDataType = new NodeVariable(new NodeId(11954), new QualifiedName("NetworkGroupDataType"), new LocalizedText("NetworkGroupDataType"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i11954_NetworkGroupDataType = new NodeVariable(new NodeId(11954), new QualifiedName("NetworkGroupDataType"), new LocalizedText("NetworkGroupDataType"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i11954_NetworkGroupDataType.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i11954_NetworkGroupDataType.References.Add(new ReferenceNode(new NodeId(47), new NodeId(8252), true));
 
                 // SamplingIntervalDiagnosticsDataType, i=8846, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/8252
-                var ID_i8846_SamplingIntervalDiagnosticsDataType = new NodeVariable(new NodeId(8846), new QualifiedName("SamplingIntervalDiagnosticsDataType"), new LocalizedText("SamplingIntervalDiagnosticsDataType"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8846_SamplingIntervalDiagnosticsDataType = new NodeVariable(new NodeId(8846), new QualifiedName("SamplingIntervalDiagnosticsDataType"), new LocalizedText("SamplingIntervalDiagnosticsDataType"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8846_SamplingIntervalDiagnosticsDataType.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i8846_SamplingIntervalDiagnosticsDataType.References.Add(new ReferenceNode(new NodeId(47), new NodeId(8252), true));
 
                 // ServerDiagnosticsSummaryDataType, i=8849, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/8252
-                var ID_i8849_ServerDiagnosticsSummaryDataType = new NodeVariable(new NodeId(8849), new QualifiedName("ServerDiagnosticsSummaryDataType"), new LocalizedText("ServerDiagnosticsSummaryDataType"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8849_ServerDiagnosticsSummaryDataType = new NodeVariable(new NodeId(8849), new QualifiedName("ServerDiagnosticsSummaryDataType"), new LocalizedText("ServerDiagnosticsSummaryDataType"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8849_ServerDiagnosticsSummaryDataType.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i8849_ServerDiagnosticsSummaryDataType.References.Add(new ReferenceNode(new NodeId(47), new NodeId(8252), true));
 
                 // ServerStatusDataType, i=8852, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/8252
-                var ID_i8852_ServerStatusDataType = new NodeVariable(new NodeId(8852), new QualifiedName("ServerStatusDataType"), new LocalizedText("ServerStatusDataType"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8852_ServerStatusDataType = new NodeVariable(new NodeId(8852), new QualifiedName("ServerStatusDataType"), new LocalizedText("ServerStatusDataType"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8852_ServerStatusDataType.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i8852_ServerStatusDataType.References.Add(new ReferenceNode(new NodeId(47), new NodeId(8252), true));
 
                 // SessionDiagnosticsDataType, i=8855, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/8252
-                var ID_i8855_SessionDiagnosticsDataType = new NodeVariable(new NodeId(8855), new QualifiedName("SessionDiagnosticsDataType"), new LocalizedText("SessionDiagnosticsDataType"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8855_SessionDiagnosticsDataType = new NodeVariable(new NodeId(8855), new QualifiedName("SessionDiagnosticsDataType"), new LocalizedText("SessionDiagnosticsDataType"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8855_SessionDiagnosticsDataType.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i8855_SessionDiagnosticsDataType.References.Add(new ReferenceNode(new NodeId(47), new NodeId(8252), true));
 
                 // SessionSecurityDiagnosticsDataType, i=8858, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/8252
-                var ID_i8858_SessionSecurityDiagnosticsDataType = new NodeVariable(new NodeId(8858), new QualifiedName("SessionSecurityDiagnosticsDataType"), new LocalizedText("SessionSecurityDiagnosticsDataType"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8858_SessionSecurityDiagnosticsDataType = new NodeVariable(new NodeId(8858), new QualifiedName("SessionSecurityDiagnosticsDataType"), new LocalizedText("SessionSecurityDiagnosticsDataType"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8858_SessionSecurityDiagnosticsDataType.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i8858_SessionSecurityDiagnosticsDataType.References.Add(new ReferenceNode(new NodeId(47), new NodeId(8252), true));
 
                 // ServiceCounterDataType, i=8861, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/8252
-                var ID_i8861_ServiceCounterDataType = new NodeVariable(new NodeId(8861), new QualifiedName("ServiceCounterDataType"), new LocalizedText("ServiceCounterDataType"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8861_ServiceCounterDataType = new NodeVariable(new NodeId(8861), new QualifiedName("ServiceCounterDataType"), new LocalizedText("ServiceCounterDataType"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8861_ServiceCounterDataType.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i8861_ServiceCounterDataType.References.Add(new ReferenceNode(new NodeId(47), new NodeId(8252), true));
 
                 // StatusResult, i=8294, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/8252
-                var ID_i8294_StatusResult = new NodeVariable(new NodeId(8294), new QualifiedName("StatusResult"), new LocalizedText("StatusResult"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8294_StatusResult = new NodeVariable(new NodeId(8294), new QualifiedName("StatusResult"), new LocalizedText("StatusResult"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8294_StatusResult.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i8294_StatusResult.References.Add(new ReferenceNode(new NodeId(47), new NodeId(8252), true));
 
                 // SubscriptionDiagnosticsDataType, i=8864, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/8252
-                var ID_i8864_SubscriptionDiagnosticsDataType = new NodeVariable(new NodeId(8864), new QualifiedName("SubscriptionDiagnosticsDataType"), new LocalizedText("SubscriptionDiagnosticsDataType"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8864_SubscriptionDiagnosticsDataType = new NodeVariable(new NodeId(8864), new QualifiedName("SubscriptionDiagnosticsDataType"), new LocalizedText("SubscriptionDiagnosticsDataType"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8864_SubscriptionDiagnosticsDataType.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i8864_SubscriptionDiagnosticsDataType.References.Add(new ReferenceNode(new NodeId(47), new NodeId(8252), true));
 
                 // ModelChangeStructureDataType, i=8867, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/8252
-                var ID_i8867_ModelChangeStructureDataType = new NodeVariable(new NodeId(8867), new QualifiedName("ModelChangeStructureDataType"), new LocalizedText("ModelChangeStructureDataType"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8867_ModelChangeStructureDataType = new NodeVariable(new NodeId(8867), new QualifiedName("ModelChangeStructureDataType"), new LocalizedText("ModelChangeStructureDataType"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8867_ModelChangeStructureDataType.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i8867_ModelChangeStructureDataType.References.Add(new ReferenceNode(new NodeId(47), new NodeId(8252), true));
 
                 // SemanticChangeStructureDataType, i=8870, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/8252
-                var ID_i8870_SemanticChangeStructureDataType = new NodeVariable(new NodeId(8870), new QualifiedName("SemanticChangeStructureDataType"), new LocalizedText("SemanticChangeStructureDataType"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8870_SemanticChangeStructureDataType = new NodeVariable(new NodeId(8870), new QualifiedName("SemanticChangeStructureDataType"), new LocalizedText("SemanticChangeStructureDataType"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8870_SemanticChangeStructureDataType.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i8870_SemanticChangeStructureDataType.References.Add(new ReferenceNode(new NodeId(47), new NodeId(8252), true));
 
                 // Range, i=8873, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/8252
-                var ID_i8873_Range = new NodeVariable(new NodeId(8873), new QualifiedName("Range"), new LocalizedText("Range"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8873_Range = new NodeVariable(new NodeId(8873), new QualifiedName("Range"), new LocalizedText("Range"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8873_Range.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i8873_Range.References.Add(new ReferenceNode(new NodeId(47), new NodeId(8252), true));
 
                 // EUInformation, i=8876, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/8252
-                var ID_i8876_EUInformation = new NodeVariable(new NodeId(8876), new QualifiedName("EUInformation"), new LocalizedText("EUInformation"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8876_EUInformation = new NodeVariable(new NodeId(8876), new QualifiedName("EUInformation"), new LocalizedText("EUInformation"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8876_EUInformation.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i8876_EUInformation.References.Add(new ReferenceNode(new NodeId(47), new NodeId(8252), true));
 
                 // ComplexNumberType, i=12175, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/8252
-                var ID_i12175_ComplexNumberType = new NodeVariable(new NodeId(12175), new QualifiedName("ComplexNumberType"), new LocalizedText("ComplexNumberType"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i12175_ComplexNumberType = new NodeVariable(new NodeId(12175), new QualifiedName("ComplexNumberType"), new LocalizedText("ComplexNumberType"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i12175_ComplexNumberType.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i12175_ComplexNumberType.References.Add(new ReferenceNode(new NodeId(47), new NodeId(8252), true));
 
                 // DoubleComplexNumberType, i=12178, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/8252
-                var ID_i12178_DoubleComplexNumberType = new NodeVariable(new NodeId(12178), new QualifiedName("DoubleComplexNumberType"), new LocalizedText("DoubleComplexNumberType"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i12178_DoubleComplexNumberType = new NodeVariable(new NodeId(12178), new QualifiedName("DoubleComplexNumberType"), new LocalizedText("DoubleComplexNumberType"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i12178_DoubleComplexNumberType.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i12178_DoubleComplexNumberType.References.Add(new ReferenceNode(new NodeId(47), new NodeId(8252), true));
 
                 // AxisInformation, i=12083, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/8252
-                var ID_i12083_AxisInformation = new NodeVariable(new NodeId(12083), new QualifiedName("AxisInformation"), new LocalizedText("AxisInformation"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i12083_AxisInformation = new NodeVariable(new NodeId(12083), new QualifiedName("AxisInformation"), new LocalizedText("AxisInformation"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i12083_AxisInformation.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i12083_AxisInformation.References.Add(new ReferenceNode(new NodeId(47), new NodeId(8252), true));
 
                 // XVType, i=12086, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/8252
-                var ID_i12086_XVType = new NodeVariable(new NodeId(12086), new QualifiedName("XVType"), new LocalizedText("XVType"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i12086_XVType = new NodeVariable(new NodeId(12086), new QualifiedName("XVType"), new LocalizedText("XVType"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i12086_XVType.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i12086_XVType.References.Add(new ReferenceNode(new NodeId(47), new NodeId(8252), true));
 
                 // ProgramDiagnosticDataType, i=8882, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/8252
-                var ID_i8882_ProgramDiagnosticDataType = new NodeVariable(new NodeId(8882), new QualifiedName("ProgramDiagnosticDataType"), new LocalizedText("ProgramDiagnosticDataType"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8882_ProgramDiagnosticDataType = new NodeVariable(new NodeId(8882), new QualifiedName("ProgramDiagnosticDataType"), new LocalizedText("ProgramDiagnosticDataType"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8882_ProgramDiagnosticDataType.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i8882_ProgramDiagnosticDataType.References.Add(new ReferenceNode(new NodeId(47), new NodeId(8252), true));
 
                 // Annotation, i=8879, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/8252
-                var ID_i8879_Annotation = new NodeVariable(new NodeId(8879), new QualifiedName("Annotation"), new LocalizedText("Annotation"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8879_Annotation = new NodeVariable(new NodeId(8879), new QualifiedName("Annotation"), new LocalizedText("Annotation"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8879_Annotation.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i8879_Annotation.References.Add(new ReferenceNode(new NodeId(47), new NodeId(8252), true));
 
@@ -13977,7 +13977,7 @@ namespace LibUA
                 //	HasComponent/47 -> Annotation/8244
                 //	HasComponent/47 <- OPC Binary/93
                 //	HasTypeDefinition/40 -> DataTypeDictionaryType/72
-                var ID_i7617_OpcUa = new NodeVariable(new NodeId(7617), new QualifiedName("Opc.Ua"), new LocalizedText("Opc.Ua"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(15));
+                var ID_i7617_OpcUa = new NodeVariable(new NodeId(7617), new QualifiedName("Opc.Ua"), new LocalizedText("Opc.Ua"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(15));
                 ID_i7617_OpcUa.References.Add(new ReferenceNode(new NodeId(46), new NodeId(7619), false));
                 ID_i7617_OpcUa.References.Add(new ReferenceNode(new NodeId(47), new NodeId(7650), false));
                 ID_i7617_OpcUa.References.Add(new ReferenceNode(new NodeId(47), new NodeId(7656), false));
@@ -14042,406 +14042,406 @@ namespace LibUA
                 // NamespaceUri, i=7619, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> PropertyType/68
                 //	HasProperty/46 <- Opc.Ua/7617
-                var ID_i7619_NamespaceUri = new NodeVariable(new NodeId(7619), new QualifiedName("NamespaceUri"), new LocalizedText("NamespaceUri"), new LocalizedText("A URI that uniquely identifies the dictionary."), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i7619_NamespaceUri = new NodeVariable(new NodeId(7619), new QualifiedName("NamespaceUri"), new LocalizedText("NamespaceUri"), new LocalizedText("A URI that uniquely identifies the dictionary."), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i7619_NamespaceUri.References.Add(new ReferenceNode(new NodeId(40), new NodeId(68), false));
                 ID_i7619_NamespaceUri.References.Add(new ReferenceNode(new NodeId(46), new NodeId(7617), true));
 
                 // Argument, i=7650, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/7617
-                var ID_i7650_Argument = new NodeVariable(new NodeId(7650), new QualifiedName("Argument"), new LocalizedText("Argument"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i7650_Argument = new NodeVariable(new NodeId(7650), new QualifiedName("Argument"), new LocalizedText("Argument"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i7650_Argument.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i7650_Argument.References.Add(new ReferenceNode(new NodeId(47), new NodeId(7617), true));
 
                 // EnumValueType, i=7656, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/7617
-                var ID_i7656_EnumValueType = new NodeVariable(new NodeId(7656), new QualifiedName("EnumValueType"), new LocalizedText("EnumValueType"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i7656_EnumValueType = new NodeVariable(new NodeId(7656), new QualifiedName("EnumValueType"), new LocalizedText("EnumValueType"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i7656_EnumValueType.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i7656_EnumValueType.References.Add(new ReferenceNode(new NodeId(47), new NodeId(7617), true));
 
                 // TimeZoneDataType, i=8914, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/7617
-                var ID_i8914_TimeZoneDataType = new NodeVariable(new NodeId(8914), new QualifiedName("TimeZoneDataType"), new LocalizedText("TimeZoneDataType"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8914_TimeZoneDataType = new NodeVariable(new NodeId(8914), new QualifiedName("TimeZoneDataType"), new LocalizedText("TimeZoneDataType"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8914_TimeZoneDataType.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i8914_TimeZoneDataType.References.Add(new ReferenceNode(new NodeId(47), new NodeId(7617), true));
 
                 // ApplicationDescription, i=7665, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/7617
-                var ID_i7665_ApplicationDescription = new NodeVariable(new NodeId(7665), new QualifiedName("ApplicationDescription"), new LocalizedText("ApplicationDescription"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i7665_ApplicationDescription = new NodeVariable(new NodeId(7665), new QualifiedName("ApplicationDescription"), new LocalizedText("ApplicationDescription"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i7665_ApplicationDescription.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i7665_ApplicationDescription.References.Add(new ReferenceNode(new NodeId(47), new NodeId(7617), true));
 
                 // UserTokenPolicy, i=7662, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/7617
-                var ID_i7662_UserTokenPolicy = new NodeVariable(new NodeId(7662), new QualifiedName("UserTokenPolicy"), new LocalizedText("UserTokenPolicy"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i7662_UserTokenPolicy = new NodeVariable(new NodeId(7662), new QualifiedName("UserTokenPolicy"), new LocalizedText("UserTokenPolicy"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i7662_UserTokenPolicy.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i7662_UserTokenPolicy.References.Add(new ReferenceNode(new NodeId(47), new NodeId(7617), true));
 
                 // EndpointDescription, i=7668, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/7617
-                var ID_i7668_EndpointDescription = new NodeVariable(new NodeId(7668), new QualifiedName("EndpointDescription"), new LocalizedText("EndpointDescription"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i7668_EndpointDescription = new NodeVariable(new NodeId(7668), new QualifiedName("EndpointDescription"), new LocalizedText("EndpointDescription"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i7668_EndpointDescription.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i7668_EndpointDescription.References.Add(new ReferenceNode(new NodeId(47), new NodeId(7617), true));
 
                 // RegisteredServer, i=7782, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/7617
-                var ID_i7782_RegisteredServer = new NodeVariable(new NodeId(7782), new QualifiedName("RegisteredServer"), new LocalizedText("RegisteredServer"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i7782_RegisteredServer = new NodeVariable(new NodeId(7782), new QualifiedName("RegisteredServer"), new LocalizedText("RegisteredServer"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i7782_RegisteredServer.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i7782_RegisteredServer.References.Add(new ReferenceNode(new NodeId(47), new NodeId(7617), true));
 
                 // SignedSoftwareCertificate, i=7698, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/7617
-                var ID_i7698_SignedSoftwareCertificate = new NodeVariable(new NodeId(7698), new QualifiedName("SignedSoftwareCertificate"), new LocalizedText("SignedSoftwareCertificate"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i7698_SignedSoftwareCertificate = new NodeVariable(new NodeId(7698), new QualifiedName("SignedSoftwareCertificate"), new LocalizedText("SignedSoftwareCertificate"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i7698_SignedSoftwareCertificate.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i7698_SignedSoftwareCertificate.References.Add(new ReferenceNode(new NodeId(47), new NodeId(7617), true));
 
                 // UserIdentityToken, i=7671, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/7617
-                var ID_i7671_UserIdentityToken = new NodeVariable(new NodeId(7671), new QualifiedName("UserIdentityToken"), new LocalizedText("UserIdentityToken"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i7671_UserIdentityToken = new NodeVariable(new NodeId(7671), new QualifiedName("UserIdentityToken"), new LocalizedText("UserIdentityToken"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i7671_UserIdentityToken.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i7671_UserIdentityToken.References.Add(new ReferenceNode(new NodeId(47), new NodeId(7617), true));
 
                 // AnonymousIdentityToken, i=7674, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/7617
-                var ID_i7674_AnonymousIdentityToken = new NodeVariable(new NodeId(7674), new QualifiedName("AnonymousIdentityToken"), new LocalizedText("AnonymousIdentityToken"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i7674_AnonymousIdentityToken = new NodeVariable(new NodeId(7674), new QualifiedName("AnonymousIdentityToken"), new LocalizedText("AnonymousIdentityToken"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i7674_AnonymousIdentityToken.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i7674_AnonymousIdentityToken.References.Add(new ReferenceNode(new NodeId(47), new NodeId(7617), true));
 
                 // UserNameIdentityToken, i=7677, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/7617
-                var ID_i7677_UserNameIdentityToken = new NodeVariable(new NodeId(7677), new QualifiedName("UserNameIdentityToken"), new LocalizedText("UserNameIdentityToken"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i7677_UserNameIdentityToken = new NodeVariable(new NodeId(7677), new QualifiedName("UserNameIdentityToken"), new LocalizedText("UserNameIdentityToken"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i7677_UserNameIdentityToken.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i7677_UserNameIdentityToken.References.Add(new ReferenceNode(new NodeId(47), new NodeId(7617), true));
 
                 // X509IdentityToken, i=7680, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/7617
-                var ID_i7680_XIdentityToken = new NodeVariable(new NodeId(7680), new QualifiedName("X509IdentityToken"), new LocalizedText("X509IdentityToken"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i7680_XIdentityToken = new NodeVariable(new NodeId(7680), new QualifiedName("X509IdentityToken"), new LocalizedText("X509IdentityToken"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i7680_XIdentityToken.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i7680_XIdentityToken.References.Add(new ReferenceNode(new NodeId(47), new NodeId(7617), true));
 
                 // IssuedIdentityToken, i=7683, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/7617
-                var ID_i7683_IssuedIdentityToken = new NodeVariable(new NodeId(7683), new QualifiedName("IssuedIdentityToken"), new LocalizedText("IssuedIdentityToken"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i7683_IssuedIdentityToken = new NodeVariable(new NodeId(7683), new QualifiedName("IssuedIdentityToken"), new LocalizedText("IssuedIdentityToken"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i7683_IssuedIdentityToken.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i7683_IssuedIdentityToken.References.Add(new ReferenceNode(new NodeId(47), new NodeId(7617), true));
 
                 // AddNodesItem, i=7728, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/7617
-                var ID_i7728_AddNodesItem = new NodeVariable(new NodeId(7728), new QualifiedName("AddNodesItem"), new LocalizedText("AddNodesItem"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i7728_AddNodesItem = new NodeVariable(new NodeId(7728), new QualifiedName("AddNodesItem"), new LocalizedText("AddNodesItem"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i7728_AddNodesItem.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i7728_AddNodesItem.References.Add(new ReferenceNode(new NodeId(47), new NodeId(7617), true));
 
                 // AddReferencesItem, i=7731, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/7617
-                var ID_i7731_AddReferencesItem = new NodeVariable(new NodeId(7731), new QualifiedName("AddReferencesItem"), new LocalizedText("AddReferencesItem"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i7731_AddReferencesItem = new NodeVariable(new NodeId(7731), new QualifiedName("AddReferencesItem"), new LocalizedText("AddReferencesItem"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i7731_AddReferencesItem.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i7731_AddReferencesItem.References.Add(new ReferenceNode(new NodeId(47), new NodeId(7617), true));
 
                 // DeleteNodesItem, i=7734, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/7617
-                var ID_i7734_DeleteNodesItem = new NodeVariable(new NodeId(7734), new QualifiedName("DeleteNodesItem"), new LocalizedText("DeleteNodesItem"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i7734_DeleteNodesItem = new NodeVariable(new NodeId(7734), new QualifiedName("DeleteNodesItem"), new LocalizedText("DeleteNodesItem"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i7734_DeleteNodesItem.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i7734_DeleteNodesItem.References.Add(new ReferenceNode(new NodeId(47), new NodeId(7617), true));
 
                 // DeleteReferencesItem, i=7737, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/7617
-                var ID_i7737_DeleteReferencesItem = new NodeVariable(new NodeId(7737), new QualifiedName("DeleteReferencesItem"), new LocalizedText("DeleteReferencesItem"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i7737_DeleteReferencesItem = new NodeVariable(new NodeId(7737), new QualifiedName("DeleteReferencesItem"), new LocalizedText("DeleteReferencesItem"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i7737_DeleteReferencesItem.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i7737_DeleteReferencesItem.References.Add(new ReferenceNode(new NodeId(47), new NodeId(7617), true));
 
                 // EndpointConfiguration, i=7686, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/7617
-                var ID_i7686_EndpointConfiguration = new NodeVariable(new NodeId(7686), new QualifiedName("EndpointConfiguration"), new LocalizedText("EndpointConfiguration"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i7686_EndpointConfiguration = new NodeVariable(new NodeId(7686), new QualifiedName("EndpointConfiguration"), new LocalizedText("EndpointConfiguration"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i7686_EndpointConfiguration.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i7686_EndpointConfiguration.References.Add(new ReferenceNode(new NodeId(47), new NodeId(7617), true));
 
                 // SupportedProfile, i=7689, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/7617
-                var ID_i7689_SupportedProfile = new NodeVariable(new NodeId(7689), new QualifiedName("SupportedProfile"), new LocalizedText("SupportedProfile"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i7689_SupportedProfile = new NodeVariable(new NodeId(7689), new QualifiedName("SupportedProfile"), new LocalizedText("SupportedProfile"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i7689_SupportedProfile.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i7689_SupportedProfile.References.Add(new ReferenceNode(new NodeId(47), new NodeId(7617), true));
 
                 // SoftwareCertificate, i=7695, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/7617
-                var ID_i7695_SoftwareCertificate = new NodeVariable(new NodeId(7695), new QualifiedName("SoftwareCertificate"), new LocalizedText("SoftwareCertificate"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i7695_SoftwareCertificate = new NodeVariable(new NodeId(7695), new QualifiedName("SoftwareCertificate"), new LocalizedText("SoftwareCertificate"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i7695_SoftwareCertificate.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i7695_SoftwareCertificate.References.Add(new ReferenceNode(new NodeId(47), new NodeId(7617), true));
 
                 // ContentFilterElement, i=7929, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/7617
-                var ID_i7929_ContentFilterElement = new NodeVariable(new NodeId(7929), new QualifiedName("ContentFilterElement"), new LocalizedText("ContentFilterElement"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i7929_ContentFilterElement = new NodeVariable(new NodeId(7929), new QualifiedName("ContentFilterElement"), new LocalizedText("ContentFilterElement"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i7929_ContentFilterElement.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i7929_ContentFilterElement.References.Add(new ReferenceNode(new NodeId(47), new NodeId(7617), true));
 
                 // ContentFilter, i=7932, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/7617
-                var ID_i7932_ContentFilter = new NodeVariable(new NodeId(7932), new QualifiedName("ContentFilter"), new LocalizedText("ContentFilter"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i7932_ContentFilter = new NodeVariable(new NodeId(7932), new QualifiedName("ContentFilter"), new LocalizedText("ContentFilter"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i7932_ContentFilter.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i7932_ContentFilter.References.Add(new ReferenceNode(new NodeId(47), new NodeId(7617), true));
 
                 // FilterOperand, i=7935, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/7617
-                var ID_i7935_FilterOperand = new NodeVariable(new NodeId(7935), new QualifiedName("FilterOperand"), new LocalizedText("FilterOperand"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i7935_FilterOperand = new NodeVariable(new NodeId(7935), new QualifiedName("FilterOperand"), new LocalizedText("FilterOperand"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i7935_FilterOperand.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i7935_FilterOperand.References.Add(new ReferenceNode(new NodeId(47), new NodeId(7617), true));
 
                 // ElementOperand, i=7938, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/7617
-                var ID_i7938_ElementOperand = new NodeVariable(new NodeId(7938), new QualifiedName("ElementOperand"), new LocalizedText("ElementOperand"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i7938_ElementOperand = new NodeVariable(new NodeId(7938), new QualifiedName("ElementOperand"), new LocalizedText("ElementOperand"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i7938_ElementOperand.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i7938_ElementOperand.References.Add(new ReferenceNode(new NodeId(47), new NodeId(7617), true));
 
                 // LiteralOperand, i=7941, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/7617
-                var ID_i7941_LiteralOperand = new NodeVariable(new NodeId(7941), new QualifiedName("LiteralOperand"), new LocalizedText("LiteralOperand"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i7941_LiteralOperand = new NodeVariable(new NodeId(7941), new QualifiedName("LiteralOperand"), new LocalizedText("LiteralOperand"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i7941_LiteralOperand.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i7941_LiteralOperand.References.Add(new ReferenceNode(new NodeId(47), new NodeId(7617), true));
 
                 // AttributeOperand, i=7944, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/7617
-                var ID_i7944_AttributeOperand = new NodeVariable(new NodeId(7944), new QualifiedName("AttributeOperand"), new LocalizedText("AttributeOperand"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i7944_AttributeOperand = new NodeVariable(new NodeId(7944), new QualifiedName("AttributeOperand"), new LocalizedText("AttributeOperand"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i7944_AttributeOperand.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i7944_AttributeOperand.References.Add(new ReferenceNode(new NodeId(47), new NodeId(7617), true));
 
                 // SimpleAttributeOperand, i=7947, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/7617
-                var ID_i7947_SimpleAttributeOperand = new NodeVariable(new NodeId(7947), new QualifiedName("SimpleAttributeOperand"), new LocalizedText("SimpleAttributeOperand"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i7947_SimpleAttributeOperand = new NodeVariable(new NodeId(7947), new QualifiedName("SimpleAttributeOperand"), new LocalizedText("SimpleAttributeOperand"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i7947_SimpleAttributeOperand.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i7947_SimpleAttributeOperand.References.Add(new ReferenceNode(new NodeId(47), new NodeId(7617), true));
 
                 // HistoryEvent, i=8004, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/7617
-                var ID_i8004_HistoryEvent = new NodeVariable(new NodeId(8004), new QualifiedName("HistoryEvent"), new LocalizedText("HistoryEvent"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8004_HistoryEvent = new NodeVariable(new NodeId(8004), new QualifiedName("HistoryEvent"), new LocalizedText("HistoryEvent"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8004_HistoryEvent.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i8004_HistoryEvent.References.Add(new ReferenceNode(new NodeId(47), new NodeId(7617), true));
 
                 // MonitoringFilter, i=8067, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/7617
-                var ID_i8067_MonitoringFilter = new NodeVariable(new NodeId(8067), new QualifiedName("MonitoringFilter"), new LocalizedText("MonitoringFilter"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8067_MonitoringFilter = new NodeVariable(new NodeId(8067), new QualifiedName("MonitoringFilter"), new LocalizedText("MonitoringFilter"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8067_MonitoringFilter.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i8067_MonitoringFilter.References.Add(new ReferenceNode(new NodeId(47), new NodeId(7617), true));
 
                 // EventFilter, i=8073, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/7617
-                var ID_i8073_EventFilter = new NodeVariable(new NodeId(8073), new QualifiedName("EventFilter"), new LocalizedText("EventFilter"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8073_EventFilter = new NodeVariable(new NodeId(8073), new QualifiedName("EventFilter"), new LocalizedText("EventFilter"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8073_EventFilter.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i8073_EventFilter.References.Add(new ReferenceNode(new NodeId(47), new NodeId(7617), true));
 
                 // AggregateConfiguration, i=8076, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/7617
-                var ID_i8076_AggregateConfiguration = new NodeVariable(new NodeId(8076), new QualifiedName("AggregateConfiguration"), new LocalizedText("AggregateConfiguration"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8076_AggregateConfiguration = new NodeVariable(new NodeId(8076), new QualifiedName("AggregateConfiguration"), new LocalizedText("AggregateConfiguration"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8076_AggregateConfiguration.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i8076_AggregateConfiguration.References.Add(new ReferenceNode(new NodeId(47), new NodeId(7617), true));
 
                 // HistoryEventFieldList, i=8172, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/7617
-                var ID_i8172_HistoryEventFieldList = new NodeVariable(new NodeId(8172), new QualifiedName("HistoryEventFieldList"), new LocalizedText("HistoryEventFieldList"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8172_HistoryEventFieldList = new NodeVariable(new NodeId(8172), new QualifiedName("HistoryEventFieldList"), new LocalizedText("HistoryEventFieldList"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8172_HistoryEventFieldList.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i8172_HistoryEventFieldList.References.Add(new ReferenceNode(new NodeId(47), new NodeId(7617), true));
 
                 // ScalarTestType, i=7749, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/7617
-                var ID_i7749_ScalarTestType = new NodeVariable(new NodeId(7749), new QualifiedName("ScalarTestType"), new LocalizedText("ScalarTestType"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i7749_ScalarTestType = new NodeVariable(new NodeId(7749), new QualifiedName("ScalarTestType"), new LocalizedText("ScalarTestType"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i7749_ScalarTestType.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i7749_ScalarTestType.References.Add(new ReferenceNode(new NodeId(47), new NodeId(7617), true));
 
                 // ArrayTestType, i=7752, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/7617
-                var ID_i7752_ArrayTestType = new NodeVariable(new NodeId(7752), new QualifiedName("ArrayTestType"), new LocalizedText("ArrayTestType"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i7752_ArrayTestType = new NodeVariable(new NodeId(7752), new QualifiedName("ArrayTestType"), new LocalizedText("ArrayTestType"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i7752_ArrayTestType.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i7752_ArrayTestType.References.Add(new ReferenceNode(new NodeId(47), new NodeId(7617), true));
 
                 // CompositeTestType, i=7755, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/7617
-                var ID_i7755_CompositeTestType = new NodeVariable(new NodeId(7755), new QualifiedName("CompositeTestType"), new LocalizedText("CompositeTestType"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i7755_CompositeTestType = new NodeVariable(new NodeId(7755), new QualifiedName("CompositeTestType"), new LocalizedText("CompositeTestType"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i7755_CompositeTestType.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i7755_CompositeTestType.References.Add(new ReferenceNode(new NodeId(47), new NodeId(7617), true));
 
                 // BuildInfo, i=7692, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/7617
-                var ID_i7692_BuildInfo = new NodeVariable(new NodeId(7692), new QualifiedName("BuildInfo"), new LocalizedText("BuildInfo"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i7692_BuildInfo = new NodeVariable(new NodeId(7692), new QualifiedName("BuildInfo"), new LocalizedText("BuildInfo"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i7692_BuildInfo.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i7692_BuildInfo.References.Add(new ReferenceNode(new NodeId(47), new NodeId(7617), true));
 
                 // RedundantServerDataType, i=8208, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/7617
-                var ID_i8208_RedundantServerDataType = new NodeVariable(new NodeId(8208), new QualifiedName("RedundantServerDataType"), new LocalizedText("RedundantServerDataType"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8208_RedundantServerDataType = new NodeVariable(new NodeId(8208), new QualifiedName("RedundantServerDataType"), new LocalizedText("RedundantServerDataType"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8208_RedundantServerDataType.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i8208_RedundantServerDataType.References.Add(new ReferenceNode(new NodeId(47), new NodeId(7617), true));
 
                 // EndpointUrlListDataType, i=11959, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/7617
-                var ID_i11959_EndpointUrlListDataType = new NodeVariable(new NodeId(11959), new QualifiedName("EndpointUrlListDataType"), new LocalizedText("EndpointUrlListDataType"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i11959_EndpointUrlListDataType = new NodeVariable(new NodeId(11959), new QualifiedName("EndpointUrlListDataType"), new LocalizedText("EndpointUrlListDataType"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i11959_EndpointUrlListDataType.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i11959_EndpointUrlListDataType.References.Add(new ReferenceNode(new NodeId(47), new NodeId(7617), true));
 
                 // NetworkGroupDataType, i=11962, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/7617
-                var ID_i11962_NetworkGroupDataType = new NodeVariable(new NodeId(11962), new QualifiedName("NetworkGroupDataType"), new LocalizedText("NetworkGroupDataType"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i11962_NetworkGroupDataType = new NodeVariable(new NodeId(11962), new QualifiedName("NetworkGroupDataType"), new LocalizedText("NetworkGroupDataType"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i11962_NetworkGroupDataType.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i11962_NetworkGroupDataType.References.Add(new ReferenceNode(new NodeId(47), new NodeId(7617), true));
 
                 // SamplingIntervalDiagnosticsDataType, i=8211, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/7617
-                var ID_i8211_SamplingIntervalDiagnosticsDataType = new NodeVariable(new NodeId(8211), new QualifiedName("SamplingIntervalDiagnosticsDataType"), new LocalizedText("SamplingIntervalDiagnosticsDataType"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8211_SamplingIntervalDiagnosticsDataType = new NodeVariable(new NodeId(8211), new QualifiedName("SamplingIntervalDiagnosticsDataType"), new LocalizedText("SamplingIntervalDiagnosticsDataType"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8211_SamplingIntervalDiagnosticsDataType.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i8211_SamplingIntervalDiagnosticsDataType.References.Add(new ReferenceNode(new NodeId(47), new NodeId(7617), true));
 
                 // ServerDiagnosticsSummaryDataType, i=8214, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/7617
-                var ID_i8214_ServerDiagnosticsSummaryDataType = new NodeVariable(new NodeId(8214), new QualifiedName("ServerDiagnosticsSummaryDataType"), new LocalizedText("ServerDiagnosticsSummaryDataType"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8214_ServerDiagnosticsSummaryDataType = new NodeVariable(new NodeId(8214), new QualifiedName("ServerDiagnosticsSummaryDataType"), new LocalizedText("ServerDiagnosticsSummaryDataType"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8214_ServerDiagnosticsSummaryDataType.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i8214_ServerDiagnosticsSummaryDataType.References.Add(new ReferenceNode(new NodeId(47), new NodeId(7617), true));
 
                 // ServerStatusDataType, i=8217, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/7617
-                var ID_i8217_ServerStatusDataType = new NodeVariable(new NodeId(8217), new QualifiedName("ServerStatusDataType"), new LocalizedText("ServerStatusDataType"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8217_ServerStatusDataType = new NodeVariable(new NodeId(8217), new QualifiedName("ServerStatusDataType"), new LocalizedText("ServerStatusDataType"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8217_ServerStatusDataType.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i8217_ServerStatusDataType.References.Add(new ReferenceNode(new NodeId(47), new NodeId(7617), true));
 
                 // SessionDiagnosticsDataType, i=8220, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/7617
-                var ID_i8220_SessionDiagnosticsDataType = new NodeVariable(new NodeId(8220), new QualifiedName("SessionDiagnosticsDataType"), new LocalizedText("SessionDiagnosticsDataType"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8220_SessionDiagnosticsDataType = new NodeVariable(new NodeId(8220), new QualifiedName("SessionDiagnosticsDataType"), new LocalizedText("SessionDiagnosticsDataType"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8220_SessionDiagnosticsDataType.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i8220_SessionDiagnosticsDataType.References.Add(new ReferenceNode(new NodeId(47), new NodeId(7617), true));
 
                 // SessionSecurityDiagnosticsDataType, i=8223, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/7617
-                var ID_i8223_SessionSecurityDiagnosticsDataType = new NodeVariable(new NodeId(8223), new QualifiedName("SessionSecurityDiagnosticsDataType"), new LocalizedText("SessionSecurityDiagnosticsDataType"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8223_SessionSecurityDiagnosticsDataType = new NodeVariable(new NodeId(8223), new QualifiedName("SessionSecurityDiagnosticsDataType"), new LocalizedText("SessionSecurityDiagnosticsDataType"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8223_SessionSecurityDiagnosticsDataType.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i8223_SessionSecurityDiagnosticsDataType.References.Add(new ReferenceNode(new NodeId(47), new NodeId(7617), true));
 
                 // ServiceCounterDataType, i=8226, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/7617
-                var ID_i8226_ServiceCounterDataType = new NodeVariable(new NodeId(8226), new QualifiedName("ServiceCounterDataType"), new LocalizedText("ServiceCounterDataType"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8226_ServiceCounterDataType = new NodeVariable(new NodeId(8226), new QualifiedName("ServiceCounterDataType"), new LocalizedText("ServiceCounterDataType"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8226_ServiceCounterDataType.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i8226_ServiceCounterDataType.References.Add(new ReferenceNode(new NodeId(47), new NodeId(7617), true));
 
                 // StatusResult, i=7659, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/7617
-                var ID_i7659_StatusResult = new NodeVariable(new NodeId(7659), new QualifiedName("StatusResult"), new LocalizedText("StatusResult"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i7659_StatusResult = new NodeVariable(new NodeId(7659), new QualifiedName("StatusResult"), new LocalizedText("StatusResult"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i7659_StatusResult.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i7659_StatusResult.References.Add(new ReferenceNode(new NodeId(47), new NodeId(7617), true));
 
                 // SubscriptionDiagnosticsDataType, i=8229, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/7617
-                var ID_i8229_SubscriptionDiagnosticsDataType = new NodeVariable(new NodeId(8229), new QualifiedName("SubscriptionDiagnosticsDataType"), new LocalizedText("SubscriptionDiagnosticsDataType"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8229_SubscriptionDiagnosticsDataType = new NodeVariable(new NodeId(8229), new QualifiedName("SubscriptionDiagnosticsDataType"), new LocalizedText("SubscriptionDiagnosticsDataType"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8229_SubscriptionDiagnosticsDataType.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i8229_SubscriptionDiagnosticsDataType.References.Add(new ReferenceNode(new NodeId(47), new NodeId(7617), true));
 
                 // ModelChangeStructureDataType, i=8232, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/7617
-                var ID_i8232_ModelChangeStructureDataType = new NodeVariable(new NodeId(8232), new QualifiedName("ModelChangeStructureDataType"), new LocalizedText("ModelChangeStructureDataType"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8232_ModelChangeStructureDataType = new NodeVariable(new NodeId(8232), new QualifiedName("ModelChangeStructureDataType"), new LocalizedText("ModelChangeStructureDataType"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8232_ModelChangeStructureDataType.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i8232_ModelChangeStructureDataType.References.Add(new ReferenceNode(new NodeId(47), new NodeId(7617), true));
 
                 // SemanticChangeStructureDataType, i=8235, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/7617
-                var ID_i8235_SemanticChangeStructureDataType = new NodeVariable(new NodeId(8235), new QualifiedName("SemanticChangeStructureDataType"), new LocalizedText("SemanticChangeStructureDataType"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8235_SemanticChangeStructureDataType = new NodeVariable(new NodeId(8235), new QualifiedName("SemanticChangeStructureDataType"), new LocalizedText("SemanticChangeStructureDataType"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8235_SemanticChangeStructureDataType.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i8235_SemanticChangeStructureDataType.References.Add(new ReferenceNode(new NodeId(47), new NodeId(7617), true));
 
                 // Range, i=8238, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/7617
-                var ID_i8238_Range = new NodeVariable(new NodeId(8238), new QualifiedName("Range"), new LocalizedText("Range"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8238_Range = new NodeVariable(new NodeId(8238), new QualifiedName("Range"), new LocalizedText("Range"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8238_Range.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i8238_Range.References.Add(new ReferenceNode(new NodeId(47), new NodeId(7617), true));
 
                 // EUInformation, i=8241, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/7617
-                var ID_i8241_EUInformation = new NodeVariable(new NodeId(8241), new QualifiedName("EUInformation"), new LocalizedText("EUInformation"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8241_EUInformation = new NodeVariable(new NodeId(8241), new QualifiedName("EUInformation"), new LocalizedText("EUInformation"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8241_EUInformation.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i8241_EUInformation.References.Add(new ReferenceNode(new NodeId(47), new NodeId(7617), true));
 
                 // ComplexNumberType, i=12183, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/7617
-                var ID_i12183_ComplexNumberType = new NodeVariable(new NodeId(12183), new QualifiedName("ComplexNumberType"), new LocalizedText("ComplexNumberType"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i12183_ComplexNumberType = new NodeVariable(new NodeId(12183), new QualifiedName("ComplexNumberType"), new LocalizedText("ComplexNumberType"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i12183_ComplexNumberType.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i12183_ComplexNumberType.References.Add(new ReferenceNode(new NodeId(47), new NodeId(7617), true));
 
                 // DoubleComplexNumberType, i=12186, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/7617
-                var ID_i12186_DoubleComplexNumberType = new NodeVariable(new NodeId(12186), new QualifiedName("DoubleComplexNumberType"), new LocalizedText("DoubleComplexNumberType"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i12186_DoubleComplexNumberType = new NodeVariable(new NodeId(12186), new QualifiedName("DoubleComplexNumberType"), new LocalizedText("DoubleComplexNumberType"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i12186_DoubleComplexNumberType.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i12186_DoubleComplexNumberType.References.Add(new ReferenceNode(new NodeId(47), new NodeId(7617), true));
 
                 // AxisInformation, i=12091, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/7617
-                var ID_i12091_AxisInformation = new NodeVariable(new NodeId(12091), new QualifiedName("AxisInformation"), new LocalizedText("AxisInformation"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i12091_AxisInformation = new NodeVariable(new NodeId(12091), new QualifiedName("AxisInformation"), new LocalizedText("AxisInformation"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i12091_AxisInformation.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i12091_AxisInformation.References.Add(new ReferenceNode(new NodeId(47), new NodeId(7617), true));
 
                 // XVType, i=12094, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/7617
-                var ID_i12094_XVType = new NodeVariable(new NodeId(12094), new QualifiedName("XVType"), new LocalizedText("XVType"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i12094_XVType = new NodeVariable(new NodeId(12094), new QualifiedName("XVType"), new LocalizedText("XVType"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i12094_XVType.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i12094_XVType.References.Add(new ReferenceNode(new NodeId(47), new NodeId(7617), true));
 
                 // ProgramDiagnosticDataType, i=8247, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/7617
-                var ID_i8247_ProgramDiagnosticDataType = new NodeVariable(new NodeId(8247), new QualifiedName("ProgramDiagnosticDataType"), new LocalizedText("ProgramDiagnosticDataType"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8247_ProgramDiagnosticDataType = new NodeVariable(new NodeId(8247), new QualifiedName("ProgramDiagnosticDataType"), new LocalizedText("ProgramDiagnosticDataType"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8247_ProgramDiagnosticDataType.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i8247_ProgramDiagnosticDataType.References.Add(new ReferenceNode(new NodeId(47), new NodeId(7617), true));
 
                 // Annotation, i=8244, TypeGenerator.AddressSpaceGenerator+NodeVariable
                 //	HasTypeDefinition/40 -> DataTypeDescriptionType/69
                 //	HasComponent/47 <- Opc.Ua/7617
-                var ID_i8244_Annotation = new NodeVariable(new NodeId(8244), new QualifiedName("Annotation"), new LocalizedText("Annotation"), new LocalizedText(""), 0, 0, 0, 0, 0, false, new NodeId(12));
+                var ID_i8244_Annotation = new NodeVariable(new NodeId(8244), new QualifiedName("Annotation"), new LocalizedText("Annotation"), new LocalizedText(""), 0, 0, AccessLevel.CurrentRead, AccessLevel.CurrentRead, 0, false, new NodeId(12));
                 ID_i8244_Annotation.References.Add(new ReferenceNode(new NodeId(40), new NodeId(69), false));
                 ID_i8244_Annotation.References.Add(new ReferenceNode(new NodeId(47), new NodeId(7617), true));
 
