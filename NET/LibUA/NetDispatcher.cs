@@ -5,7 +5,6 @@ using System.Net.Sockets;
 using System.Security.Cryptography.X509Certificates;
 using LibUA.Core;
 using Microsoft.Extensions.Logging;
-using static LibUA.Security.Cryptography.CapiNative;
 
 namespace LibUA
 {
