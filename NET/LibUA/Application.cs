@@ -290,6 +290,7 @@ namespace LibUA
                         }
                     },
                     { new NodeId(UAConst.Server_ServerStatus_State), (int)ServerState.Running },
+                    { new NodeId(UAConst.Server_ServiceLevel), (byte)255 },
 
                     { new NodeId(UAConst.OperationLimitsType_MaxNodesPerRead), 100 },
                     { new NodeId(UAConst.OperationLimitsType_MaxNodesPerWrite), 100 },
