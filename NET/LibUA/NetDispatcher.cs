@@ -3368,7 +3368,6 @@ namespace LibUA
             {
                 if (pendingNotificationRequests.Count < MaxPublishRequests)
                 {
-
                     if (!recvBuf.Decode(out uint NoOfSubscriptionAcknowledgements)) { return ErrorParseFail; }
                     if (NoOfSubscriptionAcknowledgements == 0xFFFFFFFFu)
                     {
@@ -3394,7 +3393,7 @@ namespace LibUA
                 }
                 else
                 {
-                    logger?.Log(LogLevel.Error, "{LoggerID}: Too many publish requests (max is {maximumPublishRequests}), sent BadTooManyPublishRequests", LoggerID(), 1);
+                    logger?.Log(LogLevel.Error, "{LoggerID}: Too many publish requests (max is {maximumPublishRequests}), sent BadTooManyPublishRequests", LoggerID(), MaxPublishRequests);
 
                     var respBuf = new MemoryBuffer(maximumMessageSize);
                     bool succeeded = DispatchMessage_WriteHeader(config, respBuf,
