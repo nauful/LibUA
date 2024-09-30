@@ -3510,7 +3510,7 @@ namespace LibUA
                     }
 
                     succeeded &= recvHandler.RecvBuf.DecodeArraySize(out uint numDiagnosticInfos);
-                    if (numDiagnosticInfos > 0 && numDiagnosticInfos != uint.MaxValue)
+                    if (numDiagnosticInfos > 0 && numDiagnosticInfos == uint.MaxValue)
                     {
                         return StatusCode.BadTypeMismatch;
                     }
