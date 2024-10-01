@@ -3510,9 +3510,22 @@ namespace LibUA
                     }
 
                     succeeded &= recvHandler.RecvBuf.DecodeArraySize(out uint numDiagnosticInfos);
-                    if (numDiagnosticInfos > 0 && numDiagnosticInfos == uint.MaxValue)
+                    if (numDiagnosticInfos > 0)
                     {
-                        return StatusCode.BadTypeMismatch;
+                        if (numDiagnosticInfos == uint.MaxValue)
+                        {
+                            return StatusCode.BadTypeMismatch;
+                        }
+
+                        // TODO: Read DiagnosticInfo
+                        for (int j = 0; j < numDiagnosticInfos; j++)
+                        {
+                            succeeded &= recvHandler.RecvBuf.Decode(out byte mask);
+                            if (mask != 0)
+                            {
+                                return StatusCode.BadNotImplemented;
+                            }
+                        }
                     }
 
                     succeeded &= recvHandler.RecvBuf.DecodeArraySize(out uint numOutputs);
