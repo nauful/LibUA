@@ -559,7 +559,6 @@ namespace TestServer
 
         private static void Main(string[] args)
         {
-            //TestSerialization();
             TestServer();
         }
 
