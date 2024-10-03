@@ -1075,6 +1075,10 @@ namespace LibUA
                     OnConnectionClosed?.Invoke();
                 }
             }
+            catch (SocketException)
+            {
+                // Disconnected
+            }
             finally
             {
                 tcp = null;
