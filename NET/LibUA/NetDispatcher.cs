@@ -115,7 +115,7 @@ namespace LibUA
 
                 int numSubAcks = (int)Math.Min(MaxSubscriptionAcknowledgementsPerPublish, acknowledgeSeqNums.Count);
 
-                int availableSpaceLeft = (int)(config.TL.RemoteConfig.MaxMessageSize * UsableMessageSizeFactor) - respBuf.Position;
+                int availableSpaceLeft = (int)(config.TL.TransportConfig.MaxMessageSize * UsableMessageSizeFactor) - respBuf.Position;
                 availableSpaceLeft -= numSubAcks;
 
                 foreach (var mi in sub.MonitoredItems.Values)
@@ -316,7 +316,7 @@ namespace LibUA
 
                 int numSubAcks = (int)Math.Min(MaxSubscriptionAcknowledgementsPerPublish, acknowledgeSeqNums.Count);
 
-                int availableSpaceLeft = (int)(config.TL.RemoteConfig.MaxMessageSize * UsableMessageSizeFactor) - respBuf.Position;
+                int availableSpaceLeft = (int)(config.TL.TransportConfig.MaxMessageSize * UsableMessageSizeFactor) - respBuf.Position;
                 availableSpaceLeft -= numSubAcks;
 
                 foreach (var mi in sub.MonitoredItems.Values)
@@ -480,7 +480,7 @@ namespace LibUA
                             (uint)(recvBuf.Buffer[6] << 16) | (uint)(recvBuf.Buffer[7] << 24);
 
                     if (config != null && config.TL != null &&
-                        messageSize > config.TL.LocalConfig.MaxMessageSize)
+                        messageSize > config.TL.TransportConfig.MaxMessageSize)
                     {
                         UAStatusCode = (uint)StatusCode.BadResponseTooLarge;
                         return ErrorInternal;
@@ -1011,8 +1011,7 @@ namespace LibUA
                     succeeded &= respBuf.EncodeUAByteString(serverSignature);
                 }
 
-                uint maxResponseMessageSize = Math.Min(config.TL.LocalConfig.MaxMessageSize, config.TL.RemoteConfig.MaxMessageSize);
-                succeeded &= respBuf.Encode(maxResponseMessageSize);
+                succeeded &= respBuf.Encode(config.TL.TransportConfig.MaxMessageSize);
 
                 if (!succeeded)
                 {
@@ -1272,12 +1271,12 @@ namespace LibUA
                 const int ChunkHeaderOverhead = 4 * 6;
                 const int seqPosition = 4 * 4;
 
-                int chunkSize = (int)config.TL.RemoteConfig.RecvBufferSize - ChunkHeaderOverhead - TLPaddingOverhead;
+                int chunkSize = (int)config.TL.TransportConfig.RecvBufferSize - ChunkHeaderOverhead - TLPaddingOverhead;
                 //int chunkSize = 2048 - ChunkHeaderOverhead - TLPaddingOverhead;
                 int numChunks = (respBuf.Position - ChunkHeaderOverhead + chunkSize - 1) / chunkSize;
 
-                if (numChunks > 1 && config.TL.RemoteConfig.MaxChunkCount > 0 &&
-                    numChunks > config.TL.RemoteConfig.MaxChunkCount)
+                if (numChunks > 1 && config.TL.TransportConfig.MaxChunkCount > 0 &&
+                    numChunks > config.TL.TransportConfig.MaxChunkCount)
                 {
                     UAStatusCode = (uint)StatusCode.BadEncodingLimitsExceeded;
                     return;
@@ -1730,24 +1729,24 @@ namespace LibUA
 
                 config.TL = new TLConnection();
 
-                config.TL.RemoteConfig = new TLConfiguration();
-                if (!recvBuf.Decode(out config.TL.RemoteConfig.ProtocolVersion)) { return ErrorParseFail; }
-                if (!recvBuf.Decode(out config.TL.RemoteConfig.RecvBufferSize)) { return ErrorParseFail; }
-                if (!recvBuf.Decode(out config.TL.RemoteConfig.SendBufferSize)) { return ErrorParseFail; }
-                if (!recvBuf.Decode(out config.TL.RemoteConfig.MaxMessageSize)) { return ErrorParseFail; }
-                if (!recvBuf.Decode(out config.TL.RemoteConfig.MaxChunkCount)) { return ErrorParseFail; }
+                var RemoteConfig = new TLConfiguration();
+                if (!recvBuf.Decode(out RemoteConfig.ProtocolVersion)) { return ErrorParseFail; }
+                if (!recvBuf.Decode(out RemoteConfig.RecvBufferSize)) { return ErrorParseFail; }
+                if (!recvBuf.Decode(out RemoteConfig.SendBufferSize)) { return ErrorParseFail; }
+                if (!recvBuf.Decode(out RemoteConfig.MaxMessageSize)) { return ErrorParseFail; }
+                if (!recvBuf.Decode(out RemoteConfig.MaxChunkCount)) { return ErrorParseFail; }
 
-                const uint maxChunkSize = (1 << 16) - 1;
-                uint sendChunkSize = Math.Min(maxChunkSize, config.TL.RemoteConfig.RecvBufferSize);
-                uint recvChunkSize = Math.Min(maxChunkSize, config.TL.RemoteConfig.SendBufferSize);
+                const uint maxChunkSize = 1 << 20;
+                uint sendChunkSize = Math.Min(maxChunkSize, RemoteConfig.RecvBufferSize);
+                uint recvChunkSize = Math.Min(maxChunkSize, RemoteConfig.SendBufferSize);
 
-                if (config.TL.RemoteConfig.MaxMessageSize > 0)
+                if (RemoteConfig.MaxMessageSize > 0)
                 {
-                    config.TL.RemoteConfig.MaxMessageSize = Math.Min(int.MaxValue, config.TL.RemoteConfig.MaxMessageSize);
-                    maximumMessageSize = Math.Min(maximumMessageSize, (int)config.TL.RemoteConfig.MaxMessageSize);
+                    RemoteConfig.MaxMessageSize = Math.Min(int.MaxValue, RemoteConfig.MaxMessageSize);
+                    maximumMessageSize = Math.Min(maximumMessageSize, (int)RemoteConfig.MaxMessageSize);
                 }
 
-                config.TL.LocalConfig = new TLConfiguration()
+                config.TL.TransportConfig = new TLConfiguration()
                 {
                     ProtocolVersion = 0,
                     SendBufferSize = sendChunkSize,
@@ -1768,11 +1767,11 @@ namespace LibUA
                 bool succeeded = true;
                 succeeded &= respBuf.Encode((uint)(MessageType.Acknowledge) | ((uint)'F' << 24));
                 succeeded &= respBuf.Encode((uint)0);
-                succeeded &= respBuf.Encode(config.TL.LocalConfig.ProtocolVersion);
-                succeeded &= respBuf.Encode(config.TL.LocalConfig.RecvBufferSize);
-                succeeded &= respBuf.Encode(config.TL.LocalConfig.SendBufferSize);
-                succeeded &= respBuf.Encode(config.TL.LocalConfig.MaxMessageSize);
-                succeeded &= respBuf.Encode(config.TL.LocalConfig.MaxChunkCount);
+                succeeded &= respBuf.Encode(config.TL.TransportConfig.ProtocolVersion);
+                succeeded &= respBuf.Encode(config.TL.TransportConfig.RecvBufferSize);
+                succeeded &= respBuf.Encode(config.TL.TransportConfig.SendBufferSize);
+                succeeded &= respBuf.Encode(config.TL.TransportConfig.MaxMessageSize);
+                succeeded &= respBuf.Encode(config.TL.TransportConfig.MaxChunkCount);
                 if (!succeeded)
                 {
                     return ErrorRespWrite;
@@ -1937,7 +1936,7 @@ namespace LibUA
                 if (!recvBuf.Decode(out uint numNodesToRead)) { return ErrorParseFail; }
 
                 var respBuf = new MemoryBuffer(maximumMessageSize);
-                int availableSpacePerRequest = (int)((config.TL.RemoteConfig.MaxMessageSize / Math.Max(1, numNodesToRead)) * UsableMessageSizeFactor) - respBuf.Position - TLPaddingOverhead;
+                int availableSpacePerRequest = (int)((config.TL.TransportConfig.MaxMessageSize / Math.Max(1, numNodesToRead)) * UsableMessageSizeFactor) - respBuf.Position - TLPaddingOverhead;
 
                 bool succeeded;
                 if (releaseContinuationPoints)

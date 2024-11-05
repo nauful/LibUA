@@ -6884,8 +6884,7 @@ namespace LibUA
 
         public class TLConnection
         {
-            public TLConfiguration LocalConfig { get; set; }
-            public TLConfiguration RemoteConfig { get; set; }
+            public TLConfiguration TransportConfig { get; set; }
 
             public string RemoteEndpoint { get; set; }
         }

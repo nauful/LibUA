@@ -746,12 +746,12 @@ namespace LibUA
             const int ChunkHeaderOverhead = 4 * 6;
             const int seqPosition = 4 * 4;
 
-            int chunkSize = (int)config.TL.RemoteConfig.RecvBufferSize - ChunkHeaderOverhead - TLPaddingOverhead;
+            int chunkSize = (int)config.TL.TransportConfig.RecvBufferSize - ChunkHeaderOverhead - TLPaddingOverhead;
             //int chunkSize = 2048 - ChunkHeaderOverhead - TLPaddingOverhead;
             int numChunks = (respBuf.Position - ChunkHeaderOverhead + chunkSize - 1) / chunkSize;
 
-            if (numChunks > 1 && config.TL.RemoteConfig.MaxChunkCount > 0 &&
-                numChunks > config.TL.RemoteConfig.MaxChunkCount)
+            if (numChunks > 1 && config.TL.TransportConfig.MaxChunkCount > 0 &&
+                numChunks > config.TL.TransportConfig.MaxChunkCount)
             {
                 return StatusCode.BadEncodingLimitsExceeded;
             }
@@ -895,7 +895,7 @@ namespace LibUA
 
             config.TL = new TLConnection
             {
-                LocalConfig = new TLConfiguration()
+                TransportConfig = new TLConfiguration()
                 {
                     ProtocolVersion = 0,
                     SendBufferSize = 1 << 16,
@@ -908,11 +908,11 @@ namespace LibUA
             bool succeeded = true;
             succeeded &= sendBuf.Encode((uint)(MessageType.Hello) | ((uint)'F' << 24));
             succeeded &= sendBuf.Encode((uint)0);
-            succeeded &= sendBuf.Encode(config.TL.LocalConfig.ProtocolVersion);
-            succeeded &= sendBuf.Encode(config.TL.LocalConfig.RecvBufferSize);
-            succeeded &= sendBuf.Encode(config.TL.LocalConfig.SendBufferSize);
-            succeeded &= sendBuf.Encode(config.TL.LocalConfig.MaxMessageSize);
-            succeeded &= sendBuf.Encode(config.TL.LocalConfig.MaxChunkCount);
+            succeeded &= sendBuf.Encode(config.TL.TransportConfig.ProtocolVersion);
+            succeeded &= sendBuf.Encode(config.TL.TransportConfig.RecvBufferSize);
+            succeeded &= sendBuf.Encode(config.TL.TransportConfig.SendBufferSize);
+            succeeded &= sendBuf.Encode(config.TL.TransportConfig.MaxMessageSize);
+            succeeded &= sendBuf.Encode(config.TL.TransportConfig.MaxChunkCount);
             succeeded &= sendBuf.EncodeUAString(GetEndpointString());
 
             if (!succeeded)
@@ -961,14 +961,14 @@ namespace LibUA
                 recvQueue.Remove(key);
             }
 
-            config.TL.RemoteConfig = new TLConfiguration();
-            if (!recvHandler.RecvBuf.Decode(out config.TL.RemoteConfig.ProtocolVersion)) { return StatusCode.BadDecodingError; }
-            if (!recvHandler.RecvBuf.Decode(out config.TL.RemoteConfig.RecvBufferSize)) { return StatusCode.BadDecodingError; }
-            if (!recvHandler.RecvBuf.Decode(out config.TL.RemoteConfig.SendBufferSize)) { return StatusCode.BadDecodingError; }
-            if (!recvHandler.RecvBuf.Decode(out config.TL.RemoteConfig.MaxMessageSize)) { return StatusCode.BadDecodingError; }
-            if (!recvHandler.RecvBuf.Decode(out config.TL.RemoteConfig.MaxChunkCount)) { return StatusCode.BadDecodingError; }
+            config.TL.TransportConfig = new TLConfiguration();
+            if (!recvHandler.RecvBuf.Decode(out config.TL.TransportConfig.ProtocolVersion)) { return StatusCode.BadDecodingError; }
+            if (!recvHandler.RecvBuf.Decode(out config.TL.TransportConfig.RecvBufferSize)) { return StatusCode.BadDecodingError; }
+            if (!recvHandler.RecvBuf.Decode(out config.TL.TransportConfig.SendBufferSize)) { return StatusCode.BadDecodingError; }
+            if (!recvHandler.RecvBuf.Decode(out config.TL.TransportConfig.MaxMessageSize)) { return StatusCode.BadDecodingError; }
+            if (!recvHandler.RecvBuf.Decode(out config.TL.TransportConfig.MaxChunkCount)) { return StatusCode.BadDecodingError; }
 
-            MaximumMessageSize = (int)Math.Min(config.TL.RemoteConfig.MaxMessageSize, MaximumMessageSize);
+            MaximumMessageSize = (int)Math.Min(config.TL.TransportConfig.MaxMessageSize, MaximumMessageSize);
 
             //if (!signalled)
             //{
@@ -1398,7 +1398,7 @@ namespace LibUA
                     (uint)(recvBuf.Buffer[6] << 16) | (uint)(recvBuf.Buffer[7] << 24);
 
                 if (config != null && config.TL != null &&
-                    messageSize > config.TL.LocalConfig.MaxMessageSize)
+                    messageSize > config.TL.TransportConfig.MaxMessageSize)
                 {
                     recvHandlerStatus = StatusCode.BadResponseTooLarge;
                     return -1;
