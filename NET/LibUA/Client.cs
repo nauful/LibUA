@@ -1397,15 +1397,23 @@ namespace LibUA
             }
             else if (messageType == (uint)MessageType.Open)
             {
-                ManualResetEvent ev = null;
+                messageSize =
+                    (uint)recvBuf.Buffer[4] | (uint)(recvBuf.Buffer[5] << 8) |
+                    (uint)(recvBuf.Buffer[6] << 16) | (uint)(recvBuf.Buffer[7] << 24);
 
+                if (messageSize > recvBuf.Capacity)
+                {
+                    return 0;
+                }
+
+                ManualResetEvent ev = null;
                 lock (recvQueue)
                 {
                     var key = new Tuple<uint, uint>(messageType, 0);
                     recvQueue[key] = new RecvHandler()
                     {
                         Header = null,
-                        RecvBuf = recvBuf.Duplicate(),
+                        RecvBuf = recvBuf.Duplicate((int)messageSize),
                         Type = NodeId.Zero
                     };
 

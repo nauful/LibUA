@@ -565,13 +565,22 @@ namespace LibUA
                 }
                 else if (messageType == (uint)MessageType.Open)
                 {
+                    uint messageSize =
+                        (uint)recvBuf.Buffer[4] | (uint)(recvBuf.Buffer[5] << 8) |
+                        (uint)(recvBuf.Buffer[6] << 16) | (uint)(recvBuf.Buffer[7] << 24);
+
+                    if (messageSize > recvBuf.Capacity)
+                    {
+                        return 0;
+                    }
+
                     if (config.TL == null)
                     {
                         logger?.Log(LogLevel.Error, "{LoggerID}: Message type 0x{messageType:X} is not supported before Hello", LoggerID(), messageType);
                         return ErrorInternal;
                     }
 
-                    return DispatchOpen(config, recvBuf);
+                    return DispatchOpen(config, recvBuf.Duplicate((int)messageSize));
                 }
                 else if (messageType == (uint)MessageType.Message ||
                     messageType == (uint)MessageType.Close)
