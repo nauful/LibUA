@@ -763,6 +763,16 @@ namespace LibUA
 
                 return mb;
             }
+
+            public MemoryBuffer Duplicate(int TargetCapacity)
+            {
+                var mb = new MemoryBuffer(TargetCapacity);
+
+                mb.Append(Buffer, TargetCapacity);
+                mb.Position = Position;
+
+                return mb;
+            }
         }
     }
 }
