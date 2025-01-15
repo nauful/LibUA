@@ -1470,15 +1470,20 @@ namespace LibUA
 
                 if (publishReqs.Contains(respHeader.RequestHandle))
                 {
-                    ConsumeNotification(new RecvHandler()
+                    try
                     {
-                        Header = respHeader,
-                        RecvBuf = recvBuf.Duplicate(),
-                        Type = typeId
-                    });
-
-                    publishReqs.Remove(respHeader.RequestHandle);
-                    nextPublish = true;
+                        ConsumeNotification(new RecvHandler()
+                        {
+                            Header = respHeader,
+                            RecvBuf = recvBuf.Duplicate(),
+                            Type = typeId
+                        });
+                    }
+                    finally
+                    {
+                        publishReqs.Remove(respHeader.RequestHandle);
+                        nextPublish = true;
+                    }
                 }
                 else
                 {
