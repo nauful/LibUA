@@ -114,5 +114,21 @@ namespace LibUA.Tests
         {
             Assert.NotEqual(new NodeId(2, [0, 1, 2, 3, 4], NodeIdNetType.ByteString), new NodeId(2, [0, 1, 2, 3, 5], NodeIdNetType.ByteString));
         }
+
+        [Fact]
+        public void NodeId_TryParseOpaqueBase64()
+        {
+            var n = NodeId.TryParse("ns=2;b=VEVTVHRlc3RURVNU");
+            Assert.NotNull(n);
+            Assert.Equal("ns=2;b=VEVTVHRlc3RURVNU", n.ToString());
+        }
+        [Fact]
+        public void NodeId_TryParseGuid()
+        {
+            var g = Guid.NewGuid();
+            var n = NodeId.TryParse($"ns=2;g={g}");
+            Assert.NotNull(n);
+            Assert.Equal($"ns=2;g={g}", n.ToString());
+        }
     }
 }
