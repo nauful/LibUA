@@ -66,36 +66,8 @@ namespace LibUA
 
                     return new NodeId(nsIdx, idx);
                 }
-                else if (vstrType.StartsWith("b="))
-                {
-                    var hexString = vstrType.Substring(2);
-                    var bytes = HexToByteArray(hexString);
-                    return new NodeId(nsIdx, bytes, NodeIdNetType.ByteString);
-                }
-                else if (vstrType.StartsWith("g="))
-                {
-                    var guidString = vstrType.Substring(2);
-                    var guid = new Guid(guidString);
-                    var bytes = guid.ToByteArray();
-                    return new NodeId(nsIdx, bytes, NodeIdNetType.Guid);
-                }
 
                 return null;
-            }
-
-            private static byte[] HexToByteArray(string hexString)
-            {
-                if (hexString.Length % 2 != 0)
-                {
-                    throw new ArgumentException("Hex string length must be even.");
-                }
-
-                byte[] bytes = new byte[hexString.Length / 2];
-                for (int i = 0; i < bytes.Length; i++)
-                {
-                    bytes[i] = Convert.ToByte(hexString.Substring(i * 2, 2), 16);
-                }
-                return bytes;
             }
 
             public NodeId(UInt32 NumericIdentifier)
@@ -148,11 +120,11 @@ namespace LibUA
                 }
                 else if (IdType == NodeIdNetType.ByteString)
                 {
-                    return string.Format("ns={0};b={1}", NamespaceIndex, string.Join("", ByteStringIdentifier.Select(v => v.ToString("X2"))));
+                    return string.Format("ns={0};bs=0x{1}", NamespaceIndex, string.Join("", ByteStringIdentifier.Select(v => v.ToString("X2"))));
                 }
                 else if (IdType == NodeIdNetType.Guid)
                 {
-                    return string.Format("ns={0};g={1}", NamespaceIndex, new Guid(ByteStringIdentifier).ToString("D"));
+                    return string.Format("ns={0};guid=0x{1}", NamespaceIndex, string.Join("", ByteStringIdentifier.Select(v => v.ToString("X2"))));
                 }
 
                 return string.Format("ns={0};i={1}", NamespaceIndex, NumericIdentifier);
