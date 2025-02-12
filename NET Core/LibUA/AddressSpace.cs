@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Buffers.Text;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -40,60 +41,67 @@ namespace LibUA
 
             public static NodeId TryParse(string str)
             {
+                ushort nsIdx = 0;
+
                 int splitIdx = str.IndexOf(';');
-                if (splitIdx == -1) { return null; }
-
-                var nsStr = str.Substring(0, splitIdx);
-                if (!nsStr.ToLowerInvariant().StartsWith("ns="))
+                if (splitIdx != -1)
                 {
-                    return null;
+                    var nsStr = str.AsSpan().Slice(0, splitIdx);
+                    if (!nsStr.StartsWith("ns=", StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        return null;
+                    }
+
+                    if (!ushort.TryParse(nsStr.Slice(3), out nsIdx))
+                    {
+                        return null;
+                    }
+                    splitIdx++;
+                }
+                else
+                {
+                    splitIdx = 0;
                 }
 
-                if (!ushort.TryParse(nsStr.Substring(3), out ushort nsIdx))
+                var vstr = str.AsSpan().Slice(splitIdx);
+                if (vstr.StartsWith("s=", StringComparison.InvariantCultureIgnoreCase))
                 {
-                    return null;
+                    return new NodeId(nsIdx, vstr.Slice(2).ToString());
                 }
-
-                var vstr = str.Substring(splitIdx + 1);
-                var vstrType = vstr.ToLowerInvariant();
-                if (vstrType.StartsWith("s="))
+                else if (vstr.StartsWith("i=", StringComparison.InvariantCultureIgnoreCase))
                 {
-                    return new NodeId(nsIdx, vstr.Substring(2));
-                }
-                else if (vstrType.StartsWith("i="))
-                {
-                    if (!UInt32.TryParse(vstrType.Substring(2), out uint idx))
+                    if (!UInt32.TryParse(vstr.Slice(2), out uint idx))
                     {
                         return null;
                     }
 
                     return new NodeId(nsIdx, idx);
                 }
-                else if (vstrType.StartsWith("b=0x"))
+                else if (vstr.StartsWith("b=0x", StringComparison.InvariantCultureIgnoreCase))
                 {
                     //Note: This encoding is not in the standard but should work
                     //fine in combination with Base64 encoding below
-                    vstr = vstr.Substring(4);
+                    vstr = vstr.Slice(4);
 
                     // Convert hex string to byte array
-                    byte[] byteArray = Enumerable.Range(0, vstr.Length / 2)
-                                               .Select(i => Convert.ToByte(vstr.Substring(i * 2, 2), 16))
-                                               .ToArray();
+                    byte[] byteArray = Convert.FromHexString(vstr);
 
                     return new NodeId(nsIdx, byteArray, NodeIdNetType.ByteString);
                 }
-                else if (vstrType.StartsWith("b="))
+                else if (vstr.StartsWith("b=", StringComparison.InvariantCultureIgnoreCase))
                 {
                     //Convert from base 64 encoded string
-                    vstr = vstr.Substring(2);
-                    byte[] byteArray = Convert.FromBase64String(vstr);
+                    vstr = vstr.Slice(2);
+                    byte[] byteArray = Convert.FromBase64String(vstr.ToString());
                     return new NodeId(nsIdx, byteArray, NodeIdNetType.ByteString);
                 }
-                else if (vstrType.StartsWith("g="))
+                else if (vstr.StartsWith("g=", StringComparison.InvariantCultureIgnoreCase))
                 {
-                    vstr = vstr.Substring(2);
-                    Guid guid = new Guid(vstr);
-                    return new NodeId(nsIdx, guid.ToByteArray(), NodeIdNetType.Guid);
+                    vstr = vstr.Slice(2);
+                    if (Guid.TryParse(vstr, out Guid guid))
+                        return new NodeId(nsIdx, guid.ToByteArray(), NodeIdNetType.Guid);
+                    else
+                        return null;
                 }
 
                 return null;
@@ -134,6 +142,13 @@ namespace LibUA
                 this.IdType = NodeIdNetType.String;
             }
 
+            public NodeId(UInt16 NamespaceIndex, Guid GuidIdentifier)
+            {
+                this.NamespaceIndex = NamespaceIndex;
+                this.ByteStringIdentifier = GuidIdentifier.ToByteArray();
+                this.IdType = NodeIdNetType.Guid;
+            }
+
             public NodeId(UInt16 NamespaceIndex, byte[] ByteStringIdentifier, NodeIdNetType IdType)
             {
                 this.NamespaceIndex = NamespaceIndex;
@@ -143,21 +158,42 @@ namespace LibUA
 
             public override string ToString()
             {
-                if (IdType == NodeIdNetType.String)
+                if (NamespaceIndex == 0)
                 {
-                    return string.Format("ns={0};s={1}", NamespaceIndex, StringIdentifier);
-                }
-                else if (IdType == NodeIdNetType.ByteString)
-                {
-                    return string.Format("ns={0};b={1}", NamespaceIndex, Convert.ToBase64String(ByteStringIdentifier));
-                }
-                else if (IdType == NodeIdNetType.Guid)
-                {
-                    var guid = new Guid(ByteStringIdentifier);
-                    return string.Format("ns={0};g={1}", NamespaceIndex, guid.ToString());
-                }
+                    if (IdType == NodeIdNetType.String)
+                    {
+                        return $"s={StringIdentifier}";
+                    }
+                    else if (IdType == NodeIdNetType.ByteString)
+                    {
+                        return $"b={Convert.ToBase64String(ByteStringIdentifier)}";
+                    }
+                    else if (IdType == NodeIdNetType.Guid)
+                    {
+                        var guid = new Guid(ByteStringIdentifier);
+                        return $"g={guid}";
+                    }
 
-                return string.Format("ns={0};i={1}", NamespaceIndex, NumericIdentifier);
+                    return $"i={NumericIdentifier}";
+                }
+                else
+                {
+                    if (IdType == NodeIdNetType.String)
+                    {
+                        return $"ns={NamespaceIndex};s={StringIdentifier}";
+                    }
+                    else if (IdType == NodeIdNetType.ByteString)
+                    {
+                        return $"ns={NamespaceIndex};b={Convert.ToBase64String(ByteStringIdentifier)}";
+                    }
+                    else if (IdType == NodeIdNetType.Guid)
+                    {
+                        var guid = new Guid(ByteStringIdentifier);
+                        return $"ns={NamespaceIndex};g={guid}";
+                    }
+
+                    return $"ns={NamespaceIndex};i={NumericIdentifier}";
+                }
             }
 
             public override int GetHashCode()
