@@ -82,6 +82,7 @@ namespace LibUA.Benchmarks
             .. ByteStringNodes
         ];
 
+        public static readonly string[] TryParseData = [.. Enumerable.Range(0,1_000_000).Select(i => $"ns=2;i={i}")];
 
         [Benchmark]
         public void NodeIdEquivalency()
@@ -102,6 +103,15 @@ namespace LibUA.Benchmarks
             for (int i = 0; i < 1_000_000; i++)
             {
                 nodes[i] = new NodeId(0, 0);
+            }
+        }
+
+        [Benchmark]
+        public void NodeId_TryParse_Integer()
+        {
+            foreach (var i in TryParseData)
+            {
+                var node = NodeId.TryParse(i);
             }
         }
     }
