@@ -1,4 +1,4 @@
-using LibUA.Core;
+ï»¿using LibUA.Core;
 
 namespace LibUA.Tests
 {
@@ -12,7 +12,7 @@ namespace LibUA.Tests
         // In addition to the canonical null NodeId the alternative values defined in Table 23 shall be
         // considered a null NodeId.
         // IdType        NamespaceIndex        Null Value
-        // String           0                  A null or Empty String(“”)
+        // String           0                  A null or Empty String("")
         // Guid             0                  A Guid initialised with zeros(e.g. 00000000-0000-0000-0000-000000)
         // Opaque           0                  A null or Empty ByteString
         [Fact]
@@ -116,19 +116,100 @@ namespace LibUA.Tests
         }
 
         [Fact]
-        public void NodeId_TryParseOpaqueBase64()
+        public void NodeId_TryParse_Numeric()
         {
-            var n = NodeId.TryParse("ns=2;b=VEVTVHRlc3RURVNU");
-            Assert.NotNull(n);
-            Assert.Equal("ns=2;b=VEVTVHRlc3RURVNU", n.ToString());
+            var nodeId = NodeId.TryParse("ns=2;i=100");
+            Assert.NotNull(nodeId);
+            Assert.Equal(2, nodeId.NamespaceIndex);
+            Assert.Equal(100u, nodeId.NumericIdentifier);
+            Assert.Equal(NodeIdNetType.Numeric, nodeId.IdType);
         }
+
         [Fact]
-        public void NodeId_TryParseGuid()
+        public void NodeId_TryParse_String()
         {
-            var g = Guid.NewGuid();
-            var n = NodeId.TryParse($"ns=2;g={g}");
-            Assert.NotNull(n);
-            Assert.Equal($"ns=2;g={g}", n.ToString());
+            var nodeId = NodeId.TryParse("ns=2;s=TestString");
+            Assert.NotNull(nodeId);
+            Assert.Equal(2, nodeId.NamespaceIndex);
+            Assert.Equal("TestString", nodeId.StringIdentifier);
+            Assert.Equal(NodeIdNetType.String, nodeId.IdType);
+        }
+
+        [Fact]
+        public void NodeId_TryParse_OpaqueBase64()
+        {
+            var nodeId = NodeId.TryParse("ns=2;b=VEVTVHRlc3RURVNU");
+            Assert.NotNull(nodeId);
+            Assert.Equal("ns=2;b=VEVTVHRlc3RURVNU", nodeId.ToString());
+            Assert.Equal(2, nodeId.NamespaceIndex);
+            Assert.Equal(Convert.FromBase64String("VEVTVHRlc3RURVNU"), nodeId.ByteStringIdentifier);
+            Assert.Equal(NodeIdNetType.ByteString, nodeId.IdType);
+        }
+
+        [Fact]
+        public void NodeId_TryParse_Guid()
+        {
+            var guid = Guid.NewGuid();
+            var nodeId = NodeId.TryParse($"ns=2;g={guid}");
+            Assert.NotNull(nodeId);
+            Assert.Equal($"ns=2;g={guid}", nodeId.ToString());
+            Assert.Equal(2, nodeId.NamespaceIndex);
+            Assert.Equal(guid.ToByteArray(), nodeId.ByteStringIdentifier);
+            Assert.Equal(NodeIdNetType.Guid, nodeId.IdType);
+        }
+
+        [Fact]
+        public void NodeId_TryParse_DefaultNamespace()
+        {
+            var guid = Guid.NewGuid();
+            var nodeId = NodeId.TryParse($"g={guid}");
+            var expected = new NodeId(0, guid);
+            Assert.NotNull(nodeId);
+            Assert.Equal(expected, nodeId);
+        }
+
+        [Fact]
+        public void NodeId_ToString_DefaultNamespace()
+        {
+            var guid = Guid.NewGuid();
+            var nodeId = new NodeId(0, guid);
+            Assert.Equal($"g={guid}", nodeId.ToString());
+        }
+
+        [Fact]
+        public void NodeId_TryParse_OpcExamples()
+        {
+            var nodeIdA = NodeId.TryParse("i=13");
+            Assert.NotNull(nodeIdA);
+            Assert.Equal(NodeIdNetType.Numeric, nodeIdA.IdType);
+            Assert.Equal(0u, nodeIdA.NamespaceIndex);
+            Assert.Equal(13u, nodeIdA.NumericIdentifier);
+
+            var nodeIdB = NodeId.TryParse("ns=10;i=12345");
+            Assert.NotNull(nodeIdB);
+            Assert.Equal(NodeIdNetType.Numeric, nodeIdB.IdType);
+            Assert.Equal(10u, nodeIdB.NamespaceIndex);
+            Assert.Equal(12345u, nodeIdB.NumericIdentifier);
+
+            // TODO: Support nsu= format for NodeId
+            //var nodeIdC = NodeId.TryParse("nsu=http://widgets.com/schemas/hello;s=æ°´ World");
+            //Assert.NotNull(nodeIdC);
+            //Assert.Equal(NodeIdNetType.String, nodeIdC.IdType);
+            //Assert.Equal(10u, nodeIdC.NamespaceIndex);
+            //Assert.Equal("æ°´ World", nodeIdC.StringIdentifier);
+
+            var nodeIdD = NodeId.TryParse("g=09087e75-8e5e-499b-954f-f2a9603db28a");
+            Assert.NotNull(nodeIdD);
+            Assert.Equal(NodeIdNetType.Guid, nodeIdD.IdType);
+            Assert.Equal(0u, nodeIdD.NamespaceIndex);
+            Assert.Equal(new Guid("09087e75-8e5e-499b-954f-f2a9603db28a").ToByteArray(), nodeIdD.ByteStringIdentifier);
+
+            // TODO: Support nsu= format for NodeId
+            //var nodeIdE = NodeId.TryParse("nsu=tag:acme.com,2023:schemas:data#off%3B;b=M/RbKBsRVkePCePcx24oRA==");
+            //Assert.NotNull(nodeIdE);
+            //Assert.Equal(NodeIdNetType.ByteString, nodeIdE.IdType);
+            //Assert.Equal(10u, nodeIdE.NamespaceIndex);
+            //Assert.Equal(Convert.FromBase64String("M/RbKBsRVkePCePcx24oRA=="), nodeIdE.ByteStringIdentifier);
         }
     }
 }
