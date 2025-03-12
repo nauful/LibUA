@@ -1026,9 +1026,29 @@ namespace LibUA
                 if (!mem.Encode((byte)1)) { return false; }
             }
 
+            Int32 dcFilterSize = 0;
+            int dcFilterPos = mem.Position;
+            if (includeType)
+            {
+                if (!mem.Encode(dcFilterSize)) { return false; }
+            }
+
             if (!mem.Encode((UInt32)filter.Trigger)) { return false; }
             if (!mem.Encode((UInt32)filter.DeadbandType)) { return false; }
             if (!mem.Encode(filter.DeadbandValue)) { return false; }
+
+            if (includeType)
+            {
+                var posRestore = mem.Position;
+                dcFilterSize = posRestore - dcFilterPos - 4;
+                mem.Position = dcFilterPos;
+                if (!mem.Encode(dcFilterSize))
+                {
+                    mem.Position = posRestore;
+                    return false;
+                }
+                mem.Position = posRestore;
+            }
 
             return true;
         }
