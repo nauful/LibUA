@@ -5818,6 +5818,11 @@ namespace LibUA
 
             public bool TryEncodeByteString(int BufferCapacity)
             {
+                if (TypeId != null && Body != null)
+                {
+                    return true;
+                }
+                
                 TypeId = null;
                 if (Payload != null)
                 {
