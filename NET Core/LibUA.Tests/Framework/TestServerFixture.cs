@@ -354,8 +354,8 @@ namespace LibUA.Tests
 
         private EventNotification GenerateSampleAlarmEvent(DateTime eventTime)
         {
-            return new EventNotification(new EventNotification.Field[]
-            {
+            return new EventNotification(
+            [
 				// During publishing, operand BrowsePaths are matched
 				// against UA select clauses from the subscriber.
 				// The operands shown here are the most common requested (90% of cases).
@@ -470,7 +470,7 @@ namespace LibUA.Tests
                     ),
                     Value = NodeId.Zero
                 },
-            });
+            ]);
         }
 
         public void PlayRow()

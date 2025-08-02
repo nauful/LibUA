@@ -46,7 +46,7 @@ namespace LibUA.Tests
                 // Make a new certificate (public key) and associated private key
                 var dn = new X500DistinguishedName("CN=Client certificate;OU=Demo organization",
                     X500DistinguishedNameFlags.UseSemicolons);
-                SubjectAlternativeNameBuilder sanBuilder = new SubjectAlternativeNameBuilder();
+                SubjectAlternativeNameBuilder sanBuilder = new();
                 sanBuilder.AddUri(new Uri("urn:DemoApplication"));
 
                 using RSA rsa = RSA.Create(4096);

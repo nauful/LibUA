@@ -2,7 +2,7 @@
 
 namespace LibUA.Tests
 {
-    public class NodeId_Tests
+    public class NodeIdTests
     {
         // OPC 10000-3: Address Space Model
         // 8.2.4 Identifier value
@@ -18,13 +18,13 @@ namespace LibUA.Tests
         [Fact]
         public void NodeId_NullEquivalence()
         {
-            NodeId nullNumeric = new NodeId(0, 0);
-            NodeId nullString = new NodeId(0, null);
-            NodeId emptyString = new NodeId(0, string.Empty);
-            NodeId nullGuid = new NodeId(0, null, NodeIdNetType.Guid);
-            NodeId emptyGuid = new NodeId(0, new Guid().ToByteArray(), NodeIdNetType.Guid);
-            NodeId nullBytes = new NodeId(0, null, NodeIdNetType.ByteString);
-            NodeId emptyBytes = new NodeId(0, new byte[0], NodeIdNetType.ByteString);
+            NodeId nullNumeric = new(0, 0);
+            NodeId nullString = new(0, null);
+            NodeId emptyString = new(0, string.Empty);
+            NodeId nullGuid = new(0, null, NodeIdNetType.Guid);
+            NodeId emptyGuid = new(0, new Guid().ToByteArray(), NodeIdNetType.Guid);
+            NodeId nullBytes = new(0, null, NodeIdNetType.ByteString);
+            NodeId emptyBytes = new(0, [], NodeIdNetType.ByteString);
 
             Assert.Equal(nullNumeric, nullNumeric);
             Assert.Equal(nullNumeric, nullString);
