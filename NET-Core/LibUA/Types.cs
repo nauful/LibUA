@@ -5866,7 +5866,7 @@ namespace LibUA
                                 if (!buffer.Encode(eui)) { return false; }
                                 break;
                             case OpcRange range:
-                                payloadType = UAConst.Range;
+                                payloadType = UAConst.Range_Encoding_DefaultBinary;
                                 if (!buffer.Encode(range)) { return false; }
                                 break;
                             default:
@@ -5937,7 +5937,7 @@ namespace LibUA
                         if (!tmp.Decode(out eui)) { return false; }
                         Payload = eui;
                         break;
-                    case (uint)UAConst.Range:
+                    case (uint)UAConst.Range_Encoding_DefaultBinary:
                         OpcRange range;
                         if (!tmp.Decode(out range)) { return false; }
                         Payload = range;

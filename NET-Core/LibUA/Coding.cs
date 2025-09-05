@@ -115,10 +115,13 @@ public class Coding
         if (type == VariantType.UInt64) { return typeof(UInt64); }
         if (type == VariantType.Float) { return typeof(float); }
         if (type == VariantType.Double) { return typeof(Double); }
+        if (type == VariantType.String) { return typeof(String); }
+        if (type == VariantType.ByteString) { return typeof(byte[]); }
         if (type == VariantType.NodeId) { return typeof(NodeId); }
         if (type == VariantType.QualifiedName) { return typeof(QualifiedName); }
         if (type == VariantType.LocalizedText) { return typeof(LocalizedText); }
-        if (type == VariantType.String) { return typeof(String); }
+        if (type == VariantType.DateTime) { return typeof(DateTime); }
+        if (type == VariantType.StatusCode) { return typeof(StatusCode); }
         if (type == VariantType.ExtensionObject) { return typeof(ExtensionObject); }
 
         // TODO: Other types
