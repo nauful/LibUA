@@ -717,13 +717,39 @@ namespace LibUA
             var operands = new FilterOperand[numFilterOperands];
             for (uint i = 0; i < numFilterOperands; i++)
             {
-                if (!mem.Decode(out NodeId _)) { return false; }
+                if (!mem.Decode(out NodeId typeId)) { return false; }
 
                 if (!mem.Decode(out byte _)) { return false; }
 
                 if (!mem.Decode(out uint _)) { return false; }
 
-                // TODO: Always literal operand?
+                // TODO: Need support AttributeOperand?
+                if (typeId.EqualsNumeric(0,(uint)UAConst.ElementOperand_Encoding_DefaultBinary))
+                {
+                    if (!mem.Decode(out UInt32 index)) { return false; }
+
+                    operands[i] = new ElementOperand(index);
+                    continue;
+                }
+                else if (typeId.EqualsNumeric(0, (uint)UAConst.SimpleAttributeOperand_Encoding_DefaultBinary))
+                {
+                    QualifiedName[] browsePath;
+                    
+                    if (!mem.Decode(out NodeId typeDefinitionId)) { return false; }
+                    if (!mem.DecodeArraySize(out uint numBrowsePath)) { return false; }
+                    browsePath = new QualifiedName[numBrowsePath];
+                    for (uint j = 0; j < numBrowsePath; j++)
+                    {
+                        if (!mem.Decode(out browsePath[j])) { return false; }
+                    }
+                    if (!mem.Decode(out UInt32 attributeId)) { return false; }
+                    if (!mem.DecodeUAString(out string indexRange)) { return false; }
+
+                    operands[i] = new SimpleAttributeOperand(typeDefinitionId, browsePath, (NodeAttribute)attributeId, indexRange);
+                    continue;
+                }
+                
+                // Fallback to literal operand reading
                 if (!mem.VariantDecode(out object value)) { return false; }
                 operands[i] = new LiteralOperand(value);
             }
