@@ -6061,6 +6061,16 @@ namespace LibUA
             }
         }
 
+        public class ElementOperand : FilterOperand
+        {
+            public UInt32 Index { get; protected set; }
+
+            public ElementOperand(UInt32 index)
+            {
+                this.Index = index;
+            }
+        }
+
         public class SimpleAttributeOperand : FilterOperand
         {
             public NodeId TypeDefinitionId
