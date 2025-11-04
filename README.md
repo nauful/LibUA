@@ -11,7 +11,7 @@ https://www.nuget.org/packages/nauful-LibUA-core
 - Optimized memory buffers for encoding/decoding large and complex structures to/from raw bytes.
 - Support for all message types, node types, and default address space from the UA specification.
 - Support for signing and encrypted security profiles.
-- Anonymous, user/pass and certificate-based authentication.
+- Anonymous and user/pass authentication.
 - Sessions, subscriptions (data change notifications and custom notifications), custom events and alarming.
 - Extendable server address space with hooks for client requests for access control, read handlers, write handlers, etc.
 - Support for reads, writes, updates, historical data and aggregation.
