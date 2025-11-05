@@ -206,7 +206,7 @@ namespace LibUA
                 succeeded &= sendBuf.Encode(securityTokenRequestType);
                 succeeded &= sendBuf.Encode(messageSecurityMode);
                 succeeded &= sendBuf.EncodeUAByteString(clientNonce);
-                succeeded &= sendBuf.Encode(reqLifetime);
+                succeeded &= sendBuf.Encode((double)reqLifetime);
 
                 config.LocalNonce = clientNonce;
 

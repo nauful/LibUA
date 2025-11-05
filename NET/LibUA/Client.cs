@@ -185,7 +185,7 @@ namespace LibUA
                 UInt32 securityTokenRequestType = (uint)requestType;
                 UInt32 messageSecurityMode = (uint)config.MessageSecurityMode;
                 byte[] clientNonce = null;
-                UInt32 reqLifetime = 30 * 10000;
+                UInt32 reqLifetime = 300 * 1000;
 
                 if (config.SecurityPolicy != SecurityPolicy.None)
                 {
@@ -198,7 +198,7 @@ namespace LibUA
                 succeeded &= sendBuf.Encode(securityTokenRequestType);
                 succeeded &= sendBuf.Encode(messageSecurityMode);
                 succeeded &= sendBuf.EncodeUAByteString(clientNonce);
-                succeeded &= sendBuf.Encode(reqLifetime);
+                succeeded &= sendBuf.Encode((double)reqLifetime);
 
                 config.LocalNonce = clientNonce;
 
@@ -371,7 +371,7 @@ namespace LibUA
                 config.ChannelID = channelId;
                 config.TokenID = tokenId;
                 config.TokenCreatedAt = DateTimeOffset.FromFileTime((long)createAtTimestamp);
-                config.TokenLifetime = respLifetime;
+                config.TokenLifetime = (uint)respLifetime;
                 config.RemoteNonce = serverNonce;
 
                 if (config.SecurityPolicy == SecurityPolicy.None)
