@@ -769,6 +769,22 @@ namespace LibUA
 
             protected int DispatchMessage_ActivateSessionRequest(SLChannel config, RequestHeader reqHeader, MemoryBuffer recvBuf, uint messageSize)
             {
+                var strLocalCert = config.MessageSecurityMode != MessageSecurityMode.None
+                    ? app.ApplicationCertificate?.Export(X509ContentType.Cert)
+                    : null;
+                var challenge = new byte[(strLocalCert?.Length ?? 0)
+                    + (config.SessionIssuedNonce?.Length ?? 0)];
+                var offset = 0;
+                if (strLocalCert != null)
+                {
+                    Array.Copy(strLocalCert, 0, challenge, offset, strLocalCert.Length);
+                    offset += strLocalCert.Length;
+                }
+                if (config.SessionIssuedNonce != null)
+                {
+                    Array.Copy(config.SessionIssuedNonce, 0, challenge, offset, config.SessionIssuedNonce.Length);
+                    offset += config.SessionIssuedNonce.Length;
+                }
 
                 if (!recvBuf.DecodeUAString(out string clientSignatureAlgorithm)) { return ErrorParseFail; }
                 if (!recvBuf.DecodeUAByteString(out byte[] clientSignature)) { return ErrorParseFail; }
@@ -795,6 +811,7 @@ namespace LibUA
                     return ErrorParseFail;
                 }
 
+                byte[] certificateData = null;
                 if (userIdentityTokenTypeId.NumericIdentifier == (uint)UserIdentityTokenType.Anonymous)
                 {
                     if (!recvBuf.Decode(out uint _)) { return ErrorParseFail; }
@@ -848,7 +865,7 @@ namespace LibUA
                 {
                     if (!recvBuf.Decode(out uint _)) { return ErrorParseFail; }
                     if (!recvBuf.DecodeUAString(out string policyId)) { return ErrorParseFail; }
-                    if (!recvBuf.DecodeUAByteString(out byte[] certificateData)) { return ErrorParseFail; }
+                    if (!recvBuf.DecodeUAByteString(out certificateData)) { return ErrorParseFail; }
 
                     if (!app.SessionValidateClientUser(config.Session, new UserIdentityX509IdentityToken(policyId, certificateData)))
                     {
@@ -862,9 +879,35 @@ namespace LibUA
                     return ErrorParseFail;
                 }
 
-                if (!recvBuf.DecodeUAString(out string _)) { return ErrorParseFail; }
+                if (!recvBuf.DecodeUAString(out string userTokenAlgorithm)) { return ErrorParseFail; }
+                if (!recvBuf.DecodeUAByteString(out byte[] userTokenSignature)) { return ErrorParseFail; }
 
-                if (!recvBuf.DecodeUAByteString(out _)) { return ErrorParseFail; }
+                if (userTokenAlgorithm != null && userTokenSignature != null)
+                {
+                    if (certificateData == null || challenge.Length == 0)
+                    {
+                        UAStatusCode = (uint)StatusCode.BadUserSignatureInvalid;
+                        return ErrorInternal;
+                    }
+
+                    if (userTokenAlgorithm is not Types.SignatureAlgorithmSha256 and not Types.SignatureAlgorithmSha1)
+                    {
+                        logger?.Log(LogLevel.Error,
+                            "{LoggerID}: User token signature algorithm {userTokenAlgorithm} is not supported",
+                            LoggerID(), userTokenAlgorithm);
+
+                        UAStatusCode = (uint)StatusCode.BadUserSignatureInvalid;
+                        return ErrorInternal;
+                    }
+
+                    var certificate = new X509Certificate2(certificateData);
+                    if (!UASecurity.VerifySigned(new ArraySegment<byte>(challenge),
+                            userTokenSignature, certificate, config.SecurityPolicy, userTokenAlgorithm))
+                    {
+                        UAStatusCode = (uint)StatusCode.BadUserSignatureInvalid;
+                        return ErrorInternal;
+                    }
+                }
 
                 using var respBuf = new MemoryBuffer(maximumMessageSize);
                 bool succeeded = DispatchMessage_WriteHeader(config, respBuf,
@@ -877,7 +920,7 @@ namespace LibUA
 
                 if (config.MessageSecurityMode != MessageSecurityMode.None)
                 {
-                    if (config.SessionIssuedNonce == null)
+                    if (challenge.Length == 0)
                     {
                         UAStatusCode = (uint)StatusCode.BadSessionClosed;
                         return ErrorInternal;
@@ -894,12 +937,7 @@ namespace LibUA
                         return ErrorInternal;
                     }
 
-                    var strLocalCert = app.ApplicationCertificate.Export(X509ContentType.Cert);
-                    var signMsg = new byte[strLocalCert.Length + config.SessionIssuedNonce.Length];
-                    Array.Copy(strLocalCert, 0, signMsg, 0, strLocalCert.Length);
-                    Array.Copy(config.SessionIssuedNonce, 0, signMsg, strLocalCert.Length, config.SessionIssuedNonce.Length);
-
-                    if (!UASecurity.VerifySigned(new ArraySegment<byte>(signMsg),
+                    if (!UASecurity.VerifySigned(new ArraySegment<byte>(challenge),
                         clientSignature, config.RemoteCertificate, config.SecurityPolicy))
                     {
                         UAStatusCode = (uint)StatusCode.BadSecurityChecksFailed;

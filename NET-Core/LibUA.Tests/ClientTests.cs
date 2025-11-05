@@ -191,12 +191,18 @@ namespace LibUA.Tests
                     null, null, null);
 
                 client.CreateSession(appDesc, "urn:DemoApplication", 120);
+                
+                // Setup to ONLY succeed if the certificate matches.
+                serverFixture.SessionValidateClientUserHandler = (_, userToken) =>
+                    userToken is UserIdentityX509IdentityToken x509Token
+                    // ReSharper disable once AccessToDisposedClosure
+                    && x509Token.CertificateData.SequenceEqual(client.ClientCertificate)
+                    && x509Token.PrivateKey == null;
 
-                // This should fail, since the user challenge is not possible on non-encrypted channel.
                 var result = client.ActivateSession(
                     new UserIdentityX509IdentityToken("2", client.ClientCertificate, client.ApplicationPrivateKey),
                     ["en"]);
-                Assert.Equal(StatusCode.BadSessionClosed, result);
+                Assert.Equal(StatusCode.Good, result);
             }
             finally
             {

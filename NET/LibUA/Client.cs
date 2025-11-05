@@ -1532,6 +1532,23 @@ namespace LibUA
                 succeeded &= sendBuf.Encode(new NodeId(RequestCode.ActivateSessionRequest));
                 succeeded &= sendBuf.Encode(reqHeader);
 
+                // Calculate challenge:
+                var strRemoteCert = config.RemoteCertificateString;
+                var challenge = new byte[(strRemoteCert?.Length ?? 0)
+                                         + (config.RemoteNonce?.Length ?? 0)];
+                var offset = 0;
+                if (strRemoteCert != null)
+                {
+                    Array.Copy(strRemoteCert, 0, challenge, offset, strRemoteCert.Length);
+                    offset += strRemoteCert.Length;
+                }
+
+                if (config.RemoteNonce != null)
+                {
+                    Array.Copy(config.RemoteNonce, 0, challenge, offset, config.RemoteNonce.Length);
+                    offset += config.RemoteNonce.Length;
+                }
+
                 if (config.MessageSecurityMode == MessageSecurityMode.None)
                 {
                     // ClientSignatureAlgorithm
@@ -1541,18 +1558,13 @@ namespace LibUA
                 }
                 else
                 {
-                    if (config.RemoteNonce == null || config.RemoteCertificateString == null)
+                    if (challenge.Length == 0)
                     {
                         return StatusCode.BadSessionClosed;
                     }
 
-                    var strRemoteCert = config.RemoteCertificateString;
-                    var signMsg = new byte[strRemoteCert.Length + config.RemoteNonce.Length];
-                    Array.Copy(strRemoteCert, 0, signMsg, 0, strRemoteCert.Length);
-                    Array.Copy(config.RemoteNonce, 0, signMsg, strRemoteCert.Length, config.RemoteNonce.Length);
-
                     var algorithm = UASecurity.SignatureAlgorithmForSecurityPolicy(config.SecurityPolicy);
-                    var thumbprint = UASecurity.Sign(new ArraySegment<byte>(signMsg),
+                    var thumbprint = UASecurity.Sign(new ArraySegment<byte>(challenge),
                         ApplicationPrivateKey, config.SecurityPolicy);
 
                     succeeded &= sendBuf.EncodeUAString(algorithm);
@@ -1608,7 +1620,7 @@ namespace LibUA
 
                         Array.Copy(passwordSrc, 0, crypted, 4, passwordSrc.Length);
 
-                        int offset = 4 + passwordSrc.Length;
+                        offset = 4 + passwordSrc.Length;
 
                         if (config.RemoteNonce != null)
                         {
@@ -1657,18 +1669,13 @@ namespace LibUA
 
                 if (identityToken is UserIdentityX509IdentityToken x509IdentityToken)
                 {
-                    if (config.RemoteNonce == null || config.RemoteCertificateString == null)
+                    if (challenge.Length == 0)
                     {
                         return StatusCode.BadSessionClosed;
                     }
 
-                    var strRemoteCert = config.RemoteCertificateString;
-                    var signMsg = new byte[strRemoteCert.Length + config.RemoteNonce.Length];
-                    Array.Copy(strRemoteCert, 0, signMsg, 0, strRemoteCert.Length);
-                    Array.Copy(config.RemoteNonce, 0, signMsg, strRemoteCert.Length, config.RemoteNonce.Length);
-
                     var algorithm = UASecurity.SignatureAlgorithmForSecurityPolicy(config.SecurityPolicy);
-                    var thumbprint = UASecurity.Sign(new ArraySegment<byte>(signMsg),
+                    var thumbprint = UASecurity.Sign(new ArraySegment<byte>(challenge),
                         x509IdentityToken.PrivateKey, config.SecurityPolicy);
 
                     succeeded &= sendBuf.EncodeUAString(algorithm);

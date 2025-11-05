@@ -125,7 +125,7 @@ namespace TestClient
             var messageSecurityMode = MessageSecurityMode.SignAndEncrypt;
             var securityPolicy = SecurityPolicy.Basic256Sha256;
             bool useAnonymousUser = true;
-            bool useCertificateToken = true;
+            bool useCertificateToken = false;
 
             client.Connect();
             client.OpenSecureChannel(MessageSecurityMode.None, SecurityPolicy.None, null);

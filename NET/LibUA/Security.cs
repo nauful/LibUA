@@ -693,16 +693,40 @@ namespace LibUA
                 (System.Security.Cryptography.HashAlgorithm)new SHA1Managed();
         }
 
-        public static bool VerifySigned(ArraySegment<byte> data, byte[] signature, X509Certificate2 cert,
-            SecurityPolicy policy)
+        private static (System.Security.Cryptography.HashAlgorithm Algorithm, string Name) GetHasherByName(string name)
+        {
+            switch (name)
+            {
+                case Types.SignatureAlgorithmSha256:
+                    return (new SHA256Managed(), "SHA256");
+                
+                case Types.SignatureAlgorithmSha1:
+                default:
+                    return (new SHA1Managed(), "SHA1");
+            }
+        }
+
+        public static bool VerifySigned(ArraySegment<byte> data, byte[] signature, X509Certificate2 cert, SecurityPolicy policy)
+        {
+            var hashAlg = HashAlgorithmForSecurityPolicy(policy);
+            var hashName = HashStrForSecurityPolicy(policy);
+            return VerifySigned(data, signature, cert, hashAlg, hashName);
+        }
+
+        public static bool VerifySigned(ArraySegment<byte> data, byte[] signature, X509Certificate2 cert, string hashAlgorithm)
+        {
+            var (hashAlg, hashName) = GetHasherByName(hashAlgorithm);
+            return VerifySigned(data, signature, cert, hashAlg, hashName);
+        }
+
+        private static bool VerifySigned(ArraySegment<byte> data, byte[] signature, X509Certificate2 cert,
+            System.Security.Cryptography.HashAlgorithm hashAlg, string hashName)
         {
             var rsa = cert.PublicKey.Key as RSACryptoServiceProvider;
 
-            var hash = HashAlgorithmForSecurityPolicy(policy);
-            var digest = hash.ComputeHash(data.Array, data.Offset, data.Count);
+            var digest = hashAlg.ComputeHash(data.Array, data.Offset, data.Count);
 
-            bool match = rsa.VerifyHash(digest, HashStrForSecurityPolicy(policy), signature);
-            return match;
+            return rsa.VerifyHash(digest, hashName, signature);
         }
 
         public static byte[] Encrypt(ArraySegment<byte> data, X509Certificate2 cert, bool padding)
