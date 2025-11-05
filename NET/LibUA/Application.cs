@@ -38,10 +38,10 @@ namespace LibUA
 
                 public override bool Equals(object obj)
                 {
-                    if (obj is ServerMonitorKey)
+                    if (obj is ServerMonitorKey key)
                     {
-                        return NodeId == ((ServerMonitorKey)obj).NodeId &&
-                            Attribute == ((ServerMonitorKey)obj).Attribute;
+                        return NodeId == key.NodeId &&
+                            Attribute == key.Attribute;
                     }
 
                     return false;
@@ -593,69 +593,69 @@ namespace LibUA
                     {
                         res[i] = new DataValue((ushort)0, StatusCode.Good);
                     }
-                    else if (readValueIds[i].AttributeId == NodeAttribute.IsAbstract && node is NodeReferenceType)
+                    else if (readValueIds[i].AttributeId == NodeAttribute.IsAbstract && node is NodeReferenceType nrt1)
                     {
-                        res[i] = new DataValue((node as NodeReferenceType).IsAbstract, StatusCode.Good);
+                        res[i] = new DataValue(nrt1.IsAbstract, StatusCode.Good);
                     }
-                    else if (readValueIds[i].AttributeId == NodeAttribute.Symmetric && node is NodeReferenceType)
+                    else if (readValueIds[i].AttributeId == NodeAttribute.Symmetric && node is NodeReferenceType nrt2)
                     {
-                        res[i] = new DataValue((node as NodeReferenceType).IsSymmetric, StatusCode.Good);
+                        res[i] = new DataValue(nrt2.IsSymmetric, StatusCode.Good);
                     }
-                    else if (readValueIds[i].AttributeId == NodeAttribute.InverseName && node is NodeReferenceType)
+                    else if (readValueIds[i].AttributeId == NodeAttribute.InverseName && node is NodeReferenceType nrt3)
                     {
-                        res[i] = new DataValue((node as NodeReferenceType).InverseName, StatusCode.Good);
+                        res[i] = new DataValue(nrt3.InverseName, StatusCode.Good);
                     }
-                    else if (readValueIds[i].AttributeId == NodeAttribute.ContainsNoLoops && node is NodeView)
+                    else if (readValueIds[i].AttributeId == NodeAttribute.ContainsNoLoops && node is NodeView nv1)
                     {
-                        res[i] = new DataValue((node as NodeView).ContainsNoLoops, StatusCode.Good);
+                        res[i] = new DataValue(nv1.ContainsNoLoops, StatusCode.Good);
                     }
-                    else if (readValueIds[i].AttributeId == NodeAttribute.EventNotifier && node is NodeView)
+                    else if (readValueIds[i].AttributeId == NodeAttribute.EventNotifier && node is NodeView nv2)
                     {
-                        res[i] = new DataValue((node as NodeView).EventNotifier, StatusCode.Good);
+                        res[i] = new DataValue(nv2.EventNotifier, StatusCode.Good);
                     }
-                    else if (readValueIds[i].AttributeId == NodeAttribute.EventNotifier && node is NodeObject)
+                    else if (readValueIds[i].AttributeId == NodeAttribute.EventNotifier && node is NodeObject no)
                     {
-                        res[i] = new DataValue((node as NodeObject).EventNotifier, StatusCode.Good);
+                        res[i] = new DataValue(no.EventNotifier, StatusCode.Good);
                     }
-                    else if (readValueIds[i].AttributeId == NodeAttribute.DataType && node is NodeVariable)
+                    else if (readValueIds[i].AttributeId == NodeAttribute.DataType && node is NodeVariable nv3)
                     {
-                        res[i] = new DataValue((node as NodeVariable).DataType ?? new NodeId(UAConst.BaseDataType), StatusCode.Good);
+                        res[i] = new DataValue(nv3.DataType ?? new NodeId(UAConst.BaseDataType), StatusCode.Good);
                     }
-                    else if (readValueIds[i].AttributeId == NodeAttribute.DataType && node is NodeVariableType)
+                    else if (readValueIds[i].AttributeId == NodeAttribute.DataType && node is NodeVariableType nvt)
                     {
-                        res[i] = new DataValue((node as NodeVariableType).DataType ?? new NodeId(UAConst.BaseDataType), StatusCode.Good);
+                        res[i] = new DataValue(nvt.DataType ?? new NodeId(UAConst.BaseDataType), StatusCode.Good);
                     }
-                    else if (readValueIds[i].AttributeId == NodeAttribute.AccessLevel && node is NodeVariable)
+                    else if (readValueIds[i].AttributeId == NodeAttribute.AccessLevel && node is NodeVariable nv4)
                     {
-                        res[i] = new DataValue((byte)(node as NodeVariable).AccessLevel, StatusCode.Good);
+                        res[i] = new DataValue((byte)nv4.AccessLevel, StatusCode.Good);
                     }
-                    else if (readValueIds[i].AttributeId == NodeAttribute.AccessLevelEx && node is NodeVariable)
+                    else if (readValueIds[i].AttributeId == NodeAttribute.AccessLevelEx && node is NodeVariable nv5)
                     {
-                        res[i] = new DataValue((uint)(node as NodeVariable).AccessLevel, StatusCode.Good);
+                        res[i] = new DataValue((uint)nv5.AccessLevel, StatusCode.Good);
                     }
-                    else if (readValueIds[i].AttributeId == NodeAttribute.UserAccessLevel && node is NodeVariable)
+                    else if (readValueIds[i].AttributeId == NodeAttribute.UserAccessLevel && node is NodeVariable nv6)
                     {
-                        res[i] = new DataValue((byte)(node as NodeVariable).UserAccessLevel, StatusCode.Good);
+                        res[i] = new DataValue((byte)nv6.UserAccessLevel, StatusCode.Good);
                     }
-                    else if (readValueIds[i].AttributeId == NodeAttribute.Historizing && node is NodeVariable)
+                    else if (readValueIds[i].AttributeId == NodeAttribute.Historizing && node is NodeVariable nv7)
                     {
-                        res[i] = new DataValue((node as NodeVariable).IsHistorizing, StatusCode.Good);
+                        res[i] = new DataValue(nv7.IsHistorizing, StatusCode.Good);
                     }
-                    else if (readValueIds[i].AttributeId == NodeAttribute.MinimumSamplingInterval && node is NodeVariable)
+                    else if (readValueIds[i].AttributeId == NodeAttribute.MinimumSamplingInterval && node is NodeVariable nv8)
                     {
-                        res[i] = new DataValue((node as NodeVariable).MinimumResamplingInterval, StatusCode.Good);
+                        res[i] = new DataValue(nv8.MinimumResamplingInterval, StatusCode.Good);
                     }
-                    else if (readValueIds[i].AttributeId == NodeAttribute.Executable && node is NodeMethod)
+                    else if (readValueIds[i].AttributeId == NodeAttribute.Executable && node is NodeMethod nm1)
                     {
-                        res[i] = new DataValue((node as NodeMethod).IsExecutable, StatusCode.Good);
+                        res[i] = new DataValue(nm1.IsExecutable, StatusCode.Good);
                     }
-                    else if (readValueIds[i].AttributeId == NodeAttribute.UserExecutable && node is NodeMethod)
+                    else if (readValueIds[i].AttributeId == NodeAttribute.UserExecutable && node is NodeMethod nm2)
                     {
-                        res[i] = new DataValue((node as NodeMethod).IsUserExecutable, StatusCode.Good);
+                        res[i] = new DataValue(nm2.IsUserExecutable, StatusCode.Good);
                     }
-                    else if (readValueIds[i].AttributeId == NodeAttribute.ValueRank && node is NodeVariable)
+                    else if (readValueIds[i].AttributeId == NodeAttribute.ValueRank && node is NodeVariable nv9)
                     {
-                        res[i] = new DataValue((int)(node as NodeVariable).ValueRank, StatusCode.Good);
+                        res[i] = new DataValue((int)nv9.ValueRank, StatusCode.Good);
                     }
                     else
                     {
