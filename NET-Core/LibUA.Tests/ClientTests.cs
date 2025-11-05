@@ -156,8 +156,16 @@ namespace LibUA.Tests
 
                 client.CreateSession(appDesc, "urn:DemoApplication", 120);
 
+                // Setup to ONLY succeed if the credentials match.
+                var username = "plc-user";
+                var password = "123"u8.ToArray();
+                serverFixture.SessionValidateClientUserHandler = (_, userToken) =>
+                    userToken is UserIdentityUsernameToken userNameToken
+                    && userNameToken.Username == username
+                    && userNameToken.PasswordHash.SequenceEqual(password);
+
                 var result = client.ActivateSession(
-                    new UserIdentityUsernameToken("1", "plc-user", "123"u8.ToArray(), Types.SignatureAlgorithmRsaOaep),
+                    new UserIdentityUsernameToken("1", username, password, Types.SignatureAlgorithmRsaOaep),
                     ["en"]);
                 Assert.Equal(StatusCode.Good, result);
             }
