@@ -7082,7 +7082,7 @@ namespace LibUA
 
             public uint ChannelID { get; set; }
             public uint TokenID { get; set; }
-            public double TokenLifetime { get; set; }
+            public uint TokenLifetime { get; set; }
             public DateTimeOffset TokenCreatedAt { get; set; }
 
             public uint? PrevChannelID { get; set; }
