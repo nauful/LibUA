@@ -2,11 +2,10 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Security;
-using System.Security.Permissions;
 using System.Security.Cryptography;
+using System.Security.Permissions;
 using Microsoft.Win32.SafeHandles;
 
 namespace LibUA.Security.Cryptography

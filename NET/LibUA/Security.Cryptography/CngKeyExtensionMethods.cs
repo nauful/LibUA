@@ -1,13 +1,11 @@
 ﻿// Copyright (c) Microsoft Corporation.  All rights reserved.
 
 using System;
-using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using System.Security;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Security.Permissions;
-using Microsoft.Win32.SafeHandles;
 using LibUA.Security.Cryptography.X509Certificates;
 
 namespace LibUA.Security.Cryptography

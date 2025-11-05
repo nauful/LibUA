@@ -1,8 +1,6 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 
 using System;
-using System.Diagnostics;
-using System.Security;
 using System.Security.Cryptography;
 
 namespace LibUA.Security.Cryptography

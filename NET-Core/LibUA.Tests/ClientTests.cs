@@ -1,6 +1,4 @@
-using System.Security.Cryptography.X509Certificates;
 using LibUA.Core;
-using Microsoft.Extensions.Logging.Abstractions;
 
 namespace LibUA.Tests
 {

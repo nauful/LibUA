@@ -1,9 +1,9 @@
-﻿using LibUA.ValueTypes;
-using System;
+﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Net;
 using System.Security.Cryptography.X509Certificates;
+using LibUA.ValueTypes;
 
 namespace LibUA
 {

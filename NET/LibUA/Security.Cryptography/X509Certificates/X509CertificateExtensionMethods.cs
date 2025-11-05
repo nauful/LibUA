@@ -2,12 +2,9 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Runtime.InteropServices;
 using System.Security;
 using System.Security.Cryptography.X509Certificates;
 using System.Security.Permissions;
-using LibUA.Security.Cryptography.X509Certificates;
 
 namespace LibUA.Security.Cryptography.X509Certificates
 {

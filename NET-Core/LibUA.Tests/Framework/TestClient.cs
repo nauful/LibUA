@@ -1,6 +1,5 @@
-﻿using System.Security.Cryptography.X509Certificates;
-using System.Security.Cryptography;
-using LibUA.Core;
+﻿using System.Security.Cryptography;
+using System.Security.Cryptography.X509Certificates;
 
 namespace LibUA.Tests
 {
