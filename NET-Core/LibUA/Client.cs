@@ -193,7 +193,7 @@ namespace LibUA
                 UInt32 securityTokenRequestType = (uint)requestType;
                 UInt32 messageSecurityMode = (uint)config.MessageSecurityMode;
                 byte[] clientNonce = null;
-                UInt32 reqLifetime = 30 * 1000;
+                UInt32 reqLifetime = 30 * 10000;
 
                 if (config.SecurityPolicy != SecurityPolicy.None)
                 {
@@ -390,16 +390,13 @@ namespace LibUA
                     config.PrevChannelID = config.ChannelID;
                     config.PrevTokenID = config.TokenID;
                 }
-                
+
                 config.ChannelID = channelId;
                 config.TokenID = tokenId;
                 config.TokenCreatedAt = DateTimeOffset.FromFileTime((long)createAtTimestamp);
-                if (config.TokenLifetime == 0)
-                {
-                    config.TokenLifetime = respLifetime;
-                }
+                config.TokenLifetime = respLifetime;
                 config.RemoteNonce = serverNonce;
-                
+
                 if (config.SecurityPolicy == SecurityPolicy.None)
                 {
                     config.LocalKeysets = new SLChannel.Keyset[2] { new SLChannel.Keyset(), new SLChannel.Keyset() };
@@ -1888,7 +1885,7 @@ namespace LibUA
                 {
                     succeeded &= sendBuf.EncodeUAByteString(ApplicationCertificate.Export(X509ContentType.Cert));
                 }
-                succeeded &= sendBuf.Encode((Double)(1000 * requestedSessionTimeout));
+                succeeded &= sendBuf.Encode((Double)(10000 * requestedSessionTimeout));
                 succeeded &= sendBuf.Encode((UInt32)MaximumMessageSize);
 
                 if (!succeeded)
@@ -1940,15 +1937,6 @@ namespace LibUA
                 succeeded &= recvHandler.RecvBuf.Decode(out NodeId sessionIdToken);
                 succeeded &= recvHandler.RecvBuf.Decode(out NodeId authToken);
                 succeeded &= recvHandler.RecvBuf.Decode(out double revisedSessionTimeout);
-                
-                config.TokenLifetime = revisedSessionTimeout;
-                
-                if (renewTimer != null)
-                {
-                    renewTimer.Stop();
-                    renewTimer.Interval = 0.7 * config.TokenLifetime;
-                    renewTimer.Start();
-                }
 
                 config.SessionIdToken = sessionIdToken;
                 config.AuthToken = authToken;
