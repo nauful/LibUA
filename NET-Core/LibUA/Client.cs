@@ -382,7 +382,7 @@ namespace LibUA
                 if (!recvHandler.RecvBuf.Decode(out uint channelId)) { return StatusCode.BadDecodingError; }
                 if (!recvHandler.RecvBuf.Decode(out uint tokenId)) { return StatusCode.BadDecodingError; }
                 if (!recvHandler.RecvBuf.Decode(out ulong createAtTimestamp)) { return StatusCode.BadDecodingError; }
-                if (!recvHandler.RecvBuf.Decode(out double respLifetime)) { return StatusCode.BadDecodingError; }
+                if (!recvHandler.RecvBuf.Decode(out uint respLifetime)) { return StatusCode.BadDecodingError; }
                 if (!recvHandler.RecvBuf.DecodeUAByteString(out byte[] serverNonce)) { return StatusCode.BadDecodingError; }
 
                 if (renew)

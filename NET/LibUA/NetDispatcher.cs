@@ -1508,7 +1508,7 @@ namespace LibUA
                 if (!recvBuf.Decode(out uint securityTokenRequestType)) { return ErrorParseFail; }
                 if (!recvBuf.Decode(out uint messageSecurityMode)) { return ErrorParseFail; }
                 if (!recvBuf.DecodeUAByteString(out byte[] clientNonce)) { return ErrorParseFail; }
-                if (!recvBuf.Decode(out double reqLifetime)) { return ErrorParseFail; }
+                if (!recvBuf.Decode(out uint reqLifetime)) { return ErrorParseFail; }
 
                 try
                 {
@@ -1674,7 +1674,7 @@ namespace LibUA
                 succeeded &= respBuf.Encode(config.ChannelID);
                 succeeded &= respBuf.Encode(config.TokenID);
                 succeeded &= respBuf.Encode((ulong)config.TokenCreatedAt.ToFileTime());
-                succeeded &= respBuf.Encode((double)config.TokenLifetime);
+                succeeded &= respBuf.Encode(config.TokenLifetime);
 
                 succeeded &= respBuf.EncodeUAByteString(config.LocalNonce);
 

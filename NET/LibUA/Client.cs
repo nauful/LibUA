@@ -185,7 +185,7 @@ namespace LibUA
                 UInt32 securityTokenRequestType = (uint)requestType;
                 UInt32 messageSecurityMode = (uint)config.MessageSecurityMode;
                 byte[] clientNonce = null;
-                double reqLifetime = 300 * 1000;
+                UInt32 reqLifetime = 30 * 10000;
 
                 if (config.SecurityPolicy != SecurityPolicy.None)
                 {
@@ -359,7 +359,7 @@ namespace LibUA
                 if (!recvHandler.RecvBuf.Decode(out uint channelId)) { return StatusCode.BadDecodingError; }
                 if (!recvHandler.RecvBuf.Decode(out uint tokenId)) { return StatusCode.BadDecodingError; }
                 if (!recvHandler.RecvBuf.Decode(out ulong createAtTimestamp)) { return StatusCode.BadDecodingError; }
-                if (!recvHandler.RecvBuf.Decode(out double respLifetime)) { return StatusCode.BadDecodingError; }
+                if (!recvHandler.RecvBuf.Decode(out uint respLifetime)) { return StatusCode.BadDecodingError; }
                 if (!recvHandler.RecvBuf.DecodeUAByteString(out byte[] serverNonce)) { return StatusCode.BadDecodingError; }
 
                 if (renew)
@@ -371,7 +371,7 @@ namespace LibUA
                 config.ChannelID = channelId;
                 config.TokenID = tokenId;
                 config.TokenCreatedAt = DateTimeOffset.FromFileTime((long)createAtTimestamp);
-                config.TokenLifetime = (uint)respLifetime;
+                config.TokenLifetime = respLifetime;
                 config.RemoteNonce = serverNonce;
 
                 if (config.SecurityPolicy == SecurityPolicy.None)
