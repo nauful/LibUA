@@ -6,10 +6,16 @@ namespace LibUA.Tests
     public class TestClient : Client, IDisposable
     {
         private X509Certificate2? appCertificate = null;
+        private byte[] clientCertificate = null;
         private RSA? cryptPrivateKey = null;
         public override X509Certificate2? ApplicationCertificate
         {
             get { return appCertificate; }
+        }
+        
+        public byte[] ClientCertificate
+        {
+            get { return clientCertificate; }
         }
 
         public override RSA? ApplicationPrivateKey
@@ -33,7 +39,8 @@ namespace LibUA.Tests
             try
             {
                 // Try to load existing (public key) and associated private key
-                appCertificate = new X509Certificate2("ClientCert.der");
+                appCertificate = new X509Certificate2("ClientCert.pem");
+                clientCertificate = File.ReadAllBytes("ClientCert.der");
                 cryptPrivateKey = RSA.Create();
                 cryptPrivateKey.KeySize = 2048;
 
@@ -72,14 +79,13 @@ namespace LibUA.Tests
                             new Oid("1.3.6.1.5.5.7.3.9"),
                         ], true));
 
-                var certificate = request.CreateSelfSigned(new DateTimeOffset(DateTime.UtcNow.AddDays(-1)),
+                appCertificate = request.CreateSelfSigned(new DateTimeOffset(DateTime.UtcNow.AddDays(-1)),
                     new DateTimeOffset(DateTime.UtcNow.AddDays(3650)));
-
-                appCertificate = new X509Certificate2(certificate.Export(X509ContentType.Pfx, ""),
-                    "", X509KeyStorageFlags.DefaultKeySet);
+                clientCertificate = appCertificate.Export(X509ContentType.Cert);
 
                 var certPrivateParams = rsa.ExportParameters(true);
-                File.WriteAllText("ClientCert.der", UASecurity.ExportPEM(appCertificate));
+                File.WriteAllText("ClientCert.pem", UASecurity.ExportPEM(appCertificate));
+                File.WriteAllBytes("ClientCert.der", clientCertificate);
                 File.WriteAllText("ClientKey.pem", UASecurity.ExportRSAPrivateKey(certPrivateParams));
 
                 cryptPrivateKey = RSA.Create();

@@ -2,6 +2,7 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Net;
+using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 
 namespace LibUA
@@ -46,6 +47,7 @@ namespace LibUA
         {
             Anonymous = 321,
             UserNameIdentityToken = 324,
+            X509IdentityToken = 327,
         }
 
         public class UserIdentityAnonymousToken
@@ -70,6 +72,26 @@ namespace LibUA
                 this.Username = Username;
                 this.PasswordHash = PasswordHash;
                 this.Algorithm = Algorithm;
+            }
+        }
+        
+        public class UserIdentityX509IdentityToken
+        {
+            public string PolicyId { get; protected set; }
+            public byte[] CertificateData { get; protected set; }
+            public RSACryptoServiceProvider PrivateKey { get; protected set; }
+
+            internal UserIdentityX509IdentityToken(string PolicyId, byte[] CertificateData)
+            {
+                this.PolicyId = PolicyId;
+                this.CertificateData = CertificateData;
+            }
+
+            public UserIdentityX509IdentityToken(string PolicyId, byte[] CertificateData, RSACryptoServiceProvider PrivateKey)
+            {
+                this.PolicyId = PolicyId;
+                this.CertificateData = CertificateData;
+                this.PrivateKey = PrivateKey;
             }
         }
 

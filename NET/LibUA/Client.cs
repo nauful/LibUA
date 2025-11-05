@@ -1551,17 +1551,11 @@ namespace LibUA
                     Array.Copy(strRemoteCert, 0, signMsg, 0, strRemoteCert.Length);
                     Array.Copy(config.RemoteNonce, 0, signMsg, strRemoteCert.Length, config.RemoteNonce.Length);
 
+                    var algorithm = UASecurity.SignatureAlgorithmForSecurityPolicy(config.SecurityPolicy);
                     var thumbprint = UASecurity.Sign(new ArraySegment<byte>(signMsg),
                         ApplicationPrivateKey, config.SecurityPolicy);
 
-                    if (config.SecurityPolicy == SecurityPolicy.Basic256Sha256)
-                    {
-                        succeeded &= sendBuf.EncodeUAString(Types.SignatureAlgorithmSha256);
-                    }
-                    else
-                    {
-                        succeeded &= sendBuf.EncodeUAString(Types.SignatureAlgorithmSha1);
-                    }
+                    succeeded &= sendBuf.EncodeUAString(algorithm);
                     succeeded &= sendBuf.EncodeUAByteString(thumbprint);
                 }
 
@@ -1644,15 +1638,49 @@ namespace LibUA
 
                     succeeded &= sendBuf.Encode((UInt32)(sendBuf.Position - eoStartPos - 4), eoStartPos);
                 }
+                else if (identityToken is UserIdentityX509IdentityToken x509Token)
+                {
+                    succeeded &= sendBuf.Encode(new NodeId(UAConst.X509IdentityToken_Encoding_DefaultBinary));
+                    succeeded &= sendBuf.Encode((byte)1);
+
+                    int eoStartPos = sendBuf.Position;
+                    succeeded &= sendBuf.Encode((UInt32)0);
+
+                    succeeded &= sendBuf.EncodeUAString(x509Token.PolicyId);
+                    succeeded &= sendBuf.EncodeUAByteString(x509Token.CertificateData);
+                    succeeded &= sendBuf.Encode((UInt32)(sendBuf.Position - eoStartPos - 4), eoStartPos);
+                }
                 else
                 {
                     throw new Exception(string.Format("Identity token of type {0} is not supported", identityToken.GetType().ToString()));
                 }
 
-                // TokenAlgorithm
-                succeeded &= sendBuf.EncodeUAString((string)null);
-                // TokenSignature
-                succeeded &= sendBuf.EncodeUAByteString(null);
+                if (identityToken is UserIdentityX509IdentityToken x509IdentityToken)
+                {
+                    if (config.RemoteNonce == null)
+                    {
+                        return StatusCode.BadSessionClosed;
+                    }
+
+                    var strRemoteCert = config.RemoteCertificateString;
+                    var signMsg = new byte[strRemoteCert.Length + config.RemoteNonce.Length];
+                    Array.Copy(strRemoteCert, 0, signMsg, 0, strRemoteCert.Length);
+                    Array.Copy(config.RemoteNonce, 0, signMsg, strRemoteCert.Length, config.RemoteNonce.Length);
+
+                    var algorithm = UASecurity.SignatureAlgorithmForSecurityPolicy(config.SecurityPolicy);
+                    var thumbprint = UASecurity.Sign(new ArraySegment<byte>(signMsg),
+                        x509IdentityToken.PrivateKey, config.SecurityPolicy);
+
+                    succeeded &= sendBuf.EncodeUAString(algorithm);
+                    succeeded &= sendBuf.EncodeUAByteString(thumbprint);
+                }
+                else
+                {
+                    // userTokenAlgorithm
+                    succeeded &= sendBuf.EncodeUAString((string)null);
+                    // userTokenSignature
+                    succeeded &= sendBuf.EncodeUAByteString(null);
+                }
 
                 if (!succeeded)
                 {

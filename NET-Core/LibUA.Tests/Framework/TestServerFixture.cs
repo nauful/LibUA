@@ -125,8 +125,13 @@ namespace LibUA.Tests
             else if (userIdentityToken is UserIdentityUsernameToken usernameToken)
             {
                 _ = usernameToken.Username;
-                _ =
-                    (new UTF8Encoding()).GetString(usernameToken.PasswordHash);
+                _ = new UTF8Encoding().GetString(usernameToken.PasswordHash);
+
+                return true;
+            }
+            else if (userIdentityToken is UserIdentityX509IdentityToken x509Token)
+            {
+                _ = x509Token.CertificateData;
 
                 return true;
             }
@@ -497,7 +502,7 @@ namespace LibUA.Tests
             try
             {
                 // Try to load existing (public key) and associated private key
-                appCertificate = new X509Certificate2("ServerCert.der");
+                appCertificate = new X509Certificate2("ServerCert.pem");
                 cryptPrivateKey = RSA.Create();
                 cryptPrivateKey.KeySize = 2048;
 
@@ -536,14 +541,11 @@ namespace LibUA.Tests
                         new Oid("1.3.6.1.5.5.7.3.9"),
                     ], true));
 
-                var certificate = request.CreateSelfSigned(new DateTimeOffset(DateTime.UtcNow.AddDays(-1)),
+                appCertificate = request.CreateSelfSigned(new DateTimeOffset(DateTime.UtcNow.AddDays(-1)),
                     new DateTimeOffset(DateTime.UtcNow.AddDays(3650)));
 
-                appCertificate = new X509Certificate2(certificate.Export(X509ContentType.Pfx, ""),
-                    "", X509KeyStorageFlags.DefaultKeySet);
-
                 var certPrivateParams = rsa.ExportParameters(true);
-                File.WriteAllText("ServerCert.der", UASecurity.ExportPEM(appCertificate));
+                File.WriteAllText("ServerCert.pem", UASecurity.ExportPEM(appCertificate));
                 File.WriteAllText("ServerKey.pem", UASecurity.ExportRSAPrivateKey(certPrivateParams));
 
                 cryptPrivateKey = RSA.Create();

@@ -54,6 +54,22 @@ namespace LibUA
             throw new Exception();
         }
 
+        public static string SignatureAlgorithmForSecurityPolicy(SecurityPolicy policy)
+        {
+            switch (policy)
+            {
+                case SecurityPolicy.Basic256Sha256:
+                case SecurityPolicy.Aes128_Sha256_RsaOaep:
+                    return Types.SignatureAlgorithmSha256;
+                
+                case SecurityPolicy.Aes256_Sha256_RsaPss:
+                    return Types.SignatureAlgorithmRsaPss256;
+                
+                default:
+                    return Types.SignatureAlgorithmSha1;
+            }
+        }
+
         public static int NonceLengthForSecurityPolicy(SecurityPolicy policy)
         {
             return policy == SecurityPolicy.Basic128Rsa15 ? 16 : 32;

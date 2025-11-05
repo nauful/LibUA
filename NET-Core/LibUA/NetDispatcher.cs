@@ -844,6 +844,18 @@ namespace LibUA
                         }
                     }
                 }
+                else if (userIdentityTokenTypeId.NumericIdentifier == (uint)UserIdentityTokenType.X509IdentityToken)
+                {
+                    if (!recvBuf.Decode(out uint _)) { return ErrorParseFail; }
+                    if (!recvBuf.DecodeUAString(out string policyId)) { return ErrorParseFail; }
+                    if (!recvBuf.DecodeUAByteString(out byte[] certificateData)) { return ErrorParseFail; }
+
+                    if (!app.SessionValidateClientUser(config.Session, new UserIdentityX509IdentityToken(policyId, certificateData)))
+                    {
+                        UAStatusCode = (uint)StatusCode.BadSecurityChecksFailed;
+                        return ErrorParseFail;
+                    }
+                }
                 else
                 {
                     UAStatusCode = (uint)StatusCode.BadIdentityTokenInvalid;
