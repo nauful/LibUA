@@ -1572,7 +1572,7 @@ namespace LibUA
                     throw new Exception();
                 }
 
-                config.TokenLifetime = Math.Min((uint)reqLifetime, MaxTokenLifetime);
+                config.TokenLifetime = Math.Min(reqLifetime, MaxTokenLifetime);
                 config.TokenCreatedAt = reqHeader.Timestamp;
 
                 if (config.SecurityPolicy == SecurityPolicy.None)

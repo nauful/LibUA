@@ -22,3 +22,6 @@ _ReSharper*/
 
 # Package cache can be rebuilt
 packages
+
+# Rider cache/options directory
+.idea/
