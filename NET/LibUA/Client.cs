@@ -1541,7 +1541,7 @@ namespace LibUA
                 }
                 else
                 {
-                    if (config.RemoteNonce == null)
+                    if (config.RemoteNonce == null || config.RemoteCertificateString == null)
                     {
                         return StatusCode.BadSessionClosed;
                     }
@@ -1657,7 +1657,7 @@ namespace LibUA
 
                 if (identityToken is UserIdentityX509IdentityToken x509IdentityToken)
                 {
-                    if (config.RemoteNonce == null)
+                    if (config.RemoteNonce == null || config.RemoteCertificateString == null)
                     {
                         return StatusCode.BadSessionClosed;
                     }

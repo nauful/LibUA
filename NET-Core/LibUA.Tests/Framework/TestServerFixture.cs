@@ -29,6 +29,8 @@ namespace LibUA.Tests
         private X509Certificate2? appCertificate = null;
         private RSA? cryptPrivateKey = null;
         private readonly Server.Master? server;
+        
+        public Func<object, object, bool>? SessionValidateClientUserHandler { get; set; }
 
         public override X509Certificate2? ApplicationCertificate
         {
@@ -118,6 +120,11 @@ namespace LibUA.Tests
 
         public override bool SessionValidateClientUser(object session, object userIdentityToken)
         {
+            if (SessionValidateClientUserHandler != null)
+            {
+                return SessionValidateClientUserHandler(session, userIdentityToken);
+            }
+            
             if (userIdentityToken is UserIdentityAnonymousToken)
             {
                 return true;
@@ -170,6 +177,7 @@ namespace LibUA.Tests
                 [
                     new UserTokenPolicy("0", UserTokenType.Anonymous, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.None]),
                     new UserTokenPolicy("1", UserTokenType.UserName, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256Sha256]),
+                    new UserTokenPolicy("2", UserTokenType.Certificate, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256Sha256]),
                 ], Types.TransportProfileBinary, 0);
 
             var epSignBasic256 = new EndpointDescription(
@@ -178,6 +186,7 @@ namespace LibUA.Tests
                 [
                     new UserTokenPolicy("0", UserTokenType.Anonymous, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.None]),
                     new UserTokenPolicy("1", UserTokenType.UserName, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256Sha256]),
+                    new UserTokenPolicy("2", UserTokenType.Certificate, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256Sha256]),
                 ], Types.TransportProfileBinary, 0);
 
             var epSignBasic256Sha256 = new EndpointDescription(
@@ -186,6 +195,7 @@ namespace LibUA.Tests
                 [
                     new UserTokenPolicy("0", UserTokenType.Anonymous, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.None]),
                     new UserTokenPolicy("1", UserTokenType.UserName, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256Sha256]),
+                    new UserTokenPolicy("2", UserTokenType.Certificate, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256Sha256]),
                 ], Types.TransportProfileBinary, 0);
 
             var epSignRsa128Sha256 = new EndpointDescription(
@@ -194,6 +204,7 @@ namespace LibUA.Tests
                 [
                     new UserTokenPolicy("0", UserTokenType.Anonymous, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.None]),
                     new UserTokenPolicy("1", UserTokenType.UserName, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Aes128_Sha256_RsaOaep]),
+                    new UserTokenPolicy("2", UserTokenType.Certificate, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Aes128_Sha256_RsaOaep]),
                 ], Types.TransportProfileBinary, 0);
 
             var epSignRsa256Sha256 = new EndpointDescription(
@@ -202,6 +213,7 @@ namespace LibUA.Tests
                 [
                     new UserTokenPolicy("0", UserTokenType.Anonymous, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.None]),
                     new UserTokenPolicy("1", UserTokenType.UserName, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Aes256_Sha256_RsaPss]),
+                    new UserTokenPolicy("2", UserTokenType.Certificate, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Aes256_Sha256_RsaPss]),
                 ], Types.TransportProfileBinary, 0);
 
             var epSignEncryptBasic128Rsa15 = new EndpointDescription(
@@ -210,6 +222,7 @@ namespace LibUA.Tests
                 [
                     new UserTokenPolicy("0", UserTokenType.Anonymous, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.None]),
                     new UserTokenPolicy("1", UserTokenType.UserName, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256Sha256]),
+                    new UserTokenPolicy("2", UserTokenType.Certificate, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256Sha256]),
                 ], Types.TransportProfileBinary, 0);
 
             var epSignEncryptBasic256 = new EndpointDescription(
@@ -218,6 +231,7 @@ namespace LibUA.Tests
                 [
                     new UserTokenPolicy("0", UserTokenType.Anonymous, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.None]),
                     new UserTokenPolicy("1", UserTokenType.UserName, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256Sha256]),
+                    new UserTokenPolicy("2", UserTokenType.Certificate, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256Sha256]),
                 ], Types.TransportProfileBinary, 0);
 
             var epSignEncryptBasic256Sha256 = new EndpointDescription(
@@ -226,6 +240,7 @@ namespace LibUA.Tests
                 [
                     new UserTokenPolicy("0", UserTokenType.Anonymous, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.None]),
                     new UserTokenPolicy("1", UserTokenType.UserName, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256Sha256]),
+                    new UserTokenPolicy("2", UserTokenType.Certificate, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256Sha256]),
                 ], Types.TransportProfileBinary, 0);
 
             var epSignEncryptRsa128Sha256 = new EndpointDescription(
@@ -234,6 +249,7 @@ namespace LibUA.Tests
                 [
                     new UserTokenPolicy("0", UserTokenType.Anonymous, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.None]),
                     new UserTokenPolicy("1", UserTokenType.UserName, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Aes128_Sha256_RsaOaep]),
+                    new UserTokenPolicy("2", UserTokenType.Certificate, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Aes128_Sha256_RsaOaep]),
                 ], Types.TransportProfileBinary, 0);
 
             var epSignEncryptRsa256Sha256 = new EndpointDescription(
@@ -242,6 +258,7 @@ namespace LibUA.Tests
                 [
                     new UserTokenPolicy("0", UserTokenType.Anonymous, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.None]),
                     new UserTokenPolicy("1", UserTokenType.UserName, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Aes256_Sha256_RsaPss]),
+                    new UserTokenPolicy("2", UserTokenType.Certificate, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Aes256_Sha256_RsaPss]),
                 ], Types.TransportProfileBinary, 0);
 
             return

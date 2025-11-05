@@ -3,7 +3,6 @@ using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
-using System.Text;
 using LibUA;
 using LibUA.Core;
 
@@ -167,7 +166,7 @@ namespace TestClient
                 string policyId = endpointDesc.UserIdentityTokens.First(e => e.TokenType == UserTokenType.UserName).PolicyId;
                 activateRes = client.ActivateSession(
                     new UserIdentityUsernameToken(policyId, "plc-user",
-                        (new UTF8Encoding()).GetBytes("123"), Types.SignatureAlgorithmRsaOaep),
+                        "123"u8.ToArray(), Types.SignatureAlgorithmRsaOaep),
                     new[] { "en" });
             }
 
