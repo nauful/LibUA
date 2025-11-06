@@ -13,12 +13,18 @@ namespace TestClient
         private class DemoClient : Client
         {
             private X509Certificate2 appCertificate = null;
+            private RSA appPrivateKey = null;
             private byte[] clientCertificate;
-            private RSA cryptPrivateKey = null;
+            private RSA clientPrivateKey = null;
 
             public override X509Certificate2 ApplicationCertificate
             {
                 get { return appCertificate; }
+            }
+
+            public override RSA ApplicationPrivateKey
+            {
+                get { return appPrivateKey; }
             }
 
             public byte[] ClientCertificate
@@ -26,9 +32,9 @@ namespace TestClient
                 get { return clientCertificate; }
             }
 
-            public override RSA ApplicationPrivateKey
+            public RSA ClientPrivateKey
             {
-                get { return cryptPrivateKey; }
+                get { return clientPrivateKey; }
             }
 
             private void LoadCertificateAndPrivateKey()
@@ -36,60 +42,77 @@ namespace TestClient
                 try
                 {
                     // Try to load existing (public key) and associated private key
-                    appCertificate = new X509Certificate2("ClientCert.pem");
+                    appCertificate = new X509Certificate2("AppCert.pem");
                     clientCertificate = File.ReadAllBytes("ClientCert.der");
-                    cryptPrivateKey = RSA.Create();
-                    cryptPrivateKey.KeySize = 2048;
 
-                    var rsaPrivParams = UASecurity.ImportRSAPrivateKey(File.ReadAllText("ClientKey.pem"));
-                    cryptPrivateKey.ImportParameters(rsaPrivParams);
+                    var rsaPrivParams = UASecurity.ImportRSAPrivateKey(File.ReadAllText("AppKey.pem"));
+                    appPrivateKey = RSA.Create();
+                    appPrivateKey.KeySize = 2048;
+                    appPrivateKey.ImportParameters(rsaPrivParams);
+
+                    rsaPrivParams = UASecurity.ImportRSAPrivateKey(File.ReadAllText("ClientKey.pem"));
+                    clientPrivateKey = RSA.Create();
+                    clientPrivateKey.KeySize = 2048;
+                    clientPrivateKey.ImportParameters(rsaPrivParams);
                 }
                 catch
                 {
-                    // Make a new certificate (public key) and associated private key
-                    var dn = new X500DistinguishedName("CN=Client certificate;OU=Demo organization",
-                        X500DistinguishedNameFlags.UseSemicolons);
-                    SubjectAlternativeNameBuilder sanBuilder = new SubjectAlternativeNameBuilder();
-                    sanBuilder.AddUri(new Uri("urn:DemoApplication"));
+                    // Generate AppCert:
+                    (appCertificate, var appCertPrivateParams) = GenerateCertificate("App certificate");
+                    File.WriteAllText("AppCert.pem", UASecurity.ExportPEM(appCertificate));
+                    File.WriteAllBytes("AppCert.der", appCertificate.Export(X509ContentType.Cert));
+                    File.WriteAllText("AppKey.pem", UASecurity.ExportRSAPrivateKey(appCertPrivateParams));
 
-                    using (RSA rsa = RSA.Create(4096))
-                    {
-                        var request = new CertificateRequest(dn, rsa, HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1);
+                    appPrivateKey = RSA.Create();
+                    appPrivateKey.KeySize = 2048;
+                    appPrivateKey.ImportParameters(appCertPrivateParams);
+                    
+                    // Generate ClientCert:
+                    var (certificate, clientCertPrivateParams) = GenerateCertificate("Client certificate");
+                    clientCertificate = certificate.Export(X509ContentType.Cert);
+                    File.WriteAllBytes("ClientCert.der", clientCertificate);
+                    File.WriteAllText("ClientKey.pem", UASecurity.ExportRSAPrivateKey(clientCertPrivateParams));
 
-                        request.CertificateExtensions.Add(sanBuilder.Build());
-                        request.CertificateExtensions.Add(new X509BasicConstraintsExtension(false, false, 0, false));
-                        request.CertificateExtensions.Add(new X509SubjectKeyIdentifierExtension(request.PublicKey, false));
-
-                        request.CertificateExtensions.Add(new X509KeyUsageExtension(
-                            X509KeyUsageFlags.DigitalSignature |
-                            X509KeyUsageFlags.NonRepudiation |
-                            X509KeyUsageFlags.DataEncipherment |
-                            X509KeyUsageFlags.KeyEncipherment, false));
-
-                        request.CertificateExtensions.Add(new X509EnhancedKeyUsageExtension(new OidCollection {
-                            new Oid("1.3.6.1.5.5.7.3.8"),
-                            new Oid("1.3.6.1.5.5.7.3.1"),
-                            new Oid("1.3.6.1.5.5.7.3.2"),
-                            new Oid("1.3.6.1.5.5.7.3.3"),
-                            new Oid("1.3.6.1.5.5.7.3.4"),
-                            new Oid("1.3.6.1.5.5.7.3.8"),
-                            new Oid("1.3.6.1.5.5.7.3.9"),
-                        }, true));
-
-                        appCertificate = request.CreateSelfSigned(new DateTimeOffset(DateTime.UtcNow.AddDays(-1)),
-                            new DateTimeOffset(DateTime.UtcNow.AddDays(3650)));
-                        clientCertificate = appCertificate.Export(X509ContentType.Cert);
-
-                        var certPrivateParams = rsa.ExportParameters(true);
-                        File.WriteAllText("ClientCert.pem", UASecurity.ExportPEM(appCertificate));
-                        File.WriteAllBytes("ClientCert.der", clientCertificate);
-                        File.WriteAllText("ClientKey.pem", UASecurity.ExportRSAPrivateKey(certPrivateParams));
-
-                        cryptPrivateKey = RSA.Create();
-                        cryptPrivateKey.KeySize = 2048;
-                        cryptPrivateKey.ImportParameters(certPrivateParams);
-                    }
+                    appPrivateKey = RSA.Create();
+                    appPrivateKey.KeySize = 2048;
+                    appPrivateKey.ImportParameters(clientCertPrivateParams);
                 }
+            }
+
+            private static (X509Certificate2 certificate, RSAParameters certPrivateParams) GenerateCertificate(string cn)
+            {
+                // Make a new certificate (public key) and associated private key
+                using var rsa = RSA.Create(4096);
+                var dn = new X500DistinguishedName($"CN={cn};OU=Demo organization",
+                    X500DistinguishedNameFlags.UseSemicolons);
+                var sanBuilder = new SubjectAlternativeNameBuilder();
+                sanBuilder.AddUri(new Uri("urn:DemoApplication"));
+                        
+                var request = new CertificateRequest(dn, rsa, HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1);
+                request.CertificateExtensions.Add(sanBuilder.Build());
+                request.CertificateExtensions.Add(new X509BasicConstraintsExtension(false, false, 0, false));
+                request.CertificateExtensions.Add(new X509SubjectKeyIdentifierExtension(request.PublicKey, false));
+
+                request.CertificateExtensions.Add(new X509KeyUsageExtension(
+                    X509KeyUsageFlags.DigitalSignature |
+                    X509KeyUsageFlags.NonRepudiation |
+                    X509KeyUsageFlags.DataEncipherment |
+                    X509KeyUsageFlags.KeyEncipherment, false));
+
+                request.CertificateExtensions.Add(new X509EnhancedKeyUsageExtension(new OidCollection {
+                    new Oid("1.3.6.1.5.5.7.3.8"),
+                    new Oid("1.3.6.1.5.5.7.3.1"),
+                    new Oid("1.3.6.1.5.5.7.3.2"),
+                    new Oid("1.3.6.1.5.5.7.3.3"),
+                    new Oid("1.3.6.1.5.5.7.3.4"),
+                    new Oid("1.3.6.1.5.5.7.3.8"),
+                    new Oid("1.3.6.1.5.5.7.3.9"),
+                }, true));
+
+                var certificate = request.CreateSelfSigned(new DateTimeOffset(DateTime.UtcNow.AddDays(-1)),
+                    new DateTimeOffset(DateTime.UtcNow.AddDays(3650)));
+                var certPrivateParams = rsa.ExportParameters(true);
+                return (certificate, certPrivateParams);
             }
 
             public DemoClient(string Target, int Port, int Timeout)
@@ -124,8 +147,8 @@ namespace TestClient
             var client = new DemoClient("127.0.0.1", 7718, 1000);
             var messageSecurityMode = MessageSecurityMode.SignAndEncrypt;
             var securityPolicy = SecurityPolicy.Basic256Sha256;
-            bool useAnonymousUser = true;
-            bool useCertificateToken = false;
+            bool useAnonymousUser = false;
+            bool useCertificateToken = true;
 
             client.Connect();
             client.OpenSecureChannel(MessageSecurityMode.None, SecurityPolicy.None, null);
@@ -157,7 +180,7 @@ namespace TestClient
                 activateRes = client.ActivateSession(
                     // This can use the application key OR a different one!
                     // The certificateData MUST be in DER format!
-                    new UserIdentityX509IdentityToken(policyId, client.ClientCertificate, client.ApplicationPrivateKey),
+                    new UserIdentityX509IdentityToken(policyId, client.ClientCertificate, client.ClientPrivateKey),
                     new[] { "en" });
             }
             else
