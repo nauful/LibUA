@@ -1,6 +1,4 @@
-using System.Security.Cryptography.X509Certificates;
 using LibUA.Core;
-using Microsoft.Extensions.Logging.Abstractions;
 
 namespace LibUA.Tests
 {
@@ -117,7 +115,7 @@ namespace LibUA.Tests
         }
 
         [Fact]
-        public void TestActivateSession()
+        public void TestActivateSession_Anonymous()
         {
             var client = new TestClient(TestServerFixture.HostName, TestServerFixture.PortNumber, 100);
             try
@@ -133,6 +131,127 @@ namespace LibUA.Tests
                 client.CreateSession(appDesc, "urn:DemoApplication", 120);
 
                 var result = client.ActivateSession(new UserIdentityAnonymousToken("0"), ["en"]);
+                Assert.Equal(StatusCode.Good, result);
+            }
+            finally
+            {
+                client?.Disconnect();
+                client?.Dispose();
+            }
+        }
+
+        [Fact]
+        public void TestActivateSession_Username()
+        {
+            var client = new TestClient(TestServerFixture.HostName, TestServerFixture.PortNumber, 100);
+            try
+            {
+                client.Connect();
+                client.OpenSecureChannel(MessageSecurityMode.None, SecurityPolicy.None, null);
+
+                var appDesc = new ApplicationDescription(
+                    "urn:DemoApplication", "http://quantensystems.com/",
+                    new LocalizedText("en-US", "QuantenSystems demo server"), ApplicationType.Client,
+                    null, null, null);
+
+                client.CreateSession(appDesc, "urn:DemoApplication", 120);
+
+                // Setup to ONLY succeed if the credentials match.
+                var username = "plc-user";
+                var password = "123"u8.ToArray();
+                serverFixture.SessionValidateClientUserHandler = (_, userToken) =>
+                    userToken is UserIdentityUsernameToken userNameToken
+                    && userNameToken.Username == username
+                    && userNameToken.PasswordHash.SequenceEqual(password);
+
+                var result = client.ActivateSession(
+                    new UserIdentityUsernameToken("1", username, password, Types.SignatureAlgorithmRsaOaep),
+                    ["en"]);
+                Assert.Equal(StatusCode.Good, result);
+            }
+            finally
+            {
+                client?.Disconnect();
+                client?.Dispose();
+            }
+        }
+
+        [Fact]
+        public void TestActivateSession_Certificate_OnInsecure()
+        {
+            var client = new TestClient(TestServerFixture.HostName, TestServerFixture.PortNumber, 100);
+            try
+            {
+                client.Connect();
+                client.OpenSecureChannel(MessageSecurityMode.None, SecurityPolicy.None, null);
+
+                var appDesc = new ApplicationDescription(
+                    "urn:DemoApplication", "http://quantensystems.com/",
+                    new LocalizedText("en-US", "QuantenSystems demo server"), ApplicationType.Client,
+                    null, null, null);
+
+                client.CreateSession(appDesc, "urn:DemoApplication", 120);
+                
+                // Setup to ONLY succeed if the certificate matches.
+                serverFixture.SessionValidateClientUserHandler = (_, userToken) =>
+                    userToken is UserIdentityX509IdentityToken x509Token
+                    // ReSharper disable once AccessToDisposedClosure
+                    && x509Token.CertificateData.SequenceEqual(client.ClientCertificate)
+                    && x509Token.PrivateKey == null;
+
+                var result = client.ActivateSession(
+                    new UserIdentityX509IdentityToken("2", client.ClientCertificate, client.ApplicationPrivateKey),
+                    ["en"]);
+                Assert.Equal(StatusCode.Good, result);
+            }
+            finally
+            {
+                client?.Disconnect();
+                client?.Dispose();
+            }
+        }
+
+        [Fact]
+        public void TestActivateSession_Certificate_OnSecure()
+        {
+            var client = new TestClient(TestServerFixture.HostName, TestServerFixture.PortNumber, 100);
+            var localeIDs = new[] { "en" };
+            try
+            {
+                client.Connect();
+                client.OpenSecureChannel(MessageSecurityMode.None, SecurityPolicy.None, null);
+                client.FindServers(out ApplicationDescription[] _, localeIDs);
+                client.GetEndpoints(out EndpointDescription[] endpointDescs, localeIDs);
+                client.Disconnect();
+
+                // Will fail if no matching message security mode and security policy is found
+                var messageSecurityMode = MessageSecurityMode.SignAndEncrypt;
+                var securityPolicy = SecurityPolicy.Basic256Sha256;
+                var endpointDesc = endpointDescs.First(e =>
+                    e.SecurityMode == messageSecurityMode &&
+                    e.SecurityPolicyUri == Types.SLSecurityPolicyUris[(int)securityPolicy]);
+                byte[] serverCert = endpointDesc.ServerCertificate;
+                string policyId = endpointDesc.UserIdentityTokens.First(e => e.TokenType == UserTokenType.Certificate).PolicyId;
+
+                var appDesc = new ApplicationDescription(
+                    "urn:DemoApplication", "http://quantensystems.com/",
+                    new LocalizedText("en-US", "QuantenSystems demo server"), ApplicationType.Client,
+                    null, null, null);
+
+                // Setup to ONLY succeed if the certificate matches.
+                serverFixture.SessionValidateClientUserHandler = (_, userToken) =>
+                    userToken is UserIdentityX509IdentityToken x509Token
+                    // ReSharper disable once AccessToDisposedClosure
+                    && x509Token.CertificateData.SequenceEqual(client.ClientCertificate)
+                    && x509Token.PrivateKey == null;
+
+                client.Connect();
+                client.OpenSecureChannel(messageSecurityMode, securityPolicy, serverCert);
+                client.CreateSession(appDesc, "urn:DemoApplication", 120);
+
+                var result = client.ActivateSession(
+                    new UserIdentityX509IdentityToken(policyId, client.ClientCertificate, client.ApplicationPrivateKey),
+                    localeIDs);
                 Assert.Equal(StatusCode.Good, result);
             }
             finally

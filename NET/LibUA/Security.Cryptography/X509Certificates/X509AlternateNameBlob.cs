@@ -1,7 +1,6 @@
 ﻿// Copyright (c) Microsoft Corporation.  All rights reserved.
 
 using System;
-using System.Net;
 
 namespace LibUA.Security.Cryptography.X509Certificates
 {

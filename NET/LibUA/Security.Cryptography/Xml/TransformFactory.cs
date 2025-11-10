@@ -2,10 +2,8 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using LibUA.Security.Cryptography.Xml;
-using System.Xml;
 using System.Security.Cryptography.Xml;
+using System.Xml;
 
 namespace LibUA.Security.Cryptography.Xml
 {

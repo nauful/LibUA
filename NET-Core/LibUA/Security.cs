@@ -54,6 +54,22 @@ namespace LibUA
             throw new Exception();
         }
 
+        public static string SignatureAlgorithmForSecurityPolicy(SecurityPolicy policy)
+        {
+            switch (policy)
+            {
+                case SecurityPolicy.Basic256Sha256:
+                case SecurityPolicy.Aes128_Sha256_RsaOaep:
+                    return Types.SignatureAlgorithmSha256;
+                
+                case SecurityPolicy.Aes256_Sha256_RsaPss:
+                    return Types.SignatureAlgorithmRsaPss256;
+                
+                default:
+                    return Types.SignatureAlgorithmSha1;
+            }
+        }
+
         public static int NonceLengthForSecurityPolicy(SecurityPolicy policy)
         {
             return policy == SecurityPolicy.Basic128Rsa15 ? 16 : 32;
@@ -752,16 +768,38 @@ namespace LibUA
             }
         }
 
+        private static (System.Security.Cryptography.HashAlgorithm Algorithm, HashAlgorithmName Name) GetHasherByName(string name)
+        {
+            return name switch
+            {
+                Types.SignatureAlgorithmSha256 => (SHA256.Create(), HashAlgorithmName.SHA256),
+                Types.SignatureAlgorithmSha1 or _ => (SHA1.Create(), HashAlgorithmName.SHA1)
+            };
+        }
+
         public static bool VerifySigned(ArraySegment<byte> data, byte[] signature, X509Certificate2 cert, SecurityPolicy policy)
+        {
+            var hashAlg = HashAlgorithmForSecurityPolicy(policy);
+            var hashName = HashStrForSecurityPolicy(policy);
+            var padding = SigPaddingForSecurityPolicy(policy);
+            return VerifySigned(data, signature, cert, hashAlg, hashName, padding);
+        }
+
+        public static bool VerifySigned(ArraySegment<byte> data, byte[] signature, X509Certificate2 cert, SecurityPolicy policy, string hashAlgorithm)
+        {
+            var (hashAlg, hashName) = GetHasherByName(hashAlgorithm);
+            var padding = SigPaddingForSecurityPolicy(policy);
+            return VerifySigned(data, signature, cert, hashAlg, hashName, padding);
+        }
+
+        private static bool VerifySigned(ArraySegment<byte> data, byte[] signature, X509Certificate2 cert,
+            System.Security.Cryptography.HashAlgorithm hashAlg, HashAlgorithmName hashName, RSASignaturePadding padding)
         {
             var rsa = cert.PublicKey.GetRSAPublicKey();
 
-            var hash = HashAlgorithmForSecurityPolicy(policy);
-            var digest = hash.ComputeHash(data.Array, data.Offset, data.Count);
-            var padding = SigPaddingForSecurityPolicy(policy);
+            var digest = hashAlg.ComputeHash(data.Array, data.Offset, data.Count);
 
-            bool match = rsa.VerifyHash(digest, signature, HashStrForSecurityPolicy(policy), padding);
-            return match;
+            return rsa.VerifyHash(digest, signature, hashName, padding);
         }
 
         public static byte[] Encrypt(ArraySegment<byte> data, X509Certificate2 cert, RSAEncryptionPadding padding)

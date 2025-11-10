@@ -111,11 +111,16 @@ namespace TestServer
                 {
                     return true;
                 }
-                else if (userIdentityToken is UserIdentityUsernameToken)
+                else if (userIdentityToken is UserIdentityUsernameToken token)
                 {
-                    _ = (userIdentityToken as UserIdentityUsernameToken).Username;
-                    _ =
-                        (new UTF8Encoding()).GetString((userIdentityToken as UserIdentityUsernameToken).PasswordHash);
+                    _ = token.Username;
+                    _ = new UTF8Encoding().GetString(token.PasswordHash);
+
+                    return true;
+                }
+                else if (userIdentityToken is UserIdentityX509IdentityToken token2)
+                {
+                    _ = token2.CertificateData;
 
                     return true;
                 }
@@ -147,6 +152,7 @@ namespace TestServer
                     {
                         new UserTokenPolicy("0", UserTokenType.Anonymous, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.None]),
                         new UserTokenPolicy("1", UserTokenType.UserName, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256Sha256]),
+                        new UserTokenPolicy("2", UserTokenType.Certificate, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256Sha256]),
                     }, Types.TransportProfileBinary, 0);
 
                 var epSignBasic128Rsa15 = new EndpointDescription(
@@ -156,6 +162,7 @@ namespace TestServer
                     {
                         new UserTokenPolicy("0", UserTokenType.Anonymous, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.None]),
                         new UserTokenPolicy("1", UserTokenType.UserName, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256Sha256]),
+                        new UserTokenPolicy("2", UserTokenType.Certificate, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256Sha256]),
                     }, Types.TransportProfileBinary, 0);
 
                 var epSignBasic256 = new EndpointDescription(
@@ -165,6 +172,7 @@ namespace TestServer
                     {
                         new UserTokenPolicy("0", UserTokenType.Anonymous, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.None]),
                         new UserTokenPolicy("1", UserTokenType.UserName, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256Sha256]),
+                        new UserTokenPolicy("2", UserTokenType.Certificate, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256Sha256]),
                     }, Types.TransportProfileBinary, 0);
 
                 var epSignBasic256Sha256 = new EndpointDescription(
@@ -174,6 +182,7 @@ namespace TestServer
                     {
                         new UserTokenPolicy("0", UserTokenType.Anonymous, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.None]),
                         new UserTokenPolicy("1", UserTokenType.UserName, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256Sha256]),
+                        new UserTokenPolicy("2", UserTokenType.Certificate, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256Sha256]),
                     }, Types.TransportProfileBinary, 0);
 
                 var epSignRsa128Sha256 = new EndpointDescription(
@@ -183,6 +192,7 @@ namespace TestServer
                     {
                         new UserTokenPolicy("0", UserTokenType.Anonymous, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.None]),
                         new UserTokenPolicy("1", UserTokenType.UserName, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Aes128_Sha256_RsaOaep]),
+                        new UserTokenPolicy("2", UserTokenType.Certificate, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Aes128_Sha256_RsaOaep]),
                     }, Types.TransportProfileBinary, 0);
 
                 var epSignRsa256Sha256 = new EndpointDescription(
@@ -192,6 +202,7 @@ namespace TestServer
                     {
                         new UserTokenPolicy("0", UserTokenType.Anonymous, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.None]),
                         new UserTokenPolicy("1", UserTokenType.UserName, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Aes256_Sha256_RsaPss]),
+                        new UserTokenPolicy("2", UserTokenType.Certificate, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Aes256_Sha256_RsaPss]),
                     }, Types.TransportProfileBinary, 0);
 
                 var epSignEncryptBasic128Rsa15 = new EndpointDescription(
@@ -201,6 +212,7 @@ namespace TestServer
                     {
                         new UserTokenPolicy("0", UserTokenType.Anonymous, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.None]),
                         new UserTokenPolicy("1", UserTokenType.UserName, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256Sha256]),
+                        new UserTokenPolicy("2", UserTokenType.Certificate, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256Sha256]),
                     }, Types.TransportProfileBinary, 0);
 
                 var epSignEncryptBasic256 = new EndpointDescription(
@@ -210,6 +222,7 @@ namespace TestServer
                     {
                         new UserTokenPolicy("0", UserTokenType.Anonymous, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.None]),
                         new UserTokenPolicy("1", UserTokenType.UserName, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256Sha256]),
+                        new UserTokenPolicy("2", UserTokenType.Certificate, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256Sha256]),
                     }, Types.TransportProfileBinary, 0);
 
                 var epSignEncryptBasic256Sha256 = new EndpointDescription(
@@ -219,6 +232,7 @@ namespace TestServer
                     {
                         new UserTokenPolicy("0", UserTokenType.Anonymous, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.None]),
                         new UserTokenPolicy("1", UserTokenType.UserName, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256Sha256]),
+                        new UserTokenPolicy("2", UserTokenType.Certificate, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Basic256Sha256]),
                     }, Types.TransportProfileBinary, 0);
 
                 var epSignEncryptRsa128Sha256 = new EndpointDescription(
@@ -228,6 +242,7 @@ namespace TestServer
                     {
                         new UserTokenPolicy("0", UserTokenType.Anonymous, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.None]),
                         new UserTokenPolicy("1", UserTokenType.UserName, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Aes128_Sha256_RsaOaep]),
+                        new UserTokenPolicy("2", UserTokenType.Certificate, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Aes128_Sha256_RsaOaep]),
                     }, Types.TransportProfileBinary, 0);
 
                 var epSignEncryptRsa256Sha256 = new EndpointDescription(
@@ -237,6 +252,7 @@ namespace TestServer
                     {
                         new UserTokenPolicy("0", UserTokenType.Anonymous, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.None]),
                         new UserTokenPolicy("1", UserTokenType.UserName, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Aes256_Sha256_RsaPss]),
+                        new UserTokenPolicy("2", UserTokenType.Certificate, null, null, Types.SLSecurityPolicyUris[(int)SecurityPolicy.Aes256_Sha256_RsaPss]),
                     }, Types.TransportProfileBinary, 0);
 
                 return new EndpointDescription[]
@@ -301,9 +317,8 @@ namespace TestServer
                 }
 
                 int startOffset = continuationPoint.IsValid ? continuationPoint.Offset : 0;
-                if (readDetails is ReadRawModifiedDetails)
+                if (readDetails is ReadRawModifiedDetails rd)
                 {
-                    var rd = readDetails as ReadRawModifiedDetails;
                     for (int i = 0; i < 100000; i++)
                     {
                         var p = testHistoryPoints[i];
@@ -330,10 +345,8 @@ namespace TestServer
             public override UInt32 HandleHistoryEventReadRequest(object session, object readDetails,
                 HistoryReadValueId id, ContinuationPointHistory continuationPoint, List<object[]> results)
             {
-                if (readDetails is ReadEventDetails)
+                if (readDetails is ReadEventDetails rd)
                 {
-                    var rd = readDetails as ReadEventDetails;
-
                     var dt = rd.StartTime;
                     for (int i = 0; i < 5; i++)
                     {
@@ -500,7 +513,7 @@ namespace TestServer
                 try
                 {
                     // Try to load existing (public key) and associated private key
-                    appCertificate = new X509Certificate2("ServerCert.der");
+                    appCertificate = new X509Certificate2("ServerCert.pem");
                     cryptPrivateKey = RSA.Create();
                     cryptPrivateKey.KeySize = 2048;
 
@@ -539,14 +552,11 @@ namespace TestServer
                             new Oid("1.3.6.1.5.5.7.3.9"),
                         }, true));
 
-                        var certificate = request.CreateSelfSigned(new DateTimeOffset(DateTime.UtcNow.AddDays(-1)),
+                        appCertificate = request.CreateSelfSigned(new DateTimeOffset(DateTime.UtcNow.AddDays(-1)),
                             new DateTimeOffset(DateTime.UtcNow.AddDays(3650)));
 
-                        appCertificate = new X509Certificate2(certificate.Export(X509ContentType.Pfx, ""),
-                            "", X509KeyStorageFlags.DefaultKeySet);
-
                         var certPrivateParams = rsa.ExportParameters(true);
-                        File.WriteAllText("ServerCert.der", UASecurity.ExportPEM(appCertificate));
+                        File.WriteAllText("ServerCert.pem", UASecurity.ExportPEM(appCertificate));
                         File.WriteAllText("ServerKey.pem", UASecurity.ExportRSAPrivateKey(certPrivateParams));
 
                         cryptPrivateKey = RSA.Create();

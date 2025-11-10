@@ -574,7 +574,7 @@ namespace LibUA
             {
                 int rank = 0;
                 VariantType varType;
-                if (obj is Array && !(obj is byte[]))
+                if (obj is Array and not byte[])
                 {
                     var type = obj.GetType();
                     rank = type.GetArrayRank();

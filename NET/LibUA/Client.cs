@@ -1532,6 +1532,23 @@ namespace LibUA
                 succeeded &= sendBuf.Encode(new NodeId(RequestCode.ActivateSessionRequest));
                 succeeded &= sendBuf.Encode(reqHeader);
 
+                // Calculate challenge:
+                var strRemoteCert = config.RemoteCertificateString;
+                var challenge = new byte[(strRemoteCert?.Length ?? 0)
+                                         + (config.RemoteNonce?.Length ?? 0)];
+                var offset = 0;
+                if (strRemoteCert != null)
+                {
+                    Array.Copy(strRemoteCert, 0, challenge, offset, strRemoteCert.Length);
+                    offset += strRemoteCert.Length;
+                }
+
+                if (config.RemoteNonce != null)
+                {
+                    Array.Copy(config.RemoteNonce, 0, challenge, offset, config.RemoteNonce.Length);
+                    offset += config.RemoteNonce.Length;
+                }
+
                 if (config.MessageSecurityMode == MessageSecurityMode.None)
                 {
                     // ClientSignatureAlgorithm
@@ -1541,27 +1558,16 @@ namespace LibUA
                 }
                 else
                 {
-                    if (config.RemoteNonce == null)
+                    if (challenge.Length == 0)
                     {
                         return StatusCode.BadSessionClosed;
                     }
 
-                    var strRemoteCert = config.RemoteCertificateString;
-                    var signMsg = new byte[strRemoteCert.Length + config.RemoteNonce.Length];
-                    Array.Copy(strRemoteCert, 0, signMsg, 0, strRemoteCert.Length);
-                    Array.Copy(config.RemoteNonce, 0, signMsg, strRemoteCert.Length, config.RemoteNonce.Length);
-
-                    var thumbprint = UASecurity.Sign(new ArraySegment<byte>(signMsg),
+                    var algorithm = UASecurity.SignatureAlgorithmForSecurityPolicy(config.SecurityPolicy);
+                    var thumbprint = UASecurity.Sign(new ArraySegment<byte>(challenge),
                         ApplicationPrivateKey, config.SecurityPolicy);
 
-                    if (config.SecurityPolicy == SecurityPolicy.Basic256Sha256)
-                    {
-                        succeeded &= sendBuf.EncodeUAString(Types.SignatureAlgorithmSha256);
-                    }
-                    else
-                    {
-                        succeeded &= sendBuf.EncodeUAString(Types.SignatureAlgorithmSha1);
-                    }
+                    succeeded &= sendBuf.EncodeUAString(algorithm);
                     succeeded &= sendBuf.EncodeUAByteString(thumbprint);
                 }
 
@@ -1571,7 +1577,7 @@ namespace LibUA
                 // LocaleIds: Array of String
                 succeeded &= sendBuf.EncodeUAString(localeIDs);
 
-                if (identityToken is UserIdentityAnonymousToken)
+                if (identityToken is UserIdentityAnonymousToken token)
                 {
                     succeeded &= sendBuf.Encode(new NodeId(UAConst.AnonymousIdentityToken_Encoding_DefaultBinary));
                     succeeded &= sendBuf.Encode((byte)1);
@@ -1579,10 +1585,10 @@ namespace LibUA
                     int eoStartPos = sendBuf.Position;
                     succeeded &= sendBuf.Encode((UInt32)0);
 
-                    succeeded &= sendBuf.EncodeUAString((identityToken as UserIdentityAnonymousToken).PolicyId);
+                    succeeded &= sendBuf.EncodeUAString(token.PolicyId);
                     succeeded &= sendBuf.Encode((UInt32)(sendBuf.Position - eoStartPos - 4), eoStartPos);
                 }
-                else if (identityToken is UserIdentityUsernameToken)
+                else if (identityToken is UserIdentityUsernameToken usernameToken)
                 {
                     succeeded &= sendBuf.Encode(new NodeId(UAConst.UserNameIdentityToken_Encoding_DefaultBinary));
                     succeeded &= sendBuf.Encode((byte)1);
@@ -1590,12 +1596,12 @@ namespace LibUA
                     int eoStartPos = sendBuf.Position;
                     succeeded &= sendBuf.Encode((UInt32)0);
 
-                    succeeded &= sendBuf.EncodeUAString(((identityToken as UserIdentityUsernameToken)).PolicyId);
-                    succeeded &= sendBuf.EncodeUAString(((identityToken as UserIdentityUsernameToken)).Username);
+                    succeeded &= sendBuf.EncodeUAString(usernameToken.PolicyId);
+                    succeeded &= sendBuf.EncodeUAString(usernameToken.Username);
 
                     try
                     {
-                        var passwordSrc = (identityToken as UserIdentityUsernameToken).PasswordHash;
+                        var passwordSrc = usernameToken.PasswordHash;
                         int padSize = UASecurity.CalculatePaddingSize(config.RemoteCertificate,
                             userIdentitySecurityPolicy ?? config.SecurityPolicy, 4 + passwordSrc.Length,
                             (config.RemoteNonce == null ? 0 : config.RemoteNonce.Length));
@@ -1614,7 +1620,7 @@ namespace LibUA
 
                         Array.Copy(passwordSrc, 0, crypted, 4, passwordSrc.Length);
 
-                        int offset = 4 + passwordSrc.Length;
+                        offset = 4 + passwordSrc.Length;
 
                         if (config.RemoteNonce != null)
                         {
@@ -1635,7 +1641,7 @@ namespace LibUA
                         }
 
                         succeeded &= sendBuf.EncodeUAByteString(crypted);
-                        succeeded &= sendBuf.EncodeUAString(((identityToken as UserIdentityUsernameToken)).Algorithm);
+                        succeeded &= sendBuf.EncodeUAString(usernameToken.Algorithm);
                     }
                     catch
                     {
@@ -1644,15 +1650,44 @@ namespace LibUA
 
                     succeeded &= sendBuf.Encode((UInt32)(sendBuf.Position - eoStartPos - 4), eoStartPos);
                 }
+                else if (identityToken is UserIdentityX509IdentityToken x509Token)
+                {
+                    succeeded &= sendBuf.Encode(new NodeId(UAConst.X509IdentityToken_Encoding_DefaultBinary));
+                    succeeded &= sendBuf.Encode((byte)1);
+
+                    int eoStartPos = sendBuf.Position;
+                    succeeded &= sendBuf.Encode((UInt32)0);
+
+                    succeeded &= sendBuf.EncodeUAString(x509Token.PolicyId);
+                    succeeded &= sendBuf.EncodeUAByteString(x509Token.CertificateData);
+                    succeeded &= sendBuf.Encode((UInt32)(sendBuf.Position - eoStartPos - 4), eoStartPos);
+                }
                 else
                 {
                     throw new Exception(string.Format("Identity token of type {0} is not supported", identityToken.GetType().ToString()));
                 }
 
-                // TokenAlgorithm
-                succeeded &= sendBuf.EncodeUAString((string)null);
-                // TokenSignature
-                succeeded &= sendBuf.EncodeUAByteString(null);
+                if (identityToken is UserIdentityX509IdentityToken x509IdentityToken)
+                {
+                    if (challenge.Length == 0)
+                    {
+                        return StatusCode.BadSessionClosed;
+                    }
+
+                    var algorithm = UASecurity.SignatureAlgorithmForSecurityPolicy(config.SecurityPolicy);
+                    var thumbprint = UASecurity.Sign(new ArraySegment<byte>(challenge),
+                        x509IdentityToken.PrivateKey, config.SecurityPolicy);
+
+                    succeeded &= sendBuf.EncodeUAString(algorithm);
+                    succeeded &= sendBuf.EncodeUAByteString(thumbprint);
+                }
+                else
+                {
+                    // userTokenAlgorithm
+                    succeeded &= sendBuf.EncodeUAString((string)null);
+                    // userTokenSignature
+                    succeeded &= sendBuf.EncodeUAByteString(null);
+                }
 
                 if (!succeeded)
                 {
@@ -2338,70 +2373,70 @@ namespace LibUA
                 succeeded &= sendBuf.Encode(new NodeId(RequestCode.HistoryReadRequest));
                 succeeded &= sendBuf.Encode(reqHeader);
 
-                if (historyReadDetails is ReadRawModifiedDetails)
+                if (historyReadDetails is ReadRawModifiedDetails details)
                 {
                     succeeded &= sendBuf.Encode(new NodeId(UAConst.ReadRawModifiedDetails_Encoding_DefaultBinary));
                     succeeded &= sendBuf.Encode((byte)1);
                     int eoStartPos = sendBuf.Position;
                     succeeded &= sendBuf.Encode((UInt32)0);
 
-                    succeeded &= sendBuf.Encode((historyReadDetails as ReadRawModifiedDetails).IsReadModified);
-                    succeeded &= sendBuf.Encode((Int64)(historyReadDetails as ReadRawModifiedDetails).StartTime.ToFileTime());
-                    succeeded &= sendBuf.Encode((Int64)(historyReadDetails as ReadRawModifiedDetails).EndTime.ToFileTime());
-                    succeeded &= sendBuf.Encode((UInt32)(historyReadDetails as ReadRawModifiedDetails).NumValuesPerNode);
-                    succeeded &= sendBuf.Encode((historyReadDetails as ReadRawModifiedDetails).ReturnBounds);
+                    succeeded &= sendBuf.Encode(details.IsReadModified);
+                    succeeded &= sendBuf.Encode((Int64)details.StartTime.ToFileTime());
+                    succeeded &= sendBuf.Encode((Int64)details.EndTime.ToFileTime());
+                    succeeded &= sendBuf.Encode((UInt32)details.NumValuesPerNode);
+                    succeeded &= sendBuf.Encode(details.ReturnBounds);
 
                     succeeded &= sendBuf.Encode((UInt32)(sendBuf.Position - eoStartPos - 4), eoStartPos);
                 }
-                else if (historyReadDetails is ReadProcessedDetails)
+                else if (historyReadDetails is ReadProcessedDetails processedDetails)
                 {
                     succeeded &= sendBuf.Encode(new NodeId(UAConst.ReadProcessedDetails_Encoding_DefaultBinary));
                     succeeded &= sendBuf.Encode((byte)1);
                     int eoStartPos = sendBuf.Position;
                     succeeded &= sendBuf.Encode((UInt32)0);
 
-                    succeeded &= sendBuf.Encode((historyReadDetails as ReadProcessedDetails).StartTime.ToFileTime());
-                    succeeded &= sendBuf.Encode((historyReadDetails as ReadProcessedDetails).EndTime.ToFileTime());
-                    succeeded &= sendBuf.Encode((historyReadDetails as ReadProcessedDetails).ProcessingInterval);
+                    succeeded &= sendBuf.Encode(processedDetails.StartTime.ToFileTime());
+                    succeeded &= sendBuf.Encode(processedDetails.EndTime.ToFileTime());
+                    succeeded &= sendBuf.Encode(processedDetails.ProcessingInterval);
 
-                    succeeded &= sendBuf.Encode((UInt32)(historyReadDetails as ReadProcessedDetails).AggregateTypes.Length);
-                    for (int i = 0; i < (historyReadDetails as ReadProcessedDetails).AggregateTypes.Length; i++)
+                    succeeded &= sendBuf.Encode((UInt32)processedDetails.AggregateTypes.Length);
+                    for (int i = 0; i < processedDetails.AggregateTypes.Length; i++)
                     {
-                        succeeded &= sendBuf.Encode((historyReadDetails as ReadProcessedDetails).AggregateTypes[i]);
+                        succeeded &= sendBuf.Encode(processedDetails.AggregateTypes[i]);
                     }
 
-                    succeeded &= sendBuf.Encode((historyReadDetails as ReadProcessedDetails).Configuration);
+                    succeeded &= sendBuf.Encode(processedDetails.Configuration);
 
                     succeeded &= sendBuf.Encode((UInt32)(sendBuf.Position - eoStartPos - 4), eoStartPos);
                 }
-                else if (historyReadDetails is ReadAtTimeDetails)
+                else if (historyReadDetails is ReadAtTimeDetails timeDetails)
                 {
                     succeeded &= sendBuf.Encode(new NodeId(UAConst.ReadAtTimeDetails_Encoding_DefaultBinary));
                     succeeded &= sendBuf.Encode((byte)1);
                     int eoStartPos = sendBuf.Position;
                     succeeded &= sendBuf.Encode((UInt32)0);
 
-                    succeeded &= sendBuf.Encode((historyReadDetails as ReadAtTimeDetails).ReqTimes.Length);
-                    for (int i = 0; i < (historyReadDetails as ReadAtTimeDetails).ReqTimes.Length; i++)
+                    succeeded &= sendBuf.Encode(timeDetails.ReqTimes.Length);
+                    for (int i = 0; i < timeDetails.ReqTimes.Length; i++)
                     {
-                        succeeded &= sendBuf.Encode((historyReadDetails as ReadAtTimeDetails).ReqTimes[i].ToFileTime());
+                        succeeded &= sendBuf.Encode(timeDetails.ReqTimes[i].ToFileTime());
                     }
 
-                    succeeded &= sendBuf.Encode((historyReadDetails as ReadAtTimeDetails).UseSimpleBounds);
+                    succeeded &= sendBuf.Encode(timeDetails.UseSimpleBounds);
 
                     succeeded &= sendBuf.Encode((UInt32)(sendBuf.Position - eoStartPos - 4), eoStartPos);
                 }
-                else if (historyReadDetails is ReadEventDetails)
+                else if (historyReadDetails is ReadEventDetails eventDetails)
                 {
                     succeeded &= sendBuf.Encode(new NodeId(UAConst.ReadEventDetails_Encoding_DefaultBinary));
                     succeeded &= sendBuf.Encode((byte)1);
                     int eoStartPos = sendBuf.Position;
                     succeeded &= sendBuf.Encode((UInt32)0);
 
-                    succeeded &= sendBuf.Encode((historyReadDetails as ReadEventDetails).NumValuesPerNode);
-                    succeeded &= sendBuf.Encode((historyReadDetails as ReadEventDetails).StartTime.ToFileTime());
-                    succeeded &= sendBuf.Encode((historyReadDetails as ReadEventDetails).EndTime.ToFileTime());
-                    succeeded &= sendBuf.Encode(new EventFilter((historyReadDetails as ReadEventDetails).SelectClauses, null), false);
+                    succeeded &= sendBuf.Encode(eventDetails.NumValuesPerNode);
+                    succeeded &= sendBuf.Encode(eventDetails.StartTime.ToFileTime());
+                    succeeded &= sendBuf.Encode(eventDetails.EndTime.ToFileTime());
+                    succeeded &= sendBuf.Encode(new EventFilter(eventDetails.SelectClauses, null), false);
 
                     succeeded &= sendBuf.Encode((UInt32)(sendBuf.Position - eoStartPos - 4), eoStartPos);
                 }

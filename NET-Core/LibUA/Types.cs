@@ -1,9 +1,10 @@
-﻿using LibUA.ValueTypes;
-using System;
+﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Net;
+using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
+using LibUA.ValueTypes;
 
 namespace LibUA
 {
@@ -51,11 +52,13 @@ namespace LibUA
         {
             Anonymous = 321,
             UserNameIdentityToken = 324,
+            X509IdentityToken = 327,
         }
 
         public class UserIdentityAnonymousToken
         {
             public string PolicyId { get; protected set; }
+            
             public UserIdentityAnonymousToken(string PolicyId)
             {
                 this.PolicyId = PolicyId;
@@ -75,6 +78,26 @@ namespace LibUA
                 this.Username = Username;
                 this.PasswordHash = PasswordHash;
                 this.Algorithm = Algorithm;
+            }
+        }
+        
+        public class UserIdentityX509IdentityToken
+        {
+            public string PolicyId { get; protected set; }
+            public byte[] CertificateData { get; protected set; }
+            public RSA PrivateKey { get; protected set; }
+
+            internal UserIdentityX509IdentityToken(string PolicyId, byte[] CertificateData)
+            {
+                this.PolicyId = PolicyId;
+                this.CertificateData = CertificateData;
+            }
+
+            public UserIdentityX509IdentityToken(string PolicyId, byte[] CertificateData, RSA PrivateKey)
+            {
+                this.PolicyId = PolicyId;
+                this.CertificateData = CertificateData;
+                this.PrivateKey = PrivateKey;
             }
         }
 
@@ -7059,7 +7082,7 @@ namespace LibUA
 
             public uint ChannelID { get; set; }
             public uint TokenID { get; set; }
-            public UInt32 TokenLifetime { get; set; }
+            public uint TokenLifetime { get; set; }
             public DateTimeOffset TokenCreatedAt { get; set; }
 
             public uint? PrevChannelID { get; set; }
