@@ -147,8 +147,8 @@ namespace TestClient
             var client = new DemoClient("127.0.0.1", 7718, 1000);
             var messageSecurityMode = MessageSecurityMode.SignAndEncrypt;
             var securityPolicy = SecurityPolicy.Basic256Sha256;
-            bool useAnonymousUser = false;
-            bool useCertificateToken = true;
+            bool useAnonymousUser = true;
+            bool useCertificateToken = false;
 
             client.Connect();
             client.OpenSecureChannel(MessageSecurityMode.None, SecurityPolicy.None, null);
