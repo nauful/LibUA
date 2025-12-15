@@ -79,6 +79,11 @@ namespace LibUA
             get { return tcp != null && tcp.Connected; }
         }
 
+        public bool CanReconnect
+        {
+            get { return !IsConnected && config?.AuthToken is not null; }
+        }
+
         public Client(string Target, int Port, int Timeout, int MaximumMessageSize = 1 << 18)
             : this(Target, Port, null, Timeout, MaximumMessageSize)
         {
@@ -827,6 +832,11 @@ namespace LibUA
 
         public StatusCode Connect()
         {
+            return Connect(false);
+        }
+
+        public StatusCode Connect(bool reuseSession)
+        {
             if (IsConnected)
             {
                 throw new Exception("Disconnect before connecting again.");
@@ -858,11 +868,20 @@ namespace LibUA
                 tcp.NoDelay = true;
                 tcp.Client.NoDelay = true;
 
-                config = new SLChannel
+                // If session should be reused, and we have an AuthToken, reuse the config:
+                if (reuseSession && config?.AuthToken is not null)
                 {
-                    Endpoint = tcp.Client.RemoteEndPoint as IPEndPoint,
-                    SLState = ConnectionState.Opening
-                };
+                    config.Endpoint = tcp.Client.RemoteEndPoint as IPEndPoint;
+                    config.SLState = ConnectionState.Opening;
+                }
+                else
+                {
+                    config = new SLChannel
+                    {
+                        Endpoint = tcp.Client.RemoteEndPoint as IPEndPoint,
+                        SLState = ConnectionState.Opening
+                    };
+                }
 
                 recvQueue = new Dictionary<Tuple<uint, uint>, RecvHandler>();
                 recvNotify = new Dictionary<Tuple<uint, uint>, ManualResetEvent>();
