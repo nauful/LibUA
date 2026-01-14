@@ -74,6 +74,11 @@ namespace LibUA
             get { return totalBytesRecv; }
         }
 
+        public uint? TokenLifetime
+        {
+            get { return config?.TokenLifetime; }
+        }
+
         public bool IsConnected
         {
             get { return tcp != null && tcp.Connected; }
@@ -198,7 +203,7 @@ namespace LibUA
                 UInt32 securityTokenRequestType = (uint)requestType;
                 UInt32 messageSecurityMode = (uint)config.MessageSecurityMode;
                 byte[] clientNonce = null;
-                double reqLifetime = 300 * 1000;
+                UInt32 reqLifetime = 300 * 1000;
 
                 if (config.SecurityPolicy != SecurityPolicy.None)
                 {
@@ -399,7 +404,10 @@ namespace LibUA
                 config.ChannelID = channelId;
                 config.TokenID = tokenId;
                 config.TokenCreatedAt = DateTimeOffset.FromFileTime((long)createAtTimestamp);
-                config.TokenLifetime = respLifetime;
+                if (config.TokenLifetime == 0)
+                {
+                    config.TokenLifetime = respLifetime;
+                }
                 config.RemoteNonce = serverNonce;
 
                 if (config.SecurityPolicy == SecurityPolicy.None)
