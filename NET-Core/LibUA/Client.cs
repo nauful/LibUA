@@ -74,6 +74,11 @@ namespace LibUA
             get { return totalBytesRecv; }
         }
 
+        public uint? TokenLifetime
+        {
+            get { return config?.TokenLifetime; }
+        }
+
         public bool IsConnected
         {
             get { return tcp != null && tcp.Connected; }
