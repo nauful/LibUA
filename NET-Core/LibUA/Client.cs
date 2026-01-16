@@ -861,7 +861,19 @@ namespace LibUA
 
                 try
                 {
-                    tcp = new TcpClient(Target, Port);
+                    tcp = new TcpClient();
+                    var ar = tcp.BeginConnect(Target, Port, null, null);
+
+                    // Wait for completion or timeout
+                    var success = ar.AsyncWaitHandle.WaitOne(Timeout);
+                    if (!success)
+                    {
+                        tcp.Close();
+                        throw new SocketException();
+                    }
+
+                    // Ensure connection is completed
+                    tcp.EndConnect(ar);
                 }
                 catch (SocketException)
                 {
@@ -875,6 +887,8 @@ namespace LibUA
 
                 tcp.NoDelay = true;
                 tcp.Client.NoDelay = true;
+                tcp.ReceiveTimeout = Timeout;
+                tcp.SendTimeout = Timeout;
 
                 // If session should be reused, and we have an AuthToken, reuse the config:
                 if (reuseSession && config?.AuthToken is not null)
