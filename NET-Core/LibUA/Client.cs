@@ -1146,7 +1146,16 @@ namespace LibUA
                     break;
                 }
 
-                if (!socket.Poll(ListenerInterval * 1000, SelectMode.SelectRead))
+                var checkRead = new List<Socket> { socket };
+                var checkError = new List<Socket> { socket };
+                Socket.Select(checkRead, null, checkError, ListenerInterval * 1000);
+
+                if (checkError.Count > 0)
+                {
+                    break;
+                }
+
+                if (checkRead.Count == 0)
                 {
                     continue;
                 }

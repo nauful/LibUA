@@ -387,7 +387,16 @@ namespace LibUA
 
                     try
                     {
-                        if (!socket.Poll(PulseInterval * 1000, SelectMode.SelectRead))
+                        var checkRead = new List<Socket> { socket };
+                        var checkError = new List<Socket> { socket };
+                        Socket.Select(checkRead, null, checkError, PulseInterval * 1000);
+
+                        if (checkError.Count > 0)
+                        {
+                            break;
+                        }
+
+                        if (checkRead.Count == 0)
                         {
                             continue;
                         }
