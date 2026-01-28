@@ -887,8 +887,8 @@ namespace LibUA
 
                 tcp.NoDelay = true;
                 tcp.Client.NoDelay = true;
-                tcp.ReceiveTimeout = Timeout;
-                tcp.SendTimeout = Timeout;
+                tcp.ReceiveTimeout = Timeout * 1000;
+                tcp.SendTimeout = Timeout * 1000;
 
                 // If session should be reused, and we have an AuthToken, reuse the config:
                 if (reuseSession && config?.AuthToken is not null)
