@@ -865,7 +865,7 @@ namespace LibUA
                     var ar = tcp.BeginConnect(Target, Port, null, null);
 
                     // Wait for completion or timeout
-                    var success = ar.AsyncWaitHandle.WaitOne(Timeout);
+                    var success = ar.AsyncWaitHandle.WaitOne(Timeout * 1000);
                     if (!success)
                     {
                         tcp.Close();
