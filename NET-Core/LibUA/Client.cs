@@ -50,8 +50,8 @@ namespace LibUA
 
         private Dictionary<Tuple<uint, uint>, RecvHandler> recvQueue = null;
         private Dictionary<Tuple<uint, uint>, ManualResetEvent> recvNotify = null;
-        private StatusCode recvHandlerStatus;
-        private bool nextPublish = false;
+        private volatile StatusCode recvHandlerStatus;
+        private volatile bool nextPublish = false;
         private HashSet<uint> publishReqs = null;
 
         public virtual X509Certificate2 ApplicationCertificate
@@ -81,7 +81,13 @@ namespace LibUA
 
         public bool IsConnected
         {
-            get { return tcp != null && tcp.Connected; }
+            get
+            {
+                lock (this)
+                {
+                    return tcp != null && tcp.Connected;
+                }
+            }
         }
 
         public bool CanReconnect
@@ -1068,19 +1074,19 @@ namespace LibUA
         {
             nextPublish = false;
 
-            if (renewTimer != null)
+            System.Timers.Timer timerToStop = null;
+            lock (this)
             {
-                try
+                if (renewTimer != null)
                 {
-                    cs.WaitOne();
-                    renewTimer.Stop();
+                    timerToStop = renewTimer;
+                    renewTimer = null;
                 }
-                finally
-                {
-                    cs.Release();
-                }
+            }
 
-                renewTimer = null;
+            if (timerToStop != null)
+            {
+                timerToStop.Stop();
             }
 
             if (thread != null)
@@ -1280,9 +1286,12 @@ namespace LibUA
 
             lock (recvQueue)
             {
-                foreach (var notifyAbort in recvNotify)
+                foreach (var kvp in recvQueue)
                 {
-                    notifyAbort.Value.Set();
+                    if (recvNotify.TryGetValue(kvp.Key, out ManualResetEvent ev))
+                    {
+                        ev.Set();
+                    }
                 }
             }
         }
