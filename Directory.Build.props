@@ -1,0 +1,6 @@
+<Project>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>build\keys\DiracDelta.ThirdParty.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+</Project>

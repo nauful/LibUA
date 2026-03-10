@@ -2,15 +2,15 @@
 
   <PropertyGroup>
     <TargetFrameworks>net6.0;net7.0;net8.0;net9.0</TargetFrameworks>
-    <PackageId>nauful-$(AssemblyName)-core</PackageId>
+    <PackageId>DiracDelta-$(AssemblyName)-StrongNamed</PackageId>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <PackageProjectUrl>https://github.com/nauful/libua</PackageProjectUrl>
-    <Copyright>(c) Nauful Shaikh, QuantenSystems LLC 2015-(now)</Copyright>
+    <PackageProjectUrl>https://github.com/Dirac-Delta-Kft/LibUA</PackageProjectUrl>
+    <Copyright>(c) Dirac-Delta Kft. 2026-(now)</Copyright>
     <Description>Open-source OPC UA client and server library for .NET Core.</Description>
     <Title>LibUA Core</Title>
     <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://github.com/nauful/libua</RepositoryUrl>
-    <Version>1.0.45</Version>
+    <RepositoryUrl>https://github.com/Dirac-Delta-Kft/LibUA</RepositoryUrl>
+    <Version>1.0.45-diracdelta.1</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <LangVersion>latest</LangVersion>
