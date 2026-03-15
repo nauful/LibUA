@@ -53,6 +53,10 @@ namespace LibUA
         private volatile StatusCode recvHandlerStatus;
         private volatile bool nextPublish = false;
         private HashSet<uint> publishReqs = null;
+        private readonly Lock syncLock = new();
+        private readonly Lock recvQueueLock = new();
+        private readonly Lock recvNotifyLock = new();
+        private readonly Lock publishReqsLock = new();
 
         public virtual X509Certificate2 ApplicationCertificate
         {
@@ -83,7 +87,7 @@ namespace LibUA
         {
             get
             {
-                lock (this)
+                lock (syncLock)
                 {
                     return tcp != null && tcp.Connected;
                 }
@@ -290,7 +294,7 @@ namespace LibUA
 
                 var recvKey = new Tuple<uint, uint>((uint)MessageType.Open, 0);
                 var recvEv = new ManualResetEvent(false);
-                lock (recvNotify)
+                lock (recvNotifyLock)
                 {
                     recvNotify[recvKey] = recvEv;
                 }
@@ -303,7 +307,7 @@ namespace LibUA
 
                 bool signalled = recvEv.WaitOne(Timeout * 1000);
 
-                lock (recvNotify)
+                lock (recvNotifyLock)
                 {
                     recvNotify.Remove(recvKey);
                 }
@@ -314,7 +318,7 @@ namespace LibUA
                 }
 
                 RecvHandler recvHandler = null;
-                lock (recvQueue)
+                lock (recvQueueLock)
                 {
                     var key = new Tuple<uint, uint>((uint)MessageType.Open, 0);
                     if (!recvQueue.TryGetValue(key, out recvHandler))
@@ -514,7 +518,7 @@ namespace LibUA
 
                 var recvKey = new Tuple<uint, uint>((uint)MessageType.Message, reqHeader.RequestHandle);
                 var recvEv = new ManualResetEvent(false);
-                lock (recvNotify)
+                lock (recvNotifyLock)
                 {
                     recvNotify[recvKey] = recvEv;
                 }
@@ -598,7 +602,7 @@ namespace LibUA
 
                 var recvKey = new Tuple<uint, uint>((uint)MessageType.Message, reqHeader.RequestHandle);
                 var recvEv = new ManualResetEvent(false);
-                lock (recvNotify)
+                lock (recvNotifyLock)
                 {
                     recvNotify[recvKey] = recvEv;
                 }
@@ -611,7 +615,7 @@ namespace LibUA
 
                 bool signalled = recvEv.WaitOne(Timeout * 1000);
 
-                lock (recvNotify)
+                lock (recvNotifyLock)
                 {
                     recvNotify.Remove(recvKey);
                 }
@@ -622,7 +626,7 @@ namespace LibUA
                 }
 
                 RecvHandler recvHandler = null;
-                lock (recvQueue)
+                lock (recvQueueLock)
                 {
                     if (!recvQueue.TryGetValue(recvKey, out recvHandler))
                     {
@@ -697,7 +701,7 @@ namespace LibUA
 
                 var recvKey = new Tuple<uint, uint>((uint)MessageType.Message, reqHeader.RequestHandle);
                 var recvEv = new ManualResetEvent(false);
-                lock (recvNotify)
+                lock (recvNotifyLock)
                 {
                     recvNotify[recvKey] = recvEv;
                 }
@@ -710,7 +714,7 @@ namespace LibUA
 
                 bool signalled = recvEv.WaitOne(Timeout * 1000);
 
-                lock (recvNotify)
+                lock (recvNotifyLock)
                 {
                     recvNotify.Remove(recvKey);
                 }
@@ -721,7 +725,7 @@ namespace LibUA
                 }
 
                 RecvHandler recvHandler = null;
-                lock (recvQueue)
+                lock (recvQueueLock)
                 {
                     if (!recvQueue.TryGetValue(recvKey, out recvHandler))
                     {
@@ -970,7 +974,7 @@ namespace LibUA
 
             var recvKey = new Tuple<uint, uint>((uint)MessageType.Acknowledge, 0);
             var recvEv = new ManualResetEvent(false);
-            lock (recvNotify)
+            lock (recvNotifyLock)
             {
                 recvNotify[recvKey] = recvEv;
             }
@@ -980,7 +984,7 @@ namespace LibUA
 
             bool signalled = recvEv.WaitOne(Timeout * 1000);
 
-            lock (recvNotify)
+            lock (recvNotifyLock)
             {
                 recvNotify.Remove(recvKey);
             }
@@ -996,7 +1000,7 @@ namespace LibUA
             }
 
             RecvHandler recvHandler;
-            lock (recvQueue)
+            lock (recvQueueLock)
             {
                 var key = new Tuple<uint, uint>((uint)MessageType.Acknowledge, 0);
                 if (!recvQueue.TryGetValue(key, out recvHandler))
@@ -1075,7 +1079,7 @@ namespace LibUA
             nextPublish = false;
 
             System.Timers.Timer timerToStop = null;
-            lock (this)
+            lock (syncLock)
             {
                 if (renewTimer != null)
                 {
@@ -1276,7 +1280,7 @@ namespace LibUA
             // Fail any pending calls with connStatus
             //semRecvMsg.Release();
 
-            lock (recvNotify)
+            lock (recvNotifyLock)
             {
                 foreach (var kvp in recvNotify)
                 {
@@ -1284,7 +1288,7 @@ namespace LibUA
                 }
             }
 
-            lock (recvQueue)
+            lock (recvQueueLock)
             {
                 foreach (var kvp in recvQueue)
                 {
@@ -1533,7 +1537,7 @@ namespace LibUA
 
             if (messageType == (uint)MessageType.Acknowledge)
             {
-                lock (recvQueue)
+                lock (recvQueueLock)
                 {
                     var key = new Tuple<uint, uint>(messageType, 0);
                     recvQueue[key] = new RecvHandler()
@@ -1561,7 +1565,7 @@ namespace LibUA
                 }
 
                 ManualResetEvent ev = null;
-                lock (recvQueue)
+                lock (recvQueueLock)
                 {
                     var key = new Tuple<uint, uint>(messageType, 0);
                     recvQueue[key] = new RecvHandler()
@@ -1641,7 +1645,7 @@ namespace LibUA
                 }
                 else
                 {
-                    lock (recvQueue)
+                    lock (recvQueueLock)
                     {
                         var recvKey = new Tuple<uint, uint>(messageType, respHeader.RequestHandle);
                         recvQueue[recvKey] = new RecvHandler()
@@ -1856,7 +1860,7 @@ namespace LibUA
 
                 var recvKey = new Tuple<uint, uint>((uint)MessageType.Message, reqHeader.RequestHandle);
                 var recvEv = new ManualResetEvent(false);
-                lock (recvNotify)
+                lock (recvNotifyLock)
                 {
                     recvNotify[recvKey] = recvEv;
                 }
@@ -1869,7 +1873,7 @@ namespace LibUA
 
                 bool signalled = recvEv.WaitOne(Timeout * 1000);
 
-                lock (recvNotify)
+                lock (recvNotifyLock)
                 {
                     recvNotify.Remove(recvKey);
                 }
@@ -1880,7 +1884,7 @@ namespace LibUA
                 }
 
                 RecvHandler recvHandler = null;
-                lock (recvQueue)
+                lock (recvQueueLock)
                 {
                     if (!recvQueue.TryGetValue(recvKey, out recvHandler))
                     {
@@ -1984,7 +1988,7 @@ namespace LibUA
 
                 var recvKey = new Tuple<uint, uint>((uint)MessageType.Message, reqHeader.RequestHandle);
                 var recvEv = new ManualResetEvent(false);
-                lock (recvNotify)
+                lock (recvNotifyLock)
                 {
                     recvNotify[recvKey] = recvEv;
                 }
@@ -1997,7 +2001,7 @@ namespace LibUA
 
                 bool signalled = recvEv.WaitOne(Timeout * 1000);
 
-                lock (recvNotify)
+                lock (recvNotifyLock)
                 {
                     recvNotify.Remove(recvKey);
                 }
@@ -2008,7 +2012,7 @@ namespace LibUA
                 }
 
                 RecvHandler recvHandler = null;
-                lock (recvQueue)
+                lock (recvQueueLock)
                 {
                     if (!recvQueue.TryGetValue(recvKey, out recvHandler))
                     {
@@ -2098,7 +2102,7 @@ namespace LibUA
 
                 var recvKey = new Tuple<uint, uint>((uint)MessageType.Message, reqHeader.RequestHandle);
                 var recvEv = new ManualResetEvent(false);
-                lock (recvNotify)
+                lock (recvNotifyLock)
                 {
                     recvNotify[recvKey] = recvEv;
                 }
@@ -2111,7 +2115,7 @@ namespace LibUA
 
                 bool signalled = recvEv.WaitOne(Timeout * 1000);
 
-                lock (recvNotify)
+                lock (recvNotifyLock)
                 {
                     recvNotify.Remove(recvKey);
                 }
@@ -2122,7 +2126,7 @@ namespace LibUA
                 }
 
                 RecvHandler recvHandler = null;
-                lock (recvQueue)
+                lock (recvQueueLock)
                 {
                     if (!recvQueue.TryGetValue(recvKey, out recvHandler))
                     {
@@ -2201,7 +2205,7 @@ namespace LibUA
 
                 var recvKey = new Tuple<uint, uint>((uint)MessageType.Message, reqHeader.RequestHandle);
                 var recvEv = new ManualResetEvent(false);
-                lock (recvNotify)
+                lock (recvNotifyLock)
                 {
                     recvNotify[recvKey] = recvEv;
                 }
@@ -2214,7 +2218,7 @@ namespace LibUA
 
                 bool signalled = recvEv.WaitOne(Timeout * 1000);
 
-                lock (recvNotify)
+                lock (recvNotifyLock)
                 {
                     recvNotify.Remove(recvKey);
                 }
@@ -2225,7 +2229,7 @@ namespace LibUA
                 }
 
                 RecvHandler recvHandler = null;
-                lock (recvQueue)
+                lock (recvQueueLock)
                 {
                     if (!recvQueue.TryGetValue(recvKey, out recvHandler))
                     {
@@ -2323,7 +2327,7 @@ namespace LibUA
 
                 var recvKey = new Tuple<uint, uint>((uint)MessageType.Message, reqHeader.RequestHandle);
                 var recvEv = new ManualResetEvent(false);
-                lock (recvNotify)
+                lock (recvNotifyLock)
                 {
                     recvNotify[recvKey] = recvEv;
                 }
@@ -2336,7 +2340,7 @@ namespace LibUA
 
                 bool signalled = recvEv.WaitOne(Timeout * 1000);
 
-                lock (recvNotify)
+                lock (recvNotifyLock)
                 {
                     recvNotify.Remove(recvKey);
                 }
@@ -2347,7 +2351,7 @@ namespace LibUA
                 }
 
                 RecvHandler recvHandler = null;
-                lock (recvQueue)
+                lock (recvQueueLock)
                 {
                     if (!recvQueue.TryGetValue(recvKey, out recvHandler))
                     {
@@ -2434,7 +2438,7 @@ namespace LibUA
 
                 var recvKey = new Tuple<uint, uint>((uint)MessageType.Message, reqHeader.RequestHandle);
                 var recvEv = new ManualResetEvent(false);
-                lock (recvNotify)
+                lock (recvNotifyLock)
                 {
                     recvNotify[recvKey] = recvEv;
                 }
@@ -2447,7 +2451,7 @@ namespace LibUA
 
                 bool signalled = recvEv.WaitOne(Timeout * 1000);
 
-                lock (recvNotify)
+                lock (recvNotifyLock)
                 {
                     recvNotify.Remove(recvKey);
                 }
@@ -2458,7 +2462,7 @@ namespace LibUA
                 }
 
                 RecvHandler recvHandler = null;
-                lock (recvQueue)
+                lock (recvQueueLock)
                 {
                     if (!recvQueue.TryGetValue(recvKey, out recvHandler))
                     {
@@ -2538,7 +2542,7 @@ namespace LibUA
 
                 var recvKey = new Tuple<uint, uint>((uint)MessageType.Message, reqHeader.RequestHandle);
                 var recvEv = new ManualResetEvent(false);
-                lock (recvNotify)
+                lock (recvNotifyLock)
                 {
                     recvNotify[recvKey] = recvEv;
                 }
@@ -2551,7 +2555,7 @@ namespace LibUA
 
                 bool signalled = recvEv.WaitOne(Timeout * 1000);
 
-                lock (recvNotify)
+                lock (recvNotifyLock)
                 {
                     recvNotify.Remove(recvKey);
                 }
@@ -2562,7 +2566,7 @@ namespace LibUA
                 }
 
                 RecvHandler recvHandler = null;
-                lock (recvQueue)
+                lock (recvQueueLock)
                 {
                     if (!recvQueue.TryGetValue(recvKey, out recvHandler))
                     {
@@ -2642,7 +2646,7 @@ namespace LibUA
 
                 var recvKey = new Tuple<uint, uint>((uint)MessageType.Message, reqHeader.RequestHandle);
                 var recvEv = new ManualResetEvent(false);
-                lock (recvNotify)
+                lock (recvNotifyLock)
                 {
                     recvNotify[recvKey] = recvEv;
                 }
@@ -2655,7 +2659,7 @@ namespace LibUA
 
                 bool signalled = recvEv.WaitOne(Timeout * 1000);
 
-                lock (recvNotify)
+                lock (recvNotifyLock)
                 {
                     recvNotify.Remove(recvKey);
                 }
@@ -2666,7 +2670,7 @@ namespace LibUA
                 }
 
                 RecvHandler recvHandler = null;
-                lock (recvQueue)
+                lock (recvQueueLock)
                 {
                     if (!recvQueue.TryGetValue(recvKey, out recvHandler))
                     {
@@ -2746,7 +2750,7 @@ namespace LibUA
 
                 var recvKey = new Tuple<uint, uint>((uint)MessageType.Message, reqHeader.RequestHandle);
                 var recvEv = new ManualResetEvent(false);
-                lock (recvNotify)
+                lock (recvNotifyLock)
                 {
                     recvNotify[recvKey] = recvEv;
                 }
@@ -2759,7 +2763,7 @@ namespace LibUA
 
                 bool signalled = recvEv.WaitOne(Timeout * 1000);
 
-                lock (recvNotify)
+                lock (recvNotifyLock)
                 {
                     recvNotify.Remove(recvKey);
                 }
@@ -2770,7 +2774,7 @@ namespace LibUA
                 }
 
                 RecvHandler recvHandler = null;
-                lock (recvQueue)
+                lock (recvQueueLock)
                 {
                     if (!recvQueue.TryGetValue(recvKey, out recvHandler))
                     {
@@ -2859,7 +2863,7 @@ namespace LibUA
 
                 var recvKey = new Tuple<uint, uint>((uint)MessageType.Message, reqHeader.RequestHandle);
                 var recvEv = new ManualResetEvent(false);
-                lock (recvNotify)
+                lock (recvNotifyLock)
                 {
                     recvNotify[recvKey] = recvEv;
                 }
@@ -2872,7 +2876,7 @@ namespace LibUA
 
                 bool signalled = recvEv.WaitOne(Timeout * 1000);
 
-                lock (recvNotify)
+                lock (recvNotifyLock)
                 {
                     recvNotify.Remove(recvKey);
                 }
@@ -2883,7 +2887,7 @@ namespace LibUA
                 }
 
                 RecvHandler recvHandler = null;
-                lock (recvQueue)
+                lock (recvQueueLock)
                 {
                     if (!recvQueue.TryGetValue(recvKey, out recvHandler))
                     {
@@ -2977,7 +2981,7 @@ namespace LibUA
 
                 var recvKey = new Tuple<uint, uint>((uint)MessageType.Message, reqHeader.RequestHandle);
                 var recvEv = new ManualResetEvent(false);
-                lock (recvNotify)
+                lock (recvNotifyLock)
                 {
                     recvNotify[recvKey] = recvEv;
                 }
@@ -2990,7 +2994,7 @@ namespace LibUA
 
                 bool signalled = recvEv.WaitOne(Timeout * 1000);
 
-                lock (recvNotify)
+                lock (recvNotifyLock)
                 {
                     recvNotify.Remove(recvKey);
                 }
@@ -3001,7 +3005,7 @@ namespace LibUA
                 }
 
                 RecvHandler recvHandler = null;
-                lock (recvQueue)
+                lock (recvQueueLock)
                 {
                     if (!recvQueue.TryGetValue(recvKey, out recvHandler))
                     {
@@ -3178,7 +3182,7 @@ namespace LibUA
 
                 var recvKey = new Tuple<uint, uint>((uint)MessageType.Message, reqHeader.RequestHandle);
                 var recvEv = new ManualResetEvent(false);
-                lock (recvNotify)
+                lock (recvNotifyLock)
                 {
                     recvNotify[recvKey] = recvEv;
                 }
@@ -3191,7 +3195,7 @@ namespace LibUA
 
                 bool signalled = recvEv.WaitOne(Timeout * 1000);
 
-                lock (recvNotify)
+                lock (recvNotifyLock)
                 {
                     recvNotify.Remove(recvKey);
                 }
@@ -3202,7 +3206,7 @@ namespace LibUA
                 }
 
                 RecvHandler recvHandler = null;
-                lock (recvQueue)
+                lock (recvQueueLock)
                 {
                     if (!recvQueue.TryGetValue(recvKey, out recvHandler))
                     {
@@ -3349,7 +3353,7 @@ namespace LibUA
 
                 var recvKey = new Tuple<uint, uint>((uint)MessageType.Message, reqHeader.RequestHandle);
                 var recvEv = new ManualResetEvent(false);
-                lock (recvNotify)
+                lock (recvNotifyLock)
                 {
                     recvNotify[recvKey] = recvEv;
                 }
@@ -3362,7 +3366,7 @@ namespace LibUA
 
                 bool signalled = recvEv.WaitOne(Timeout * 1000);
 
-                lock (recvNotify)
+                lock (recvNotifyLock)
                 {
                     recvNotify.Remove(recvKey);
                 }
@@ -3373,7 +3377,7 @@ namespace LibUA
                 }
 
                 RecvHandler recvHandler = null;
-                lock (recvQueue)
+                lock (recvQueueLock)
                 {
                     if (!recvQueue.TryGetValue(recvKey, out recvHandler))
                     {
@@ -3453,7 +3457,7 @@ namespace LibUA
 
                 var recvKey = new Tuple<uint, uint>((uint)MessageType.Message, reqHeader.RequestHandle);
                 var recvEv = new ManualResetEvent(false);
-                lock (recvNotify)
+                lock (recvNotifyLock)
                 {
                     recvNotify[recvKey] = recvEv;
                 }
@@ -3466,7 +3470,7 @@ namespace LibUA
 
                 bool signalled = recvEv.WaitOne(Timeout * 1000);
 
-                lock (recvNotify)
+                lock (recvNotifyLock)
                 {
                     recvNotify.Remove(recvKey);
                 }
@@ -3477,7 +3481,7 @@ namespace LibUA
                 }
 
                 RecvHandler recvHandler = null;
-                lock (recvQueue)
+                lock (recvQueueLock)
                 {
                     if (!recvQueue.TryGetValue(recvKey, out recvHandler))
                     {
@@ -3563,7 +3567,7 @@ namespace LibUA
 
                 var recvKey = new Tuple<uint, uint>((uint)MessageType.Message, reqHeader.RequestHandle);
                 var recvEv = new ManualResetEvent(false);
-                lock (recvNotify)
+                lock (recvNotifyLock)
                 {
                     recvNotify[recvKey] = recvEv;
                 }
@@ -3576,7 +3580,7 @@ namespace LibUA
 
                 bool signalled = recvEv.WaitOne(Timeout * 1000);
 
-                lock (recvNotify)
+                lock (recvNotifyLock)
                 {
                     recvNotify.Remove(recvKey);
                 }
@@ -3587,7 +3591,7 @@ namespace LibUA
                 }
 
                 RecvHandler recvHandler = null;
-                lock (recvQueue)
+                lock (recvQueueLock)
                 {
                     if (!recvQueue.TryGetValue(recvKey, out recvHandler))
                     {
@@ -3714,7 +3718,7 @@ namespace LibUA
 
                 var recvKey = new Tuple<uint, uint>((uint)MessageType.Message, reqHeader.RequestHandle);
                 var recvEv = new ManualResetEvent(false);
-                lock (recvNotify)
+                lock (recvNotifyLock)
                 {
                     recvNotify[recvKey] = recvEv;
                 }
@@ -3727,7 +3731,7 @@ namespace LibUA
 
                 bool signalled = recvEv.WaitOne(Timeout * 1000);
 
-                lock (recvNotify)
+                lock (recvNotifyLock)
                 {
                     recvNotify.Remove(recvKey);
                 }
@@ -3738,7 +3742,7 @@ namespace LibUA
                 }
 
                 RecvHandler recvHandler = null;
-                lock (recvQueue)
+                lock (recvQueueLock)
                 {
                     if (!recvQueue.TryGetValue(recvKey, out recvHandler))
                     {
@@ -3770,7 +3774,7 @@ namespace LibUA
                 CheckPostCall();
             }
 
-            lock (publishReqs)
+            lock (publishReqsLock)
             {
                 if (publishReqs.Count > 0)
                 {
@@ -3822,7 +3826,7 @@ namespace LibUA
 
                 var recvKey = new Tuple<uint, uint>((uint)MessageType.Message, reqHeader.RequestHandle);
                 var recvEv = new ManualResetEvent(false);
-                lock (recvNotify)
+                lock (recvNotifyLock)
                 {
                     recvNotify[recvKey] = recvEv;
                 }
@@ -3835,7 +3839,7 @@ namespace LibUA
 
                 bool signalled = recvEv.WaitOne(Timeout * 1000);
 
-                lock (recvNotify)
+                lock (recvNotifyLock)
                 {
                     recvNotify.Remove(recvKey);
                 }
@@ -3846,7 +3850,7 @@ namespace LibUA
                 }
 
                 RecvHandler recvHandler = null;
-                lock (recvQueue)
+                lock (recvQueueLock)
                 {
                     if (!recvQueue.TryGetValue(recvKey, out recvHandler))
                     {
@@ -3918,7 +3922,7 @@ namespace LibUA
 
                 var recvKey = new Tuple<uint, uint>((uint)MessageType.Message, reqHeader.RequestHandle);
                 var recvEv = new ManualResetEvent(false);
-                lock (recvNotify)
+                lock (recvNotifyLock)
                 {
                     recvNotify[recvKey] = recvEv;
                 }
@@ -3931,7 +3935,7 @@ namespace LibUA
 
                 bool signalled = recvEv.WaitOne(Timeout * 1000);
 
-                lock (recvNotify)
+                lock (recvNotifyLock)
                 {
                     recvNotify.Remove(recvKey);
                 }
@@ -3942,7 +3946,7 @@ namespace LibUA
                 }
 
                 RecvHandler recvHandler = null;
-                lock (recvQueue)
+                lock (recvQueueLock)
                 {
                     if (!recvQueue.TryGetValue(recvKey, out recvHandler))
                     {
@@ -4017,7 +4021,7 @@ namespace LibUA
 
                 var recvKey = new Tuple<uint, uint>((uint)MessageType.Message, reqHeader.RequestHandle);
                 var recvEv = new ManualResetEvent(false);
-                lock (recvNotify)
+                lock (recvNotifyLock)
                 {
                     recvNotify[recvKey] = recvEv;
                 }
@@ -4030,7 +4034,7 @@ namespace LibUA
 
                 bool signalled = recvEv.WaitOne(Timeout * 1000);
 
-                lock (recvNotify)
+                lock (recvNotifyLock)
                 {
                     recvNotify.Remove(recvKey);
                 }
@@ -4041,7 +4045,7 @@ namespace LibUA
                 }
 
                 RecvHandler recvHandler = null;
-                lock (recvQueue)
+                lock (recvQueueLock)
                 {
                     if (!recvQueue.TryGetValue(recvKey, out recvHandler))
                     {
@@ -4118,7 +4122,7 @@ namespace LibUA
 
                 var recvKey = new Tuple<uint, uint>((uint)MessageType.Message, reqHeader.RequestHandle);
                 var recvEv = new ManualResetEvent(false);
-                lock (recvNotify)
+                lock (recvNotifyLock)
                 {
                     recvNotify[recvKey] = recvEv;
                 }
@@ -4131,7 +4135,7 @@ namespace LibUA
 
                 bool signalled = recvEv.WaitOne(Timeout * 1000);
 
-                lock (recvNotify)
+                lock (recvNotifyLock)
                 {
                     recvNotify.Remove(recvKey);
                 }
@@ -4142,7 +4146,7 @@ namespace LibUA
                 }
 
                 RecvHandler recvHandler = null;
-                lock (recvQueue)
+                lock (recvQueueLock)
                 {
                     if (!recvQueue.TryGetValue(recvKey, out recvHandler))
                     {
@@ -4219,7 +4223,7 @@ namespace LibUA
 
                 var recvKey = new Tuple<uint, uint>((uint)MessageType.Message, reqHeader.RequestHandle);
                 var recvEv = new ManualResetEvent(false);
-                lock (recvNotify)
+                lock (recvNotifyLock)
                 {
                     recvNotify[recvKey] = recvEv;
                 }
@@ -4232,7 +4236,7 @@ namespace LibUA
 
                 bool signalled = recvEv.WaitOne(Timeout * 1000);
 
-                lock (recvNotify)
+                lock (recvNotifyLock)
                 {
                     recvNotify.Remove(recvKey);
                 }
@@ -4243,7 +4247,7 @@ namespace LibUA
                 }
 
                 RecvHandler recvHandler = null;
-                lock (recvQueue)
+                lock (recvQueueLock)
                 {
                     if (!recvQueue.TryGetValue(recvKey, out recvHandler))
                     {
@@ -4318,7 +4322,7 @@ namespace LibUA
 
                 var recvKey = new Tuple<uint, uint>((uint)MessageType.Message, reqHeader.RequestHandle);
                 var recvEv = new ManualResetEvent(false);
-                lock (recvNotify)
+                lock (recvNotifyLock)
                 {
                     recvNotify[recvKey] = recvEv;
                 }
@@ -4331,7 +4335,7 @@ namespace LibUA
 
                 bool signalled = recvEv.WaitOne(Timeout * 1000);
 
-                lock (recvNotify)
+                lock (recvNotifyLock)
                 {
                     recvNotify.Remove(recvKey);
                 }
@@ -4342,7 +4346,7 @@ namespace LibUA
                 }
 
                 RecvHandler recvHandler = null;
-                lock (recvQueue)
+                lock (recvQueueLock)
                 {
                     if (!recvQueue.TryGetValue(recvKey, out recvHandler))
                     {
@@ -4518,7 +4522,7 @@ namespace LibUA
                     return StatusCode.BadEncodingLimitsExceeded;
                 }
 
-                lock (publishReqs)
+                lock (publishReqsLock)
                 {
                     publishReqs.Add(reqHeader.RequestHandle);
                 }
