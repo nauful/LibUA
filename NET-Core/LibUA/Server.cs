@@ -23,7 +23,7 @@ namespace LibUA
             private ManualResetEvent listenerAbort = null;
             private Semaphore listenerAvailable = null;
             private readonly List<NetDispatcherBase> dispatchers = null;
-            private readonly object dispatchersLock = new object();
+            private readonly Lock dispatchersLock = new();
 
             public Master(Application App, int Port, int Timeout, int Backlog, int MaxClients, ILogger logger, int MaximumMessageSize = 1 << 20)
             {
@@ -127,14 +127,14 @@ namespace LibUA
                     {
                         handler.NoDelay = true;
 
-                        Monitor.Enter(dispatchersLock);
+                        dispatchersLock.Enter();
                         try
                         {
                             dispatchers.Add(new NetDispatcher(this, App, handler, logger));
                         }
                         finally
                         {
-                            Monitor.Exit(dispatchersLock);
+                            dispatchersLock.Exit();
                         }
                     }
                     else
@@ -155,7 +155,7 @@ namespace LibUA
 
             internal void RemoveDispatcher(NetDispatcherBase netDispatcher)
             {
-                Monitor.Enter(dispatchersLock);
+                dispatchersLock.Enter();
                 try
                 {
                     if (dispatchers.Contains(netDispatcher))
@@ -166,7 +166,7 @@ namespace LibUA
                 }
                 finally
                 {
-                    Monitor.Exit(dispatchersLock);
+                    dispatchersLock.Exit();
                 }
             }
         }
@@ -242,7 +242,7 @@ namespace LibUA
             protected int maximumMessageSize;
 
             // Ensure publishes are in sequence and not in parallel
-            private readonly object csDispatching = new object();
+            private readonly Lock csDispatching = new();
 
             protected Thread thread = null;
             protected bool threadAbort = false;
@@ -364,7 +364,7 @@ namespace LibUA
 
                     while (NeedsPulse())
                     {
-                        Monitor.Enter(csDispatching);
+                        csDispatching.Enter();
 
                         try
                         {
@@ -381,7 +381,7 @@ namespace LibUA
                         }
                         finally
                         {
-                            Monitor.Exit(csDispatching);
+                            csDispatching.Exit();
                         }
                     }
 
@@ -439,7 +439,7 @@ namespace LibUA
 
                     while (recvAccumSize > 0 && UAStatusCode == (uint)StatusCode.Good)
                     {
-                        Monitor.Enter(csDispatching);
+                        csDispatching.Enter();
                         int consumedSize = -1;
 
                         try
@@ -457,7 +457,7 @@ namespace LibUA
                         }
                         finally
                         {
-                            Monitor.Exit(csDispatching);
+                            csDispatching.Exit();
                         }
 
                         if (consumedSize < 0)
