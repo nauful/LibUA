@@ -383,7 +383,7 @@ namespace LibUA
                         {
                             csDispatching.Exit();
                         }
-                        
+
                         if (threadAbort)
                         {
                             break;
@@ -572,6 +572,15 @@ namespace LibUA
                 if (thread != null)
                 {
                     threadAbort = true;
+
+                    try
+                    {
+                        socket?.Shutdown(SocketShutdown.Both);
+                    }
+                    catch
+                    {
+                    }
+                    socket?.Close();
 
                     thread.Join();
                     thread = null;
