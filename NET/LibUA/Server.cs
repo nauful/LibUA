@@ -383,6 +383,11 @@ namespace LibUA
                         {
                             Monitor.Exit(csDispatching);
                         }
+
+                        if (threadAbort)
+                        {
+                            break;
+                        }
                     }
 
                     try
