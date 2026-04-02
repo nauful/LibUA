@@ -1105,6 +1105,7 @@ namespace LibUA
                 }
 
                 threadAbort = true;
+                CloseConnection();
 
                 thread.Join();
                 thread = null;
