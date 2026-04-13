@@ -900,7 +900,9 @@ namespace LibUA
                         return ErrorInternal;
                     }
 
+  #pragma warning disable SYSLIB0057 // X509CertificateLoader unavailable on net462 target
                     var certificate = new X509Certificate2(certificateData);
+#pragma warning restore SYSLIB0057
                     if (!UASecurity.VerifySigned(new ArraySegment<byte>(challenge),
                             userTokenSignature, certificate, config.SecurityPolicy, userTokenAlgorithm))
                     {
@@ -1511,10 +1513,12 @@ namespace LibUA
                 // Check in the middle for buffer decrypt
                 if (config.SecurityPolicy != SecurityPolicy.None)
                 {
-                    try
+                     try
                     {
 
+#pragma warning disable SYSLIB0057 // X509CertificateLoader unavailable on net462 target
                         config.RemoteCertificate = new X509Certificate2(senderCertificate);
+#pragma warning restore SYSLIB0057
                         if (!UASecurity.VerifyCertificate(config.RemoteCertificate))
                         {
                             UAStatusCode = (uint)StatusCode.BadCertificateInvalid;
@@ -1797,6 +1801,7 @@ namespace LibUA
                 config.LocalSequence.SequenceNumber++;
 
                 socket.Send(respBuf.Buffer, respBuf.Position, SocketFlags.None);
+                recvBuf.Dispose();
                 return (int)messageSize;
             }
 

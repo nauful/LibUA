@@ -46,6 +46,12 @@ namespace LibUA
             public MemoryBuffer RecvBuf { get; set; }
             public NodeId Type { get; set; }
             public ResponseHeader Header { get; set; }
+
+            public void DisposeRecvBuf()
+            {
+                RecvBuf?.Dispose();
+                RecvBuf = null;
+            }
         }
 
         private Dictionary<Tuple<uint, uint>, RecvHandler> recvQueue = null;
@@ -122,7 +128,9 @@ namespace LibUA
 
             try
             {
+#pragma warning disable SYSLIB0057 // X509CertificateLoader unavailable on net462 target
                 config.RemoteCertificate = new X509Certificate2(serverCert);
+#pragma warning restore SYSLIB0057
             }
             catch
             {
@@ -155,6 +163,7 @@ namespace LibUA
         {
             SecurityTokenRequestType requestType = renew ?
                 SecurityTokenRequestType.Renew : SecurityTokenRequestType.Issue;
+            RecvHandler recvHandler = null;
 
             try
             {
@@ -317,7 +326,6 @@ namespace LibUA
                     return StatusCode.BadRequestTimeout;
                 }
 
-                RecvHandler recvHandler = null;
                 lock (recvQueueLock)
                 {
                     var key = new Tuple<uint, uint>((uint)MessageType.Open, 0);
@@ -353,7 +361,9 @@ namespace LibUA
                     try
                     {
 
+#pragma warning disable SYSLIB0057 // X509CertificateLoader unavailable on net462 target
                         config.RemoteCertificate = new X509Certificate2(senderCertificate);
+#pragma warning restore SYSLIB0057
                         if (!UASecurity.VerifyCertificate(config.RemoteCertificate))
                         {
                             return StatusCode.BadCertificateInvalid;
@@ -479,6 +489,7 @@ namespace LibUA
             }
             finally
             {
+                recvHandler?.DisposeRecvBuf();
                 cs.Release();
 
                 if (!renew)
@@ -567,6 +578,7 @@ namespace LibUA
         public StatusCode GetEndpoints(out EndpointDescription[] endpointDescs, string[] localeIDs)
         {
             endpointDescs = null;
+            RecvHandler recvHandler = null;
 
             try
             {
@@ -625,7 +637,6 @@ namespace LibUA
                     return StatusCode.BadRequestTimeout;
                 }
 
-                RecvHandler recvHandler = null;
                 lock (recvQueueLock)
                 {
                     if (!recvQueue.TryGetValue(recvKey, out recvHandler))
@@ -658,6 +669,7 @@ namespace LibUA
             }
             finally
             {
+                recvHandler?.DisposeRecvBuf();
                 cs.Release();
                 CheckPostCall();
             }
@@ -666,6 +678,7 @@ namespace LibUA
         public StatusCode FindServers(out ApplicationDescription[] results, string[] localeIDs)
         {
             results = null;
+            RecvHandler recvHandler = null;
 
             try
             {
@@ -724,7 +737,6 @@ namespace LibUA
                     return StatusCode.BadRequestTimeout;
                 }
 
-                RecvHandler recvHandler = null;
                 lock (recvQueueLock)
                 {
                     if (!recvQueue.TryGetValue(recvKey, out recvHandler))
@@ -757,6 +769,7 @@ namespace LibUA
             }
             finally
             {
+                recvHandler?.DisposeRecvBuf();
                 cs.Release();
                 CheckPostCall();
             }
@@ -939,7 +952,7 @@ namespace LibUA
             }
         }
 
-        private StatusCode SendHello()
+      private StatusCode SendHello()
         {
             using var sendBuf = new MemoryBuffer(MaximumMessageSize);
 
@@ -999,7 +1012,7 @@ namespace LibUA
                 return StatusCode.BadRequestTimeout;
             }
 
-            RecvHandler recvHandler;
+            RecvHandler recvHandler = null;
             lock (recvQueueLock)
             {
                 var key = new Tuple<uint, uint>((uint)MessageType.Acknowledge, 0);
@@ -1011,30 +1024,37 @@ namespace LibUA
                 recvQueue.Remove(key);
             }
 
-            config.TL.TransportConfig = new TLConfiguration();
-            if (!recvHandler.RecvBuf.Decode(out config.TL.TransportConfig.ProtocolVersion)) { return StatusCode.BadDecodingError; }
-            if (!recvHandler.RecvBuf.Decode(out config.TL.TransportConfig.RecvBufferSize)) { return StatusCode.BadDecodingError; }
-            if (!recvHandler.RecvBuf.Decode(out config.TL.TransportConfig.SendBufferSize)) { return StatusCode.BadDecodingError; }
-            if (!recvHandler.RecvBuf.Decode(out config.TL.TransportConfig.MaxMessageSize)) { return StatusCode.BadDecodingError; }
-            if (!recvHandler.RecvBuf.Decode(out config.TL.TransportConfig.MaxChunkCount)) { return StatusCode.BadDecodingError; }
+            try
+            {
+                config.TL.TransportConfig = new TLConfiguration();
+                if (!recvHandler.RecvBuf.Decode(out config.TL.TransportConfig.ProtocolVersion)) { return StatusCode.BadDecodingError; }
+                if (!recvHandler.RecvBuf.Decode(out config.TL.TransportConfig.RecvBufferSize)) { return StatusCode.BadDecodingError; }
+                if (!recvHandler.RecvBuf.Decode(out config.TL.TransportConfig.SendBufferSize)) { return StatusCode.BadDecodingError; }
+                if (!recvHandler.RecvBuf.Decode(out config.TL.TransportConfig.MaxMessageSize)) { return StatusCode.BadDecodingError; }
+                if (!recvHandler.RecvBuf.Decode(out config.TL.TransportConfig.MaxChunkCount)) { return StatusCode.BadDecodingError; }
 
-            MaximumMessageSize = (int)Math.Min(config.TL.TransportConfig.MaxMessageSize, MaximumMessageSize);
+                MaximumMessageSize = (int)Math.Min(config.TL.TransportConfig.MaxMessageSize, MaximumMessageSize);
 
-            //if (!signalled)
-            //{
-            //	RemovePendingRequest(RequestId);
+                //if (!signalled)
+                //{
+                //	RemovePendingRequest(RequestId);
 
-            //	// Clear if received between Wait and Remove
-            //	if (semRecvMsg.WaitOne(0))
-            //	{
-            //		// Clean up message
-            //		RemovePendingRequest(RequestId);
-            //	}
+                //	// Clear if received between Wait and Remove
+                //	if (semRecvMsg.WaitOne(0))
+                //	{
+                //		// Clean up message
+                //		RemovePendingRequest(RequestId);
+                //	}
 
-            //	return DXPStatusCode.BadNoResponse;
-            //}
+                //	return DXPStatusCode.BadNoResponse;
+                //}
 
-            return StatusCode.Good;
+                return StatusCode.Good;
+            }
+            finally
+            {
+                recvHandler?.DisposeRecvBuf();
+            }
         }
 
         private string GetEndpointString()
@@ -1297,6 +1317,7 @@ namespace LibUA
                     {
                         ev.Set();
                     }
+                    kvp.Value.RecvBuf?.Dispose();
                 }
             }
         }
@@ -1445,6 +1466,8 @@ namespace LibUA
 
         private int Consume(SLChannel config, MemoryBuffer recvBuf)
         {
+            ManualResetEvent ev = null;
+
             // No message type and size
             if (recvBuf.Capacity < 8)
             {
@@ -1548,7 +1571,7 @@ namespace LibUA
                         Type = NodeId.Zero
                     };
 
-                    if (recvNotify.TryGetValue(key, out ManualResetEvent ev))
+                    if (recvNotify.TryGetValue(key, out ev))
                     {
                         ev.Set();
                     }
@@ -1561,11 +1584,10 @@ namespace LibUA
                     (uint)(recvBuf.Buffer[6] << 16) | (uint)(recvBuf.Buffer[7] << 24);
 
                 if (messageSize > recvBuf.Capacity)
-                {
-                    return 0;
+               {
+                    unchecked { return (int)(uint)StatusCode.BadRequestTimeout; }
                 }
 
-                ManualResetEvent ev = null;
                 lock (recvQueueLock)
                 {
                     var key = new Tuple<uint, uint>(messageType, 0);
@@ -1656,7 +1678,7 @@ namespace LibUA
                             Type = typeId
                         };
 
-                        if (recvNotify.TryGetValue(recvKey, out ManualResetEvent ev))
+                        if (recvNotify.TryGetValue(recvKey, out ev))
                         {
                             ev.Set();
                         }
@@ -1669,6 +1691,7 @@ namespace LibUA
 
         public StatusCode ActivateSession(object identityToken, string[] localeIDs)
         {
+            RecvHandler recvHandler = null;
             try
             {
                 cs.WaitOne();
@@ -1884,7 +1907,6 @@ namespace LibUA
                     return StatusCode.BadRequestTimeout;
                 }
 
-                RecvHandler recvHandler = null;
                 lock (recvQueueLock)
                 {
                     if (!recvQueue.TryGetValue(recvKey, out recvHandler))
@@ -1926,6 +1948,7 @@ namespace LibUA
             }
             finally
             {
+                recvHandler?.DisposeRecvBuf();
                 cs.Release();
                 CheckPostCall();
             }
@@ -1944,6 +1967,7 @@ namespace LibUA
 
         public StatusCode CreateSession(ApplicationDescription appDesc, string sessionName, int requestedSessionTimeout)
         {
+            RecvHandler recvHandler = null;
             try
             {
                 cs.WaitOne();
@@ -2012,7 +2036,6 @@ namespace LibUA
                     return StatusCode.BadRequestTimeout;
                 }
 
-                RecvHandler recvHandler = null;
                 lock (recvQueueLock)
                 {
                     if (!recvQueue.TryGetValue(recvKey, out recvHandler))
@@ -2050,7 +2073,9 @@ namespace LibUA
                 config.RemoteNonce = serverNonce;
                 try
                 {
+#pragma warning disable SYSLIB0057 // X509CertificateLoader unavailable on net462 target
                     config.RemoteCertificate = new X509Certificate2(serverCert);
+#pragma warning restore SYSLIB0057
                 }
                 catch
                 {
@@ -2066,6 +2091,7 @@ namespace LibUA
             }
             finally
             {
+                recvHandler?.DisposeRecvBuf();
                 cs.Release();
                 CheckPostCall();
             }
@@ -2073,6 +2099,7 @@ namespace LibUA
 
         public StatusCode CloseSession()
         {
+            RecvHandler recvHandler = null;
             try
             {
                 cs.WaitOne();
@@ -2126,7 +2153,6 @@ namespace LibUA
                     return StatusCode.BadRequestTimeout;
                 }
 
-                RecvHandler recvHandler = null;
                 lock (recvQueueLock)
                 {
                     if (!recvQueue.TryGetValue(recvKey, out recvHandler))
@@ -2151,6 +2177,7 @@ namespace LibUA
             }
             finally
             {
+                recvHandler?.DisposeRecvBuf();
                 cs.Release();
                 CheckPostCall();
             }
@@ -2168,6 +2195,7 @@ namespace LibUA
                 throw new Exception("Number of results must match number of Ids.");
             }
 
+            RecvHandler recvHandler = null;
             try
             {
                 cs.WaitOne();
@@ -2229,7 +2257,6 @@ namespace LibUA
                     return StatusCode.BadRequestTimeout;
                 }
 
-                RecvHandler recvHandler = null;
                 lock (recvQueueLock)
                 {
                     if (!recvQueue.TryGetValue(recvKey, out recvHandler))
@@ -2271,6 +2298,7 @@ namespace LibUA
             }
             finally
             {
+                recvHandler?.DisposeRecvBuf();
                 cs.Release();
                 CheckPostCall();
             }
@@ -2294,6 +2322,7 @@ namespace LibUA
                 throw new Exception("Number of results must match number of Ids.");
             }
 
+            RecvHandler recvHandler = null;
             try
             {
                 cs.WaitOne();
@@ -2351,7 +2380,6 @@ namespace LibUA
                     return StatusCode.BadRequestTimeout;
                 }
 
-                RecvHandler recvHandler = null;
                 lock (recvQueueLock)
                 {
                     if (!recvQueue.TryGetValue(recvKey, out recvHandler))
@@ -2390,6 +2418,7 @@ namespace LibUA
             }
             finally
             {
+                recvHandler?.DisposeRecvBuf();
                 cs.Release();
                 CheckPostCall();
             }
@@ -2405,6 +2434,7 @@ namespace LibUA
         {
             results = null;
 
+            RecvHandler recvHandler = null;
             try
             {
                 cs.WaitOne();
@@ -2462,7 +2492,6 @@ namespace LibUA
                     return StatusCode.BadRequestTimeout;
                 }
 
-                RecvHandler recvHandler = null;
                 lock (recvQueueLock)
                 {
                     if (!recvQueue.TryGetValue(recvKey, out recvHandler))
@@ -2500,6 +2529,7 @@ namespace LibUA
             }
             finally
             {
+                recvHandler?.DisposeRecvBuf();
                 cs.Release();
                 CheckPostCall();
             }
@@ -2509,6 +2539,7 @@ namespace LibUA
         {
             results = null;
 
+            RecvHandler recvHandler = null;
             try
             {
                 cs.WaitOne();
@@ -2566,7 +2597,6 @@ namespace LibUA
                     return StatusCode.BadRequestTimeout;
                 }
 
-                RecvHandler recvHandler = null;
                 lock (recvQueueLock)
                 {
                     if (!recvQueue.TryGetValue(recvKey, out recvHandler))
@@ -2604,6 +2634,7 @@ namespace LibUA
             }
             finally
             {
+                recvHandler?.DisposeRecvBuf();
                 cs.Release();
                 CheckPostCall();
             }
@@ -2613,6 +2644,7 @@ namespace LibUA
         {
             results = null;
 
+            RecvHandler recvHandler = null;
             try
             {
                 cs.WaitOne();
@@ -2670,7 +2702,6 @@ namespace LibUA
                     return StatusCode.BadRequestTimeout;
                 }
 
-                RecvHandler recvHandler = null;
                 lock (recvQueueLock)
                 {
                     if (!recvQueue.TryGetValue(recvKey, out recvHandler))
@@ -2708,6 +2739,7 @@ namespace LibUA
             }
             finally
             {
+                recvHandler?.DisposeRecvBuf();
                 cs.Release();
                 CheckPostCall();
             }
@@ -2717,6 +2749,7 @@ namespace LibUA
         {
             results = null;
 
+            RecvHandler recvHandler = null;
             try
             {
                 cs.WaitOne();
@@ -2774,7 +2807,6 @@ namespace LibUA
                     return StatusCode.BadRequestTimeout;
                 }
 
-                RecvHandler recvHandler = null;
                 lock (recvQueueLock)
                 {
                     if (!recvQueue.TryGetValue(recvKey, out recvHandler))
@@ -2812,6 +2844,7 @@ namespace LibUA
             }
             finally
             {
+                recvHandler?.DisposeRecvBuf();
                 cs.Release();
                 CheckPostCall();
             }
@@ -2821,6 +2854,7 @@ namespace LibUA
         {
             results = null;
 
+            RecvHandler recvHandler = null;
             try
             {
                 cs.WaitOne();
@@ -2887,7 +2921,6 @@ namespace LibUA
                     return StatusCode.BadRequestTimeout;
                 }
 
-                RecvHandler recvHandler = null;
                 lock (recvQueueLock)
                 {
                     if (!recvQueue.TryGetValue(recvKey, out recvHandler))
@@ -2938,6 +2971,7 @@ namespace LibUA
             }
             finally
             {
+                recvHandler?.DisposeRecvBuf();
                 cs.Release();
                 CheckPostCall();
             }
@@ -2947,6 +2981,7 @@ namespace LibUA
         {
             results = null;
 
+            RecvHandler recvHandler = null;
             try
             {
                 cs.WaitOne();
@@ -3005,7 +3040,6 @@ namespace LibUA
                     return StatusCode.BadRequestTimeout;
                 }
 
-                RecvHandler recvHandler = null;
                 lock (recvQueueLock)
                 {
                     if (!recvQueue.TryGetValue(recvKey, out recvHandler))
@@ -3063,6 +3097,7 @@ namespace LibUA
             }
             finally
             {
+                recvHandler?.DisposeRecvBuf();
                 cs.Release();
                 CheckPostCall();
             }
@@ -3072,6 +3107,7 @@ namespace LibUA
         {
             results = null;
 
+            RecvHandler recvHandler = null;
             try
             {
                 cs.WaitOne();
@@ -3206,7 +3242,6 @@ namespace LibUA
                     return StatusCode.BadRequestTimeout;
                 }
 
-                RecvHandler recvHandler = null;
                 lock (recvQueueLock)
                 {
                     if (!recvQueue.TryGetValue(recvKey, out recvHandler))
@@ -3297,6 +3332,7 @@ namespace LibUA
             }
             finally
             {
+                recvHandler?.DisposeRecvBuf();
                 cs.Release();
                 CheckPostCall();
             }
@@ -3306,6 +3342,7 @@ namespace LibUA
         {
             results = null;
 
+            RecvHandler recvHandler = null;
             try
             {
                 cs.WaitOne();
@@ -3377,7 +3414,6 @@ namespace LibUA
                     return StatusCode.BadRequestTimeout;
                 }
 
-                RecvHandler recvHandler = null;
                 lock (recvQueueLock)
                 {
                     if (!recvQueue.TryGetValue(recvKey, out recvHandler))
@@ -3415,6 +3451,7 @@ namespace LibUA
             }
             finally
             {
+                recvHandler?.DisposeRecvBuf();
                 cs.Release();
                 CheckPostCall();
             }
@@ -3424,6 +3461,7 @@ namespace LibUA
         {
             results = null;
 
+            RecvHandler recvHandler = null;
             try
             {
                 cs.WaitOne();
@@ -3481,7 +3519,6 @@ namespace LibUA
                     return StatusCode.BadRequestTimeout;
                 }
 
-                RecvHandler recvHandler = null;
                 lock (recvQueueLock)
                 {
                     if (!recvQueue.TryGetValue(recvKey, out recvHandler))
@@ -3519,6 +3556,7 @@ namespace LibUA
             }
             finally
             {
+                recvHandler?.DisposeRecvBuf();
                 cs.Release();
                 CheckPostCall();
             }
@@ -3528,6 +3566,7 @@ namespace LibUA
         {
             results = null;
 
+            RecvHandler recvHandler = null;
             try
             {
                 cs.WaitOne();
@@ -3591,7 +3630,6 @@ namespace LibUA
                     return StatusCode.BadRequestTimeout;
                 }
 
-                RecvHandler recvHandler = null;
                 lock (recvQueueLock)
                 {
                     if (!recvQueue.TryGetValue(recvKey, out recvHandler))
@@ -3675,6 +3713,7 @@ namespace LibUA
             }
             finally
             {
+                recvHandler?.DisposeRecvBuf();
                 cs.Release();
                 CheckPostCall();
             }
@@ -3684,6 +3723,7 @@ namespace LibUA
         {
             result = 0xFFFFFFFFu;
 
+            RecvHandler recvHandler = null;
             try
             {
                 cs.WaitOne();
@@ -3742,7 +3782,6 @@ namespace LibUA
                     return StatusCode.BadRequestTimeout;
                 }
 
-                RecvHandler recvHandler = null;
                 lock (recvQueueLock)
                 {
                     if (!recvQueue.TryGetValue(recvKey, out recvHandler))
@@ -3771,6 +3810,7 @@ namespace LibUA
             }
             finally
             {
+                recvHandler?.DisposeRecvBuf();
                 cs.Release();
                 CheckPostCall();
             }
@@ -3790,6 +3830,7 @@ namespace LibUA
         {
             result = 0;
 
+            RecvHandler recvHandler = null;
             try
             {
                 cs.WaitOne();
@@ -3850,7 +3891,6 @@ namespace LibUA
                     return StatusCode.BadRequestTimeout;
                 }
 
-                RecvHandler recvHandler = null;
                 lock (recvQueueLock)
                 {
                     if (!recvQueue.TryGetValue(recvKey, out recvHandler))
@@ -3880,6 +3920,7 @@ namespace LibUA
             }
             finally
             {
+                recvHandler?.DisposeRecvBuf();
                 cs.Release();
                 CheckPostCall();
             }
@@ -3889,6 +3930,7 @@ namespace LibUA
         {
             results = null;
 
+            RecvHandler recvHandler = null;
             try
             {
                 cs.WaitOne();
@@ -3946,7 +3988,6 @@ namespace LibUA
                     return StatusCode.BadRequestTimeout;
                 }
 
-                RecvHandler recvHandler = null;
                 lock (recvQueueLock)
                 {
                     if (!recvQueue.TryGetValue(recvKey, out recvHandler))
@@ -3978,6 +4019,7 @@ namespace LibUA
             }
             finally
             {
+                recvHandler?.DisposeRecvBuf();
                 cs.Release();
                 CheckPostCall();
             }
@@ -3987,6 +4029,7 @@ namespace LibUA
         {
             results = null;
 
+            RecvHandler recvHandler = null;
             try
             {
                 cs.WaitOne();
@@ -4045,7 +4088,6 @@ namespace LibUA
                     return StatusCode.BadRequestTimeout;
                 }
 
-                RecvHandler recvHandler = null;
                 lock (recvQueueLock)
                 {
                     if (!recvQueue.TryGetValue(recvKey, out recvHandler))
@@ -4077,6 +4119,7 @@ namespace LibUA
             }
             finally
             {
+                recvHandler?.DisposeRecvBuf();
                 cs.Release();
                 CheckPostCall();
             }
@@ -4086,6 +4129,7 @@ namespace LibUA
         {
             results = null;
 
+            RecvHandler recvHandler = null;
             try
             {
                 cs.WaitOne();
@@ -4146,7 +4190,6 @@ namespace LibUA
                     return StatusCode.BadRequestTimeout;
                 }
 
-                RecvHandler recvHandler = null;
                 lock (recvQueueLock)
                 {
                     if (!recvQueue.TryGetValue(recvKey, out recvHandler))
@@ -4178,6 +4221,7 @@ namespace LibUA
             }
             finally
             {
+                recvHandler?.DisposeRecvBuf();
                 cs.Release();
                 CheckPostCall();
             }
@@ -4187,6 +4231,7 @@ namespace LibUA
         {
             results = null;
 
+            RecvHandler recvHandler = null;
             try
             {
                 cs.WaitOne();
@@ -4247,7 +4292,6 @@ namespace LibUA
                     return StatusCode.BadRequestTimeout;
                 }
 
-                RecvHandler recvHandler = null;
                 lock (recvQueueLock)
                 {
                     if (!recvQueue.TryGetValue(recvKey, out recvHandler))
@@ -4279,6 +4323,7 @@ namespace LibUA
             }
             finally
             {
+                recvHandler?.DisposeRecvBuf();
                 cs.Release();
                 CheckPostCall();
             }
@@ -4288,6 +4333,7 @@ namespace LibUA
         {
             results = null;
 
+            RecvHandler recvHandler = null;
             try
             {
                 cs.WaitOne();
@@ -4346,7 +4392,6 @@ namespace LibUA
                     return StatusCode.BadRequestTimeout;
                 }
 
-                RecvHandler recvHandler = null;
                 lock (recvQueueLock)
                 {
                     if (!recvQueue.TryGetValue(recvKey, out recvHandler))
@@ -4378,6 +4423,7 @@ namespace LibUA
             }
             finally
             {
+                recvHandler?.DisposeRecvBuf();
                 cs.Release();
                 CheckPostCall();
             }
@@ -4385,99 +4431,106 @@ namespace LibUA
 
         private void ConsumeNotification(RecvHandler recvHandler)
         {
-            bool succeeded = true;
-            succeeded &= recvHandler.RecvBuf.Decode(out uint subscrId);
-            // AvailableSequenceNumbers
-            succeeded &= recvHandler.RecvBuf.DecodeArraySize(out uint numSeqNums);
-            for (int i = 0; i < numSeqNums; i++) { succeeded &= recvHandler.RecvBuf.Decode(out uint _); }
-
-            succeeded &= recvHandler.RecvBuf.Decode(out bool _);
-            succeeded &= recvHandler.RecvBuf.Decode(out uint _);
-
-            succeeded &= recvHandler.RecvBuf.Decode(out ulong publishTimeTick);
-            DateTimeOffset publishTime;
             try
             {
-                publishTime = DateTimeOffset.FromFileTime((long)publishTimeTick);
-            }
-            catch
-            {
-            }
+                bool succeeded = true;
+                succeeded &= recvHandler.RecvBuf.Decode(out uint subscrId);
+                // AvailableSequenceNumbers
+                succeeded &= recvHandler.RecvBuf.DecodeArraySize(out uint numSeqNums);
+                for (int i = 0; i < numSeqNums; i++) { succeeded &= recvHandler.RecvBuf.Decode(out uint _); }
 
-            succeeded &= recvHandler.RecvBuf.DecodeArraySize(out uint numNotificationData);
-            for (int i = 0; succeeded && i < numNotificationData; i++)
-            {
-
-                succeeded &= recvHandler.RecvBuf.Decode(out NodeId typeId);
-                succeeded &= recvHandler.RecvBuf.Decode(out byte bodyType);
+                succeeded &= recvHandler.RecvBuf.Decode(out bool _);
                 succeeded &= recvHandler.RecvBuf.Decode(out uint _);
 
-                if (bodyType != 1)
+                succeeded &= recvHandler.RecvBuf.Decode(out ulong publishTimeTick);
+                DateTimeOffset publishTime;
+                try
                 {
-                    break;
+                    publishTime = DateTimeOffset.FromFileTime((long)publishTimeTick);
+                }
+                catch
+                {
                 }
 
-                if (typeId.EqualsNumeric(0, (uint)UAConst.DataChangeNotification_Encoding_DefaultBinary))
+                succeeded &= recvHandler.RecvBuf.DecodeArraySize(out uint numNotificationData);
+                for (int i = 0; succeeded && i < numNotificationData; i++)
                 {
-                    succeeded &= recvHandler.RecvBuf.DecodeArraySize(out uint numDv);
 
-                    if (numDv > 0)
+                    succeeded &= recvHandler.RecvBuf.Decode(out NodeId typeId);
+                    succeeded &= recvHandler.RecvBuf.Decode(out byte bodyType);
+                    succeeded &= recvHandler.RecvBuf.Decode(out uint _);
+
+                    if (bodyType != 1)
                     {
-                        DataValue[] notifications = new DataValue[numDv];
-                        uint[] clientHandles = new uint[numDv];
-                        for (int j = 0; succeeded && j < numDv; j++)
-                        {
-                            succeeded &= recvHandler.RecvBuf.Decode(out clientHandles[j]);
-                            succeeded &= recvHandler.RecvBuf.Decode(out notifications[j]);
-                        }
-
-                        if (!succeeded)
-                        {
-                            break;
-                        }
-
-                        NotifyDataChangeNotifications(subscrId, clientHandles, notifications);
+                        break;
                     }
-                }
-                else if (typeId.EqualsNumeric(0, (uint)UAConst.EventNotificationList_Encoding_DefaultBinary))
-                {
-                    succeeded &= recvHandler.RecvBuf.DecodeArraySize(out uint numDv);
 
-                    if (numDv > 0)
+                    if (typeId.EqualsNumeric(0, (uint)UAConst.DataChangeNotification_Encoding_DefaultBinary))
                     {
-                        object[][] notifications = new object[numDv][];
-                        uint[] clientHandles = new uint[numDv];
-                        for (int j = 0; succeeded && j < numDv; j++)
-                        {
-                            succeeded &= recvHandler.RecvBuf.Decode(out clientHandles[j]);
+                        succeeded &= recvHandler.RecvBuf.DecodeArraySize(out uint numDv);
 
-                            succeeded &= recvHandler.RecvBuf.DecodeArraySize(out uint numFields);
-                            notifications[j] = new object[numFields];
-                            for (int k = 0; succeeded && k < numFields; k++)
+                        if (numDv > 0)
+                        {
+                            DataValue[] notifications = new DataValue[numDv];
+                            uint[] clientHandles = new uint[numDv];
+                            for (int j = 0; succeeded && j < numDv; j++)
                             {
-                                succeeded &= recvHandler.RecvBuf.VariantDecode(out notifications[j][k]);
+                                succeeded &= recvHandler.RecvBuf.Decode(out clientHandles[j]);
+                                succeeded &= recvHandler.RecvBuf.Decode(out notifications[j]);
                             }
-                        }
 
-                        if (!succeeded)
+                            if (!succeeded)
+                            {
+                                break;
+                            }
+
+                            NotifyDataChangeNotifications(subscrId, clientHandles, notifications);
+                        }
+                    }
+                    else if (typeId.EqualsNumeric(0, (uint)UAConst.EventNotificationList_Encoding_DefaultBinary))
+                    {
+                        succeeded &= recvHandler.RecvBuf.DecodeArraySize(out uint numDv);
+
+                        if (numDv > 0)
                         {
-                            break;
-                        }
+                            object[][] notifications = new object[numDv][];
+                            uint[] clientHandles = new uint[numDv];
+                            for (int j = 0; succeeded && j < numDv; j++)
+                            {
+                                succeeded &= recvHandler.RecvBuf.Decode(out clientHandles[j]);
 
-                        NotifyEventNotifications(subscrId, clientHandles, notifications);
+                                succeeded &= recvHandler.RecvBuf.DecodeArraySize(out uint numFields);
+                                notifications[j] = new object[numFields];
+                                for (int k = 0; succeeded && k < numFields; k++)
+                                {
+                                    succeeded &= recvHandler.RecvBuf.VariantDecode(out notifications[j][k]);
+                                }
+                            }
+
+                            if (!succeeded)
+                            {
+                                break;
+                            }
+
+                            NotifyEventNotifications(subscrId, clientHandles, notifications);
+                        }
+                    }
+                    else
+                    {
+                        break;
                     }
                 }
-                else
-                {
-                    break;
-                }
-            }
 
-            //results = new uint[numResults];
-            //for (int i = 0; i < numResults; i++)
-            //{
-            //	succeeded &= recvHandler.RecvBuf.Decode(out results[i]);
-            //}
+                //results = new uint[numResults];
+                //for (int i = 0; i < numResults; i++)
+                //{
+                //	succeeded &= recvHandler.RecvBuf.Decode(out results[i]);
+                //}
+            }
+            finally
+            {
+                recvHandler?.DisposeRecvBuf();
+            }
         }
 
         public virtual void NotifyEventNotifications(uint subscrId, uint[] clientHandles, object[][] notifications)
