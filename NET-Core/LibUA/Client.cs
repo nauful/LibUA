@@ -31,7 +31,7 @@ namespace LibUA
         private int MaximumMessageSize;
         private Semaphore cs = null;
         private Semaphore csDispatching = null;
-        private Semaphore csWaitForSecure = null;
+        private ManualResetEvent csWaitForSecure = null;
         private uint nextRequestHandle = 0;
 
         protected TcpClient tcp = null;
@@ -143,7 +143,8 @@ namespace LibUA
             }
             finally
             {
-                csWaitForSecure.Release();
+                csWaitForSecure.Reset();
+                csWaitForSecure.Set();
             }
         }
 
@@ -155,7 +156,8 @@ namespace LibUA
             }
             finally
             {
-                csWaitForSecure.Release();
+                csWaitForSecure.Reset();
+                csWaitForSecure.Set();
             }
         }
 
@@ -904,7 +906,7 @@ namespace LibUA
                 }
 
                 csDispatching = new Semaphore(1, 1);
-                csWaitForSecure = new Semaphore(0, 1);
+                csWaitForSecure = new ManualResetEvent(false);
 
                 nextRequestHandle = 0;
 
@@ -1136,23 +1138,21 @@ namespace LibUA
 
         private void CloseConnection()
         {
+            var tcpCopy = Interlocked.Exchange(ref tcp, null);
+            if (tcpCopy == null)
+            {
+                return;
+            }
+
             try
             {
-                if (tcp != null)
-                {
-                    tcp.Client.Shutdown(SocketShutdown.Both);
-                    tcp.Close();
-
-                    OnConnectionClosed?.Invoke();
-                }
+                tcpCopy.Client.Shutdown(SocketShutdown.Both);
+                tcpCopy.Close();
+                OnConnectionClosed?.Invoke();
             }
             catch (SocketException)
             {
                 // Disconnected
-            }
-            finally
-            {
-                tcp = null;
             }
         }
 
@@ -1179,7 +1179,14 @@ namespace LibUA
 
                 var checkRead = new List<Socket> { socket };
                 var checkError = new List<Socket> { socket };
-                Socket.Select(checkRead, null, checkError, ListenerInterval * 1000);
+                try
+                {
+                    Socket.Select(checkRead, null, checkError, ListenerInterval * 1000);
+                }
+                catch (SocketException)
+                {
+                    break;
+                }
 
                 if (checkError.Count > 0)
                 {
@@ -1609,6 +1616,7 @@ namespace LibUA
                 if (ev != null)
                 {
                     csWaitForSecure.WaitOne();
+                    csWaitForSecure.Reset();
                 }
             }
             else if (messageType == (uint)MessageType.Error)

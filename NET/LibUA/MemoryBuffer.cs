@@ -29,6 +29,8 @@ namespace LibUA
 
             public byte[] Buffer { get; protected set; }
 
+            public const uint MaxArraySize = 0x00FFFFFF;
+
             public ArraySegment<byte> AsArraySegmentToPosition()
             {
                 return new ArraySegment<byte>(Buffer, 0, Position);
@@ -395,10 +397,15 @@ namespace LibUA
                     return false;
                 }
 
-                // Array length of -1 == no array encoded
                 if (v == 0xFFFFFFFFu)
                 {
                     v = 0;
+                    return true;
+                }
+
+                if (v > MaxArraySize)
+                {
+                    return false;
                 }
 
                 return true;
