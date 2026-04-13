@@ -246,10 +246,12 @@ namespace LibUA
             protected UInt32 nextSubscriptionID = 1;
             protected Queue<RequestHeader> pendingNotificationRequests = null;
             protected Dictionary<uint, Queue<uint>> pendingSubscriptionAcknowledgements = null;
+            protected readonly object pendingAcksLock = new();
             //protected Dictionary<uint, Application.MonitorDispatcherConfiguration> monitorMap = null;
             //protected List<Application.MonitorDispatcherConfiguration> monitorList = null;
 
             protected Dictionary<UInt32, Subscription> subscriptionMap = null;
+            protected readonly object subscriptionMapLock = new();
 
             protected Stack<int> availableContinuationPoints = null;
             protected Dictionary<int, ContinuationPointBrowse> continuationBrowse = null;

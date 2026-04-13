@@ -71,10 +71,13 @@ namespace LibUA
                 int numDataPending = 0, numEventPending = 0;
                 if (sub.ChangeNotification != Subscription.ChangeNotificationType.None)
                 {
-                    foreach (var mi in sub.MonitoredItems.Values)
+                    lock (sub.MonitoredItemsSyncRoot)
                     {
-                        numDataPending += mi.QueueData.Count;
-                        numEventPending += mi.QueueEvent.Count;
+                        foreach (var mi in sub.MonitoredItems.Values)
+                        {
+                            numDataPending += mi.QueueData.Count;
+                            numEventPending += mi.QueueEvent.Count;
+                        }
                     }
                 }
 
@@ -107,9 +110,13 @@ namespace LibUA
                 var publishTable = new Dictionary<uint, List<object[]>>();
                 int numPublishTableEntries = 0;
 
-                if (!pendingSubscriptionAcknowledgements.TryGetValue(sub.SubscriptionId, out Queue<uint> acknowledgeSeqNums))
+                Queue<uint> acknowledgeSeqNums;
+                lock (pendingAcksLock)
                 {
-                    acknowledgeSeqNums = new Queue<uint>();
+                    if (!pendingSubscriptionAcknowledgements.TryGetValue(sub.SubscriptionId, out acknowledgeSeqNums))
+                    {
+                        acknowledgeSeqNums = new Queue<uint>();
+                    }
                 }
 
                 int numSubAcks = (int)Math.Min(MaxSubscriptionAcknowledgementsPerPublish, acknowledgeSeqNums.Count);
@@ -117,31 +124,33 @@ namespace LibUA
                 int availableSpaceLeft = (int)(config.TL.TransportConfig.MaxMessageSize * UsableMessageSizeFactor) - respBuf.Position;
                 availableSpaceLeft -= numSubAcks;
 
-                foreach (var mi in sub.MonitoredItems.Values)
+                lock (sub.MonitoredItemsSyncRoot)
                 {
-                    if (mi.QueueEvent.Count == 0)
+                    foreach (var mi in sub.MonitoredItems.Values)
                     {
-                        continue;
-                    }
-
-                    var evs = new List<object[]>();
-
-                    while (mi.QueueEvent.TryPeek(out EventNotification ev))
-                    {
-                        var fields = MatchFilterClauses(mi.FilterSelectClauses, ev);
-
-                        int sizeRequired = 4 + 4;
-                        for (int i = 0; i < fields.Length; i++)
+                        if (mi.QueueEvent.Count == 0)
                         {
-                            sizeRequired += Coding.VariantCodingSize(fields[i]);
+                            continue;
                         }
 
-                        // ClientHandle + numEventFields + ev
-                        if (availableSpaceLeft < sizeRequired)
+                        var evs = new List<object[]>();
+
+                        while (mi.QueueEvent.TryPeek(out EventNotification ev))
                         {
-                            moreNotifications = true;
-                            break;
-                        }
+                            var fields = MatchFilterClauses(mi.FilterSelectClauses, ev);
+
+                            int sizeRequired = 4 + 4;
+                            for (int i = 0; i < fields.Length; i++)
+                            {
+                                sizeRequired += Coding.VariantCodingSize(fields[i]);
+                            }
+
+                            // ClientHandle + numEventFields + ev
+                            if (availableSpaceLeft < sizeRequired)
+                            {
+                                moreNotifications = true;
+                                break;
+                            }
 
                         availableSpaceLeft -= sizeRequired;
                         evs.Add(fields);
@@ -151,6 +160,7 @@ namespace LibUA
                     }
 
                     publishTable.Add(mi.Parameters.ClientHandle, evs);
+                }
                 }
 
                 succeeded &= respBuf.Encode((UInt32)sub.SubscriptionId);
@@ -308,9 +318,13 @@ namespace LibUA
                 var publishTable = new Dictionary<uint, List<DataValue>>();
                 int numPublishTableEntries = 0;
 
-                if (!pendingSubscriptionAcknowledgements.TryGetValue(sub.SubscriptionId, out Queue<uint> acknowledgeSeqNums))
+                Queue<uint> acknowledgeSeqNums;
+                lock (pendingAcksLock)
                 {
-                    acknowledgeSeqNums = new Queue<uint>();
+                    if (!pendingSubscriptionAcknowledgements.TryGetValue(sub.SubscriptionId, out acknowledgeSeqNums))
+                    {
+                        acknowledgeSeqNums = new Queue<uint>();
+                    }
                 }
 
                 int numSubAcks = (int)Math.Min(MaxSubscriptionAcknowledgementsPerPublish, acknowledgeSeqNums.Count);
@@ -318,35 +332,38 @@ namespace LibUA
                 int availableSpaceLeft = (int)(config.TL.TransportConfig.MaxMessageSize * UsableMessageSizeFactor) - respBuf.Position;
                 availableSpaceLeft -= numSubAcks;
 
-                foreach (var mi in sub.MonitoredItems.Values)
+                lock (sub.MonitoredItemsSyncRoot)
                 {
-                    if (mi.QueueData.Count == 0)
+                    foreach (var mi in sub.MonitoredItems.Values)
                     {
-                        continue;
-                    }
-
-                    var dvs = new List<DataValue>();
-
-                    while (mi.QueueData.TryPeek(out DataValue dv))
-                    {
-                        // ClientHandle + dv
-                        int sizeRequired = 4 + respBuf.CodingSize(dv);
-                        if (availableSpaceLeft < sizeRequired)
+                        if (mi.QueueData.Count == 0)
                         {
-                            moreNotifications = true;
-                            break;
+                            continue;
                         }
 
-                        availableSpaceLeft -= sizeRequired;
+                        var dvs = new List<DataValue>();
 
-                        dv.ServerTimestamp = req.Timestamp;
-                        dvs.Add(dv);
+                        while (mi.QueueData.TryPeek(out DataValue dv))
+                        {
+                            // ClientHandle + dv
+                            int sizeRequired = 4 + respBuf.CodingSize(dv);
+                            if (availableSpaceLeft < sizeRequired)
+                            {
+                                moreNotifications = true;
+                                break;
+                            }
 
-                        mi.QueueData.TryDequeue(out dv);
-                        ++numPublishTableEntries;
+                            availableSpaceLeft -= sizeRequired;
+
+                            dv.ServerTimestamp = req.Timestamp;
+                            dvs.Add(dv);
+
+                            mi.QueueData.TryDequeue(out dv);
+                            ++numPublishTableEntries;
+                        }
+
+                        publishTable.Add(mi.Parameters.ClientHandle, dvs);
                     }
-
-                    publishTable.Add(mi.Parameters.ClientHandle, dvs);
                 }
 
                 succeeded &= respBuf.Encode((UInt32)sub.SubscriptionId);
@@ -417,44 +434,47 @@ namespace LibUA
                 TimeSpan largestDelay = TimeSpan.Zero;
                 Subscription late = null;
 
-                foreach (var s in subscriptionMap.Values)
+                lock (subscriptionMapLock)
                 {
-                    if (!s.PublishingEnabled)
+                    foreach (var s in subscriptionMap.Values)
                     {
-                        continue;
-                    }
+                        if (!s.PublishingEnabled)
+                        {
+                            continue;
+                        }
 
-                    TimeSpan interval = TimeSpan.Zero;
+                        TimeSpan interval = TimeSpan.Zero;
 
-                    if (s.ChangeNotification == Subscription.ChangeNotificationType.AtPublish)
-                    {
-                        interval = s.PublishInterval;
-                    }
-                    else if (s.ChangeNotification == Subscription.ChangeNotificationType.None)
-                    {
-                        interval = s.PublishKeepAliveInterval;
-                    }
-                    else if (s.ChangeNotification == Subscription.ChangeNotificationType.Immediate)
-                    {
-                        return s;
-                    }
+                        if (s.ChangeNotification == Subscription.ChangeNotificationType.AtPublish)
+                        {
+                            interval = s.PublishInterval;
+                        }
+                        else if (s.ChangeNotification == Subscription.ChangeNotificationType.None)
+                        {
+                            interval = s.PublishKeepAliveInterval;
+                        }
+                        else if (s.ChangeNotification == Subscription.ChangeNotificationType.Immediate)
+                        {
+                            return s;
+                        }
 
-                    if (s.PublishPreviousTime == DateTime.MinValue)
-                    {
-                        return s;
-                    }
+                        if (s.PublishPreviousTime == DateTime.MinValue)
+                        {
+                            return s;
+                        }
 
-                    TimeSpan delay = now - s.PublishPreviousTime;
-                    if (delay < interval)
-                    {
-                        continue;
-                    }
-                    delay -= interval;
+                        TimeSpan delay = now - s.PublishPreviousTime;
+                        if (delay < interval)
+                        {
+                            continue;
+                        }
+                        delay -= interval;
 
-                    if (delay > largestDelay)
-                    {
-                        late = s;
-                        largestDelay = delay;
+                        if (delay > largestDelay)
+                        {
+                            late = s;
+                            largestDelay = delay;
+                        }
                     }
                 }
 
@@ -1615,9 +1635,12 @@ namespace LibUA
 
                     logger?.Log(LogLevel.Information, "{LoggerID}: SL security token {tokenId} renewed for channel {channelId} with security policy {securityPolicy}, previous token was {prevTokenId}", LoggerID(), config.TokenID, config.ChannelID, config.SecurityPolicy, config.PrevTokenID);
 
-                    foreach (var sub in subscriptionMap.Values)
+                    lock (subscriptionMapLock)
                     {
-                        sub.ChangeNotification = Subscription.ChangeNotificationType.Immediate;
+                        foreach (var sub in subscriptionMap.Values)
+                        {
+                            sub.ChangeNotification = Subscription.ChangeNotificationType.Immediate;
+                        }
                     }
                 }
                 else
@@ -2925,12 +2948,15 @@ namespace LibUA
                 }
 
                 UInt32 subId = nextSubscriptionID++;
-                if (subscriptionMap.ContainsKey(subId))
+                lock (subscriptionMapLock)
                 {
-                    logger?.Log(LogLevel.Error, "{LoggerID}: Could not allocate subscription ID {subscriptionId}", LoggerID(), subId);
+                    if (subscriptionMap.ContainsKey(subId))
+                    {
+                        logger?.Log(LogLevel.Error, "{LoggerID}: Could not allocate subscription ID {subscriptionId}", LoggerID(), subId);
 
-                    UAStatusCode = (uint)StatusCode.BadSubscriptionIdInvalid;
-                    return ErrorInternal;
+                        UAStatusCode = (uint)StatusCode.BadSubscriptionIdInvalid;
+                        return ErrorInternal;
+                    }
                 }
 
                 double revisedPublishInterval = RequestedPublishingInterval;
@@ -2943,22 +2969,25 @@ namespace LibUA
 
                 revisedPublishInterval = Math.Max(0, revisedPublishInterval);
 
-                subscriptionMap.Add(subId, new Subscription()
+                lock (subscriptionMapLock)
                 {
-                    SubscriptionId = subId,
+                    subscriptionMap.Add(subId, new Subscription()
+                    {
+                        SubscriptionId = subId,
 
-                    PublishingInterval = revisedPublishInterval,
-                    LifetimeCount = revisedLifetimeCount,
-                    MaxKeepAliveCount = revisedMaxKeepAliveCount,
-                    MaxNotificationsPerPublish = Math.Max(1, MaxNotificationsPerPublish),
-                    PublishingEnabled = PublishingEnabled,
-                    Priority = Priority,
+                        PublishingInterval = revisedPublishInterval,
+                        LifetimeCount = revisedLifetimeCount,
+                        MaxKeepAliveCount = revisedMaxKeepAliveCount,
+                        MaxNotificationsPerPublish = Math.Max(1, MaxNotificationsPerPublish),
+                        PublishingEnabled = PublishingEnabled,
+                        Priority = Priority,
 
-                    PublishInterval = TimeSpan.FromMilliseconds(revisedPublishInterval),
-                    PublishKeepAliveInterval = TimeSpan.FromMilliseconds(Math.Max(1, (revisedPublishInterval / 2) * RequestedMaxKeepAliveCount)),
+                        PublishInterval = TimeSpan.FromMilliseconds(revisedPublishInterval),
+                        PublishKeepAliveInterval = TimeSpan.FromMilliseconds(Math.Max(1, (revisedPublishInterval / 2) * RequestedMaxKeepAliveCount)),
 
-                    ChangeNotification = Subscription.ChangeNotificationType.None
-                });
+                        ChangeNotification = Subscription.ChangeNotificationType.None
+                    });
+                }
 
                 if (!succeeded)
                 {
@@ -2989,14 +3018,17 @@ namespace LibUA
                 succeeded &= respBuf.Encode((UInt32)NoOfSubscriptionIds);
                 for (int i = 0; i < NoOfSubscriptionIds; i++)
                 {
-                    if (subscriptionMap.TryGetValue(SubscriptionIds[i], out Subscription sub))
+                    lock (subscriptionMapLock)
                     {
-                        sub.PublishingEnabled = PublishingEnabled;
-                        succeeded &= respBuf.Encode((UInt32)StatusCode.Good);
-                    }
-                    else
-                    {
-                        succeeded &= respBuf.Encode((UInt32)StatusCode.BadSubscriptionIdInvalid);
+                        if (subscriptionMap.TryGetValue(SubscriptionIds[i], out Subscription sub))
+                        {
+                            sub.PublishingEnabled = PublishingEnabled;
+                            succeeded &= respBuf.Encode((UInt32)StatusCode.Good);
+                        }
+                        else
+                        {
+                            succeeded &= respBuf.Encode((UInt32)StatusCode.BadSubscriptionIdInvalid);
+                        }
                     }
                 }
 
@@ -3024,32 +3056,35 @@ namespace LibUA
 
                 using var respBuf = new MemoryBuffer(maximumMessageSize);
                 bool succeeded;
-                if (subscriptionMap.TryGetValue(SubscriptionId, out Subscription sub))
+                lock (subscriptionMapLock)
                 {
-                    succeeded = DispatchMessage_WriteHeader(config, respBuf,
-                        (uint)RequestCode.ModifySubscriptionResponse, reqHeader, (uint)StatusCode.Good);
+                    if (subscriptionMap.TryGetValue(SubscriptionId, out Subscription sub))
+                    {
+                        succeeded = DispatchMessage_WriteHeader(config, respBuf,
+                            (uint)RequestCode.ModifySubscriptionResponse, reqHeader, (uint)StatusCode.Good);
 
-                    sub.PublishingInterval = Math.Max(0, RequestedPublishingInterval);
-                    sub.LifetimeCount = RequestedLifetimeCount;
-                    sub.MaxKeepAliveCount = RequestedMaxKeepAliveCount;
-                    sub.MaxNotificationsPerPublish = Math.Max(1, MaxNotificationsPerPublish);
-                    sub.Priority = Priority;
+                        sub.PublishingInterval = Math.Max(0, RequestedPublishingInterval);
+                        sub.LifetimeCount = RequestedLifetimeCount;
+                        sub.MaxKeepAliveCount = RequestedMaxKeepAliveCount;
+                        sub.MaxNotificationsPerPublish = Math.Max(1, MaxNotificationsPerPublish);
+                        sub.Priority = Priority;
 
-                    sub.PublishInterval = TimeSpan.FromMilliseconds(sub.PublishingInterval);
-                    sub.PublishKeepAliveInterval = TimeSpan.FromMilliseconds(Math.Max(1, (sub.PublishingInterval / 2) * RequestedMaxKeepAliveCount));
+                        sub.PublishInterval = TimeSpan.FromMilliseconds(sub.PublishingInterval);
+                        sub.PublishKeepAliveInterval = TimeSpan.FromMilliseconds(Math.Max(1, (sub.PublishingInterval / 2) * RequestedMaxKeepAliveCount));
 
-                    succeeded &= respBuf.Encode((double)sub.PublishingInterval);
-                    succeeded &= respBuf.Encode((UInt32)sub.LifetimeCount);
-                    succeeded &= respBuf.Encode((UInt32)sub.MaxKeepAliveCount);
-                }
-                else
-                {
-                    succeeded = DispatchMessage_WriteHeader(config, respBuf,
-                        (uint)RequestCode.ModifySubscriptionResponse, reqHeader, (uint)StatusCode.BadSubscriptionIdInvalid);
+                        succeeded &= respBuf.Encode((double)sub.PublishingInterval);
+                        succeeded &= respBuf.Encode((UInt32)sub.LifetimeCount);
+                        succeeded &= respBuf.Encode((UInt32)sub.MaxKeepAliveCount);
+                    }
+                    else
+                    {
+                        succeeded = DispatchMessage_WriteHeader(config, respBuf,
+                            (uint)RequestCode.ModifySubscriptionResponse, reqHeader, (uint)StatusCode.BadSubscriptionIdInvalid);
 
-                    succeeded &= respBuf.Encode((double)0);
-                    succeeded &= respBuf.Encode((UInt32)0);
-                    succeeded &= respBuf.Encode((UInt32)0);
+                        succeeded &= respBuf.Encode((double)0);
+                        succeeded &= respBuf.Encode((UInt32)0);
+                        succeeded &= respBuf.Encode((UInt32)0);
+                    }
                 }
 
                 if (!succeeded)
@@ -3084,19 +3119,25 @@ namespace LibUA
                 succeeded &= respBuf.Encode(NoOfSubIds);
                 for (uint i = 0; i < NoOfSubIds; i++)
                 {
-                    if (!subscriptionMap.TryGetValue(SubIds[i], out Subscription sub))
+                    lock (subscriptionMapLock)
                     {
-                        succeeded &= respBuf.Encode((UInt32)StatusCode.BadSubscriptionIdInvalid);
-                    }
-                    else
-                    {
-                        foreach (var mi in sub.MonitoredItems.Values)
+                        if (!subscriptionMap.TryGetValue(SubIds[i], out Subscription sub))
                         {
-                            app.MonitorRemove(config.Session, mi);
+                            succeeded &= respBuf.Encode((UInt32)StatusCode.BadSubscriptionIdInvalid);
                         }
+                        else
+                        {
+                            lock (sub.MonitoredItemsSyncRoot)
+                            {
+                                foreach (var mi in sub.MonitoredItems.Values)
+                                {
+                                    app.MonitorRemove(config.Session, mi);
+                                }
+                            }
 
-                        succeeded &= respBuf.Encode((UInt32)StatusCode.Good);
-                        subscriptionMap.Remove(SubIds[i]);
+                            succeeded &= respBuf.Encode((UInt32)StatusCode.Good);
+                            subscriptionMap.Remove(SubIds[i]);
+                        }
                     }
                 }
 
@@ -3157,9 +3198,13 @@ namespace LibUA
                 var createRequests = new MonitoredItemCreateRequest[NoOfItemsToCreate];
                 var createResponses = new MonitoredItemCreateResult[NoOfItemsToCreate];
 
-                if (!subscriptionMap.TryGetValue(SubscriptionId, out Subscription sub))
+                Subscription sub;
+                lock (subscriptionMapLock)
                 {
-                    sub = null;
+                    if (!subscriptionMap.TryGetValue(SubscriptionId, out sub))
+                    {
+                        sub = null;
+                    }
                 }
 
                 for (uint i = 0; i < NoOfItemsToCreate; i++)
@@ -3172,50 +3217,54 @@ namespace LibUA
                         continue;
                     }
 
-                    if (sub.MonitoredItems.Count >= MaxMonitoredPerSubscription)
-                    {
-                        createResponses[i] = new MonitoredItemCreateResult(StatusCode.BadTooManyMonitoredItems, createRequests[i].RequestedParameters.ClientHandle, 0, 0, null);
-                        continue;
-                    }
-
-                    if (createRequests[i].ItemToMonitor.AttributeId != NodeAttribute.Value &&
-                        createRequests[i].ItemToMonitor.AttributeId != NodeAttribute.EventNotifier)
-                    {
-                        createResponses[i] = new MonitoredItemCreateResult(StatusCode.BadNodeAttributesInvalid, createRequests[i].RequestedParameters.ClientHandle, 0, 0, null);
-                        continue;
-                    }
-
-                    var miHandle = createRequests[i].RequestedParameters.ClientHandle;
-
-
                     MonitoredItem mi;
-                    if (sub.MonitoredItems.ContainsKey(miHandle))
+                    lock (sub.MonitoredItemsSyncRoot)
                     {
-                        mi = sub.MonitoredItems[miHandle];
-                        app.MonitorRemove(config.Session, mi);
-                        sub.MonitoredItems.Remove(miHandle);
-                        continue;
+                        if (sub.MonitoredItems.Count >= MaxMonitoredPerSubscription)
+                        {
+                            createResponses[i] = new MonitoredItemCreateResult(StatusCode.BadTooManyMonitoredItems, createRequests[i].RequestedParameters.ClientHandle, 0, 0, null);
+                            continue;
+                        }
+
+                        if (createRequests[i].ItemToMonitor.AttributeId != NodeAttribute.Value &&
+                            createRequests[i].ItemToMonitor.AttributeId != NodeAttribute.EventNotifier)
+                        {
+                            createResponses[i] = new MonitoredItemCreateResult(StatusCode.BadNodeAttributesInvalid, createRequests[i].RequestedParameters.ClientHandle, 0, 0, null);
+                            continue;
+                        }
+
+                        var miHandle = createRequests[i].RequestedParameters.ClientHandle;
+
+
+                        if (sub.MonitoredItems.ContainsKey(miHandle))
+                        {
+                            mi = sub.MonitoredItems[miHandle];
+                            app.MonitorRemove(config.Session, mi);
+                            sub.MonitoredItems.Remove(miHandle);
+                            createResponses[i] = new MonitoredItemCreateResult(StatusCode.BadMonitoredItemIdInvalid, createRequests[i].RequestedParameters.ClientHandle, 0, 0, null);
+                            continue;
+                        }
+
+                        mi = new MonitoredItem(sub)
+                        {
+                            MonitoredItemId = miHandle,
+
+                            ItemToMonitor = createRequests[i].ItemToMonitor,
+                            Mode = createRequests[i].Mode,
+                            Parameters = createRequests[i].RequestedParameters,
+
+                            QueueSize = Math.Max(1, Math.Min(MonitoredItem.MaxQueueSize, (int)createRequests[i].RequestedParameters.QueueSize))
+                        };
+
+                        if (!app.MonitorAdd(config.Session, mi))
+                        {
+                            createResponses[i] = new MonitoredItemCreateResult(StatusCode.BadNodeIdUnknown, createRequests[i].RequestedParameters.ClientHandle, 0, 0, null);
+                            continue;
+                        }
+
+                        sub.MonitoredItems.Add(mi.MonitoredItemId, mi);
+                        sub.ChangeNotification = Subscription.ChangeNotificationType.Immediate;
                     }
-
-                    mi = new MonitoredItem(sub)
-                    {
-                        MonitoredItemId = miHandle,
-
-                        ItemToMonitor = createRequests[i].ItemToMonitor,
-                        Mode = createRequests[i].Mode,
-                        Parameters = createRequests[i].RequestedParameters,
-
-                        QueueSize = Math.Max(1, Math.Min(MonitoredItem.MaxQueueSize, (int)createRequests[i].RequestedParameters.QueueSize))
-                    };
-
-                    if (!app.MonitorAdd(config.Session, mi))
-                    {
-                        createResponses[i] = new MonitoredItemCreateResult(StatusCode.BadNodeIdUnknown, createRequests[i].RequestedParameters.ClientHandle, 0, 0, null);
-                        continue;
-                    }
-
-                    sub.MonitoredItems.Add(mi.MonitoredItemId, mi);
-                    sub.ChangeNotification = Subscription.ChangeNotificationType.Immediate;
 
                     double samplingInterval = createRequests[i].RequestedParameters.SamplingInterval;
                     if (samplingInterval < 1)
@@ -3308,9 +3357,13 @@ namespace LibUA
 
                 if (!recvBuf.Decode(out uint NoOfItemsToModify)) { return ErrorParseFail; }
 
-                if (!subscriptionMap.TryGetValue(SubscriptionId, out Subscription sub))
+                Subscription sub;
+                lock (subscriptionMapLock)
                 {
-                    sub = null;
+                    if (!subscriptionMap.TryGetValue(SubscriptionId, out sub))
+                    {
+                        sub = null;
+                    }
                 }
 
                 var modifyRequests = new MonitoredItemModifyRequest[NoOfItemsToModify];
@@ -3328,14 +3381,18 @@ namespace LibUA
                         continue;
                     }
 
-                    if (!sub.MonitoredItems.TryGetValue(modifyRequests[i].MonitoredItemId, out MonitoredItem mi))
+                    MonitoredItem mi;
+                    lock (sub.MonitoredItemsSyncRoot)
                     {
-                        modifyResults[i] = new MonitoredItemModifyResult(StatusCode.BadMonitoredItemIdInvalid, 0, 0, null);
-                        continue;
-                    }
+                        if (!sub.MonitoredItems.TryGetValue(modifyRequests[i].MonitoredItemId, out mi))
+                        {
+                            modifyResults[i] = new MonitoredItemModifyResult(StatusCode.BadMonitoredItemIdInvalid, 0, 0, null);
+                            continue;
+                        }
 
-                    mi.QueueSize = Math.Max(1, Math.Min(MonitoredItem.MaxQueueSize, (int)modifyRequests[i].Parameters.QueueSize));
-                    mi.Parameters = modifyRequests[i].Parameters;
+                        mi.QueueSize = Math.Max(1, Math.Min(MonitoredItem.MaxQueueSize, (int)modifyRequests[i].Parameters.QueueSize));
+                        mi.Parameters = modifyRequests[i].Parameters;
+                    }
                     modifyResults[i] = new MonitoredItemModifyResult(StatusCode.Good, -1, (uint)mi.QueueSize, null);
                 }
 
@@ -3380,9 +3437,13 @@ namespace LibUA
                     if (!recvBuf.Decode(out MonitoredItemIds[i])) { return ErrorParseFail; }
                 }
 
-                if (!subscriptionMap.TryGetValue(SubscriptionId, out Subscription sub))
+                Subscription sub;
+                lock (subscriptionMapLock)
                 {
-                    sub = null;
+                    if (!subscriptionMap.TryGetValue(SubscriptionId, out sub))
+                    {
+                        sub = null;
+                    }
                 }
 
                 using var respBuf = new MemoryBuffer(maximumMessageSize);
@@ -3404,14 +3465,17 @@ namespace LibUA
                         continue;
                     }
 
-                    if (!sub.MonitoredItems.TryGetValue(MonitoredItemIds[i], out MonitoredItem mi))
+                    lock (sub.MonitoredItemsSyncRoot)
                     {
-                        succeeded &= respBuf.Encode((UInt32)StatusCode.BadMonitoredItemIdInvalid);
-                        continue;
-                    }
+                        if (!sub.MonitoredItems.TryGetValue(MonitoredItemIds[i], out MonitoredItem mi))
+                        {
+                            succeeded &= respBuf.Encode((UInt32)StatusCode.BadMonitoredItemIdInvalid);
+                            continue;
+                        }
 
-                    app.MonitorRemove(config.Session, mi);
-                    sub.MonitoredItems.Remove(MonitoredItemIds[i]);
+                        app.MonitorRemove(config.Session, mi);
+                        sub.MonitoredItems.Remove(MonitoredItemIds[i]);
+                    }
 
                     succeeded &= respBuf.Encode((UInt32)StatusCode.Good);
                 }
@@ -3478,13 +3542,16 @@ namespace LibUA
                         if (!recvBuf.Decode(out uint subId)) { return ErrorParseFail; }
                         if (!recvBuf.Decode(out uint seqNum)) { return ErrorParseFail; }
 
-                        if (pendingSubscriptionAcknowledgements.TryGetValue(subId, out Queue<uint> seqQueue))
+                        lock (pendingAcksLock)
                         {
-                            seqQueue.Enqueue(seqNum);
-                        }
-                        else
-                        {
-                            pendingSubscriptionAcknowledgements.Add(subId, new Queue<uint>(new uint[] { seqNum }));
+                            if (pendingSubscriptionAcknowledgements.TryGetValue(subId, out Queue<uint> seqQueue))
+                            {
+                                seqQueue.Enqueue(seqNum);
+                            }
+                            else
+                            {
+                                pendingSubscriptionAcknowledgements.Add(subId, new Queue<uint>(new uint[] { seqNum }));
+                            }
                         }
                     }
 

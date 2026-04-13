@@ -7010,6 +7010,7 @@ namespace LibUA
             public TimeSpan PublishInterval, PublishKeepAliveInterval;
 
             public Dictionary<UInt32, MonitoredItem> MonitoredItems;
+            private readonly object monitoredItemsLock = new();
 
             public Subscription()
             {
@@ -7031,6 +7032,8 @@ namespace LibUA
                 ChangeNotification = ChangeNotificationType.None;
                 MonitoredItems = new Dictionary<uint, MonitoredItem>();
             }
+
+            public object MonitoredItemsSyncRoot => monitoredItemsLock;
         }
 
         public class SLSequence
