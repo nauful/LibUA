@@ -161,7 +161,7 @@ namespace LibUA
             }
         }
 
-        private StatusCode OpenSecureChannelInternal(bool renew)
+        private StatusCode OpenSecureChannelInternal(bool renew, bool acquireSemaphore = true)
         {
             SecurityTokenRequestType requestType = renew ?
                 SecurityTokenRequestType.Renew : SecurityTokenRequestType.Issue;
@@ -169,7 +169,7 @@ namespace LibUA
 
             try
             {
-                cs.WaitOne();
+                if (acquireSemaphore) { cs.WaitOne(); }
 
                 using var sendBuf = new MemoryBuffer(MaximumMessageSize);
 
@@ -492,7 +492,7 @@ namespace LibUA
             finally
             {
                 recvHandler?.DisposeRecvBuf();
-                cs.Release();
+                if (acquireSemaphore) { cs.Release(); }
 
                 if (!renew)
                 {
@@ -1943,12 +1943,21 @@ namespace LibUA
                 renewTimer = new System.Timers.Timer(0.7 * config.TokenLifetime);
                 renewTimer.Elapsed += (sender, e) =>
                 {
-                    var res = RenewSecureChannel();
-                    if (!Types.StatusCodeIsGood((uint)res))
+                    try
                     {
-                        recvHandlerStatus = res;
-                        Disconnect();
+                        cs.WaitOne();
+                        try
+                        {
+                            var res = OpenSecureChannelInternal(true, acquireSemaphore: false);
+                            if (!Types.StatusCodeIsGood((uint)res))
+                            {
+                                recvHandlerStatus = res;
+                                Disconnect();
+                            }
+                        }
+                        finally { cs.Release(); }
                     }
+                    catch { }
                 };
                 renewTimer.Start();
 
