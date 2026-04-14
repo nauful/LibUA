@@ -1558,7 +1558,6 @@ namespace LibUA
 
                 if (securityTokenRequestType == (uint)SecurityTokenRequestType.Issue)
                 {
-                    _ = new Random();
                     config.ChannelID = 1; //(uint)(rnd.Next() % 10000);
                     config.TokenID = 1000;
 
