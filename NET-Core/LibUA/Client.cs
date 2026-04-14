@@ -148,19 +148,6 @@ namespace LibUA
             }
         }
 
-        private StatusCode RenewSecureChannel()
-        {
-            try
-            {
-                return OpenSecureChannelInternal(true);
-            }
-            finally
-            {
-                csWaitForSecure.Reset();
-                csWaitForSecure.Set();
-            }
-        }
-
         private StatusCode OpenSecureChannelInternal(bool renew, bool acquireSemaphore = true)
         {
             SecurityTokenRequestType requestType = renew ?
@@ -963,7 +950,7 @@ namespace LibUA
             }
         }
 
-      private StatusCode SendHello()
+        private StatusCode SendHello()
         {
             using var sendBuf = new MemoryBuffer(MaximumMessageSize);
 
@@ -1596,7 +1583,7 @@ namespace LibUA
                     (uint)(recvBuf.Buffer[6] << 16) | (uint)(recvBuf.Buffer[7] << 24);
 
                 if (messageSize > recvBuf.Capacity)
-               {
+                {
                     unchecked { return (int)(uint)StatusCode.BadRequestTimeout; }
                 }
 
@@ -1960,7 +1947,12 @@ namespace LibUA
                                 Disconnect();
                             }
                         }
-                        finally { cs.Release(); }
+                        finally
+                        {
+                            cs.Release();
+                            csWaitForSecure.Reset();
+                            csWaitForSecure.Set();
+                        }
                     }
                     catch { }
                 };
