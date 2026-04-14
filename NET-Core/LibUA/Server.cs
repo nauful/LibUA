@@ -491,11 +491,7 @@ namespace LibUA
                         else
                         {
                             int newSize = recvAccumSize - consumedSize;
-
-                            var newRecvBuffer = new byte[maximumMessageSize];
-                            Array.Copy(recvBuffer, consumedSize, newRecvBuffer, 0, newSize);
-                            recvBuffer = newRecvBuffer;
-
+                            Array.Copy(recvBuffer, consumedSize, recvBuffer, 0, newSize);
                             recvAccumSize = newSize;
                         }
 
