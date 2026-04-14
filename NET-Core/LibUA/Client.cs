@@ -785,7 +785,16 @@ namespace LibUA
 
             int chunkSize = (int)config.TL.TransportConfig.RecvBufferSize - ChunkHeaderOverhead - TLPaddingOverhead;
             //int chunkSize = 2048 - ChunkHeaderOverhead - TLPaddingOverhead;
-            int numChunks = (respBuf.Position - ChunkHeaderOverhead + chunkSize - 1) / chunkSize;
+            if (chunkSize <= 0)
+            {
+                return StatusCode.BadEncodingLimitsExceeded;
+            }
+            long numChunksLong = ((long)respBuf.Position - ChunkHeaderOverhead + chunkSize - 1) / chunkSize;
+            if (numChunksLong > int.MaxValue)
+            {
+                return StatusCode.BadEncodingLimitsExceeded;
+            }
+            int numChunks = (int)numChunksLong;
 
             if (numChunks > 1 && config.TL.TransportConfig.MaxChunkCount > 0 &&
                 numChunks > config.TL.TransportConfig.MaxChunkCount)
