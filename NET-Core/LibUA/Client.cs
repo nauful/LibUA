@@ -1398,6 +1398,7 @@ namespace LibUA
                 var unsecureRes = (uint)UASecurity.UnsecureSymmetric(tmpBuf, config.TokenID, config.PrevTokenID, MessageEncodedBlockStart, config.LocalKeysets[0], config.RemoteKeysets, config.SecurityPolicy, config.MessageSecurityMode, out int decrSize);
                 if (!Types.StatusCodeIsGood(unsecureRes))
                 {
+                    recvBuf?.Dispose();
                     return null;
                 }
 

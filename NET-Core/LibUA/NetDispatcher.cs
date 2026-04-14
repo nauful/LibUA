@@ -1291,6 +1291,7 @@ namespace LibUA
 
                     if (!Types.StatusCodeIsGood(unsecureRes))
                     {
+                        recvBuf?.Dispose();
                         return null;
                     }
 
