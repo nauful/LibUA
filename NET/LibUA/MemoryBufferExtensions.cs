@@ -543,6 +543,12 @@ namespace LibUA
             if (includeType)
             {
                 var posRestore = mem.Position;
+                // Compute actual ExtensionObject body length before writing the size
+                // placeholder at eoFilterPos. Previously eoFilterSize stayed at 0
+                // through the whole path, so the EventFilter went out the wire with
+                // a zero-length ExtensionObject body header followed by the real
+                // body bytes.
+                eoFilterSize = (System.UInt32)(posRestore - eoFilterPos - 4);
                 mem.Position = eoFilterPos;
                 if (!mem.Encode(eoFilterSize))
                 {
