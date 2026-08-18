@@ -733,7 +733,7 @@ namespace LibUA
 
                 switch (mask & 0x3F)
                 {
-                    case (int)VariantType.Null:
+                    case (int)VariantType.Null: obj = null; return true;
                     case (int)VariantType.Boolean: { if (!Decode(out bool v)) { return false; } obj = v; return true; ; }
                     case (int)VariantType.SByte: { if (!Decode(out sbyte v)) { return false; } obj = v; return true; ; }
                     case (int)VariantType.Byte: { if (!Decode(out byte v)) { return false; } obj = v; return true; ; }
