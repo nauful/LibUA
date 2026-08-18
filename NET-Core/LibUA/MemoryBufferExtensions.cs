@@ -981,6 +981,8 @@ namespace LibUA
             if (includeType)
             {
                 var posRestore = mem.Position;
+                // Compute actual EO body length before rewriting size placeholder.
+                eoFilterSize = (System.UInt32)(posRestore - eoFilterPos - 4);
                 mem.Position = eoFilterPos;
                 if (!mem.Encode(eoFilterSize))
                 {
