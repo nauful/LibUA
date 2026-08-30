@@ -1183,6 +1183,11 @@ namespace LibUA
                 {
                     break;
                 }
+                catch (ObjectDisposedException)
+                {
+                    // Socket disposed by a concurrent CloseConnection; treat as deliberate shutdown.
+                    break;
+                }
 
                 if (checkError.Count > 0)
                 {

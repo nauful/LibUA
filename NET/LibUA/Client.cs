@@ -1012,7 +1012,19 @@ namespace LibUA
 
                 var checkRead = new List<Socket> { socket };
                 var checkError = new List<Socket> { socket };
-                Socket.Select(checkRead, null, checkError, ListenerInterval * 1000);
+                try
+                {
+                    Socket.Select(checkRead, null, checkError, ListenerInterval * 1000);
+                }
+                catch (SocketException)
+                {
+                    break;
+                }
+                catch (ObjectDisposedException)
+                {
+                    // Socket disposed by a concurrent CloseConnection; treat as deliberate shutdown.
+                    break;
+                }
 
                 if (checkError.Count > 0)
                 {
