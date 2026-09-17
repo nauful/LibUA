@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
@@ -230,7 +229,8 @@ namespace LibUA
 
             public const int PulseInterval = 100;
 
-            private const int DrainTimeoutMs = 500;
+            private const int DrainTimeoutMs = 200;
+            private const int DrainPollUs = 50000;
             private const int DrainBufferSize = 4096;
 
             protected Application app = null;
@@ -566,12 +566,22 @@ namespace LibUA
 
             private void DrainReceiveBuffer()
             {
-                var drainTimer = Stopwatch.StartNew();
                 var drainBuffer = new byte[DrainBufferSize];
 
-                while (socket.Available > 0 && drainTimer.ElapsedMilliseconds < DrainTimeoutMs)
+                try
                 {
-                    socket.Receive(drainBuffer, 0, drainBuffer.Length, SocketFlags.None);
+                    socket.ReceiveTimeout = DrainTimeoutMs;
+
+                    while (socket.Poll(DrainPollUs, SelectMode.SelectRead) && socket.Available > 0)
+                    {
+                        if (socket.Receive(drainBuffer) <= 0)
+                        {
+                            break;
+                        }
+                    }
+                }
+                catch (SocketException)
+                {
                 }
             }
 
