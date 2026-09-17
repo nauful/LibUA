@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
@@ -234,6 +235,9 @@ namespace LibUA
             protected const int ErrorClosed = -4;
 
             public const int PulseInterval = 100;
+
+            private const int DrainTimeoutMs = 500;
+            private const int DrainBufferSize = 4096;
 
             protected Application app = null;
             protected ILogger logger = null;
@@ -535,6 +539,7 @@ namespace LibUA
                 try
                 {
                     socket.Shutdown(SocketShutdown.Send);
+                    DrainReceiveBuffer();
                     socket.Close();
                 }
                 catch (SocketException)
@@ -565,6 +570,17 @@ namespace LibUA
             virtual protected int Consume(MemoryBuffer recvBuf)
             {
                 return -1;
+            }
+
+            private void DrainReceiveBuffer()
+            {
+                var drainTimer = Stopwatch.StartNew();
+                var drainBuffer = new byte[DrainBufferSize];
+
+                while (socket.Available > 0 && drainTimer.ElapsedMilliseconds < DrainTimeoutMs)
+                {
+                    socket.Receive(drainBuffer, 0, drainBuffer.Length, SocketFlags.None);
+                }
             }
 
             public void Close()
