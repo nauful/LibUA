@@ -476,6 +476,7 @@ namespace LibUA
                                 if (consumedSize == ErrorInternal) { UAStatusCode = (uint)StatusCode.BadInternalError; }
                                 if (consumedSize == ErrorParseFail) { UAStatusCode = (uint)StatusCode.BadDecodingError; }
                                 if (consumedSize == ErrorRespWrite) { UAStatusCode = (uint)StatusCode.BadEncodingLimitsExceeded; }
+                                if (consumedSize == ErrorClosed) { UAStatusCode = (uint)StatusCode.BadConnectionClosed; }
                             }
 
                             // Handler failed
