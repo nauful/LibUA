@@ -239,6 +239,13 @@ namespace LibUA
             private const int DrainPollUs = 50000;
             private const int DrainBufferSize = 4096;
 
+            // Bounds socket.Send so a stalled client cannot wedge the
+            // dispatcher thread and hang Close() forever
+            private const int SendTimeoutMs = 5000;
+            // Grace period for the dispatcher to exit on its own before
+            // Close() disposes the socket to interrupt a blocking call
+            private const int CloseJoinTimeoutMs = SendTimeoutMs + 2 * PulseInterval;
+
             protected Application app = null;
             protected ILogger logger = null;
             private readonly Master server = null;
@@ -249,7 +256,7 @@ namespace LibUA
             private readonly object csDispatching = new object();
 
             protected Thread thread = null;
-            protected bool threadAbort = false;
+            protected volatile bool threadAbort = false;
 
             protected SLChannel config = null;
 
@@ -272,6 +279,8 @@ namespace LibUA
                 this.server = server;
                 this.socket = socket;
                 this.maximumMessageSize = server.MaximumMessageSize;
+
+                socket.SendTimeout = SendTimeoutMs;
 
                 this.UAStatusCode = (uint)StatusCode.Good;
 
@@ -383,6 +392,13 @@ namespace LibUA
                             //sw.Stop();
                             //Console.WriteLine("Pulse in {0}", sw.Elapsed.ToString());
                         }
+                        catch (Exception)
+                        {
+                            // Send to peer failed (stalled or disposed socket):
+                            // stop pulsing, the receive path tears down below
+                            recvAccumSize = -1;
+                            break;
+                        }
                         finally
                         {
                             Monitor.Exit(csDispatching);
@@ -410,9 +426,9 @@ namespace LibUA
                             continue;
                         }
                     }
-                    catch (SocketException)
+                    catch (Exception)
                     {
-                        // Disconnected
+                        // Disconnected or disposed while in Select
                         break;
                     }
 
@@ -543,9 +559,9 @@ namespace LibUA
                     DrainReceiveBuffer();
                     socket.Close();
                 }
-                catch (SocketException)
+                catch (Exception)
                 {
-                    // Disconnected
+                    // Disconnected or already disposed
                 }
 
                 server.RemoveDispatcher(this);
@@ -589,7 +605,7 @@ namespace LibUA
                         }
                     }
                 }
-                catch (SocketException)
+                catch (Exception)
                 {
                 }
             }
@@ -598,18 +614,26 @@ namespace LibUA
             {
                 if (thread != null)
                 {
+                    // Signal the dispatcher and let ThreadTarget own the
+                    // socket teardown. Closing the socket here races with
+                    // ThreadTarget and throws ObjectDisposedException
                     threadAbort = true;
-                    
-                    try
-                    {
-                        socket?.Shutdown(SocketShutdown.Both);
-                    }
-                    catch
-                    {
-                    }
-                    socket?.Close();
 
-                    thread.Join();
+                    if (thread.IsAlive && !thread.Join(CloseJoinTimeoutMs))
+                    {
+                        // Still wedged in a blocking call: dispose the
+                        // socket to interrupt it, then wait for the exit
+                        try
+                        {
+                            socket?.Close();
+                        }
+                        catch
+                        {
+                        }
+
+                        thread.Join();
+                    }
+
                     thread = null;
                 }
 
